@@ -2,6 +2,13 @@
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,webstorm,macos,windows,linux,node
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,webstorm,macos,windows,linux,node
 
+### Stencil ###
+dist/
+www/
+loader/
+.stencil/
+.sass-cache/
+
 ### Linux ###
 *~
 

@@ -1,0 +1,68 @@
+{
+  "name": "plumage",
+  "version": "0.0.1",
+  "description": "Plumage is Ducky's design system",
+  "main": "dist/index.cjs.js",
+  "module": "dist/custom-elements/index.js",
+  "es2015": "dist/esm/index.mjs",
+  "es2017": "dist/esm/index.mjs",
+  "types": "dist/custom-elements/index.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "collection:main": "dist/collection/index.js",
+  "unpkg": "dist/plmg-test/plmg-test.esm.js",
+  "files": [
+    "dist/",
+    "loader/"
+  ],
+  "scripts": {
+    "build": "stencil build --docs",
+    "lint": "eslint .",
+    "start": "stencil build --dev --watch --serve",
+    "test": "stencil test --spec --e2e",
+    "test.watch": "stencil test --spec --e2e --watchAll",
+    "generate": "stencil generate"
+  },
+  "dependencies": {
+    "@stencil/core": "^2.7.0"
+  },
+  "devDependencies": {
+    "@ducky/eslint-config-base": "^1.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.31.1",
+    "cz-conventional-changelog": "^3.1.0",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.7",
+    "prettier": "^2.4.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DuckyTeam/Plumage.git"
+  },
+  "keywords": [
+    "plumage",
+    "design",
+    "system",
+    "ducky"
+  ],
+  "author": "development@ducky.eco",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DuckyTeam/Plumage/issues"
+  },
+  "homepage": "https://github.com/DuckyTeam/Plumage#readme",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint --fix"
+    ]
+  }
+}
