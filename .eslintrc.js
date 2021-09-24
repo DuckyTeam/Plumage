@@ -19,7 +19,7 @@ module.exports = {
     '@ducky/eslint-config-base',
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
-    'prettier/@typescript-eslint',
+    'prettier',
     'plugin:prettier/recommended',
     'plugin:import/typescript',
   ],
