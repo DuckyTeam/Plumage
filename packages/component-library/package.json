@@ -1,5 +1,5 @@
 {
-  "name": "plumage",
+  "name": "@ducky/plumage",
   "version": "0.0.2",
   "description": "Plumage is Ducky's design system",
   "main": "dist/index.cjs.js",
@@ -34,6 +34,7 @@
   "devDependencies": {
     "@ducky/eslint-config-base": "^2.0.0",
     "@stencil/core": "^2.7.0",
+    "@stencil/react-output-target": "^0.1.0",
     "@storybook/addon-actions": "^6.3.8",
     "@storybook/addon-essentials": "^6.3.8",
     "@storybook/addon-knobs": "^6.3.1",
