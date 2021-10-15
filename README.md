@@ -7,7 +7,8 @@ Plumage is Ducky's design system
 2. Create a `.env` from `.env.template`
 
 ### Token generation
-We use design-tokens.
+We use design-tokens. They are synced from Figma into a JSBin and we use [Style Dictionary](https://amzn.github.io/style-dictionary/) to generate a global CSS file.
+
 To generate them, use
 ```
 npm run tokens
