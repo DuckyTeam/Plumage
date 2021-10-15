@@ -2,7 +2,7 @@ import { Config } from '@stencil/core';
 
 export const config: Config = {
   namespace: 'plmg',
-  globalStyle: 'src/tokens/dist/colors.css',
+  globalStyle: 'src/tokens/main.css',
   outputTargets: [
     {
       type: 'dist',

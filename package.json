@@ -24,8 +24,9 @@
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
-    "pretokens": "node ./src/tokens/fetch-tokens.js",
+    "pretokens": "node ./src/tokens/fetch-tokens.js && rm -rf ./src/tokens/dist/",
     "tokens": "style-dictionary build --config ./src/tokens/config.js",
+    "posttokens": "node ./src/tokens/combine-css.js",
     "storybook": "start-storybook -p 6006 --no-dll -s ./www",
     "build-storybook": "build-storybook"
   },
