@@ -34,7 +34,6 @@
     "typescript": "^3.3.4000"
   },
   "dependencies": {
-    "@ducky/plumage": "^0.0.1"
   },
   "peerDependencies": {
     "react": "^16.7.0",
