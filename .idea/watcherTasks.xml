@@ -3,7 +3,6 @@
   <component name="ProjectTasksOptions">
     <enabled-global>
       <option value="Prettier mdx" />
-      <option value="Prettier ts" />
       <option value="Prettier js" />
     </enabled-global>
   </component>
