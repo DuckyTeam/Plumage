@@ -1,41 +1,10 @@
 const StyleDictionary = require('style-dictionary');
 
 StyleDictionary.registerTransform({
-  name: 'size/px', // notice: the name is an override of an existing predefined method
-  type: 'value',
-  matcher: function (token) {
-    /* supports both "pixel" and "pixels" */
-    return (
-      token &&
-      token.original &&
-      token.original.unit &&
-      token.original.unit.startsWith('pixel')
-    );
-  },
+  name: `remove-extraneous-keys`,
+  type: `name`,
   transformer: function (token) {
-    return `${token.value}px`;
-  },
-});
-
-StyleDictionary.registerTransform({
-  name: `resolveChainingValues`,
-  type: `value`,
-  transitive: true,
-  matcher: function (token) {
-    return (
-        token &&
-        typeof token.value === 'string' &&
-        token.value.startsWith('$')
-    );
-  },
-  transformer: function (token) {
-    // token.value will be resolved and transformed at this point
-    let path = token.original.value.replace('$', '').split('.');
-    path.unshift(...['values', 'global']);
-    console.log('foo', token)
-    return 'foo';
-
-    // TODO resolve the path in design-tokens.json (ps: use token.filePath) recursively until there is no more '$'
+    return token.name.replace('values-plumage-', '');
   }
 })
 
@@ -45,14 +14,14 @@ module.exports = {
     js: {
       transformGroup: 'js',
       buildPath: './src/tokens/dist/',
-      transforms: ['size/px', 'name/ti/camel', 'resolveChainingValues'],
+      transforms: ['name/cti/kebab', 'remove-extraneous-keys'],
       /* We split tokens into separate files - it will be easier to use them this way */
       files: [
         {
-          destination: 'sizes.scss',
+          destination: 'other.scss',
           format: 'scss/variables',
           filter: {
-            type: 'sizing',
+            type: 'other',
           },
         },
         {
@@ -70,13 +39,6 @@ module.exports = {
           }
         },
         {
-          destination: 'typography.scss',
-          format: 'scss/variables',
-          filter: {
-            type: 'typography',
-          },
-        },
-        {
           destination: 'borderRadius.scss',
           format: 'scss/variables',
           filter: {
@@ -88,20 +50,6 @@ module.exports = {
           format: 'scss/variables',
           filter: {
             type: 'borderWidth',
-          },
-        },
-        {
-          destination: 'boxShadow.scss',
-          format: 'scss/variables',
-          filter: {
-            type: 'boxShadow',
-          },
-        },
-        {
-          destination: 'opacity.scss',
-          format: 'scss/variables',
-          filter: {
-            type: 'opacity',
           },
         },
         {
