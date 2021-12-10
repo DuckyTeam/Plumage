@@ -2,7 +2,7 @@ import { Component, h } from '@stencil/core';
 
 @Component({
   tag: 'plmg-p',
-  styleUrl: 'plmg-p.css',
+  styleUrl: 'plmg-p.scss',
   shadow: true,
 })
 export class PlmgP {

@@ -1,9 +1,11 @@
 import { Config } from '@stencil/core';
+import { sass } from '@stencil/sass';
 import { reactOutputTarget } from '@stencil/react-output-target';
 
 export const config: Config = {
   namespace: 'plmg',
-  globalStyle: 'src/tokens/main.css',
+  globalStyle: 'dist-styles/main.css',
+  plugins: [sass()],
   outputTargets: [
     reactOutputTarget({
       componentCorePackage: '@ducky/plumage',

@@ -1,7 +1,0 @@
-:host {
-  color: var(--globalColorsGreen300);
-}
-
-:host > p {
-  opacity: var(--globalOpacityHigh);
-}

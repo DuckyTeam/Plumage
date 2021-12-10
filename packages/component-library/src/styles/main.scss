@@ -1,0 +1,7 @@
+@use "tokens";
+
+// Main styles come here
+
+html {
+  background-color: tokens.$plmg-color-background-danger-strong-active;
+}

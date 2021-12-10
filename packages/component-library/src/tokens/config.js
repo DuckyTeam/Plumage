@@ -13,7 +13,7 @@ module.exports = {
   platforms: {
     js: {
       transformGroup: 'js',
-      buildPath: './src/tokens/dist/',
+      buildPath: './src/tokens/build/',
       transforms: ['name/cti/kebab', 'remove-extraneous-keys'],
       /* We split tokens into separate files - it will be easier to use them this way */
       files: [
