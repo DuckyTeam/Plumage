@@ -11,4 +11,4 @@ files.forEach((file) => {
   outputContent.push(fileContent);
 });
 
-fs.writeFileSync(`${__dirname}/main.css`, outputContent.join(''));
+fs.writeFileSync(`${__dirname}/main.scss`, outputContent.join(''));
