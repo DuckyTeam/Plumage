@@ -388,11 +388,13 @@
     },
     {
       "packageName": "@ducky/plumage-react",
-      "projectFolder": "packages/component-library-react"
+      "projectFolder": "packages/component-library-react",
+      "shouldPublish": true
     },
     {
       "packageName": "@ducky/plumage",
-      "projectFolder": "packages/component-library"
+      "projectFolder": "packages/component-library",
+      "shouldPublish": true
     }
     // {
     //   /**
