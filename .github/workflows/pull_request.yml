@@ -10,6 +10,8 @@ jobs:
     name: Check presence of changelog documentation
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: Verify Change Logs
         run: node common/scripts/install-run-rush.js change --verify
 
