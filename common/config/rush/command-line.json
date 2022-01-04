@@ -1,6 +1,6 @@
 /**
  * This configuration file defines custom commands for the "rush" command-line.
- * More documentation is available on the Rush website: https://rushjs.io
+ * More documentation is available on the Rush website: https://rushjs.io/pages/maintainer/custom_commands/
  */
 {
   "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/command-line.schema.json",
@@ -21,6 +21,15 @@
 
       // This will invoke common/autoinstallers/rush-prettier/node_modules/.bin/pretty-quick
       "shellCommand": "pretty-quick --staged"
+    },
+    {
+      "name": "test",
+      "commandKind": "bulk",
+      "summary": "Invoke the 'test' script in each project",
+      "safeForSimultaneousRushProcesses": true,
+      "enableParallelism": true,
+      "ignoreDependencyOrder": true,
+      "ignoreMissingScript": true
     }
     // {
     //   /**

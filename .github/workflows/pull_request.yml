@@ -1,0 +1,35 @@
+name: Pull requests against main branch
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+    name: Check presence of changelog documentation
+    steps:
+      - uses: actions/checkout@v2
+      - name: Verify Change Logs
+        run: node common/scripts/install-run-rush.js change --verify
+
+  builds:
+    runs-on: ubuntu-latest
+    name: Check build
+    steps:
+      - uses: actions/checkout@v2
+      - name: Rush Install
+        run: node common/scripts/install-run-rush.js install
+      - name: Rush Rebuild
+        run: node common/scripts/install-run-rush.js rebuild
+#  tests:
+#    runs-on: ubuntu-latest
+#    name: Tests
+#    steps:
+#      - uses: actions/checkout@v2
+#      - name: Rush Install
+#        run: node common/scripts/install-run-rush.js install
+#      - name: Rush Rebuild
+#        run: node common/scripts/install-run-rush.js rebuild
+#      - name: Tests
+#        run: node common/scripts/install-run-rush.js test
