@@ -1,4 +1,4 @@
-name: Pull requests against main branch
+name: PR into main
 
 on:
   pull_request:
