@@ -1,44 +1,32 @@
 {
-  "name": "my-app",
+  "name": "example-react-app",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@ducky/plumage-react": "file:../../packages/component-library-react",
-    "@testing-library/jest-dom": "^5.15.0",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "@types/jest": "^26.0.24",
-    "@types/node": "^12.20.36",
-    "@types/react": "^17.0.34",
-    "@types/react-dom": "^17.0.11",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "typescript": "^4.4.4",
-    "web-vitals": "^1.1.2"
-  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "webpack serve --config webpack.config.js --env env=development",
+    "build": "webpack --config webpack.config.js --env env=production"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "dependencies": {
+    "@ducky/plumage-react": "^0.0.1",
+    "react": "~17.0.2",
+    "react-dom": "~17.0.2"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "devDependencies": {
+    "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11",
+    "typescript": "^4.5.4",
+    "@babel/core": "^7.16.7",
+    "@babel/cli": "^7.16.7",
+    "@babel/preset-env": "^7.16.7",
+    "@babel/preset-typescript": "^7.16.7",
+    "@babel/preset-react": "^7.16.7",
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.7.2",
+    "style-loader": "^3.3.1",
+    "css-loader": "^6.5.1",
+    "babel-loader": "^8.2.3",
+    "html-webpack-plugin": "^5.5.0",
+    "clean-webpack-plugin": "^4.0.0"
   }
 }
