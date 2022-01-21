@@ -8,6 +8,7 @@
             <path value="file://$PROJECT_DIR$/packages/component-library/src" />
             <path value="file://$PROJECT_DIR$/packages/component-library-react/src" />
             <path value="file://$PROJECT_DIR$/examples/react-app/src" />
+            <path value="file://$PROJECT_DIR$/packages/design-tokens/src" />
           </resourceRoots>
         </entryData>
       </entry>
