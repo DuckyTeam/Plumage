@@ -11,6 +11,11 @@
       <excludeFolder url="file://$MODULE_DIR$/packages/component-library/www" />
       <excludeFolder url="file://$MODULE_DIR$/packages/component-library/src/tokens/build" />
       <excludeFolder url="file://$MODULE_DIR$/common/temp" />
+      <excludeFolder url="file://$MODULE_DIR$/common/autoinstallers/rush-prettier/.rush/temp" />
+      <excludeFolder url="file://$MODULE_DIR$/examples/react-app/.rush/temp" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/component-library/.rush/temp" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/component-library/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/component-library-react/.rush/temp" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
