@@ -395,6 +395,11 @@
       "packageName": "@ducky/plumage",
       "projectFolder": "packages/component-library",
       "shouldPublish": true
+    },
+    {
+      "packageName": "@ducky/plumage-tokens",
+      "projectFolder": "packages/design-tokens",
+      "shouldPublish": true
     }
     // {
     //   /**

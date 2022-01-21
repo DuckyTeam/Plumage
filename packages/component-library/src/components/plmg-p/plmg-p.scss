@@ -1,9 +1,9 @@
-@use "../../styles/tokens";
-
 :host {
-  color: tokens.$plmg-color-text-danger;
+  //color: tokens.$plmg-color-text-danger;
 }
 
 :host > p {
-  background-color: tokens.$plmg-color-background-danger;
+  //background-color: tokens.$plmg-color-background-danger;
 }
+
+// TODO use tokens here
