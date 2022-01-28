@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "Import design tokens from library",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}

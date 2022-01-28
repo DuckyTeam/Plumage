@@ -4,6 +4,7 @@ Plumage is Ducky's design system
 > The Design System is under early development
 
 ## Folder structure
+- packages/design-tokens: Design tokens library, containing our design tokens in various format.
 - packages/component-library: The component library itself, built with StencilJS, producing standard web components.
 - packages/component-library-react: The component library wrapped for ReactJS.
 - examples: Contains examples of apps using Plumage.
@@ -21,19 +22,20 @@ This repo is a monorepo managed by [Rush](https://rushjs.io/).
     ```
 
 ### Rush cheatsheet
+This repo uses RushJS to manage multiple projects from a single repo. With Rush, we don't use classic NPM commands anymore.
 
-Install all dependencies
+Install all dependencies (for all projects)
 ```
 rush install
 ```
 
-Add new dependency
+Install new dependency to one of the project 
 ```
 cd into/project
 rush add --package example-lib
 ```
 
-Build projects
+Build (all) projects
 ```
 rush build
 ```
@@ -43,7 +45,7 @@ Whenever a package.json file has changed
 rush update
 ```
 
-Document changes for the next package release
+Document changes for the next package release (write changelogs)
 ```
 rush change
 ```
@@ -57,12 +59,13 @@ rush purge
 
 Whenever you make changes to this repository
 
-1. Make sure you've got the latest version: `git checkout main && git pull`
+1. Make sure you've got the latest version: `git checkout dev && git pull`
 2. Create a new branch: `git branch -b <branchname>`
-3. Do you modifications
+3. Do your modifications
 4. Commit your changes: `git add . && git commit`
 5. Document your changes for the next release: `rush change`
    See the next section for more details about this process.
+6. Commit and push the changelog documentation
 
 #### Document change logs
 
