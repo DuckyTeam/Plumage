@@ -1,3 +1,4 @@
+# Publish packages to NPM using RushJS
 name: Publish packages
 
 on:
