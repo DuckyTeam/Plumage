@@ -1,0 +1,17 @@
+{
+  "name": "@ducky/plumage-tokens",
+  "entries": [
+    {
+      "version": "1.0.0",
+      "tag": "@ducky/plumage-tokens_v1.0.0",
+      "date": "Fri, 28 Jan 2022 12:35:00 GMT",
+      "comments": {
+        "major": [
+          {
+            "comment": "Move design tokens to their own library"
+          }
+        ]
+      }
+    }
+  ]
+}
