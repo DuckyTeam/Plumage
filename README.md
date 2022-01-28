@@ -4,6 +4,7 @@ Plumage is Ducky's design system
 > The Design System is under early development
 
 ## Folder structure
+- packages/design-tokens: Design tokens library, containing our design tokens in various format.
 - packages/component-library: The component library itself, built with StencilJS, producing standard web components.
 - packages/component-library-react: The component library wrapped for ReactJS.
 - examples: Contains examples of apps using Plumage.
