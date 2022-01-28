@@ -12,7 +12,6 @@
   "unpkg": "dist/plmg/plmg.esm.js",
   "files": [
     "dist/",
-    "dist-styles/",
     "loader/"
   ],
   "scripts": {
