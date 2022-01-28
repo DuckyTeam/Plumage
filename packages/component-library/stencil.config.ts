@@ -4,7 +4,7 @@ import { reactOutputTarget } from '@stencil/react-output-target';
 
 export const config: Config = {
   namespace: 'plmg',
-  globalStyle: 'dist-styles/main.css',
+  globalStyle: 'src/global.scss',
   plugins: [sass()],
   outputTargets: [
     reactOutputTarget({
