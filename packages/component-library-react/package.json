@@ -2,7 +2,6 @@
   "name": "@ducky/plumage-react",
   "sideEffects": false,
   "version": "0.0.1",
-  "private": true,
   "description": "Plumage is Ducky's design system; this is React wrapper",
   "repository": {
     "type": "git",
