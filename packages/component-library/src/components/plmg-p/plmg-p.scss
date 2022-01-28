@@ -1,9 +1,9 @@
+@use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
+
 :host {
-  //color: tokens.$plmg-color-text-danger;
+  color: tokens.$plmg-text-neutral;
 }
 
 :host > p {
-  //background-color: tokens.$plmg-color-background-danger;
+  background-color: tokens.$plmg-background-success;
 }
-
-// TODO use tokens here
