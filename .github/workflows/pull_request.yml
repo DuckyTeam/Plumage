@@ -1,8 +1,11 @@
-name: PR into main
+# A set of checks to run on each PR: changelogs, build, all kind of tests
+name: PR checks
 
 on:
   pull_request:
-    branches: [main]
+    branches:
+      - main
+      - dev
 
 jobs:
   changes:
