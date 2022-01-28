@@ -16,12 +16,13 @@
     "loader/"
   ],
   "scripts": {
+    "prebuild": "npm run compile-scss",
     "build": "stencil build --docs",
     "start-stencil": "stencil build --dev",
     "start-stencil:watch": "stencil build --dev --watch",
     "lint": "eslint .",
     "prestart": "npm run start-stencil",
-    "start": "concurrently \"npm run start-stencil:watch\" \"npm run storybook\"",
+    "start": "concurrently -n stencil,storybook \"npm run start-stencil:watch\" \"npm run storybook\"",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
