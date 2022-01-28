@@ -106,3 +106,8 @@ Ducky has 3 themes:
 
 
 We build 1 file per theme. And 1 folder per output format.
+
+Build tokens with
+```
+npm run build
+```
