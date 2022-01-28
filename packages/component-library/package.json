@@ -28,6 +28,9 @@
     "storybook": "start-storybook -p 6006 --no-dll -s ./www",
     "build-storybook": "build-storybook"
   },
+  "dependencies": {
+    "@ducky/plumage-tokens": "^0.0.0"
+  },
   "devDependencies": {
     "@ducky/eslint-config-base": "^2.0.0",
     "@stencil/core": "^2.7.0",

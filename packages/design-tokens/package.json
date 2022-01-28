@@ -8,9 +8,7 @@
     "dist/"
   ],
   "scripts": {
-    "build": "rm -rf dist && style-dictionary build --config ./src/config.js",
-    "tokens": "style-dictionary build --config ./src/tokens/config.js",
-    "posttokens": "node src/tokens/combine-scss.js"
+    "build": "rm -rf dist && style-dictionary build --config ./src/config.js"
   },
   "devDependencies": {
     "style-dictionary": "^3.1.1"
