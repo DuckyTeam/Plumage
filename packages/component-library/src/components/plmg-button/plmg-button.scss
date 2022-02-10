@@ -1,0 +1,56 @@
+@use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
+
+:host {
+  display: block;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: none;
+
+  // Control: Style/variant
+  &.filled,
+  &.filled-round {
+    background: tokens.$plmg-background-primary-strong;
+  }
+  &.filled {
+    border-radius: tokens.$plmg-border-radius-s;
+  }
+  &.filled-round {
+    border-radius: tokens.$plmg-border-radius-pill;
+  }
+  &.outline,
+  &.outline-round {
+    border: tokens.$plmg-border-width-s solid
+      tokens.$plmg-background-primary-strong;
+    background: none;
+  }
+  &.outline {
+    border-radius: tokens.$plmg-border-radius-s;
+  }
+  &.outline-round {
+    border-radius: tokens.$plmg-border-radius-pill;
+  }
+
+  padding: tokens.$plmg-spacing-x075 tokens.$plmg-spacing-x1-5;
+
+  &.filled,
+  &.filled-round {
+    background: tokens.$plmg-background-primary-strong;
+
+    // Text Regular (400)/x1.5
+    color: tokens.$plmg-text-neutral-inverted;
+    font-family: tokens.$plmg-font-weight-regular;
+    font-style: normal;
+    font-weight: tokens.$plmg-font-weight-regular;
+    font-size: tokens.$plmg-font-size-x1-5;
+    line-height: tokens.$plmg-font-lineheight-normal;
+  }
+}

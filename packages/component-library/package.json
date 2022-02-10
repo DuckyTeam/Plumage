@@ -23,7 +23,7 @@
     "prestart": "npm run start-stencil",
     "start": "concurrently -n stencil,storybook \"npm run start-stencil:watch\" \"npm run storybook\"",
     "test": "stencil test --spec --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll",
+    "test:watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
     "storybook": "start-storybook -p 6006 --no-dll -s ./www",
     "build-storybook": "build-storybook"
@@ -34,6 +34,7 @@
   "devDependencies": {
     "@ducky/eslint-config-base": "^2.0.0",
     "@stencil/core": "^2.7.0",
+    "@stencil/eslint-plugin": "~0.4.0",
     "@stencil/react-output-target": "^0.1.0",
     "@stencil/sass": "^1.5.2",
     "@storybook/addon-actions": "^6.3.8",

@@ -2,6 +2,7 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint'],
   parserOptions: {
+    project: './tsconfig.json',
     ecmaVersion: 2016,
     sourceType: 'module',
     ecmaFeatures: {
@@ -22,6 +23,7 @@ module.exports = {
     'prettier',
     'plugin:prettier/recommended',
     'plugin:import/typescript',
+    'plugin:@stencil/recommended',
   ],
   globals: {},
   overrides: [

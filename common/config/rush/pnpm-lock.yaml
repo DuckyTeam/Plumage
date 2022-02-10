@@ -33,7 +33,6 @@ specifiers:
   concurrently: ^6.2.1
   creevey: 0.7.36
   css-loader: ^6.5.1
-  dotenv: ^10.0.0
   eslint: ^7.32.0
   eslint-plugin-import: ^2.24.2
   eslint-plugin-no-only-tests: ^2.6.0
@@ -84,7 +83,6 @@ dependencies:
   concurrently: 6.5.1
   creevey: 0.7.36_9698f900909cc93d64ad1dbc85b57e7f
   css-loader: 6.5.1_webpack@5.65.0
-  dotenv: 10.0.0
   eslint: 7.32.0
   eslint-plugin-import: 2.25.4_eslint@7.32.0
   eslint-plugin-no-only-tests: 2.6.0
@@ -2065,6 +2063,24 @@ packages:
     resolution: {integrity: sha512-u24TZ+FEvjnZt5ZgIkLjLpUNsO6Ml3mUZqwmqk81w6RWWz75hgB5p4RFI5rvuErFeh2xvMIGo+pNdG24XUBz1A==}
     engines: {node: '>=12.10.0', npm: '>=6.0.0'}
     hasBin: true
+    dev: false
+
+  /@stencil/eslint-plugin/0.4.0_f970b5f17668cb483b8453d324524a4d:
+    resolution: {integrity: sha512-2tjDOjyh0DLt1NITII4s+rU1UwcomrbR/yei3fIU83l7PLNdZvBCSCopsXYyxaY/C37aYJQ0LR8edlLVEk6EUw==}
+    engines: {node: '>=12.0.0'}
+    peerDependencies:
+      '@typescript-eslint/eslint-plugin': <5 && ^4.0.0
+      '@typescript-eslint/parser': <5 && ^4.0.0
+      eslint: <8 && ^7.0.0
+      eslint-plugin-react: ^7.0.0
+      typescript: ^4.0.8
+    dependencies:
+      '@typescript-eslint/eslint-plugin': 4.33.0_3289a875d95a672b97ebf589745c66ef
+      '@typescript-eslint/parser': 4.33.0_eslint@7.32.0+typescript@4.5.4
+      eslint: 7.32.0
+      eslint-utils: 3.0.0_eslint@7.32.0
+      tsutils: 3.0.0_typescript@4.5.4
+      typescript: 4.5.4
     dev: false
 
   /@stencil/react-output-target/0.1.0_@stencil+core@2.12.1:
@@ -15322,6 +15338,16 @@ packages:
     engines: {node: '>=0.6.x'}
     dev: false
 
+  /tsutils/3.0.0_typescript@4.5.4:
+    resolution: {integrity: sha512-LjHBWR0vWAUHWdIAoTjoqi56Kz+FDKBgVEuL+gVPG/Pv7QW5IdaDDeK9Txlr6U0Cmckp5EgCIq1T25qe3J6hyw==}
+    engines: {node: '>= 6'}
+    peerDependencies:
+      typescript: '>=2.8.0 || >= 3.1.0-dev'
+    dependencies:
+      tslib: 1.14.1
+      typescript: 4.5.4
+    dev: false
+
   /tsutils/3.21.0_typescript@4.5.4:
     resolution: {integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==}
     engines: {node: '>= 6'}
@@ -16521,7 +16547,7 @@ packages:
     dev: false
 
   file:projects/example-react-app.tgz:
-    resolution: {integrity: sha512-LXBoGf55P7CuRL5hWJqZ5bWQI2V14h6UjEjU+Dh1pumjQe9xoaMM2OPE+FtIqcVJ6Ou0i2AB6VIGCqxvb0Z2Wg==, tarball: file:projects/example-react-app.tgz}
+    resolution: {integrity: sha512-PT96BZAV2i3CieJJNW6k1VVtU1crTz2oRvPFPJ5BSif7KtABIFdorg4RPemQ+4w9/EmBb8xIKYbAOiZpZCjLuw==, tarball: file:projects/example-react-app.tgz}
     name: '@rush-temp/example-react-app'
     version: 0.0.0
     dependencies:
@@ -16558,7 +16584,7 @@ packages:
     dev: false
 
   file:projects/plumage-react.tgz:
-    resolution: {integrity: sha512-e2ukyMlc5Ymgn8cNV5sK+VIE8j4yfDrOlKQgMoHQ/a97VmXsoSD4rhUMn31aCdpslXn2/6YoR0VukQ2kSFIIUg==, tarball: file:projects/plumage-react.tgz}
+    resolution: {integrity: sha512-uHTwIF0504ZOChiVB/r7Qh+j4nQAYWb9KK/FZmC4V5lq25UVC908C/Kg+zUp0xM+bBKugUzKo5A0M7KKWzajsQ==, tarball: file:projects/plumage-react.tgz}
     name: '@rush-temp/plumage-react'
     version: 0.0.0
     dependencies:
@@ -16582,13 +16608,14 @@ packages:
     dev: false
 
   file:projects/plumage.tgz_0caa87738ffad273e3f555cf1f2e570e:
-    resolution: {integrity: sha512-QccwMoq8zURz1MWLvuFQ+jLQFOrrTlverV0wgWY4RuSPUgnte5N0b40CPovvy7k0Dd+GMtx59kMYdg90tCWNNA==, tarball: file:projects/plumage.tgz}
+    resolution: {integrity: sha512-8L3I7O73/jkpjMYMlTQvoEFnkR5uDQX/Bq0MquMDD5KX6hlPNi/Ych7poLW33NDSuMK5k6VJyt1ZsxLbbB/LGw==, tarball: file:projects/plumage.tgz}
     id: file:projects/plumage.tgz
     name: '@rush-temp/plumage'
     version: 0.0.0
     dependencies:
       '@ducky/eslint-config-base': 2.0.0_ed4c5cdfca7229f6ecc40e5501fa01b3
       '@stencil/core': 2.12.1
+      '@stencil/eslint-plugin': 0.4.0_f970b5f17668cb483b8453d324524a4d
       '@stencil/react-output-target': 0.1.0_@stencil+core@2.12.1
       '@stencil/sass': 1.5.2_@stencil+core@2.12.1
       '@storybook/addon-actions': 6.4.9_@types+react@17.0.38
@@ -16633,6 +16660,7 @@ packages:
       - canvas
       - esbuild
       - eslint-config-prettier
+      - eslint-plugin-react
       - jest
       - lit
       - lit-html
