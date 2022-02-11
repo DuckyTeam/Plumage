@@ -2,10 +2,10 @@ import { Component, Host, h, Prop, Watch } from '@stencil/core';
 import {
   isPlmgButtonColor,
   isPlmgButtonSize,
-  isPlmgButtonVariant,
+  isPlmgButtonDesign,
   PlmgButtonColor,
   PlmgButtonSize,
-  PlmgButtonVariant,
+  PlmgButtonDesign,
 } from './plmg-button.types';
 
 @Component({
@@ -15,7 +15,7 @@ import {
 })
 export class Button {
   /**
-   * Define button's variant.
+   * Define button's design.
    *
    * Allowed values:
    *   - filled
@@ -26,13 +26,13 @@ export class Button {
    *
    * Default: filled
    */
-  @Prop() variant: PlmgButtonVariant = 'filled';
-  @Watch('variant')
-  validateVariant(newValue: string) {
+  @Prop() design: PlmgButtonDesign = 'filled';
+  @Watch('design')
+  validateDesign(newValue: string) {
     if (typeof newValue !== 'string' || newValue === '')
-      throw new Error('variant: required');
-    if (!isPlmgButtonVariant(newValue))
-      throw new Error('variant: must be a valid value');
+      throw new Error('design: required');
+    if (!isPlmgButtonDesign(newValue))
+      throw new Error('design: must be a valid value');
   }
 
   /**
@@ -80,7 +80,7 @@ export class Button {
       <Host>
         <button
           class={{
-            [this.variant]: true,
+            [this.design]: true,
             [this.size]: true,
             [this.color]: true,
           }}

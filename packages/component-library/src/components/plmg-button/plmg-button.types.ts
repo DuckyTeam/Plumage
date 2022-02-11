@@ -1,13 +1,13 @@
-const variants = [
+const designs = [
   'filled',
   'filled-round',
   'outline',
   'outline-round',
   'borderless',
 ] as const;
-export type PlmgButtonVariant = typeof variants[number];
-export function isPlmgButtonVariant(x: any): x is PlmgButtonVariant {
-  return variants.includes(x);
+export type PlmgButtonDesign = typeof designs[number];
+export function isPlmgButtonDesign(x: any): x is PlmgButtonDesign {
+  return designs.includes(x);
 }
 
 const sizes = ['small', 'medium', 'large', 'extra-large'] as const;
