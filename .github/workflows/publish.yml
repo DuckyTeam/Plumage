@@ -45,7 +45,7 @@ jobs:
 
       # Build Storybook
       - name: Storybook build
-        run: rush build-storybook --from @ducky/plumage
+        run: node common/scripts/install-run-rush.js build-storybook --from @ducky/plumage
 
       # Publish Storybook
       - name: Storybook Publish
