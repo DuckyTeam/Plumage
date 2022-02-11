@@ -137,22 +137,22 @@ button {
 
   // Control: Size
   &.small {
-    padding: tokens.$plmg-spacing-x075 tokens.$plmg-spacing-x1;
+    padding: tokens.$plmg-spacing-x0-75 tokens.$plmg-spacing-x1;
     font-size: tokens.$plmg-font-size-x0-875;
     line-height: tokens.$plmg-font-lineheight-loose;
   }
   &.medium {
-    padding: tokens.$plmg-spacing-x075 tokens.$plmg-spacing-x1-5;
+    padding: tokens.$plmg-spacing-x0-75 tokens.$plmg-spacing-x1-5;
     font-size: tokens.$plmg-font-size-x1-125;
     line-height: tokens.$plmg-font-lineheight-loose;
   }
   &.large {
-    padding: tokens.$plmg-spacing-x075 tokens.$plmg-spacing-x2;
+    padding: tokens.$plmg-spacing-x0-75 tokens.$plmg-spacing-x2;
     font-size: tokens.$plmg-font-size-x1-25;
     line-height: tokens.$plmg-font-lineheight-loose;
   }
   &.extra-large {
-    padding: tokens.$plmg-spacing-x075 tokens.$plmg-spacing-x2-5;
+    padding: tokens.$plmg-spacing-x0-75 tokens.$plmg-spacing-x2-5;
     font-size: tokens.$plmg-font-size-x1-5;
     line-height: tokens.$plmg-font-lineheight-normal;
   }
