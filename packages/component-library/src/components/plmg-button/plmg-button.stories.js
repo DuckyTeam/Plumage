@@ -23,10 +23,13 @@ export default {
       options: ['primary', 'neutral', 'standout', 'danger'],
       control: { type: 'select' },
     },
+    ['full-width']: {
+      options: [true, false],
+    },
   },
 };
 
-const PROPS = ['design', 'size', 'color'];
+const PROPS = ['design', 'size', 'color', 'full-width'];
 const EVENTS = [];
 const CSS_VARS = [];
 const SLOTS = ['text'];
@@ -47,6 +50,7 @@ Primary.args = {
   design: 'filled',
   size: 'medium',
   color: 'primary',
+  ['full-width']: false,
 };
 
 export const Secondary = Template.bind({});
@@ -56,4 +60,5 @@ Secondary.args = {
   design: 'filled-round',
   size: 'medium',
   color: 'primary',
+  ['full-width']: false,
 };

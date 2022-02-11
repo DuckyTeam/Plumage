@@ -75,6 +75,22 @@ export class Button {
       throw new Error('color: must be a valid value');
   }
 
+  /**
+   * Define button's width
+   *
+   * Allowed values:
+   *   - true
+   *   - false
+   *
+   * Default: false
+   */
+  @Prop() fullWidth: boolean = false;
+  @Watch('fullWidth')
+  validateFullWidth(newValue: boolean) {
+    if (typeof newValue !== 'boolean')
+      throw new Error('fullWidth: must be boolean');
+  }
+
   render() {
     return (
       <Host>
@@ -83,6 +99,7 @@ export class Button {
             [this.design]: true,
             [this.size]: true,
             [this.color]: true,
+            'full-width': this.fullWidth,
           }}
         >
           <slot></slot>

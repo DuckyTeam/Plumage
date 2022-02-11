@@ -7,8 +7,8 @@
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
   PlmgButtonColor,
+  PlmgButtonDesign,
   PlmgButtonSize,
-  PlmgButtonVariant,
 } from './components/plmg-button/plmg-button.types';
 export namespace Components {
   interface PlmgButton {
@@ -17,13 +17,17 @@ export namespace Components {
      */
     color: PlmgButtonColor;
     /**
+     * Define button's design.  Allowed values:   - filled   - filled-round   - outline   - outline-round   - borderless  Default: filled
+     */
+    design: PlmgButtonDesign;
+    /**
+     * Define button's width  Allowed values:   - true   - false  Default: false
+     */
+    fullWidth: boolean;
+    /**
      * Define button's size  Allowed values:   - small   - medium   - large   - extra-large  Default: medium
      */
     size: PlmgButtonSize;
-    /**
-     * Define button's variant.  Allowed values:   - filled   - filled-round   - outline   - outline-round   - borderless  Default: filled
-     */
-    variant: PlmgButtonVariant;
   }
   interface PlmgP {}
 }
@@ -52,13 +56,17 @@ declare namespace LocalJSX {
      */
     color?: PlmgButtonColor;
     /**
+     * Define button's design.  Allowed values:   - filled   - filled-round   - outline   - outline-round   - borderless  Default: filled
+     */
+    design?: PlmgButtonDesign;
+    /**
+     * Define button's width  Allowed values:   - true   - false  Default: false
+     */
+    fullWidth?: boolean;
+    /**
      * Define button's size  Allowed values:   - small   - medium   - large   - extra-large  Default: medium
      */
     size?: PlmgButtonSize;
-    /**
-     * Define button's variant.  Allowed values:   - filled   - filled-round   - outline   - outline-round   - borderless  Default: filled
-     */
-    variant?: PlmgButtonVariant;
   }
   interface PlmgP {}
   interface IntrinsicElements {

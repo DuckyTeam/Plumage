@@ -161,6 +161,9 @@ button {
     font-size: tokens.$plmg-font-size-x1-5;
     line-height: tokens.$plmg-font-lineheight-normal;
   }
+  &.full-width {
+    width: 100%;
+  }
 }
 // END Component style
 // ------------------------------
