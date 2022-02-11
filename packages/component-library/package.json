@@ -1,6 +1,6 @@
 {
   "name": "@ducky/plumage",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Plumage is Ducky's design system",
   "main": "dist/index.cjs.js",
   "module": "dist/custom-elements/index.js",
@@ -28,7 +28,7 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "@ducky/plumage-tokens": "^1.0.0"
+    "@ducky/plumage-tokens": "^2.0.0"
   },
   "devDependencies": {
     "@ducky/eslint-config-base": "^2.0.0",
