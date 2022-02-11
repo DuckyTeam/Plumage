@@ -14,8 +14,9 @@
 
 // Mixins
 // ------------------------------
-@mixin filled-background($background-color, $text-color) {
+@mixin filled-background($background-color, $border-color, $text-color) {
   background: $background-color;
+  border: tokens.$plmg-border-width-s solid $border-color;
   color: $text-color;
 }
 
@@ -32,11 +33,13 @@
   &.primary {
     @include filled-background(
       tokens.$plmg-background-primary-strong,
+      tokens.$plmg-background-primary-strong,
       tokens.$plmg-text-neutral-inverted
     );
   }
   &.neutral {
     @include filled-background(
+      tokens.$plmg-background-neutral,
       tokens.$plmg-border-neutral-weak,
       tokens.$plmg-text-neutral
     );
@@ -44,11 +47,13 @@
   &.standout {
     @include filled-background(
       tokens.$plmg-background-standout,
+      tokens.$plmg-background-standout,
       tokens.$plmg-text-standout
     );
   }
   &.danger {
     @include filled-background(
+      tokens.$plmg-background-danger,
       tokens.$plmg-background-danger,
       tokens.$plmg-text-danger
     );
