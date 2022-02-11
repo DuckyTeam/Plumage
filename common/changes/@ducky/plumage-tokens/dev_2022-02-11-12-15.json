@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage-tokens",
+      "comment": "Update font token name & Fix spacing token name",
+      "type": "major"
+    }
+  ],
+  "packageName": "@ducky/plumage-tokens"
+}

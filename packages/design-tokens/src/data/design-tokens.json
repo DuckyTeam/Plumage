@@ -41,7 +41,7 @@
         "description": "0.5rem",
         "type": "spacing"
       },
-      "$plmg-spacing-x075": {
+      "$plmg-spacing-x0_75": {
         "value": "12px",
         "description": "0.75rem",
         "type": "spacing"
@@ -112,7 +112,7 @@
         "type": "borderRadius"
       },
       "$plmg-border-radius-l": {
-        "value": "16",
+        "value": "16px",
         "description": "A large roundness",
         "type": "borderRadius"
       },
@@ -122,7 +122,7 @@
         "type": "borderRadius"
       },
       "$plmg-border-radius-circle": {
-        "value": "1000",
+        "value": "50%",
         "description": "For circles, like circle-buttons",
         "type": "borderRadius"
       },
@@ -191,7 +191,7 @@
         "description": "12px",
         "type": "fontSizes"
       },
-      "$plmg-font-weight-light": {
+      "$plmg-font-weight-extralight": {
         "value": "200",
         "description": "ExtraLight",
         "type": "fontWeights"
@@ -201,7 +201,7 @@
         "description": "Regular",
         "type": "fontWeights"
       },
-      "$plmg-font-weight-bold": {
+      "$plmg-font-weight-semibold": {
         "value": "600",
         "description": "SemiBold",
         "type": "fontWeights"
@@ -483,7 +483,7 @@
       "neutral-strong": {
         "value": "#dfe5e8",
         "type": "color",
-        "description": "Grey100\nUse with care as not all colors are ÃÂ¢ÃÂÃÂ¨accessible on this background"
+        "description": "Grey100\nUse with care as not all colors are ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¨accessible on this background"
       },
       "primary": {
         "value": "#ccebee",
@@ -947,7 +947,7 @@
         "description": "0.5rem",
         "type": "spacing"
       },
-      "$plmg-spacing-x075": {
+      "$plmg-spacing-x0_75": {
         "value": "12px",
         "description": "0.75rem",
         "type": "spacing"
@@ -1018,7 +1018,7 @@
         "type": "borderRadius"
       },
       "$plmg-border-radius-l": {
-        "value": "16",
+        "value": "16px",
         "description": "A large roundness",
         "type": "borderRadius"
       },
@@ -1028,7 +1028,7 @@
         "type": "borderRadius"
       },
       "$plmg-border-radius-circle": {
-        "value": "1000",
+        "value": "50%",
         "description": "For circles, like circle-buttons",
         "type": "borderRadius"
       },
@@ -1097,7 +1097,7 @@
         "description": "12px",
         "type": "fontSizes"
       },
-      "$plmg-font-weight-light": {
+      "$plmg-font-weight-extralight": {
         "value": "200",
         "description": "ExtraLight",
         "type": "fontWeights"
@@ -1107,7 +1107,7 @@
         "description": "Regular",
         "type": "fontWeights"
       },
-      "$plmg-font-weight-bold": {
+      "$plmg-font-weight-semibold": {
         "value": "600",
         "description": "SemiBold",
         "type": "fontWeights"
@@ -1389,7 +1389,7 @@
       "neutral-strong": {
         "value": "#dfe5e8",
         "type": "color",
-        "description": "Grey100 \nUse with care as not all colors are â¨accessible on this background"
+        "description": "Grey100 \nUse with care as not all colors are ÃÂ¢ÃÂÃÂ¨accessible on this background"
       },
       "primary": {
         "value": "#f9dae5",
@@ -1853,7 +1853,7 @@
         "description": "0.5rem",
         "type": "spacing"
       },
-      "$plmg-spacing-x075": {
+      "$plmg-spacing-x0_75": {
         "value": "12px",
         "description": "0.75rem",
         "type": "spacing"
@@ -1924,7 +1924,7 @@
         "type": "borderRadius"
       },
       "$plmg-border-radius-l": {
-        "value": "16",
+        "value": "16px",
         "description": "A large roundness",
         "type": "borderRadius"
       },
@@ -1934,7 +1934,7 @@
         "type": "borderRadius"
       },
       "$plmg-border-radius-circle": {
-        "value": "1000",
+        "value": "50%",
         "description": "For circles, like circle-buttons",
         "type": "borderRadius"
       },
@@ -2003,7 +2003,7 @@
         "description": "12px",
         "type": "fontSizes"
       },
-      "$plmg-font-weight-light": {
+      "$plmg-font-weight-extralight": {
         "value": "200",
         "description": "ExtraLight",
         "type": "fontWeights"
@@ -2013,7 +2013,7 @@
         "description": "Regular",
         "type": "fontWeights"
       },
-      "$plmg-font-weight-bold": {
+      "$plmg-font-weight-semibold": {
         "value": "600",
         "description": "SemiBold",
         "type": "fontWeights"
@@ -2295,7 +2295,7 @@
       "neutral-strong": {
         "value": "#dfe5e8",
         "type": "color",
-        "description": "Grey50\nUse with care. as not all colors are Ã¢ÂÂ¨accessible on this background"
+        "description": "Grey50\nUse with care. as not all colors are ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ¨accessible on this background"
       },
       "primary": {
         "value": "#ccebee",

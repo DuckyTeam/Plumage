@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage-tokens",
+      "comment": "Update border-radius values",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage-tokens"
+}

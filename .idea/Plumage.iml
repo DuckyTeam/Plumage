@@ -17,6 +17,7 @@
       <excludeFolder url="file://$MODULE_DIR$/packages/component-library/dist" />
       <excludeFolder url="file://$MODULE_DIR$/packages/component-library-react/.rush/temp" />
       <excludeFolder url="file://$MODULE_DIR$/packages/design-tokens/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/component-library/storybook-static" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
