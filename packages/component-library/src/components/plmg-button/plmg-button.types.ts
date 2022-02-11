@@ -10,8 +10,14 @@ export function isPlmgButtonVariant(x: any): x is PlmgButtonVariant {
   return variants.includes(x);
 }
 
-const sizes = ['small', 'medium', 'large', 'extra-large'];
+const sizes = ['small', 'medium', 'large', 'extra-large'] as const;
 export type PlmgButtonSize = typeof sizes[number];
 export function isPlmgButtonSize(x: any): x is PlmgButtonSize {
   return sizes.includes(x);
+}
+
+const colors = ['primary', 'neutral', 'standout', 'danger'] as const;
+export type PlmgButtonColor = typeof colors[number];
+export function isPlmgButtonColor(x: any): x is PlmgButtonColor {
+  return colors.includes(x);
 }

@@ -14,16 +14,75 @@
 
 // Mixins
 // ------------------------------
-@mixin filled-background {
-  background: tokens.$plmg-background-primary-strong;
-  color: tokens.$plmg-text-neutral-inverted;
+@mixin filled-background($background-color, $text-color) {
+  background: $background-color;
+  color: $text-color;
 }
 
-@mixin outline-background {
+@mixin outline-background($border-color) {
   background: none;
-  border: tokens.$plmg-border-width-s solid
-    tokens.$plmg-background-primary-strong;
-  color: tokens.$plmg-background-primary-strong;
+  border: tokens.$plmg-border-width-s solid $border-color;
+}
+
+@mixin outline-text($text-color) {
+  color: $text-color;
+}
+
+@mixin filled-color {
+  &.primary {
+    @include filled-background(
+      tokens.$plmg-background-primary-strong,
+      tokens.$plmg-text-neutral-inverted
+    );
+  }
+  &.neutral {
+    @include filled-background(
+      tokens.$plmg-border-neutral-weak,
+      tokens.$plmg-text-neutral
+    );
+  }
+  &.standout {
+    @include filled-background(
+      tokens.$plmg-background-standout,
+      tokens.$plmg-text-standout
+    );
+  }
+  &.danger {
+    @include filled-background(
+      tokens.$plmg-background-danger,
+      tokens.$plmg-text-danger
+    );
+  }
+}
+
+@mixin outline-color-background {
+  &.primary {
+    @include outline-background(tokens.$plmg-border-primary-strong);
+  }
+  &.neutral {
+    @include outline-background(tokens.$plmg-border-neutral);
+  }
+  &.standout {
+    @include outline-background(tokens.$plmg-border-standout-strong);
+  }
+  &.danger {
+    @include outline-background(tokens.$plmg-border-danger-strong);
+  }
+}
+
+@mixin outline-color-text {
+  &.primary {
+    @include outline-text(tokens.$plmg-text-primary-strong);
+  }
+  &.neutral {
+    @include outline-text(tokens.$plmg-text-neutral);
+  }
+  &.standout {
+    @include outline-text(tokens.$plmg-text-standout);
+  }
+  &.danger {
+    @include outline-text(tokens.$plmg-text-danger-strong);
+  }
 }
 // END Mixins
 // ------------------------------
@@ -41,27 +100,39 @@ button {
   font-style: normal;
   font-weight: tokens.$plmg-font-weight-regular;
 
-  // Control: Style/variant
+  // Control: Variant + Colors
   &.filled {
-    @include filled-background;
     border-radius: tokens.$plmg-border-radius-s;
+
+    // Control: Colour
+    @include filled-color;
   }
   &.filled-round {
-    @include filled-background;
     border-radius: tokens.$plmg-border-radius-pill;
+
+    // Control: Colour
+    @include filled-color;
   }
   &.outline {
-    @include outline-background;
     border-radius: tokens.$plmg-border-radius-s;
+
+    // Control: Colour
+    @include outline-color-background;
+    @include outline-color-text;
   }
   &.outline-round {
-    @include outline-background;
     border-radius: tokens.$plmg-border-radius-pill;
+
+    // Control: Colour
+    @include outline-color-background;
+    @include outline-color-text;
   }
   &.borderless {
     background: none;
     border: none;
-    color: tokens.$plmg-background-primary-strong;
+
+    // Control: Colour
+    @include outline-color-text;
   }
 
   // Control: Size

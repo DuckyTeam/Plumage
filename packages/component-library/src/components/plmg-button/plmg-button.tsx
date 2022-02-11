@@ -1,7 +1,9 @@
 import { Component, Host, h, Prop, Watch } from '@stencil/core';
 import {
+  isPlmgButtonColor,
   isPlmgButtonSize,
   isPlmgButtonVariant,
+  PlmgButtonColor,
   PlmgButtonSize,
   PlmgButtonVariant,
 } from './plmg-button.types';
@@ -53,6 +55,26 @@ export class Button {
       throw new Error('size: must be a valid value');
   }
 
+  /**
+   * Define button's color
+   *
+   * Allowed values:
+   *   - primary
+   *   - neutral
+   *   - standout
+   *   - danger
+   *
+   * Default: primary
+   */
+  @Prop() color: PlmgButtonColor = 'primary';
+  @Watch('color')
+  validateColor(newValue: string) {
+    if (typeof newValue !== 'string' || newValue === '')
+      throw new Error('color: required');
+    if (!isPlmgButtonColor(newValue))
+      throw new Error('color: must be a valid value');
+  }
+
   render() {
     return (
       <Host>
@@ -60,6 +82,7 @@ export class Button {
           class={{
             [this.variant]: true,
             [this.size]: true,
+            [this.color]: true,
           }}
         >
           <slot></slot>

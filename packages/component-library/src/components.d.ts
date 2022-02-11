@@ -6,11 +6,16 @@
  */
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
+  PlmgButtonColor,
   PlmgButtonSize,
   PlmgButtonVariant,
 } from './components/plmg-button/plmg-button.types';
 export namespace Components {
   interface PlmgButton {
+    /**
+     * Define button's color  Allowed values:   - primary   - neutral   - standout   - danger  Default: primary
+     */
+    color: PlmgButtonColor;
     /**
      * Define button's size  Allowed values:   - small   - medium   - large   - extra-large  Default: medium
      */
@@ -42,6 +47,10 @@ declare global {
 }
 declare namespace LocalJSX {
   interface PlmgButton {
+    /**
+     * Define button's color  Allowed values:   - primary   - neutral   - standout   - danger  Default: primary
+     */
+    color?: PlmgButtonColor;
     /**
      * Define button's size  Allowed values:   - small   - medium   - large   - extra-large  Default: medium
      */

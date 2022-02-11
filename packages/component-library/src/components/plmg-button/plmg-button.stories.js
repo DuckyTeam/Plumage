@@ -19,10 +19,14 @@ export default {
       options: ['small', 'medium', 'large', 'extra-large'],
       control: { type: 'select' },
     },
+    color: {
+      options: ['primary', 'neutral', 'standout', 'danger'],
+      control: { type: 'select' },
+    },
   },
 };
 
-const PROPS = ['variant', 'size'];
+const PROPS = ['variant', 'size', 'color'];
 const EVENTS = [];
 const CSS_VARS = [];
 const SLOTS = ['text'];
@@ -42,6 +46,7 @@ Primary.args = {
   text: 'Button filled',
   variant: 'filled',
   size: 'medium',
+  color: 'primary',
 };
 
 export const Secondary = Template.bind({});
@@ -50,4 +55,5 @@ Secondary.args = {
   text: 'Button filled-round',
   variant: 'filled-round',
   size: 'medium',
+  color: 'primary',
 };
