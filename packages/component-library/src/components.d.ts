@@ -5,11 +5,18 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
-import { PlmgButtonVariant } from './components/plmg-button/plmg-button.types';
+import {
+  PlmgButtonSize,
+  PlmgButtonVariant,
+} from './components/plmg-button/plmg-button.types';
 export namespace Components {
   interface PlmgButton {
     /**
-     * Define button's variant.  Default: 'filled'
+     * Define button's size  Allowed values:   - small   - medium   - large   - extra-large  Default: medium
+     */
+    size: PlmgButtonSize;
+    /**
+     * Define button's variant.  Allowed values:   - filled   - filled-round   - outline   - outline-round   - borderless  Default: filled
      */
     variant: PlmgButtonVariant;
   }
@@ -36,7 +43,11 @@ declare global {
 declare namespace LocalJSX {
   interface PlmgButton {
     /**
-     * Define button's variant.  Default: 'filled'
+     * Define button's size  Allowed values:   - small   - medium   - large   - extra-large  Default: medium
+     */
+    size?: PlmgButtonSize;
+    /**
+     * Define button's variant.  Allowed values:   - filled   - filled-round   - outline   - outline-round   - borderless  Default: filled
      */
     variant?: PlmgButtonVariant;
   }

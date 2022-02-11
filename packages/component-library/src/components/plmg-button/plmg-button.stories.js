@@ -15,10 +15,14 @@ export default {
       ],
       control: { type: 'select' },
     },
+    size: {
+      options: ['small', 'medium', 'large', 'extra-large'],
+      control: { type: 'select' },
+    },
   },
 };
 
-const PROPS = ['variant'];
+const PROPS = ['variant', 'size'];
 const EVENTS = [];
 const CSS_VARS = [];
 const SLOTS = ['text'];
@@ -35,13 +39,15 @@ const Template = (args) => {
 export const Primary = Template.bind({});
 Primary.storyName = 'Filled';
 Primary.args = {
-  variant: 'filled',
   text: 'Button filled',
+  variant: 'filled',
+  size: 'medium',
 };
 
 export const Secondary = Template.bind({});
 Secondary.storyName = 'Filled-round';
 Secondary.args = {
-  variant: 'filled-round',
   text: 'Button filled-round',
+  variant: 'filled-round',
+  size: 'medium',
 };

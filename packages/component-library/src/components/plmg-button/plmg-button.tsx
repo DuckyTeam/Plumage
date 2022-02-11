@@ -1,5 +1,10 @@
 import { Component, Host, h, Prop, Watch } from '@stencil/core';
-import { isPlmgButtonVariant, PlmgButtonVariant } from './plmg-button.types';
+import {
+  isPlmgButtonSize,
+  isPlmgButtonVariant,
+  PlmgButtonSize,
+  PlmgButtonVariant,
+} from './plmg-button.types';
 
 @Component({
   tag: 'plmg-button',
@@ -10,15 +15,42 @@ export class Button {
   /**
    * Define button's variant.
    *
-   * Default: 'filled'
+   * Allowed values:
+   *   - filled
+   *   - filled-round
+   *   - outline
+   *   - outline-round
+   *   - borderless
+   *
+   * Default: filled
    */
   @Prop() variant: PlmgButtonVariant = 'filled';
   @Watch('variant')
-  validateStyle(newValue: string) {
+  validateVariant(newValue: string) {
     if (typeof newValue !== 'string' || newValue === '')
       throw new Error('variant: required');
     if (!isPlmgButtonVariant(newValue))
       throw new Error('variant: must be a valid value');
+  }
+
+  /**
+   * Define button's size
+   *
+   * Allowed values:
+   *   - small
+   *   - medium
+   *   - large
+   *   - extra-large
+   *
+   * Default: medium
+   */
+  @Prop() size: PlmgButtonSize = 'medium';
+  @Watch('size')
+  validateSize(newValue: string) {
+    if (typeof newValue !== 'string' || newValue === '')
+      throw new Error('size: required');
+    if (!isPlmgButtonSize(newValue))
+      throw new Error('size: must be a valid value');
   }
 
   render() {
@@ -27,6 +59,7 @@ export class Button {
         <button
           class={{
             [this.variant]: true,
+            [this.size]: true,
           }}
         >
           <slot></slot>

@@ -1,5 +1,7 @@
 @use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
 
+// Common styles to all components
+// ------------------------------
 :host {
   display: block;
 }
@@ -7,7 +9,27 @@
 :host([hidden]) {
   display: none;
 }
+// END Common styles
+// ------------------------------
 
+// Mixins
+// ------------------------------
+@mixin filled-background {
+  background: tokens.$plmg-background-primary-strong;
+  color: tokens.$plmg-text-neutral-inverted;
+}
+
+@mixin outline-background {
+  background: none;
+  border: tokens.$plmg-border-width-s solid
+    tokens.$plmg-background-primary-strong;
+  color: tokens.$plmg-background-primary-strong;
+}
+// END Mixins
+// ------------------------------
+
+// Component style
+// ------------------------------
 button {
   display: flex;
   flex-direction: row;
@@ -15,42 +37,54 @@ button {
   align-items: center;
   border: none;
 
+  font-family: tokens.$plmg-font-family-sans;
+  font-style: normal;
+  font-weight: tokens.$plmg-font-weight-regular;
+
   // Control: Style/variant
-  &.filled,
-  &.filled-round {
-    background: tokens.$plmg-background-primary-strong;
-  }
   &.filled {
+    @include filled-background;
     border-radius: tokens.$plmg-border-radius-s;
   }
   &.filled-round {
+    @include filled-background;
     border-radius: tokens.$plmg-border-radius-pill;
-  }
-  &.outline,
-  &.outline-round {
-    border: tokens.$plmg-border-width-s solid
-      tokens.$plmg-background-primary-strong;
-    background: none;
   }
   &.outline {
+    @include outline-background;
     border-radius: tokens.$plmg-border-radius-s;
   }
   &.outline-round {
+    @include outline-background;
     border-radius: tokens.$plmg-border-radius-pill;
   }
+  &.borderless {
+    background: none;
+    border: none;
+    color: tokens.$plmg-background-primary-strong;
+  }
 
-  padding: tokens.$plmg-spacing-x075 tokens.$plmg-spacing-x1-5;
-
-  &.filled,
-  &.filled-round {
-    background: tokens.$plmg-background-primary-strong;
-
-    // Text Regular (400)/x1.5
-    color: tokens.$plmg-text-neutral-inverted;
-    font-family: tokens.$plmg-font-weight-regular;
-    font-style: normal;
-    font-weight: tokens.$plmg-font-weight-regular;
+  // Control: Size
+  &.small {
+    padding: tokens.$plmg-spacing-x075 tokens.$plmg-spacing-x1;
+    font-size: tokens.$plmg-font-size-x0-875;
+    line-height: tokens.$plmg-font-lineheight-loose;
+  }
+  &.medium {
+    padding: tokens.$plmg-spacing-x075 tokens.$plmg-spacing-x1-5;
+    font-size: tokens.$plmg-font-size-x1-125;
+    line-height: tokens.$plmg-font-lineheight-loose;
+  }
+  &.large {
+    padding: tokens.$plmg-spacing-x075 tokens.$plmg-spacing-x2;
+    font-size: tokens.$plmg-font-size-x1-25;
+    line-height: tokens.$plmg-font-lineheight-loose;
+  }
+  &.extra-large {
+    padding: tokens.$plmg-spacing-x075 tokens.$plmg-spacing-x2-5;
     font-size: tokens.$plmg-font-size-x1-5;
     line-height: tokens.$plmg-font-lineheight-normal;
   }
 }
+// END Component style
+// ------------------------------
