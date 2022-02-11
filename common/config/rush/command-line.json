@@ -30,6 +30,16 @@
       "enableParallelism": true,
       "ignoreDependencyOrder": true,
       "ignoreMissingScript": true
+    },
+    {
+      "name": "build-storybook",
+      "commandKind": "bulk",
+      "summary": "Build Storybook",
+      "safeForSimultaneousRushProcesses": true,
+      "enableParallelism": true,
+      "ignoreDependencyOrder": true,
+      "ignoreMissingScript": true,
+      "allowWarningsInSuccessfulBuild": true
     }
     // {
     //   /**
