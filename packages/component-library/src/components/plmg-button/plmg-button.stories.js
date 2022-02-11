@@ -5,7 +5,7 @@ export default {
   parameters: {},
   decorators: [],
   argTypes: {
-    variant: {
+    design: {
       options: [
         'filled',
         'filled-round',
@@ -26,7 +26,7 @@ export default {
   },
 };
 
-const PROPS = ['variant', 'size', 'color'];
+const PROPS = ['design', 'size', 'color'];
 const EVENTS = [];
 const CSS_VARS = [];
 const SLOTS = ['text'];
@@ -44,7 +44,7 @@ export const Primary = Template.bind({});
 Primary.storyName = 'Filled';
 Primary.args = {
   text: 'Button filled',
-  variant: 'filled',
+  design: 'filled',
   size: 'medium',
   color: 'primary',
 };
@@ -53,7 +53,7 @@ export const Secondary = Template.bind({});
 Secondary.storyName = 'Filled-round';
 Secondary.args = {
   text: 'Button filled-round',
-  variant: 'filled-round',
+  design: 'filled-round',
   size: 'medium',
   color: 'primary',
 };
