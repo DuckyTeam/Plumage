@@ -53,9 +53,9 @@
   }
   &.danger {
     @include filled-background(
-      tokens.$plmg-background-danger,
-      tokens.$plmg-background-danger,
-      tokens.$plmg-text-danger
+      tokens.$plmg-background-danger-strong,
+      tokens.$plmg-background-danger-strong,
+      tokens.$plmg-text-neutral-inverted
     );
   }
 }
