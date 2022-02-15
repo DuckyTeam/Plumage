@@ -25,6 +25,10 @@ export namespace Components {
      */
     fullWidth: boolean;
     /**
+     * Define button's shadow  Allowed values:   - true   - false  Default: false
+     */
+    shadow: boolean;
+    /**
      * Define button's size  Allowed values:   - small   - medium   - large   - extra-large  Default: medium
      */
     size: PlmgButtonSize;
@@ -63,6 +67,10 @@ declare namespace LocalJSX {
      * Define button's width  Allowed values:   - true   - false  Default: false
      */
     fullWidth?: boolean;
+    /**
+     * Define button's shadow  Allowed values:   - true   - false  Default: false
+     */
+    shadow?: boolean;
     /**
      * Define button's size  Allowed values:   - small   - medium   - large   - extra-large  Default: medium
      */

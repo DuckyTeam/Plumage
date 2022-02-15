@@ -91,6 +91,22 @@ export class Button {
       throw new Error('fullWidth: must be boolean');
   }
 
+  /**
+   * Define button's shadow
+   *
+   * Allowed values:
+   *   - true
+   *   - false
+   *
+   * Default: false
+   */
+  @Prop() shadow: boolean = false;
+  @Watch('shadow')
+  validateShadow(newValue: boolean) {
+    if (typeof newValue !== 'boolean')
+      throw new Error('shadow: must be boolean');
+  }
+
   render() {
     return (
       <Host>
@@ -100,6 +116,7 @@ export class Button {
             [this.size]: true,
             [this.color]: true,
             'full-width': this.fullWidth,
+            shadow: this.shadow,
           }}
         >
           <slot></slot>

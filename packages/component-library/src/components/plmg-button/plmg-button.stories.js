@@ -26,10 +26,13 @@ export default {
     ['full-width']: {
       options: [true, false],
     },
+    ['shadow']: {
+      options: [true, false],
+    },
   },
 };
 
-const PROPS = ['design', 'size', 'color', 'full-width'];
+const PROPS = ['design', 'size', 'color', 'full-width', 'shadow'];
 const EVENTS = [];
 const CSS_VARS = [];
 const SLOTS = ['text'];
@@ -51,6 +54,7 @@ Primary.args = {
   size: 'medium',
   color: 'primary',
   ['full-width']: false,
+  ['shadow']: false,
 };
 
 export const Secondary = Template.bind({});
@@ -61,4 +65,5 @@ Secondary.args = {
   size: 'medium',
   color: 'primary',
   ['full-width']: false,
+  ['shadow']: false,
 };

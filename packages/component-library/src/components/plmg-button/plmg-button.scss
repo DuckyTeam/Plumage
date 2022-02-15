@@ -161,8 +161,27 @@ button {
     font-size: tokens.$plmg-font-size-x1-5;
     line-height: tokens.$plmg-font-lineheight-normal;
   }
+
+  // Control: full width
   &.full-width {
     width: 100%;
+  }
+
+  // Control: Shadow
+  &.shadow {
+    box-shadow: tokens.$plmg-shadow-s;
+
+    &:hover {
+      box-shadow: tokens.$plmg-shadow-m;
+    }
+
+    &:focus {
+      box-shadow: tokens.$plmg-shadow-m;
+    }
+
+    &:active {
+      box-shadow: none;
+    }
   }
 }
 // END Component style
