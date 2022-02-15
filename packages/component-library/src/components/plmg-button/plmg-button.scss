@@ -105,7 +105,7 @@ button {
   font-style: normal;
   font-weight: tokens.$plmg-font-weight-regular;
 
-  // Control: Variant + Colors
+  // Controls: Design + Colors
   &.filled {
     border-radius: tokens.$plmg-border-radius-s;
 
@@ -183,6 +183,8 @@ button {
       box-shadow: none;
     }
   }
+
+  // States
 }
 // END Component style
 // ------------------------------
