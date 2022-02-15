@@ -25,3 +25,4 @@ Improvements to the scripts are tracked by the issue [Custom generate #2507](htt
 3. Add `plmg-new-component.stories.js` for Storybook stories
 4. Remove prefix `Plmg` from the class name in `.tsx`
 5. Develop your component
+

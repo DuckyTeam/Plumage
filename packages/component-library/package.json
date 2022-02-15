@@ -15,7 +15,6 @@
     "loader/"
   ],
   "scripts": {
-    "prebuild": "npm run compile-scss",
     "build": "stencil build --docs",
     "start-stencil": "stencil build --dev",
     "start-stencil:watch": "stencil build --dev --watch",
