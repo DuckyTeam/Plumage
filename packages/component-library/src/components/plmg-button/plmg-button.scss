@@ -14,79 +14,244 @@
 
 // Mixins
 // ------------------------------
-@mixin filled-background($background-color, $border-color, $text-color) {
+@mixin background-border-text(
+  $background-color,
+  $border-color,
+  $text-color,
+  $border-width: tokens.$plmg-border-width-s
+) {
   background: $background-color;
-  border: tokens.$plmg-border-width-s solid $border-color;
+  border: $border-width solid $border-color;
   color: $text-color;
 }
 
-@mixin outline-background($border-color) {
+@mixin border-background-none(
+  $border-color,
+  $border-width: tokens.$plmg-border-width-s
+) {
   background: none;
+  border: $border-width solid $border-color;
+}
+
+@mixin background-border($background-color, $border-color) {
+  background: $background-color;
   border: tokens.$plmg-border-width-s solid $border-color;
 }
 
-@mixin outline-text($text-color) {
+@mixin just-text($text-color) {
   color: $text-color;
 }
 
 @mixin filled-color {
   &.primary {
-    @include filled-background(
+    @include background-border-text(
       tokens.$plmg-background-primary-strong,
       tokens.$plmg-background-primary-strong,
       tokens.$plmg-text-neutral-inverted
     );
+
+    &:hover {
+      @include background-border-text(
+        tokens.$plmg-background-primary-strong-hover,
+        tokens.$plmg-background-primary-strong-hover,
+        tokens.$plmg-text-neutral-inverted
+      );
+    }
+    &:active {
+      @include background-border-text(
+        tokens.$plmg-background-primary-strong-active,
+        tokens.$plmg-background-primary-strong-active,
+        tokens.$plmg-text-neutral-inverted
+      );
+    }
+    &:focus {
+      @include background-border-text(
+        tokens.$plmg-background-primary-strong-hover,
+        tokens.$plmg-border-standout,
+        tokens.$plmg-text-neutral-inverted,
+        tokens.$plmg-border-width-l
+      );
+    }
   }
   &.neutral {
-    @include filled-background(
+    @include background-border-text(
       tokens.$plmg-background-neutral,
       tokens.$plmg-border-neutral-weak,
       tokens.$plmg-text-neutral
     );
+
+    &:hover {
+      @include background-border-text(
+        tokens.$plmg-background-neutral-hover,
+        tokens.$plmg-border-neutral-weak,
+        tokens.$plmg-text-neutral
+      );
+    }
+    &:active {
+      @include background-border-text(
+        tokens.$plmg-background-neutral-hover,
+        tokens.$plmg-border-standout,
+        tokens.$plmg-text-neutral
+      );
+    }
+    &:focus {
+      @include background-border-text(
+        tokens.$plmg-background-neutral-active,
+        tokens.$plmg-border-neutral-weak,
+        tokens.$plmg-text-neutral,
+        tokens.$plmg-border-width-l
+      );
+    }
   }
   &.standout {
-    @include filled-background(
+    @include background-border-text(
       tokens.$plmg-background-standout,
       tokens.$plmg-background-standout,
       tokens.$plmg-text-standout
     );
+
+    &:hover {
+      @include background-border-text(
+        tokens.$plmg-background-standout-hover,
+        tokens.$plmg-background-standout-hover,
+        tokens.$plmg-text-standout
+      );
+    }
+    &:active {
+      @include background-border-text(
+        tokens.$plmg-background-standout-active,
+        tokens.$plmg-background-standout-active,
+        tokens.$plmg-text-standout
+      );
+    }
+    &:focus {
+      @include background-border-text(
+        tokens.$plmg-background-standout-hover,
+        tokens.$plmg-border-info,
+        tokens.$plmg-text-standout,
+        tokens.$plmg-border-width-l
+      );
+    }
   }
   &.danger {
-    @include filled-background(
+    @include background-border-text(
       tokens.$plmg-background-danger-strong,
       tokens.$plmg-background-danger-strong,
       tokens.$plmg-text-neutral-inverted
     );
+    &:hover {
+      @include background-border-text(
+        tokens.$plmg-background-danger-strong-hover,
+        tokens.$plmg-background-danger-strong-hover,
+        tokens.$plmg-text-neutral-inverted
+      );
+    }
+    &:active {
+      @include background-border-text(
+        tokens.$plmg-background-danger-strong-active,
+        tokens.$plmg-background-danger-strong-active,
+        tokens.$plmg-text-neutral-inverted
+      );
+    }
+    &:focus {
+      @include background-border-text(
+        tokens.$plmg-background-danger-strong-hover,
+        tokens.$plmg-border-standout,
+        tokens.$plmg-text-neutral-inverted,
+        tokens.$plmg-border-width-l
+      );
+    }
   }
 }
 
 @mixin outline-color-background {
   &.primary {
-    @include outline-background(tokens.$plmg-border-primary-strong);
+    @include border-background-none(tokens.$plmg-border-primary-strong);
+
+    &:hover {
+      @include border-background-none(tokens.$plmg-border-primary);
+    }
+    &:active {
+      @include background-border(
+        tokens.$plmg-background-primary,
+        tokens.$plmg-border-primary
+      );
+    }
   }
   &.neutral {
-    @include outline-background(tokens.$plmg-border-neutral);
+    @include border-background-none(tokens.$plmg-border-neutral);
+
+    &:hover {
+      @include border-background-none(tokens.$plmg-border-primary);
+    }
+    &:active {
+      @include background-border(
+        tokens.$plmg-background-neutral-active,
+        tokens.$plmg-border-neutral
+      );
+    }
   }
   &.standout {
-    @include outline-background(tokens.$plmg-border-standout-strong);
+    @include border-background-none(tokens.$plmg-border-standout-strong);
+
+    &:hover {
+      @include border-background-none(tokens.$plmg-border-standout);
+    }
+    &:active {
+      @include background-border(
+        tokens.$plmg-background-standout,
+        tokens.$plmg-border-standout
+      );
+    }
   }
   &.danger {
-    @include outline-background(tokens.$plmg-border-danger-strong);
+    @include border-background-none(tokens.$plmg-border-danger-strong);
+
+    &:hover {
+      @include border-background-none(tokens.$plmg-border-danger);
+    }
+    &:active {
+      @include background-border(
+        tokens.$plmg-background-danger,
+        tokens.$plmg-border-danger
+      );
+    }
+  }
+
+  &:focus {
+    @include border-background-none(
+      tokens.$plmg-border-standout,
+      tokens.$plmg-border-width-l
+    );
   }
 }
 
 @mixin outline-color-text {
   &.primary {
-    @include outline-text(tokens.$plmg-text-primary-strong);
+    @include just-text(tokens.$plmg-text-primary-strong);
+
+    &:hover {
+      @include just-text(tokens.$plmg-text-primary-strong-hover);
+    }
+    &:active {
+      @include just-text(tokens.$plmg-text-primary-strong-active);
+    }
+    &:focus {
+      @include just-text(tokens.$plmg-text-primary-strong-hover);
+    }
   }
   &.neutral {
-    @include outline-text(tokens.$plmg-text-neutral);
+    @include just-text(tokens.$plmg-text-neutral);
   }
   &.standout {
-    @include outline-text(tokens.$plmg-text-standout);
+    @include just-text(tokens.$plmg-text-standout);
   }
   &.danger {
-    @include outline-text(tokens.$plmg-text-danger-strong);
+    @include just-text(tokens.$plmg-text-danger-strong);
+
+    &:active {
+      @include just-text(tokens.$plmg-text-danger-strong-active);
+    }
   }
 }
 // END Mixins
@@ -105,7 +270,7 @@ button {
   font-style: normal;
   font-weight: tokens.$plmg-font-weight-regular;
 
-  // Controls: Design + Colors
+  // Controls: Design + Colors + States
   &.filled {
     border-radius: tokens.$plmg-border-radius-s;
 
@@ -135,9 +300,50 @@ button {
   &.borderless {
     background: none;
     border: none;
+    border-radius: tokens.$plmg-border-radius-s;
 
     // Control: Colour
     @include outline-color-text;
+
+    &.primary {
+      &:hover {
+        @include border-background-none(tokens.$plmg-border-primary);
+      }
+      &:active {
+        @include border-background-none(tokens.$plmg-border-primary-strong);
+      }
+    }
+    &.neutral {
+      &:hover {
+        @include border-background-none(tokens.$plmg-border-primary);
+      }
+      &:active {
+        @include border-background-none(tokens.$plmg-border-neutral-strong);
+      }
+    }
+    &.standout {
+      &:hover {
+        @include border-background-none(tokens.$plmg-border-standout);
+      }
+      &:active {
+        @include border-background-none(tokens.$plmg-border-neutral);
+      }
+    }
+    &.danger {
+      &:hover {
+        @include border-background-none(tokens.$plmg-border-danger);
+      }
+      &:active {
+        @include border-background-none(tokens.$plmg-border-neutral);
+      }
+    }
+
+    &:focus {
+      @include border-background-none(
+        tokens.$plmg-border-standout,
+        tokens.$plmg-border-width-l
+      );
+    }
   }
 
   // Control: Size
@@ -183,8 +389,6 @@ button {
       box-shadow: none;
     }
   }
-
-  // States
 }
 // END Component style
 // ------------------------------
