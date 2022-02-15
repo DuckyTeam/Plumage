@@ -54,7 +54,7 @@ jobs:
           PROJECT_ID: ${{ secrets.STORYBOOK_GCP_PROJECT_ID }}
           APPLICATION_CREDENTIALS: ${{ secrets.STORYBOOK_GCP_APPLICATION_CREDENTIALS }}
         with:
-          args: cp -r ./storybook-static/* gs://components.ducky.eco
+          args: cp -r ./packages/component-library/storybook-static/* gs://components.ducky.eco
           cli: gsutil
 
       # Storybook: Set max-age on all files to 10 hours
