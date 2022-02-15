@@ -54,25 +54,15 @@ jobs:
           PROJECT_ID: ${{ secrets.STORYBOOK_GCP_PROJECT_ID }}
           APPLICATION_CREDENTIALS: ${{ secrets.STORYBOOK_GCP_APPLICATION_CREDENTIALS }}
         with:
-          args: cp -r ./packages/component-library/storybook-static/* gs://components.ducky.eco
-          cli: gsutil
-
-      # Storybook: Set max-age on all files to 10 hours
-      - name: Storybook Publish
-        uses: actions-hub/gcloud@master
-        env:
-          PROJECT_ID: ${{ secrets.STORYBOOK_GCP_PROJECT_ID }}
-          APPLICATION_CREDENTIALS: ${{ secrets.STORYBOOK_GCP_APPLICATION_CREDENTIALS }}
-        with:
-          args: setmeta -h "Cache-Control:public, max-age=36000" gs://components.ducky.eco/*
+          args: -h 'Cache-Control:public, max-age=36000' cp -r ./packages/component-library/storybook-static/* gs://components.ducky.eco
           cli: gsutil
 
       # Storybook: Set max-age on index.html to 5 minutes
-      - name: Storybook Publish
+      - name: Storybook Metadata set index.html
         uses: actions-hub/gcloud@master
         env:
           PROJECT_ID: ${{ secrets.STORYBOOK_GCP_PROJECT_ID }}
           APPLICATION_CREDENTIALS: ${{ secrets.STORYBOOK_GCP_APPLICATION_CREDENTIALS }}
         with:
-          args: setmeta -h "Cache-Control:public, max-age=300" gs://components.ducky.eco/index.html
+          args: setmeta -h 'Cache-Control:public, max-age=300' gs://components.ducky.eco/index.html
           cli: gsutil
