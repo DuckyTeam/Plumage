@@ -1,6 +1,6 @@
 {
   "name": "@ducky/plumage",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Plumage is Ducky's design system",
   "main": "dist/index.cjs.js",
   "module": "dist/custom-elements/index.js",
@@ -23,12 +23,12 @@
     "start": "concurrently -n stencil,storybook \"npm run start-stencil:watch\" \"npm run storybook\"",
     "test": "stencil test --spec --e2e",
     "test:watch": "stencil test --spec --e2e --watchAll",
-    "generate": "stencil generate",
+    "generate": "node generate-component.js",
     "storybook": "start-storybook -p 6006 --no-dll -s ./www",
     "build-storybook": "build-storybook"
   },
   "dependencies": {
-    "@ducky/plumage-tokens": "^1.0.0"
+    "@ducky/plumage-tokens": "^2.0.0"
   },
   "devDependencies": {
     "@ducky/eslint-config-base": "^2.0.0",
@@ -57,7 +57,9 @@
     "sass": "^1.44.0",
     "storybook": "^6.3.8",
     "storybook-addon-designs": "^6.0.1",
-    "typescript": "^4.5.4"
+    "typescript": "^4.5.4",
+    "@types/node": "^16.11.19",
+    "firebase": "~9.6.6"
   },
   "repository": {
     "type": "git",
