@@ -25,7 +25,7 @@
     "test:watch": "stencil test --spec --e2e --watchAll",
     "generate": "node generate-component.js",
     "storybook": "start-storybook -p 6006 --no-dll -s ./www",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook && cp -r ./www/build/ ./storybook-static/"
   },
   "dependencies": {
     "@ducky/plumage-tokens": "^2.0.0"
