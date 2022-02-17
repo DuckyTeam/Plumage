@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage-react",
+      "comment": "New component: Button",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ducky/plumage-react"
+}
