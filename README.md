@@ -63,9 +63,10 @@ Whenever you make changes to this repository
 2. Create a new branch: `git branch -b <branchname>`
 3. Do your modifications
 4. Commit your changes: `git add . && git commit`
-5. Document your changes for the next release: `rush change`
+5. Run `rush build` and commit the generated files.
+6. Document your changes for the next release: `rush change`
    See the next section for more details about this process.
-6. Commit and push the changelog documentation
+7. Commit and push the changelog documentation
 
 #### Document change logs
 
