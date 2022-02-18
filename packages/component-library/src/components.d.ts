@@ -33,7 +33,6 @@ export namespace Components {
      */
     size: PlmgButtonSize;
   }
-  interface PlmgP {}
 }
 declare global {
   interface HTMLPlmgButtonElement
@@ -43,14 +42,8 @@ declare global {
     prototype: HTMLPlmgButtonElement;
     new (): HTMLPlmgButtonElement;
   };
-  interface HTMLPlmgPElement extends Components.PlmgP, HTMLStencilElement {}
-  var HTMLPlmgPElement: {
-    prototype: HTMLPlmgPElement;
-    new (): HTMLPlmgPElement;
-  };
   interface HTMLElementTagNameMap {
     'plmg-button': HTMLPlmgButtonElement;
-    'plmg-p': HTMLPlmgPElement;
   }
 }
 declare namespace LocalJSX {
@@ -76,10 +69,8 @@ declare namespace LocalJSX {
      */
     size?: PlmgButtonSize;
   }
-  interface PlmgP {}
   interface IntrinsicElements {
     'plmg-button': PlmgButton;
-    'plmg-p': PlmgP;
   }
 }
 export { LocalJSX as JSX };
@@ -88,7 +79,6 @@ declare module '@stencil/core' {
     interface IntrinsicElements {
       'plmg-button': LocalJSX.PlmgButton &
         JSXBase.HTMLAttributes<HTMLPlmgButtonElement>;
-      'plmg-p': LocalJSX.PlmgP & JSXBase.HTMLAttributes<HTMLPlmgPElement>;
     }
   }
 }

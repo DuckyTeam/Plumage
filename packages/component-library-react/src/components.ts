@@ -12,7 +12,3 @@ export const PlmgButton = /*@__PURE__*/ createReactComponent<
   JSX.PlmgButton,
   HTMLPlmgButtonElement
 >('plmg-button');
-export const PlmgP = /*@__PURE__*/ createReactComponent<
-  JSX.PlmgP,
-  HTMLPlmgPElement
->('plmg-p');
