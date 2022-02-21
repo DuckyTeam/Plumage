@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { PlmgP } from '@ducky/plumage-react';
+import { PlmgButton } from '@ducky/plumage-react';
 
 ReactDOM.render(
-  <PlmgP>This is a Plumage component</PlmgP>,
+  <PlmgButton>This is a Plumage component</PlmgButton>,
   document.getElementById('root')
 );
