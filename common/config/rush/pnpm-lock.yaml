@@ -11,7 +11,7 @@ specifiers:
   '@rush-temp/plumage': file:./projects/plumage.tgz
   '@rush-temp/plumage-react': file:./projects/plumage-react.tgz
   '@rush-temp/plumage-tokens': file:./projects/plumage-tokens.tgz
-  '@stencil/core': ^2.7.0
+  '@stencil/core': ^2.14.0
   '@stencil/eslint-plugin': ~0.4.0
   '@stencil/react-output-target': ^0.1.0
   '@stencil/sass': ^1.5.2
@@ -45,6 +45,7 @@ specifiers:
   jest-cli: ~26.6.3
   np: ^3.1.0
   prettier: ^2.4.1
+  puppeteer: ~13.3.2
   sass: ^1.44.0
   storybook: ^6.3.8
   storybook-addon-designs: ^6.0.1
@@ -66,10 +67,10 @@ dependencies:
   '@rush-temp/plumage': file:projects/plumage.tgz_0caa87738ffad273e3f555cf1f2e570e
   '@rush-temp/plumage-react': file:projects/plumage-react.tgz
   '@rush-temp/plumage-tokens': file:projects/plumage-tokens.tgz
-  '@stencil/core': 2.12.1
+  '@stencil/core': 2.14.0
   '@stencil/eslint-plugin': 0.4.0_f970b5f17668cb483b8453d324524a4d
-  '@stencil/react-output-target': 0.1.0_@stencil+core@2.12.1
-  '@stencil/sass': 1.5.2_@stencil+core@2.12.1
+  '@stencil/react-output-target': 0.1.0_@stencil+core@2.14.0
+  '@stencil/sass': 1.5.2_@stencil+core@2.14.0
   '@storybook/addon-actions': 6.4.9_@types+react@17.0.38
   '@storybook/addon-essentials': 6.4.9_f73d3ea9434f46244e13d5f500c930c9
   '@storybook/addon-knobs': 6.4.0_@storybook+addons@6.3.7
@@ -100,6 +101,7 @@ dependencies:
   jest-cli: 26.6.3
   np: 3.1.0
   prettier: 2.5.1
+  puppeteer: 13.3.2
   sass: 1.46.0
   storybook: 6.4.9_39f7ab2e0e20f3aec77c309f1ce241b1
   storybook-addon-designs: 6.2.1
@@ -2758,8 +2760,8 @@ packages:
       '@sinonjs/commons': 1.8.3
     dev: false
 
-  /@stencil/core/2.12.1:
-    resolution: {integrity: sha512-u24TZ+FEvjnZt5ZgIkLjLpUNsO6Ml3mUZqwmqk81w6RWWz75hgB5p4RFI5rvuErFeh2xvMIGo+pNdG24XUBz1A==}
+  /@stencil/core/2.14.0:
+    resolution: {integrity: sha512-tiGFK9VADoHJvAZoTHN/c6YBaTzB5+V3aTn7CzjPxIqryjh3jCUlMP4VDvzkrnVWjhj8Fa82zMWdePgr/xoyOw==}
     engines: {node: '>=12.10.0', npm: '>=6.0.0'}
     hasBin: true
     dev: false
@@ -2782,20 +2784,20 @@ packages:
       typescript: 4.5.4
     dev: false
 
-  /@stencil/react-output-target/0.1.0_@stencil+core@2.12.1:
+  /@stencil/react-output-target/0.1.0_@stencil+core@2.14.0:
     resolution: {integrity: sha512-NWeN2S43dwWDIousfojzGXIMkJJhfcdS1JxpwgE7IOqy4tZ+nqlDLPhM6tXvZ3eq4rJm8bkF+3/WbPJNR9xR7Q==}
     peerDependencies:
       '@stencil/core': '>=1.8.0'
     dependencies:
-      '@stencil/core': 2.12.1
+      '@stencil/core': 2.14.0
     dev: false
 
-  /@stencil/sass/1.5.2_@stencil+core@2.12.1:
+  /@stencil/sass/1.5.2_@stencil+core@2.14.0:
     resolution: {integrity: sha512-nJ93pUSylsGsMX0eLmhxh1oEljcUjj5mYjhB9ziCdoaydAdjukrUoqDCC7tdVbOcBo2hKptQyWqCtETnBGYsXQ==}
     peerDependencies:
       '@stencil/core': '>=1.0.2'
     dependencies:
-      '@stencil/core': 2.12.1
+      '@stencil/core': 2.14.0
     dev: false
 
   /@storybook/addon-actions/6.4.9_@types+react@17.0.38:
@@ -18242,16 +18244,16 @@ packages:
     dev: false
 
   file:projects/plumage.tgz_0caa87738ffad273e3f555cf1f2e570e:
-    resolution: {integrity: sha512-Z8uVU87NZIZpfRewG91CZfIx6if8qJuEQqiojgFggqCxriyAC2J46F+MjrkC6E3SOB5OUObaBCsMYa8pTU2xIQ==, tarball: file:projects/plumage.tgz}
+    resolution: {integrity: sha512-sa5rZroQz4KQZ8h7PHbhB5W/4D5yx2Mn8rx4X/R1tbefCQb5ZX/xjtRM6rpDDJN029CuMlN7NTkNT/xh6UbjsA==, tarball: file:projects/plumage.tgz}
     id: file:projects/plumage.tgz
     name: '@rush-temp/plumage'
     version: 0.0.0
     dependencies:
       '@ducky/eslint-config-base': 2.0.0_ed4c5cdfca7229f6ecc40e5501fa01b3
-      '@stencil/core': 2.12.1
+      '@stencil/core': 2.14.0
       '@stencil/eslint-plugin': 0.4.0_f970b5f17668cb483b8453d324524a4d
-      '@stencil/react-output-target': 0.1.0_@stencil+core@2.12.1
-      '@stencil/sass': 1.5.2_@stencil+core@2.12.1
+      '@stencil/react-output-target': 0.1.0_@stencil+core@2.14.0
+      '@stencil/sass': 1.5.2_@stencil+core@2.14.0
       '@storybook/addon-actions': 6.4.9_@types+react@17.0.38
       '@storybook/addon-essentials': 6.4.9_f73d3ea9434f46244e13d5f500c930c9
       '@storybook/addon-knobs': 6.4.0_@storybook+addons@6.3.7
