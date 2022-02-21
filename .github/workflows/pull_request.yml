@@ -35,14 +35,14 @@ jobs:
         run: node common/scripts/install-run-rush.js rebuild
       - name: Storybook build
         run: node common/scripts/install-run-rush.js build-storybook --from @ducky/plumage
-#  tests:
-#    runs-on: ubuntu-latest
-#    name: Tests
-#    steps:
-#      - uses: actions/checkout@v2
-#      - name: Rush Install
-#        run: node common/scripts/install-run-rush.js install
-#      - name: Rush Rebuild
-#        run: node common/scripts/install-run-rush.js rebuild
-#      - name: Tests
-#        run: node common/scripts/install-run-rush.js test
+  tests:
+    runs-on: ubuntu-latest
+    name: Tests
+    steps:
+      - uses: actions/checkout@v2
+      - name: Rush Install
+        run: node common/scripts/install-run-rush.js install
+      - name: Rush Rebuild
+        run: node common/scripts/install-run-rush.js rebuild
+      - name: Tests
+        run: node common/scripts/install-run-rush.js test
