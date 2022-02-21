@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "Add font to Storybook",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
