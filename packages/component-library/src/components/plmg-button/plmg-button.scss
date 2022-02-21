@@ -1,17 +1,5 @@
 @use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
 
-// Common styles to all components
-// ------------------------------
-:host {
-  display: block;
-}
-
-:host([hidden]) {
-  display: none;
-}
-// END Common styles
-// ------------------------------
-
 // Mixins
 // ------------------------------
 @mixin background-border-text(
@@ -278,7 +266,7 @@
 
 // Component style
 // ------------------------------
-button {
+.plmg-button {
   display: flex;
   flex-direction: row;
   justify-content: center;

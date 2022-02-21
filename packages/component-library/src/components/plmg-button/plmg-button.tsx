@@ -1,17 +1,19 @@
-import { Component, Host, h, Prop, Watch } from '@stencil/core';
+import { Component, h, Prop, Watch } from '@stencil/core';
 import {
   isPlmgButtonColor,
   isPlmgButtonSize,
   isPlmgButtonDesign,
+  isPlmgButtonType,
   PlmgButtonColor,
   PlmgButtonSize,
   PlmgButtonDesign,
+  PlmgButtonType,
 } from './plmg-button.types';
 
 @Component({
   tag: 'plmg-button',
   styleUrl: 'plmg-button.scss',
-  shadow: true,
+  shadow: false,
 })
 export class Button {
   /**
@@ -107,21 +109,40 @@ export class Button {
       throw new Error('shadow: must be boolean');
   }
 
+  /**
+   * Define button's type
+   *
+   * Allowed values:
+   *   - button
+   *   - submit
+   *   - reset
+   *
+   * Default: button
+   */
+  @Prop() type: PlmgButtonType = 'button';
+  @Watch('type')
+  validateType(newValue: string) {
+    if (typeof newValue !== 'string' || newValue === '')
+      throw new Error('type: required');
+    if (!isPlmgButtonType(newValue))
+      throw new Error('type: must be a valid value');
+  }
+
   render() {
     return (
-      <Host>
-        <button
-          class={{
-            [this.design]: true,
-            [this.size]: true,
-            [this.color]: true,
-            'full-width': this.fullWidth,
-            shadow: this.shadow,
-          }}
-        >
-          <slot></slot>
-        </button>
-      </Host>
+      <button
+        class={{
+          'plmg-button': true,
+          [this.design]: true,
+          [this.size]: true,
+          [this.color]: true,
+          'full-width': this.fullWidth,
+          shadow: this.shadow,
+        }}
+        type={this.type}
+      >
+        <slot></slot>
+      </button>
     );
   }
 }

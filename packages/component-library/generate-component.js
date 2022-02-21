@@ -259,7 +259,7 @@ export class ${toComponentName(tagName)} {
 const getStyleUrlBoilerplate = () =>
   `@use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
 
-// Common styles to all components
+// Common styles to all shadow-DOM components
 // -------------------------------------------------
 :host {
   display: block;

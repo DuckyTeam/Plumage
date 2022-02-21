@@ -8,7 +8,4 @@ import type { JSX } from '@ducky/plumage';
 import { defineCustomElements } from '@ducky/plumage/loader';
 
 defineCustomElements();
-export const PlmgButton = /*@__PURE__*/ createReactComponent<
-  JSX.PlmgButton,
-  HTMLPlmgButtonElement
->('plmg-button');
+export const PlmgButton = /*@__PURE__*/createReactComponent<JSX.PlmgButton, HTMLPlmgButtonElement>('plmg-button');

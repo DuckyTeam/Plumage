@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { PlmgButtonColor, PlmgButtonDesign, PlmgButtonSize } from "./components/plmg-button/plmg-button.types";
+import { PlmgButtonColor, PlmgButtonDesign, PlmgButtonSize, PlmgButtonType } from "./components/plmg-button/plmg-button.types";
 export namespace Components {
     interface PlmgButton {
         /**
@@ -28,6 +28,7 @@ export namespace Components {
           * Define button's size  Allowed values:   - small   - medium   - large   - extra-large  Default: medium
          */
         "size": PlmgButtonSize;
+        "type": PlmgButtonType;
     }
 }
 declare global {
@@ -63,6 +64,7 @@ declare namespace LocalJSX {
           * Define button's size  Allowed values:   - small   - medium   - large   - extra-large  Default: medium
          */
         "size"?: PlmgButtonSize;
+        "type"?: PlmgButtonType;
     }
     interface IntrinsicElements {
         "plmg-button": PlmgButton;

@@ -21,3 +21,9 @@ export type PlmgButtonColor = typeof colors[number];
 export function isPlmgButtonColor(x: any): x is PlmgButtonColor {
   return colors.includes(x);
 }
+
+const types = ['button', 'submit', 'reset'] as const;
+export type PlmgButtonType = typeof types[number];
+export function isPlmgButtonType(x: any): x is PlmgButtonType {
+  return types.includes(x);
+}
