@@ -290,6 +290,10 @@ button {
   font-style: normal;
   font-weight: tokens.$plmg-font-weight-regular;
 
+  // Animation
+  transition: background 0.2s ease 0s, background-color 0.2s ease 0s,
+    border 0.2s ease 0s, color 0.2s ease 0s, outline 0.2s ease 0s;
+
   // Controls: Design + Colors + States
   &.filled {
     border-radius: tokens.$plmg-border-radius-s;
