@@ -310,3 +310,7 @@ lib
 
 # Prettier reformats code blocks inside Markdown, which affects rendered output
 *.md
+
+# Stencil
+packages/component-library-react/src/components.ts
+packages/component-library/src/components.d.ts
