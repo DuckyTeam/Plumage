@@ -29,7 +29,8 @@
       "safeForSimultaneousRushProcesses": true,
       "enableParallelism": true,
       "ignoreDependencyOrder": true,
-      "ignoreMissingScript": true
+      "ignoreMissingScript": true,
+      "allowWarningsInSuccessfulBuild": true
     },
     {
       "name": "build-storybook",
