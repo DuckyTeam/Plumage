@@ -284,10 +284,15 @@ button {
   justify-content: center;
   align-items: center;
   border: none;
+  cursor: pointer;
 
   font-family: tokens.$plmg-font-family-sans;
   font-style: normal;
   font-weight: tokens.$plmg-font-weight-regular;
+
+  // Animation
+  transition: background 0.2s ease 0s, background-color 0.2s ease 0s,
+    border 0.2s ease 0s, color 0.2s ease 0s, outline 0.2s ease 0s;
 
   // Controls: Design + Colors + States
   &.filled {
