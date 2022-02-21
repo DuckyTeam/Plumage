@@ -1,0 +1,1 @@
+Files in this folder are static assets available at https://static.ducky.eco/plumage
