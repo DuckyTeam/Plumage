@@ -25,12 +25,31 @@
   color: $text-color;
 }
 
+@mixin background-outline-text(
+  $background-color,
+  $border-color,
+  $text-color,
+  $border-width: tokens.$plmg-border-width-s
+) {
+  background: $background-color;
+  outline: $border-width solid $border-color;
+  color: $text-color;
+}
+
 @mixin border-background-none(
   $border-color,
   $border-width: tokens.$plmg-border-width-s
 ) {
   background: none;
   border: $border-width solid $border-color;
+}
+
+@mixin outline-background-none(
+  $border-color,
+  $border-width: tokens.$plmg-border-width-s
+) {
+  background: none;
+  outline: $border-width solid $border-color;
 }
 
 @mixin background-border($background-color, $border-color) {
@@ -64,8 +83,8 @@
         tokens.$plmg-text-neutral-inverted
       );
     }
-    &:focus {
-      @include background-border-text(
+    &:focus-visible {
+      @include background-outline-text(
         tokens.$plmg-background-primary-strong-hover,
         tokens.$plmg-border-standout,
         tokens.$plmg-text-neutral-inverted,
@@ -94,8 +113,8 @@
         tokens.$plmg-text-neutral
       );
     }
-    &:focus {
-      @include background-border-text(
+    &:focus-visible {
+      @include background-outline-text(
         tokens.$plmg-background-neutral-active,
         tokens.$plmg-border-neutral-weak,
         tokens.$plmg-text-neutral,
@@ -124,8 +143,8 @@
         tokens.$plmg-text-standout
       );
     }
-    &:focus {
-      @include background-border-text(
+    &:focus-visible {
+      @include background-outline-text(
         tokens.$plmg-background-standout-hover,
         tokens.$plmg-border-info,
         tokens.$plmg-text-standout,
@@ -153,8 +172,8 @@
         tokens.$plmg-text-neutral-inverted
       );
     }
-    &:focus {
-      @include background-border-text(
+    &:focus-visible {
+      @include background-outline-text(
         tokens.$plmg-background-danger-strong-hover,
         tokens.$plmg-border-standout,
         tokens.$plmg-text-neutral-inverted,
@@ -218,8 +237,8 @@
     }
   }
 
-  &:focus {
-    @include border-background-none(
+  &:focus-visible {
+    @include outline-background-none(
       tokens.$plmg-border-standout,
       tokens.$plmg-border-width-l
     );
@@ -236,7 +255,7 @@
     &:active {
       @include just-text(tokens.$plmg-text-primary-strong-active);
     }
-    &:focus {
+    &:focus-visible {
       @include just-text(tokens.$plmg-text-primary-strong-hover);
     }
   }
@@ -338,8 +357,8 @@ button {
       }
     }
 
-    &:focus {
-      @include border-background-none(
+    &:focus-visible {
+      @include outline-background-none(
         tokens.$plmg-border-standout,
         tokens.$plmg-border-width-l
       );
@@ -381,7 +400,7 @@ button {
       box-shadow: tokens.$plmg-shadow-m;
     }
 
-    &:focus {
+    &:focus-visible {
       box-shadow: tokens.$plmg-shadow-m;
     }
 
