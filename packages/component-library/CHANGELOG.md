@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Fri, 11 Feb 2022 15:40:23 GMT and should not be manually modified.
+This log was last generated on Mon, 21 Feb 2022 12:37:28 GMT and should not be manually modified.
+
+## 0.0.5
+Mon, 21 Feb 2022 12:37:28 GMT
+
+### Patches
+
+- Add font to Storybook
 
 ## 0.0.4
 Fri, 11 Feb 2022 15:40:23 GMT
