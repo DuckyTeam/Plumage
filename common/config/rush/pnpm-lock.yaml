@@ -114,6 +114,16 @@ dependencies:
 
 packages:
 
+  /@axe-core/puppeteer/4.4.0_puppeteer@13.3.2:
+    resolution: {integrity: sha512-QCFVgdB8qOBOSLk4Z9rLtmw9QhDsxU7ytDQA1P48+rZpyt/5NqFQS9W0kR/BV13x85PUqS/XZK4tkBiJwm7S8A==}
+    engines: {node: '>=6.4.0'}
+    peerDependencies:
+      puppeteer: '>=1.10.0 <= 13'
+    dependencies:
+      axe-core: 4.4.1
+      puppeteer: 13.3.2
+    dev: false
+
   /@babel/cli/7.16.7_@babel+core@7.16.7:
     resolution: {integrity: sha512-0iBF+G2Qml0y3mY5dirolyToLSR88a/KB6F2Gm8J/lOnyL8wbEOHak0DHF8gjc9XZGgTDGv/jYXNiapvsYyHTA==}
     engines: {node: '>=6.9.0'}
@@ -6520,6 +6530,11 @@ packages:
       picocolors: 0.2.1
       postcss: 7.0.39
       postcss-value-parser: 4.2.0
+    dev: false
+
+  /axe-core/4.4.1:
+    resolution: {integrity: sha512-gd1kmb21kwNuWr6BQz8fv6GNECPBnUasepcoLbekws23NVBLODdsClRZ+bQ8+9Uomf3Sm3+Vwn0oYG9NvwnJCw==}
+    engines: {node: '>=4'}
     dev: false
 
   /babel-core/7.0.0-bridge.0_@babel+core@7.16.7:
@@ -18244,11 +18259,12 @@ packages:
     dev: false
 
   file:projects/plumage.tgz_0caa87738ffad273e3f555cf1f2e570e:
-    resolution: {integrity: sha512-sa5rZroQz4KQZ8h7PHbhB5W/4D5yx2Mn8rx4X/R1tbefCQb5ZX/xjtRM6rpDDJN029CuMlN7NTkNT/xh6UbjsA==, tarball: file:projects/plumage.tgz}
+    resolution: {integrity: sha512-xPznUPe88ZQjnlQsgg6JCu9mRO61L7PEdWPfLx72+6vIuOCQH0veXMAhQklKnyE8/UOJARPhBERxZhk7Tukrzg==, tarball: file:projects/plumage.tgz}
     id: file:projects/plumage.tgz
     name: '@rush-temp/plumage'
     version: 0.0.0
     dependencies:
+      '@axe-core/puppeteer': 4.4.0_puppeteer@13.3.2
       '@ducky/eslint-config-base': 2.0.0_ed4c5cdfca7229f6ecc40e5501fa01b3
       '@stencil/core': 2.14.0
       '@stencil/eslint-plugin': 0.4.0_f970b5f17668cb483b8453d324524a4d
