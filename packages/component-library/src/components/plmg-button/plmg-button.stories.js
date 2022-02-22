@@ -67,17 +67,6 @@ Primary.args = {
   ['shadow']: false,
 };
 
-export const Secondary = Template.bind({});
-Secondary.storyName = 'Filled-round';
-Secondary.args = {
-  text: 'Button filled-round',
-  design: 'filled-round',
-  size: 'medium',
-  color: 'primary',
-  ['full-width']: false,
-  ['shadow']: false,
-};
-
 export const Link = Template.bind({});
 Link.storyName = 'Link';
 Link.args = {
