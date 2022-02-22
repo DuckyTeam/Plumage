@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Tue, 22 Feb 2022 15:39:00 GMT and should not be manually modified.
+This log was last generated on Tue, 22 Feb 2022 16:01:43 GMT and should not be manually modified.
+
+## 0.1.1
+Tue, 22 Feb 2022 16:01:43 GMT
+
+### Patches
+
+- Add reference to Stencil
 
 ## 0.1.0
 Tue, 22 Feb 2022 15:39:00 GMT
