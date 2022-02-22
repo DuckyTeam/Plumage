@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "Add documentation for Button component",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
