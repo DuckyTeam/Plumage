@@ -28,6 +28,9 @@ export namespace Components {
           * Define button's size  Allowed values:   - small   - medium   - large   - extra-large  Default: medium
          */
         "size": PlmgButtonSize;
+        /**
+          * Define button's type  Allowed values:   - button   - submit   - reset  Default: button
+         */
         "type": PlmgButtonType;
     }
 }
@@ -64,6 +67,9 @@ declare namespace LocalJSX {
           * Define button's size  Allowed values:   - small   - medium   - large   - extra-large  Default: medium
          */
         "size"?: PlmgButtonSize;
+        /**
+          * Define button's type  Allowed values:   - button   - submit   - reset  Default: button
+         */
         "type"?: PlmgButtonType;
     }
     interface IntrinsicElements {
