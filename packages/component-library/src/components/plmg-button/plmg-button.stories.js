@@ -57,9 +57,9 @@ const Template = (args) => {
 };
 
 export const Primary = Template.bind({});
-Primary.storyName = 'Filled';
+Primary.storyName = 'Button';
 Primary.args = {
-  text: 'Button filled',
+  text: 'Button',
   design: 'filled',
   size: 'medium',
   color: 'primary',
@@ -121,4 +121,4 @@ const AllTemplate = (args) => {
 };
 
 export const All = AllTemplate.bind({});
-All.storyName = 'All';
+All.storyName = 'All variations';

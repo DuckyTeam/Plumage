@@ -429,7 +429,7 @@ const AllTemplate = (args) => {
 };
 
 export const All = AllTemplate.bind({});
-All.storyName = 'All';
+All.storyName = 'All variations';
 `;
 
 /**
