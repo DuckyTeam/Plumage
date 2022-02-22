@@ -1,0 +1,406 @@
+@use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
+
+// Mixins
+// ------------------------------
+@mixin background-border-text(
+  $background-color,
+  $border-color,
+  $text-color,
+  $border-width: tokens.$plmg-border-width-s
+) {
+  background: $background-color;
+  border: $border-width solid $border-color;
+  color: $text-color;
+}
+
+@mixin background-outline-text(
+  $background-color,
+  $border-color,
+  $text-color,
+  $border-width: tokens.$plmg-border-width-s
+) {
+  background: $background-color;
+  outline: $border-width solid $border-color;
+  color: $text-color;
+}
+
+@mixin border-background-none(
+  $border-color,
+  $border-width: tokens.$plmg-border-width-s
+) {
+  background: none;
+  border: $border-width solid $border-color;
+}
+
+@mixin outline-background-none(
+  $border-color,
+  $border-width: tokens.$plmg-border-width-s
+) {
+  background: none;
+  outline: $border-width solid $border-color;
+}
+
+@mixin background-border($background-color, $border-color) {
+  background: $background-color;
+  border: tokens.$plmg-border-width-s solid $border-color;
+}
+
+@mixin just-text($text-color) {
+  color: $text-color;
+}
+
+@mixin filled-color {
+  &.primary {
+    @include background-border-text(
+      tokens.$plmg-background-primary-strong,
+      tokens.$plmg-background-primary-strong,
+      tokens.$plmg-text-neutral-inverted
+    );
+
+    &:hover {
+      @include background-border-text(
+        tokens.$plmg-background-primary-strong-hover,
+        tokens.$plmg-background-primary-strong-hover,
+        tokens.$plmg-text-neutral-inverted
+      );
+    }
+    &:active {
+      @include background-border-text(
+        tokens.$plmg-background-primary-strong-active,
+        tokens.$plmg-background-primary-strong-active,
+        tokens.$plmg-text-neutral-inverted
+      );
+    }
+    &:focus-visible {
+      @include background-outline-text(
+        tokens.$plmg-background-primary-strong-hover,
+        tokens.$plmg-border-standout,
+        tokens.$plmg-text-neutral-inverted,
+        tokens.$plmg-border-width-l
+      );
+    }
+  }
+  &.neutral {
+    @include background-border-text(
+      tokens.$plmg-background-neutral,
+      tokens.$plmg-border-neutral-weak,
+      tokens.$plmg-text-neutral
+    );
+
+    &:hover {
+      @include background-border-text(
+        tokens.$plmg-background-neutral-hover,
+        tokens.$plmg-border-neutral-weak,
+        tokens.$plmg-text-neutral
+      );
+    }
+    &:active {
+      @include background-border-text(
+        tokens.$plmg-background-neutral-hover,
+        tokens.$plmg-border-standout,
+        tokens.$plmg-text-neutral
+      );
+    }
+    &:focus-visible {
+      @include background-outline-text(
+        tokens.$plmg-background-neutral-active,
+        tokens.$plmg-border-neutral-weak,
+        tokens.$plmg-text-neutral,
+        tokens.$plmg-border-width-l
+      );
+    }
+  }
+  &.standout {
+    @include background-border-text(
+      tokens.$plmg-background-standout,
+      tokens.$plmg-background-standout,
+      tokens.$plmg-text-standout
+    );
+
+    &:hover {
+      @include background-border-text(
+        tokens.$plmg-background-standout-hover,
+        tokens.$plmg-background-standout-hover,
+        tokens.$plmg-text-standout
+      );
+    }
+    &:active {
+      @include background-border-text(
+        tokens.$plmg-background-standout-active,
+        tokens.$plmg-background-standout-active,
+        tokens.$plmg-text-standout
+      );
+    }
+    &:focus-visible {
+      @include background-outline-text(
+        tokens.$plmg-background-standout-hover,
+        tokens.$plmg-border-info,
+        tokens.$plmg-text-standout,
+        tokens.$plmg-border-width-l
+      );
+    }
+  }
+  &.danger {
+    @include background-border-text(
+      tokens.$plmg-background-danger-strong,
+      tokens.$plmg-background-danger-strong,
+      tokens.$plmg-text-neutral-inverted
+    );
+    &:hover {
+      @include background-border-text(
+        tokens.$plmg-background-danger-strong-hover,
+        tokens.$plmg-background-danger-strong-hover,
+        tokens.$plmg-text-neutral-inverted
+      );
+    }
+    &:active {
+      @include background-border-text(
+        tokens.$plmg-background-danger-strong-active,
+        tokens.$plmg-background-danger-strong-active,
+        tokens.$plmg-text-neutral-inverted
+      );
+    }
+    &:focus-visible {
+      @include background-outline-text(
+        tokens.$plmg-background-danger-strong-hover,
+        tokens.$plmg-border-standout,
+        tokens.$plmg-text-neutral-inverted,
+        tokens.$plmg-border-width-l
+      );
+    }
+  }
+}
+
+@mixin outline-color-background {
+  &.primary {
+    @include border-background-none(tokens.$plmg-border-primary-strong);
+
+    &:hover {
+      @include border-background-none(tokens.$plmg-border-primary);
+    }
+    &:active {
+      @include background-border(
+        tokens.$plmg-background-primary,
+        tokens.$plmg-border-primary
+      );
+    }
+  }
+  &.neutral {
+    @include border-background-none(tokens.$plmg-border-neutral);
+
+    &:hover {
+      @include border-background-none(tokens.$plmg-border-primary);
+    }
+    &:active {
+      @include background-border(
+        tokens.$plmg-background-neutral-active,
+        tokens.$plmg-border-neutral
+      );
+    }
+  }
+  &.standout {
+    @include border-background-none(tokens.$plmg-border-standout-strong);
+
+    &:hover {
+      @include border-background-none(tokens.$plmg-border-standout);
+    }
+    &:active {
+      @include background-border(
+        tokens.$plmg-background-standout,
+        tokens.$plmg-border-standout
+      );
+    }
+  }
+  &.danger {
+    @include border-background-none(tokens.$plmg-border-danger-strong);
+
+    &:hover {
+      @include border-background-none(tokens.$plmg-border-danger);
+    }
+    &:active {
+      @include background-border(
+        tokens.$plmg-background-danger,
+        tokens.$plmg-border-danger
+      );
+    }
+  }
+
+  &:focus-visible {
+    @include outline-background-none(
+      tokens.$plmg-border-standout,
+      tokens.$plmg-border-width-l
+    );
+  }
+}
+
+@mixin outline-color-text {
+  &.primary {
+    @include just-text(tokens.$plmg-text-primary-strong);
+
+    &:hover {
+      @include just-text(tokens.$plmg-text-primary-strong-hover);
+    }
+    &:active {
+      @include just-text(tokens.$plmg-text-primary-strong-active);
+    }
+    &:focus-visible {
+      @include just-text(tokens.$plmg-text-primary-strong-hover);
+    }
+  }
+  &.neutral {
+    @include just-text(tokens.$plmg-text-neutral);
+  }
+  &.standout {
+    @include just-text(tokens.$plmg-text-standout);
+  }
+  &.danger {
+    @include just-text(tokens.$plmg-text-danger-strong);
+
+    &:active {
+      @include just-text(tokens.$plmg-text-danger-strong-active);
+    }
+  }
+}
+// END Mixins
+// ------------------------------
+
+// Component style
+// ------------------------------
+.plmg-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+
+  font-family: tokens.$plmg-font-family-sans;
+  font-style: normal;
+  font-weight: tokens.$plmg-font-weight-regular;
+
+  // Animation
+  transition: background 0.2s ease 0s, background-color 0.2s ease 0s,
+    border 0.2s ease 0s, color 0.2s ease 0s, outline 0.2s ease 0s;
+
+  // Controls: Design + Colors + States
+  &.filled {
+    border-radius: tokens.$plmg-border-radius-s;
+
+    // Control: Colour
+    @include filled-color;
+  }
+  &.filled-round {
+    border-radius: tokens.$plmg-border-radius-pill;
+
+    // Control: Colour
+    @include filled-color;
+  }
+  &.outline {
+    border-radius: tokens.$plmg-border-radius-s;
+
+    // Control: Colour
+    @include outline-color-background;
+    @include outline-color-text;
+  }
+  &.outline-round {
+    border-radius: tokens.$plmg-border-radius-pill;
+
+    // Control: Colour
+    @include outline-color-background;
+    @include outline-color-text;
+  }
+  &.borderless {
+    background: none;
+    border: none;
+    border-radius: tokens.$plmg-border-radius-s;
+
+    // Control: Colour
+    @include outline-color-text;
+
+    &.primary {
+      &:hover {
+        @include border-background-none(tokens.$plmg-border-primary);
+      }
+      &:active {
+        @include border-background-none(tokens.$plmg-border-primary-strong);
+      }
+    }
+    &.neutral {
+      &:hover {
+        @include border-background-none(tokens.$plmg-border-primary);
+      }
+      &:active {
+        @include border-background-none(tokens.$plmg-border-neutral-strong);
+      }
+    }
+    &.standout {
+      &:hover {
+        @include border-background-none(tokens.$plmg-border-standout);
+      }
+      &:active {
+        @include border-background-none(tokens.$plmg-border-neutral);
+      }
+    }
+    &.danger {
+      &:hover {
+        @include border-background-none(tokens.$plmg-border-danger);
+      }
+      &:active {
+        @include border-background-none(tokens.$plmg-border-neutral);
+      }
+    }
+
+    &:focus-visible {
+      @include outline-background-none(
+        tokens.$plmg-border-standout,
+        tokens.$plmg-border-width-l
+      );
+    }
+  }
+
+  // Control: Size
+  &.small {
+    padding: tokens.$plmg-spacing-x0-75 tokens.$plmg-spacing-x1;
+    font-size: tokens.$plmg-font-size-x0-875;
+    line-height: tokens.$plmg-font-lineheight-loose;
+  }
+  &.medium {
+    padding: tokens.$plmg-spacing-x0-75 tokens.$plmg-spacing-x1-5;
+    font-size: tokens.$plmg-font-size-x1-125;
+    line-height: tokens.$plmg-font-lineheight-loose;
+  }
+  &.large {
+    padding: tokens.$plmg-spacing-x0-75 tokens.$plmg-spacing-x2;
+    font-size: tokens.$plmg-font-size-x1-25;
+    line-height: tokens.$plmg-font-lineheight-loose;
+  }
+  &.extra-large {
+    padding: tokens.$plmg-spacing-x0-75 tokens.$plmg-spacing-x2-5;
+    font-size: tokens.$plmg-font-size-x1-5;
+    line-height: tokens.$plmg-font-lineheight-normal;
+  }
+
+  // Control: full width
+  &.full-width {
+    width: 100%;
+  }
+
+  // Control: Shadow
+  &.shadow {
+    box-shadow: tokens.$plmg-shadow-s;
+
+    &:hover {
+      box-shadow: tokens.$plmg-shadow-m;
+    }
+
+    &:focus-visible {
+      box-shadow: tokens.$plmg-shadow-m;
+    }
+
+    &:active {
+      box-shadow: none;
+    }
+  }
+}
+// END Component style
+// ------------------------------

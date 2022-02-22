@@ -1,13 +1,13 @@
 # Plumage
 Plumage is Ducky's design system
 
-### Local development
+## Local development
 To run the project locally
 ```
 npm start
 ```
 
-#### Create a new component
+### Create a new component
 All our components have the `plmg-` prefix.
 
 Use the scaffolding command line tool:

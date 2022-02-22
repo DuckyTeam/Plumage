@@ -3,10 +3,10 @@
   "version": "0.0.4",
   "description": "Plumage is Ducky's design system",
   "main": "dist/index.cjs.js",
-  "module": "dist/custom-elements/index.js",
+  "module": "dist/index.js",
   "es2015": "dist/esm/index.mjs",
   "es2017": "dist/esm/index.mjs",
-  "types": "dist/custom-elements/index.d.ts",
+  "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/plmg/plmg.esm.js",
@@ -22,17 +22,18 @@
     "prestart": "npm run start-stencil",
     "start": "concurrently -n stencil,storybook \"npm run start-stencil:watch\" \"npm run storybook\"",
     "test": "stencil test --spec --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll",
+    "test:watch": "stencil test --spec --e2e --watchAll",
     "generate": "node generate-component.js",
     "storybook": "start-storybook -p 6006 --no-dll -s ./www",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook && cp -r ./www/build/ ./storybook-static/"
   },
   "dependencies": {
     "@ducky/plumage-tokens": "^2.0.0"
   },
   "devDependencies": {
     "@ducky/eslint-config-base": "^2.0.0",
-    "@stencil/core": "^2.7.0",
+    "@stencil/core": "^2.14.0",
+    "@stencil/eslint-plugin": "~0.4.0",
     "@stencil/react-output-target": "^0.1.0",
     "@stencil/sass": "^1.5.2",
     "@storybook/addon-actions": "^6.3.8",
@@ -58,7 +59,12 @@
     "storybook-addon-designs": "^6.0.1",
     "typescript": "^4.5.4",
     "@types/node": "^16.11.19",
-    "firebase": "~9.6.6"
+    "firebase": "~9.6.6",
+    "@types/jest": "~26.0.24",
+    "jest-cli": "~26.6.3",
+    "jest": "~26.6.3",
+    "puppeteer": "~13.3.2",
+    "@axe-core/puppeteer": "~4.4.0"
   },
   "repository": {
     "type": "git",

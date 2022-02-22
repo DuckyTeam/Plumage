@@ -1,9 +1,0 @@
-@use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
-
-:host {
-  color: tokens.$plmg-text-neutral;
-}
-
-:host > p {
-  background-color: tokens.$plmg-background-success;
-}

@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "@ducky/plumage",
-      "comment": "",
-      "type": "none"
+      "comment": "New component: Button",
+      "type": "minor"
     }
   ],
   "packageName": "@ducky/plumage"

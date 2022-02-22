@@ -1,3 +1,4 @@
+/* Usage: node generate-component.js plmg-component-name */
 const fs = require('fs');
 const path = require('path');
 
@@ -7,6 +8,9 @@ const path = require('path');
  * @returns an error message if the tag has an invalid name, undefined if the tag name passes all checks
  */
 const validateComponentTag = (tag) => {
+  if (!tag || tag === '') {
+    return `Provide the name of the component`;
+  }
   if (tag !== tag.trim()) {
     return `Tag can not contain white spaces`;
   }
@@ -259,7 +263,8 @@ export class ${toComponentName(tagName)} {
 const getStyleUrlBoilerplate = () =>
   `@use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
 
-// Common styles to all components
+// Common styles to all shadow-DOM components
+// Remove this section if your component does not use shadow DOM
 // -------------------------------------------------
 :host {
   display: block;
@@ -291,7 +296,7 @@ main-tag {
   }
   &:active {
   }
-  &:focus {
+  &:focus-visible {
   }
 }
 // ------------- END Component style ---------------
@@ -326,6 +331,8 @@ describe('${tagName}', () => {
  */
 const getE2eTestBoilerplate = (name) =>
   `import { newE2EPage } from '@stencil/core/testing';
+import { AxePuppeteer } from '@axe-core/puppeteer';
+import { Page } from 'puppeteer';
 
 describe('${name}', () => {
   it('renders', async () => {
@@ -334,6 +341,34 @@ describe('${name}', () => {
 
     const element = await page.find('${name}');
     expect(element).toHaveClass('hydrated');
+  });
+
+  describe('all possible variations', () => {
+    it('are accessible', async () => {
+      const page = await newE2EPage();
+
+      let htmlContent = '';
+      someControl.forEach((control) => {
+                htmlContent += \`
+    <${name} control="\${control}">
+  control="\${control}"
+    </${name}>
+<br/>
+    \`;
+      });
+      await page.setContent(htmlContent);
+
+      const results = await new AxePuppeteer(page as unknown as Page)
+        .disableRules([
+          'document-title',
+          'html-has-lang',
+          'landmark-one-main',
+          'page-has-heading-one',
+        ])
+        .analyze();
+
+      expect(results.violations).toHaveLength(0);
+    });
   });
 });
 `;
@@ -373,9 +408,28 @@ const Template = (args) => {
 export const Primary = Template.bind({});
 Primary.storyName = 'neutral';
 Primary.args = {
-  text: 'Button filled',
+  text: '${toComponentName(name)}',
   color: 'neutral',
 };
+
+const AllTemplate = (args) => {
+  let htmlContent = '';
+  someControls.forEach((control) => {
+    htmlContent += \`
+<${name} control="${control}" >
+    control="${control}"
+</${name}>
+<br/>
+              \`;
+  });
+
+  const el = document.createElement('div');
+  el.innerHTML = htmlContent.trim();
+  return el;
+};
+
+export const All = AllTemplate.bind({});
+All.storyName = 'All';
 `;
 
 /**
