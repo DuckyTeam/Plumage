@@ -1,4 +1,5 @@
 import * as Utils from '../../stories/StencilStorybookUtils';
+import { designs, sizes, colors } from './plmg-button.types';
 
 export default {
   title: 'Component/Button',
@@ -67,3 +68,34 @@ Secondary.args = {
   ['full-width']: false,
   ['shadow']: false,
 };
+
+const AllTemplate = (args) => {
+  const fullWidthValues = [true, false];
+  const shadowValues = [true, false];
+  // button type can be ignored since it does not impact the style
+
+  let htmlContent = '';
+  designs.forEach((design) => {
+    sizes.forEach((size) => {
+      colors.forEach((color) => {
+        fullWidthValues.forEach((fullWidth) => {
+          shadowValues.forEach((shadow) => {
+            htmlContent += `
+<plmg-button design="${design}" size="${size}" color="${color}" fullWidth="${fullWidth}" shadow="${shadow}" >
+    design="${design}" size="${size}" color="${color}" fullWidth="${fullWidth}" shadow="${shadow}"
+</plmg-button>
+<br/>
+              `;
+          });
+        });
+      });
+    });
+  });
+
+  const el = document.createElement('div');
+  el.innerHTML = htmlContent.trim();
+  return el;
+};
+
+export const All = AllTemplate.bind({});
+All.storyName = 'All';
