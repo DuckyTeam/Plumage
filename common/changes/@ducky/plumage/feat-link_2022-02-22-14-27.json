@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "Make button component take href to behave like a link",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
