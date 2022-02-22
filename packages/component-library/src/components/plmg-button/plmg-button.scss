@@ -278,6 +278,10 @@
   font-style: normal;
   font-weight: tokens.$plmg-font-weight-regular;
 
+  // Remove link styling
+  text-decoration: none;
+  width: fit-content;
+
   // Animation
   transition: background 0.2s ease 0s, background-color 0.2s ease 0s,
     border 0.2s ease 0s, color 0.2s ease 0s, outline 0.2s ease 0s;
