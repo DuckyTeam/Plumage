@@ -71,7 +71,7 @@ export const Link = Template.bind({});
 Link.storyName = 'Link';
 Link.args = {
   text: 'Button as a link',
-  design: 'filled-round',
+  design: 'filled',
   size: 'medium',
   color: 'primary',
   ['full-width']: false,
@@ -81,7 +81,58 @@ Link.args = {
   target: '_blank',
 };
 
-const AllTemplate = (args) => {
+export const AllDesigns = (args) => {
+  let htmlContent = '';
+  designs.forEach((design) => {
+    htmlContent += `
+<div style="flex: 0 0 20%">
+<plmg-button design="${design}">${design}</plmg-button>
+</div>`;
+  });
+
+  const el = document.createElement('div');
+  el.innerHTML = htmlContent.trim();
+  el.style.display = 'flex';
+  el.style['flex-wrap'] = 'wrap';
+  return el;
+};
+AllDesigns.storyName = 'All designs';
+
+export const AllSizes = (args) => {
+  let htmlContent = '';
+  sizes.forEach((size) => {
+    htmlContent += `
+<div style="flex: 0 0 20%">
+<plmg-button size="${size}">${size}</plmg-button>
+</div>`;
+  });
+
+  const el = document.createElement('div');
+  el.innerHTML = htmlContent.trim();
+  el.style.display = 'flex';
+  el.style['flex-wrap'] = 'wrap';
+  return el;
+};
+AllSizes.storyName = 'All sizes';
+
+export const AllColors = (args) => {
+  let htmlContent = '';
+  colors.forEach((color) => {
+    htmlContent += `
+<div style="flex: 0 0 20%">
+<plmg-button color="${color}">${color}</plmg-button>
+</div>`;
+  });
+
+  const el = document.createElement('div');
+  el.innerHTML = htmlContent.trim();
+  el.style.display = 'flex';
+  el.style['flex-wrap'] = 'wrap';
+  return el;
+};
+AllColors.storyName = 'All colors';
+
+export const All = (args) => {
   const fullWidthValues = [true, false];
   const shadowValues = [true, false];
   // button type can be ignored since it does not impact the style
@@ -108,6 +159,4 @@ const AllTemplate = (args) => {
   el.innerHTML = htmlContent.trim();
   return el;
 };
-
-export const All = AllTemplate.bind({});
 All.storyName = 'All variations';
