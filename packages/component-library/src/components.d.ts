@@ -21,6 +21,14 @@ export namespace Components {
          */
         "fullWidth": boolean;
         /**
+          * Define button as a link
+         */
+        "href": string;
+        /**
+          * Define links rel
+         */
+        "rel": string;
+        /**
           * Define button's shadow  Allowed values:   - true   - false  Default: false
          */
         "shadow": boolean;
@@ -28,6 +36,10 @@ export namespace Components {
           * Define button's size  Allowed values:   - small   - medium   - large   - extra-large  Default: medium
          */
         "size": PlmgButtonSize;
+        /**
+          * Define links target
+         */
+        "target": string;
         /**
           * Define button's type  Allowed values:   - button   - submit   - reset  Default: button
          */
@@ -60,6 +72,14 @@ declare namespace LocalJSX {
          */
         "fullWidth"?: boolean;
         /**
+          * Define button as a link
+         */
+        "href"?: string;
+        /**
+          * Define links rel
+         */
+        "rel"?: string;
+        /**
           * Define button's shadow  Allowed values:   - true   - false  Default: false
          */
         "shadow"?: boolean;
@@ -67,6 +87,10 @@ declare namespace LocalJSX {
           * Define button's size  Allowed values:   - small   - medium   - large   - extra-large  Default: medium
          */
         "size"?: PlmgButtonSize;
+        /**
+          * Define links target
+         */
+        "target"?: string;
         /**
           * Define button's type  Allowed values:   - button   - submit   - reset  Default: button
          */

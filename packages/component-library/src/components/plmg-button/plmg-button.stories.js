@@ -33,7 +33,16 @@ export default {
   },
 };
 
-const PROPS = ['design', 'size', 'color', 'full-width', 'shadow'];
+const PROPS = [
+  'design',
+  'size',
+  'color',
+  'full-width',
+  'shadow',
+  'href',
+  'rel',
+  'target',
+];
 const EVENTS = [];
 const CSS_VARS = [];
 const SLOTS = ['text'];
@@ -67,6 +76,20 @@ Secondary.args = {
   color: 'primary',
   ['full-width']: false,
   ['shadow']: false,
+};
+
+export const Link = Template.bind({});
+Link.storyName = 'Link';
+Link.args = {
+  text: 'Button as a link',
+  design: 'filled-round',
+  size: 'medium',
+  color: 'primary',
+  ['full-width']: false,
+  ['shadow']: false,
+  href: 'https://ducky.eco',
+  rel: 'noopener noreferrer',
+  target: '_blank',
 };
 
 const AllTemplate = (args) => {

@@ -128,19 +128,57 @@ export class Button {
       throw new Error('type: must be a valid value');
   }
 
+  /**
+   * Define button as a link
+   */
+  @Prop() href: string;
+  @Watch('href')
+  validateHref(newValue: string) {
+    if (newValue && typeof newValue !== 'string')
+      throw new Error('href must be a string');
+  }
+  /**
+   * Define links rel
+   */
+  @Prop() rel: string;
+  @Watch('rel')
+  validateRel(newValue: string) {
+    if (newValue && !this.href)
+      throw new Error('button must have a href to have a rel');
+    if (newValue && typeof newValue !== 'string')
+      throw new Error('rel must be a string');
+  }
+  /**
+   * Define links target
+   */
+  @Prop() target: string;
+  @Watch('target')
+  validateTarget(newValue: string) {
+    if (newValue && !this.href)
+      throw new Error('button must have a href to have a target');
+    if (newValue && typeof newValue !== 'string')
+      throw new Error('target must be a string');
+  }
   render() {
+    const classes = {
+      'plmg-button': true,
+      [this.design]: true,
+      [this.size]: true,
+      [this.color]: true,
+      'full-width': this.fullWidth,
+      shadow: this.shadow,
+    };
+
+    if (this.href) {
+      return (
+        <a class={classes} href={this.href} rel={this.rel} target={this.target}>
+          <slot></slot>
+        </a>
+      );
+    }
+
     return (
-      <button
-        class={{
-          'plmg-button': true,
-          [this.design]: true,
-          [this.size]: true,
-          [this.color]: true,
-          'full-width': this.fullWidth,
-          shadow: this.shadow,
-        }}
-        type={this.type}
-      >
+      <button class={classes} type={this.type}>
         <slot></slot>
       </button>
     );
