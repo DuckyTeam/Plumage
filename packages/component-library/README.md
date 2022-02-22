@@ -1,5 +1,8 @@
 # Plumage
-Plumage is Ducky's design system
+Plumage is Ducky's design system.
+
+This package exposes Ducky's design system as Web Components.
+It is built with [Stencil](https://stenciljs.com).
 
 ## Local development
 To run the project locally
