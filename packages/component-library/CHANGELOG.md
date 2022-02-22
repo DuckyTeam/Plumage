@@ -1,6 +1,18 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Fri, 11 Feb 2022 15:40:23 GMT and should not be manually modified.
+This log was last generated on Tue, 22 Feb 2022 15:39:00 GMT and should not be manually modified.
+
+## 0.1.0
+Tue, 22 Feb 2022 15:39:00 GMT
+
+### Minor changes
+
+- Make button component take href to behave like a link
+- New component: Button
+
+### Patches
+
+- Add font to Storybook
 
 ## 0.0.4
 Fri, 11 Feb 2022 15:40:23 GMT
