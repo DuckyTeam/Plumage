@@ -82,51 +82,45 @@ Link.args = {
 };
 
 export const AllDesigns = (args) => {
-  let htmlContent = '';
-  designs.forEach((design) => {
-    htmlContent += `
-<div style="flex: 0 0 20%">
-<plmg-button design="${design}">${design}</plmg-button>
-</div>`;
-  });
+  const htmlContent = designs
+    .map((design) => `<plmg-button design="${design}">${design}</plmg-button>`)
+    .join('')
+    .trim();
 
   const el = document.createElement('div');
-  el.innerHTML = htmlContent.trim();
+  el.innerHTML = htmlContent;
   el.style.display = 'flex';
+  el.style.justifyContent = 'space-between';
   el.style['flex-wrap'] = 'wrap';
   return el;
 };
 AllDesigns.storyName = 'All designs';
 
 export const AllSizes = (args) => {
-  let htmlContent = '';
-  sizes.forEach((size) => {
-    htmlContent += `
-<div style="flex: 0 0 20%">
-<plmg-button size="${size}">${size}</plmg-button>
-</div>`;
-  });
+  const htmlContent = sizes
+    .map((size) => `<plmg-button size="${size}">${size}</plmg-button>`)
+    .join('')
+    .trim();
 
   const el = document.createElement('div');
-  el.innerHTML = htmlContent.trim();
+  el.innerHTML = htmlContent;
   el.style.display = 'flex';
+  el.style.justifyContent = 'space-between';
   el.style['flex-wrap'] = 'wrap';
   return el;
 };
 AllSizes.storyName = 'All sizes';
 
 export const AllColors = (args) => {
-  let htmlContent = '';
-  colors.forEach((color) => {
-    htmlContent += `
-<div style="flex: 0 0 20%">
-<plmg-button color="${color}">${color}</plmg-button>
-</div>`;
-  });
+  const htmlContent = colors
+    .map((color) => `<plmg-button color="${color}">${color}</plmg-button>`)
+    .join('')
+    .trim();
 
   const el = document.createElement('div');
-  el.innerHTML = htmlContent.trim();
+  el.innerHTML = htmlContent;
   el.style.display = 'flex';
+  el.style.justifyContent = 'space-between';
   el.style['flex-wrap'] = 'wrap';
   return el;
 };
