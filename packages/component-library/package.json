@@ -12,7 +12,8 @@
   "unpkg": "dist/plmg/plmg.esm.js",
   "files": [
     "dist/",
-    "loader/"
+    "loader/",
+    "www/"
   ],
   "scripts": {
     "build": "stencil build --docs",
