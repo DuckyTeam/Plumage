@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Tue, 22 Feb 2022 16:01:43 GMT and should not be manually modified.
+This log was last generated on Wed, 23 Feb 2022 10:38:45 GMT and should not be manually modified.
+
+## 0.1.2
+Wed, 23 Feb 2022 10:38:45 GMT
+
+### Patches
+
+- Add documentation for Button component
 
 ## 0.1.1
 Tue, 22 Feb 2022 16:01:43 GMT
