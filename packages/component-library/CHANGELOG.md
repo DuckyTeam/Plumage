@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Wed, 23 Feb 2022 10:55:20 GMT and should not be manually modified.
+This log was last generated on Wed, 23 Feb 2022 12:58:42 GMT and should not be manually modified.
+
+## 0.1.4
+Wed, 23 Feb 2022 12:58:42 GMT
+
+### Patches
+
+- Make button layout even in storybook
 
 ## 0.1.3
 Wed, 23 Feb 2022 10:55:20 GMT
