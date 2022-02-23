@@ -6,6 +6,7 @@ export const config: Config = {
   namespace: 'plmg',
   globalStyle: 'src/global.scss',
   plugins: [sass()],
+  buildEs5: true,
   outputTargets: [
     reactOutputTarget({
       componentCorePackage: '@ducky/plumage',
