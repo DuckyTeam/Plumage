@@ -144,8 +144,8 @@ export const All = (args) => {
         fullWidthValues.forEach((fullWidth) => {
           shadowValues.forEach((shadow) => {
             htmlContent += `
-<plmg-button design="${design}" size="${size}" color="${color}" fullWidth="${fullWidth}" shadow="${shadow}" >
-    design="${design}" size="${size}" color="${color}" fullWidth="${fullWidth}" shadow="${shadow}"
+<plmg-button design="${design}" size="${size}" color="${color}" full-width="${fullWidth}" shadow="${shadow}" >
+    design="${design}" size="${size}" color="${color}" full-width="${fullWidth}" shadow="${shadow}"
 </plmg-button>
 <br/>
               `;
