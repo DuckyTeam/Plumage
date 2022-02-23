@@ -412,7 +412,7 @@ Primary.args = {
   color: 'neutral',
 };
 
-const AllTemplate = (args) => {
+export const All = (args) => {
   let htmlContent = '';
   someControls.forEach((control) => {
     htmlContent += \`
@@ -427,9 +427,7 @@ const AllTemplate = (args) => {
   el.innerHTML = htmlContent.trim();
   return el;
 };
-
-export const All = AllTemplate.bind({});
-All.storyName = 'All';
+All.storyName = 'All variations';
 `;
 
 /**

@@ -65,5 +65,5 @@ jobs:
           PROJECT_ID: ${{ secrets.STORYBOOK_GCP_PROJECT_ID }}
           APPLICATION_CREDENTIALS: ${{ secrets.STORYBOOK_GCP_APPLICATION_CREDENTIALS }}
         with:
-          args: setmeta -h 'Cache-Control:public, max-age=300' gs://components.ducky.eco/index.html
+          args: -m setmeta -h 'Cache-Control:public, max-age=300' gs://components.ducky.eco/index.html gs://components.ducky.eco/iframe.html gs://components.ducky.eco/build/*
           cli: gsutil

@@ -320,6 +320,7 @@
 
     // Control: Colour
     @include outline-color-text;
+    @include border-background-none(transparent);
 
     &.primary {
       &:hover {
