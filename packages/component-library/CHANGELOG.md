@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Wed, 23 Feb 2022 10:38:45 GMT and should not be manually modified.
+This log was last generated on Wed, 23 Feb 2022 10:55:20 GMT and should not be manually modified.
+
+## 0.1.3
+Wed, 23 Feb 2022 10:55:20 GMT
+
+### Patches
+
+- Build and deploy es5 version
 
 ## 0.1.2
 Wed, 23 Feb 2022 10:38:45 GMT
