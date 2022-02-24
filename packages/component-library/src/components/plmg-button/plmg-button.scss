@@ -96,7 +96,7 @@
     }
     &:active {
       @include background-border-text(
-        tokens.$plmg-background-neutral-hover,
+        tokens.$plmg-background-neutral-active,
         tokens.$plmg-border-neutral-weak,
         tokens.$plmg-text-neutral
       );
