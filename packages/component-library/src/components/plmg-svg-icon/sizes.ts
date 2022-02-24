@@ -3,7 +3,7 @@ import {
   plmgFontSizeX1125,
   plmgFontSizeX125,
   plmgFontSizeX15,
-} from '@ducky/plumage-tokens/dist/es6/default';
+} from '@ducky/plumage-tokens';
 
 export default {
   small: plmgFontSizeX0875,

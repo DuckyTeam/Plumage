@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "description": "Design Tokens in various format for Ducky Plumage",
   "main": "dist/js/default.js",
+  "module": "dist/es6/default.js",
   "types": "dist/es6/default.d.ts",
   "files": [
     "dist/"
