@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "Additional documentation for Button component: Storybook stories for shadow and full-width",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
