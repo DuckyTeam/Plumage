@@ -386,9 +386,9 @@ export default {
   argTypes: {
     color: {
       options: ['primary', 'neutral', 'standout', 'danger'],
-      control: { type: 'select' },
-    },
-  },
+      control: { type: 'select' }
+    }
+  }
 };
 
 const PROPS = ['color'];
@@ -416,8 +416,8 @@ export const All = (args) => {
   let htmlContent = '';
   someControls.forEach((control) => {
     htmlContent += \`
-<${name} control="${control}" >
-    control="${control}"
+<${name} control="\${control}" >
+    control="\${control}"
 </${name}>
 <br/>
               \`;

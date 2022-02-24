@@ -66,6 +66,7 @@ common/autoinstallers/*/.npmrc
 .idea/**/dictionaries
 .idea/**/shelf
 .idea/**/watcherTasks.xml
+.idea/**/prettier.xml
 
 # AWS User-specific
 .idea/**/aws.xml
