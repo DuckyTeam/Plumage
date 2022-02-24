@@ -30,7 +30,7 @@
     "typescript": "^4.5.4"
   },
   "dependencies": {
-    "@ducky/plumage": "^0.1.5"
+    "@ducky/plumage": "^0.1.6"
   },
   "peerDependencies": {
     "react": "^16.7.0",
