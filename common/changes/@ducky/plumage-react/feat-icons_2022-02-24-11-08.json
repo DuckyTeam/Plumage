@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage-react",
+      "comment": "Add icon components",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ducky/plumage-react"
+}
