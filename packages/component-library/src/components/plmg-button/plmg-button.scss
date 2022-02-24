@@ -97,14 +97,14 @@
     &:active {
       @include background-border-text(
         tokens.$plmg-background-neutral-hover,
-        tokens.$plmg-border-standout,
+        tokens.$plmg-border-neutral-weak,
         tokens.$plmg-text-neutral
       );
     }
     &:focus-visible {
       @include background-outline-text(
         tokens.$plmg-background-neutral-active,
-        tokens.$plmg-border-neutral-weak,
+        tokens.$plmg-border-standout,
         tokens.$plmg-text-neutral,
         tokens.$plmg-border-width-l
       );
@@ -176,7 +176,7 @@
     @include border-background-none(tokens.$plmg-border-primary-strong);
 
     &:hover {
-      @include border-background-none(tokens.$plmg-border-primary);
+      @include border-background-none(tokens.$plmg-border-primary-weak);
     }
     &:active {
       @include background-border(
@@ -365,7 +365,7 @@
 
   // Control: Size
   &.small {
-    padding: tokens.$plmg-spacing-x0-75 tokens.$plmg-spacing-x1;
+    padding: tokens.$plmg-spacing-x0-5 tokens.$plmg-spacing-x1;
     font-size: tokens.$plmg-font-size-x0-875;
     line-height: tokens.$plmg-font-lineheight-loose;
   }
@@ -375,12 +375,12 @@
     line-height: tokens.$plmg-font-lineheight-loose;
   }
   &.large {
-    padding: tokens.$plmg-spacing-x0-75 tokens.$plmg-spacing-x2;
+    padding: tokens.$plmg-spacing-x1 tokens.$plmg-spacing-x2;
     font-size: tokens.$plmg-font-size-x1-25;
     line-height: tokens.$plmg-font-lineheight-loose;
   }
   &.extra-large {
-    padding: tokens.$plmg-spacing-x0-75 tokens.$plmg-spacing-x2-5;
+    padding: tokens.$plmg-spacing-x1-5 tokens.$plmg-spacing-x2-5;
     font-size: tokens.$plmg-font-size-x1-5;
     line-height: tokens.$plmg-font-lineheight-normal;
   }
