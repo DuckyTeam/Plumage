@@ -45,6 +45,16 @@ export namespace Components {
          */
         "type": PlmgButtonType;
     }
+    interface PlmgCard {
+        /**
+          * Define card's header text
+         */
+        "bottomButtonText": string;
+        /**
+          * Define card's header text
+         */
+        "headerText": string;
+    }
 }
 declare global {
     interface HTMLPlmgButtonElement extends Components.PlmgButton, HTMLStencilElement {
@@ -53,8 +63,15 @@ declare global {
         prototype: HTMLPlmgButtonElement;
         new (): HTMLPlmgButtonElement;
     };
+    interface HTMLPlmgCardElement extends Components.PlmgCard, HTMLStencilElement {
+    }
+    var HTMLPlmgCardElement: {
+        prototype: HTMLPlmgCardElement;
+        new (): HTMLPlmgCardElement;
+    };
     interface HTMLElementTagNameMap {
         "plmg-button": HTMLPlmgButtonElement;
+        "plmg-card": HTMLPlmgCardElement;
     }
 }
 declare namespace LocalJSX {
@@ -96,8 +113,19 @@ declare namespace LocalJSX {
          */
         "type"?: PlmgButtonType;
     }
+    interface PlmgCard {
+        /**
+          * Define card's header text
+         */
+        "bottomButtonText"?: string;
+        /**
+          * Define card's header text
+         */
+        "headerText"?: string;
+    }
     interface IntrinsicElements {
         "plmg-button": PlmgButton;
+        "plmg-card": PlmgCard;
     }
 }
 export { LocalJSX as JSX };
@@ -105,6 +133,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "plmg-button": LocalJSX.PlmgButton & JSXBase.HTMLAttributes<HTMLPlmgButtonElement>;
+            "plmg-card": LocalJSX.PlmgCard & JSXBase.HTMLAttributes<HTMLPlmgCardElement>;
         }
     }
 }
