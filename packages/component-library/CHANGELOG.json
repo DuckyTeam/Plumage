@@ -2,6 +2,18 @@
   "name": "@ducky/plumage",
   "entries": [
     {
+      "version": "0.1.7",
+      "tag": "@ducky/plumage_v0.1.7",
+      "date": "Fri, 25 Feb 2022 10:21:28 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "updated button to use correct styles"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.1.6",
       "tag": "@ducky/plumage_v0.1.6",
       "date": "Thu, 24 Feb 2022 11:16:07 GMT",
