@@ -1,16 +1,10 @@
-import fs from 'fs';
 import fse from 'fs-extra';
 import path from 'path';
 import rimraf from 'rimraf';
-import lodash from 'lodash';
 import Queue from './waterfall/Queue.mjs';
 import globAsync from 'fast-glob';
 import * as svgo from 'svgo';
-
-const componentTemplate = fs.readFileSync(
-  path.join('scripts', 'icons', 'template.txt'),
-  { encoding: 'utf-8' }
-);
+import generateIconEnum from './generateIconEnum.mjs';
 
 const singleDigitNumbers = [
   'Zero',
@@ -114,36 +108,14 @@ function normalizePath(pathToNormalize) {
   return pathToNormalize.replace(/\\/g, '/');
 }
 
-// Noise introduced by Google by mistake
-const noises = [
-  ['="M0 0h24v24H0V0zm0 0h24v24H0V0z', '="'],
-  ['="M0 0h24v24H0zm0 0h24v24H0zm0 0h24v24H0z', '="'],
-];
-
-function removeNoise(input, prevInput = null) {
-  if (input === prevInput) {
-    return input;
-  }
-
-  let output = input;
-
-  noises.forEach(([search, replace]) => {
-    if (output.indexOf(search) !== -1) {
-      output = output.replace(search, replace);
-    }
-  });
-
-  return removeNoise(output, input);
-}
-
-export function cleanPaths({ svgPath, data }) {
+export function cleanPaths({ svgPath, data, name }) {
   // Remove hardcoded color fill before optimizing so that empty groups are removed
   const input = data
     .replace(/ fill="#010101"/g, '')
     .replace(/<rect fill="none" width="24" height="24"\/>/g, '')
     .replace(/<rect id="SVGID_1_" width="24" height="24"\/>/g, '');
 
-  const result = svgo.optimize(input, {
+  const optimized = svgo.optimize(input, {
     floatPrecision: 4,
     multipass: true,
     plugins: [
@@ -192,57 +164,25 @@ export function cleanPaths({ svgPath, data }) {
       { name: 'removeStyleElement' },
       { name: 'removeScriptElement' },
       { name: 'removeEmptyContainers' },
-    ],
-  });
-
-  const jsxResult = svgo.optimize(result.data, {
-    plugins: [
       {
-        name: 'svgAsReactFragment',
-        type: 'visitor',
-        fn: () => {
-          return {
-            root: {
-              enter(root) {
-                const [svg, ...rootChildren] = root.children;
-                if (rootChildren.length > 0) {
-                  throw new Error('Expected a single child of the root');
-                }
-                if (svg.type !== 'element' || svg.name !== 'svg') {
-                  throw new Error('Expected an svg element as the root child');
-                }
-
-                root.spliceContent(0, svg.children.length, svg.children);
-              },
-            },
-          };
+        name: 'addAttributesToSVGElement',
+        params: {
+          attributes: [
+            { id: name },
+            { height: '1em' },
+            { width: '1em' },
+            { fill: 'currentColor' },
+          ],
         },
       },
     ],
   });
 
-  // Extract the paths from the svg string
-  // Clean xml paths
-  let paths = jsxResult.data
-    .replace(/"\/>/g, '" />')
-    .replace(/ clip-path=".+?"/g, '') // Fix visibility issue and save some bytes.
-    .replace(/<clipPath.+?<\/clipPath>/g, ''); // Remove unused definitions
-
-  const sizeMatch = svgPath.match(/^.*_([0-9]+)px.svg$/);
-  const size = sizeMatch ? Number(sizeMatch[1]) : null;
-
-  if (size !== 24) {
-    const scale = Math.round((24 / size) * 100) / 100; // Keep a maximum of 2 decimals
-    paths = paths.replace('clipPath="url(#b)" ', '');
-    paths = paths.replace(
-      /<path /g,
-      `<path transform="scale(${scale}, ${scale})" `
-    );
+  if (optimized.error) {
+    throw new Error(optimized.error);
   }
 
-  paths = removeNoise(paths);
-
-  return paths;
+  return optimized.data;
 }
 
 async function worker({ progress, svgPath, options }) {
@@ -251,25 +191,13 @@ async function worker({ progress, svgPath, options }) {
   const svgPathObj = path.parse(path.normalize(svgPath));
 
   const camelCaseName = getCamelCase(svgPathObj);
-  const kebabCaseName = lodash.kebabCase(`Plmg${camelCaseName}Icon`);
 
-  const outputFileDir = path.join(options.outputDir, kebabCaseName);
-  await fse.ensureDir(outputFileDir);
+  const name = camelCaseName[0].toLowerCase() + camelCaseName.slice(1);
 
   const data = await fse.readFile(svgPath, { encoding: 'utf8' });
-  const paths = cleanPaths({ svgPath, data });
+  const paths = cleanPaths({ svgPath, data, name });
 
-  const children = Array.isArray(paths) ? paths.join('\n') : paths;
-
-  const fileString = componentTemplate
-    .replace('<path />', children)
-    .replace('SvgIcon', `${camelCaseName}Icon`)
-    .replace('plmg-svg-icon', kebabCaseName);
-
-  await fse.writeFile(
-    path.join(outputFileDir, `${kebabCaseName}.tsx`),
-    fileString
-  );
+  await fse.writeFile(path.join(options.outputDir, `${name}.svg`), paths);
 }
 
 export async function handler(options) {
@@ -296,12 +224,15 @@ export async function handler(options) {
   );
 
   queue.push(svgPaths);
+
   await queue.wait({ empty: true });
 }
 
 await handler({
   disableLog: false,
-  outputDir: path.join('src', 'components', 'plmg-svg-icon', 'icons'),
+  outputDir: path.join('scripts', 'icons', 'cleaned-icons'),
   svgDir: path.join('scripts', 'icons', 'material-icons'),
   glob: '*',
 });
+
+await generateIconEnum();

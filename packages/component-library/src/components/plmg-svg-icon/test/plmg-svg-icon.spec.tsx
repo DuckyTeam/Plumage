@@ -1,11 +1,11 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { AbcIcon } from '../icons/plmg-abc-icon/plmg-abc-icon';
+import { SvgIcon } from '../plmg-svg-icon';
 
 describe('plmg-svg-icon', () => {
   it('renders', async () => {
     const page = await newSpecPage({
-      components: [AbcIcon],
-      html: `<plmg-abc-icon></plmg-abc-icon>`,
+      components: [SvgIcon],
+      html: `<plmg-svg-icon size="1em" icon="adb"></plmg-svg-icon>`,
     });
 
     expect(page.root).toBeTruthy();
