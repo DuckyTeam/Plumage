@@ -1,6 +1,20 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Wed, 23 Feb 2022 12:58:42 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Feb 2022 11:16:07 GMT and should not be manually modified.
+
+## 0.1.6
+Thu, 24 Feb 2022 11:16:07 GMT
+
+### Patches
+
+- Additional documentation for Button component: Storybook stories for shadow and full-width
+
+## 0.1.5
+Thu, 24 Feb 2022 09:52:03 GMT
+
+### Patches
+
+- updated button to use correct styles
 
 ## 0.1.4
 Wed, 23 Feb 2022 12:58:42 GMT
