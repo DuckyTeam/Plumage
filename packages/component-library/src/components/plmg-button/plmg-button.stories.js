@@ -126,6 +126,34 @@ export const AllColors = (args) => {
 };
 AllColors.storyName = 'All colors';
 
+export const AllShadows = (args) => {
+  const htmlContent = `<plmg-button shadow="${false}">No shadow</plmg-button>
+<plmg-button shadow="${true}">With shadow</plmg-button>`;
+
+  const el = document.createElement('div');
+  el.innerHTML = htmlContent;
+  el.style.display = 'flex';
+  el.style.justifyContent = 'space-between';
+  el.style['flex-wrap'] = 'wrap';
+  return el;
+};
+AllShadows.storyName = 'All shadows';
+
+export const AllFullWidth = (args) => {
+  const htmlContent = `<plmg-button full-width="${false}">Fit content</plmg-button>
+<br/>
+<plmg-button full-width="${true}">Full width</plmg-button>`;
+
+  const el = document.createElement('div');
+  el.innerHTML = htmlContent;
+  el.style.display = 'flex';
+  el.style.flexDirection = 'column';
+  el.style.justifyContent = 'space-between';
+  el.style['flex-wrap'] = 'wrap';
+  return el;
+};
+AllFullWidth.storyName = 'All fullWidth';
+
 export const All = (args) => {
   const fullWidthValues = [true, false];
   const shadowValues = [true, false];
