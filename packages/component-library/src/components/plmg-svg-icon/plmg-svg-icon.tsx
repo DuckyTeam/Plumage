@@ -12,7 +12,7 @@ import { fetchIcon } from './utils';
 @Component({
   assetsDirs: ['assets'],
   tag: 'plmg-svg-icon',
-  shadow: false,
+  shadow: true,
 })
 export class SvgIcon {
   @Element() el: HTMLElement;

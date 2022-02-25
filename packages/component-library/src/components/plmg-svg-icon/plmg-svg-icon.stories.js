@@ -32,7 +32,9 @@ Icon.args = {
 
 export const AllIcons = (args) => {
   const htmlContent = Object.values(ICON)
-    .map((icon) => `<p><plmg-svg-icon icon="${icon}"/>${icon}</p>`)
+    .map(
+      (icon) => `<p><plmg-svg-icon icon="${icon}"></plmg-svg-icon>${icon}</p>`
+    )
     .join('')
     .trim();
 
