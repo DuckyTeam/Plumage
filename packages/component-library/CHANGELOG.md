@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Fri, 25 Feb 2022 10:21:28 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Feb 2022 12:30:43 GMT and should not be manually modified.
+
+## 0.1.8
+Fri, 25 Feb 2022 12:30:43 GMT
+
+### Patches
+
+- Write labels for button as proper English
 
 ## 0.1.7
 Fri, 25 Feb 2022 10:21:28 GMT
