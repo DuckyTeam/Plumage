@@ -46,7 +46,13 @@ export namespace Components {
         "type": PlmgButtonType;
     }
     interface PlmgSvgIcon {
+        /**
+          * Define icon by its name. Name must be one of the existing icon: https://components.ducky.eco/?path=/story/component-svgicon--all-icons  Default: NULL
+         */
         "icon": string;
+        /**
+          * Define the icon's size.  Allowed values: <value><unit>  Examples: - 1em - 42px  Default: 1em
+         */
         "size": string;
     }
 }
@@ -108,7 +114,13 @@ declare namespace LocalJSX {
         "type"?: PlmgButtonType;
     }
     interface PlmgSvgIcon {
+        /**
+          * Define icon by its name. Name must be one of the existing icon: https://components.ducky.eco/?path=/story/component-svgicon--all-icons  Default: NULL
+         */
         "icon"?: string;
+        /**
+          * Define the icon's size.  Allowed values: <value><unit>  Examples: - 1em - 42px  Default: 1em
+         */
         "size"?: string;
     }
     interface IntrinsicElements {

@@ -15,7 +15,36 @@ import { fetchIcon, supportsIntersectionObserver } from './utils';
 })
 export class SvgIcon {
   @Element() el: HTMLElement;
+
+  /**
+   * Define icon by its name.
+   * Name must be one of the existing icon: https://components.ducky.eco/?path=/story/component-svgicon--all-icons
+   *
+   * Default: NULL
+   */
   @Prop() icon: string = null;
+  @Watch('icon')
+  private async loadIconPathData(): Promise<void> {
+    const { icon, visible } = this;
+
+    if (!Build.isBrowser || !icon || !visible) {
+      return;
+    }
+
+    this.pathData = await fetchIcon({ icon });
+  }
+
+  /**
+   * Define the icon's size.
+   *
+   * Allowed values: <value><unit>
+   *
+   * Examples:
+   * - 1em
+   * - 42px
+   *
+   * Default: 1em
+   */
   @Prop() size: string = '1em';
   @State() private pathData: string;
   @State() private visible = false;
@@ -49,17 +78,6 @@ export class SvgIcon {
         style={{ height: '1em', width: '1em', fontSize: this.size }}
       />
     );
-  }
-
-  @Watch('icon')
-  private async loadIconPathData(): Promise<void> {
-    const { icon, visible } = this;
-
-    if (!Build.isBrowser || !icon || !visible) {
-      return;
-    }
-
-    this.pathData = await fetchIcon({ icon });
   }
 
   private waitUntilVisible(callback: () => void): void {
