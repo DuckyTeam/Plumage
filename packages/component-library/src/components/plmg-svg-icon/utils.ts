@@ -1,4 +1,4 @@
-import { getAssetPath } from '@stencil/core';
+import { Build, getAssetPath } from '@stencil/core';
 
 const iconCache = {};
 const requestCache = {};
@@ -23,3 +23,8 @@ export async function fetchIcon({ icon }): Promise<string> {
 
   return path;
 }
+
+export const supportsIntersectionObserver =
+  Build.isBrowser &&
+  typeof window !== 'undefined' &&
+  (window as any).IntersectionObserver;
