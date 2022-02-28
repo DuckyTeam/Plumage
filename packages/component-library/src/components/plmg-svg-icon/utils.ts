@@ -25,6 +25,6 @@ export async function fetchIcon({ icon }): Promise<string> {
 }
 
 export const supportsIntersectionObserver =
-  !Build.isBrowser ||
-  typeof window === 'undefined' ||
-  !(window as any).IntersectionObserver;
+  Build.isBrowser &&
+  typeof window !== 'undefined' &&
+  (window as any).IntersectionObserver;
