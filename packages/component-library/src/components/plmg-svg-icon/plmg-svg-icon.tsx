@@ -7,7 +7,7 @@ import {
   Watch,
   Build,
 } from '@stencil/core';
-import { fetchIcon } from './utils';
+import { fetchIcon, supportsIntersectionObserver } from './utils';
 
 @Component({
   assetsDirs: ['assets'],
@@ -64,21 +64,22 @@ export class SvgIcon {
   }
 
   private waitUntilVisible(callback: () => void): void {
-    if (
-      !Build.isBrowser ||
-      typeof window === 'undefined' ||
-      !(window as any).IntersectionObserver
-    ) {
+    if (!supportsIntersectionObserver) {
       callback();
       return;
     }
 
+    // Create an intersection observer for this component. By default, the element to intersect with is the viewport
     this.intersectionObserver = new IntersectionObserver(
       (entries) => {
+        // Entry is every element we are observing, in our case, only this component
         entries.forEach((entry) => {
+          // If the component is intersecting the viewport
           if (entry.isIntersecting) {
+            // Stop listening for intersection, as we are already going to load the icon
             this.intersectionObserver.disconnect();
             this.intersectionObserver = null;
+            // Load the icon
             callback();
           }
         });
@@ -86,6 +87,7 @@ export class SvgIcon {
       { rootMargin: '50px' }
     );
 
+    // Start observing when the component intersects within 50px of the viewport
     this.intersectionObserver.observe(this.el);
   }
 }
