@@ -6,7 +6,15 @@ export default {
   title: 'Component/SvgIcon',
   parameters: {},
   decorators: [],
-  argTypes: {},
+  argTypes: {
+    icon: {
+      options: Object.values(ICON),
+      control: { type: 'select' },
+    },
+    size: {
+      control: { type: 'text' },
+    },
+  },
 };
 
 const PROPS = ['size', 'icon'];
