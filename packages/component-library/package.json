@@ -29,7 +29,10 @@
     "storybook": "start-storybook -p 6006 --no-dll -s ./www",
     "build-storybook": "build-storybook && cp -r ./www/build/ ./storybook-static/",
     "download-icons": "node ./scripts/icons/downloadIcons.mjs",
-    "create-icon-components": "node ./scripts/icons/createIconComponents.mjs"
+    "generate-icon-enum": "node scripts/icons/generateIconEnum.mjs",
+    "pregenerate-icons": "npm run download-icons",
+    "generate-icons": "node scripts/icons/generateCleanIconSvgs.mjs",
+    "postgenerate-icons": "npm run generate-icon-enum"
   },
   "dependencies": {
     "@ducky/plumage-tokens": "^2.0.0"

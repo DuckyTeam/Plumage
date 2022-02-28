@@ -1,10 +1,15 @@
+/* Generate clean SVGs with appropriate names */
+/* Usage: npm run generate-icons */
+/* Inspired by https://github.com/mui/material-ui/blob/20f6450209de399917e40e36468e97d056dc0c1d/packages/material-ui-icons/builder.js */
+
 import fse from 'fs-extra';
 import path from 'path';
 import rimraf from 'rimraf';
 import Queue from './waterfall/Queue.mjs';
 import globAsync from 'fast-glob';
 import * as svgo from 'svgo';
-import generateIconEnum from './generateIconEnum.mjs';
+
+let nbrIconsProcessed = 0;
 
 const singleDigitNumbers = [
   'Zero',
@@ -187,6 +192,7 @@ export function cleanPaths({ svgPath, data, name }) {
 
 async function worker({ progress, svgPath, options }) {
   progress();
+  nbrIconsProcessed++;
 
   const svgPathObj = path.parse(path.normalize(svgPath));
 
@@ -226,6 +232,8 @@ export async function handler(options) {
   queue.push(svgPaths);
 
   await queue.wait({ empty: true });
+
+  console.log(`Processed ${nbrIconsProcessed} icons`);
 }
 
 await handler({
@@ -234,5 +242,3 @@ await handler({
   svgDir: path.join('scripts', 'icons', 'material-icons'),
   glob: '*',
 });
-
-await generateIconEnum();

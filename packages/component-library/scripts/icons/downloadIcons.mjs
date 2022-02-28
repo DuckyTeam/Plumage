@@ -1,3 +1,7 @@
+/* Download icons from Material Icons and store them locally */
+/* Usage: npm run download-icons */
+/* Inspired by https://github.com/mui/material-ui/blob/20f6450209de399917e40e36468e97d056dc0c1d/packages/material-ui-icons/scripts/download.js */
+
 import fetch from 'cross-fetch';
 import fse from 'fs-extra';
 import path from 'path';
@@ -43,7 +47,7 @@ async function run() {
           await downloadIcon(icon);
         });
       },
-      { concurrency: 5 }
+      { concurrency: 7 }
     );
     queue.push(icons);
     await queue.wait({ empty: true });

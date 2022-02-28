@@ -1,3 +1,6 @@
+/* Generate enumeration of all icons that exists in Plumage */
+/* Usage: npm run generate-icon-enum */
+
 import fse from 'fs-extra';
 import path from 'path';
 import globAsync from 'fast-glob';
@@ -26,3 +29,5 @@ ${names}
     res
   );
 }
+
+await generateIconEnum();
