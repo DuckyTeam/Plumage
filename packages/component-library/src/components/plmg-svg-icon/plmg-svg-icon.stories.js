@@ -1,5 +1,4 @@
 import * as Utils from '../../stories/StencilStorybookUtils';
-import { designs } from '../plmg-button/plmg-button.types';
 import { ICON } from './icon.enum';
 
 export default {
