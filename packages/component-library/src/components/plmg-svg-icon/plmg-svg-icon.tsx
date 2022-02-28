@@ -10,7 +10,6 @@ import {
 import { fetchIcon } from './utils';
 
 @Component({
-  assetsDirs: ['assets'],
   tag: 'plmg-svg-icon',
   shadow: true,
 })
