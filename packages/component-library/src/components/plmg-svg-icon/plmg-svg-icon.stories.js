@@ -10,13 +10,16 @@ export default {
       options: Object.values(ICON),
       control: { type: 'select' },
     },
+    color: {
+      control: { type: 'color' },
+    },
     size: {
       control: { type: 'text' },
     },
   },
 };
 
-const PROPS = ['size', 'icon'];
+const PROPS = ['icon', 'color', 'size'];
 const EVENTS = [];
 const CSS_VARS = [];
 const SLOTS = [];
@@ -35,6 +38,7 @@ Icon.storyName = 'Icon';
 Icon.args = {
   size: '2em',
   icon: 'accessAlarm',
+  color: undefined,
 };
 
 export const AllIcons = (args) => {

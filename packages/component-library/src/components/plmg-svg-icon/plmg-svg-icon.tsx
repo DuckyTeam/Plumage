@@ -17,6 +17,15 @@ export class SvgIcon {
   @Element() el: HTMLElement;
 
   /**
+   * Define icon's color.
+   *
+   * Can be any valid CSS color value.
+   *
+   * By default, the icon will have the same color as the parent's element.
+   */
+  @Prop() color: string | undefined;
+
+  /**
    * Define icon by its name.
    * Name must be one of the existing icon: https://components.ducky.eco/?path=/story/component-svgicon--all-icons
    *
@@ -75,7 +84,12 @@ export class SvgIcon {
     return (
       <div
         innerHTML={this.pathData}
-        style={{ height: '1em', width: '1em', fontSize: this.size }}
+        style={{
+          height: '1em',
+          width: '1em',
+          fontSize: this.size,
+          color: this.color ?? 'inherit',
+        }}
       />
     );
   }

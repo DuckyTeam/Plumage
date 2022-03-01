@@ -47,6 +47,10 @@ export namespace Components {
     }
     interface PlmgSvgIcon {
         /**
+          * Define icon's color.  Can be any valid CSS color value.  By default, the icon will have the same color as the parent's element.
+         */
+        "color": string | undefined;
+        /**
           * Define icon by its name. Name must be one of the existing icon: https://components.ducky.eco/?path=/story/component-svgicon--all-icons  Default: NULL
          */
         "icon": string;
@@ -114,6 +118,10 @@ declare namespace LocalJSX {
         "type"?: PlmgButtonType;
     }
     interface PlmgSvgIcon {
+        /**
+          * Define icon's color.  Can be any valid CSS color value.  By default, the icon will have the same color as the parent's element.
+         */
+        "color"?: string | undefined;
         /**
           * Define icon by its name. Name must be one of the existing icon: https://components.ducky.eco/?path=/story/component-svgicon--all-icons  Default: NULL
          */
