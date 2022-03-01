@@ -12,7 +12,7 @@ ReactDOM.render(
     >
       Button
     </PlmgButton>
-    <PlmgSvgIcon icon={'home'} size={'6em'}></PlmgSvgIcon>
+    <PlmgSvgIcon icon={'home'} size={'6em'} />
     PlmgSvgIcon home
     <br />
   </>,
