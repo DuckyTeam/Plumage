@@ -56,5 +56,36 @@ export const AllIcons = (args) => {
 
   return el;
 };
-
 AllIcons.storyName = 'All Icons';
+
+export const Sizes = (args) => {
+  const htmlContent = ['1em', '2rem', '42px']
+    .map((size) => `<plmg-svg-icon icon="home" size="${size}"></plmg-svg-icon>`)
+    .join('')
+    .trim();
+
+  const el = document.createElement('div');
+  el.innerHTML = htmlContent;
+  el.style.display = 'flex';
+  el.style.justifyContent = 'space-between';
+  el.style['flex-wrap'] = 'wrap';
+  return el;
+};
+Sizes.storyName = 'Sizes';
+
+export const Colors = (args) => {
+  const htmlContent = ['red', '#00ff00', 'rgba(28, 0, 255, 1)']
+    .map(
+      (color) => `<plmg-svg-icon icon="home" color="${color}"></plmg-svg-icon>`
+    )
+    .join('')
+    .trim();
+
+  const el = document.createElement('div');
+  el.innerHTML = htmlContent;
+  el.style.display = 'flex';
+  el.style.justifyContent = 'space-between';
+  el.style['flex-wrap'] = 'wrap';
+  return el;
+};
+Colors.storyName = 'Colors';
