@@ -2,6 +2,7 @@
 A bunch of scripts to download, clean, rename icons.
 
 Icons are downloaded from [Google Material Icons](https://fonts.google.com/icons).
+Some icons are home-made and only exist within this repo (and somewhere on Figma).
 
 And they are hosted on https://static.ducky.eco/plumage/icons/icon-name.svg
 
@@ -10,6 +11,8 @@ Follow the instructions below to download the latest icons from Material Icons a
 to make them available for every user of the design system.
 
 > Note: at the end of these steps, you do **not need** to deploy a new version of the library to make new icons available.
+> Simply uploading icons to the bucket "static.ducky.eco' is enough to make them available for usage.
+> **However**, to have them listed on Storybook, you need to build and deploy the latest version of Storybook.
 
 ### Download, clean, rename, generate enum
 

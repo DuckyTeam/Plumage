@@ -10,7 +10,7 @@ export default async function generateIconEnum() {
     path.resolve('scripts', 'icons', 'cleaned-icons', '*')
   );
 
-  const names = fileNames
+  const namesFromDownloadedIcons = fileNames
     .map((dir) => dir.split('/').at(-1).replace('.svg', ''))
     .map((filename) => ({
       key: filename[0].toUpperCase() + filename.slice(1),
@@ -19,14 +19,25 @@ export default async function generateIconEnum() {
     .map(({ key, value }) => `  ${key} = '${value}',`)
     .join('\n');
 
-  const res = `export enum ICON {
+  const homemadeIcons = fse.readJsonSync(
+    path.resolve('scripts', 'icons', 'homemadeIcons.json')
+  );
+  const namesFromHomemadeIcons = Object.keys(homemadeIcons)
+    .map((key) => `  ${key} = '${homemadeIcons[key]}',`)
+    .join('\n');
+  const names = [
+    namesFromDownloadedIcons,
+    `  // Homemade icons`,
+    namesFromHomemadeIcons,
+  ].join('\n');
+
+  const allIconsEnum = `export enum ICON {
 ${names}
 }
 `;
-
   await fse.writeFile(
     path.join('src', 'components', 'plmg-svg-icon', 'icon.enum.ts'),
-    res
+    allIconsEnum
   );
 }
 
