@@ -45,6 +45,20 @@ export namespace Components {
          */
         "type": PlmgButtonType;
     }
+    interface PlmgSvgIcon {
+        /**
+          * Define icon's color.  Can be any valid CSS color value.  By default, the icon will have the same color as the parent's element.
+         */
+        "color": string | undefined;
+        /**
+          * Define icon by its name. Name must be one of the existing icon: https://components.ducky.eco/?path=/story/component-svgicon--all-icons  Default: NULL
+         */
+        "icon": string;
+        /**
+          * Define the icon's size.  Allowed values: <value><unit>  Examples: - 1em - 42px  Default: 1em
+         */
+        "size": string;
+    }
 }
 declare global {
     interface HTMLPlmgButtonElement extends Components.PlmgButton, HTMLStencilElement {
@@ -53,8 +67,15 @@ declare global {
         prototype: HTMLPlmgButtonElement;
         new (): HTMLPlmgButtonElement;
     };
+    interface HTMLPlmgSvgIconElement extends Components.PlmgSvgIcon, HTMLStencilElement {
+    }
+    var HTMLPlmgSvgIconElement: {
+        prototype: HTMLPlmgSvgIconElement;
+        new (): HTMLPlmgSvgIconElement;
+    };
     interface HTMLElementTagNameMap {
         "plmg-button": HTMLPlmgButtonElement;
+        "plmg-svg-icon": HTMLPlmgSvgIconElement;
     }
 }
 declare namespace LocalJSX {
@@ -96,8 +117,23 @@ declare namespace LocalJSX {
          */
         "type"?: PlmgButtonType;
     }
+    interface PlmgSvgIcon {
+        /**
+          * Define icon's color.  Can be any valid CSS color value.  By default, the icon will have the same color as the parent's element.
+         */
+        "color"?: string | undefined;
+        /**
+          * Define icon by its name. Name must be one of the existing icon: https://components.ducky.eco/?path=/story/component-svgicon--all-icons  Default: NULL
+         */
+        "icon"?: string;
+        /**
+          * Define the icon's size.  Allowed values: <value><unit>  Examples: - 1em - 42px  Default: 1em
+         */
+        "size"?: string;
+    }
     interface IntrinsicElements {
         "plmg-button": PlmgButton;
+        "plmg-svg-icon": PlmgSvgIcon;
     }
 }
 export { LocalJSX as JSX };
@@ -105,6 +141,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "plmg-button": LocalJSX.PlmgButton & JSXBase.HTMLAttributes<HTMLPlmgButtonElement>;
+            "plmg-svg-icon": LocalJSX.PlmgSvgIcon & JSXBase.HTMLAttributes<HTMLPlmgSvgIconElement>;
         }
     }
 }

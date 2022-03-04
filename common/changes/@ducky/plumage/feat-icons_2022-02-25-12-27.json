@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "Load icons from CDN",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}

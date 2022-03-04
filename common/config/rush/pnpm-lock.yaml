@@ -1,6 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@axe-core/puppeteer': ~4.4.0
   '@babel/cli': ^7.16.7
   '@babel/core': ^7.16.7
   '@babel/preset-env': ^7.16.7
@@ -34,29 +35,37 @@ specifiers:
   clean-webpack-plugin: ^4.0.0
   concurrently: ^6.2.1
   creevey: 0.7.36
+  cross-fetch: ~3.1.5
   css-loader: ^6.5.1
   eslint: ^7.32.0
   eslint-plugin-import: ^2.24.2
   eslint-plugin-no-only-tests: ^2.6.0
   eslint-plugin-prettier: ^4.0.0
+  fast-glob: ~3.2.11
   firebase: ~9.6.6
+  fs-extra: ~10.0.1
   html-webpack-plugin: ^5.5.0
   jest: ~26.6.3
   jest-cli: ~26.6.3
+  lodash.intersection: ~4.4.0
   np: ^3.1.0
   prettier: ^2.4.1
   puppeteer: ~13.3.2
+  rimraf: ~3.0.2
   sass: ^1.44.0
   storybook: ^6.3.8
   storybook-addon-designs: ^6.0.1
   style-dictionary: ^3.1.1
   style-loader: ^3.3.1
+  svgo: ~2.8.0
   typescript: ^4.5.4
   webpack: ^5.65.0
   webpack-cli: ^4.9.1
   webpack-dev-server: ^4.7.2
+  yargs: ~17.3.1
 
 dependencies:
+  '@axe-core/puppeteer': 4.4.0_puppeteer@13.3.2
   '@babel/cli': 7.16.7_@babel+core@7.16.7
   '@babel/core': 7.16.7
   '@babel/preset-env': 7.16.7_@babel+core@7.16.7
@@ -90,27 +99,34 @@ dependencies:
   clean-webpack-plugin: 4.0.0_webpack@5.65.0
   concurrently: 6.5.1
   creevey: 0.7.36_9698f900909cc93d64ad1dbc85b57e7f
+  cross-fetch: 3.1.5
   css-loader: 6.5.1_webpack@5.65.0
   eslint: 7.32.0
   eslint-plugin-import: 2.25.4_eslint@7.32.0
   eslint-plugin-no-only-tests: 2.6.0
   eslint-plugin-prettier: 4.0.0_eslint@7.32.0+prettier@2.5.1
+  fast-glob: 3.2.11
   firebase: 9.6.6
+  fs-extra: 10.0.1
   html-webpack-plugin: 5.5.0_webpack@5.65.0
   jest: 26.6.3
   jest-cli: 26.6.3
+  lodash.intersection: 4.4.0
   np: 3.1.0
   prettier: 2.5.1
   puppeteer: 13.3.2
+  rimraf: 3.0.2
   sass: 1.46.0
   storybook: 6.4.9_39f7ab2e0e20f3aec77c309f1ce241b1
   storybook-addon-designs: 6.2.1
   style-dictionary: 3.1.1
   style-loader: 3.3.1_webpack@5.65.0
+  svgo: 2.8.0
   typescript: 4.5.4
   webpack: 5.65.0_webpack-cli@4.9.1
   webpack-cli: 4.9.1_5f0b1a08d9b609abbf49f5098b2e4abb
   webpack-dev-server: 4.7.2_webpack-cli@4.9.1+webpack@5.65.0
+  yargs: 17.3.1
 
 packages:
 
@@ -5261,6 +5277,11 @@ packages:
     engines: {node: '>= 6'}
     dev: false
 
+  /@trysound/sax/0.2.0:
+    resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
+    engines: {node: '>=10.13.0'}
+    dev: false
+
   /@types/babel__core/7.1.18:
     resolution: {integrity: sha512-S7unDjm/C7z2A2R9NzfKCK1I+BAALDtxEmsJBwlB3EzNfb929ykjL++1CK9LO++EIp2fQrC8O+BwjKvz6UeDyQ==}
     dependencies:
@@ -8134,6 +8155,14 @@ packages:
       nth-check: 2.0.1
     dev: false
 
+  /css-tree/1.1.3:
+    resolution: {integrity: sha512-tRpdppF7TRazZrjJ6v3stzv93qxRcSsFmW6cX0Zm2NVKpxE1WV1HblnghVv9TreireHkqI/VDEsfolRF1p6y7Q==}
+    engines: {node: '>=8.0.0'}
+    dependencies:
+      mdn-data: 2.0.14
+      source-map: 0.6.1
+    dev: false
+
   /css-what/5.1.0:
     resolution: {integrity: sha512-arSMRWIIFY0hV8pIxZMEfmMI47Wj3R/aWpZDDxWYCPEiOMv6tfOrnpDtgxBYPEQD4V0Y/958+1TdC3iWTFcUPw==}
     engines: {node: '>= 6'}
@@ -8143,6 +8172,13 @@ packages:
     resolution: {integrity: sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==}
     engines: {node: '>=4'}
     hasBin: true
+    dev: false
+
+  /csso/4.2.0:
+    resolution: {integrity: sha512-wvlcdIbf6pwKEk7vHj8/Bkc0B4ylXZruLvOgs9doS5eOsOpuodOV2zJChSpkp+pRpYQLQMeF04nr3Z68Sta9jA==}
+    engines: {node: '>=8.0.0'}
+    dependencies:
+      css-tree: 1.1.3
     dev: false
 
   /cssom/0.3.8:
@@ -9399,6 +9435,17 @@ packages:
       micromatch: 3.1.10
     dev: false
 
+  /fast-glob/3.2.11:
+    resolution: {integrity: sha512-xrO3+1bxSo3ZVHAnqzyuewYT6aMFHRAd4Kcs92MAonjwQZLsK9d0SF1IyQ3k5PoirxTW0Oe/RqFgMQ6TcNE5Ew==}
+    engines: {node: '>=8.6.0'}
+    dependencies:
+      '@nodelib/fs.stat': 2.0.5
+      '@nodelib/fs.walk': 1.2.8
+      glob-parent: 5.1.2
+      merge2: 1.4.1
+      micromatch: 4.0.4
+    dev: false
+
   /fast-glob/3.2.7:
     resolution: {integrity: sha512-rYGMRwip6lUMvYD3BTScMwT1HtAs2d71SMv66Vrxs0IekGZEjhM0pcMfjQPnknBt2zeCwQMEupiN02ZP4DiT1Q==}
     engines: {node: '>=8'}
@@ -9807,6 +9854,15 @@ packages:
       klaw: 1.3.1
       path-is-absolute: 1.0.1
       rimraf: 2.7.1
+    dev: false
+
+  /fs-extra/10.0.1:
+    resolution: {integrity: sha512-NbdoVMZso2Lsrn/QwLXOy6rm0ufY2zEOKCDzJR/0kBsb0E6qed0P3iYK+Ath3BfvXEeu4JhEtXLgILx5psUfag==}
+    engines: {node: '>=12'}
+    dependencies:
+      graceful-fs: 4.2.9
+      jsonfile: 6.1.0
+      universalify: 2.0.0
     dev: false
 
   /fs-extra/8.1.0:
@@ -12545,6 +12601,10 @@ packages:
     resolution: {integrity: sha1-gteb/zCmfEAF/9XiUVMArZyk168=}
     dev: false
 
+  /lodash.intersection/4.4.0:
+    resolution: {integrity: sha1-ChG6Yx0OlcI8fy9Mu5ppLtF45wU=}
+    dev: false
+
   /lodash.merge/4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
     dev: false
@@ -12793,6 +12853,10 @@ packages:
 
   /mdast-util-to-string/1.1.0:
     resolution: {integrity: sha512-jVU0Nr2B9X3MU4tSK7JP1CMkSvOj7X5l/GboG1tKRw52lLF1x2Ju92Ms9tNetCcbfX3hzlM73zYo2NKkWSfF/A==}
+    dev: false
+
+  /mdn-data/2.0.14:
+    resolution: {integrity: sha512-dn6wd0uw5GsdswPFfsgMp5NSB0/aDe6fK94YJV/AJDYXL6HVLWBsxeq7js7Ad+mU2K9LAlwpk6kN2D5mwCPVow==}
     dev: false
 
   /mdurl/1.0.1:
@@ -16401,6 +16465,20 @@ packages:
     engines: {node: '>= 0.4'}
     dev: false
 
+  /svgo/2.8.0:
+    resolution: {integrity: sha512-+N/Q9kV1+F+UeWYoSiULYo4xYSDQlTgb+ayMobAXPwMnLvop7oxKMo9OzIrX5x3eS4L4f2UHhc9axXwY8DpChg==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
+    dependencies:
+      '@trysound/sax': 0.2.0
+      commander: 7.2.0
+      css-select: 4.2.1
+      css-tree: 1.1.3
+      csso: 4.2.0
+      picocolors: 1.0.0
+      stable: 0.1.8
+    dev: false
+
   /symbol-observable/1.0.1:
     resolution: {integrity: sha1-g0D8RwLDEi310iKI+IKD9RPT/dQ=}
     engines: {node: '>=0.10.0'}
@@ -18136,6 +18214,11 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
+  /yargs-parser/21.0.0:
+    resolution: {integrity: sha512-z9kApYUOCwoeZ78rfRYYWdiU/iNL6mwwYlkkZfJoyMR1xps+NEBX5X7XmRpxkZHhXJ6+Ey00IwKxBBSW9FIjyA==}
+    engines: {node: '>=12'}
+    dev: false
+
   /yargs-unparser/2.0.0:
     resolution: {integrity: sha512-7pRTIA9Qc1caZ0bZ6RYRGbHJthJWuakf+WmHK0rVeLkNrrGhfoabBNdue6kdINI6r4if7ocq9aD/n7xwKOdzOA==}
     engines: {node: '>=10'}
@@ -18176,6 +18259,19 @@ packages:
       yargs-parser: 20.2.9
     dev: false
 
+  /yargs/17.3.1:
+    resolution: {integrity: sha512-WUANQeVgjLbNsEmGk20f+nlHgOqzRFpiGWVaBrYGYIGANIIu3lWjoyi0fNlFmJkvfhCZ6BXINe7/W2O2bV4iaA==}
+    engines: {node: '>=12'}
+    dependencies:
+      cliui: 7.0.4
+      escalade: 3.1.1
+      get-caller-file: 2.0.5
+      require-directory: 2.1.1
+      string-width: 4.2.3
+      y18n: 5.0.8
+      yargs-parser: 21.0.0
+    dev: false
+
   /yauzl/2.10.0:
     resolution: {integrity: sha1-x+sXyT4RLLEIb6bY5R+wZnt5pfk=}
     dependencies:
@@ -18198,7 +18294,7 @@ packages:
     dev: false
 
   file:projects/example-react-app.tgz:
-    resolution: {integrity: sha512-ohICMh9XzYpyNmbBmRxv048109aJCGHhkvJpY3mHzQJTWIk6G86sK1IgG36RvnwxKXay+pr08oFpDYHPlgeScw==, tarball: file:projects/example-react-app.tgz}
+    resolution: {integrity: sha512-L3smq623jPUYm51YoGbEiqsASudfKkdLgCrfHa3QrATFDhn6vPHxWCMUfyzeIErbsFxJWBuSyK1+aG140s9LAQ==, tarball: file:projects/example-react-app.tgz}
     name: '@rush-temp/example-react-app'
     version: 0.0.0
     dependencies:
@@ -18235,7 +18331,7 @@ packages:
     dev: false
 
   file:projects/plumage-react.tgz:
-    resolution: {integrity: sha512-+90f7SkRDTe4JgzzGMdUL2ARmTTsPqFrv//jToPq99mz/9FqXcpKIebDlUcbkULMNGzdWB2BfoHXTSp2deqH6Q==, tarball: file:projects/plumage-react.tgz}
+    resolution: {integrity: sha512-UjpBMlz7+9t4bIbW32MqHXWTBBvFxFmrDID0ue1RZKj7zsMRTGYx/XfTL1V1TIHGiCYDaoiG9r0avWsr8/nQIQ==, tarball: file:projects/plumage-react.tgz}
     name: '@rush-temp/plumage-react'
     version: 0.0.0
     dependencies:
@@ -18259,7 +18355,7 @@ packages:
     dev: false
 
   file:projects/plumage.tgz_0caa87738ffad273e3f555cf1f2e570e:
-    resolution: {integrity: sha512-xPznUPe88ZQjnlQsgg6JCu9mRO61L7PEdWPfLx72+6vIuOCQH0veXMAhQklKnyE8/UOJARPhBERxZhk7Tukrzg==, tarball: file:projects/plumage.tgz}
+    resolution: {integrity: sha512-EWtX6F0fhZnIpx3BFbPQ8fyd1D9I6RmfisuhVhc9Bi6Aw1m6sTevhFFfRnP1RV4gaxSm+v6stX1+1g6DepI27A==, tarball: file:projects/plumage.tgz}
     id: file:projects/plumage.tgz
     name: '@rush-temp/plumage'
     version: 0.0.0
@@ -18285,20 +18381,28 @@ packages:
       '@typescript-eslint/parser': 4.33.0_eslint@7.32.0+typescript@4.5.4
       concurrently: 6.5.1
       creevey: 0.7.36_9698f900909cc93d64ad1dbc85b57e7f
+      cross-fetch: 3.1.5
       dotenv: 10.0.0
       eslint: 7.32.0
       eslint-plugin-import: 2.25.4_eslint@7.32.0
       eslint-plugin-no-only-tests: 2.6.0
       eslint-plugin-prettier: 4.0.0_eslint@7.32.0+prettier@2.5.1
+      fast-glob: 3.2.11
       firebase: 9.6.6
+      fs-extra: 10.0.1
       jest: 26.6.3
       jest-cli: 26.6.3
+      lodash: 4.17.21
+      lodash.intersection: 4.4.0
       prettier: 2.5.1
       puppeteer: 13.3.2
+      rimraf: 3.0.2
       sass: 1.46.0
       storybook: 6.4.9_39f7ab2e0e20f3aec77c309f1ce241b1
       storybook-addon-designs: 6.2.1
+      svgo: 2.8.0
       typescript: 4.5.4
+      yargs: 17.3.1
     transitivePeerDependencies:
       - '@babel/core'
       - '@storybook/angular'
