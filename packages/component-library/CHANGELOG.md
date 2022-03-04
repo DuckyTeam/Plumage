@@ -1,6 +1,17 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Fri, 25 Feb 2022 12:30:43 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Mar 2022 15:31:00 GMT and should not be manually modified.
+
+## 0.2.0
+Fri, 04 Mar 2022 15:31:00 GMT
+
+### Minor changes
+
+- Add icon components
+
+### Patches
+
+- Load icons from CDN
 
 ## 0.1.8
 Fri, 25 Feb 2022 12:30:43 GMT
