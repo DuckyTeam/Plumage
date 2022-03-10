@@ -4,7 +4,7 @@ export default {
   title: 'Component/Card',
   parameters: {},
   decorators: [],
-  argTypes: {},
+  argTypes: { onClick: { action: 'clicked' } },
 };
 
 const PROPS = ['header-text', 'bottom-button-text'];

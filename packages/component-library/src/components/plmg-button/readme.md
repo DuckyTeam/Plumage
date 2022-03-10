@@ -20,6 +20,19 @@
 | `type`      | `type`       | Define button's type  Allowed values:   - button   - submit   - reset  Default: button                                             | `"button" \| "reset" \| "submit"`                                            | `'button'`  |
 
 
+## Dependencies
+
+### Used by
+
+ - [plmg-card](../plmg-card)
+
+### Graph
+```mermaid
+graph TD;
+  plmg-card --> plmg-button
+  style plmg-button fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

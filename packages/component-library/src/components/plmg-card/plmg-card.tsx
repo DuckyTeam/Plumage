@@ -1,4 +1,4 @@
-import { Component, h, Prop, Watch } from '@stencil/core';
+import { Component, h, Prop, Watch, Event, EventEmitter } from '@stencil/core';
 
 @Component({
   tag: 'plmg-card',
@@ -17,11 +17,20 @@ export class Card {
   }
 
   /**
-   * Define card's header text
+   * Define card's bottom button action
+   */
+  @Prop() bottomButtonAction: () => void;
+
+  /**
+   * Define card's bottom button text
    */
   @Prop() bottomButtonText: string;
   @Watch('bottomButtonText')
   validateBottomButtonText(newValue: string) {
+    if (newValue && !this.bottomButtonAction)
+      throw new Error(
+        'card must have a bottomButtonAction to have a bottomButtonText'
+      );
     if (newValue && typeof newValue !== 'string')
       throw new Error('bottomButtonText must be a string');
   }
@@ -38,7 +47,7 @@ export class Card {
     const contentClasses = {
       'content-area': true,
       'with-header': Boolean(this.headerText),
-      'with-footer': Boolean(this.bottomButtonText),
+      'with-footer': Boolean(this.bottomButtonAction),
     };
 
     const footerClasses = {
@@ -55,9 +64,14 @@ export class Card {
         <div class={contentClasses}>
           <slot></slot>
         </div>
-        {Boolean(this.bottomButtonText) && (
+        {Boolean(this.bottomButtonAction) && (
           <div class={footerClasses}>
-            <plmg-button design={'borderless'} size={'small'} color={'primary'}>
+            <plmg-button
+              onClick={this.bottomButtonAction}
+              design={'borderless'}
+              size={'small'}
+              color={'primary'}
+            >
               {this.bottomButtonText}
             </plmg-button>
           </div>

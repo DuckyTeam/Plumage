@@ -47,7 +47,11 @@ export namespace Components {
     }
     interface PlmgCard {
         /**
-          * Define card's header text
+          * Define card's bottom button action
+         */
+        "bottomButtonAction": () => void;
+        /**
+          * Define card's bottom button text
          */
         "bottomButtonText": string;
         /**
@@ -115,7 +119,11 @@ declare namespace LocalJSX {
     }
     interface PlmgCard {
         /**
-          * Define card's header text
+          * Define card's bottom button action
+         */
+        "bottomButtonAction"?: () => void;
+        /**
+          * Define card's bottom button text
          */
         "bottomButtonText"?: string;
         /**

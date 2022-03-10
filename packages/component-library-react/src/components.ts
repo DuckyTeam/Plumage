@@ -9,3 +9,4 @@ import { defineCustomElements } from '@ducky/plumage/loader';
 
 defineCustomElements();
 export const PlmgButton = /*@__PURE__*/createReactComponent<JSX.PlmgButton, HTMLPlmgButtonElement>('plmg-button');
+export const PlmgCard = /*@__PURE__*/createReactComponent<JSX.PlmgCard, HTMLPlmgCardElement>('plmg-card');
