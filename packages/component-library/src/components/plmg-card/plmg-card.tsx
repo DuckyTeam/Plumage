@@ -1,4 +1,4 @@
-import { Component, h, Prop, Watch, Event, EventEmitter } from '@stencil/core';
+import { Component, h, Prop, Watch } from '@stencil/core';
 
 @Component({
   tag: 'plmg-card',
@@ -62,7 +62,8 @@ export class Card {
           </div>
         )}
         <div class={contentClasses}>
-          <slot></slot>
+          <slot name={'item-one'}></slot>
+          <slot name={'item-two'}></slot>
         </div>
         {Boolean(this.bottomButtonAction) && (
           <div class={footerClasses}>

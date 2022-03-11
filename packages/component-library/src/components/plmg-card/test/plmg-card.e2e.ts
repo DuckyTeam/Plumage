@@ -8,6 +8,7 @@ describe('plmg-card', () => {
     await page.setContent('<plmg-card></plmg-card>');
 
     const element = await page.find('plmg-card');
+
     expect(element).toHaveClass('hydrated');
   });
 
@@ -15,15 +16,20 @@ describe('plmg-card', () => {
     it('are accessible', async () => {
       const page = await newE2EPage();
 
+      const headerTexts = ['Something', null];
+      const bottomButtonActions = [() => {}, null];
+
       let htmlContent = '';
-      someControl.forEach((control) => {
-        htmlContent += `
-    <plmg-card control="${control}">
-  control="${control}"
-    </plmg-card>
-<br/>
-    `;
+      headerTexts.forEach((headerText) => {
+        bottomButtonActions.forEach((bottomButtonAction) => {
+          htmlContent += `
+          <plmg-card headerText="${headerText}" bottomButtonAction="${bottomButtonAction}" bottomButtonText="Action" >
+          </plmg-card>
+          <br/>
+                        `;
+        });
       });
+
       await page.setContent(htmlContent);
 
       const results = await new AxePuppeteer(page as unknown as Page)

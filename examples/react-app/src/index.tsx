@@ -17,7 +17,12 @@ ReactDOM.render(
       bottomButtonText="Click here"
       bottomButtonAction={() => console.log('Ahhhh')}
     >
-      <h1>Hello There</h1>
+      <div slot="item-one">
+        <h1>Hello Darkness</h1>
+      </div>
+      <div slot="item-two">
+        <h1>My Old Friend</h1>
+      </div>
     </PlmgCard>
   </>,
   document.getElementById('root')

@@ -34,10 +34,7 @@
   align-items: flex-start;
   padding: 0px;
   overflow: hidden;
-
-  width: 233px;
-  height: 242px;
-
+  width: fit-content;
   background: tokens.$plmg-background-neutral;
   border: tokens.$plmg-border-width-s solid tokens.$plmg-border-neutral-weak;
   box-sizing: border-box;
@@ -91,6 +88,15 @@
   &.with-footer {
     padding-bottom: tokens.$plmg-spacing-x0-5;
   }
+}
+
+::slotted([slot='item-one']) {
+  align-self: stretch;
+}
+
+::slotted([slot='item-two']) {
+  margin-top: 16px;
+  align-self: stretch;
 }
 
 .footer {
