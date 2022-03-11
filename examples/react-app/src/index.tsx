@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { PlmgButton, PlmgCard } from '@ducky/plumage-react';
+import { PlmgButton, PlmgSvgIcon, PlmgCard } from '@ducky/plumage-react';
 
 ReactDOM.render(
   <>
@@ -12,6 +12,9 @@ ReactDOM.render(
     >
       This is a Plumage component
     </PlmgButton>
+    <PlmgSvgIcon icon={'home'} size={'6em'} />
+    PlmgSvgIcon home
+    <br />
     <PlmgCard
       headerText="Header Text"
       bottomButtonText="Click here"

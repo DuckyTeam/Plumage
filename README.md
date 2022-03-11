@@ -59,7 +59,7 @@ rush purge
 
 Whenever you make changes to this repository
 
-1. Make sure you've got the latest version: `git checkout dev && git pull`
+1. Make sure you've got the latest version: `git checkout main && git pull`
 2. Create a new branch: `git branch -b <branchname>`
 3. Do your modifications
 4. Commit your changes: `git add . && git commit`

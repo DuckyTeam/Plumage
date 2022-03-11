@@ -1,6 +1,9 @@
 import * as Utils from '../../stories/StencilStorybookUtils';
 import { designs, sizes, colors } from './plmg-button.types';
 
+const propToEnglish = (text) =>
+  text.replace('-', ' ').replace(/^\w/, (c) => c.toUpperCase());
+
 export default {
   title: 'Component/Button',
   parameters: {},
@@ -59,7 +62,7 @@ const Template = (args) => {
 export const Primary = Template.bind({});
 Primary.storyName = 'Button';
 Primary.args = {
-  text: 'Button',
+  text: 'Label',
   design: 'filled',
   size: 'medium',
   color: 'primary',
@@ -83,7 +86,10 @@ Link.args = {
 
 export const AllDesigns = (args) => {
   const htmlContent = designs
-    .map((design) => `<plmg-button design="${design}">${design}</plmg-button>`)
+    .map(
+      (design) =>
+        `<plmg-button design="${design}">${propToEnglish(design)}</plmg-button>`
+    )
     .join('')
     .trim();
 
@@ -98,7 +104,10 @@ AllDesigns.storyName = 'All designs';
 
 export const AllSizes = (args) => {
   const htmlContent = sizes
-    .map((size) => `<plmg-button size="${size}">${size}</plmg-button>`)
+    .map(
+      (size) =>
+        `<plmg-button size="${size}">${propToEnglish(size)}</plmg-button>`
+    )
     .join('')
     .trim();
 
@@ -113,7 +122,10 @@ AllSizes.storyName = 'All sizes';
 
 export const AllColors = (args) => {
   const htmlContent = colors
-    .map((color) => `<plmg-button color="${color}">${color}</plmg-button>`)
+    .map(
+      (color) =>
+        `<plmg-button color="${color}">${propToEnglish(color)}</plmg-button>`
+    )
     .join('')
     .trim();
 

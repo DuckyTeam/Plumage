@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage-react
 
-This log was last generated on Tue, 22 Feb 2022 15:39:00 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Mar 2022 15:31:00 GMT and should not be manually modified.
+
+## 0.2.0
+Fri, 04 Mar 2022 15:31:00 GMT
+
+### Minor changes
+
+- Add icon components
 
 ## 0.1.0
 Tue, 22 Feb 2022 15:39:00 GMT
