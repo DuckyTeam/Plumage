@@ -74,7 +74,12 @@ export const Sizes = (args) => {
 Sizes.storyName = 'Sizes';
 
 export const Colors = (args) => {
-  const htmlContent = ['red', '#00ff00', 'rgba(28, 0, 255, 1)']
+  const htmlContent = [
+    '#66c2cb',
+    '#f179a2',
+    'rgba(53,122,56,1)',
+    'var(--plmg-background-warning-active)',
+  ]
     .map(
       (color) => `<plmg-svg-icon icon="home" color="${color}"></plmg-svg-icon>`
     )
