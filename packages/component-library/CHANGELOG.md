@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Fri, 04 Mar 2022 15:31:00 GMT and should not be manually modified.
+This log was last generated on Wed, 23 Mar 2022 09:08:01 GMT and should not be manually modified.
+
+## 0.2.1
+Wed, 23 Mar 2022 09:08:01 GMT
+
+### Patches
+
+- Bump Stencil version to 2.14.2
 
 ## 0.2.0
 Fri, 04 Mar 2022 15:31:00 GMT
