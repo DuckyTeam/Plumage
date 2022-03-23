@@ -16,15 +16,14 @@ describe('plmg-card', () => {
     it('are accessible', async () => {
       const page = await newE2EPage();
 
-      const headerTexts = ['Something', null];
-      const bottomButtonActions = [() => {}, null];
+      const headerTexts = ['Something', undefined];
+      const bottomActionTexts = ['Action bottom', undefined];
 
       let htmlContent = '';
       headerTexts.forEach((headerText) => {
-        bottomButtonActions.forEach((bottomButtonAction) => {
+        bottomActionTexts.forEach((bottomActionText) => {
           htmlContent += `
-          <plmg-card headerText="${headerText}" bottomButtonAction="${bottomButtonAction}" bottomButtonText="Action" >
-          </plmg-card>
+          <plmg-card header-text="${headerText}" bottom-action-text="${bottomActionText}"></plmg-card>
           <br/>
                         `;
         });

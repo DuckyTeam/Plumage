@@ -27,7 +27,7 @@ export class Card {
   /**
    * Define card's header icon, used as a top action for the card.
    *
-   * If a text or an icon is provided, the heading will be displayed.
+   * If a text or an icon is provided, the heading will be displayed with the icon button on the right.
    * By default, when no text nor icon is provided, the heading is hidden.
    */
   @Prop() topActionIcon: string | undefined = undefined;
@@ -38,7 +38,7 @@ export class Card {
   }
 
   /**
-   * The event "topActionClicked" is triggered when the top action icon is clicked.
+   * The event "topActionClicked" is triggered when the top action button is clicked.
    */
   @Event() topActionClicked: EventEmitter<MouseEvent>;
 
@@ -48,17 +48,17 @@ export class Card {
    * If a text is provided, the button will be displayed.
    * By default, when no text is provided, the button is hidden.
    */
-  @Prop() bottomButtonText: string | undefined = undefined;
-  @Watch('bottomButtonText')
-  validateBottomButtonText(newValue: string) {
+  @Prop() bottomActionText: string | undefined = undefined;
+  @Watch('bottomActionText')
+  validateBottomActionText(newValue: string) {
     if (newValue && typeof newValue !== 'string')
-      throw new Error('bottomButtonText must be a string');
+      throw new Error('bottomActionText must be a string');
   }
 
   /**
-   * The event "bottomButtonClicked" is triggered when the bottom button is clicked.
+   * The event "bottomActionClicked" is triggered when the bottom action button is clicked.
    */
-  @Event() bottomButtonClicked: EventEmitter<MouseEvent>;
+  @Event() bottomActionClicked: EventEmitter<MouseEvent>;
 
   render() {
     const cardClasses = {
@@ -104,12 +104,12 @@ export class Card {
         {this.hasFooter() && (
           <div class={footerClasses}>
             <plmg-button
-              onClick={(e) => this.bottomButtonClicked.emit(e)}
+              onClick={(e) => this.bottomActionClicked.emit(e)}
               design={'borderless'}
               size={'small'}
               color={'primary'}
             >
-              {this.bottomButtonText}
+              {this.bottomActionText}
             </plmg-button>
           </div>
         )}
@@ -125,6 +125,6 @@ export class Card {
   }
 
   private hasFooter(): boolean {
-    return isDefined(this.bottomButtonText) && this.bottomButtonText !== '';
+    return isDefined(this.bottomActionText) && this.bottomActionText !== '';
   }
 }

@@ -10,21 +10,23 @@ ReactDOM.render(
       }}
       type={'button'}
     >
-      This is a Plumage component
+      PlmgButton
     </PlmgButton>
     <PlmgSvgIcon icon={'home'} size={'6em'} />
     PlmgSvgIcon home
     <br />
     <PlmgCard
       headerText="Header Text"
-      bottomButtonText="Click here"
-      bottomButtonAction={() => console.log('Ahhhh')}
+      bottomActionText="Click here"
+      bottomButtonAction={() =>
+        console.log('bottomButtonClicked event received')
+      }
     >
-      <div slot="item-one">
-        <h1>Hello Darkness</h1>
+      <div slot="slot-1">
+        <h1>PlmgCard slot-1</h1>
       </div>
-      <div slot="item-two">
-        <h1>My Old Friend</h1>
+      <div slot="slot-2">
+        <h1>PlmgCard slot-2</h1>
       </div>
     </PlmgCard>
   </>,

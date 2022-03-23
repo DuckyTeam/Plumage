@@ -49,13 +49,13 @@ export namespace Components {
         /**
           * Define card's bottom button text.  If a text is provided, the button will be displayed. By default, when no text is provided, the button is hidden.
          */
-        "bottomButtonText": string | undefined;
+        "bottomActionText": string | undefined;
         /**
           * Define card's header text.  If a text or an icon is provided, the heading will be displayed. By default, when no text nor icon is provided, the heading is hidden.
          */
         "headerText": string | undefined;
         /**
-          * Define card's header icon, used as a top action for the card.  If a text or an icon is provided, the heading will be displayed. By default, when no text nor icon is provided, the heading is hidden.
+          * Define card's header icon, used as a top action for the card.  If a text or an icon is provided, the heading will be displayed with the icon button on the right. By default, when no text nor icon is provided, the heading is hidden.
          */
         "topActionIcon": string | undefined;
     }
@@ -142,21 +142,21 @@ declare namespace LocalJSX {
         /**
           * Define card's bottom button text.  If a text is provided, the button will be displayed. By default, when no text is provided, the button is hidden.
          */
-        "bottomButtonText"?: string | undefined;
+        "bottomActionText"?: string | undefined;
         /**
           * Define card's header text.  If a text or an icon is provided, the heading will be displayed. By default, when no text nor icon is provided, the heading is hidden.
          */
         "headerText"?: string | undefined;
         /**
-          * The event "bottomButtonClicked" is triggered when the bottom button is clicked.
+          * The event "bottomActionClicked" is triggered when the bottom action button is clicked.
          */
-        "onBottomButtonClicked"?: (event: CustomEvent<MouseEvent>) => void;
+        "onBottomActionClicked"?: (event: CustomEvent<MouseEvent>) => void;
         /**
-          * The event "topActionClicked" is triggered when the top action icon is clicked.
+          * The event "topActionClicked" is triggered when the top action button is clicked.
          */
         "onTopActionClicked"?: (event: CustomEvent<MouseEvent>) => void;
         /**
-          * Define card's header icon, used as a top action for the card.  If a text or an icon is provided, the heading will be displayed. By default, when no text nor icon is provided, the heading is hidden.
+          * Define card's header icon, used as a top action for the card.  If a text or an icon is provided, the heading will be displayed with the icon button on the right. By default, when no text nor icon is provided, the heading is hidden.
          */
         "topActionIcon"?: string | undefined;
     }

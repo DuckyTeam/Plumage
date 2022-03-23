@@ -12,8 +12,8 @@ describe('plmg-card', () => {
         <mock:shadow-root>
         <div class="plmg-card">
            <div class="content-area">
-             <slot name="item-one"></slot>
-             <slot name="item-two"></slot>
+             <slot name="slot-1"></slot>
+             <slot name="slot-2"></slot>
            </div>
          </div>
         </mock:shadow-root>
