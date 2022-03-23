@@ -1,5 +1,10 @@
-import { Component, h, Prop, Watch } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Prop, Watch } from '@stencil/core';
+import { isDefined } from '../../utils/isDefined';
 
+/**
+ * @slot slot-1 - First slot for custom content.
+ * @slot slot-2 - Second slot for custom content, separated from the first slot by a margin-top.
+ */
 @Component({
   tag: 'plmg-card',
   styleUrl: 'plmg-card.scss',
@@ -7,9 +12,12 @@ import { Component, h, Prop, Watch } from '@stencil/core';
 })
 export class Card {
   /**
-   * Define card's header text
+   * Define card's header text.
+   *
+   * If a text or an icon is provided, the heading will be displayed.
+   * By default, when no text nor icon is provided, the heading is hidden.
    */
-  @Prop() headerText: string;
+  @Prop() headerText: string | undefined = undefined;
   @Watch('headerText')
   validateHeaderText(newValue: string) {
     if (newValue && typeof newValue !== 'string')
@@ -17,23 +25,40 @@ export class Card {
   }
 
   /**
-   * Define card's bottom button action
+   * Define card's header icon, used as a top action for the card.
+   *
+   * If a text or an icon is provided, the heading will be displayed.
+   * By default, when no text nor icon is provided, the heading is hidden.
    */
-  @Prop() bottomButtonAction: () => void;
+  @Prop() topActionIcon: string | undefined = undefined;
+  @Watch('topActionIcon')
+  validateTopActionIcon(newValue: string) {
+    if (newValue && typeof newValue !== 'string')
+      throw new Error('topActionIcon must be a string');
+  }
 
   /**
-   * Define card's bottom button text
+   * The event "topActionClicked" is triggered when the top action icon is clicked.
    */
-  @Prop() bottomButtonText: string;
+  @Event() topActionClicked: EventEmitter<MouseEvent>;
+
+  /**
+   * Define card's bottom button text.
+   *
+   * If a text is provided, the button will be displayed.
+   * By default, when no text is provided, the button is hidden.
+   */
+  @Prop() bottomButtonText: string | undefined = undefined;
   @Watch('bottomButtonText')
   validateBottomButtonText(newValue: string) {
-    if (newValue && !this.bottomButtonAction)
-      throw new Error(
-        'card must have a bottomButtonAction to have a bottomButtonText'
-      );
     if (newValue && typeof newValue !== 'string')
       throw new Error('bottomButtonText must be a string');
   }
+
+  /**
+   * The event "bottomButtonClicked" is triggered when the bottom button is clicked.
+   */
+  @Event() bottomButtonClicked: EventEmitter<MouseEvent>;
 
   render() {
     const cardClasses = {
@@ -41,34 +66,45 @@ export class Card {
     };
 
     const headerClasses = {
-      header: true,
+      'plmg-card-header': true,
     };
 
     const contentClasses = {
-      'content-area': true,
-      'with-header': Boolean(this.headerText),
-      'with-footer': Boolean(this.bottomButtonAction),
+      'plmg-card-content-area': true,
+      'with-header': this.hasHeader(),
+      'with-footer': this.hasFooter(),
     };
 
     const footerClasses = {
-      footer: true,
+      'plmg-card-footer': true,
     };
 
     return (
       <div class={cardClasses}>
-        {Boolean(this.headerText) && (
+        {/* Header */}
+        {this.hasHeader() && (
           <div class={headerClasses}>
-            <span>{this.headerText}</span>
+            {isDefined(this.headerText) && <span>{this.headerText}</span>}
+            {isDefined(this.topActionIcon) && (
+              <plmg-button
+                onClick={(e) => this.topActionClicked.emit(e)}
+                design={'borderless'}
+                size={'small'}
+                color={'primary'}
+              />
+            )}
           </div>
         )}
+        {/* Content */}
         <div class={contentClasses}>
-          <slot name={'item-one'}></slot>
-          <slot name={'item-two'}></slot>
+          <slot name={'slot-1'}></slot>
+          <slot name={'slot-2'}></slot>
         </div>
-        {Boolean(this.bottomButtonAction) && (
+        {/* Footer */}
+        {this.hasFooter() && (
           <div class={footerClasses}>
             <plmg-button
-              onClick={this.bottomButtonAction}
+              onClick={(e) => this.bottomButtonClicked.emit(e)}
               design={'borderless'}
               size={'small'}
               color={'primary'}
@@ -79,5 +115,16 @@ export class Card {
         )}
       </div>
     );
+  }
+
+  private hasHeader(): boolean {
+    return (
+      (isDefined(this.headerText) && this.headerText !== '') ||
+      (isDefined(this.topActionIcon) && this.topActionIcon !== '')
+    );
+  }
+
+  private hasFooter(): boolean {
+    return isDefined(this.bottomButtonText) && this.bottomButtonText !== '';
   }
 }

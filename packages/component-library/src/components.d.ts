@@ -47,17 +47,17 @@ export namespace Components {
     }
     interface PlmgCard {
         /**
-          * Define card's bottom button action
+          * Define card's bottom button text.  If a text is provided, the button will be displayed. By default, when no text is provided, the button is hidden.
          */
-        "bottomButtonAction": () => void;
+        "bottomButtonText": string | undefined;
         /**
-          * Define card's bottom button text
+          * Define card's header text.  If a text or an icon is provided, the heading will be displayed. By default, when no text nor icon is provided, the heading is hidden.
          */
-        "bottomButtonText": string;
+        "headerText": string | undefined;
         /**
-          * Define card's header text
+          * Define card's header icon, used as a top action for the card.  If a text or an icon is provided, the heading will be displayed. By default, when no text nor icon is provided, the heading is hidden.
          */
-        "headerText": string;
+        "topActionIcon": string | undefined;
     }
     interface PlmgSvgIcon {
         /**
@@ -140,17 +140,25 @@ declare namespace LocalJSX {
     }
     interface PlmgCard {
         /**
-          * Define card's bottom button action
+          * Define card's bottom button text.  If a text is provided, the button will be displayed. By default, when no text is provided, the button is hidden.
          */
-        "bottomButtonAction"?: () => void;
+        "bottomButtonText"?: string | undefined;
         /**
-          * Define card's bottom button text
+          * Define card's header text.  If a text or an icon is provided, the heading will be displayed. By default, when no text nor icon is provided, the heading is hidden.
          */
-        "bottomButtonText"?: string;
+        "headerText"?: string | undefined;
         /**
-          * Define card's header text
+          * The event "bottomButtonClicked" is triggered when the bottom button is clicked.
          */
-        "headerText"?: string;
+        "onBottomButtonClicked"?: (event: CustomEvent<MouseEvent>) => void;
+        /**
+          * The event "topActionClicked" is triggered when the top action icon is clicked.
+         */
+        "onTopActionClicked"?: (event: CustomEvent<MouseEvent>) => void;
+        /**
+          * Define card's header icon, used as a top action for the card.  If a text or an icon is provided, the heading will be displayed. By default, when no text nor icon is provided, the heading is hidden.
+         */
+        "topActionIcon"?: string | undefined;
     }
     interface PlmgSvgIcon {
         /**

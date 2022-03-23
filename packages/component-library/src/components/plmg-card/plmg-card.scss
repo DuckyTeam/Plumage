@@ -42,7 +42,7 @@
   border-radius: tokens.$plmg-border-radius-m;
 }
 
-.header {
+.plmg-card-header {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -59,7 +59,7 @@
   margin: 0px 0px;
 }
 
-.content-area {
+.plmg-card-content-area {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -80,16 +80,16 @@
   }
 }
 
-::slotted([slot='item-one']) {
+::slotted([slot='slot-1']) {
   align-self: stretch;
 }
 
-::slotted([slot='item-two']) {
+::slotted([slot='slot-2']) {
   margin-top: 16px;
   align-self: stretch;
 }
 
-.footer {
+.plmg-card-footer {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
