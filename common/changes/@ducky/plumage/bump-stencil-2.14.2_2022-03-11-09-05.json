@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "Bump Stencil version to 2.14.2",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
