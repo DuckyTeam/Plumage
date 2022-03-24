@@ -140,6 +140,7 @@ export class Button {
     if (newValue && typeof newValue !== 'string')
       throw new Error('href must be a string');
   }
+
   /**
    * Define links rel
    */
@@ -151,6 +152,7 @@ export class Button {
     if (newValue && typeof newValue !== 'string')
       throw new Error('rel must be a string');
   }
+
   /**
    * Define links target
    */
@@ -162,6 +164,35 @@ export class Button {
     if (newValue && typeof newValue !== 'string')
       throw new Error('target must be a string');
   }
+
+  /**
+   * Define button's left icon.
+   *
+   * When providing an icon name to this prop, the corresponding icon will be displayed.
+   * it will be placed to the left of the text slot.
+   */
+  @Prop() iconLeft: string | undefined = undefined;
+
+  /**
+   * Define button's right icon.
+   *
+   * When providing an icon name to this prop, the corresponding icon will be displayed.
+   * it will be placed to the right of the text slot.
+   */
+  @Prop() iconRight: string | undefined = undefined;
+
+  /**
+   * Define button's centered icon.
+   *
+   * When providing an icon name to this prop, the corresponding icon will be displayed.
+   * it will be placed to the center.
+   *
+   * When providing a center icon, we advice you do not provide a text slot.
+   * That is because the center icon will be bigger than the text, to render with the same height as other buttons.
+   * If you do provide both the center icon and the text slot, the icon will appear just before the text slot.
+   */
+  @Prop() iconCenter: string | undefined = undefined;
+
   render() {
     const classes = {
       'plmg-button': true,
@@ -175,14 +206,32 @@ export class Button {
     if (this.href) {
       return (
         <a class={classes} href={this.href} rel={this.rel} target={this.target}>
+          {this.iconLeft && this.iconLeft !== '' && (
+            <plmg-svg-icon class={'icon-left'} icon={this.iconLeft} />
+          )}
+          {this.iconCenter && this.iconCenter !== '' && (
+            <plmg-svg-icon class={'icon-center'} icon={this.iconCenter} />
+          )}
           <slot></slot>
+          {this.iconRight && this.iconRight !== '' && (
+            <plmg-svg-icon class={'icon-right'} icon={this.iconRight} />
+          )}
         </a>
       );
     }
 
     return (
       <button class={classes} type={this.type}>
+        {this.iconLeft && this.iconLeft !== '' && (
+          <plmg-svg-icon class={'icon-left'} icon={this.iconLeft} />
+        )}
+        {this.iconCenter && this.iconCenter !== '' && (
+          <plmg-svg-icon class={'icon-center'} icon={this.iconCenter} />
+        )}
         <slot></slot>
+        {this.iconRight && this.iconRight !== '' && (
+          <plmg-svg-icon class={'icon-right'} icon={this.iconRight} />
+        )}
       </button>
     );
   }
