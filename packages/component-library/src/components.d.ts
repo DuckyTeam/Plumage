@@ -25,6 +25,18 @@ export namespace Components {
          */
         "href": string;
         /**
+          * Define button's centered icon.  When providing an icon name to this prop, the corresponding icon will be displayed. it will be placed to the center.  When providing a center icon, we advice you do not provide a text slot. That is because the center icon will be bigger than the text, to render with the same height as other buttons. If you do provide both the center icon and the text slot, the icon will appear just before the text slot.
+         */
+        "iconCenter": string | undefined;
+        /**
+          * Define button's left icon.  When providing an icon name to this prop, the corresponding icon will be displayed. it will be placed to the left of the text slot.
+         */
+        "iconLeft": string | undefined;
+        /**
+          * Define button's right icon.  When providing an icon name to this prop, the corresponding icon will be displayed. it will be placed to the right of the text slot.
+         */
+        "iconRight": string | undefined;
+        /**
           * Define links rel
          */
         "rel": string;
@@ -96,6 +108,18 @@ declare namespace LocalJSX {
           * Define button as a link
          */
         "href"?: string;
+        /**
+          * Define button's centered icon.  When providing an icon name to this prop, the corresponding icon will be displayed. it will be placed to the center.  When providing a center icon, we advice you do not provide a text slot. That is because the center icon will be bigger than the text, to render with the same height as other buttons. If you do provide both the center icon and the text slot, the icon will appear just before the text slot.
+         */
+        "iconCenter"?: string | undefined;
+        /**
+          * Define button's left icon.  When providing an icon name to this prop, the corresponding icon will be displayed. it will be placed to the left of the text slot.
+         */
+        "iconLeft"?: string | undefined;
+        /**
+          * Define button's right icon.  When providing an icon name to this prop, the corresponding icon will be displayed. it will be placed to the right of the text slot.
+         */
+        "iconRight"?: string | undefined;
         /**
           * Define links rel
          */
