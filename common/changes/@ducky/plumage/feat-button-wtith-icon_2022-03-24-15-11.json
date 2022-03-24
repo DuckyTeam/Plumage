@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "Add icons to button",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
