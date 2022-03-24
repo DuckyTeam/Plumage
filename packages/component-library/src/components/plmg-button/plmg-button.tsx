@@ -10,6 +10,9 @@ import {
   PlmgButtonType,
 } from './plmg-button.types';
 
+/**
+ * @slot default - Text content of the button
+ */
 @Component({
   tag: 'plmg-button',
   styleUrl: 'plmg-button.scss',

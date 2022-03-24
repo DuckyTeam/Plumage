@@ -20,6 +20,13 @@
 | `type`      | `type`       | Define button's type  Allowed values:   - button   - submit   - reset  Default: button                                             | `"button" \| "reset" \| "submit"`                                            | `'button'`  |
 
 
+## Slots
+
+| Slot        | Description                |
+| ----------- | -------------------------- |
+| `"default"` | Text content of the button |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
