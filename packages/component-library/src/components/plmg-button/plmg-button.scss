@@ -1,9 +1,10 @@
 @use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
+@use 'sass:math';
 
 // Functions
 // ------------------------------
 @function centerIconFontSize($parentFontSize, $parentLineHeight) {
-  @return $parentFontSize * $parentLineHeight / 100%;
+  @return math.div($parentFontSize * $parentLineHeight, 100%);
 }
 // END Functions
 // ------------------------------
