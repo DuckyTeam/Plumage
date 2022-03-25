@@ -201,6 +201,7 @@ export class Button {
       [this.color]: true,
       'full-width': this.fullWidth,
       shadow: this.shadow,
+      'icon-button': this.iconCenter && this.iconCenter !== '',
     };
 
     if (this.href) {
