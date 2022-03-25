@@ -46,6 +46,9 @@ export default {
       options: [undefined, ...Object.values(ICON)],
       control: { type: 'select' },
     },
+    label: {
+      control: { type: 'text' },
+    },
   },
 };
 
@@ -61,6 +64,7 @@ const PROPS = [
   'icon-left',
   'icon-center',
   'icon-right',
+  'label',
 ];
 const EVENTS = [];
 const CSS_VARS = [];
@@ -113,6 +117,7 @@ Icon.args = {
   ['full-width']: false,
   ['shadow']: false,
   ['icon-center']: 'image',
+  label: 'example button',
 };
 
 export const AllDesigns = (args) => {
@@ -202,7 +207,7 @@ export const AllIcons = (args) => {
 <plmg-button icon-left="arrowBack">Icon left</plmg-button>
 <plmg-button icon-right="arrowForward">Icon right</plmg-button>
 <plmg-button icon-left="arrowBack" icon-right="arrowForward">Both icons</plmg-button>
-<plmg-button icon-center="image"></plmg-button>
+<plmg-button icon-center="image" label="example button"></plmg-button>
 `;
 
   const el = document.createElement('div');
@@ -233,8 +238,8 @@ export const All = (args) => {
                 centerIcons.forEach((centerIcon) => {
                   if (centerIcon) {
                     htmlContent += `
-<p>design="${design}" size="${size}" color="${color}" full-width="${fullWidth}" shadow="${shadow}" icon-left="${leftIcon}" icon-right="${rightIcon}" icon-center="${centerIcon}"</p>
-<plmg-button design="${design}" size="${size}" color="${color}" full-width="${fullWidth}" shadow="${shadow}" icon-left="${leftIcon}" icon-right="${rightIcon}" icon-center="${centerIcon}" >
+<p>design="${design}" size="${size}" color="${color}" full-width="${fullWidth}" shadow="${shadow}" icon-left="${leftIcon}" icon-right="${rightIcon}" icon-center="${centerIcon} label=${centerIcon}"</p>
+<plmg-button design="${design}" size="${size}" color="${color}" full-width="${fullWidth}" shadow="${shadow}" icon-left="${leftIcon}" icon-right="${rightIcon}" icon-center="${centerIcon}" label=${centerIcon}" >
 </plmg-button>
 <br/>
               `;

@@ -187,11 +187,20 @@ export class Button {
    * When providing an icon name to this prop, the corresponding icon will be displayed.
    * it will be placed to the center.
    *
+   * You must provide a label.
+   *
    * When providing a center icon, we advice you do not provide a text slot.
    * That is because the center icon will be bigger than the text, to render with the same height as other buttons.
    * If you do provide both the center icon and the text slot, the icon will appear just before the text slot.
    */
   @Prop() iconCenter: string | undefined = undefined;
+
+  /**
+   * An accessible label for the Icon Button. If no label is supplied, the icon is hidden from assistive technology.
+   *
+   * You must provide this when providing iconCenter.
+   */
+  @Prop() label: string | undefined = undefined;
 
   render() {
     const classes = {
@@ -206,7 +215,13 @@ export class Button {
 
     if (this.href) {
       return (
-        <a class={classes} href={this.href} rel={this.rel} target={this.target}>
+        <a
+          class={classes}
+          href={this.href}
+          rel={this.rel}
+          target={this.target}
+          aria-label={this.label}
+        >
           {this.iconLeft && this.iconLeft !== '' && (
             <plmg-svg-icon class={'icon-left'} icon={this.iconLeft} />
           )}
@@ -222,7 +237,7 @@ export class Button {
     }
 
     return (
-      <button class={classes} type={this.type}>
+      <button class={classes} type={this.type} aria-label={this.label}>
         {this.iconLeft && this.iconLeft !== '' && (
           <plmg-svg-icon class={'icon-left'} icon={this.iconLeft} />
         )}
