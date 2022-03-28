@@ -11,4 +11,7 @@ Closes
 - Tests for
   - accessibility
   - rendered HTML (spec)
+- Storybook stories for all variants
+- JSDoc documentation for component
+- Update Example app (React, ...)
 
