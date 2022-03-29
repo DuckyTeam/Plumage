@@ -3,8 +3,8 @@
 
 // Functions
 // ------------------------------
-@function centerIconFontSize($parentFontSize, $parentLineHeight) {
-  @return math.div($parentFontSize * $parentLineHeight, 100%);
+@function centerIconFontSize($parentFontSize, $percentageMultiplier) {
+  @return math.div($parentFontSize * $percentageMultiplier, 100%);
 }
 // END Functions
 // ------------------------------
