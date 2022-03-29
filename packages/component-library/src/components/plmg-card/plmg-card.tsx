@@ -61,37 +61,28 @@ export class Card {
   @Event() bottomActionClicked: EventEmitter<MouseEvent>;
 
   render() {
-    const cardClasses = {
-      'plmg-card': true,
-    };
-
-    const headerClasses = {
-      'plmg-card-header': true,
-    };
-
     const contentClasses = {
       'plmg-card-content-area': true,
       'with-header': this.hasHeader(),
       'with-footer': this.hasFooter(),
     };
 
-    const footerClasses = {
-      'plmg-card-footer': true,
-    };
-
     return (
-      <div class={cardClasses}>
+      <div class={'plmg-card'}>
         {/* Header */}
         {this.hasHeader() && (
-          <div class={headerClasses}>
-            {isDefined(this.headerText) && <span>{this.headerText}</span>}
+          <div class={'plmg-card-header'}>
+            <span>{this.headerText}</span>
             {isDefined(this.topActionIcon) && (
               <plmg-button
                 onClick={(e) => this.topActionClicked.emit(e)}
                 design={'borderless'}
                 size={'small'}
                 color={'primary'}
-              />
+                icon-center={this.topActionIcon}
+              >
+                test
+              </plmg-button>
             )}
           </div>
         )}
@@ -102,7 +93,7 @@ export class Card {
         </div>
         {/* Footer */}
         {this.hasFooter() && (
-          <div class={footerClasses}>
+          <div class={'plmg-card-footer'}>
             <plmg-button
               onClick={(e) => this.bottomActionClicked.emit(e)}
               design={'borderless'}
