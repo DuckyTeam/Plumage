@@ -12,7 +12,7 @@ export default {
   argTypes: {
     ['header-text']: { control: { type: 'text' } },
     ['top-action-icon']: {
-      options: Object.values(ICON),
+      options: [undefined, ...Object.values(ICON)],
       control: { type: 'select' },
     },
     ['bottom-action-text']: { control: { type: 'text' } },
