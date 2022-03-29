@@ -17,15 +17,18 @@ describe('plmg-card', () => {
       const page = await newE2EPage();
 
       const headerTexts = ['Something', undefined];
+      const topActionIcons = ['home', undefined];
       const bottomActionTexts = ['Action bottom', undefined];
 
       let htmlContent = '';
       headerTexts.forEach((headerText) => {
-        bottomActionTexts.forEach((bottomActionText) => {
-          htmlContent += `
-          <plmg-card header-text="${headerText}" bottom-action-text="${bottomActionText}"></plmg-card>
+        topActionIcons.forEach((topActionIcon) => {
+          bottomActionTexts.forEach((bottomActionText) => {
+            htmlContent += `
+          <plmg-card header-text="${headerText}" bottom-action-text="${bottomActionText}" top-action-icon="${topActionIcon}" top-action-label="${topActionIcon}"></plmg-card>
           <br/>
                         `;
+          });
         });
       });
 
