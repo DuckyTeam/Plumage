@@ -51,13 +51,17 @@ export namespace Components {
          */
         "bottomActionText": string | undefined;
         /**
-          * Define card's header text.  If a text or an icon is provided, the heading will be displayed. By default, when no text nor icon is provided, the heading is hidden.
+          * Define card's header text.  If a headerText or an topActionIcon is provided, the heading will be displayed. By default, when no headerText nor topActionIcon is provided, the heading is hidden.
          */
         "headerText": string | undefined;
         /**
-          * Define card's header icon, used as a top action for the card.  If a text or an icon is provided, the heading will be displayed with the icon button on the right. By default, when no text nor icon is provided, the heading is hidden.
+          * Define card's header icon, used as a top action for the card.  If a headerText or an topActionIcon is provided, the heading will be displayed with the icon button on the right. By default, when no headerText nor topActionIcon is provided, the heading is hidden.
          */
         "topActionIcon": string | undefined;
+        /**
+          * Define top action's label, used to enable assistive technology for the top action button.  You must provide a topActionLabel when providing a topActionIcon.
+         */
+        "topActionLabel": string | undefined;
     }
     interface PlmgSvgIcon {
         /**
@@ -144,7 +148,7 @@ declare namespace LocalJSX {
          */
         "bottomActionText"?: string | undefined;
         /**
-          * Define card's header text.  If a text or an icon is provided, the heading will be displayed. By default, when no text nor icon is provided, the heading is hidden.
+          * Define card's header text.  If a headerText or an topActionIcon is provided, the heading will be displayed. By default, when no headerText nor topActionIcon is provided, the heading is hidden.
          */
         "headerText"?: string | undefined;
         /**
@@ -156,9 +160,13 @@ declare namespace LocalJSX {
          */
         "onTopActionClicked"?: (event: CustomEvent<MouseEvent>) => void;
         /**
-          * Define card's header icon, used as a top action for the card.  If a text or an icon is provided, the heading will be displayed with the icon button on the right. By default, when no text nor icon is provided, the heading is hidden.
+          * Define card's header icon, used as a top action for the card.  If a headerText or an topActionIcon is provided, the heading will be displayed with the icon button on the right. By default, when no headerText nor topActionIcon is provided, the heading is hidden.
          */
         "topActionIcon"?: string | undefined;
+        /**
+          * Define top action's label, used to enable assistive technology for the top action button.  You must provide a topActionLabel when providing a topActionIcon.
+         */
+        "topActionLabel"?: string | undefined;
     }
     interface PlmgSvgIcon {
         /**
