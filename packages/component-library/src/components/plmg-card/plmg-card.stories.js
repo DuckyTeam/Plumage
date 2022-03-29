@@ -15,15 +15,21 @@ export default {
       options: [undefined, ...Object.values(ICON)],
       control: { type: 'select' },
     },
+    ['top-action-label']: { control: { type: 'text' } },
     ['bottom-action-text']: { control: { type: 'text' } },
     ['slot-1']: { control: { type: 'text' } },
     ['slot-2']: { control: { type: 'text' } },
   },
 };
 
-const PROPS = ['header-text', 'top-action-icon', 'bottom-action-text'];
+const PROPS = [
+  'header-text',
+  'top-action-icon',
+  'top-action-label',
+  'bottom-action-text',
+];
 const EVENTS = ['topActionClicked', 'bottomActionClicked'];
-const CSS_VARS = ['--plmg-background-primary', '--plmg-text-primary'];
+const CSS_VARS = [];
 const SLOTS = ['slot-1', 'slot-2'];
 
 const Template = (args) => {
@@ -43,9 +49,10 @@ const slot2 =
 export const Primary = Template.bind({});
 Primary.storyName = 'Card';
 Primary.args = {
-  ['header-text']: 'Header',
+  ['header-text']: 'Card Header',
   ['bottom-action-text']: 'Action',
   ['top-action-icon']: ICON.Home,
+  ['top-action-label']: 'card top action',
   ['slot-1']: slot1(),
   ['slot-2']: slot2,
 };
@@ -68,7 +75,9 @@ Headings.storyName = 'All headings';
 export const ActionTop = (args) => {
   const htmlContent = `
 <plmg-card>${slot1('No action top')}</plmg-card>
-<plmg-card top-action-icon="${ICON.Home}">${slot1(
+<plmg-card top-action-icon="${
+    ICON.Home
+  }" top-action-label="card top action">${slot1(
     '"home" action top'
   )}</plmg-card>
 `;

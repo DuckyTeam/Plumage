@@ -14,8 +14,8 @@ export class Card {
   /**
    * Define card's header text.
    *
-   * If a text or an icon is provided, the heading will be displayed.
-   * By default, when no text nor icon is provided, the heading is hidden.
+   * If a headerText or an topActionIcon is provided, the heading will be displayed.
+   * By default, when no headerText nor topActionIcon is provided, the heading is hidden.
    */
   @Prop() headerText: string | undefined = undefined;
   @Watch('headerText')
@@ -27,14 +27,26 @@ export class Card {
   /**
    * Define card's header icon, used as a top action for the card.
    *
-   * If a text or an icon is provided, the heading will be displayed with the icon button on the right.
-   * By default, when no text nor icon is provided, the heading is hidden.
+   * If a headerText or an topActionIcon is provided, the heading will be displayed with the icon button on the right.
+   * By default, when no headerText nor topActionIcon is provided, the heading is hidden.
    */
   @Prop() topActionIcon: string | undefined = undefined;
   @Watch('topActionIcon')
   validateTopActionIcon(newValue: string) {
     if (newValue && typeof newValue !== 'string')
       throw new Error('topActionIcon must be a string');
+  }
+
+  /**
+   * Define top action's label, used to enable assistive technology for the top action button.
+   *
+   * You must provide a topActionLabel when providing a topActionIcon.
+   */
+  @Prop() topActionLabel: string | undefined = undefined;
+  @Watch('topActionLabel')
+  validateTopActionLabel(newValue: string) {
+    if (newValue && typeof newValue !== 'string')
+      throw new Error('topActionLabel must be a string');
   }
 
   /**
@@ -80,6 +92,7 @@ export class Card {
                 size={'small'}
                 color={'primary'}
                 icon-center={this.topActionIcon}
+                label={this.topActionLabel}
               />
             )}
           </div>
