@@ -17,10 +17,13 @@ ReactDOM.render(
     <br />
     <PlmgCard
       headerText="Header Text"
+      topActionIcon={'home'}
+      topActionLabel={'Top Action'}
       bottomActionText="Click here"
       bottomButtonAction={() =>
         console.log('bottomButtonClicked event received')
       }
+      topActionClicked={() => console.log('topActionClicked event received')}
     >
       <div slot="slot-1">
         <h1>PlmgCard slot-1</h1>
