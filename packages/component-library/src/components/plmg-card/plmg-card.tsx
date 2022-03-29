@@ -80,9 +80,7 @@ export class Card {
                 size={'small'}
                 color={'primary'}
                 icon-center={this.topActionIcon}
-              >
-                test
-              </plmg-button>
+              />
             )}
           </div>
         )}
