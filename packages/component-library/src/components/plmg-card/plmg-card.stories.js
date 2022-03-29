@@ -60,7 +60,7 @@ Primary.args = {
 export const Headings = (args) => {
   const htmlContent = `
 <plmg-card>${slot1('No header')}</plmg-card>
-<plmg-card header-text="Header">${slot1('Header')}</plmg-card>
+<plmg-card header-text="Header">${slot1('Card with header')}</plmg-card>
 `;
 
   const el = document.createElement('div');
@@ -78,7 +78,7 @@ export const ActionTop = (args) => {
 <plmg-card top-action-icon="${
     ICON.Home
   }" top-action-label="card top action">${slot1(
-    '"home" action top'
+    'Card with action top'
   )}</plmg-card>
 `;
 
@@ -95,7 +95,7 @@ export const ActionBottom = (args) => {
   const htmlContent = `
 <plmg-card>${slot1('No action bottom')}</plmg-card>
 <plmg-card bottom-action-text="Action">${slot1(
-    'Action Bottom Text'
+    'Card with Action Bottom'
   )}</plmg-card>
 `;
 
