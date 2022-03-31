@@ -45,6 +45,36 @@ export namespace Components {
          */
         "type": PlmgButtonType;
     }
+    interface PlmgSidebarItem {
+        /**
+          * Set this prop to True when this item is active. It highlights the item.
+         */
+        "active": boolean;
+        /**
+          * Define if the item is expanded. Only valid when this item has children.
+         */
+        "expanded": boolean;
+        /**
+          * The link to redirect to when this item is clicked.  If this item has children, you cannot provide a href, because clicking the item will instead expand/collapse the children list.
+         */
+        "href": string;
+        /**
+          * The name of the icon to show on the left of the text. It is optional to provide an icon.  Items at level 2 should never have an icon. Icon will not be rendered even if provided.
+         */
+        "icon": string;
+        /**
+          * Define links rel
+         */
+        "rel": string;
+        /**
+          * Define links target
+         */
+        "target": string;
+        /**
+          * The text to show on the item. it is mandatory to provide a text.  If the text is too long for the item, it will be truncated and will end with "...". Example: "This name is too lon..."
+         */
+        "text": string;
+    }
     interface PlmgSvgIcon {
         /**
           * Define icon's color.  Can be any valid CSS color value.  By default, the icon will have the same color as the parent's element.
@@ -67,6 +97,12 @@ declare global {
         prototype: HTMLPlmgButtonElement;
         new (): HTMLPlmgButtonElement;
     };
+    interface HTMLPlmgSidebarItemElement extends Components.PlmgSidebarItem, HTMLStencilElement {
+    }
+    var HTMLPlmgSidebarItemElement: {
+        prototype: HTMLPlmgSidebarItemElement;
+        new (): HTMLPlmgSidebarItemElement;
+    };
     interface HTMLPlmgSvgIconElement extends Components.PlmgSvgIcon, HTMLStencilElement {
     }
     var HTMLPlmgSvgIconElement: {
@@ -75,6 +111,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "plmg-button": HTMLPlmgButtonElement;
+        "plmg-sidebar-item": HTMLPlmgSidebarItemElement;
         "plmg-svg-icon": HTMLPlmgSvgIconElement;
     }
 }
@@ -117,6 +154,36 @@ declare namespace LocalJSX {
          */
         "type"?: PlmgButtonType;
     }
+    interface PlmgSidebarItem {
+        /**
+          * Set this prop to True when this item is active. It highlights the item.
+         */
+        "active"?: boolean;
+        /**
+          * Define if the item is expanded. Only valid when this item has children.
+         */
+        "expanded"?: boolean;
+        /**
+          * The link to redirect to when this item is clicked.  If this item has children, you cannot provide a href, because clicking the item will instead expand/collapse the children list.
+         */
+        "href"?: string;
+        /**
+          * The name of the icon to show on the left of the text. It is optional to provide an icon.  Items at level 2 should never have an icon. Icon will not be rendered even if provided.
+         */
+        "icon"?: string;
+        /**
+          * Define links rel
+         */
+        "rel"?: string;
+        /**
+          * Define links target
+         */
+        "target"?: string;
+        /**
+          * The text to show on the item. it is mandatory to provide a text.  If the text is too long for the item, it will be truncated and will end with "...". Example: "This name is too lon..."
+         */
+        "text"?: string;
+    }
     interface PlmgSvgIcon {
         /**
           * Define icon's color.  Can be any valid CSS color value.  By default, the icon will have the same color as the parent's element.
@@ -133,6 +200,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "plmg-button": PlmgButton;
+        "plmg-sidebar-item": PlmgSidebarItem;
         "plmg-svg-icon": PlmgSvgIcon;
     }
 }
@@ -141,6 +209,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "plmg-button": LocalJSX.PlmgButton & JSXBase.HTMLAttributes<HTMLPlmgButtonElement>;
+            "plmg-sidebar-item": LocalJSX.PlmgSidebarItem & JSXBase.HTMLAttributes<HTMLPlmgSidebarItemElement>;
             "plmg-svg-icon": LocalJSX.PlmgSvgIcon & JSXBase.HTMLAttributes<HTMLPlmgSvgIconElement>;
         }
     }
