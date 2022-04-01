@@ -8,8 +8,6 @@
 }
 
 .plmg-sidebar-item-container {
-  //width: 100%;
-  width: 256px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -48,6 +46,28 @@
 
   .plmg-sidebar-item-expand {
     padding-left: tokens.$plmg-spacing-x0-75;
+  }
+
+  // Breakpoints
+  /* Extra small devices */
+  @media only screen and (min-width: tokens.$plmg-breakpoint-xs) {
+    width: 256px; // todo what's the size when sidebar is expanded
+  }
+  /* Small devices */
+  @media only screen and (min-width: tokens.$plmg-breakpoint-s) {
+    width: 256px; // todo what's the size when sidebar is expanded
+  }
+  /* Medium devices */
+  @media only screen and (min-width: tokens.$plmg-breakpoint-m) {
+    width: 25vw;
+  }
+  /* Large devices */
+  @media only screen and (min-width: tokens.$plmg-breakpoint-l) {
+    width: 25vw;
+  }
+  /* Extra large devices */
+  @media only screen and (min-width: tokens.$plmg-breakpoint-xl) {
+    width: 360px;
   }
 
   // Controls
