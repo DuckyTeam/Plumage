@@ -30,7 +30,7 @@ describe('plmg-sidebar-item', () => {
       <plmg-sidebar-item text="Spec test">
         <mock:shadow-root>
           <div class="plmg-sidebar-item-top-container">
-            <button class="plmg-sidebar-item-container plmg-sidebar-item-with-children" title="Spec test">
+            <button class="plmg-sidebar-item-container" title="Spec test">
               <span class="plmg-sidebar-item-content">Spec test</span>
               <plmg-svg-icon class="plmg-sidebar-item-expand" icon="expandMore"></plmg-svg-icon>
             </button>
@@ -59,7 +59,7 @@ describe('plmg-sidebar-item', () => {
       <plmg-sidebar-item text="Spec test" expanded="true">
         <mock:shadow-root>
           <div class="plmg-sidebar-item-top-container">
-            <button class="plmg-sidebar-item-container plmg-sidebar-item-with-children" title="Spec test">
+            <button class="plmg-sidebar-item-container" title="Spec test">
               <span class="plmg-sidebar-item-content">Spec test</span>
               <plmg-svg-icon class="plmg-sidebar-item-expand" icon="expandLess"></plmg-svg-icon>
             </button>
@@ -85,7 +85,7 @@ describe('plmg-sidebar-item', () => {
     expect(page.root).toEqualHtml(`
       <plmg-sidebar-item text="Spec test" icon="home" href="https://ducky.eco" target="_blank" rel="noreferrer">
         <mock:shadow-root>
-          <a class="plmg-sidebar-item-container plmg-sidebar-item-with-icon" title="Spec test" href="https://ducky.eco" target="_blank" rel="noreferrer">
+          <a class="plmg-sidebar-item-container" title="Spec test" href="https://ducky.eco" target="_blank" rel="noreferrer">
             <plmg-svg-icon class="plmg-sidebar-item-icon" icon="home"></plmg-svg-icon>
             <span class="plmg-sidebar-item-content">Spec test</span>
           </a>

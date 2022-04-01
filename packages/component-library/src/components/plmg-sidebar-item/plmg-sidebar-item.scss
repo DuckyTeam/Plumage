@@ -65,12 +65,7 @@
       }
     }
   }
-  &.plmg-sidebar-item-with-icon {
-    //
-  }
-  &.plmg-sidebar-item-with-children {
-    //
-  }
+
   &.plmg-sidebar-item-active {
     background: tokens.$plmg-background-neutral-active;
     color: tokens.$plmg-text-primary-strong;
@@ -79,8 +74,6 @@
   // States
   &:hover {
     background: tokens.$plmg-background-primary;
-  }
-  &:active {
   }
   &:focus-visible {
     background: tokens.$plmg-background-neutral-hover;

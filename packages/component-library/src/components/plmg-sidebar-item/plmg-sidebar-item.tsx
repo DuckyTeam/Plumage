@@ -113,10 +113,8 @@ export class SidebarItem {
   render() {
     const containerClasses = {
       'plmg-sidebar-item-container': true,
-      'plmg-sidebar-item-with-icon': this.hasIcon(),
       'plmg-sidebar-item-level-2': this.level() === 2,
       'plmg-sidebar-item-level-2-icon-shift': this.parentHasIcon(),
-      'plmg-sidebar-item-with-children': this.hasChildren(),
       'plmg-sidebar-item-active': this.active,
     };
 
