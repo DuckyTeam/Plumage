@@ -156,12 +156,7 @@ export class SidebarItem {
               />
             )}
           </button>
-          {this.isExpanded && (
-            <Fragment>
-              <slot />
-              <slot />
-            </Fragment>
-          )}
+          {this.isExpanded && <slot />}
         </div>
       );
     } else {
