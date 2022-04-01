@@ -1,12 +1,4 @@
-import {
-  Component,
-  Element,
-  h,
-  State,
-  Prop,
-  Watch,
-  Fragment,
-} from '@stencil/core';
+import { Component, Element, h, State, Prop, Watch } from '@stencil/core';
 import { PlmgSideBarItemLevel } from './plmg-sidebar-item.types';
 
 @Component({
