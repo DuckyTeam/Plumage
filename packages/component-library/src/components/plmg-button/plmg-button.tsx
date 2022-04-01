@@ -172,6 +172,11 @@ export class Button {
    * it will be placed to the left of the text slot.
    */
   @Prop() iconLeft: string | undefined = undefined;
+  @Watch('iconLeft')
+  validateIconLeft(newValue: string) {
+    if (newValue && typeof newValue !== 'string')
+      throw new Error('iconLeft must be a string');
+  }
 
   /**
    * Define button's right icon.
@@ -180,6 +185,11 @@ export class Button {
    * it will be placed to the right of the text slot.
    */
   @Prop() iconRight: string | undefined = undefined;
+  @Watch('iconRight')
+  validateIconRight(newValue: string) {
+    if (newValue && typeof newValue !== 'string')
+      throw new Error('iconRight must be a string');
+  }
 
   /**
    * Define button's centered icon.
@@ -200,6 +210,8 @@ export class Button {
       throw new Error(
         'Icon Button must have a label for accessibility reasons'
       );
+    if (newValue && typeof newValue !== 'string')
+      throw new Error('iconCenter must be a string');
   }
 
   /**
@@ -208,6 +220,11 @@ export class Button {
    * You must provide this when providing iconCenter.
    */
   @Prop() label: string | undefined = undefined;
+  @Watch('label')
+  validateLabel(newValue: string) {
+    if (newValue && typeof newValue !== 'string')
+      throw new Error('label must be a string');
+  }
 
   render() {
     const classes = {
