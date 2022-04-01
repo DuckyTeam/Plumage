@@ -35,7 +35,7 @@
     "postgenerate-icons": "npm run generate-icon-enum"
   },
   "dependencies": {
-    "@ducky/plumage-tokens": "^2.0.0"
+    "@ducky/plumage-tokens": "^2.1.0"
   },
   "devDependencies": {
     "@ducky/eslint-config-base": "^2.0.0",

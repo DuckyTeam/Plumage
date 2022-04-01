@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage-tokens
 
-This log was last generated on Fri, 11 Feb 2022 15:40:23 GMT and should not be manually modified.
+This log was last generated on Fri, 01 Apr 2022 12:07:58 GMT and should not be manually modified.
+
+## 2.1.0
+Fri, 01 Apr 2022 12:07:58 GMT
+
+### Minor changes
+
+- Add "px" unit to breakpoints
 
 ## 2.0.0
 Fri, 11 Feb 2022 15:40:23 GMT
