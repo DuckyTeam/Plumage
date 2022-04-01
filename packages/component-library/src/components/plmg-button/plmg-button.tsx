@@ -194,6 +194,13 @@ export class Button {
    * If you do provide both the center icon and the text slot, the icon will appear just before the text slot.
    */
   @Prop() iconCenter: string | undefined = undefined;
+  @Watch('iconCenter')
+  validateIconCenter(newValue: string) {
+    if (newValue && !this.label)
+      throw new Error(
+        'Icon Button must have a label for accessibility reasons'
+      );
+  }
 
   /**
    * An accessible label for the Icon Button. If no label is supplied, the icon is hidden from assistive technology.
