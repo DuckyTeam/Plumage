@@ -171,7 +171,7 @@ export class Button {
    * When providing an icon name to this prop, the corresponding icon will be displayed.
    * it will be placed to the left of the text slot.
    */
-  @Prop() iconLeft: string | undefined = undefined;
+  @Prop() iconLeft: string = undefined;
   @Watch('iconLeft')
   validateIconLeft(newValue: string) {
     if (newValue && typeof newValue !== 'string')
@@ -184,7 +184,7 @@ export class Button {
    * When providing an icon name to this prop, the corresponding icon will be displayed.
    * it will be placed to the right of the text slot.
    */
-  @Prop() iconRight: string | undefined = undefined;
+  @Prop() iconRight: string = undefined;
   @Watch('iconRight')
   validateIconRight(newValue: string) {
     if (newValue && typeof newValue !== 'string')
@@ -199,11 +199,11 @@ export class Button {
    *
    * You must provide a label.
    *
-   * When providing a center icon, we advice you do not provide a text slot.
+   * When providing a center icon, you should not provide a text slot.
    * That is because the center icon will be bigger than the text, to render with the same height as other buttons.
    * If you do provide both the center icon and the text slot, the icon will appear just before the text slot.
    */
-  @Prop() iconCenter: string | undefined = undefined;
+  @Prop() iconCenter: string = undefined;
   @Watch('iconCenter')
   validateIconCenter(newValue: string) {
     if (newValue && !this.label)
@@ -234,7 +234,7 @@ export class Button {
       [this.color]: true,
       'full-width': this.fullWidth,
       shadow: this.shadow,
-      'icon-button': this.iconCenter && this.iconCenter !== '',
+      'icon-button': this.hasIconCenter(),
     };
 
     if (this.href) {
@@ -246,14 +246,14 @@ export class Button {
           target={this.target}
           aria-label={this.label}
         >
-          {this.iconLeft && this.iconLeft !== '' && (
+          {this.hasIconLeft() && (
             <plmg-svg-icon class={'icon-left'} icon={this.iconLeft} />
           )}
-          {this.iconCenter && this.iconCenter !== '' && (
+          {this.hasIconCenter() && (
             <plmg-svg-icon class={'icon-center'} icon={this.iconCenter} />
           )}
           <slot></slot>
-          {this.iconRight && this.iconRight !== '' && (
+          {this.hasIconRight() && (
             <plmg-svg-icon class={'icon-right'} icon={this.iconRight} />
           )}
         </a>
@@ -262,17 +262,29 @@ export class Button {
 
     return (
       <button class={classes} type={this.type} aria-label={this.label}>
-        {this.iconLeft && this.iconLeft !== '' && (
+        {this.hasIconLeft() && (
           <plmg-svg-icon class={'icon-left'} icon={this.iconLeft} />
         )}
-        {this.iconCenter && this.iconCenter !== '' && (
+        {this.hasIconCenter() && (
           <plmg-svg-icon class={'icon-center'} icon={this.iconCenter} />
         )}
         <slot></slot>
-        {this.iconRight && this.iconRight !== '' && (
+        {this.hasIconRight() && (
           <plmg-svg-icon class={'icon-right'} icon={this.iconRight} />
         )}
       </button>
     );
+  }
+
+  private hasIconLeft() {
+    return this.iconLeft && (this.iconLeft as string) !== '';
+  }
+
+  private hasIconRight() {
+    return this.iconRight && (this.iconRight as string) !== '';
+  }
+
+  private hasIconCenter() {
+    return this.iconCenter && (this.iconCenter as string) !== '';
   }
 }
