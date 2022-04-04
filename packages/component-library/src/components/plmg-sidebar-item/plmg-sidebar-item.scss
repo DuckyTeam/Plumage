@@ -51,11 +51,11 @@
   // Breakpoints
   /* Extra small devices */
   @media only screen and (min-width: tokens.$plmg-breakpoint-xs) {
-    width: 256px; // todo what's the size when sidebar is expanded
+    width: tokens.$plmg-breakpoint-m * 0.25;
   }
   /* Small devices */
   @media only screen and (min-width: tokens.$plmg-breakpoint-s) {
-    width: 256px; // todo what's the size when sidebar is expanded
+    width: tokens.$plmg-breakpoint-m * 0.25;
   }
   /* Medium devices */
   @media only screen and (min-width: tokens.$plmg-breakpoint-m) {
