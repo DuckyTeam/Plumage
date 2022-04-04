@@ -32,7 +32,7 @@ describe('plmg-card', () => {
         });
       });
 
-      await page.setContent(htmlContent);
+      await page.setContent('<main>' + htmlContent + '</main>');
 
       const results = await new AxePuppeteer(page as unknown as Page)
         .disableRules([
