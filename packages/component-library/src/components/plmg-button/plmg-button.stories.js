@@ -206,7 +206,6 @@ export const AllIcons = (args) => {
   const htmlContent = `
 <plmg-button icon-left="arrowBack">Icon left</plmg-button>
 <plmg-button icon-right="arrowForward">Icon right</plmg-button>
-<plmg-button icon-left="arrowBack" icon-right="arrowForward">Both icons</plmg-button>
 <plmg-button icon-center="image" label="example button"></plmg-button>
 `;
 
