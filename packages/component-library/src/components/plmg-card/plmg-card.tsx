@@ -1,5 +1,4 @@
 import { Component, Event, EventEmitter, h, Prop, Watch } from '@stencil/core';
-import { isDefined } from '../../utils/isDefined';
 
 /**
  * @slot slot-1 - First slot for custom content.
@@ -85,7 +84,7 @@ export class Card {
         {this.hasHeader() && (
           <div class={'plmg-card-header'}>
             <span>{this.headerText}</span>
-            {isDefined(this.topActionIcon) && (
+            {this.hasTopActionIcon() && (
               <plmg-button
                 onClick={(e) => this.topActionClicked.emit(e)}
                 design={'borderless'}
@@ -99,8 +98,8 @@ export class Card {
         )}
         {/* Content */}
         <div class={contentClasses}>
-          <slot name={'slot-1'}></slot>
-          <slot name={'slot-2'}></slot>
+          <slot name={'slot-1'} />
+          <slot name={'slot-2'} />
         </div>
         {/* Footer */}
         {this.hasFooter() && (
@@ -121,12 +120,15 @@ export class Card {
 
   private hasHeader(): boolean {
     return (
-      (isDefined(this.headerText) && this.headerText !== '') ||
-      (isDefined(this.topActionIcon) && this.topActionIcon !== '')
+      (this.headerText && this.headerText !== '') || this.hasTopActionIcon()
     );
   }
 
+  private hasTopActionIcon(): boolean {
+    return this.topActionIcon && this.topActionIcon !== '';
+  }
+
   private hasFooter(): boolean {
-    return isDefined(this.bottomActionText) && this.bottomActionText !== '';
+    return this.bottomActionText && this.bottomActionText !== '';
   }
 }
