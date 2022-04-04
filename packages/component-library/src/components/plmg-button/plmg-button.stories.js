@@ -88,8 +88,8 @@ Primary.args = {
   color: 'primary',
   ['full-width']: false,
   ['shadow']: false,
-  ['icon-left']: 'arrowBack',
-  ['icon-right']: 'arrowForward',
+  ['icon-left']: '',
+  ['icon-right']: '',
 };
 
 export const Link = Template.bind({});
@@ -105,7 +105,7 @@ Link.args = {
   rel: 'noopener noreferrer',
   target: '_blank',
   ['icon-left']: 'arrowBack',
-  ['icon-right']: 'arrowForward',
+  ['icon-right']: '',
 };
 
 export const Icon = Template.bind({});
