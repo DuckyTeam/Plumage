@@ -1,5 +1,6 @@
 import * as Utils from '../../stories/StencilStorybookUtils';
 import { designs, sizes, colors } from './plmg-button.types';
+import { ICON } from '../plmg-svg-icon/icon.enum';
 
 const propToEnglish = (text) =>
   text.replace('-', ' ').replace(/^\w/, (c) => c.toUpperCase());
@@ -33,6 +34,21 @@ export default {
     ['shadow']: {
       options: [true, false],
     },
+    ['icon-left']: {
+      options: [undefined, ...Object.values(ICON)],
+      control: { type: 'select' },
+    },
+    ['icon-center']: {
+      options: [undefined, ...Object.values(ICON)],
+      control: { type: 'select' },
+    },
+    ['icon-right']: {
+      options: [undefined, ...Object.values(ICON)],
+      control: { type: 'select' },
+    },
+    label: {
+      control: { type: 'text' },
+    },
   },
 };
 
@@ -45,6 +61,10 @@ const PROPS = [
   'href',
   'rel',
   'target',
+  'icon-left',
+  'icon-center',
+  'icon-right',
+  'label',
 ];
 const EVENTS = [];
 const CSS_VARS = [];
@@ -68,6 +88,8 @@ Primary.args = {
   color: 'primary',
   ['full-width']: false,
   ['shadow']: false,
+  ['icon-left']: 'arrowBack',
+  ['icon-right']: 'arrowForward',
 };
 
 export const Link = Template.bind({});
@@ -82,6 +104,20 @@ Link.args = {
   href: 'https://ducky.eco',
   rel: 'noopener noreferrer',
   target: '_blank',
+  ['icon-left']: 'arrowBack',
+  ['icon-right']: 'arrowForward',
+};
+
+export const Icon = Template.bind({});
+Icon.storyName = 'Icon center';
+Icon.args = {
+  design: 'filled',
+  size: 'medium',
+  color: 'primary',
+  ['full-width']: false,
+  ['shadow']: false,
+  ['icon-center']: 'image',
+  label: 'example button',
 };
 
 export const AllDesigns = (args) => {
@@ -166,9 +202,28 @@ export const AllFullWidth = (args) => {
 };
 AllFullWidth.storyName = 'All fullWidth';
 
+export const AllIcons = (args) => {
+  const htmlContent = `
+<plmg-button icon-left="arrowBack">Icon left</plmg-button>
+<plmg-button icon-right="arrowForward">Icon right</plmg-button>
+<plmg-button icon-center="image" label="example button"></plmg-button>
+`;
+
+  const el = document.createElement('div');
+  el.innerHTML = htmlContent;
+  el.style.display = 'flex';
+  el.style.justifyContent = 'space-between';
+  el.style['flex-wrap'] = 'wrap';
+  return el;
+};
+AllIcons.storyName = 'All icons';
+
 export const All = (args) => {
   const fullWidthValues = [true, false];
   const shadowValues = [true, false];
+  const leftIcons = ['', 'arrowBack'];
+  const rightIcons = ['', 'arrowForward'];
+  const centerIcons = [undefined, 'image'];
   // button type can be ignored since it does not impact the style
 
   let htmlContent = '';
@@ -177,12 +232,27 @@ export const All = (args) => {
       colors.forEach((color) => {
         fullWidthValues.forEach((fullWidth) => {
           shadowValues.forEach((shadow) => {
-            htmlContent += `
-<plmg-button design="${design}" size="${size}" color="${color}" full-width="${fullWidth}" shadow="${shadow}" >
-    design="${design}" size="${size}" color="${color}" full-width="${fullWidth}" shadow="${shadow}"
+            leftIcons.forEach((leftIcon) => {
+              rightIcons.forEach((rightIcon) => {
+                centerIcons.forEach((centerIcon) => {
+                  if (centerIcon) {
+                    htmlContent += `
+<p>design="${design}" size="${size}" color="${color}" full-width="${fullWidth}" shadow="${shadow}" icon-left="${leftIcon}" icon-right="${rightIcon}" icon-center="${centerIcon} label=${centerIcon}"</p>
+<plmg-button design="${design}" size="${size}" color="${color}" full-width="${fullWidth}" shadow="${shadow}" icon-left="${leftIcon}" icon-right="${rightIcon}" icon-center="${centerIcon}" label=${centerIcon}" >
 </plmg-button>
 <br/>
               `;
+                  } else {
+                    htmlContent += `
+<plmg-button design="${design}" size="${size}" color="${color}" full-width="${fullWidth}" shadow="${shadow}" icon-left="${leftIcon}" icon-right="${rightIcon}" >
+    design="${design}" size="${size}" color="${color}" full-width="${fullWidth}" shadow="${shadow}" icon-left="${leftIcon}" icon-right="${rightIcon}"
+</plmg-button>
+<br/>
+              `;
+                  }
+                });
+              });
+            });
           });
         });
       });
