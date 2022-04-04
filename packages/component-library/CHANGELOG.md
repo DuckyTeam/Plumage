@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Wed, 23 Mar 2022 09:08:01 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Apr 2022 12:54:08 GMT and should not be manually modified.
+
+## 0.3.0
+Mon, 04 Apr 2022 12:54:08 GMT
+
+### Minor changes
+
+- Add icon to button
 
 ## 0.2.1
 Wed, 23 Mar 2022 09:08:01 GMT
