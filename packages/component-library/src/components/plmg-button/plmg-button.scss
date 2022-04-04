@@ -1,4 +1,13 @@
 @use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
+@use 'sass:math';
+
+// Functions
+// ------------------------------
+@function centerIconFontSize($parentFontSize, $percentageMultiplier) {
+  @return math.div($parentFontSize * $percentageMultiplier, 100%);
+}
+// END Functions
+// ------------------------------
 
 // Mixins
 // ------------------------------
@@ -363,26 +372,91 @@
     }
   }
 
-  // Control: Size
+  // Control: Size & icons
   &.small {
     padding: tokens.$plmg-spacing-x0-5 tokens.$plmg-spacing-x1;
     font-size: tokens.$plmg-font-size-x0-875;
     line-height: tokens.$plmg-font-lineheight-loose;
+
+    .icon-left {
+      margin-right: tokens.$plmg-spacing-x0-5;
+    }
+    .icon-right {
+      margin-left: tokens.$plmg-spacing-x0-5;
+    }
+
+    .icon-center {
+      font-size: centerIconFontSize(
+        tokens.$plmg-font-size-x0-875,
+        tokens.$plmg-font-lineheight-loose
+      );
+    }
+    &.icon-button {
+      padding: tokens.$plmg-spacing-x0-5;
+    }
   }
   &.medium {
     padding: tokens.$plmg-spacing-x0-75 tokens.$plmg-spacing-x1-5;
     font-size: tokens.$plmg-font-size-x1-125;
     line-height: tokens.$plmg-font-lineheight-loose;
+
+    .icon-left {
+      margin-right: tokens.$plmg-spacing-x0-75;
+    }
+    .icon-right {
+      margin-left: tokens.$plmg-spacing-x0-75;
+    }
+
+    .icon-center {
+      font-size: centerIconFontSize(
+        tokens.$plmg-font-size-x1-125,
+        tokens.$plmg-font-lineheight-loose
+      );
+    }
+    &.icon-button {
+      padding: tokens.$plmg-spacing-x0-75;
+    }
   }
   &.large {
     padding: tokens.$plmg-spacing-x1 tokens.$plmg-spacing-x2;
     font-size: tokens.$plmg-font-size-x1-25;
     line-height: tokens.$plmg-font-lineheight-loose;
+
+    .icon-left {
+      margin-right: tokens.$plmg-spacing-x0-75;
+    }
+    .icon-right {
+      margin-left: tokens.$plmg-spacing-x0-75;
+    }
+
+    .icon-center {
+      font-size: centerIconFontSize(
+        tokens.$plmg-font-size-x1-25,
+        tokens.$plmg-font-lineheight-loose
+      );
+    }
+    &.icon-button {
+      padding: tokens.$plmg-spacing-x1;
+    }
   }
   &.extra-large {
     padding: tokens.$plmg-spacing-x1-5 tokens.$plmg-spacing-x2-5;
     font-size: tokens.$plmg-font-size-x1-5;
     line-height: tokens.$plmg-font-lineheight-normal;
+
+    .icon-left {
+      margin-right: tokens.$plmg-spacing-x1;
+    }
+    .icon-right {
+      margin-left: tokens.$plmg-spacing-x1;
+    }
+
+    .icon-center {
+      font-size: centerIconFontSize(tokens.$plmg-font-size-x1-5, 200%);
+    }
+    &.icon-button {
+      padding: tokens.$plmg-spacing-x1;
+    }
   }
 
   // Control: full width

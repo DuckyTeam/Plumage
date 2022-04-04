@@ -14,6 +14,19 @@
 | `size`   | `size`    | Define the icon's size.  Allowed values: <value><unit>  Examples: - 1em - 42px  Default: 1em                                                          | `string` | `'1em'`     |
 
 
+## Dependencies
+
+### Used by
+
+ - [plmg-button](../plmg-button)
+
+### Graph
+```mermaid
+graph TD;
+  plmg-button --> plmg-svg-icon
+  style plmg-svg-icon fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

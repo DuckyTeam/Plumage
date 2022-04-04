@@ -1,16 +1,11 @@
 @use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
 
 .plmg-svg-icon {
-  display: inline-block;
-  line-height: 0;
-  height: fit-content;
-  vertical-align: top;
-}
-
-.plmg-svg-icon-svg {
-  user-select: none;
-  display: inline-block;
-  fill: currentColor;
-  flex-shrink: 0;
-  color: inherit;
+  height: 1em;
+  width: 1em;
+  svg {
+    display: block;
+    user-select: none;
+    fill: currentColor;
+  }
 }

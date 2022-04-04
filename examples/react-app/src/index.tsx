@@ -5,13 +5,23 @@ import { PlmgButton, PlmgSvgIcon, PlmgCard } from '@ducky/plumage-react';
 ReactDOM.render(
   <>
     <PlmgButton
-      onClick={(e) => {
+      onClick={(e: any) => {
         console.log('clicked', e);
       }}
       type={'button'}
     >
       PlmgButton
     </PlmgButton>
+    <br />
+    <PlmgButton
+      onClick={(e: any) => {
+        console.log('clicked', e);
+      }}
+      type={'button'}
+      icon-center={'home'}
+    />
+    PlmgButton with icon-center
+    <br />
     <PlmgSvgIcon icon={'home'} size={'6em'} />
     PlmgSvgIcon home
     <br />

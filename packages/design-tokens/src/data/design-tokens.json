@@ -2,27 +2,27 @@
   "plumage": {
     "plumage": {
       "$plmg-breakpoint-xs": {
-        "value": "0",
+        "value": "0px",
         "description": "Media extra small",
         "type": "other"
       },
       "$plmg-breakpoint-s": {
-        "value": "600",
+        "value": "600px",
         "description": "Media small",
         "type": "other"
       },
       "$plmg-breakpoint-m": {
-        "value": "960",
+        "value": "960px",
         "description": "Media medium",
         "type": "other"
       },
       "$plmg-breakpoint-l": {
-        "value": "1280",
+        "value": "1280px",
         "description": "Media large",
         "type": "other"
       },
       "$plmg-breakpoint-xl": {
-        "value": "1920",
+        "value": "1920px",
         "description": "Media extra large",
         "type": "other"
       },
@@ -908,27 +908,27 @@
   "plumage-playful": {
     "plumage": {
       "$plmg-breakpoint-xs": {
-        "value": "0",
+        "value": "0px",
         "description": "Media extra small",
         "type": "other"
       },
       "$plmg-breakpoint-s": {
-        "value": "600",
+        "value": "600px",
         "description": "Media small",
         "type": "other"
       },
       "$plmg-breakpoint-m": {
-        "value": "960",
+        "value": "960px",
         "description": "Media medium",
         "type": "other"
       },
       "$plmg-breakpoint-l": {
-        "value": "1280",
+        "value": "1280px",
         "description": "Media large",
         "type": "other"
       },
       "$plmg-breakpoint-xl": {
-        "value": "1920",
+        "value": "1920px",
         "description": "Media extra large",
         "type": "other"
       },
@@ -1814,27 +1814,27 @@
   "plumage-focused": {
     "plumage": {
       "$plmg-breakpoint-xs": {
-        "value": "0",
+        "value": "0px",
         "description": "Media extra small",
         "type": "other"
       },
       "$plmg-breakpoint-s": {
-        "value": "600",
+        "value": "600px",
         "description": "Media small",
         "type": "other"
       },
       "$plmg-breakpoint-m": {
-        "value": "960",
+        "value": "960px",
         "description": "Media medium",
         "type": "other"
       },
       "$plmg-breakpoint-l": {
-        "value": "1280",
+        "value": "1280px",
         "description": "Media large",
         "type": "other"
       },
       "$plmg-breakpoint-xl": {
-        "value": "1920",
+        "value": "1920px",
         "description": "Media extra large",
         "type": "other"
       },
