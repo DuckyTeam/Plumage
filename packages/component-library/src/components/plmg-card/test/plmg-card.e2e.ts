@@ -17,8 +17,8 @@ describe('plmg-card', () => {
       const page = await newE2EPage();
 
       const headerTexts = ['Something', undefined];
-      const topActionIcons = ['home', undefined];
-      const bottomActionTexts = ['Action bottom', undefined];
+      const topActionIcons = ['home', ''];
+      const bottomActionTexts = ['Action bottom', ''];
 
       let htmlContent = '';
       headerTexts.forEach((headerText) => {
