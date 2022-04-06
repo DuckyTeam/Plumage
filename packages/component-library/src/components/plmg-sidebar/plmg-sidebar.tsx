@@ -33,7 +33,6 @@ export class Sidebar {
 
   /**
    * Define if the item is expanded.
-   * Only valid when this item has children.
    */
   @Prop() expanded: boolean = false;
   @Watch('expanded')
@@ -41,6 +40,30 @@ export class Sidebar {
     if (typeof newValue !== 'boolean')
       throw new Error('expanded: must be boolean');
     this.isExpanded = newValue;
+  }
+
+  /**
+   * "src" property of the logo img.
+   */
+  @Prop() logoSrc: string;
+  @Watch('logoSrc')
+  validateLogoSrc(newValue: string) {
+    if (typeof newValue !== 'string')
+      throw new Error('logoSrc: must be string');
+    if (newValue && newValue !== '' && (!this.logoHref || this.logoHref === ''))
+      throw new Error('logoSrc: provide logoHref as well');
+  }
+
+  /**
+   * Path to redirect when clicking on the logo.
+   */
+  @Prop() logoHref: string;
+  @Watch('logoHref')
+  validateLogoHref(newValue: string) {
+    if (typeof newValue !== 'string')
+      throw new Error('logoHref: must be string');
+    if (newValue && newValue !== '' && (!this.logoSrc || this.logoSrc === ''))
+      throw new Error('logoHref: provide logoSrc as well');
   }
 
   /**
@@ -81,13 +104,40 @@ export class Sidebar {
 
     return (
       <nav class={containerClasses}>
-        <plmg-button
-          iconCenter={'menuOpen'}
-          label={'Close Sidebar'}
-          design={'borderless'}
-        />
-        <slot></slot>
+        <div class={'plmg-sidebar-top'}>
+          {this.hasLogo() && (
+            <a href={this.logoHref} class={'plmg-sidebar-home-link'}>
+              <img
+                src={this.logoSrc}
+                class={'plmg-sidebar-logo'}
+                alt={'logo'}
+              />
+            </a>
+          )}
+          {!this.hasLogo() && <p class={'plmg-sidebar-home-link'} />}
+          <plmg-button
+            iconCenter={'menuOpen'}
+            label={'Close Sidebar'}
+            design={'borderless'}
+            size={'medium'}
+            class={'plmg-sidebar-collapse-btn'}
+            onClick={() => {
+              this.isExpanded = false;
+              this.collapseSidebar.emit();
+            }}
+          />
+        </div>
+        <slot />
       </nav>
+    );
+  }
+
+  private hasLogo() {
+    return (
+      this.logoSrc &&
+      this.logoSrc !== '' &&
+      this.logoHref &&
+      this.logoHref !== ''
     );
   }
 }

@@ -11,31 +11,27 @@ describe('plmg-sidebar', () => {
     expect(element).toHaveClass('hydrated');
   });
 
-  describe('all possible variations', () => {
-    it('are accessible', async () => {
-      const page = await newE2EPage();
+  it('is accessible', async () => {
+    const page = await newE2EPage();
 
-      let htmlContent = '';
-      someControl.forEach((control) => {
-        htmlContent += `
-    <plmg-sidebar control="${control}">
-  control="${control}"
-    </plmg-sidebar>
-<br/>
-    `;
-      });
-      await page.setContent('<main>' + htmlContent + '</main>');
+    let htmlContent = `
+<plmg-sidebar expanded="true" logo-src="https://storage.googleapis.com/ducky_static_assets/ducky_logo_horisontal_azur.png" logo-href="/">
+  <plmg-sidebar-item text="Ducky homepage" href="https://ducky.eco" target="_blank"></plmg-sidebar-item>
+  <plmg-sidebar-item text="Plumage homepage" href="https://plumage.ducky.eco/" target="_blank"></plmg-sidebar-item>
+</plmg-sidebar>      
+      `;
 
-      const results = await new AxePuppeteer(page as unknown as Page)
-        .disableRules([
-          'document-title',
-          'html-has-lang',
-          'landmark-one-main',
-          'page-has-heading-one',
-        ])
-        .analyze();
+    await page.setContent('<main>' + htmlContent + '</main>');
 
-      expect(results.violations).toHaveLength(0);
-    });
+    const results = await new AxePuppeteer(page as unknown as Page)
+      .disableRules([
+        'document-title',
+        'html-has-lang',
+        'landmark-one-main',
+        'page-has-heading-one',
+      ])
+      .analyze();
+
+    expect(results.violations).toHaveLength(0);
   });
 });
