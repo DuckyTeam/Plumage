@@ -11,6 +11,7 @@ import { fetchIcon, supportsIntersectionObserver } from './utils';
 
 @Component({
   tag: 'plmg-svg-icon',
+  styleUrl: 'plmg-svg-icon.scss',
   shadow: true,
 })
 export class SvgIcon {
@@ -84,9 +85,8 @@ export class SvgIcon {
     return (
       <div
         innerHTML={this.pathData}
+        class={{ ['plmg-svg-icon']: true }}
         style={{
-          height: '1em',
-          width: '1em',
           fontSize: this.size,
           color: this.color ?? 'inherit',
         }}

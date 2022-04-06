@@ -18,11 +18,13 @@
 
 ### Used by
 
+ - [plmg-button](../plmg-button)
  - [plmg-sidebar-item](../plmg-sidebar-item)
 
 ### Graph
 ```mermaid
 graph TD;
+  plmg-button --> plmg-svg-icon
   plmg-sidebar-item --> plmg-svg-icon
   style plmg-svg-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
