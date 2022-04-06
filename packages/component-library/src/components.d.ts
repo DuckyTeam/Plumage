@@ -45,6 +45,22 @@ export namespace Components {
          */
         "type": PlmgButtonType;
     }
+    interface PlmgContent {
+    }
+    interface PlmgHeader {
+    }
+    interface PlmgPageContainer {
+    }
+    interface PlmgSidebar {
+        /**
+          * Invoke this method to expand the sidebar.
+         */
+        "expand": () => Promise<void>;
+        /**
+          * Define if the item is expanded. Only valid when this item has children.
+         */
+        "expanded": boolean;
+    }
     interface PlmgSidebarItem {
         /**
           * Set this prop to True when this item is active. It highlights the item.
@@ -97,6 +113,30 @@ declare global {
         prototype: HTMLPlmgButtonElement;
         new (): HTMLPlmgButtonElement;
     };
+    interface HTMLPlmgContentElement extends Components.PlmgContent, HTMLStencilElement {
+    }
+    var HTMLPlmgContentElement: {
+        prototype: HTMLPlmgContentElement;
+        new (): HTMLPlmgContentElement;
+    };
+    interface HTMLPlmgHeaderElement extends Components.PlmgHeader, HTMLStencilElement {
+    }
+    var HTMLPlmgHeaderElement: {
+        prototype: HTMLPlmgHeaderElement;
+        new (): HTMLPlmgHeaderElement;
+    };
+    interface HTMLPlmgPageContainerElement extends Components.PlmgPageContainer, HTMLStencilElement {
+    }
+    var HTMLPlmgPageContainerElement: {
+        prototype: HTMLPlmgPageContainerElement;
+        new (): HTMLPlmgPageContainerElement;
+    };
+    interface HTMLPlmgSidebarElement extends Components.PlmgSidebar, HTMLStencilElement {
+    }
+    var HTMLPlmgSidebarElement: {
+        prototype: HTMLPlmgSidebarElement;
+        new (): HTMLPlmgSidebarElement;
+    };
     interface HTMLPlmgSidebarItemElement extends Components.PlmgSidebarItem, HTMLStencilElement {
     }
     var HTMLPlmgSidebarItemElement: {
@@ -111,6 +151,10 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "plmg-button": HTMLPlmgButtonElement;
+        "plmg-content": HTMLPlmgContentElement;
+        "plmg-header": HTMLPlmgHeaderElement;
+        "plmg-page-container": HTMLPlmgPageContainerElement;
+        "plmg-sidebar": HTMLPlmgSidebarElement;
         "plmg-sidebar-item": HTMLPlmgSidebarItemElement;
         "plmg-svg-icon": HTMLPlmgSvgIconElement;
     }
@@ -153,6 +197,26 @@ declare namespace LocalJSX {
           * Define button's type  Allowed values:   - button   - submit   - reset  Default: button
          */
         "type"?: PlmgButtonType;
+    }
+    interface PlmgContent {
+    }
+    interface PlmgHeader {
+        /**
+          * Event dispatched when the button to expand the sidebar is clicked.
+         */
+        "onExpandSidebar"?: (event: CustomEvent<any>) => void;
+    }
+    interface PlmgPageContainer {
+    }
+    interface PlmgSidebar {
+        /**
+          * Define if the item is expanded. Only valid when this item has children.
+         */
+        "expanded"?: boolean;
+        /**
+          * Event dispatched when the button to collapse the sidebar is clicked.
+         */
+        "onCollapseSidebar"?: (event: CustomEvent<any>) => void;
     }
     interface PlmgSidebarItem {
         /**
@@ -200,6 +264,10 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "plmg-button": PlmgButton;
+        "plmg-content": PlmgContent;
+        "plmg-header": PlmgHeader;
+        "plmg-page-container": PlmgPageContainer;
+        "plmg-sidebar": PlmgSidebar;
         "plmg-sidebar-item": PlmgSidebarItem;
         "plmg-svg-icon": PlmgSvgIcon;
     }
@@ -209,6 +277,10 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "plmg-button": LocalJSX.PlmgButton & JSXBase.HTMLAttributes<HTMLPlmgButtonElement>;
+            "plmg-content": LocalJSX.PlmgContent & JSXBase.HTMLAttributes<HTMLPlmgContentElement>;
+            "plmg-header": LocalJSX.PlmgHeader & JSXBase.HTMLAttributes<HTMLPlmgHeaderElement>;
+            "plmg-page-container": LocalJSX.PlmgPageContainer & JSXBase.HTMLAttributes<HTMLPlmgPageContainerElement>;
+            "plmg-sidebar": LocalJSX.PlmgSidebar & JSXBase.HTMLAttributes<HTMLPlmgSidebarElement>;
             "plmg-sidebar-item": LocalJSX.PlmgSidebarItem & JSXBase.HTMLAttributes<HTMLPlmgSidebarItemElement>;
             "plmg-svg-icon": LocalJSX.PlmgSvgIcon & JSXBase.HTMLAttributes<HTMLPlmgSvgIconElement>;
         }

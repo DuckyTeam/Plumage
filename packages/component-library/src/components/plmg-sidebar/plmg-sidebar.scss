@@ -1,0 +1,44 @@
+@use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
+
+// Common styles to all shadow-DOM components
+// Remove this section if your component does not use shadow DOM
+// -------------------------------------------------
+:host {
+  display: block;
+}
+
+:host([hidden]) {
+  display: none;
+}
+// ------------- END Common styles -----------------
+
+// Component style
+// -------------------------------------------------
+.plmg-sidebar {
+  // Fixed styles
+  // todo full height
+  // todo fixed width (not expanded version)
+  // todo shadow
+  display: flex;
+  flex-direction: column;
+  box-shadow: tokens.$plmg-shadow-s;
+  padding-bottom: tokens.$plmg-spacing-x1-5;
+
+  position: fixed;
+  height: 100vh;
+  width: 0;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  overflow-x: hidden;
+
+  transition: 0.5s;
+
+  // Controls
+  &.plmg-sidebar-expanded {
+    // todo
+    // sidebar on top of content
+    width: fit-content;
+  }
+}
+// ------------- END Component style ---------------
