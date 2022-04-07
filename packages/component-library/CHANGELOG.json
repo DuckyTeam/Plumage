@@ -2,6 +2,18 @@
   "name": "@ducky/plumage",
   "entries": [
     {
+      "version": "0.4.0",
+      "tag": "@ducky/plumage_v0.4.0",
+      "date": "Thu, 07 Apr 2022 07:29:43 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "create plmg-card component"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.3.0",
       "tag": "@ducky/plumage_v0.3.0",
       "date": "Mon, 04 Apr 2022 12:54:08 GMT",
