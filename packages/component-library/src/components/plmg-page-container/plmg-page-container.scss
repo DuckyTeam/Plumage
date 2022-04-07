@@ -9,10 +9,10 @@
   .plmg-content {
     display: block;
     position: absolute;
-    width: 100%;
     height: 100%;
     top: 99px; // Height of the header
     left: 0;
+    right: 0;
 
     transition: 0.2s;
 
