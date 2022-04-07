@@ -61,8 +61,6 @@ export namespace Components {
          */
         "type": PlmgButtonType;
     }
-    interface PlmgContent {
-    }
     interface PlmgHeader {
         /**
           * Invoke this method to reveals the "expand" icon and update the margin left
@@ -149,12 +147,6 @@ declare global {
         prototype: HTMLPlmgButtonElement;
         new (): HTMLPlmgButtonElement;
     };
-    interface HTMLPlmgContentElement extends Components.PlmgContent, HTMLStencilElement {
-    }
-    var HTMLPlmgContentElement: {
-        prototype: HTMLPlmgContentElement;
-        new (): HTMLPlmgContentElement;
-    };
     interface HTMLPlmgHeaderElement extends Components.PlmgHeader, HTMLStencilElement {
     }
     var HTMLPlmgHeaderElement: {
@@ -187,7 +179,6 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "plmg-button": HTMLPlmgButtonElement;
-        "plmg-content": HTMLPlmgContentElement;
         "plmg-header": HTMLPlmgHeaderElement;
         "plmg-page-container": HTMLPlmgPageContainerElement;
         "plmg-sidebar": HTMLPlmgSidebarElement;
@@ -249,8 +240,6 @@ declare namespace LocalJSX {
           * Define button's type  Allowed values:   - button   - submit   - reset  Default: button
          */
         "type"?: PlmgButtonType;
-    }
-    interface PlmgContent {
     }
     interface PlmgHeader {
         /**
@@ -332,7 +321,6 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "plmg-button": PlmgButton;
-        "plmg-content": PlmgContent;
         "plmg-header": PlmgHeader;
         "plmg-page-container": PlmgPageContainer;
         "plmg-sidebar": PlmgSidebar;
@@ -345,7 +333,6 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "plmg-button": LocalJSX.PlmgButton & JSXBase.HTMLAttributes<HTMLPlmgButtonElement>;
-            "plmg-content": LocalJSX.PlmgContent & JSXBase.HTMLAttributes<HTMLPlmgContentElement>;
             "plmg-header": LocalJSX.PlmgHeader & JSXBase.HTMLAttributes<HTMLPlmgHeaderElement>;
             "plmg-page-container": LocalJSX.PlmgPageContainer & JSXBase.HTMLAttributes<HTMLPlmgPageContainerElement>;
             "plmg-sidebar": LocalJSX.PlmgSidebar & JSXBase.HTMLAttributes<HTMLPlmgSidebarElement>;

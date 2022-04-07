@@ -10,7 +10,14 @@ describe('plmg-page-container', () => {
     expect(page.root).toEqualHtml(`
       <plmg-page-container>
         <mock:shadow-root>
-          <slot></slot>
+          <div class="plmg-page-container">
+            <slot name="sidebar"></slot>
+            <slot name="header"></slot>
+             <div class="plmg-content">
+                 <slot name="content"></slot>
+             </div>
+             <slot name="footer"></slot>
+          </div>
         </mock:shadow-root>
       </plmg-page-container>
     `);

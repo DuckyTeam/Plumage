@@ -9,7 +9,6 @@ import { Component, h, Listen, Prop, State, Watch } from '@stencil/core';
  * @slot sidebar - Side navigation bar, a PlmgSidebar component.
  * @slot header - Top navigation bar, a PlmgHeader component.
  * @slot content - Main content of the web page.
- * @slot footer - Footer of the web page.
  */
 @Component({
   tag: 'plmg-page-container',

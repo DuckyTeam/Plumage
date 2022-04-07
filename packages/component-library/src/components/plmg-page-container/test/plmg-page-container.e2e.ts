@@ -11,31 +11,33 @@ describe('plmg-page-container', () => {
     expect(element).toHaveClass('hydrated');
   });
 
-  describe('all possible variations', () => {
-    it('are accessible', async () => {
-      const page = await newE2EPage();
+  it('is accessible', async () => {
+    const page = await newE2EPage();
 
-      let htmlContent = '';
-      someControl.forEach((control) => {
-        htmlContent += `
-    <plmg-page-container control="${control}">
-  control="${control}"
-    </plmg-page-container>
-<br/>
-    `;
-      });
-      await page.setContent('<main>' + htmlContent + '</main>');
+    let htmlContent = `
+<plmg-page-container>
+    <plmg-header slot="header"></plmg-header>
+    <plmg-sidebar slot="sidebar" logo-src="https://storage.googleapis.com/ducky_static_assets/ducky_logo_horisontal_azur.png" logo-href="/">
+      <plmg-sidebar-item text="Ducky homepage" href="https://ducky.eco" target="_blank"></plmg-sidebar-item>
+      <plmg-sidebar-item text="Plumage homepage" href="https://plumage.ducky.eco/" target="_blank"></plmg-sidebar-item>
+    </plmg-sidebar>
+    <div slot="content" style="padding: 20px;">
+        Hello world I'm the main content of the page
+    </div>
+</plmg-page-container>   
+      `;
 
-      const results = await new AxePuppeteer(page as unknown as Page)
-        .disableRules([
-          'document-title',
-          'html-has-lang',
-          'landmark-one-main',
-          'page-has-heading-one',
-        ])
-        .analyze();
+    await page.setContent('<main>' + htmlContent + '</main>');
 
-      expect(results.violations).toHaveLength(0);
-    });
+    const results = await new AxePuppeteer(page as unknown as Page)
+      .disableRules([
+        'document-title',
+        'html-has-lang',
+        'landmark-one-main',
+        'page-has-heading-one',
+      ])
+      .analyze();
+
+    expect(results.violations).toHaveLength(0);
   });
 });
