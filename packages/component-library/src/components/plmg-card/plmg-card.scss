@@ -1,0 +1,107 @@
+@use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
+
+// Common styles to all shadow-DOM components
+// Remove this section if your component does not use shadow DOM
+// -------------------------------------------------
+:host {
+  display: block;
+}
+
+:host([hidden]) {
+  display: none;
+}
+// ------------- END Common styles -----------------
+
+// Mixins
+// -------------------------------------------------
+@mixin set-border($border-color, $border-width: tokens.$plmg-border-width-s) {
+  border: $border-width solid $border-color;
+}
+// ------------- END Mixins ------------------------
+
+// Component style
+// -------------------------------------------------
+.plmg-card {
+  // Fixed styles
+  font-family: tokens.$plmg-font-family-sans;
+  font-style: normal;
+  font-weight: tokens.$plmg-font-weight-regular;
+  font-size: tokens.$plmg-font-size-x0_875;
+  line-height: tokens.$plmg-font-lineheight-loose;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  overflow: hidden;
+  width: fit-content;
+  background: tokens.$plmg-background-neutral;
+  border: tokens.$plmg-border-width-s solid tokens.$plmg-border-neutral-weak;
+  box-sizing: border-box;
+  box-shadow: tokens.$plmg-shadow-s;
+  border-radius: tokens.$plmg-border-radius-m;
+}
+
+.plmg-card-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: tokens.$plmg-spacing-x0-25 tokens.$plmg-spacing-x0-25 0
+    tokens.$plmg-spacing-x1;
+
+  height: 41px;
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 0px 0px;
+}
+
+.plmg-card-content-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: tokens.$plmg-spacing-x1;
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 1;
+  margin: 0px 0px;
+
+  &.with-header {
+    padding-top: tokens.$plmg-spacing-x0-5;
+  }
+
+  &.with-footer {
+    padding-bottom: tokens.$plmg-spacing-x0-5;
+  }
+}
+
+::slotted([slot='slot-1']) {
+  align-self: stretch;
+}
+
+::slotted([slot='slot-2']) {
+  margin-top: 16px;
+  align-self: stretch;
+}
+
+.plmg-card-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 tokens.$plmg-spacing-x1 tokens.$plmg-spacing-x0-75;
+  position: static;
+  height: 49px;
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
+  margin: 0px 0px;
+}
+// ------------- END Component style ---------------

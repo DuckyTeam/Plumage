@@ -61,6 +61,24 @@ export namespace Components {
          */
         "type": PlmgButtonType;
     }
+    interface PlmgCard {
+        /**
+          * Define card's bottom button text.  If a text is provided, the button will be displayed. By default, when no text is provided, the button is hidden.
+         */
+        "bottomActionText": string | undefined;
+        /**
+          * Define card's header text.  If a headerText or an topActionIcon is provided, the heading will be displayed. By default, when no headerText nor topActionIcon is provided, the heading is hidden.
+         */
+        "headerText": string | undefined;
+        /**
+          * Define card's header icon, used as a top action for the card.  If a headerText or an topActionIcon is provided, the heading will be displayed with the icon button on the right. By default, when no headerText nor topActionIcon is provided, the heading is hidden.
+         */
+        "topActionIcon": string | undefined;
+        /**
+          * Define top action's label, used to enable assistive technology for the top action button.  You must provide a topActionLabel when providing a topActionIcon.
+         */
+        "topActionLabel": string | undefined;
+    }
     interface PlmgSvgIcon {
         /**
           * Define icon's color.  Can be any valid CSS color value.  By default, the icon will have the same color as the parent's element.
@@ -83,6 +101,12 @@ declare global {
         prototype: HTMLPlmgButtonElement;
         new (): HTMLPlmgButtonElement;
     };
+    interface HTMLPlmgCardElement extends Components.PlmgCard, HTMLStencilElement {
+    }
+    var HTMLPlmgCardElement: {
+        prototype: HTMLPlmgCardElement;
+        new (): HTMLPlmgCardElement;
+    };
     interface HTMLPlmgSvgIconElement extends Components.PlmgSvgIcon, HTMLStencilElement {
     }
     var HTMLPlmgSvgIconElement: {
@@ -91,6 +115,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "plmg-button": HTMLPlmgButtonElement;
+        "plmg-card": HTMLPlmgCardElement;
         "plmg-svg-icon": HTMLPlmgSvgIconElement;
     }
 }
@@ -149,6 +174,32 @@ declare namespace LocalJSX {
          */
         "type"?: PlmgButtonType;
     }
+    interface PlmgCard {
+        /**
+          * Define card's bottom button text.  If a text is provided, the button will be displayed. By default, when no text is provided, the button is hidden.
+         */
+        "bottomActionText"?: string | undefined;
+        /**
+          * Define card's header text.  If a headerText or an topActionIcon is provided, the heading will be displayed. By default, when no headerText nor topActionIcon is provided, the heading is hidden.
+         */
+        "headerText"?: string | undefined;
+        /**
+          * The event "bottomActionClicked" is triggered when the bottom action button is clicked.
+         */
+        "onBottomActionClicked"?: (event: CustomEvent<MouseEvent>) => void;
+        /**
+          * The event "topActionClicked" is triggered when the top action button is clicked.
+         */
+        "onTopActionClicked"?: (event: CustomEvent<MouseEvent>) => void;
+        /**
+          * Define card's header icon, used as a top action for the card.  If a headerText or an topActionIcon is provided, the heading will be displayed with the icon button on the right. By default, when no headerText nor topActionIcon is provided, the heading is hidden.
+         */
+        "topActionIcon"?: string | undefined;
+        /**
+          * Define top action's label, used to enable assistive technology for the top action button.  You must provide a topActionLabel when providing a topActionIcon.
+         */
+        "topActionLabel"?: string | undefined;
+    }
     interface PlmgSvgIcon {
         /**
           * Define icon's color.  Can be any valid CSS color value.  By default, the icon will have the same color as the parent's element.
@@ -165,6 +216,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "plmg-button": PlmgButton;
+        "plmg-card": PlmgCard;
         "plmg-svg-icon": PlmgSvgIcon;
     }
 }
@@ -173,6 +225,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "plmg-button": LocalJSX.PlmgButton & JSXBase.HTMLAttributes<HTMLPlmgButtonElement>;
+            "plmg-card": LocalJSX.PlmgCard & JSXBase.HTMLAttributes<HTMLPlmgCardElement>;
             "plmg-svg-icon": LocalJSX.PlmgSvgIcon & JSXBase.HTMLAttributes<HTMLPlmgSvgIconElement>;
         }
     }

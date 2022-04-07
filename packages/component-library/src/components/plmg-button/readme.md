@@ -33,6 +33,10 @@
 
 ## Dependencies
 
+### Used by
+
+ - [plmg-card](../plmg-card)
+
 ### Depends on
 
 - [plmg-svg-icon](../plmg-svg-icon)
@@ -41,6 +45,7 @@
 ```mermaid
 graph TD;
   plmg-button --> plmg-svg-icon
+  plmg-card --> plmg-button
   style plmg-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

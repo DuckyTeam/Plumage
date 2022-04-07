@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage-react",
+      "comment": "create plmg-card react component",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ducky/plumage-react"
+}
