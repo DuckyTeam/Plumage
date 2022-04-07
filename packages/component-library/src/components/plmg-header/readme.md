@@ -5,11 +5,39 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property          | Attribute          | Description                                   | Type      | Default |
+| ----------------- | ------------------ | --------------------------------------------- | --------- | ------- |
+| `sidebarExpanded` | `sidebar-expanded` | Define if the sidebar is expanded on startup. | `boolean` | `false` |
+
+
 ## Events
 
 | Event           | Description                                                        | Type               |
 | --------------- | ------------------------------------------------------------------ | ------------------ |
 | `expandSidebar` | Event dispatched when the button to expand the sidebar is clicked. | `CustomEvent<any>` |
+
+
+## Methods
+
+### `sidebarCollapsedHandler() => Promise<void>`
+
+Invoke this method to reveals the "expand" icon and update the margin left
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
+## Slots
+
+| Slot      | Description                   |
+| --------- | ----------------------------- |
+| `"left"`  | Content floating to the left  |
+| `"right"` | Content floating to the right |
 
 
 ## Dependencies
