@@ -1,5 +1,5 @@
 import { Component, h, Listen, Prop, State, Watch } from '@stencil/core';
-import { plmgBreakpointM } from '@ducky/plumage-tokens/dist/es6/default';
+import * as tokens from '@ducky/plumage-tokens';
 
 /**
  * Container for the entire web page. Wraps everything.
@@ -109,7 +109,9 @@ export class PageContainer {
   }
 
   private resizeHandler() {
-    if (window.innerWidth < parseInt(plmgBreakpointM.replace('px', ''), 10)) {
+    if (
+      window.innerWidth < parseInt(tokens.plmgBreakpointM.replace('px', ''), 10)
+    ) {
       this.onCollapseSidebar(new Event('collapseSidebar'));
       this.sidebar.collapse();
     }

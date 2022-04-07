@@ -23,6 +23,16 @@
 
 ## Methods
 
+### `collapse() => Promise<void>`
+
+Invoke this method to collapse the sidebar.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `expand() => Promise<void>`
 
 Invoke this method to expand the sidebar.
