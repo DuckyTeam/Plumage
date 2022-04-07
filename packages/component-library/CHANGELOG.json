@@ -2,6 +2,18 @@
   "name": "@ducky/plumage",
   "entries": [
     {
+      "version": "1.0.0",
+      "tag": "@ducky/plumage_v1.0.0",
+      "date": "Thu, 07 Apr 2022 13:53:32 GMT",
+      "comments": {
+        "major": [
+          {
+            "comment": "Add Sidebar, Header, PageContainer"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.4.0",
       "tag": "@ducky/plumage_v0.4.0",
       "date": "Thu, 07 Apr 2022 07:29:43 GMT",

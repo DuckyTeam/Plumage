@@ -2,6 +2,18 @@
   "name": "@ducky/plumage-react",
   "entries": [
     {
+      "version": "0.4.1",
+      "tag": "@ducky/plumage-react_v0.4.1",
+      "date": "Thu, 07 Apr 2022 13:53:32 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ducky/plumage\" from `^0.4.0` to `^1.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.4.0",
       "tag": "@ducky/plumage-react_v0.4.0",
       "date": "Thu, 07 Apr 2022 10:08:14 GMT",

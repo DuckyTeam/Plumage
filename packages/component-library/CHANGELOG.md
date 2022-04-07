@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Thu, 07 Apr 2022 07:29:43 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Apr 2022 13:53:32 GMT and should not be manually modified.
+
+## 1.0.0
+Thu, 07 Apr 2022 13:53:32 GMT
+
+### Breaking changes
+
+- Add Sidebar, Header, PageContainer
 
 ## 0.4.0
 Thu, 07 Apr 2022 07:29:43 GMT
