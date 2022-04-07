@@ -12,18 +12,12 @@
 }
 // ------------- END Common styles -----------------
 
-// Mixins
-// -------------------------------------------------
-@mixin set-border($border-color, $border-width: tokens.$plmg-border-width-s) {
-  border: $border-width solid $border-color;
-}
-// ------------- END Mixins ------------------------
-
 // Component style
 // -------------------------------------------------
-main-tag {
+.plmg-page-container {
   // Fixed styles
-
+  width: 100%;
+  height: 100%;
   // Controls
 }
 // ------------- END Component style ---------------

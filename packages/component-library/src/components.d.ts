@@ -73,9 +73,17 @@ export namespace Components {
          */
         "expand": () => Promise<void>;
         /**
-          * Define if the item is expanded. Only valid when this item has children.
+          * Define if the item is expanded.
          */
         "expanded": boolean;
+        /**
+          * Path to redirect when clicking on the logo.
+         */
+        "logoHref": string;
+        /**
+          * "src" property of the logo img.
+         */
+        "logoSrc": string;
     }
     interface PlmgSidebarItem {
         /**
@@ -242,9 +250,17 @@ declare namespace LocalJSX {
     }
     interface PlmgSidebar {
         /**
-          * Define if the item is expanded. Only valid when this item has children.
+          * Define if the item is expanded.
          */
         "expanded"?: boolean;
+        /**
+          * Path to redirect when clicking on the logo.
+         */
+        "logoHref"?: string;
+        /**
+          * "src" property of the logo img.
+         */
+        "logoSrc"?: string;
         /**
           * Event dispatched when the button to collapse the sidebar is clicked.
          */

@@ -1,4 +1,4 @@
-import { Component, Host, h, Listen } from '@stencil/core';
+import { Component, h, Listen } from '@stencil/core';
 
 /**
  * Container for the entire web page. Wraps everything.
@@ -54,12 +54,12 @@ export class PageContainer {
 
   render() {
     return (
-      <Host>
-        <slot name={'sidebar'} />
-        <slot name={'header'} />
-        <slot name={'content'} />
-        <slot name={'footer'} />
-      </Host>
+      <div class={'plmg-page-container'}>
+        <slot name={'sidebar'}></slot>
+        <slot name={'header'}></slot>
+        <slot name={'content'}></slot>
+        <slot name={'footer'}></slot>
+      </div>
     );
   }
 }

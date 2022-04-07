@@ -7,7 +7,7 @@ export default {
   argTypes: {},
 };
 
-const PROPS = ['color'];
+const PROPS = [];
 const EVENTS = [];
 const CSS_VARS = [];
 const SLOTS = ['content', 'sidebar', 'header', 'footer'];
@@ -25,16 +25,18 @@ export const Primary = Template.bind({});
 Primary.storyName = 'neutral';
 Primary.args = {
   sidebar: `
-<plmg-sidebar>
+<plmg-sidebar slot="sidebar" logo-src="https://storage.googleapis.com/ducky_static_assets/ducky_logo_horisontal_azur.png" logo-href="/">
   <plmg-sidebar-item text="Ducky homepage" href="https://ducky.eco" target="_blank"></plmg-sidebar-item>
   <plmg-sidebar-item text="Plumage homepage" href="https://plumage.ducky.eco/" target="_blank"></plmg-sidebar-item>
 </plmg-sidebar>
 `,
   header: `
-<plmg-header></plmg-header>
+<plmg-header slot="header"></plmg-header>
   `,
   content: `
-Hello world I'm here, hiding under the sidebarn I guess at least. Maybe I'm not even visible
+<plmg-content slot="content">
+    Hello world I'm here, hiding under the sidebar I guess at least. Maybe I'm not even visible
+</plmg-content>
   `,
 };
 
