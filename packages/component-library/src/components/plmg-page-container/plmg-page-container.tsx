@@ -1,4 +1,5 @@
 import { Component, h, Listen, Prop, State, Watch } from '@stencil/core';
+import { plmgBreakpointM } from '@ducky/plumage-tokens/dist/es6/default';
 
 /**
  * Container for the entire web page. Wraps everything.
@@ -18,6 +19,7 @@ import { Component, h, Listen, Prop, State, Watch } from '@stencil/core';
 export class PageContainer {
   private sidebar: HTMLPlmgSidebarElement;
   private header: HTMLPlmgHeaderElement;
+  private abortResizeListener: AbortController;
 
   /**
    * Store the expanded status of the sidebar.
@@ -49,6 +51,17 @@ export class PageContainer {
   componentDidLoad() {
     this.sidebar = document.querySelector('plmg-sidebar');
     this.header = document.querySelector('plmg-header');
+  }
+
+  connectedCallback() {
+    this.abortResizeListener = new AbortController();
+    window.addEventListener('resize', () => this.resizeHandler(), {
+      signal: this.abortResizeListener.signal,
+    });
+  }
+
+  disconnectedCallback() {
+    if (this.abortResizeListener) this.abortResizeListener.abort();
   }
 
   /**
@@ -93,5 +106,12 @@ export class PageContainer {
         <slot name={'footer'} />
       </div>
     );
+  }
+
+  private resizeHandler() {
+    if (window.innerWidth < parseInt(plmgBreakpointM.replace('px', ''), 10)) {
+      this.onCollapseSidebar(new Event('collapseSidebar'));
+      this.sidebar.collapse();
+    }
   }
 }

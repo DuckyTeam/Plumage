@@ -19,11 +19,11 @@
     &.plmg-content-with-sidebar {
       /* Extra small devices */
       @media only screen and (min-width: tokens.$plmg-breakpoint-xs) {
-        left: tokens.$plmg-breakpoint-m * 0.25;
+        // sidebar goes on top of the content
       }
       /* Small devices */
       @media only screen and (min-width: tokens.$plmg-breakpoint-s) {
-        left: tokens.$plmg-breakpoint-m * 0.25;
+        // sidebar goes on top of the content
       }
       /* Medium devices */
       @media only screen and (min-width: tokens.$plmg-breakpoint-m) {

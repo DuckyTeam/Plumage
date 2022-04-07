@@ -23,11 +23,11 @@
   &.plmg-header-sidebar-expanded {
     /* Extra small devices */
     @media only screen and (min-width: tokens.$plmg-breakpoint-xs) {
-      margin-left: tokens.$plmg-breakpoint-m * 0.25;
+      // sidebar goes on top of the header
     }
     /* Small devices */
     @media only screen and (min-width: tokens.$plmg-breakpoint-s) {
-      margin-left: tokens.$plmg-breakpoint-m * 0.25;
+      // sidebar goes on top of the header
     }
     /* Medium devices */
     @media only screen and (min-width: tokens.$plmg-breakpoint-m) {

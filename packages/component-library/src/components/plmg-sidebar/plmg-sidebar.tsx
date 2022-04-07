@@ -96,6 +96,14 @@ export class Sidebar {
     this.isExpanded = true;
   }
 
+  /**
+   * Invoke this method to collapse the sidebar.
+   */
+  @Method()
+  async collapse() {
+    this.isExpanded = false;
+  }
+
   render() {
     const containerClasses = {
       'plmg-sidebar': true,

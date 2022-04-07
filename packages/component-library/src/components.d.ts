@@ -97,6 +97,10 @@ export namespace Components {
     }
     interface PlmgSidebar {
         /**
+          * Invoke this method to collapse the sidebar.
+         */
+        "collapse": () => Promise<void>;
+        /**
           * Invoke this method to expand the sidebar.
          */
         "expand": () => Promise<void>;
