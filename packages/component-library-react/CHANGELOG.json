@@ -2,6 +2,23 @@
   "name": "@ducky/plumage-react",
   "entries": [
     {
+      "version": "0.3.0",
+      "tag": "@ducky/plumage-react_v0.3.0",
+      "date": "Thu, 07 Apr 2022 07:29:43 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "create plmg-card react component"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ducky/plumage\" from `^0.3.0` to `^0.4.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.2.2",
       "tag": "@ducky/plumage-react_v0.2.2",
       "date": "Mon, 04 Apr 2022 12:54:08 GMT",

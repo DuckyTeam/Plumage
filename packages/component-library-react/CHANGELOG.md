@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage-react
 
-This log was last generated on Mon, 04 Apr 2022 12:54:08 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Apr 2022 07:29:43 GMT and should not be manually modified.
+
+## 0.3.0
+Thu, 07 Apr 2022 07:29:43 GMT
+
+### Minor changes
+
+- create plmg-card react component
 
 ## 0.2.2
 Mon, 04 Apr 2022 12:54:08 GMT
