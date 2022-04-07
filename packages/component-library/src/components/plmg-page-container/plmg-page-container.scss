@@ -1,0 +1,43 @@
+@use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
+
+// Component style
+// -------------------------------------------------
+.plmg-page-container {
+  width: 100%;
+  height: 100%;
+
+  .plmg-content {
+    display: block;
+    position: absolute;
+    height: 100%;
+    top: 99px; // Height of the header
+    left: 0;
+    right: 0;
+
+    transition: 0.2s;
+
+    &.plmg-content-with-sidebar {
+      /* Extra small devices */
+      @media only screen and (min-width: tokens.$plmg-breakpoint-xs) {
+        // sidebar goes on top of the content
+      }
+      /* Small devices */
+      @media only screen and (min-width: tokens.$plmg-breakpoint-s) {
+        // sidebar goes on top of the content
+      }
+      /* Medium devices */
+      @media only screen and (min-width: tokens.$plmg-breakpoint-m) {
+        left: 25vw;
+      }
+      /* Large devices */
+      @media only screen and (min-width: tokens.$plmg-breakpoint-l) {
+        left: 25vw;
+      }
+      /* Extra large devices */
+      @media only screen and (min-width: tokens.$plmg-breakpoint-xl) {
+        left: 360px;
+      }
+    }
+  }
+}
+// ------------- END Component style ---------------

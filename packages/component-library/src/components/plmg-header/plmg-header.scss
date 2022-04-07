@@ -1,0 +1,63 @@
+@use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
+
+// Component style
+// -------------------------------------------------
+.plmg-header-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-shadow: tokens.$plmg-shadow-s;
+  background: tokens.$plmg-background-neutral;
+  z-index: 1;
+
+  // Same height as .plmg-sidebar-top
+  height: 99px - 2 * tokens.$plmg-spacing-x1-5;
+  padding: tokens.$plmg-spacing-x1-5;
+  margin-left: 0;
+  transition: 0.2s;
+
+  &.plmg-header-sidebar-expanded {
+    /* Extra small devices */
+    @media only screen and (min-width: tokens.$plmg-breakpoint-xs) {
+      // sidebar goes on top of the header
+    }
+    /* Small devices */
+    @media only screen and (min-width: tokens.$plmg-breakpoint-s) {
+      // sidebar goes on top of the header
+    }
+    /* Medium devices */
+    @media only screen and (min-width: tokens.$plmg-breakpoint-m) {
+      margin-left: 25vw;
+    }
+    /* Large devices */
+    @media only screen and (min-width: tokens.$plmg-breakpoint-l) {
+      margin-left: 25vw;
+    }
+    /* Extra large devices */
+    @media only screen and (min-width: tokens.$plmg-breakpoint-xl) {
+      margin-left: 360px;
+    }
+  }
+
+  .plmg-sidebar-expand-btn {
+    flex: 0;
+  }
+
+  .plmg-sidebar-content-container,
+  .plmg-header-left-container,
+  .plmg-header-right-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .plmg-sidebar-content-container {
+    flex: 1;
+  }
+}
+// ------------- END Component style ---------------

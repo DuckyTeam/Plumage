@@ -79,6 +79,74 @@ export namespace Components {
          */
         "topActionLabel": string | undefined;
     }
+    interface PlmgHeader {
+        /**
+          * Invoke this method to reveals the "expand" icon and update the margin left
+         */
+        "sidebarCollapsedHandler": () => Promise<void>;
+        /**
+          * Define if the sidebar is expanded on startup.
+         */
+        "sidebarExpanded": boolean;
+    }
+    interface PlmgPageContainer {
+        /**
+          * Define if the sidebar is expanded on startup.
+         */
+        "sidebarExpanded": boolean;
+    }
+    interface PlmgSidebar {
+        /**
+          * Invoke this method to collapse the sidebar.
+         */
+        "collapse": () => Promise<void>;
+        /**
+          * Invoke this method to expand the sidebar.
+         */
+        "expand": () => Promise<void>;
+        /**
+          * Define if the item is expanded on startup.
+         */
+        "expanded": boolean;
+        /**
+          * Path to redirect when clicking on the logo.
+         */
+        "logoHref": string;
+        /**
+          * "src" property of the logo img.
+         */
+        "logoSrc": string;
+    }
+    interface PlmgSidebarItem {
+        /**
+          * Set this prop to True when this item is active. It highlights the item.
+         */
+        "active": boolean;
+        /**
+          * Define if the item is expanded. Only valid when this item has children.
+         */
+        "expanded": boolean;
+        /**
+          * The link to redirect to when this item is clicked.  If this item has children, you cannot provide a href, because clicking the item will instead expand/collapse the children list.
+         */
+        "href": string;
+        /**
+          * The name of the icon to show on the left of the text. It is optional to provide an icon.  Items at level 2 should never have an icon. Icon will not be rendered even if provided.
+         */
+        "icon": string;
+        /**
+          * Define links rel
+         */
+        "rel": string;
+        /**
+          * Define links target
+         */
+        "target": string;
+        /**
+          * The text to show on the item. it is mandatory to provide a text.  If the text is too long for the item, it will be truncated and will end with "...". Example: "This name is too lon..."
+         */
+        "text": string;
+    }
     interface PlmgSvgIcon {
         /**
           * Define icon's color.  Can be any valid CSS color value.  By default, the icon will have the same color as the parent's element.
@@ -107,6 +175,30 @@ declare global {
         prototype: HTMLPlmgCardElement;
         new (): HTMLPlmgCardElement;
     };
+    interface HTMLPlmgHeaderElement extends Components.PlmgHeader, HTMLStencilElement {
+    }
+    var HTMLPlmgHeaderElement: {
+        prototype: HTMLPlmgHeaderElement;
+        new (): HTMLPlmgHeaderElement;
+    };
+    interface HTMLPlmgPageContainerElement extends Components.PlmgPageContainer, HTMLStencilElement {
+    }
+    var HTMLPlmgPageContainerElement: {
+        prototype: HTMLPlmgPageContainerElement;
+        new (): HTMLPlmgPageContainerElement;
+    };
+    interface HTMLPlmgSidebarElement extends Components.PlmgSidebar, HTMLStencilElement {
+    }
+    var HTMLPlmgSidebarElement: {
+        prototype: HTMLPlmgSidebarElement;
+        new (): HTMLPlmgSidebarElement;
+    };
+    interface HTMLPlmgSidebarItemElement extends Components.PlmgSidebarItem, HTMLStencilElement {
+    }
+    var HTMLPlmgSidebarItemElement: {
+        prototype: HTMLPlmgSidebarItemElement;
+        new (): HTMLPlmgSidebarItemElement;
+    };
     interface HTMLPlmgSvgIconElement extends Components.PlmgSvgIcon, HTMLStencilElement {
     }
     var HTMLPlmgSvgIconElement: {
@@ -116,6 +208,10 @@ declare global {
     interface HTMLElementTagNameMap {
         "plmg-button": HTMLPlmgButtonElement;
         "plmg-card": HTMLPlmgCardElement;
+        "plmg-header": HTMLPlmgHeaderElement;
+        "plmg-page-container": HTMLPlmgPageContainerElement;
+        "plmg-sidebar": HTMLPlmgSidebarElement;
+        "plmg-sidebar-item": HTMLPlmgSidebarItemElement;
         "plmg-svg-icon": HTMLPlmgSvgIconElement;
     }
 }
@@ -200,6 +296,70 @@ declare namespace LocalJSX {
          */
         "topActionLabel"?: string | undefined;
     }
+    interface PlmgHeader {
+        /**
+          * Event dispatched when the button to expand the sidebar is clicked.
+         */
+        "onExpandSidebar"?: (event: CustomEvent<any>) => void;
+        /**
+          * Define if the sidebar is expanded on startup.
+         */
+        "sidebarExpanded"?: boolean;
+    }
+    interface PlmgPageContainer {
+        /**
+          * Define if the sidebar is expanded on startup.
+         */
+        "sidebarExpanded"?: boolean;
+    }
+    interface PlmgSidebar {
+        /**
+          * Define if the item is expanded on startup.
+         */
+        "expanded"?: boolean;
+        /**
+          * Path to redirect when clicking on the logo.
+         */
+        "logoHref"?: string;
+        /**
+          * "src" property of the logo img.
+         */
+        "logoSrc"?: string;
+        /**
+          * Event dispatched when the button to collapse the sidebar is clicked.
+         */
+        "onCollapseSidebar"?: (event: CustomEvent<any>) => void;
+    }
+    interface PlmgSidebarItem {
+        /**
+          * Set this prop to True when this item is active. It highlights the item.
+         */
+        "active"?: boolean;
+        /**
+          * Define if the item is expanded. Only valid when this item has children.
+         */
+        "expanded"?: boolean;
+        /**
+          * The link to redirect to when this item is clicked.  If this item has children, you cannot provide a href, because clicking the item will instead expand/collapse the children list.
+         */
+        "href"?: string;
+        /**
+          * The name of the icon to show on the left of the text. It is optional to provide an icon.  Items at level 2 should never have an icon. Icon will not be rendered even if provided.
+         */
+        "icon"?: string;
+        /**
+          * Define links rel
+         */
+        "rel"?: string;
+        /**
+          * Define links target
+         */
+        "target"?: string;
+        /**
+          * The text to show on the item. it is mandatory to provide a text.  If the text is too long for the item, it will be truncated and will end with "...". Example: "This name is too lon..."
+         */
+        "text"?: string;
+    }
     interface PlmgSvgIcon {
         /**
           * Define icon's color.  Can be any valid CSS color value.  By default, the icon will have the same color as the parent's element.
@@ -217,6 +377,10 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "plmg-button": PlmgButton;
         "plmg-card": PlmgCard;
+        "plmg-header": PlmgHeader;
+        "plmg-page-container": PlmgPageContainer;
+        "plmg-sidebar": PlmgSidebar;
+        "plmg-sidebar-item": PlmgSidebarItem;
         "plmg-svg-icon": PlmgSvgIcon;
     }
 }
@@ -226,6 +390,10 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "plmg-button": LocalJSX.PlmgButton & JSXBase.HTMLAttributes<HTMLPlmgButtonElement>;
             "plmg-card": LocalJSX.PlmgCard & JSXBase.HTMLAttributes<HTMLPlmgCardElement>;
+            "plmg-header": LocalJSX.PlmgHeader & JSXBase.HTMLAttributes<HTMLPlmgHeaderElement>;
+            "plmg-page-container": LocalJSX.PlmgPageContainer & JSXBase.HTMLAttributes<HTMLPlmgPageContainerElement>;
+            "plmg-sidebar": LocalJSX.PlmgSidebar & JSXBase.HTMLAttributes<HTMLPlmgSidebarElement>;
+            "plmg-sidebar-item": LocalJSX.PlmgSidebarItem & JSXBase.HTMLAttributes<HTMLPlmgSidebarItemElement>;
             "plmg-svg-icon": LocalJSX.PlmgSvgIcon & JSXBase.HTMLAttributes<HTMLPlmgSvgIconElement>;
         }
     }

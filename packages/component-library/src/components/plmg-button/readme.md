@@ -36,6 +36,8 @@
 ### Used by
 
  - [plmg-card](../plmg-card)
+ - [plmg-header](../plmg-header)
+ - [plmg-sidebar](../plmg-sidebar)
 
 ### Depends on
 
@@ -46,6 +48,8 @@
 graph TD;
   plmg-button --> plmg-svg-icon
   plmg-card --> plmg-button
+  plmg-header --> plmg-button
+  plmg-sidebar --> plmg-button
   style plmg-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
