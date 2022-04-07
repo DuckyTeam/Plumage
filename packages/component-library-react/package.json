@@ -33,7 +33,7 @@
     "@ducky/plumage": "^0.4.0"
   },
   "peerDependencies": {
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0"
+    "react": ">=16.7",
+    "react-dom": ">=16.7"
   }
 }
