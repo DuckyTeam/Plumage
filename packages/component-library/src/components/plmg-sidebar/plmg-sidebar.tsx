@@ -32,7 +32,7 @@ export class Sidebar {
   @State() isExpanded: boolean;
 
   /**
-   * Define if the item is expanded.
+   * Define if the item is expanded on startup.
    */
   @Prop() expanded: boolean = false;
   @Watch('expanded')

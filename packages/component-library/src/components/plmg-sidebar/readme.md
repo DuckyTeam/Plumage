@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                     | Type      | Default |
-| ---------- | ---------- | ------------------------------- | --------- | ------- |
-| `expanded` | `expanded` | Define if the item is expanded. | `boolean` | `false` |
-| `logoSrc`  | `logo-src` | "src" property of the logo img  | `string`  | `''`    |
+| Property   | Attribute   | Description                                 | Type      | Default     |
+| ---------- | ----------- | ------------------------------------------- | --------- | ----------- |
+| `expanded` | `expanded`  | Define if the item is expanded.             | `boolean` | `false`     |
+| `logoHref` | `logo-href` | Path to redirect when clicking on the logo. | `string`  | `undefined` |
+| `logoSrc`  | `logo-src`  | "src" property of the logo img.             | `string`  | `undefined` |
 
 
 ## Events

@@ -5,17 +5,16 @@ export default {
   parameters: {},
   decorators: [],
   argTypes: {
-    color: {
-      options: ['primary', 'neutral', 'standout', 'danger'],
-      control: { type: 'select' },
+    'sidebar-expanded': {
+      options: [true, false],
     },
   },
 };
 
-const PROPS = ['color'];
-const EVENTS = [];
+const PROPS = ['sidebar-expanded'];
+const EVENTS = ['sidebarExpanded'];
 const CSS_VARS = [];
-const SLOTS = ['text'];
+const SLOTS = ['right', 'left'];
 
 const Template = (args) => {
   const el = document.createElement('plmg-header');
@@ -27,25 +26,19 @@ const Template = (args) => {
 };
 
 export const Primary = Template.bind({});
-Primary.storyName = 'neutral';
+Primary.storyName = 'Header';
 Primary.args = {
-  text: 'Header',
-  color: 'neutral',
+  'sidebar-expanded': false,
+  left: `
+<div slot="left" style="display: flex; flex-direction: row; justify-content: space-between;">
+  <p>Logo</p>
+  <p>Item2</p>
+</div>
+  `,
+  right: `
+<div slot="right" style="display: flex; flex-direction: row; justify-content: space-between;">
+  <p>Item1</p>
+  <p>Item2</p>
+</div>
+  `,
 };
-
-export const All = (args) => {
-  let htmlContent = '';
-  someControls.forEach((control) => {
-    htmlContent += `
-<plmg-header control="${control}" >
-    control="${control}"
-</plmg-header>
-<br/>
-              `;
-  });
-
-  const el = document.createElement('div');
-  el.innerHTML = htmlContent.trim();
-  return el;
-};
-All.storyName = 'All variations';

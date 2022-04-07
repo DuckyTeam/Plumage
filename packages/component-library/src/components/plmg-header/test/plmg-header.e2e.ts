@@ -11,31 +11,25 @@ describe('plmg-header', () => {
     expect(element).toHaveClass('hydrated');
   });
 
-  describe('all possible variations', () => {
-    it('are accessible', async () => {
-      const page = await newE2EPage();
+  it('is accessible', async () => {
+    const page = await newE2EPage();
 
-      let htmlContent = '';
-      someControl.forEach((control) => {
-        htmlContent += `
-    <plmg-header control="${control}">
-  control="${control}"
-    </plmg-header>
-<br/>
-    `;
-      });
-      await page.setContent('<main>' + htmlContent + '</main>');
+    let htmlContent = `
+<plmg-header sidebar-expanded="false">
+</plmg-header>      
+      `;
 
-      const results = await new AxePuppeteer(page as unknown as Page)
-        .disableRules([
-          'document-title',
-          'html-has-lang',
-          'landmark-one-main',
-          'page-has-heading-one',
-        ])
-        .analyze();
+    await page.setContent('<main>' + htmlContent + '</main>');
 
-      expect(results.violations).toHaveLength(0);
-    });
+    const results = await new AxePuppeteer(page as unknown as Page)
+      .disableRules([
+        'document-title',
+        'html-has-lang',
+        'landmark-one-main',
+        'page-has-heading-one',
+      ])
+      .analyze();
+
+    expect(results.violations).toHaveLength(0);
   });
 });

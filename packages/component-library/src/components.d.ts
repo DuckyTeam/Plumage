@@ -64,6 +64,14 @@ export namespace Components {
     interface PlmgContent {
     }
     interface PlmgHeader {
+        /**
+          * Invoke this method to reveals the "expand" icon and update the margin left
+         */
+        "sidebarCollapsedHandler": () => Promise<void>;
+        /**
+          * Define if the sidebar is expanded.
+         */
+        "sidebarExpanded": boolean;
     }
     interface PlmgPageContainer {
     }
@@ -245,6 +253,10 @@ declare namespace LocalJSX {
           * Event dispatched when the button to expand the sidebar is clicked.
          */
         "onExpandSidebar"?: (event: CustomEvent<any>) => void;
+        /**
+          * Define if the sidebar is expanded.
+         */
+        "sidebarExpanded"?: boolean;
     }
     interface PlmgPageContainer {
     }
