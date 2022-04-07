@@ -60,7 +60,7 @@ export class Header {
    * Reveals the "expand" icon and update the margin left.
    */
   @Listen('collapseSidebar', {})
-  onClick() {
+  onCollapseSidebar() {
     this.sidebarCollapsedHandler();
   }
 

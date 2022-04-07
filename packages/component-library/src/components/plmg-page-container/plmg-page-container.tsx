@@ -1,11 +1,13 @@
-import { Component, h, Listen } from '@stencil/core';
+import { Component, h, Listen, Prop, State, Watch } from '@stencil/core';
 
 /**
  * Container for the entire web page. Wraps everything.
- * If you use PlmgSidebar and/or PlmgHeader, please use this wrapper.
+ * If you use PlmgSidebar and/or PlmgHeader, you must use this wrapper.
+ * Place a PlmgSidebar component on the "sidebar" slot.
+ * Place a PlmgHeader component on the "header" slot.
  *
- * @slot sidebar - Side navigation bar, typically a PlmgSidebar component.
- * @slot header - Top navigation bar, typically a PlmgHeader component.
+ * @slot sidebar - Side navigation bar, a PlmgSidebar component.
+ * @slot header - Top navigation bar, a PlmgHeader component.
  * @slot content - Main content of the web page.
  * @slot footer - Footer of the web page.
  */
@@ -17,11 +19,37 @@ import { Component, h, Listen } from '@stencil/core';
 export class PageContainer {
   private sidebar: HTMLPlmgSidebarElement;
   private header: HTMLPlmgHeaderElement;
-  private content: HTMLPlmgContentElement;
 
+  /**
+   * Store the expanded status of the sidebar.
+   */
+  @State() isSidebarExpanded: boolean;
+
+  /**
+   * Define if the sidebar is expanded on startup.
+   */
+  @Prop() sidebarExpanded: boolean = false;
+  @Watch('sidebarExpanded')
+  onSidebarExpandedChange(newValue: boolean) {
+    if (typeof newValue !== 'boolean')
+      throw new Error('sidebarExpanded: must be boolean');
+    this.isSidebarExpanded = newValue;
+  }
+
+  /**
+   * Lifecycle method, called once just after the component is first connected to the DOM.
+   * Initialise the state.
+   */
+  componentWillLoad() {
+    this.isSidebarExpanded = this.sidebarExpanded;
+  }
+
+  /**
+   * Lifecycle method, called once just after the component is fully loaded and the first render() occurs.
+   */
   componentDidLoad() {
     this.sidebar = document.querySelector('plmg-sidebar');
-    this.content = document.querySelector('plmg-main-content');
+    this.header = document.querySelector('plmg-header');
   }
 
   /**
@@ -32,10 +60,9 @@ export class PageContainer {
    */
   @Listen('expandSidebar', {})
   onExpandSidebar(e: Event) {
+    this.isSidebarExpanded = true;
     const sidebarCopy = new Event(e.type);
     this.sidebar.dispatchEvent(sidebarCopy);
-    const contentCopy = new Event(e.type);
-    this.content.dispatchEvent(contentCopy);
   }
 
   /**
@@ -46,35 +73,26 @@ export class PageContainer {
    */
   @Listen('collapseSidebar', {})
   onCollapseSidebar(e: Event) {
+    this.isSidebarExpanded = false;
     const headerCopy = new Event(e.type);
     this.header.dispatchEvent(headerCopy);
-    const contentCopy = new Event(e.type);
-    this.content.dispatchEvent(contentCopy);
   }
 
   render() {
+    const contentClasses = {
+      'plmg-content': true,
+      'plmg-content-with-sidebar': this.isSidebarExpanded,
+    };
+
     return (
       <div class={'plmg-page-container'}>
-        <slot name={'sidebar'}></slot>
-        <slot name={'header'}></slot>
-        <slot name={'content'}></slot>
-        <slot name={'footer'}></slot>
+        <slot name={'sidebar'} />
+        <slot name={'header'} />
+        <div class={contentClasses}>
+          <slot name={'content'} />
+        </div>
+        <slot name={'footer'} />
       </div>
     );
   }
 }
-
-// <plmg-page-container>
-//     <plmg-sidebar slot="sidebar">
-//         <plmg-sidebar-item></plmg-sidebar-item>
-//         <plmg-sidebar-item></plmg-sidebar-item>
-//         <plmg-sidebar-item></plmg-sidebar-item>
-//         <plmg-sidebar-item></plmg-sidebar-item>
-//     </plmg-sidebar>
-//     <plmg-header slot="header">
-//     // Header
-//     </plmg-header>
-//     <plmg-content>
-//
-//     </plmg-content>
-// </plmg-page-container>

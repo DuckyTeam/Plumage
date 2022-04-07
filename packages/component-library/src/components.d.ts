@@ -69,11 +69,15 @@ export namespace Components {
          */
         "sidebarCollapsedHandler": () => Promise<void>;
         /**
-          * Define if the sidebar is expanded.
+          * Define if the sidebar is expanded on startup.
          */
         "sidebarExpanded": boolean;
     }
     interface PlmgPageContainer {
+        /**
+          * Define if the sidebar is expanded on startup.
+         */
+        "sidebarExpanded": boolean;
     }
     interface PlmgSidebar {
         /**
@@ -81,7 +85,7 @@ export namespace Components {
          */
         "expand": () => Promise<void>;
         /**
-          * Define if the item is expanded.
+          * Define if the item is expanded on startup.
          */
         "expanded": boolean;
         /**
@@ -254,15 +258,19 @@ declare namespace LocalJSX {
          */
         "onExpandSidebar"?: (event: CustomEvent<any>) => void;
         /**
-          * Define if the sidebar is expanded.
+          * Define if the sidebar is expanded on startup.
          */
         "sidebarExpanded"?: boolean;
     }
     interface PlmgPageContainer {
+        /**
+          * Define if the sidebar is expanded on startup.
+         */
+        "sidebarExpanded"?: boolean;
     }
     interface PlmgSidebar {
         /**
-          * Define if the item is expanded.
+          * Define if the item is expanded on startup.
          */
         "expanded"?: boolean;
         /**
