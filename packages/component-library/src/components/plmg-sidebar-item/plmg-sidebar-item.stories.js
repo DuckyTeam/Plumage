@@ -51,13 +51,13 @@ Primary.args = {
   text: 'SidebarItem',
   active: false,
   expanded: false,
-  href: 'https://ducky.eco',
+  href: '',
   icon: 'home',
-  rel: 'noreferrer',
-  target: '_blank',
+  rel: '',
+  target: '',
   children: `
-<plmg-sidebar-item text="Ducky homepage" href="https://ducky.eco" target="_blank"></plmg-sidebar-item>
-<plmg-sidebar-item text="Plumage homepage" href="https://plumage.ducky.eco/" target="_blank"></plmg-sidebar-item>
+<plmg-sidebar-item text="Ducky homepage" href="https://ducky.eco" target="_blank" rel="noreferrer"></plmg-sidebar-item>
+<plmg-sidebar-item text="Plumage homepage" href="https://plumage.ducky.eco/" target="_blank" rel="noreferrer"></plmg-sidebar-item>
 `,
 };
 
