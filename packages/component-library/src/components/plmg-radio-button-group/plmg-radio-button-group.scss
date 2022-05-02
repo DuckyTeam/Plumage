@@ -1,0 +1,52 @@
+@use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
+
+// Common styles to all shadow-DOM components
+// Remove this section if your component does not use shadow DOM
+// -------------------------------------------------
+:host {
+  display: block;
+}
+
+:host([hidden]) {
+  display: none;
+}
+// ------------- END Common styles -----------------
+
+// Mixins
+// -------------------------------------------------
+@mixin set-border($border-color, $border-width: tokens.$plmg-border-width-s) {
+  border: $border-width solid $border-color;
+}
+// ------------- END Mixins ------------------------
+
+// Component style
+// -------------------------------------------------
+fieldset {
+  border: 0;
+  padding: 0;
+  .radio-button-wrapper {
+    margin-bottom: 4px;
+    margin-top: 8px;
+  }
+}
+
+legend {
+  color: tokens.$plmg-text-neutral-weak;
+  font-family: tokens.$plmg-font-family-sans;
+  font-style: normal;
+  font-weight: tokens.$plmg-font-weight-semibold;
+  font-size: tokens.$plmg-font-size-x1;
+  line-height: tokens.$plmg-font-lineheight-loose;
+  margin-bottom: -4px;
+}
+
+span {
+  color: tokens.$plmg-text-danger-strong;
+  font-family: tokens.$plmg-font-family-sans;
+  font-style: normal;
+  font-weight: tokens.$plmg-font-weight-semibold;
+  font-size: tokens.$plmg-font-size-x1;
+  line-height: tokens.$plmg-font-lineheight-loose;
+  margin-left: 2px;
+}
+// ------------- END Component style ---------------

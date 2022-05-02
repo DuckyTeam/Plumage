@@ -106,17 +106,28 @@ export namespace Components {
          */
         "name": string;
         /**
-          * Define radio button's selected status  Allowed values:   - true   - false  Default: false
-         */
-        "selected": boolean;
-        /**
           * Define radio button's size.  Allowed values:   - medium   - large  Default: medium
          */
         "size": PlmgRadioButtonSize;
         /**
-          * Define radio button's label'
+          * Define radio button's value'
          */
         "value": string;
+    }
+    interface PlmgRadioButtonGroup {
+        /**
+          * Define form's label'
+         */
+        "label": string;
+        /**
+          * Define form's name'
+         */
+        "name": string;
+        /**
+          * Define radio group's required status  Allowed values:   - true   - false  Default: false
+         */
+        "required": boolean;
+        "values": string;
     }
     interface PlmgSidebar {
         /**
@@ -216,6 +227,12 @@ declare global {
         prototype: HTMLPlmgRadioButtonElement;
         new (): HTMLPlmgRadioButtonElement;
     };
+    interface HTMLPlmgRadioButtonGroupElement extends Components.PlmgRadioButtonGroup, HTMLStencilElement {
+    }
+    var HTMLPlmgRadioButtonGroupElement: {
+        prototype: HTMLPlmgRadioButtonGroupElement;
+        new (): HTMLPlmgRadioButtonGroupElement;
+    };
     interface HTMLPlmgSidebarElement extends Components.PlmgSidebar, HTMLStencilElement {
     }
     var HTMLPlmgSidebarElement: {
@@ -240,6 +257,7 @@ declare global {
         "plmg-header": HTMLPlmgHeaderElement;
         "plmg-page-container": HTMLPlmgPageContainerElement;
         "plmg-radio-button": HTMLPlmgRadioButtonElement;
+        "plmg-radio-button-group": HTMLPlmgRadioButtonGroupElement;
         "plmg-sidebar": HTMLPlmgSidebarElement;
         "plmg-sidebar-item": HTMLPlmgSidebarItemElement;
         "plmg-svg-icon": HTMLPlmgSvgIconElement;
@@ -352,17 +370,28 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
-          * Define radio button's selected status  Allowed values:   - true   - false  Default: false
-         */
-        "selected"?: boolean;
-        /**
           * Define radio button's size.  Allowed values:   - medium   - large  Default: medium
          */
         "size"?: PlmgRadioButtonSize;
         /**
-          * Define radio button's label'
+          * Define radio button's value'
          */
         "value"?: string;
+    }
+    interface PlmgRadioButtonGroup {
+        /**
+          * Define form's label'
+         */
+        "label"?: string;
+        /**
+          * Define form's name'
+         */
+        "name"?: string;
+        /**
+          * Define radio group's required status  Allowed values:   - true   - false  Default: false
+         */
+        "required"?: boolean;
+        "values"?: string;
     }
     interface PlmgSidebar {
         /**
@@ -432,6 +461,7 @@ declare namespace LocalJSX {
         "plmg-header": PlmgHeader;
         "plmg-page-container": PlmgPageContainer;
         "plmg-radio-button": PlmgRadioButton;
+        "plmg-radio-button-group": PlmgRadioButtonGroup;
         "plmg-sidebar": PlmgSidebar;
         "plmg-sidebar-item": PlmgSidebarItem;
         "plmg-svg-icon": PlmgSvgIcon;
@@ -446,6 +476,7 @@ declare module "@stencil/core" {
             "plmg-header": LocalJSX.PlmgHeader & JSXBase.HTMLAttributes<HTMLPlmgHeaderElement>;
             "plmg-page-container": LocalJSX.PlmgPageContainer & JSXBase.HTMLAttributes<HTMLPlmgPageContainerElement>;
             "plmg-radio-button": LocalJSX.PlmgRadioButton & JSXBase.HTMLAttributes<HTMLPlmgRadioButtonElement>;
+            "plmg-radio-button-group": LocalJSX.PlmgRadioButtonGroup & JSXBase.HTMLAttributes<HTMLPlmgRadioButtonGroupElement>;
             "plmg-sidebar": LocalJSX.PlmgSidebar & JSXBase.HTMLAttributes<HTMLPlmgSidebarElement>;
             "plmg-sidebar-item": LocalJSX.PlmgSidebarItem & JSXBase.HTMLAttributes<HTMLPlmgSidebarItemElement>;
             "plmg-svg-icon": LocalJSX.PlmgSvgIcon & JSXBase.HTMLAttributes<HTMLPlmgSvgIconElement>;

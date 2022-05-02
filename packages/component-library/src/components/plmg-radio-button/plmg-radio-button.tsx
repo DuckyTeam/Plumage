@@ -27,7 +27,7 @@ export class RadioButton {
   }
 
   /**
-   * Define radio button's label'
+   * Define radio button's value'
    */
   @Prop() value: string;
   @Watch('value')
@@ -48,22 +48,6 @@ export class RadioButton {
       throw new Error('name: required');
     if (newValue && typeof newValue !== 'string')
       throw new Error('name must be a string');
-  }
-
-  /**
-   * Define radio button's selected status
-   *
-   * Allowed values:
-   *   - true
-   *   - false
-   *
-   * Default: false
-   */
-  @Prop() selected: boolean = false;
-  @Watch('selected')
-  validatesSelected(newValue: boolean) {
-    if (typeof newValue !== 'boolean')
-      throw new Error('selected: must be boolean');
   }
 
   /**
@@ -99,7 +83,6 @@ export class RadioButton {
           id={this.value}
           name={this.name}
           value={this.value}
-          checked={this.selected}
           class={inputClasses}
         />
         <label htmlFor={this.value} class={labelClasses}>
