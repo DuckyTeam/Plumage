@@ -9281,6 +9281,10 @@ packages:
     engines: {node: '>=4.0'}
     dev: false
 
+  /estree-walker/0.6.1:
+    resolution: {integrity: sha512-SqmZANLWS0mnatqbSfRP5g8OXZC12Fgg1IwNtLsyHDzJizORW4khDfjPqJZsemPWBB2uqykUah5YpQ6epsqC/w==}
+    dev: false
+
   /esutils/2.0.3:
     resolution: {integrity: sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==}
     engines: {node: '>=0.10.0'}
@@ -15609,6 +15613,18 @@ packages:
       inherits: 2.0.4
     dev: false
 
+  /rollup-plugin-scss/3.0.0:
+    resolution: {integrity: sha512-UldNaNHEon2a5IusHvj/Nnwc7q13YDvbFxz5pfNbHBNStxGoUNyM+0XwAA/UafJ1u8XRPGdBMrhWFthrrGZdWQ==}
+    dependencies:
+      rollup-pluginutils: 2.8.2
+    dev: false
+
+  /rollup-pluginutils/2.8.2:
+    resolution: {integrity: sha512-EEp9NhnUkwY8aif6bxgovPHMoMoNr2FulJziTndpt5H9RdwC47GSGuII9XxpSdzVGM0GWrNPHV6ie1LTNJPaLQ==}
+    dependencies:
+      estree-walker: 0.6.1
+    dev: false
+
   /rsvp/4.8.5:
     resolution: {integrity: sha512-nfMOlASu9OnRJo1mbEk2cz0D56a1MBNrJ7orjRZQG10XDyuvwksKbuXNp6qa+kbn839HwjwhBzhFmdsaEAfauA==}
     engines: {node: 6.* || >= 7.*}
@@ -18391,7 +18407,7 @@ packages:
     dev: false
 
   file:projects/example-react-app.tgz:
-    resolution: {integrity: sha512-TeuQliZPa9tuAxxEoGwrm7EQQDUTWYQLuPhjDXG3D7noxc0XtgI35gx8zVgUTk0MtNTMedEuxiZtziwzuYyQ1w==, tarball: file:projects/example-react-app.tgz}
+    resolution: {integrity: sha512-V/Zzw0isICOWYxp6biOfoGdHgn89CAAgbxlFtLzwpYuD20gtm4fOMlJFT8TGfTrGIQFQHxAV04MqCrMTMMsQuA==, tarball: file:projects/example-react-app.tgz}
     name: '@rush-temp/example-react-app'
     version: 0.0.0
     dependencies:
@@ -18429,7 +18445,7 @@ packages:
     dev: false
 
   file:projects/plumage-react.tgz:
-    resolution: {integrity: sha512-FAhZnvgagwPUP68gWPc1rpbXzLhefROfsJm9CfRWvKnqLD8OEpgv7UZrD8wFlyJoC6gdB+AwCF+gMac8P+xu6A==, tarball: file:projects/plumage-react.tgz}
+    resolution: {integrity: sha512-bnJI1wZgELeCqyRtnSirKcYLFK8621LEAEBJy29gr8sOfiozOMQNcnAvj4qaphGBJT3MzBmDXELvv8oo2QFaRw==, tarball: file:projects/plumage-react.tgz}
     name: '@rush-temp/plumage-react'
     version: 0.0.0
     dependencies:
@@ -18453,7 +18469,7 @@ packages:
     dev: false
 
   file:projects/plumage.tgz_0caa87738ffad273e3f555cf1f2e570e:
-    resolution: {integrity: sha512-WHJEmnnc3vXJrCZQvIeTn9t/xa0NO/mEtOnMww6Fv5CBgNSsK8ymyhIAiS80RvXA7/4AkuaA/d31UoPqYwWVaw==, tarball: file:projects/plumage.tgz}
+    resolution: {integrity: sha512-J68BkKbJPrC5ZosAvt0kZKBgG51NXtOt7cLodM7Bz7538+b/1+t2x15NpjyEb/PKj0K54fnGqVIjYQxa2Nux0Q==, tarball: file:projects/plumage.tgz}
     id: file:projects/plumage.tgz
     name: '@rush-temp/plumage'
     version: 0.0.0
@@ -18495,6 +18511,7 @@ packages:
       prettier: 2.5.1
       puppeteer: 13.3.2
       rimraf: 3.0.2
+      rollup-plugin-scss: 3.0.0
       sass: 1.46.0
       storybook: 6.4.9_8ad3968db26efb30fe67747fe1daa514
       storybook-addon-designs: 6.2.1
