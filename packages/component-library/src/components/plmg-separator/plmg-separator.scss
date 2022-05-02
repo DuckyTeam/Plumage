@@ -1,0 +1,34 @@
+@use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
+
+// Common styles to all shadow-DOM components
+// Remove this section if your component does not use shadow DOM
+// -------------------------------------------------
+:host {
+  display: block;
+}
+
+:host([hidden]) {
+  display: none;
+}
+// ------------- END Common styles -----------------
+
+// Component style
+// -------------------------------------------------
+.plmg-separator {
+  display: block;
+  width: 100%;
+  border-radius: tokens.$plmg-border-radius-xl;
+  border-color: tokens.$plmg-border-neutral;
+
+  &.thick {
+    border-width: tokens.$plmg-border-width-m;
+  }
+  &.thin {
+    border-width: tokens.$plmg-border-width-s;
+  }
+  &.vertical {
+    transform: rotate(90deg);
+  }
+}
+
+// ------------- END Component style ---------------
