@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Watch } from '@stencil/core';
+import { Component, h, Prop, Watch } from '@stencil/core';
 import {
   PlmgRadioButtonSize,
   isPlmgRadioButtonSize,
@@ -83,16 +83,28 @@ export class RadioButton {
   }
 
   render() {
+    const inputClasses = {
+      large: this.size === 'large',
+      highlighted: this.highlighted,
+    };
+
+    const labelClasses = {
+      large: this.size === 'large',
+    };
+
     return (
-      <div>
+      <div class={'radio-button-wrapper'}>
         <input
           type="radio"
           id={this.value}
           name={this.name}
           value={this.value}
           checked={this.selected}
+          class={inputClasses}
         />
-        <label htmlFor={this.value}>{this.value}</label>
+        <label htmlFor={this.value} class={labelClasses}>
+          {this.value}
+        </label>
       </div>
     );
   }

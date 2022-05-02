@@ -12,26 +12,122 @@
 }
 // ------------- END Common styles -----------------
 
-// Mixins
-// -------------------------------------------------
-@mixin set-border($border-color, $border-width: tokens.$plmg-border-width-s) {
-  border: $border-width solid $border-color;
-}
-// ------------- END Mixins ------------------------
-
 // Component style
 // -------------------------------------------------
-main-tag {
-  // Fixed styles
+.radio-button-wrapper {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  width: fit-content;
+  border-radius: tokens.$plmg-border-radius-s;
 
-  // Controls
-
-  // States
   &:hover {
+    input[type='radio'] {
+      background-color: tokens.$plmg-background-primary-strong;
+      border-color: tokens.$plmg-border-primary-strong;
+
+      &:checked {
+        background-color: tokens.$plmg-background-neutral-hover;
+        border-color: tokens.$plmg-border-primary-strong;
+        & ~ label {
+          color: tokens.$plmg-text-neutral;
+        }
+      }
+    }
+
+    input[type='radio']:checked::after {
+      box-shadow: inset 1em 1em tokens.$plmg-background-primary-strong-hover;
+    }
+
+    label {
+      color: tokens.$plmg-text-primary-strong;
+    }
   }
+
   &:active {
+    input[type='radio']:checked::after {
+      box-shadow: inset 1em 1em tokens.$plmg-background-primary-strong-active;
+    }
   }
-  &:focus-visible {
+
+  &:focus-within {
+    outline: tokens.$plmg-border-width-l solid tokens.$plmg-border-standout;
   }
 }
+
+input[type='radio'] {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+  /* For iOS < 15 to remove gradient background */
+  background-color: tokens.$plmg-background-neutral;
+  font: inherit;
+  width: 20px;
+  height: 20px;
+  border: tokens.$plmg-border-width-s solid tokens.$plmg-border-neutral;
+  border-radius: tokens.$plmg-border-radius-circle;
+  box-shadow: tokens.$plmg-shadow-inner-s;
+  margin-right: tokens.$plmg-spacing-x0-5;
+  cursor: pointer;
+  position: relative;
+
+  &.highlighted {
+    border: tokens.$plmg-border-width-s solid tokens.$plmg-border-danger-strong;
+  }
+
+  &:checked {
+    box-shadow: none;
+    border: tokens.$plmg-border-width-s solid tokens.$plmg-border-primary-strong;
+  }
+
+  &.large {
+    width: 22px;
+    height: 22px;
+    margin-right: tokens.$plmg-spacing-x0-75;
+    &::after {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+input[type='radio']::after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  border-radius: tokens.$plmg-border-radius-circle;
+  transform: scale(0);
+  transition: 50ms transform ease-in-out;
+  box-shadow: inset 1em 1em tokens.$plmg-background-primary-strong;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+}
+
+input[type='radio']:checked::after {
+  transform: scale(1);
+}
+
+label {
+  color: tokens.$plmg-text-neutral;
+  font-family: tokens.$plmg-font-family-sans;
+  font-style: normal;
+  font-weight: tokens.$plmg-font-weight-regular;
+  font-size: tokens.$plmg-font-size-x1-125;
+  line-height: tokens.$plmg-font-lineheight-loose;
+  cursor: pointer;
+
+  &.large {
+    font-family: tokens.$plmg-font-family-sans;
+    font-style: normal;
+    font-weight: tokens.$plmg-font-weight-regular;
+    font-size: tokens.$plmg-font-size-x1-25;
+    line-height: tokens.$plmg-font-lineheight-loose;
+  }
+}
+
 // ------------- END Component style ---------------
