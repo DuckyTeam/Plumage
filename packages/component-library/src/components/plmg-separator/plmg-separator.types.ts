@@ -4,8 +4,8 @@ export function isPlmgSeparatorDirection(x: any): x is PlmgSeparatorDirection {
   return directions.includes(x);
 }
 
-export const widths = ['thin', 'thick'] as const;
-export type PlmgSeparatorWidth = typeof widths[number];
-export function isPlmgSeparatorWidth(x: any): x is PlmgSeparatorWidth {
-  return widths.includes(x);
+export const thicknesses = ['thin', 'thick'] as const;
+export type PlmgSeparatorThickness = typeof thicknesses[number];
+export function isPlmgSeparatorThickness(x: any): x is PlmgSeparatorThickness {
+  return thicknesses.includes(x);
 }

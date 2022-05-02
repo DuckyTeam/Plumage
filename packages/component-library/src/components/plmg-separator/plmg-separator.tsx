@@ -1,7 +1,7 @@
 import { Component, h, Prop, Watch } from '@stencil/core';
 import {
   isPlmgSeparatorDirection,
-  isPlmgSeparatorWidth,
+  isPlmgSeparatorThickness,
 } from './plmg-separator.types';
 
 @Component({
@@ -28,7 +28,7 @@ export class Separator {
       throw new Error('direction: must be a valid value');
   }
   /**
-   * Define separator's width.
+   * Define separator's thickness.
    *
    * Allowed values:
    *   - thin
@@ -36,19 +36,19 @@ export class Separator {
    *
    * Default: thin
    */
-  @Prop() width: string = 'thin';
-  @Watch('width')
-  validateWidth(newValue: string) {
+  @Prop() thickness: string = 'thin';
+  @Watch('thickness')
+  validateThickness(newValue: string) {
     if (typeof newValue !== 'string' || newValue === '')
-      throw new Error('width: required');
-    if (!isPlmgSeparatorWidth(newValue))
-      throw new Error('width: must be a valid value');
+      throw new Error('thickness: required');
+    if (!isPlmgSeparatorThickness(newValue))
+      throw new Error('thickness: must be a valid value');
   }
 
   render() {
     const classes = {
       'plmg-separator': true,
-      [this.width]: true,
+      [this.thickness]: true,
       vertical: this.direction === 'vertical',
     };
 

@@ -101,9 +101,9 @@ export namespace Components {
          */
         "direction": string;
         /**
-          * Define separator's width.  Allowed values:   - thin   - thick  Default: thin
+          * Define separator's thickness.  Allowed values:   - thin   - thick  Default: thin
          */
-        "width": string;
+        "thickness": string;
     }
     interface PlmgSidebar {
         /**
@@ -335,9 +335,9 @@ declare namespace LocalJSX {
          */
         "direction"?: string;
         /**
-          * Define separator's width.  Allowed values:   - thin   - thick  Default: thin
+          * Define separator's thickness.  Allowed values:   - thin   - thick  Default: thin
          */
-        "width"?: string;
+        "thickness"?: string;
     }
     interface PlmgSidebar {
         /**

@@ -9,14 +9,14 @@ export default {
       control: { type: 'select' },
       options: ['horizontal', 'vertical'],
     },
-    width: {
+    thickness: {
       control: { type: 'select' },
       options: ['thin', 'thick'],
     },
   },
 };
 
-const PROPS = ['direction', 'width'];
+const PROPS = ['direction', 'thickness'];
 const EVENTS = [];
 const CSS_VARS = [];
 const SLOTS = [];
@@ -34,5 +34,5 @@ export const Primary = Template.bind({});
 Primary.storyName = 'Separator';
 Primary.args = {
   direction: 'horizontal',
-  width: 'thin',
+  thickness: 'thin',
 };
