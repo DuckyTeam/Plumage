@@ -1,5 +1,4 @@
 import * as Utils from '../../stories/StencilStorybookUtils';
-import { array } from '@storybook/addon-knobs';
 
 export default {
   title: 'Component/RadioButtonGroup',
@@ -16,7 +15,7 @@ export default {
       options: [true, false],
     },
     ['values']: {
-      control: { type: 'array' },
+      control: { type: 'text' },
     },
   },
 };
@@ -35,13 +34,11 @@ const Template = (args) => {
   return el;
 };
 
-const test = array('radioValues', ['Laptop', 'Book', 'Whiskey']);
-
 export const Primary = Template.bind({});
 Primary.storyName = 'RadioButtonGroup';
 Primary.args = {
   name: 'Formy McFormFace',
   label: 'Click One',
   ['required']: true,
-  ['values']: ['test', 'test2'],
+  ['values']: JSON.stringify(['some text', 'some other text']),
 };

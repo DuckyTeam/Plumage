@@ -46,25 +46,28 @@ export class RadioButtonGroup {
   }
 
   @Prop() values: string;
-  @Watch('values')
-  /* validatesValues(newValue: string[]) {
-    if (newValue.length === 0) throw new Error('values: required');
-    if (!Array.isArray(newValue)) {
-      throw new Error('values must be an array');
-    }
-  } */
-  render() {
-    console.log('this.values:', this.values);
+  @State() innerValues: string[];
 
+  componentWillLoad() {
+    this.parseValuesProp();
+  }
+
+  @Watch('values')
+  parseValuesProp() {
+    if (this.values) {
+      this.innerValues = JSON.parse(this.values);
+    }
+  }
+  render() {
     return (
       <fieldset>
         <legend>
           {this.label}
           {this.required && <span>*</span>}
         </legend>
-        {/*  {this.values.map((radio) => (
+        {this.innerValues.map((radio) => (
           <plmg-radio-button value={radio} name={this.name} />
-        ))} */}
+        ))}
       </fieldset>
     );
   }
