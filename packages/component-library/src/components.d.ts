@@ -97,10 +97,6 @@ export namespace Components {
     }
     interface PlmgSeparator {
         /**
-          * Define separator's color.  Allowed values:   - TODO  Default: $plmg-border-neutral
-         */
-        "color": string;
-        /**
           * Define separator's direction.  Allowed values:   - vertical   - horizontal  Default: horizontal
          */
         "direction": string;
@@ -334,10 +330,6 @@ declare namespace LocalJSX {
         "sidebarExpanded"?: boolean;
     }
     interface PlmgSeparator {
-        /**
-          * Define separator's color.  Allowed values:   - TODO  Default: $plmg-border-neutral
-         */
-        "color"?: string;
         /**
           * Define separator's direction.  Allowed values:   - vertical   - horizontal  Default: horizontal
          */

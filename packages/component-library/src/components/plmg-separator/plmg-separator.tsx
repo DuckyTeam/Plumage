@@ -44,20 +44,6 @@ export class Separator {
     if (!isPlmgSeparatorWidth(newValue))
       throw new Error('width: must be a valid value');
   }
-  /**
-   * Define separator's color.
-   *
-   * Allowed values:
-   *   - TODO
-   *
-   * Default: $plmg-border-neutral
-   */
-  @Prop() color: string = '$plmg-border-neutral';
-  @Watch('color')
-  validateColor(newValue: string) {
-    if (typeof newValue !== 'string' || newValue === '')
-      throw new Error('color: required');
-  }
 
   render() {
     const classes = {

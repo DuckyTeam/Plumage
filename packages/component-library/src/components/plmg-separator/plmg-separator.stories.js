@@ -5,10 +5,6 @@ export default {
   parameters: {},
   decorators: [],
   argTypes: {
-    color: {
-      control: { type: 'select' },
-      options: ['foo', 'bar'],
-    },
     direction: {
       control: { type: 'select' },
       options: ['horizontal', 'vertical'],
@@ -20,7 +16,7 @@ export default {
   },
 };
 
-const PROPS = ['color', 'direction', 'width'];
+const PROPS = ['direction', 'width'];
 const EVENTS = [];
 const CSS_VARS = [];
 const SLOTS = [];
@@ -37,7 +33,6 @@ const Template = (args) => {
 export const Primary = Template.bind({});
 Primary.storyName = 'Separator';
 Primary.args = {
-  color: '',
   direction: 'horizontal',
   width: 'thin',
 };
