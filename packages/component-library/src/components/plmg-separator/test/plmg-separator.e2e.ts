@@ -15,14 +15,17 @@ describe('plmg-separator', () => {
     it('are accessible', async () => {
       const page = await newE2EPage();
 
+      const direction = ['vertical', 'horizontal', undefined];
+      const width = ['thick', 'thin', undefined];
+
       let htmlContent = '';
-      someControl.forEach((control) => {
-        htmlContent += `
-    <plmg-separator control="${control}">
-  control="${control}"
-    </plmg-separator>
-<br/>
-    `;
+      direction.forEach((directionControl) => {
+        width.forEach((widthControl) => {
+          htmlContent += `
+          <plmg-separator direction="${directionControl}" width="${widthControl}" />
+          <br/>
+          `;
+        });
       });
       await page.setContent('<main>' + htmlContent + '</main>');
 
