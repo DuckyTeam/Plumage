@@ -14,20 +14,26 @@
 
 // Component style
 // -------------------------------------------------
+.plmg-separator-container {
+  display: flex;
+  width: inherit;
+  height: inherit;
+}
+
 .plmg-separator {
   display: block;
-  width: 100%;
   border-radius: tokens.$plmg-border-radius-xl;
   border-color: tokens.$plmg-border-neutral;
 
+  &.horizontal {
+    width: 100%;
+    height: 100%;
+  }
   &.thick {
     border-width: tokens.$plmg-border-width-m;
   }
   &.thin {
     border-width: tokens.$plmg-border-width-s;
-  }
-  &.vertical {
-    transform: rotate(90deg);
   }
 }
 

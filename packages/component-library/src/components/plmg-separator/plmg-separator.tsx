@@ -49,9 +49,13 @@ export class Separator {
     const classes = {
       'plmg-separator': true,
       [this.thickness]: true,
-      vertical: this.direction === 'vertical',
+      horizontal: this.direction !== 'vertical',
     };
 
-    return <hr class={classes} />;
+    return (
+      <div class={this.direction === 'vertical' && 'plmg-separator-container'}>
+        <hr class={classes} />
+      </div>
+    );
   }
 }
