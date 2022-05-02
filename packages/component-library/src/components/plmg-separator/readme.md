@@ -10,7 +10,7 @@
 | Property    | Attribute   | Description                                                                                     | Type     | Default        |
 | ----------- | ----------- | ----------------------------------------------------------------------------------------------- | -------- | -------------- |
 | `direction` | `direction` | Define separator's direction.  Allowed values:   - vertical   - horizontal  Default: horizontal | `string` | `'horizontal'` |
-| `width`     | `width`     | Define separator's width.  Allowed values:   - thin   - thick  Default: thin                    | `string` | `'thin'`       |
+| `thickness` | `thickness` | Define separator's thickness.  Allowed values:   - thin   - thick  Default: thin                | `string` | `'thin'`       |
 
 
 ----------------------------------------------
