@@ -1,4 +1,4 @@
-import { Component, h, State, Prop, Watch } from '@stencil/core';
+import { Component, h, Prop, Watch } from '@stencil/core';
 
 @Component({
   tag: 'plmg-radio-button-group',
@@ -17,6 +17,7 @@ export class RadioButtonGroup {
     if (newValue && typeof newValue !== 'string')
       throw new Error('name must be a string');
   }
+
   /**
    * Define form's label'
    */
@@ -45,22 +46,23 @@ export class RadioButtonGroup {
       throw new Error('required: must be boolean');
   }
 
-  // @Prop() values: string;
-  // @State() innerValues: string[];
-
-  // componentWillLoad() {
-  //   this.parseValuesProp();
-  // }
-
-  // @Watch('values')
-  // parseValuesProp() {
-  //   if (this.values) {
-  //     this.innerValues = JSON.parse(this.values);
-  //   }
-  // }
-
+  /**
+   * Define form's values'
+   */
   @Prop() values: string[];
   @Watch('values')
+  validatesValues(newValue: string[]) {
+    if (!Array.isArray(newValue)) {
+      throw new Error('values: must be array');
+    }
+    if (newValue.length < 1) {
+      throw new Error('values: array must contain at least one string');
+    }
+    if (newValue.some((value) => typeof value !== 'string')) {
+      throw new Error('values: values within array must be strings');
+    }
+  }
+
   render() {
     return (
       <fieldset>

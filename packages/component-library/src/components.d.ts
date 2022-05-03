@@ -127,6 +127,9 @@ export namespace Components {
           * Define radio group's required status  Allowed values:   - true   - false  Default: false
          */
         "required": boolean;
+        /**
+          * Define form's values'
+         */
         "values": string[];
     }
     interface PlmgSidebar {
@@ -391,6 +394,9 @@ declare namespace LocalJSX {
           * Define radio group's required status  Allowed values:   - true   - false  Default: false
          */
         "required"?: boolean;
+        /**
+          * Define form's values'
+         */
         "values"?: string[];
     }
     interface PlmgSidebar {

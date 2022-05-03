@@ -84,8 +84,16 @@ export class RadioButton {
           name={this.name}
           value={this.value}
           class={inputClasses}
+          onMouseDown={(e) => e.preventDefault()}
         />
-        <label htmlFor={this.value} class={labelClasses}>
+        <label
+          htmlFor={this.value}
+          class={labelClasses}
+          onClick={(e) => {
+            e.preventDefault();
+            document.getElementById(this.value).click();
+          }}
+        >
           {this.value}
         </label>
       </div>
