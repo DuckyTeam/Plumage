@@ -17,9 +17,6 @@ export default {
 };
 
 const PROPS = ['direction', 'thickness'];
-const EVENTS = [];
-const CSS_VARS = [];
-const SLOTS = [];
 
 const Template = (args) => {
   const el = document.createElement('plmg-separator');
