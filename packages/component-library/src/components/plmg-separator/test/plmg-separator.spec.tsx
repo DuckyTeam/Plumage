@@ -10,7 +10,9 @@ describe('plmg-separator', () => {
     expect(page.root).toEqualHtml(`
       <plmg-separator>
         <mock:shadow-root>
-          <hr class="plmg-separator thin" />
+            <div>
+              <hr class="horizontal plmg-separator thin" />
+            </div>
         </mock:shadow-root>
       </plmg-separator>
     `);
@@ -23,7 +25,9 @@ describe('plmg-separator', () => {
     expect(page.root).toEqualHtml(`
       <plmg-separator direction="vertical">
         <mock:shadow-root>
-          <hr class="plmg-separator thin vertical" />
+          <div class="plmg-separator-container">
+            <hr class="plmg-separator thin" />
+          </div>
         </mock:shadow-root>
       </plmg-separator>
     `);
@@ -31,12 +35,14 @@ describe('plmg-separator', () => {
   it('renders thick width', async () => {
     const page = await newSpecPage({
       components: [Separator],
-      html: `<plmg-separator width="thick"></plmg-separator>`,
+      html: `<plmg-separator thickness="thick"></plmg-separator>`,
     });
     expect(page.root).toEqualHtml(`
-      <plmg-separator width="thick">
+      <plmg-separator thickness="thick">
         <mock:shadow-root>
-          <hr class="plmg-separator thick" />
+          <div>
+            <hr class="horizontal plmg-separator thick" />
+          </div>
         </mock:shadow-root>
       </plmg-separator>
     `);
@@ -44,12 +50,14 @@ describe('plmg-separator', () => {
   it('renders thick width vertical hr', async () => {
     const page = await newSpecPage({
       components: [Separator],
-      html: `<plmg-separator width="thick" direction="vertical"></plmg-separator>`,
+      html: `<plmg-separator thickness="thick" direction="vertical"></plmg-separator>`,
     });
     expect(page.root).toEqualHtml(`
-      <plmg-separator width="thick" direction="vertical">
+      <plmg-separator thickness="thick" direction="vertical">
         <mock:shadow-root>
-          <hr class="plmg-separator thick vertical" />
+          <div class="plmg-separator-container">
+            <hr class="plmg-separator thick" />
+          </div>
         </mock:shadow-root>
       </plmg-separator>
     `);
@@ -62,7 +70,9 @@ describe('plmg-separator', () => {
     expect(page.root).toEqualHtml(`
       <plmg-separator direction="diagonal">
         <mock:shadow-root>
-          <hr class="plmg-separator thin" />
+          <div>
+            <hr class="horizontal plmg-separator thin" />
+          </div>
         </mock:shadow-root>
       </plmg-separator>
     `);
