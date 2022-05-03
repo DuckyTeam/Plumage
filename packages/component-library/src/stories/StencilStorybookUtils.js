@@ -4,6 +4,14 @@ export const bindProps = (el, props, args) => {
     .forEach((x) => el.setAttribute(x, args[x]));
 };
 
+//Added this here vvv
+export const bindLegitProps = (el, legitProps, args) => {
+  Object.keys(args)
+    .filter((x) => legitProps.includes(x))
+    .forEach((x) => (el[x] = args[x]));
+};
+// ^^^^^^
+
 export const bindEvents = (el, events, args) => {
   Object.keys(args)
     .filter((x) => events.includes(x))
