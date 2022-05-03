@@ -1,5 +1,8 @@
 import { Component, h, Prop, Watch } from '@stencil/core';
-
+import {
+  PlmgRadioButtonSize,
+  isPlmgRadioButtonSize,
+} from '../plmg-radio-button/plmg-radio-button.types';
 @Component({
   tag: 'plmg-radio-button-group',
   styleUrl: 'plmg-radio-button-group.scss',
@@ -31,6 +34,22 @@ export class RadioButtonGroup {
   }
 
   /**
+   * Define size of all radio button's in radio button group.
+   *
+   * Allowed values:
+   *   - medium
+   *   - large
+   *
+   * Default: medium
+   */
+  @Prop() size: PlmgRadioButtonSize = 'medium';
+  @Watch('size')
+  validateSize(newValue: string) {
+    if (!isPlmgRadioButtonSize(newValue))
+      throw new Error('size: must be a valid value');
+  }
+
+  /**
    * Define radio group's required status
    *
    * Allowed values:
@@ -47,7 +66,7 @@ export class RadioButtonGroup {
   }
 
   /**
-   * Define form's values'
+   * Define each radio button's value
    */
   @Prop() values: string[];
   @Watch('values')
@@ -63,6 +82,20 @@ export class RadioButtonGroup {
     }
   }
 
+  /**
+   * Define error message for radio group
+   *
+   * Will render one error message for the
+   * radio button group, affects styling of
+   * all radio buttons in group
+   */
+  @Prop() errorMessage?: string | undefined;
+  @Watch('errorMessage')
+  validatesErrorMessage(newValue: string) {
+    if (newValue !== undefined && typeof newValue !== 'string')
+      throw new Error('errorMessage: must be a string if provided');
+  }
+
   render() {
     return (
       <fieldset>
@@ -71,8 +104,16 @@ export class RadioButtonGroup {
           {this.required && <span>*</span>}
         </legend>
         {this.values.map((radio) => (
-          <plmg-radio-button value={radio} name={this.name} />
+          <plmg-radio-button
+            value={radio}
+            name={this.name}
+            size={this.size}
+            highlighted={!!this.errorMessage}
+          />
         ))}
+        {!!this.errorMessage && (
+          <plmg-error-message size={this.size} message={this.errorMessage} />
+        )}
       </fieldset>
     );
   }

@@ -8,11 +8,18 @@ export default {
     name: {
       control: { type: 'text' },
     },
+    size: {
+      options: ['medium', 'large'],
+      control: { type: 'select' },
+    },
     label: {
       control: { type: 'text' },
     },
     ['required']: {
       options: [true, false],
+    },
+    ['error-message']: {
+      control: { type: 'text' },
     },
     ['values']: {
       control: { type: 'array' },
@@ -20,7 +27,7 @@ export default {
   },
 };
 
-const PROPS = ['name', 'label', 'required', 'values'];
+const PROPS = ['name', 'size', 'label', 'required', 'values', 'error-message'];
 const LEGIT_PROPS = ['values'];
 const EVENTS = [];
 const CSS_VARS = [];
@@ -40,7 +47,8 @@ export const Primary = Template.bind({});
 Primary.storyName = 'RadioButtonGroup';
 Primary.args = {
   name: 'Formy McFormFace',
+  size: 'medium',
   label: 'Click One',
   ['required']: true,
-  ['values']: ['something', 'something else'],
+  ['values']: ['Option', 'Option'],
 };

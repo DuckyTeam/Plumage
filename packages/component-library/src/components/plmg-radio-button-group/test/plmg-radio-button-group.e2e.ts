@@ -17,15 +17,11 @@ describe('plmg-radio-button-group', () => {
     it('are accessible', async () => {
       const page = await newE2EPage();
 
-      let htmlContent = '';
-      someControl.forEach((control) => {
-        htmlContent += `
-    <plmg-radio-button-group control="${control}">
-  control="${control}"
-    </plmg-radio-button-group>
-<br/>
-    `;
-      });
+      const htmlContent = `<plmg-radio-button-group></plmg-radio-button-group>`;
+      //   <plmg-radio-button-group values=${['option', 'option 1', 'option 2']} name="Formz" label="Buttonz"/>
+      //   <plmg-radio-button-group values=${['option', 'option 1', 'option 2']} name="Formz" label="Buttonz" size="large"/>
+      //   <plmg-radio-button-group values=${['option', 'option 1', 'option 2']} name="Formz" label="Buttonz" error-message="An error occurred!"/>
+      //   ``
       await page.setContent('<main>' + htmlContent + '</main>');
 
       const results = await new AxePuppeteer(page as unknown as Page)
