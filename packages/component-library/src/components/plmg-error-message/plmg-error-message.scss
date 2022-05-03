@@ -1,0 +1,31 @@
+@use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
+
+// Component style
+// -------------------------------------------------
+
+.error-message-wrapper {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  background-color: tokens.$plmg-background-danger;
+  color: tokens.$plmg-text-danger-strong;
+  border-radius: tokens.$plmg-border-radius-s;
+  padding: tokens.$plmg-spacing-x0-25 tokens.$plmg-spacing-x0-5;
+
+  font-family: tokens.$plmg-font-family-sans;
+  font-style: normal;
+  font-weight: tokens.$plmg-font-weight-semibold;
+  line-height: tokens.$plmg-font-lineheight-loose;
+
+  span {
+    margin-left: tokens.$plmg-spacing-x0-25;
+  }
+
+  &.medium {
+    font-size: tokens.$plmg-font-size-x0-75;
+  }
+
+  &.large {
+    font-size: tokens.$plmg-font-size-x0-875;
+  }
+}
