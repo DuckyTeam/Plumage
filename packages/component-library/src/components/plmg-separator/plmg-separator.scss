@@ -5,6 +5,8 @@
 // -------------------------------------------------
 :host {
   display: block;
+  height: inherit;
+  width: inherit;
 }
 
 :host([hidden]) {
