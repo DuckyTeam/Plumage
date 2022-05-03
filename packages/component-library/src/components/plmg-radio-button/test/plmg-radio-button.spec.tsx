@@ -9,9 +9,10 @@ describe('plmg-radio-button', () => {
     });
     expect(page.root).toEqualHtml(`
       <plmg-radio-button>
-        <mock:shadow-root>
-          <slot></slot>
-        </mock:shadow-root>
+        <div class="radio-button-wrapper">
+          <input type="radio">
+          <label></label>
+        </div>
       </plmg-radio-button>
     `);
   });

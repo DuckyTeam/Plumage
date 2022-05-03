@@ -15,15 +15,11 @@ describe('plmg-radio-button', () => {
     it('are accessible', async () => {
       const page = await newE2EPage();
 
-      let htmlContent = '';
-      someControl.forEach((control) => {
-        htmlContent += `
-    <plmg-radio-button control="${control}">
-  control="${control}"
-    </plmg-radio-button>
-<br/>
-    `;
-      });
+      const htmlContent = `
+        <plmg-radio-button value="option" name="Form name"/>
+        <plmg-radio-button value="option 2" name="Form name" size="large"/>
+        <plmg-radio-button value="option 3" name="Form name" size="large" highlighted=${true}/>
+      `;
       await page.setContent('<main>' + htmlContent + '</main>');
 
       const results = await new AxePuppeteer(page as unknown as Page)
