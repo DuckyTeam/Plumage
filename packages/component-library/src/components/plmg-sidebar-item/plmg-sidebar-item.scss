@@ -16,8 +16,8 @@
   cursor: pointer;
   text-align: start;
   border-radius: tokens.$plmg-border-radius-s;
-  background: tokens.$plmg-background-neutral-active;
-  color: tokens.$plmg-text-neutral-weak;
+  background: tokens.$plmg-color-background-neutral-active;
+  color: tokens.$plmg-color-text-neutral-weak;
 
   font-family: tokens.$plmg-font-family-sans;
   font-style: normal;
@@ -87,17 +87,18 @@
   }
 
   &.plmg-sidebar-item-active {
-    background: tokens.$plmg-background-neutral-active;
-    color: tokens.$plmg-text-primary-strong;
+    background: tokens.$plmg-color-background-neutral-active;
+    color: tokens.$plmg-color-text-primary-strong;
   }
 
   // States
   &:hover {
-    background: tokens.$plmg-background-primary;
+    background: tokens.$plmg-color-background-primary;
   }
   &:focus-visible {
-    background: tokens.$plmg-background-neutral-hover;
-    outline: tokens.$plmg-border-width-l solid tokens.$plmg-border-standout;
+    background: tokens.$plmg-color-background-neutral-hover;
+    outline: tokens.$plmg-border-width-l solid
+      tokens.$plmg-color-border-standout;
   }
 }
 // ------------- END Component style ---------------

@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Thu, 07 Apr 2022 13:53:32 GMT and should not be manually modified.
+This log was last generated on Wed, 04 May 2022 11:37:57 GMT and should not be manually modified.
+
+## 1.0.1
+Wed, 04 May 2022 11:37:57 GMT
+
+### Patches
+
+- Update usage of color tokens with "color" prefix
 
 ## 1.0.0
 Thu, 07 Apr 2022 13:53:32 GMT

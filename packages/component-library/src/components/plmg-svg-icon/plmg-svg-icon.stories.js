@@ -78,7 +78,7 @@ export const Colors = (args) => {
     '#66c2cb',
     '#f179a2',
     'rgba(53,122,56,1)',
-    'var(--plmg-background-warning-active)',
+    'var(--plmg-color-background-warning-active)',
   ]
     .map(
       (color) => `<plmg-svg-icon icon="home" color="${color}"></plmg-svg-icon>`

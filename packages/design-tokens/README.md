@@ -25,7 +25,7 @@ When using our design tokens, replace `default` with another theme if needed.
 @import "https://cdn.jsdelivr.net/npm/@ducky/plumage-tokens/dist/css/default.css";
 
 div {
-    color: var(--plmg-background-success);
+    color: var(--plmg-color-background-success);
 }
 ``` 
 
@@ -34,7 +34,7 @@ If you're not using a bundling tool like Webpack, you may need to use the full p
 @import "node_modules/@ducky/plumage-tokens/dist/css/default.css";
 
 div {
-    color: var(--plmg-background-danger);
+    color: var(--plmg-color-background-danger);
 }
 ```
 
@@ -43,7 +43,7 @@ div {
 @use "~@ducky/plumage-tokens/dist/scss/default" as tokens;
 
 div {
-  color: tokens.$plmg-background-success;
+  color: tokens.$plmg-color-background-success;
 }
 ```
 
@@ -59,7 +59,7 @@ In JSON, tokens names are formatted in snake_case.
 ```js
 const tokens = require('@ducky/plumage-tokens/dist/json/default.json');
 
-console.log(tokens["plmg-background-success"]);
+console.log(tokens["plmg-color-background-success"]);
 ```
 
 If your project supports ECMAScript Modules, use `import`.
@@ -80,7 +80,7 @@ console.log(tokens.plmgBackgroundSuccess);
 @import "~@ducky/plumage-tokens/dist/less/default";
 
 div {
-  color: @plmg-background-success;
+  color: @plmg-color-background-success;
 }
 ```
 
