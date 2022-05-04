@@ -14,7 +14,7 @@
 | `name`         | `name`          | Define form's name'                                                                                                                           | `string`              | `undefined` |
 | `required`     | `required`      | Define radio group's required status  Allowed values:   - true   - false  Default: false                                                      | `boolean`             | `false`     |
 | `size`         | `size`          | Define size of all radio button's in radio button group.  Allowed values:   - medium   - large  Default: medium                               | `"large" \| "medium"` | `'medium'`  |
-| `values`       | `values`        | Define each radio button's value                                                                                                              | `string \| string[]`  | `undefined` |
+| `values`       | `values`        | Define each radio button's value  Accepts an array or JSON string                                                                             | `string \| string[]`  | `undefined` |
 
 
 ## Dependencies
