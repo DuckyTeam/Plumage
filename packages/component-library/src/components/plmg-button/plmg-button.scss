@@ -61,119 +61,119 @@
 @mixin filled-color {
   &.primary {
     @include background-border-text(
-      tokens.$plmg-background-primary-strong,
-      tokens.$plmg-background-primary-strong,
-      tokens.$plmg-text-neutral-inverted
+      tokens.$plmg-color-background-primary-strong,
+      tokens.$plmg-color-background-primary-strong,
+      tokens.$plmg-color-text-neutral-inverted
     );
 
     &:hover {
       @include background-border-text(
-        tokens.$plmg-background-primary-strong-hover,
-        tokens.$plmg-background-primary-strong-hover,
-        tokens.$plmg-text-neutral-inverted
+        tokens.$plmg-color-background-primary-strong-hover,
+        tokens.$plmg-color-background-primary-strong-hover,
+        tokens.$plmg-color-text-neutral-inverted
       );
     }
     &:active {
       @include background-border-text(
-        tokens.$plmg-background-primary-strong-active,
-        tokens.$plmg-background-primary-strong-active,
-        tokens.$plmg-text-neutral-inverted
+        tokens.$plmg-color-background-primary-strong-active,
+        tokens.$plmg-color-background-primary-strong-active,
+        tokens.$plmg-color-text-neutral-inverted
       );
     }
     &:focus-visible {
       @include background-outline-text(
-        tokens.$plmg-background-primary-strong-hover,
-        tokens.$plmg-border-standout,
-        tokens.$plmg-text-neutral-inverted,
+        tokens.$plmg-color-background-primary-strong-hover,
+        tokens.$plmg-color-border-standout,
+        tokens.$plmg-color-text-neutral-inverted,
         tokens.$plmg-border-width-l
       );
     }
   }
   &.neutral {
     @include background-border-text(
-      tokens.$plmg-background-neutral,
-      tokens.$plmg-border-neutral-weak,
-      tokens.$plmg-text-neutral
+      tokens.$plmg-color-background-neutral,
+      tokens.$plmg-color-border-neutral-weak,
+      tokens.$plmg-color-text-neutral
     );
 
     &:hover {
       @include background-border-text(
-        tokens.$plmg-background-neutral-hover,
-        tokens.$plmg-border-neutral-weak,
-        tokens.$plmg-text-neutral
+        tokens.$plmg-color-background-neutral-hover,
+        tokens.$plmg-color-border-neutral-weak,
+        tokens.$plmg-color-text-neutral
       );
     }
     &:active {
       @include background-border-text(
-        tokens.$plmg-background-neutral-active,
-        tokens.$plmg-border-neutral-weak,
-        tokens.$plmg-text-neutral
+        tokens.$plmg-color-background-neutral-active,
+        tokens.$plmg-color-border-neutral-weak,
+        tokens.$plmg-color-text-neutral
       );
     }
     &:focus-visible {
       @include background-outline-text(
-        tokens.$plmg-background-neutral-active,
-        tokens.$plmg-border-standout,
-        tokens.$plmg-text-neutral,
+        tokens.$plmg-color-background-neutral-active,
+        tokens.$plmg-color-border-standout,
+        tokens.$plmg-color-text-neutral,
         tokens.$plmg-border-width-l
       );
     }
   }
   &.standout {
     @include background-border-text(
-      tokens.$plmg-background-standout,
-      tokens.$plmg-background-standout,
-      tokens.$plmg-text-standout
+      tokens.$plmg-color-background-standout,
+      tokens.$plmg-color-background-standout,
+      tokens.$plmg-color-text-standout
     );
 
     &:hover {
       @include background-border-text(
-        tokens.$plmg-background-standout-hover,
-        tokens.$plmg-background-standout-hover,
-        tokens.$plmg-text-standout
+        tokens.$plmg-color-background-standout-hover,
+        tokens.$plmg-color-background-standout-hover,
+        tokens.$plmg-color-text-standout
       );
     }
     &:active {
       @include background-border-text(
-        tokens.$plmg-background-standout-active,
-        tokens.$plmg-background-standout-active,
-        tokens.$plmg-text-standout
+        tokens.$plmg-color-background-standout-active,
+        tokens.$plmg-color-background-standout-active,
+        tokens.$plmg-color-text-standout
       );
     }
     &:focus-visible {
       @include background-outline-text(
-        tokens.$plmg-background-standout-hover,
-        tokens.$plmg-border-info,
-        tokens.$plmg-text-standout,
+        tokens.$plmg-color-background-standout-hover,
+        tokens.$plmg-color-border-info,
+        tokens.$plmg-color-text-standout,
         tokens.$plmg-border-width-l
       );
     }
   }
   &.danger {
     @include background-border-text(
-      tokens.$plmg-background-danger-strong,
-      tokens.$plmg-background-danger-strong,
-      tokens.$plmg-text-neutral-inverted
+      tokens.$plmg-color-background-danger-strong,
+      tokens.$plmg-color-background-danger-strong,
+      tokens.$plmg-color-text-neutral-inverted
     );
     &:hover {
       @include background-border-text(
-        tokens.$plmg-background-danger-strong-hover,
-        tokens.$plmg-background-danger-strong-hover,
-        tokens.$plmg-text-neutral-inverted
+        tokens.$plmg-color-background-danger-strong-hover,
+        tokens.$plmg-color-background-danger-strong-hover,
+        tokens.$plmg-color-text-neutral-inverted
       );
     }
     &:active {
       @include background-border-text(
-        tokens.$plmg-background-danger-strong-active,
-        tokens.$plmg-background-danger-strong-active,
-        tokens.$plmg-text-neutral-inverted
+        tokens.$plmg-color-background-danger-strong-active,
+        tokens.$plmg-color-background-danger-strong-active,
+        tokens.$plmg-color-text-neutral-inverted
       );
     }
     &:focus-visible {
       @include background-outline-text(
-        tokens.$plmg-background-danger-strong-hover,
-        tokens.$plmg-border-standout,
-        tokens.$plmg-text-neutral-inverted,
+        tokens.$plmg-color-background-danger-strong-hover,
+        tokens.$plmg-color-border-standout,
+        tokens.$plmg-color-text-neutral-inverted,
         tokens.$plmg-border-width-l
       );
     }
@@ -182,61 +182,61 @@
 
 @mixin outline-color-background {
   &.primary {
-    @include border-background-none(tokens.$plmg-border-primary-strong);
+    @include border-background-none(tokens.$plmg-color-border-primary-strong);
 
     &:hover {
-      @include border-background-none(tokens.$plmg-border-primary-weak);
+      @include border-background-none(tokens.$plmg-color-border-primary-weak);
     }
     &:active {
       @include background-border(
-        tokens.$plmg-background-primary,
-        tokens.$plmg-border-primary
+        tokens.$plmg-color-background-primary,
+        tokens.$plmg-color-border-primary
       );
     }
   }
   &.neutral {
-    @include border-background-none(tokens.$plmg-border-neutral);
+    @include border-background-none(tokens.$plmg-color-border-neutral);
 
     &:hover {
-      @include border-background-none(tokens.$plmg-border-primary);
+      @include border-background-none(tokens.$plmg-color-border-primary);
     }
     &:active {
       @include background-border(
-        tokens.$plmg-background-neutral-active,
-        tokens.$plmg-border-neutral
+        tokens.$plmg-color-background-neutral-active,
+        tokens.$plmg-color-border-neutral
       );
     }
   }
   &.standout {
-    @include border-background-none(tokens.$plmg-border-standout-strong);
+    @include border-background-none(tokens.$plmg-color-border-standout-strong);
 
     &:hover {
-      @include border-background-none(tokens.$plmg-border-standout);
+      @include border-background-none(tokens.$plmg-color-border-standout);
     }
     &:active {
       @include background-border(
-        tokens.$plmg-background-standout,
-        tokens.$plmg-border-standout
+        tokens.$plmg-color-background-standout,
+        tokens.$plmg-color-border-standout
       );
     }
   }
   &.danger {
-    @include border-background-none(tokens.$plmg-border-danger-strong);
+    @include border-background-none(tokens.$plmg-color-border-danger-strong);
 
     &:hover {
-      @include border-background-none(tokens.$plmg-border-danger);
+      @include border-background-none(tokens.$plmg-color-border-danger);
     }
     &:active {
       @include background-border(
-        tokens.$plmg-background-danger,
-        tokens.$plmg-border-danger
+        tokens.$plmg-color-background-danger,
+        tokens.$plmg-color-border-danger
       );
     }
   }
 
   &:focus-visible {
     @include outline-background-none(
-      tokens.$plmg-border-standout,
+      tokens.$plmg-color-border-standout,
       tokens.$plmg-border-width-l
     );
   }
@@ -244,29 +244,29 @@
 
 @mixin outline-color-text {
   &.primary {
-    @include just-text(tokens.$plmg-text-primary-strong);
+    @include just-text(tokens.$plmg-color-text-primary-strong);
 
     &:hover {
-      @include just-text(tokens.$plmg-text-primary-strong-hover);
+      @include just-text(tokens.$plmg-color-text-primary-strong-hover);
     }
     &:active {
-      @include just-text(tokens.$plmg-text-primary-strong-active);
+      @include just-text(tokens.$plmg-color-text-primary-strong-active);
     }
     &:focus-visible {
-      @include just-text(tokens.$plmg-text-primary-strong-hover);
+      @include just-text(tokens.$plmg-color-text-primary-strong-hover);
     }
   }
   &.neutral {
-    @include just-text(tokens.$plmg-text-neutral);
+    @include just-text(tokens.$plmg-color-text-neutral);
   }
   &.standout {
-    @include just-text(tokens.$plmg-text-standout);
+    @include just-text(tokens.$plmg-color-text-standout);
   }
   &.danger {
-    @include just-text(tokens.$plmg-text-danger-strong);
+    @include just-text(tokens.$plmg-color-text-danger-strong);
 
     &:active {
-      @include just-text(tokens.$plmg-text-danger-strong-active);
+      @include just-text(tokens.$plmg-color-text-danger-strong-active);
     }
   }
 }
@@ -333,40 +333,44 @@
 
     &.primary {
       &:hover {
-        @include border-background-none(tokens.$plmg-border-primary);
+        @include border-background-none(tokens.$plmg-color-border-primary);
       }
       &:active {
-        @include border-background-none(tokens.$plmg-border-primary-strong);
+        @include border-background-none(
+          tokens.$plmg-color-border-primary-strong
+        );
       }
     }
     &.neutral {
       &:hover {
-        @include border-background-none(tokens.$plmg-border-primary);
+        @include border-background-none(tokens.$plmg-color-border-primary);
       }
       &:active {
-        @include border-background-none(tokens.$plmg-border-neutral-strong);
+        @include border-background-none(
+          tokens.$plmg-color-border-neutral-strong
+        );
       }
     }
     &.standout {
       &:hover {
-        @include border-background-none(tokens.$plmg-border-standout);
+        @include border-background-none(tokens.$plmg-color-border-standout);
       }
       &:active {
-        @include border-background-none(tokens.$plmg-border-neutral);
+        @include border-background-none(tokens.$plmg-color-border-neutral);
       }
     }
     &.danger {
       &:hover {
-        @include border-background-none(tokens.$plmg-border-danger);
+        @include border-background-none(tokens.$plmg-color-border-danger);
       }
       &:active {
-        @include border-background-none(tokens.$plmg-border-neutral);
+        @include border-background-none(tokens.$plmg-color-border-neutral);
       }
     }
 
     &:focus-visible {
       @include outline-background-none(
-        tokens.$plmg-border-standout,
+        tokens.$plmg-color-border-standout,
         tokens.$plmg-border-width-l
       );
     }

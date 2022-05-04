@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "Update usage of color tokens with \"color\" prefix",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
