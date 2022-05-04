@@ -1,4 +1,4 @@
-import { Component, h, Prop, Watch } from '@stencil/core';
+import { Component, h, Prop, State, Watch } from '@stencil/core';
 import {
   PlmgRadioButtonSize,
   isPlmgRadioButtonSize,
@@ -67,17 +67,37 @@ export class RadioButtonGroup {
 
   /**
    * Define each radio button's value
+   *
+   * Accepts an array or JSON string
    */
-  @Prop() values: string[];
+  @Prop() values: string[] | string;
+  @State() parsedValues: string[];
+
+  componentWillLoad() {
+    this.parseValuesProp(this.values);
+  }
+
   @Watch('values')
-  validatesValues(newValue: string[]) {
-    if (!Array.isArray(newValue)) {
-      throw new Error('values: must be array');
+  parseValuesProp(newValue: string | string[]) {
+    if (newValue) {
+      this.parsedValues = Array.isArray(newValue)
+        ? newValue
+        : JSON.parse(newValue);
     }
-    if (newValue.length < 1) {
-      throw new Error('values: array must contain at least one string');
+  }
+  validatesValues(newValue: string[] | string) {
+    if (
+      typeof newValue !== 'object' ||
+      (typeof newValue === 'object' &&
+        !Array.isArray(newValue) &&
+        typeof newValue !== 'string')
+    ) {
+      throw new Error('values: must be array or string');
     }
-    if (newValue.some((value) => typeof value !== 'string')) {
+    if (
+      Array.isArray(newValue) &&
+      newValue.some((value) => typeof value !== 'string')
+    ) {
       throw new Error('values: values within array must be strings');
     }
   }
@@ -103,7 +123,7 @@ export class RadioButtonGroup {
           {this.label}
           {this.required && <span>*</span>}
         </legend>
-        {this.values.map((radio) => (
+        {this.parsedValues.map((radio) => (
           <plmg-radio-button
             value={radio}
             name={this.name}

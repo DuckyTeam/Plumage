@@ -5,16 +5,13 @@ describe('plmg-error-message', () => {
   it('renders', async () => {
     const page = await newSpecPage({
       components: [ErrorMessage],
-      html: `<plmg-error-message values=${[
-        'val1',
-        'val2',
-      ]}></plmg-error-message>`,
+      html: `<plmg-error-message message="error!"></plmg-error-message>`,
     });
     expect(page.root).toEqualHtml(`
-      <plmg-error-message>
+      <plmg-error-message message="error!">
         <div class="error-message-wrapper medium">
           <plmg-svg-icon icon="warningAmber"></plmg-svg-icon>
-          <span></span>
+          <span>error!</span>
         </div>
       </plmg-error-message>
     `);

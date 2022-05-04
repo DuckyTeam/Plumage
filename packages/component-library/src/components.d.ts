@@ -147,9 +147,9 @@ export namespace Components {
          */
         "size": PlmgRadioButtonSize;
         /**
-          * Define each radio button's value
+          * Define each radio button's value  Accepts an array or JSON string
          */
-        "values": string[];
+        "values": string[] | string;
     }
     interface PlmgSidebar {
         /**
@@ -439,9 +439,9 @@ declare namespace LocalJSX {
          */
         "size"?: PlmgRadioButtonSize;
         /**
-          * Define each radio button's value
+          * Define each radio button's value  Accepts an array or JSON string
          */
-        "values"?: string[];
+        "values"?: string[] | string;
     }
     interface PlmgSidebar {
         /**

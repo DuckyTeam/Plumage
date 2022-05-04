@@ -31,7 +31,7 @@ fieldset {
 }
 
 legend {
-  color: tokens.$plmg-text-neutral-weak;
+  color: tokens.$plmg-color-text-neutral-weak;
   font-family: tokens.$plmg-font-family-sans;
   font-style: normal;
   font-weight: tokens.$plmg-font-weight-semibold;
@@ -41,7 +41,7 @@ legend {
 }
 
 span {
-  color: tokens.$plmg-text-danger-strong;
+  color: tokens.$plmg-color-text-danger-strong;
   font-family: tokens.$plmg-font-family-sans;
   font-style: normal;
   font-weight: tokens.$plmg-font-weight-semibold;
