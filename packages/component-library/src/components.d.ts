@@ -97,7 +97,7 @@ export namespace Components {
     }
     interface PlmgSeparator {
         /**
-          * Define icon's color.  Can be any valid CSS color value.  By default, the icon will have the same color as the parent's element.
+          * Define icon's color.  Can be any valid CSS color value.  By default, the separator will have the same color as the parent's element.
          */
         "color": string | undefined;
         /**
@@ -335,7 +335,7 @@ declare namespace LocalJSX {
     }
     interface PlmgSeparator {
         /**
-          * Define icon's color.  Can be any valid CSS color value.  By default, the icon will have the same color as the parent's element.
+          * Define icon's color.  Can be any valid CSS color value.  By default, the separator will have the same color as the parent's element.
          */
         "color"?: string | undefined;
         /**

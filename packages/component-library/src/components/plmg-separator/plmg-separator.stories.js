@@ -41,5 +41,5 @@ Primary.storyName = 'Separator';
 Primary.args = {
   direction: 'horizontal',
   thickness: 'thick',
-  color: '',
+  color: 'currentColor',
 };

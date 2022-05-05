@@ -25,7 +25,10 @@
 
   &.horizontal {
     width: 100%;
-    height: tokens.$plmg-border-width-s;
+
+    &.thin {
+      height: tokens.$plmg-border-width-s;
+    }
 
     &.thick {
       height: tokens.$plmg-border-width-m;
@@ -34,7 +37,10 @@
 
   &.vertical {
     height: 100%;
-    width: tokens.$plmg-border-width-s;
+
+    &.thin {
+      width: tokens.$plmg-border-width-s;
+    }
 
     &.thick {
       width: tokens.$plmg-border-width-m;

@@ -15,7 +15,7 @@ export class Separator {
    *
    * Can be any valid CSS color value.
    *
-   * By default, the icon will have the same color as the parent's element.
+   * By default, the separator will have the same color as the parent's element.
    */
   @Prop() color: string | undefined;
 
