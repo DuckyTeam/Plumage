@@ -10,7 +10,7 @@ describe('plmg-separator', () => {
     expect(page.root).toEqualHtml(`
       <plmg-separator>
         <mock:shadow-root>
-            <hr class="plmg-separator horizontal thin" style="background-color: inherit"/>
+            <hr class="plmg-separator horizontal thin">
         </mock:shadow-root>
       </plmg-separator>
     `);
@@ -23,7 +23,7 @@ describe('plmg-separator', () => {
     expect(page.root).toEqualHtml(`
       <plmg-separator direction="vertical">
         <mock:shadow-root>
-            <hr class="plmg-separator vertical thin" style="background-color: inherit"/>
+            <hr class="plmg-separator vertical thin">
         </mock:shadow-root>
       </plmg-separator>
     `);
@@ -36,7 +36,7 @@ describe('plmg-separator', () => {
     expect(page.root).toEqualHtml(`
       <plmg-separator thickness="thick">
         <mock:shadow-root>
-            <hr class="plmg-separator horizontal thick" style="background-color: inherit"/>
+            <hr class="plmg-separator horizontal thick"/>
         </mock:shadow-root>
       </plmg-separator>
     `);
@@ -49,7 +49,7 @@ describe('plmg-separator', () => {
     expect(page.root).toEqualHtml(`
       <plmg-separator thickness="thick" direction="vertical">
         <mock:shadow-root>
-            <hr class="plmg-separator vertical thick" style="background-color: inherit"/>
+            <hr class="plmg-separator vertical thick"/>
         </mock:shadow-root>
       </plmg-separator>
     `);
