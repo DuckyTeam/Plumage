@@ -11,6 +11,15 @@ import {
 })
 export class Separator {
   /**
+   * Define icon's color.
+   *
+   * Can be any valid CSS color value.
+   *
+   * By default, the icon will have the same color as the parent's element.
+   */
+  @Prop() color: string | undefined;
+
+  /**
    * Define separator's direction.
    *
    * Allowed values:
@@ -49,13 +58,16 @@ export class Separator {
     const classes = {
       'plmg-separator': true,
       [this.thickness]: true,
-      horizontal: this.direction !== 'vertical',
+      [this.direction]: true,
     };
 
     return (
-      <div class={this.direction === 'vertical' && 'plmg-separator-container'}>
-        <hr class={classes} />
-      </div>
+      <hr
+        class={classes}
+        style={{
+          backgroundColor: this.color ?? 'inherit',
+        }}
+      />
     );
   }
 }

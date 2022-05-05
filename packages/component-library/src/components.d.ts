@@ -97,6 +97,10 @@ export namespace Components {
     }
     interface PlmgSeparator {
         /**
+          * Define icon's color.  Can be any valid CSS color value.  By default, the icon will have the same color as the parent's element.
+         */
+        "color": string | undefined;
+        /**
           * Define separator's direction.  Allowed values:   - vertical   - horizontal  Default: horizontal
          */
         "direction": string;
@@ -330,6 +334,10 @@ declare namespace LocalJSX {
         "sidebarExpanded"?: boolean;
     }
     interface PlmgSeparator {
+        /**
+          * Define icon's color.  Can be any valid CSS color value.  By default, the icon will have the same color as the parent's element.
+         */
+        "color"?: string | undefined;
         /**
           * Define separator's direction.  Allowed values:   - vertical   - horizontal  Default: horizontal
          */

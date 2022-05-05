@@ -16,26 +16,29 @@
 
 // Component style
 // -------------------------------------------------
-.plmg-separator-container {
-  display: flex;
-  width: inherit;
-  height: inherit;
-}
 
 .plmg-separator {
   display: block;
+  background-color: currentColor;
   border-radius: tokens.$plmg-border-radius-xl;
-  border-color: tokens.$plmg-border-neutral;
+  border: none;
 
   &.horizontal {
     width: 100%;
+    height: tokens.$plmg-border-width-s;
+
+    &.thick {
+      height: tokens.$plmg-border-width-m;
+    }
+  }
+
+  &.vertical {
     height: 100%;
-  }
-  &.thick {
-    border-width: tokens.$plmg-border-width-m;
-  }
-  &.thin {
-    border-width: tokens.$plmg-border-width-s;
+    width: tokens.$plmg-border-width-s;
+
+    &.thick {
+      width: tokens.$plmg-border-width-m;
+    }
   }
 }
 

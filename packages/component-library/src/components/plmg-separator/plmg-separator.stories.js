@@ -5,6 +5,9 @@ export default {
   parameters: {},
   decorators: [],
   argTypes: {
+    color: {
+      control: { type: 'color' },
+    },
     direction: {
       control: { type: 'select' },
       options: ['horizontal', 'vertical'],
@@ -16,7 +19,7 @@ export default {
   },
 };
 
-const PROPS = ['direction', 'thickness'];
+const PROPS = ['color', 'direction', 'thickness'];
 const EVENTS = [];
 const CSS_VARS = [];
 
@@ -37,5 +40,6 @@ export const Primary = Template.bind({});
 Primary.storyName = 'Separator';
 Primary.args = {
   direction: 'horizontal',
-  thickness: 'thin',
+  thickness: 'thick',
+  color: '',
 };
