@@ -1,4 +1,5 @@
 import { Component, h, Prop, Watch } from '@stencil/core';
+
 import {
   isPlmgSeparatorDirection,
   isPlmgSeparatorThickness,
@@ -65,7 +66,7 @@ export class Separator {
       <hr
         class={classes}
         style={{
-          backgroundColor: this.color ?? 'inherit',
+          backgroundColor: this.color,
         }}
       />
     );

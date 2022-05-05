@@ -49,12 +49,17 @@ export const AllThicknesses = (args) => {
   const htmlContent = thicknesses
     .map(
       (thickness) =>
-        `<div style="width: 200px; height: 200px"><plmg-separator thickness="${thickness}" style="background-color: #78909C"/></div>`
+        `<div style="width: 300px; height: 300px"><plmg-separator thickness="${thickness}"></div>`
     )
     .join('')
     .trim();
 
-  return htmlContent;
+  const el = document.createElement('div');
+  el.innerHTML = htmlContent;
+  el.style.display = 'flex';
+  el.style.justifyContent = 'space-between';
+  el.style['flex-wrap'] = 'wrap';
+  return el;
 };
 AllThicknesses.storyName = 'All thicknesses';
 
@@ -62,14 +67,16 @@ export const AllDirections = (args) => {
   const htmlContent = directions
     .map(
       (direction) =>
-        `<div style="width: 200px; height: 200px"><plmg-separator direction="${direction}" style="background-color: #78909C"/></div>`
+        `<div style="width: 300px; height: 300px"><plmg-separator direction="${direction}"/></div>`
     )
     .join('')
     .trim();
 
   const el = document.createElement('div');
   el.innerHTML = htmlContent;
-
+  el.style.display = 'flex';
+  el.style.justifyContent = 'space-between';
+  el.style['flex-wrap'] = 'wrap';
   return el;
 };
 AllDirections.storyName = 'All directions';
