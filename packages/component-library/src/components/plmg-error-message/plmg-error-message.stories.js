@@ -1,4 +1,5 @@
 import * as Utils from '../../stories/StencilStorybookUtils';
+import { sizes } from './plmg-error-message.types';
 
 export default {
   title: 'Component/ErrorMessage',
@@ -16,16 +17,10 @@ export default {
 };
 
 const PROPS = ['size', 'message'];
-const EVENTS = [];
-const CSS_VARS = [];
-const SLOTS = [];
 
 const Template = (args) => {
   const el = document.createElement('plmg-error-message');
   Utils.bindProps(el, PROPS, args);
-  Utils.bindEvents(el, EVENTS, args);
-  Utils.bindStyles(el, CSS_VARS, args);
-  Utils.bindSlots(el, SLOTS, args);
   return el;
 };
 
@@ -35,3 +30,21 @@ Primary.args = {
   size: 'medium',
   ['message']: 'Error message',
 };
+
+export const AllSizes = (args) => {
+  const htmlContent = sizes
+    .map(
+      (size) =>
+        `<plmg-error-message size="${size}" message="${size}"></plmg-error-message>`
+    )
+    .join('')
+    .trim();
+
+  const el = document.createElement('div');
+  el.innerHTML = htmlContent;
+  el.style.display = 'flex';
+  el.style.justifyContent = 'space-between';
+  el.style['flex-wrap'] = 'wrap';
+  return el;
+};
+AllSizes.storyName = 'All sizes';

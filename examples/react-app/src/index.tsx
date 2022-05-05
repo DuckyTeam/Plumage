@@ -8,6 +8,7 @@ import {
   PlmgSidebar,
   PlmgSidebarItem,
   PlmgSvgIcon,
+  PlmgRadioButtonGroup,
 } from '@ducky/plumage-react';
 
 ReactDOM.render(
@@ -80,6 +81,20 @@ ReactDOM.render(
           <h1>PlmgCard slot-2</h1>
         </div>
       </PlmgCard>
+      <br />
+      <PlmgRadioButtonGroup
+        name="colours"
+        label="What's your favourite colour"
+        size="medium"
+        required
+        values='[
+          "red",
+          "blue",
+          "yellow",
+          "green",
+          "purple (the obvious choice)"
+        ]'
+      />
     </div>
   </PlmgPageContainer>,
   document.getElementById('root')

@@ -1,24 +1,5 @@
 @use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
 
-// Common styles to all shadow-DOM components
-// Remove this section if your component does not use shadow DOM
-// -------------------------------------------------
-:host {
-  display: block;
-}
-
-:host([hidden]) {
-  display: none;
-}
-// ------------- END Common styles -----------------
-
-// Mixins
-// -------------------------------------------------
-@mixin set-border($border-color, $border-width: tokens.$plmg-border-width-s) {
-  border: $border-width solid $border-color;
-}
-// ------------- END Mixins ------------------------
-
 // Component style
 // -------------------------------------------------
 fieldset {
@@ -38,6 +19,10 @@ legend {
   font-size: tokens.$plmg-font-size-x1;
   line-height: tokens.$plmg-font-lineheight-loose;
   margin-bottom: -4px;
+
+  &.large {
+    font-size: tokens.$plmg-font-size-x1-125;
+  }
 }
 
 span {

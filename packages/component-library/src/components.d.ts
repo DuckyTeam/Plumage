@@ -131,11 +131,11 @@ export namespace Components {
          */
         "errorMessage"?: string | undefined;
         /**
-          * Define form's label'
+          * Define text for the form's label
          */
         "label": string;
         /**
-          * Define form's name'
+          * Define form's name, used to group all radio buttons within together
          */
         "name": string;
         /**
@@ -423,11 +423,11 @@ declare namespace LocalJSX {
          */
         "errorMessage"?: string | undefined;
         /**
-          * Define form's label'
+          * Define text for the form's label
          */
         "label"?: string;
         /**
-          * Define form's name'
+          * Define form's name, used to group all radio buttons within together
          */
         "name"?: string;
         /**

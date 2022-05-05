@@ -1,17 +1,5 @@
 @use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
 
-// Common styles to all shadow-DOM components
-// Remove this section if your component does not use shadow DOM
-// -------------------------------------------------
-:host {
-  display: block;
-}
-
-:host([hidden]) {
-  display: none;
-}
-// ------------- END Common styles -----------------
-
 // Component style
 // -------------------------------------------------
 .radio-button-wrapper {
@@ -62,7 +50,6 @@ input[type='radio'] {
   -webkit-appearance: none;
   appearance: none;
   margin: 0;
-  /* For iOS < 15 to remove gradient background */
   background-color: tokens.$plmg-color-background-neutral;
   font: inherit;
   width: 20px;

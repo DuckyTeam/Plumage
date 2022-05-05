@@ -5,7 +5,7 @@
 
 .error-message-wrapper {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   width: fit-content;
   background-color: tokens.$plmg-color-background-danger;
   color: tokens.$plmg-color-text-danger-strong;
@@ -17,10 +17,9 @@
   font-weight: tokens.$plmg-font-weight-semibold;
   line-height: tokens.$plmg-font-lineheight-loose;
 
-  span {
-    margin-left: tokens.$plmg-spacing-x0-25;
+  plmg-svg-icon {
+    margin-top: 4px;
   }
-
   &.medium {
     font-size: tokens.$plmg-font-size-x0-75;
   }
@@ -28,4 +27,11 @@
   &.large {
     font-size: tokens.$plmg-font-size-x0-875;
   }
+
+  span {
+    margin-left: tokens.$plmg-spacing-x0-25;
+    font-size: inherit;
+  }
 }
+
+// ------------- END Component style ---------------

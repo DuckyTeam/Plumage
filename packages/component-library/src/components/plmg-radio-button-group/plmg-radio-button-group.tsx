@@ -10,7 +10,7 @@ import {
 })
 export class RadioButtonGroup {
   /**
-   * Define form's name'
+   * Define form's name, used to group all radio buttons within together
    */
   @Prop() name: string;
   @Watch('name')
@@ -22,7 +22,7 @@ export class RadioButtonGroup {
   }
 
   /**
-   * Define form's label'
+   * Define text for the form's label
    */
   @Prop() label: string;
   @Watch('label')
@@ -117,9 +117,13 @@ export class RadioButtonGroup {
   }
 
   render() {
+    const legendClasses = {
+      large: this.size === 'large',
+    };
+
     return (
       <fieldset>
-        <legend>
+        <legend class={legendClasses}>
           {this.label}
           {this.required && <span>*</span>}
         </legend>
