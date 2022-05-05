@@ -1,4 +1,5 @@
 import * as Utils from '../../stories/StencilStorybookUtils';
+import { directions, thicknesses } from './plmg-separator.types';
 
 export default {
   title: 'Component/Separator',
@@ -40,6 +41,35 @@ export const Primary = Template.bind({});
 Primary.storyName = 'Separator';
 Primary.args = {
   direction: 'horizontal',
-  thickness: 'thick',
+  thickness: 'thin',
   color: 'currentColor',
 };
+
+export const AllThicknesses = (args) => {
+  const htmlContent = thicknesses
+    .map(
+      (thickness) =>
+        `<div style="width: 200px; height: 200px"><plmg-separator thickness="${thickness}" style="background-color: #78909C"/></div>`
+    )
+    .join('')
+    .trim();
+
+  return htmlContent;
+};
+AllThicknesses.storyName = 'All thicknesses';
+
+export const AllDirections = (args) => {
+  const htmlContent = directions
+    .map(
+      (direction) =>
+        `<div style="width: 200px; height: 200px"><plmg-separator direction="${direction}" style="background-color: #78909C"/></div>`
+    )
+    .join('')
+    .trim();
+
+  const el = document.createElement('div');
+  el.innerHTML = htmlContent;
+
+  return el;
+};
+AllDirections.storyName = 'All directions';
