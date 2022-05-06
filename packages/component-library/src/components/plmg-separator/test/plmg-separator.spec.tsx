@@ -63,7 +63,7 @@ describe('plmg-separator', () => {
     expect(page.root).toEqualHtml(`
       <plmg-separator color="#fff">
         <mock:shadow-root>
-            <hr class="plmg-separator thin horizontal" style="background-color: #78909c">
+            <hr class="plmg-separator thin horizontal" style="background-color: #fff">
         </mock:shadow-root>
       </plmg-separator>
     `);
