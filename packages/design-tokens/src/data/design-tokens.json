@@ -1,348 +1,6 @@
 {
   "plumage": {
-    "plumage": {
-      "$plmg-breakpoint-xs": {
-        "value": "0px",
-        "description": "Media extra small",
-        "type": "other"
-      },
-      "$plmg-breakpoint-s": {
-        "value": "600px",
-        "description": "Media small",
-        "type": "other"
-      },
-      "$plmg-breakpoint-m": {
-        "value": "960px",
-        "description": "Media medium",
-        "type": "other"
-      },
-      "$plmg-breakpoint-l": {
-        "value": "1280px",
-        "description": "Media large",
-        "type": "other"
-      },
-      "$plmg-breakpoint-xl": {
-        "value": "1920px",
-        "description": "Media extra large",
-        "type": "other"
-      },
-      "$plmg-spacing-x0_125": {
-        "value": "2px",
-        "description": "0.125rem",
-        "type": "spacing"
-      },
-      "$plmg-spacing-x0_25": {
-        "value": "4px",
-        "description": "0.25rem",
-        "type": "spacing"
-      },
-      "$plmg-spacing-x0_5": {
-        "value": "8px",
-        "description": "0.5rem",
-        "type": "spacing"
-      },
-      "$plmg-spacing-x0_75": {
-        "value": "12px",
-        "description": "0.75rem",
-        "type": "spacing"
-      },
-      "$plmg-spacing-x1": {
-        "value": "16px",
-        "description": "1rem",
-        "type": "spacing"
-      },
-      "$plmg-spacing-x1_5": {
-        "value": "24px",
-        "description": "1.5rem",
-        "type": "spacing"
-      },
-      "$plmg-spacing-x2": {
-        "value": "32px",
-        "description": "2rem",
-        "type": "spacing"
-      },
-      "$plmg-spacing-x2_5": {
-        "value": "40px",
-        "description": "2.5rem",
-        "type": "spacing"
-      },
-      "$plmg-spacing-x3": {
-        "value": "48px",
-        "description": "3rem",
-        "type": "spacing"
-      },
-      "$plmg-spacing-x4": {
-        "value": "64px",
-        "description": "4rem",
-        "type": "spacing"
-      },
-      "$plmg-spacing-x5": {
-        "value": "80px",
-        "description": "5rem",
-        "type": "spacing"
-      },
-      "$plmg-spacing-x6": {
-        "value": "96px",
-        "description": "6rem",
-        "type": "spacing"
-      },
-      "$plmg-spacing-x10": {
-        "value": "160px",
-        "description": "10rem",
-        "type": "spacing"
-      },
-      "$plmg-border-radius-sharp": {
-        "value": "0px",
-        "description": "Sharp corners",
-        "type": "borderRadius"
-      },
-      "$plmg-border-radius-xs": {
-        "value": "2px",
-        "description": "A very subtle roundness",
-        "type": "borderRadius"
-      },
-      "$plmg-border-radius-s": {
-        "value": "4px",
-        "description": "A small roundness",
-        "type": "borderRadius"
-      },
-      "$plmg-border-radius-m": {
-        "value": "8px",
-        "description": "A quite visible roundness",
-        "type": "borderRadius"
-      },
-      "$plmg-border-radius-l": {
-        "value": "16px",
-        "description": "A large roundness",
-        "type": "borderRadius"
-      },
-      "$plmg-border-radius-xl": {
-        "value": "32px",
-        "description": "A very exaggerated roundness",
-        "type": "borderRadius"
-      },
-      "$plmg-border-radius-circle": {
-        "value": "50%",
-        "description": "For circles, like circle-buttons",
-        "type": "borderRadius"
-      },
-      "$plmg-font-family-sans": {
-        "value": "Commissioner",
-        "description": "https://fonts.google.com/specimen/Commissioner",
-        "type": "fontFamilies"
-      },
-      "$plmg-font-family-code": {
-        "value": "Source Code Pro",
-        "description": "https://fonts.google.com/specimen/Source+Code+Pro",
-        "type": "fontFamilies"
-      },
-      "$plmg-font-size-x5": {
-        "value": "5rem",
-        "description": "80px",
-        "type": "fontSizes"
-      },
-      "$plmg-font-size-x4": {
-        "value": "4rem",
-        "description": "64px",
-        "type": "fontSizes"
-      },
-      "$plmg-font-size-x3": {
-        "value": "3rem",
-        "description": "48px",
-        "type": "fontSizes"
-      },
-      "$plmg-font-size-x2_5": {
-        "value": "2.5rem",
-        "description": "40px",
-        "type": "fontSizes"
-      },
-      "$plmg-font-size-x2": {
-        "value": "2rem",
-        "description": "32px",
-        "type": "fontSizes"
-      },
-      "$plmg-font-size-x1_5": {
-        "value": "1.5rem",
-        "description": "24px",
-        "type": "fontSizes"
-      },
-      "$plmg-font-size-x1_25": {
-        "value": "1.25rem",
-        "description": "20px",
-        "type": "fontSizes"
-      },
-      "$plmg-font-size-x1_125": {
-        "value": "1.125rem",
-        "description": "18px",
-        "type": "fontSizes"
-      },
-      "$plmg-font-size-x1": {
-        "value": "1rem",
-        "description": "16px",
-        "type": "fontSizes"
-      },
-      "$plmg-font-size-x0_875": {
-        "value": "0.875rem",
-        "description": "14px",
-        "type": "fontSizes"
-      },
-      "$plmg-font-size-x0_75": {
-        "value": "0.75rem",
-        "description": "12px",
-        "type": "fontSizes"
-      },
-      "$plmg-font-weight-extralight": {
-        "value": "200",
-        "description": "ExtraLight",
-        "type": "fontWeights"
-      },
-      "$plmg-font-weight-regular": {
-        "value": "400",
-        "description": "Regular",
-        "type": "fontWeights"
-      },
-      "$plmg-font-weight-semibold": {
-        "value": "600",
-        "description": "SemiBold",
-        "type": "fontWeights"
-      },
-      "$plmg-font-weight-extrabold": {
-        "value": "800",
-        "description": "ExtraBold",
-        "type": "fontWeights"
-      },
-      "$plmg-font-letterspacing-tight": {
-        "value": "-0.01em",
-        "description": "For sizes x2.5 and larger",
-        "type": "letterSpacing"
-      },
-      "$plmg-font-letterspacing-normal": {
-        "value": "0",
-        "description": "For sizes x1 to x2",
-        "type": "letterSpacing"
-      },
-      "$plmg-font-letterspacing-loose": {
-        "value": "0.01em",
-        "description": "For sizes smaller than x1",
-        "type": "letterSpacing"
-      },
-      "$plmg-font-lineheight-tight": {
-        "value": "120%",
-        "description": "For sizes x3 and larger",
-        "type": "lineHeights"
-      },
-      "$plmg-font-lineheight-normal": {
-        "value": "135%",
-        "description": "For sizes x1.5, x2 & x2.5",
-        "type": "lineHeights"
-      },
-      "$plmg-font-lineheight-loose": {
-        "value": "150%",
-        "description": "For sizes x1.25 and smaller",
-        "type": "lineHeights"
-      },
-      "$plmg-font-paragraph-tight": {
-        "value": "25%",
-        "description": "For sizes x3 and larger",
-        "type": "paragraphSpacing"
-      },
-      "$plmg-font-paragraph-normal": {
-        "value": "33%",
-        "description": "For sizes x1.5, x2 & x2.5",
-        "type": "paragraphSpacing"
-      },
-      "$plmg-font-paragraph-loose": {
-        "value": "50%",
-        "description": "For sizes x1.25 and smaller",
-        "type": "paragraphSpacing"
-      },
-      "$plmg-border-width-s": {
-        "value": "1px",
-        "description": "A thin line, for input fields etc",
-        "type": "borderWidth"
-      },
-      "$plmg-border-width-m": {
-        "value": "2px",
-        "description": "A medium line, for active states etc",
-        "type": "borderWidth"
-      },
-      "$plmg-border-width-l": {
-        "value": "4px",
-        "description": "A large line, for extra visibility",
-        "type": "borderWidth"
-      },
-      "$plmg-border-width-xl": {
-        "value": "8px",
-        "description": "A very thick line",
-        "type": "borderWidth"
-      },
-      "$plmg-border-radius-pill": {
-        "value": "9999px",
-        "description": "For pill-shaped elements",
-        "type": "borderRadius"
-      },
-      "$plmg-shadow-s": {
-        "value": "1px 2px 4px rgba(38, 50, 56, 0.16)",
-        "description": "box-shadow",
-        "type": "other"
-      },
-      "$plmg-shadow-m": {
-        "value": "2px 4px 8px rgba(38, 50, 56, 0.16)",
-        "description": "box-shadow",
-        "type": "other"
-      },
-      "$plmg-shadow-l": {
-        "value": "4px 8px 16px rgba(38, 50, 56, 0.16)",
-        "description": "box-shadow",
-        "type": "other"
-      },
-      "$plmg-shadow-xl": {
-        "value": "8px 16px 32px rgba(38, 50, 56, 0.16)",
-        "description": "box-shadow",
-        "type": "other"
-      },
-      "$plmg-shadow-inner-s": {
-        "value": "inset 1px 2px 4px rgba(38, 50, 56, 0.16)",
-        "description": "box-shadow",
-        "type": "other"
-      },
-      "$plmg-shadow-inner-m": {
-        "value": "inset 2px 4px 8px rgba(38, 50, 56, 0.16)",
-        "description": "box-shadow",
-        "type": "other"
-      },
-      "$plmg-shadow-s-dark": {
-        "value": "1px 2px 4px rgba(0, 0, 0, 0.48)",
-        "description": "box-shadow",
-        "type": "other"
-      },
-      "$plmg-shadow-m-dark": {
-        "value": "2px 4px 8px rgba(0, 0, 0, 0.48)",
-        "description": "box-shadow",
-        "type": "other"
-      },
-      "$plmg-shadow-l-dark": {
-        "value": "4px 8px 16px rgba(0, 0, 0, 0.48)",
-        "description": "box-shadow",
-        "type": "other"
-      },
-      "$plmg-shadow-xl-dark": {
-        "value": "8px 16px 32px rgba(0, 0, 0, 0.48)",
-        "description": "box-shadow",
-        "type": "other"
-      },
-      "$plmg-shadow-inner-s-dark": {
-        "value": "inset 1px 2px 4px rgba(0, 0, 0, 0.48)",
-        "description": "box-shadow",
-        "type": "other"
-      },
-      "$plmg-shadow-inner-m-dark": {
-        "value": "inset 2px 4px 8px rgba(0, 0, 0, 0.48)",
-        "description": "box-shadow",
-        "type": "other"
-      }
-    },
-    "text": {
+    "color-text": {
       "neutral": {
         "value": "#263238",
         "type": "color",
@@ -454,7 +112,7 @@
         "description": "Amber900"
       }
     },
-    "background": {
+    "color-background": {
       "neutral": {
         "value": "#ffffff",
         "type": "color",
@@ -636,7 +294,7 @@
         "description": "Amber500"
       }
     },
-    "border": {
+    "color-border": {
       "neutral": {
         "value": "#78909c",
         "type": "color",
@@ -743,7 +401,7 @@
         "description": "Amber700\nUse if the border needs to be accessible"
       }
     },
-    "icon": {
+    "color-icon": {
       "neutral": {
         "value": "#526a76",
         "type": "color",
@@ -834,7 +492,7 @@
         "description": "Amber800"
       }
     },
-    "decoration": {
+    "color-decoration": {
       "neutral": {
         "value": "#607d8b",
         "type": "color",
@@ -903,352 +561,379 @@
         "value": "#ffd699",
         "type": "color"
       }
-    }
-  },
-  "plumage-playful": {
-    "plumage": {
-      "$plmg-breakpoint-xs": {
-        "value": "0px",
-        "description": "Media extra small",
-        "type": "other"
-      },
-      "$plmg-breakpoint-s": {
-        "value": "600px",
-        "description": "Media small",
-        "type": "other"
-      },
-      "$plmg-breakpoint-m": {
-        "value": "960px",
-        "description": "Media medium",
-        "type": "other"
-      },
-      "$plmg-breakpoint-l": {
-        "value": "1280px",
-        "description": "Media large",
-        "type": "other"
-      },
-      "$plmg-breakpoint-xl": {
-        "value": "1920px",
-        "description": "Media extra large",
-        "type": "other"
-      },
-      "$plmg-spacing-x0_125": {
-        "value": "2px",
-        "description": "0.125rem",
-        "type": "spacing"
-      },
-      "$plmg-spacing-x0_25": {
-        "value": "4px",
-        "description": "0.25rem",
-        "type": "spacing"
-      },
-      "$plmg-spacing-x0_5": {
-        "value": "8px",
-        "description": "0.5rem",
-        "type": "spacing"
-      },
-      "$plmg-spacing-x0_75": {
-        "value": "12px",
-        "description": "0.75rem",
-        "type": "spacing"
-      },
-      "$plmg-spacing-x1": {
-        "value": "16px",
-        "description": "1rem",
-        "type": "spacing"
-      },
-      "$plmg-spacing-x1_5": {
-        "value": "24px",
-        "description": "1.5rem",
-        "type": "spacing"
-      },
-      "$plmg-spacing-x2": {
-        "value": "32px",
-        "description": "2rem",
-        "type": "spacing"
-      },
-      "$plmg-spacing-x2_5": {
-        "value": "40px",
-        "description": "2.5rem",
-        "type": "spacing"
-      },
-      "$plmg-spacing-x3": {
-        "value": "48px",
-        "description": "3rem",
-        "type": "spacing"
-      },
-      "$plmg-spacing-x4": {
-        "value": "64px",
-        "description": "4rem",
-        "type": "spacing"
-      },
-      "$plmg-spacing-x5": {
-        "value": "80px",
-        "description": "5rem",
-        "type": "spacing"
-      },
-      "$plmg-spacing-x6": {
-        "value": "96px",
-        "description": "6rem",
-        "type": "spacing"
-      },
-      "$plmg-spacing-x10": {
-        "value": "160px",
-        "description": "10rem",
-        "type": "spacing"
-      },
-      "$plmg-border-radius-sharp": {
+    },
+    "border-radius": {
+      "sharp": {
         "value": "0px",
         "description": "Sharp corners",
         "type": "borderRadius"
       },
-      "$plmg-border-radius-xs": {
+
+      "xs": {
         "value": "2px",
         "description": "A very subtle roundness",
         "type": "borderRadius"
       },
-      "$plmg-border-radius-s": {
+
+      "s": {
         "value": "4px",
         "description": "A small roundness",
         "type": "borderRadius"
       },
-      "$plmg-border-radius-m": {
+
+      "m": {
         "value": "8px",
         "description": "A quite visible roundness",
         "type": "borderRadius"
       },
-      "$plmg-border-radius-l": {
+
+      "l": {
         "value": "16px",
         "description": "A large roundness",
         "type": "borderRadius"
       },
-      "$plmg-border-radius-xl": {
+
+      "xl": {
         "value": "32px",
         "description": "A very exaggerated roundness",
         "type": "borderRadius"
       },
-      "$plmg-border-radius-circle": {
+
+      "circle": {
         "value": "50%",
         "description": "For circles, like circle-buttons",
         "type": "borderRadius"
       },
-      "$plmg-font-family-sans": {
+
+      "pill": {
+        "value": "9999px",
+        "description": "For pill-shaped elements",
+        "type": "borderRadius"
+      }
+    },
+    "spacing": {
+      "x0_125": {
+        "value": "2px",
+        "description": "0.125rem",
+        "type": "spacing"
+      },
+      "x0_25": {
+        "value": "4px",
+        "description": "0.25rem",
+        "type": "spacing"
+      },
+      "x0_5": {
+        "value": "8px",
+        "description": "0.5rem",
+        "type": "spacing"
+      },
+      "x0_75": {
+        "value": "12px",
+        "description": "0.75rem",
+        "type": "spacing"
+      },
+      "x1": {
+        "value": "16px",
+        "description": "1rem",
+        "type": "spacing"
+      },
+      "x1_5": {
+        "value": "24px",
+        "description": "1.5rem",
+        "type": "spacing"
+      },
+      "x2": {
+        "value": "32px",
+        "description": "2rem",
+        "type": "spacing"
+      },
+      "x2_5": {
+        "value": "40px",
+        "description": "2.5rem",
+        "type": "spacing"
+      },
+      "x3": {
+        "value": "48px",
+        "description": "3rem",
+        "type": "spacing"
+      },
+      "x4": {
+        "value": "64px",
+        "description": "4rem",
+        "type": "spacing"
+      },
+      "x5": {
+        "value": "80px",
+        "description": "5rem",
+        "type": "spacing"
+      },
+      "x6": {
+        "value": "96px",
+        "description": "6rem",
+        "type": "spacing"
+      },
+      "x10": {
+        "value": "160px",
+        "description": "10rem",
+        "type": "spacing"
+      }
+    },
+    "font-family": {
+      "sans": {
         "value": "Commissioner",
         "description": "https://fonts.google.com/specimen/Commissioner",
         "type": "fontFamilies"
       },
-      "$plmg-font-family-code": {
+      "code": {
         "value": "Source Code Pro",
         "description": "https://fonts.google.com/specimen/Source+Code+Pro",
         "type": "fontFamilies"
-      },
-      "$plmg-font-size-x5": {
+      }
+    },
+    "font-size": {
+      "x5": {
         "value": "5rem",
         "description": "80px",
         "type": "fontSizes"
       },
-      "$plmg-font-size-x4": {
+      "x4": {
         "value": "4rem",
         "description": "64px",
         "type": "fontSizes"
       },
-      "$plmg-font-size-x3": {
+      "x3": {
         "value": "3rem",
         "description": "48px",
         "type": "fontSizes"
       },
-      "$plmg-font-size-x2_5": {
+      "x2_5": {
         "value": "2.5rem",
         "description": "40px",
         "type": "fontSizes"
       },
-      "$plmg-font-size-x2": {
+      "x2": {
         "value": "2rem",
         "description": "32px",
         "type": "fontSizes"
       },
-      "$plmg-font-size-x1_5": {
+      "x1_5": {
         "value": "1.5rem",
         "description": "24px",
         "type": "fontSizes"
       },
-      "$plmg-font-size-x1_25": {
+      "x1_25": {
         "value": "1.25rem",
         "description": "20px",
         "type": "fontSizes"
       },
-      "$plmg-font-size-x1_125": {
+      "x1_125": {
         "value": "1.125rem",
         "description": "18px",
         "type": "fontSizes"
       },
-      "$plmg-font-size-x1": {
+      "x1": {
         "value": "1rem",
         "description": "16px",
         "type": "fontSizes"
       },
-      "$plmg-font-size-x0_875": {
+      "x0_875": {
         "value": "0.875rem",
         "description": "14px",
         "type": "fontSizes"
       },
-      "$plmg-font-size-x0_75": {
+      "x0_75": {
         "value": "0.75rem",
         "description": "12px",
         "type": "fontSizes"
-      },
-      "$plmg-font-weight-extralight": {
+      }
+    },
+    "font-weight": {
+      "extralight": {
         "value": "200",
         "description": "ExtraLight",
         "type": "fontWeights"
       },
-      "$plmg-font-weight-regular": {
+      "regular": {
         "value": "400",
         "description": "Regular",
         "type": "fontWeights"
       },
-      "$plmg-font-weight-semibold": {
+      "semibold": {
         "value": "600",
         "description": "SemiBold",
         "type": "fontWeights"
       },
-      "$plmg-font-weight-extrabold": {
+      "extrabold": {
         "value": "800",
         "description": "ExtraBold",
         "type": "fontWeights"
-      },
-      "$plmg-font-letterspacing-tight": {
+      }
+    },
+    "font-letterspacing": {
+      "tight": {
         "value": "-0.01em",
         "description": "For sizes x2.5 and larger",
         "type": "letterSpacing"
       },
-      "$plmg-font-letterspacing-normal": {
+      "normal": {
         "value": "0",
         "description": "For sizes x1 to x2",
         "type": "letterSpacing"
       },
-      "$plmg-font-letterspacing-loose": {
+      "loose": {
         "value": "0.01em",
         "description": "For sizes smaller than x1",
         "type": "letterSpacing"
-      },
-      "$plmg-font-lineheight-tight": {
+      }
+    },
+    "font-lineheight": {
+      "tight": {
         "value": "120%",
         "description": "For sizes x3 and larger",
         "type": "lineHeights"
       },
-      "$plmg-font-lineheight-normal": {
+      "normal": {
         "value": "135%",
         "description": "For sizes x1.5, x2 & x2.5",
         "type": "lineHeights"
       },
-      "$plmg-font-lineheight-loose": {
+      "loose": {
         "value": "150%",
         "description": "For sizes x1.25 and smaller",
         "type": "lineHeights"
-      },
-      "$plmg-font-paragraph-tight": {
+      }
+    },
+    "font-paragraph": {
+      "tight": {
         "value": "25%",
         "description": "For sizes x3 and larger",
         "type": "paragraphSpacing"
       },
-      "$plmg-font-paragraph-normal": {
+      "normal": {
         "value": "33%",
         "description": "For sizes x1.5, x2 & x2.5",
         "type": "paragraphSpacing"
       },
-      "$plmg-font-paragraph-loose": {
+      "loose": {
         "value": "50%",
         "description": "For sizes x1.25 and smaller",
         "type": "paragraphSpacing"
-      },
-      "$plmg-border-width-s": {
+      }
+    },
+    "border-width": {
+      "s": {
         "value": "1px",
         "description": "A thin line, for input fields etc",
         "type": "borderWidth"
       },
-      "$plmg-border-width-m": {
+      "m": {
         "value": "2px",
         "description": "A medium line, for active states etc",
         "type": "borderWidth"
       },
-      "$plmg-border-width-l": {
+      "l": {
         "value": "4px",
         "description": "A large line, for extra visibility",
         "type": "borderWidth"
       },
-      "$plmg-border-width-xl": {
+      "xl": {
         "value": "8px",
         "description": "A very thick line",
         "type": "borderWidth"
-      },
-      "$plmg-border-radius-pill": {
-        "value": "9999px",
-        "description": "For pill-shaped elements",
-        "type": "borderRadius"
-      },
-      "$plmg-shadow-s": {
+      }
+    },
+    "shadow": {
+      "s": {
         "value": "1px 2px 4px rgba(38, 50, 56, 0.16)",
         "description": "box-shadow",
         "type": "other"
       },
-      "$plmg-shadow-m": {
+      "m": {
         "value": "2px 4px 8px rgba(38, 50, 56, 0.16)",
         "description": "box-shadow",
         "type": "other"
       },
-      "$plmg-shadow-l": {
+      "l": {
         "value": "4px 8px 16px rgba(38, 50, 56, 0.16)",
         "description": "box-shadow",
         "type": "other"
       },
-      "$plmg-shadow-xl": {
+      "xl": {
         "value": "8px 16px 32px rgba(38, 50, 56, 0.16)",
         "description": "box-shadow",
         "type": "other"
       },
-      "$plmg-shadow-inner-s": {
+      "inner-s": {
         "value": "inset 1px 2px 4px rgba(38, 50, 56, 0.16)",
         "description": "box-shadow",
         "type": "other"
       },
-      "$plmg-shadow-inner-m": {
+      "inner-m": {
         "value": "inset 2px 4px 8px rgba(38, 50, 56, 0.16)",
         "description": "box-shadow",
         "type": "other"
       },
-      "$plmg-shadow-s-dark": {
+      "s-dark": {
         "value": "1px 2px 4px rgba(0, 0, 0, 0.48)",
         "description": "box-shadow",
         "type": "other"
       },
-      "$plmg-shadow-m-dark": {
+      "m-dark": {
         "value": "2px 4px 8px rgba(0, 0, 0, 0.48)",
         "description": "box-shadow",
         "type": "other"
       },
-      "$plmg-shadow-l-dark": {
+      "l-dark": {
         "value": "4px 8px 16px rgba(0, 0, 0, 0.48)",
         "description": "box-shadow",
         "type": "other"
       },
-      "$plmg-shadow-xl-dark": {
+      "xl-dark": {
         "value": "8px 16px 32px rgba(0, 0, 0, 0.48)",
         "description": "box-shadow",
         "type": "other"
       },
-      "$plmg-shadow-inner-s-dark": {
+      "inner-s-dark": {
         "value": "inset 1px 2px 4px rgba(0, 0, 0, 0.48)",
         "description": "box-shadow",
         "type": "other"
       },
-      "$plmg-shadow-inner-m-dark": {
+      "inner-m-dark": {
         "value": "inset 2px 4px 8px rgba(0, 0, 0, 0.48)",
         "description": "box-shadow",
         "type": "other"
       }
     },
-    "text": {
+    "breakpoint": {
+      "xs": {
+        "value": "0px",
+        "description": "Media extra small",
+        "type": "other"
+      },
+      "s": {
+        "value": "600px",
+        "description": "Media small",
+        "type": "other"
+      },
+      "m": {
+        "value": "960px",
+        "description": "Media medium",
+        "type": "other"
+      },
+      "l": {
+        "value": "1280px",
+        "description": "Media large",
+        "type": "other"
+      },
+      "xl": {
+        "value": "1920px",
+        "description": "Media extra large",
+        "type": "other"
+      }
+    }
+  },
+  "plumage-playful": {
+    "color-text": {
       "neutral": {
         "value": "#263238",
         "type": "color",
@@ -1360,7 +1045,7 @@
         "description": "Amber900"
       }
     },
-    "background": {
+    "color-background": {
       "neutral": {
         "value": "#ffffff",
         "type": "color",
@@ -1542,7 +1227,7 @@
         "description": "Amber500"
       }
     },
-    "border": {
+    "color-border": {
       "neutral": {
         "value": "#78909c",
         "type": "color",
@@ -1649,7 +1334,7 @@
         "description": "Amber700\nUse if the border needs to be accessible"
       }
     },
-    "icon": {
+    "color-icon": {
       "neutral": {
         "value": "#526a76",
         "type": "color",
@@ -1740,7 +1425,7 @@
         "description": "Amber800"
       }
     },
-    "decoration": {
+    "color-decoration": {
       "neutral": {
         "value": "#607d8b",
         "type": "color",
@@ -1809,352 +1494,379 @@
         "value": "#ffd699",
         "type": "color"
       }
-    }
-  },
-  "plumage-focused": {
-    "plumage": {
-      "$plmg-breakpoint-xs": {
-        "value": "0px",
-        "description": "Media extra small",
-        "type": "other"
-      },
-      "$plmg-breakpoint-s": {
-        "value": "600px",
-        "description": "Media small",
-        "type": "other"
-      },
-      "$plmg-breakpoint-m": {
-        "value": "960px",
-        "description": "Media medium",
-        "type": "other"
-      },
-      "$plmg-breakpoint-l": {
-        "value": "1280px",
-        "description": "Media large",
-        "type": "other"
-      },
-      "$plmg-breakpoint-xl": {
-        "value": "1920px",
-        "description": "Media extra large",
-        "type": "other"
-      },
-      "$plmg-spacing-x0_125": {
-        "value": "2px",
-        "description": "0.125rem",
-        "type": "spacing"
-      },
-      "$plmg-spacing-x0_25": {
-        "value": "4px",
-        "description": "0.25rem",
-        "type": "spacing"
-      },
-      "$plmg-spacing-x0_5": {
-        "value": "8px",
-        "description": "0.5rem",
-        "type": "spacing"
-      },
-      "$plmg-spacing-x0_75": {
-        "value": "12px",
-        "description": "0.75rem",
-        "type": "spacing"
-      },
-      "$plmg-spacing-x1": {
-        "value": "16px",
-        "description": "1rem",
-        "type": "spacing"
-      },
-      "$plmg-spacing-x1_5": {
-        "value": "24px",
-        "description": "1.5rem",
-        "type": "spacing"
-      },
-      "$plmg-spacing-x2": {
-        "value": "32px",
-        "description": "2rem",
-        "type": "spacing"
-      },
-      "$plmg-spacing-x2_5": {
-        "value": "40px",
-        "description": "2.5rem",
-        "type": "spacing"
-      },
-      "$plmg-spacing-x3": {
-        "value": "48px",
-        "description": "3rem",
-        "type": "spacing"
-      },
-      "$plmg-spacing-x4": {
-        "value": "64px",
-        "description": "4rem",
-        "type": "spacing"
-      },
-      "$plmg-spacing-x5": {
-        "value": "80px",
-        "description": "5rem",
-        "type": "spacing"
-      },
-      "$plmg-spacing-x6": {
-        "value": "96px",
-        "description": "6rem",
-        "type": "spacing"
-      },
-      "$plmg-spacing-x10": {
-        "value": "160px",
-        "description": "10rem",
-        "type": "spacing"
-      },
-      "$plmg-border-radius-sharp": {
+    },
+    "border-radius": {
+      "sharp": {
         "value": "0px",
         "description": "Sharp corners",
         "type": "borderRadius"
       },
-      "$plmg-border-radius-xs": {
+
+      "xs": {
         "value": "2px",
         "description": "A very subtle roundness",
         "type": "borderRadius"
       },
-      "$plmg-border-radius-s": {
+
+      "s": {
         "value": "4px",
         "description": "A small roundness",
         "type": "borderRadius"
       },
-      "$plmg-border-radius-m": {
+
+      "m": {
         "value": "8px",
         "description": "A quite visible roundness",
         "type": "borderRadius"
       },
-      "$plmg-border-radius-l": {
+
+      "l": {
         "value": "16px",
         "description": "A large roundness",
         "type": "borderRadius"
       },
-      "$plmg-border-radius-xl": {
+
+      "xl": {
         "value": "32px",
         "description": "A very exaggerated roundness",
         "type": "borderRadius"
       },
-      "$plmg-border-radius-circle": {
+
+      "circle": {
         "value": "50%",
         "description": "For circles, like circle-buttons",
         "type": "borderRadius"
       },
-      "$plmg-font-family-sans": {
+
+      "pill": {
+        "value": "9999px",
+        "description": "For pill-shaped elements",
+        "type": "borderRadius"
+      }
+    },
+    "spacing": {
+      "x0_125": {
+        "value": "2px",
+        "description": "0.125rem",
+        "type": "spacing"
+      },
+      "x0_25": {
+        "value": "4px",
+        "description": "0.25rem",
+        "type": "spacing"
+      },
+      "x0_5": {
+        "value": "8px",
+        "description": "0.5rem",
+        "type": "spacing"
+      },
+      "x0_75": {
+        "value": "12px",
+        "description": "0.75rem",
+        "type": "spacing"
+      },
+      "x1": {
+        "value": "16px",
+        "description": "1rem",
+        "type": "spacing"
+      },
+      "x1_5": {
+        "value": "24px",
+        "description": "1.5rem",
+        "type": "spacing"
+      },
+      "x2": {
+        "value": "32px",
+        "description": "2rem",
+        "type": "spacing"
+      },
+      "x2_5": {
+        "value": "40px",
+        "description": "2.5rem",
+        "type": "spacing"
+      },
+      "x3": {
+        "value": "48px",
+        "description": "3rem",
+        "type": "spacing"
+      },
+      "x4": {
+        "value": "64px",
+        "description": "4rem",
+        "type": "spacing"
+      },
+      "x5": {
+        "value": "80px",
+        "description": "5rem",
+        "type": "spacing"
+      },
+      "x6": {
+        "value": "96px",
+        "description": "6rem",
+        "type": "spacing"
+      },
+      "x10": {
+        "value": "160px",
+        "description": "10rem",
+        "type": "spacing"
+      }
+    },
+    "font-family": {
+      "sans": {
         "value": "Commissioner",
         "description": "https://fonts.google.com/specimen/Commissioner",
         "type": "fontFamilies"
       },
-      "$plmg-font-family-code": {
+      "code": {
         "value": "Source Code Pro",
         "description": "https://fonts.google.com/specimen/Source+Code+Pro",
         "type": "fontFamilies"
-      },
-      "$plmg-font-size-x5": {
+      }
+    },
+    "font-size": {
+      "x5": {
         "value": "5rem",
         "description": "80px",
         "type": "fontSizes"
       },
-      "$plmg-font-size-x4": {
+      "x4": {
         "value": "4rem",
         "description": "64px",
         "type": "fontSizes"
       },
-      "$plmg-font-size-x3": {
+      "x3": {
         "value": "3rem",
         "description": "48px",
         "type": "fontSizes"
       },
-      "$plmg-font-size-x2_5": {
+      "x2_5": {
         "value": "2.5rem",
         "description": "40px",
         "type": "fontSizes"
       },
-      "$plmg-font-size-x2": {
+      "x2": {
         "value": "2rem",
         "description": "32px",
         "type": "fontSizes"
       },
-      "$plmg-font-size-x1_5": {
+      "x1_5": {
         "value": "1.5rem",
         "description": "24px",
         "type": "fontSizes"
       },
-      "$plmg-font-size-x1_25": {
+      "x1_25": {
         "value": "1.25rem",
         "description": "20px",
         "type": "fontSizes"
       },
-      "$plmg-font-size-x1_125": {
+      "x1_125": {
         "value": "1.125rem",
         "description": "18px",
         "type": "fontSizes"
       },
-      "$plmg-font-size-x1": {
+      "x1": {
         "value": "1rem",
         "description": "16px",
         "type": "fontSizes"
       },
-      "$plmg-font-size-x0_875": {
+      "x0_875": {
         "value": "0.875rem",
         "description": "14px",
         "type": "fontSizes"
       },
-      "$plmg-font-size-x0_75": {
+      "x0_75": {
         "value": "0.75rem",
         "description": "12px",
         "type": "fontSizes"
-      },
-      "$plmg-font-weight-extralight": {
+      }
+    },
+    "font-weight": {
+      "extralight": {
         "value": "200",
         "description": "ExtraLight",
         "type": "fontWeights"
       },
-      "$plmg-font-weight-regular": {
+      "regular": {
         "value": "400",
         "description": "Regular",
         "type": "fontWeights"
       },
-      "$plmg-font-weight-semibold": {
+      "semibold": {
         "value": "600",
         "description": "SemiBold",
         "type": "fontWeights"
       },
-      "$plmg-font-weight-extrabold": {
+      "extrabold": {
         "value": "800",
         "description": "ExtraBold",
         "type": "fontWeights"
-      },
-      "$plmg-font-letterspacing-tight": {
+      }
+    },
+    "font-letterspacing": {
+      "tight": {
         "value": "-0.01em",
         "description": "For sizes x2.5 and larger",
         "type": "letterSpacing"
       },
-      "$plmg-font-letterspacing-normal": {
+      "normal": {
         "value": "0",
         "description": "For sizes x1 to x2",
         "type": "letterSpacing"
       },
-      "$plmg-font-letterspacing-loose": {
+      "loose": {
         "value": "0.01em",
         "description": "For sizes smaller than x1",
         "type": "letterSpacing"
-      },
-      "$plmg-font-lineheight-tight": {
+      }
+    },
+    "font-lineheight": {
+      "tight": {
         "value": "120%",
         "description": "For sizes x3 and larger",
         "type": "lineHeights"
       },
-      "$plmg-font-lineheight-normal": {
+      "normal": {
         "value": "135%",
         "description": "For sizes x1.5, x2 & x2.5",
         "type": "lineHeights"
       },
-      "$plmg-font-lineheight-loose": {
+      "loose": {
         "value": "150%",
         "description": "For sizes x1.25 and smaller",
         "type": "lineHeights"
-      },
-      "$plmg-font-paragraph-tight": {
+      }
+    },
+    "font-paragraph": {
+      "tight": {
         "value": "25%",
         "description": "For sizes x3 and larger",
         "type": "paragraphSpacing"
       },
-      "$plmg-font-paragraph-normal": {
+      "normal": {
         "value": "33%",
         "description": "For sizes x1.5, x2 & x2.5",
         "type": "paragraphSpacing"
       },
-      "$plmg-font-paragraph-loose": {
+      "loose": {
         "value": "50%",
         "description": "For sizes x1.25 and smaller",
         "type": "paragraphSpacing"
-      },
-      "$plmg-border-width-s": {
+      }
+    },
+    "border-width": {
+      "s": {
         "value": "1px",
         "description": "A thin line, for input fields etc",
         "type": "borderWidth"
       },
-      "$plmg-border-width-m": {
+      "m": {
         "value": "2px",
         "description": "A medium line, for active states etc",
         "type": "borderWidth"
       },
-      "$plmg-border-width-l": {
+      "l": {
         "value": "4px",
         "description": "A large line, for extra visibility",
         "type": "borderWidth"
       },
-      "$plmg-border-width-xl": {
+      "xl": {
         "value": "8px",
         "description": "A very thick line",
         "type": "borderWidth"
-      },
-      "$plmg-border-radius-pill": {
-        "value": "9999px",
-        "description": "For pill-shaped elements",
-        "type": "borderRadius"
-      },
-      "$plmg-shadow-s": {
+      }
+    },
+    "shadow": {
+      "s": {
         "value": "1px 2px 4px rgba(38, 50, 56, 0.16)",
         "description": "box-shadow",
         "type": "other"
       },
-      "$plmg-shadow-m": {
+      "m": {
         "value": "2px 4px 8px rgba(38, 50, 56, 0.16)",
         "description": "box-shadow",
         "type": "other"
       },
-      "$plmg-shadow-l": {
+      "l": {
         "value": "4px 8px 16px rgba(38, 50, 56, 0.16)",
         "description": "box-shadow",
         "type": "other"
       },
-      "$plmg-shadow-xl": {
+      "xl": {
         "value": "8px 16px 32px rgba(38, 50, 56, 0.16)",
         "description": "box-shadow",
         "type": "other"
       },
-      "$plmg-shadow-inner-s": {
+      "inner-s": {
         "value": "inset 1px 2px 4px rgba(38, 50, 56, 0.16)",
         "description": "box-shadow",
         "type": "other"
       },
-      "$plmg-shadow-inner-m": {
+      "inner-m": {
         "value": "inset 2px 4px 8px rgba(38, 50, 56, 0.16)",
         "description": "box-shadow",
         "type": "other"
       },
-      "$plmg-shadow-s-dark": {
+      "s-dark": {
         "value": "1px 2px 4px rgba(0, 0, 0, 0.48)",
         "description": "box-shadow",
         "type": "other"
       },
-      "$plmg-shadow-m-dark": {
+      "m-dark": {
         "value": "2px 4px 8px rgba(0, 0, 0, 0.48)",
         "description": "box-shadow",
         "type": "other"
       },
-      "$plmg-shadow-l-dark": {
+      "l-dark": {
         "value": "4px 8px 16px rgba(0, 0, 0, 0.48)",
         "description": "box-shadow",
         "type": "other"
       },
-      "$plmg-shadow-xl-dark": {
+      "xl-dark": {
         "value": "8px 16px 32px rgba(0, 0, 0, 0.48)",
         "description": "box-shadow",
         "type": "other"
       },
-      "$plmg-shadow-inner-s-dark": {
+      "inner-s-dark": {
         "value": "inset 1px 2px 4px rgba(0, 0, 0, 0.48)",
         "description": "box-shadow",
         "type": "other"
       },
-      "$plmg-shadow-inner-m-dark": {
+      "inner-m-dark": {
         "value": "inset 2px 4px 8px rgba(0, 0, 0, 0.48)",
         "description": "box-shadow",
         "type": "other"
       }
     },
-    "text": {
+    "breakpoint": {
+      "xs": {
+        "value": "0px",
+        "description": "Media extra small",
+        "type": "other"
+      },
+      "s": {
+        "value": "600px",
+        "description": "Media small",
+        "type": "other"
+      },
+      "m": {
+        "value": "960px",
+        "description": "Media medium",
+        "type": "other"
+      },
+      "l": {
+        "value": "1280px",
+        "description": "Media large",
+        "type": "other"
+      },
+      "xl": {
+        "value": "1920px",
+        "description": "Media extra large",
+        "type": "other"
+      }
+    }
+  },
+  "plumage-focused": {
+    "color-text": {
       "neutral": {
         "value": "#263238",
         "type": "color",
@@ -2266,7 +1978,7 @@
         "description": "Green900"
       }
     },
-    "background": {
+    "color-background": {
       "neutral": {
         "value": "#ffffff",
         "type": "color",
@@ -2448,7 +2160,7 @@
         "description": "Green400"
       }
     },
-    "border": {
+    "color-border": {
       "neutral": {
         "value": "#78909c",
         "type": "color",
@@ -2555,7 +2267,7 @@
         "description": "Use if the border needs to be accessible"
       }
     },
-    "icon": {
+    "color-icon": {
       "neutral": {
         "value": "#526a76",
         "type": "color",
@@ -2645,7 +2357,7 @@
         "description": "Amber800"
       }
     },
-    "decoration": {
+    "color-decoration": {
       "neutral": {
         "value": "#607d8b",
         "type": "color",
@@ -2713,6 +2425,375 @@
       "standout-weak": {
         "value": "#b7dfb9",
         "type": "color"
+      }
+    },
+    "border-radius": {
+      "sharp": {
+        "value": "0px",
+        "description": "Sharp corners",
+        "type": "borderRadius"
+      },
+
+      "xs": {
+        "value": "2px",
+        "description": "A very subtle roundness",
+        "type": "borderRadius"
+      },
+
+      "s": {
+        "value": "4px",
+        "description": "A small roundness",
+        "type": "borderRadius"
+      },
+
+      "m": {
+        "value": "8px",
+        "description": "A quite visible roundness",
+        "type": "borderRadius"
+      },
+
+      "l": {
+        "value": "16px",
+        "description": "A large roundness",
+        "type": "borderRadius"
+      },
+
+      "xl": {
+        "value": "32px",
+        "description": "A very exaggerated roundness",
+        "type": "borderRadius"
+      },
+
+      "circle": {
+        "value": "50%",
+        "description": "For circles, like circle-buttons",
+        "type": "borderRadius"
+      },
+
+      "pill": {
+        "value": "9999px",
+        "description": "For pill-shaped elements",
+        "type": "borderRadius"
+      }
+    },
+    "spacing": {
+      "x0_125": {
+        "value": "2px",
+        "description": "0.125rem",
+        "type": "spacing"
+      },
+      "x0_25": {
+        "value": "4px",
+        "description": "0.25rem",
+        "type": "spacing"
+      },
+      "x0_5": {
+        "value": "8px",
+        "description": "0.5rem",
+        "type": "spacing"
+      },
+      "x0_75": {
+        "value": "12px",
+        "description": "0.75rem",
+        "type": "spacing"
+      },
+      "x1": {
+        "value": "16px",
+        "description": "1rem",
+        "type": "spacing"
+      },
+      "x1_5": {
+        "value": "24px",
+        "description": "1.5rem",
+        "type": "spacing"
+      },
+      "x2": {
+        "value": "32px",
+        "description": "2rem",
+        "type": "spacing"
+      },
+      "x2_5": {
+        "value": "40px",
+        "description": "2.5rem",
+        "type": "spacing"
+      },
+      "x3": {
+        "value": "48px",
+        "description": "3rem",
+        "type": "spacing"
+      },
+      "x4": {
+        "value": "64px",
+        "description": "4rem",
+        "type": "spacing"
+      },
+      "x5": {
+        "value": "80px",
+        "description": "5rem",
+        "type": "spacing"
+      },
+      "x6": {
+        "value": "96px",
+        "description": "6rem",
+        "type": "spacing"
+      },
+      "x10": {
+        "value": "160px",
+        "description": "10rem",
+        "type": "spacing"
+      }
+    },
+    "font-family": {
+      "sans": {
+        "value": "Commissioner",
+        "description": "https://fonts.google.com/specimen/Commissioner",
+        "type": "fontFamilies"
+      },
+      "code": {
+        "value": "Source Code Pro",
+        "description": "https://fonts.google.com/specimen/Source+Code+Pro",
+        "type": "fontFamilies"
+      }
+    },
+    "font-size": {
+      "x5": {
+        "value": "5rem",
+        "description": "80px",
+        "type": "fontSizes"
+      },
+      "x4": {
+        "value": "4rem",
+        "description": "64px",
+        "type": "fontSizes"
+      },
+      "x3": {
+        "value": "3rem",
+        "description": "48px",
+        "type": "fontSizes"
+      },
+      "x2_5": {
+        "value": "2.5rem",
+        "description": "40px",
+        "type": "fontSizes"
+      },
+      "x2": {
+        "value": "2rem",
+        "description": "32px",
+        "type": "fontSizes"
+      },
+      "x1_5": {
+        "value": "1.5rem",
+        "description": "24px",
+        "type": "fontSizes"
+      },
+      "x1_25": {
+        "value": "1.25rem",
+        "description": "20px",
+        "type": "fontSizes"
+      },
+      "x1_125": {
+        "value": "1.125rem",
+        "description": "18px",
+        "type": "fontSizes"
+      },
+      "x1": {
+        "value": "1rem",
+        "description": "16px",
+        "type": "fontSizes"
+      },
+      "x0_875": {
+        "value": "0.875rem",
+        "description": "14px",
+        "type": "fontSizes"
+      },
+      "x0_75": {
+        "value": "0.75rem",
+        "description": "12px",
+        "type": "fontSizes"
+      }
+    },
+    "font-weight": {
+      "extralight": {
+        "value": "200",
+        "description": "ExtraLight",
+        "type": "fontWeights"
+      },
+      "regular": {
+        "value": "400",
+        "description": "Regular",
+        "type": "fontWeights"
+      },
+      "semibold": {
+        "value": "600",
+        "description": "SemiBold",
+        "type": "fontWeights"
+      },
+      "extrabold": {
+        "value": "800",
+        "description": "ExtraBold",
+        "type": "fontWeights"
+      }
+    },
+    "font-letterspacing": {
+      "tight": {
+        "value": "-0.01em",
+        "description": "For sizes x2.5 and larger",
+        "type": "letterSpacing"
+      },
+      "normal": {
+        "value": "0",
+        "description": "For sizes x1 to x2",
+        "type": "letterSpacing"
+      },
+      "loose": {
+        "value": "0.01em",
+        "description": "For sizes smaller than x1",
+        "type": "letterSpacing"
+      }
+    },
+    "font-lineheight": {
+      "tight": {
+        "value": "120%",
+        "description": "For sizes x3 and larger",
+        "type": "lineHeights"
+      },
+      "normal": {
+        "value": "135%",
+        "description": "For sizes x1.5, x2 & x2.5",
+        "type": "lineHeights"
+      },
+      "loose": {
+        "value": "150%",
+        "description": "For sizes x1.25 and smaller",
+        "type": "lineHeights"
+      }
+    },
+    "font-paragraph": {
+      "tight": {
+        "value": "25%",
+        "description": "For sizes x3 and larger",
+        "type": "paragraphSpacing"
+      },
+      "normal": {
+        "value": "33%",
+        "description": "For sizes x1.5, x2 & x2.5",
+        "type": "paragraphSpacing"
+      },
+      "loose": {
+        "value": "50%",
+        "description": "For sizes x1.25 and smaller",
+        "type": "paragraphSpacing"
+      }
+    },
+    "border-width": {
+      "s": {
+        "value": "1px",
+        "description": "A thin line, for input fields etc",
+        "type": "borderWidth"
+      },
+      "m": {
+        "value": "2px",
+        "description": "A medium line, for active states etc",
+        "type": "borderWidth"
+      },
+      "l": {
+        "value": "4px",
+        "description": "A large line, for extra visibility",
+        "type": "borderWidth"
+      },
+      "xl": {
+        "value": "8px",
+        "description": "A very thick line",
+        "type": "borderWidth"
+      }
+    },
+    "shadow": {
+      "s": {
+        "value": "1px 2px 4px rgba(38, 50, 56, 0.16)",
+        "description": "box-shadow",
+        "type": "other"
+      },
+      "m": {
+        "value": "2px 4px 8px rgba(38, 50, 56, 0.16)",
+        "description": "box-shadow",
+        "type": "other"
+      },
+      "l": {
+        "value": "4px 8px 16px rgba(38, 50, 56, 0.16)",
+        "description": "box-shadow",
+        "type": "other"
+      },
+      "xl": {
+        "value": "8px 16px 32px rgba(38, 50, 56, 0.16)",
+        "description": "box-shadow",
+        "type": "other"
+      },
+      "inner-s": {
+        "value": "inset 1px 2px 4px rgba(38, 50, 56, 0.16)",
+        "description": "box-shadow",
+        "type": "other"
+      },
+      "inner-m": {
+        "value": "inset 2px 4px 8px rgba(38, 50, 56, 0.16)",
+        "description": "box-shadow",
+        "type": "other"
+      },
+      "s-dark": {
+        "value": "1px 2px 4px rgba(0, 0, 0, 0.48)",
+        "description": "box-shadow",
+        "type": "other"
+      },
+      "m-dark": {
+        "value": "2px 4px 8px rgba(0, 0, 0, 0.48)",
+        "description": "box-shadow",
+        "type": "other"
+      },
+      "l-dark": {
+        "value": "4px 8px 16px rgba(0, 0, 0, 0.48)",
+        "description": "box-shadow",
+        "type": "other"
+      },
+      "xl-dark": {
+        "value": "8px 16px 32px rgba(0, 0, 0, 0.48)",
+        "description": "box-shadow",
+        "type": "other"
+      },
+      "inner-s-dark": {
+        "value": "inset 1px 2px 4px rgba(0, 0, 0, 0.48)",
+        "description": "box-shadow",
+        "type": "other"
+      },
+      "inner-m-dark": {
+        "value": "inset 2px 4px 8px rgba(0, 0, 0, 0.48)",
+        "description": "box-shadow",
+        "type": "other"
+      }
+    },
+    "breakpoint": {
+      "xs": {
+        "value": "0px",
+        "description": "Media extra small",
+        "type": "other"
+      },
+      "s": {
+        "value": "600px",
+        "description": "Media small",
+        "type": "other"
+      },
+      "m": {
+        "value": "960px",
+        "description": "Media medium",
+        "type": "other"
+      },
+      "l": {
+        "value": "1280px",
+        "description": "Media large",
+        "type": "other"
+      },
+      "xl": {
+        "value": "1920px",
+        "description": "Media extra large",
+        "type": "other"
       }
     }
   }

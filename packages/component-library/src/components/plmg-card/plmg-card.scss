@@ -35,8 +35,9 @@
   padding: 0px;
   overflow: hidden;
   width: fit-content;
-  background: tokens.$plmg-background-neutral;
-  border: tokens.$plmg-border-width-s solid tokens.$plmg-border-neutral-weak;
+  background: tokens.$plmg-color-background-neutral;
+  border: tokens.$plmg-border-width-s solid
+    tokens.$plmg-color-border-neutral-weak;
   box-sizing: border-box;
   box-shadow: tokens.$plmg-shadow-s;
   border-radius: tokens.$plmg-border-radius-m;
