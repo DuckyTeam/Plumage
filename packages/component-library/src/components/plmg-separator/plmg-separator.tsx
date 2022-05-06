@@ -1,4 +1,5 @@
 import { Component, h, Prop, Watch } from '@stencil/core';
+import { plmgColorBorderNeutral } from '@ducky/plumage-tokens';
 
 import {
   isPlmgSeparatorDirection,
@@ -15,7 +16,10 @@ export class Separator {
    * Define icon's color.
    *
    * Can be any valid CSS color value.
+   *
+   * Default is plmgColorBorderNeutral
    */
+
   @Prop() color: string | undefined;
 
   /**
@@ -27,6 +31,7 @@ export class Separator {
    *
    * Default: horizontal
    */
+
   @Prop() direction: string = 'horizontal';
   @Watch('direction')
   validateDirection(newValue: string) {
@@ -64,7 +69,7 @@ export class Separator {
       <hr
         class={classes}
         style={{
-          backgroundColor: this.color ?? '',
+          backgroundColor: this.color ?? plmgColorBorderNeutral,
         }}
       />
     );

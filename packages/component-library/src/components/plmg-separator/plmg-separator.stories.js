@@ -42,7 +42,6 @@ Primary.storyName = 'Separator';
 Primary.args = {
   direction: 'horizontal',
   thickness: 'thin',
-  color: 'currentColor',
 };
 
 export const AllThicknesses = (args) => {
