@@ -1,5 +1,4 @@
 import { Component, h, Prop, Watch } from '@stencil/core';
-import * as tokens from '@ducky/plumage-tokens/dist/es6/default';
 
 import {
   isPlmgSeparatorDirection,
@@ -61,13 +60,11 @@ export class Separator {
       [this.direction]: true,
     };
 
-    const foo = tokens.plmgIconNeutralHover;
-
     return (
       <hr
         class={classes}
         style={{
-          backgroundColor: this.color ?? foo,
+          backgroundColor: this.color ?? '',
         }}
       />
     );
