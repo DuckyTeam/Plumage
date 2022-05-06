@@ -54,6 +54,19 @@ describe('plmg-separator', () => {
       </plmg-separator>
     `);
   });
+  it('renders color', async () => {
+    const page = await newSpecPage({
+      components: [Separator],
+      html: `<plmg-separator color="#fff"></plmg-separator>`,
+    });
+    expect(page.root).toEqualHtml(`
+      <plmg-separator color="#fff">
+        <mock:shadow-root>
+            <hr class="plmg-separator thin horizontal" style="background-color: #fff"/>
+        </mock:shadow-root>
+      </plmg-separator>
+    `);
+  });
   // it('incorrect prop passed in direction', async () => {
   //   const page = await newSpecPage({
   //     components: [Separator],

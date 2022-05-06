@@ -1,4 +1,5 @@
 import { Component, h, Prop, Watch } from '@stencil/core';
+import * as tokens from '@ducky/plumage-tokens/dist/es6/default';
 
 import {
   isPlmgSeparatorDirection,
@@ -15,8 +16,6 @@ export class Separator {
    * Define icon's color.
    *
    * Can be any valid CSS color value.
-   *
-   * By default, the separator will have the same color as the parent's element.
    */
   @Prop() color: string | undefined;
 
@@ -62,11 +61,13 @@ export class Separator {
       [this.direction]: true,
     };
 
+    const foo = tokens.plmgIconNeutralHover;
+
     return (
       <hr
         class={classes}
         style={{
-          backgroundColor: this.color,
+          backgroundColor: this.color ?? foo,
         }}
       />
     );
