@@ -8,6 +8,7 @@ import {
   PlmgSidebar,
   PlmgSidebarItem,
   PlmgSvgIcon,
+  PlmgSeparator,
 } from '@ducky/plumage-react';
 
 ReactDOM.render(
@@ -80,6 +81,10 @@ ReactDOM.render(
           <h1>PlmgCard slot-2</h1>
         </div>
       </PlmgCard>
+      <div style={{ width: '200px', height: '200px' }}>
+        <p>PlmgSeparator - vertical thin</p>
+        <PlmgSeparator thickness="thin" direction="vertical"></PlmgSeparator>
+      </div>
     </div>
   </PlmgPageContainer>,
   document.getElementById('root')
