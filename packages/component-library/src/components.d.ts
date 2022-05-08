@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { PlmgButtonColor, PlmgButtonDesign, PlmgButtonSize, PlmgButtonType } from "./components/plmg-button/plmg-button.types";
+import { PlmgTooltipArrowPosition, PlmgTooltipArrowSide, PlmgTooltipBgColor } from "./components/plmg-tooltip/plmg-tooltip.types";
 export namespace Components {
     interface PlmgButton {
         /**
@@ -161,6 +162,15 @@ export namespace Components {
          */
         "size": string;
     }
+    interface PlmgTooltip {
+        "arrowPosition": PlmgTooltipArrowPosition;
+        "arrowSide": PlmgTooltipArrowSide;
+        /**
+          * 1. Own Properties Always set the type.  List the own properties in alphabetical order. Note that because these properties do not have the @Prop() decorator, they will not be exposed publicly on the host element, but only used internally.
+         */
+        "bgColor": PlmgTooltipBgColor;
+        "label": string | undefined;
+    }
 }
 declare global {
     interface HTMLPlmgButtonElement extends Components.PlmgButton, HTMLStencilElement {
@@ -205,6 +215,12 @@ declare global {
         prototype: HTMLPlmgSvgIconElement;
         new (): HTMLPlmgSvgIconElement;
     };
+    interface HTMLPlmgTooltipElement extends Components.PlmgTooltip, HTMLStencilElement {
+    }
+    var HTMLPlmgTooltipElement: {
+        prototype: HTMLPlmgTooltipElement;
+        new (): HTMLPlmgTooltipElement;
+    };
     interface HTMLElementTagNameMap {
         "plmg-button": HTMLPlmgButtonElement;
         "plmg-card": HTMLPlmgCardElement;
@@ -213,6 +229,7 @@ declare global {
         "plmg-sidebar": HTMLPlmgSidebarElement;
         "plmg-sidebar-item": HTMLPlmgSidebarItemElement;
         "plmg-svg-icon": HTMLPlmgSvgIconElement;
+        "plmg-tooltip": HTMLPlmgTooltipElement;
     }
 }
 declare namespace LocalJSX {
@@ -374,6 +391,15 @@ declare namespace LocalJSX {
          */
         "size"?: string;
     }
+    interface PlmgTooltip {
+        "arrowPosition"?: PlmgTooltipArrowPosition;
+        "arrowSide"?: PlmgTooltipArrowSide;
+        /**
+          * 1. Own Properties Always set the type.  List the own properties in alphabetical order. Note that because these properties do not have the @Prop() decorator, they will not be exposed publicly on the host element, but only used internally.
+         */
+        "bgColor"?: PlmgTooltipBgColor;
+        "label"?: string | undefined;
+    }
     interface IntrinsicElements {
         "plmg-button": PlmgButton;
         "plmg-card": PlmgCard;
@@ -382,6 +408,7 @@ declare namespace LocalJSX {
         "plmg-sidebar": PlmgSidebar;
         "plmg-sidebar-item": PlmgSidebarItem;
         "plmg-svg-icon": PlmgSvgIcon;
+        "plmg-tooltip": PlmgTooltip;
     }
 }
 export { LocalJSX as JSX };
@@ -395,6 +422,7 @@ declare module "@stencil/core" {
             "plmg-sidebar": LocalJSX.PlmgSidebar & JSXBase.HTMLAttributes<HTMLPlmgSidebarElement>;
             "plmg-sidebar-item": LocalJSX.PlmgSidebarItem & JSXBase.HTMLAttributes<HTMLPlmgSidebarItemElement>;
             "plmg-svg-icon": LocalJSX.PlmgSvgIcon & JSXBase.HTMLAttributes<HTMLPlmgSvgIconElement>;
+            "plmg-tooltip": LocalJSX.PlmgTooltip & JSXBase.HTMLAttributes<HTMLPlmgTooltipElement>;
         }
     }
 }

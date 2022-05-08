@@ -1,0 +1,84 @@
+@use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
+
+// Common styles to all shadow-DOM components
+// Remove this section if your component does not use shadow DOM
+// -------------------------------------------------
+:host {
+  display: block;
+}
+
+:host([hidden]) {
+  display: none;
+}
+// ------------- END Common styles -----------------
+
+// Mixins
+// -------------------------------------------------
+// @mixin set-border($border-color, $border-width: tokens.$plmg-border-width-s) {
+//   border: $border-width solid $border-color;
+// }
+// ------------- END Mixins ------------------------
+
+// Component style
+// ------------------------------------------------
+
+.plmg-tool-tip {
+  // Fixed styles
+  font-family: tokens.$plmg-font-family-sans;
+  font-style: normal;
+  font-weight: tokens.$plmg-font-weight-regular;
+  font-size: tokens.$plmg-font-size-x0_75;
+  line-height: tokens.$plmg-font-lineheight-loose;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: tokens.$plmg-spacing-x0-25 tokens.$plmg-spacing-x0-5;
+  border-radius: tokens.$plmg-border-radius-s;
+  overflow: wrap;
+  text-align: center;
+  width: fit-content;
+  max-width: 150px;
+  color: tokens.$plmg-color-text-neutral-inverted;
+}
+
+.neutral {
+  // must be changed to correct token
+  background-color: #00545d;
+}
+
+.primary {
+  // must be changed to correct token
+  background-color: #263238;
+}
+
+.end {
+  background-color: aqua;
+}
+
+.middle {
+}
+
+.start {
+  background-color: rgb(255, 196, 236);
+}
+
+// ::slotted([slot='slot-1']) {
+//   align-self: stretch;
+// }
+
+// main-tag {
+//   // Fixed styles
+//   ...
+
+//   // Controls
+//   ...
+
+//   // States
+//   &:hover {
+//   }
+//   &:active {
+//   }
+//   &:focus-visible {
+//   }
+// }
+// ------------- END Component style ---------------
