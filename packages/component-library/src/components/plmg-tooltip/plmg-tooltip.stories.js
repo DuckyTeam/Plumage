@@ -21,13 +21,16 @@ export default {
   },
 };
 
-const PROPS = ['slot-tooltip-text', 'bg-color', 'arrow-side', 'arrow-position'];
+const PROPS = ['bg-color', 'arrow-side', 'arrow-position'];
 const EVENTS = [];
 const CSS_VARS = [];
-const SLOTS = ['slot-text'];
+const SLOTS = ['tooltip-text'];
 
 const Template = (args) => {
+  let wrapper = document.createElement('div');
+  wrapper.style.position = 'relative';
   const el = document.createElement('plmg-tooltip');
+  wrapper.append(el);
   Utils.bindProps(el, PROPS, args);
   Utils.bindEvents(el, EVENTS, args);
   Utils.bindStyles(el, CSS_VARS, args);
@@ -35,13 +38,10 @@ const Template = (args) => {
   return el;
 };
 
-const slot1 = (text = 'Tooltip Text') =>
-  `<span slot="tooltip-text">Tooltip Text</span>`;
-
 export const Primary = Template.bind({});
 Primary.storyName = 'Tooltip';
 Primary.args = {
-  ['slot-text']: slot1(),
+  ['tooltip-text']: 'text',
   ['bg-color']: 'Primary',
   ['arrow-side']: 'None',
   ['arrow-position']: 'Middle',

@@ -166,10 +166,9 @@ export namespace Components {
         "arrowPosition": PlmgTooltipArrowPosition;
         "arrowSide": PlmgTooltipArrowSide;
         /**
-          * 1. Own Properties Always set the type.  List the own properties in alphabetical order. Note that because these properties do not have the @Prop() decorator, they will not be exposed publicly on the host element, but only used internally.
+          * 1. Own Properties Always set the type. List the own properties in alphabetical order. Note that because these properties do not have the @Prop() decorator, they will not be exposed publicly on the host element, but only used internally.
          */
         "bgColor": PlmgTooltipBgColor;
-        "label": string | undefined;
     }
 }
 declare global {
@@ -395,10 +394,9 @@ declare namespace LocalJSX {
         "arrowPosition"?: PlmgTooltipArrowPosition;
         "arrowSide"?: PlmgTooltipArrowSide;
         /**
-          * 1. Own Properties Always set the type.  List the own properties in alphabetical order. Note that because these properties do not have the @Prop() decorator, they will not be exposed publicly on the host element, but only used internally.
+          * 1. Own Properties Always set the type. List the own properties in alphabetical order. Note that because these properties do not have the @Prop() decorator, they will not be exposed publicly on the host element, but only used internally.
          */
         "bgColor"?: PlmgTooltipBgColor;
-        "label"?: string | undefined;
     }
     interface IntrinsicElements {
         "plmg-button": PlmgButton;

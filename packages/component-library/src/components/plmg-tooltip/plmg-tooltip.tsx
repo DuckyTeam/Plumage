@@ -27,7 +27,7 @@ export class Tooltip {
    */
   // flag: boolean = false;
 
-  @Prop() bgColor: PlmgTooltipBgColor = 'primary';
+  @Prop() bgColor: PlmgTooltipBgColor = 'neutral';
   @Watch('bgColor')
   validateBgColor(newValue: string) {
     if (newValue && typeof newValue !== 'string')
@@ -54,12 +54,12 @@ export class Tooltip {
       throw new Error('bgColor: must be a valid value');
   }
 
-  @Prop() label: string | undefined = undefined;
-  @Watch('label')
-  validateLabel(newValue: string) {
-    if (newValue && typeof newValue !== 'string')
-      throw new Error('label must be a string');
-  }
+  // @Prop() label: string | undefined = undefined;
+  // @Watch('label')
+  // validateLabel(newValue: string) {
+  //   if (newValue && typeof newValue !== 'string')
+  //     throw new Error('label must be a string');
+  // }
 
   /**
    * 2. Reference to host HTML element.
@@ -143,7 +143,9 @@ export class Tooltip {
 
     return (
       <div class={classes}>
-        <slot name={'tooltip-text'} />
+        <span>
+          <slot />
+        </span>
       </div>
     );
   }

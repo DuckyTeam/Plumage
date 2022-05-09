@@ -12,11 +12,30 @@
 }
 // ------------- END Common styles -----------------
 
-// Mixins
-// -------------------------------------------------
-// @mixin set-border($border-color, $border-width: tokens.$plmg-border-width-s) {
-//   border: $border-width solid $border-color;
+@mixin set-background-color($background-color) {
+  background-color: $background-color;
+  border-top-color: $background-color;
+}
+
+@mixin arrow-position($arrow-postion) {
+  left: $arrow-postion;
+}
+
+// @mixin set-arrow-color($arrow-color, $arrow-direction, $arrow-position) {
+
+//   &::after {
+//     content: '';
+//     position: absolute;
+//     top: 100%;
+//     left: 25%;
+//     width: 0;
+//     height: 0;
+//     border: .5em solid transparent;
+//     transform: translate(-50%, 0);
+//     border-top-color: $arrow-color;
+//   }
 // }
+
 // ------------- END Mixins ------------------------
 
 // Component style
@@ -37,30 +56,52 @@
   overflow: wrap;
   text-align: center;
   width: fit-content;
+  height: auto;
   max-width: 150px;
   color: tokens.$plmg-color-text-neutral-inverted;
+  position: absolute;
+
+  &.neutral {
+    // must be changed to correct token
+    @include set-background-color(#00545d);
+  }
+
+  &.primary {
+    // must be changed to correct token
+    @include set-background-color(#263238);
+  }
+
+  &.arrow::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    width: 0;
+    height: 0;
+    border: 0.5em solid transparent;
+    transform: translate(-50%, 0);
+    border-top-color: brown;
+
+    &.start {
+      @include arrow-position(25%);
+    }
+
+    &.middle {
+      @include arrow-position(50%);
+    }
+
+    &.end {
+      @include arrow-position(75%);
+    }
+  }
 }
 
-.neutral {
-  // must be changed to correct token
-  background-color: #00545d;
-}
+// .end {
+//   background-color: aqua;
+// }
 
-.primary {
-  // must be changed to correct token
-  background-color: #263238;
-}
-
-.end {
-  background-color: aqua;
-}
-
-.middle {
-}
-
-.start {
-  background-color: rgb(255, 196, 236);
-}
+// .start {
+//   background-color: rgb(255, 196, 236);
+// }
 
 // ::slotted([slot='slot-1']) {
 //   align-self: stretch;
