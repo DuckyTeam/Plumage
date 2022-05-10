@@ -4,9 +4,9 @@
 // Remove this section if your component does not use shadow DOM
 // -------------------------------------------------
 :host {
-  display: block;
   height: inherit;
   width: inherit;
+  display: block;
 }
 
 :host([hidden]) {
@@ -17,10 +17,40 @@
 // Component style
 // -------------------------------------------------
 
-.plmg-separator {
+.plmg-separator-container-vertical {
+  border-radius: tokens.$plmg-border-radius-xl;
+  height: 100%;
+
+  &.thin {
+    width: tokens.$plmg-border-width-s;
+  }
+
+  &.thick {
+    width: tokens.$plmg-border-width-m;
+  }
+}
+
+.plmg-separator-container-horizontal {
   display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.plmg-separator {
   border-radius: tokens.$plmg-border-radius-xl;
   border: none;
+  margin-block-start: 0;
+  margin-block-end: 0;
+
+  &.thin {
+    width: tokens.$plmg-border-width-s;
+    border-left: tokens.$plmg-border-width-s;
+  }
+
+  &.thick {
+    width: tokens.$plmg-border-width-m;
+    border-left: tokens.$plmg-border-width-s;
+  }
 
   &.horizontal {
     width: 100%;
@@ -33,18 +63,5 @@
       height: tokens.$plmg-border-width-m;
     }
   }
-
-  &.vertical {
-    height: 100%;
-
-    &.thin {
-      width: tokens.$plmg-border-width-s;
-    }
-
-    &.thick {
-      width: tokens.$plmg-border-width-m;
-    }
-  }
 }
-
 // ------------- END Component style ---------------

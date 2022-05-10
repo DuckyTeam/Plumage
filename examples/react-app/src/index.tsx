@@ -40,8 +40,12 @@ ReactDOM.render(
       </PlmgSidebarItem>
     </PlmgSidebar>
     <PlmgHeader slot={'header'}>
-      <div slot={'right'}>MenuItem</div>
+      <div slot={'right'}>Menu Item</div>
+      <PlmgSeparator direction="vertical" />
+      <div slot={'right'}>Menu Item</div>
     </PlmgHeader>
+
+    <PlmgSeparator thickness="thin" direction="vertical" />
     <div slot={'content'} style={{ padding: '24px' }}>
       <PlmgButton
         onClick={(e: any) => {
@@ -77,13 +81,30 @@ ReactDOM.render(
         <div slot="slot-1">
           <h1>PlmgCard slot-1</h1>
         </div>
+        <PlmgSeparator thickness="thin" />
         <div slot="slot-2">
           <h1>PlmgCard slot-2</h1>
         </div>
       </PlmgCard>
-      <div style={{ width: '200px', height: '200px' }}>
-        <p>PlmgSeparator - vertical thin</p>
-        <PlmgSeparator thickness="thin" direction="vertical"></PlmgSeparator>
+      <div style={{ display: 'flex', gap: '10px', padding: '5px 0 5px 0' }}>
+        <p>Item</p>
+        <PlmgSeparator direction="vertical" thickness="thick" />
+        <p>Item2</p>
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          alignContent: 'left',
+          width: '150px',
+          justifyContent: 'center',
+          textAlign: 'center',
+          flexDirection: 'column',
+          flexWrap: 'wrap',
+        }}
+      >
+        <p>Item</p>
+        <PlmgSeparator thickness="thick" color="green" />
+        <p>Item2</p>
       </div>
     </div>
   </PlmgPageContainer>,

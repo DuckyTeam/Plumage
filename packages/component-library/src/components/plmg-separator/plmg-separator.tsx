@@ -21,7 +21,11 @@ export class Separator {
    */
 
   @Prop() color: string | undefined;
-
+  @Watch('color')
+  validateColor(newValue: string) {
+    if (typeof newValue !== 'string' || newValue === '')
+      throw new Error('direction: required');
+  }
   /**
    * Define separator's direction.
    *
@@ -59,19 +63,40 @@ export class Separator {
   }
 
   render() {
-    const classes = {
+    const verticalClasses = {
+      'plmg-separator-container-vertical': true,
+      [this.thickness]: true,
+      [this.direction]: true,
+    };
+
+    const horizontalClasses = {
+      'plmg-separator-container-horizontal': true,
+    };
+
+    const seperatorClasses = {
       'plmg-separator': true,
       [this.thickness]: true,
       [this.direction]: true,
     };
 
+    const backgroundColorStyle = {
+      backgroundColor: this.color ?? plmgColorBorderNeutral,
+      borderColor: this.color ?? plmgColorBorderNeutral,
+    };
+
+    if (this.direction === 'vertical')
+      return (
+        <div
+          class={
+            this.direction === 'vertical' ? verticalClasses : horizontalClasses
+          }
+          style={this.direction === 'vertical' && backgroundColorStyle}
+        ></div>
+      );
     return (
-      <hr
-        class={classes}
-        style={{
-          backgroundColor: this.color ?? plmgColorBorderNeutral,
-        }}
-      />
+      <div class={horizontalClasses}>
+        <hr class={seperatorClasses} style={backgroundColorStyle} />
+      </div>
     );
   }
 }
