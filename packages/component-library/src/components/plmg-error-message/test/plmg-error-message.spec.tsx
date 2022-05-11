@@ -10,7 +10,7 @@ describe('plmg-error-message', () => {
     expect(page.root).toEqualHtml(`
       <plmg-error-message message="error!">
         <div class="error-message-wrapper medium">
-          <plmg-svg-icon icon="warningAmber"></plmg-svg-icon>
+          <plmg-svg-icon icon="warningAmber" size="0.875rem"></plmg-svg-icon>
           <span>error!</span>
         </div>
       </plmg-error-message>
