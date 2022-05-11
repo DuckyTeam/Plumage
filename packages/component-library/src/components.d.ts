@@ -165,9 +165,6 @@ export namespace Components {
     interface PlmgTooltip {
         "arrowPosition": PlmgTooltipArrowPosition;
         "arrowSide": PlmgTooltipArrowSide;
-        /**
-          * 1. Own Properties Always set the type. List the own properties in alphabetical order. Note that because these properties do not have the @Prop() decorator, they will not be exposed publicly on the host element, but only used internally.
-         */
         "bgColor": PlmgTooltipBgColor;
     }
 }
@@ -393,9 +390,6 @@ declare namespace LocalJSX {
     interface PlmgTooltip {
         "arrowPosition"?: PlmgTooltipArrowPosition;
         "arrowSide"?: PlmgTooltipArrowSide;
-        /**
-          * 1. Own Properties Always set the type. List the own properties in alphabetical order. Note that because these properties do not have the @Prop() decorator, they will not be exposed publicly on the host element, but only used internally.
-         */
         "bgColor"?: PlmgTooltipBgColor;
     }
     interface IntrinsicElements {

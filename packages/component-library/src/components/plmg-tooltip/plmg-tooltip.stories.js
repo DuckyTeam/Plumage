@@ -42,7 +42,7 @@ export const Primary = Template.bind({});
 Primary.storyName = 'Tooltip';
 Primary.args = {
   ['tooltip-text']: 'text',
-  ['bg-color']: 'Primary',
-  ['arrow-side']: 'None',
-  ['arrow-position']: 'Middle',
+  ['bg-color']: 'primary',
+  ['arrow-side']: 'none',
+  ['arrow-position']: 'middle',
 };

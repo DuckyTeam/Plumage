@@ -18,40 +18,44 @@ import {
   shadow: true,
 })
 export class Tooltip {
-  /**
-   * 1. Own Properties
-   * Always set the type.
-   * List the own properties in alphabetical order.
-   * Note that because these properties do not have the @Prop() decorator, they will not be exposed
-   * publicly on the host element, but only used internally.
-   */
-  // flag: boolean = false;
+  // @State() isToolTipVisible: boolean;
+
+  // @Prop() toolTipVisible: boolean = false;
+  // @Watch('toolTipVisible')
+  // onToolTipVisible(newValue: boolean) {
+  //   if (typeof newValue !== 'boolean')
+  //     throw new Error('toolTipVisible: must be boolean');
+  //   this.isToolTipVisible = newValue;
+  // }
 
   @Prop() bgColor: PlmgTooltipBgColor = 'neutral';
   @Watch('bgColor')
   validateBgColor(newValue: string) {
     if (newValue && typeof newValue !== 'string')
-      throw new Error('headerText must be a string');
+      throw new Error('bgColor must be a string');
     if (!isPlmgTooltipBgColor(newValue))
-      throw new Error('bgColor: must be a valid value');
+      throw new Error('bgColor must be a valid value');
   }
+
+  // arrow is missing my default
+  // so if arrow is not none then add a arrow class and selectors
 
   @Prop() arrowSide: PlmgTooltipArrowSide = 'none';
   @Watch('arrowSide')
   validateArrowSide(newValue: string) {
     if (newValue && typeof newValue !== 'string')
-      throw new Error('headerText must be a string');
+      throw new Error('arrow side must be a string');
     if (!isPlmgTooltipArrowSide(newValue))
-      throw new Error('bgColor: must be a valid value');
+      throw new Error('arrow side: must be a valid value');
   }
 
   @Prop() arrowPosition: PlmgTooltipArrowPosition = 'middle';
   @Watch('arrowPosition')
   validateArrowPosition(newValue: string) {
     if (newValue && typeof newValue !== 'string')
-      throw new Error('headerText must be a string');
+      throw new Error('arrow position must be a string');
     if (!isPlmgTooltipArrowPosition(newValue))
-      throw new Error('bgColor: must be a valid value');
+      throw new Error('arrow postion: must be a valid value');
   }
 
   // @Prop() label: string | undefined = undefined;
@@ -136,8 +140,9 @@ export class Tooltip {
   render() {
     const classes = {
       'plmg-tool-tip': true,
-      [this.arrowPosition]: true,
-      [this.arrowSide]: true,
+      // conditionally include arrow classes
+      ...(this.hasArrow() && { [this.arrowSide]: true }),
+      ...(this.hasArrow() && { [this.arrowPosition]: true }),
       [this.bgColor]: true,
     };
 
@@ -148,5 +153,10 @@ export class Tooltip {
         </span>
       </div>
     );
+  }
+
+  // check if tooltip needs an arrow
+  private hasArrow() {
+    return this.arrowSide !== 'none' && (this.arrowSide as string) !== '';
   }
 }
