@@ -3,6 +3,8 @@ import {
   PlmgErrorMessageSize,
   isPlmgErrorMessageSize,
 } from './plmg-error-message.types';
+import { plmgFontSizeX0875 } from '@ducky/plumage-tokens';
+
 @Component({
   tag: 'plmg-error-message',
   styleUrl: 'plmg-error-message.scss',
@@ -41,9 +43,12 @@ export class ErrorMessage {
       medium: this.size === 'medium',
       'error-message-wrapper': true,
     };
+
+    const iconSize = this.size === 'medium' ? plmgFontSizeX0875 : undefined;
+
     return (
       <div class={errorClasses}>
-        <plmg-svg-icon icon="warningAmber" />
+        <plmg-svg-icon icon="warningAmber" size={iconSize} />
         <span>{this.message}</span>
       </div>
     );

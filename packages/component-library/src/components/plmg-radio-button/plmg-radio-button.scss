@@ -13,6 +13,7 @@
     input[type='radio'] {
       background-color: tokens.$plmg-color-background-primary-strong;
       border-color: tokens.$plmg-color-border-primary-strong;
+      transition: background-color 0.1s ease, border-color 0.2s ease;
 
       &:checked {
         background-color: tokens.$plmg-color-background-neutral-hover;
