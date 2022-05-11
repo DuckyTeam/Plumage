@@ -40,9 +40,11 @@ ReactDOM.render(
       </PlmgSidebarItem>
     </PlmgSidebar>
     <PlmgHeader slot={'header'}>
-      <div slot={'right'}>Menu Item</div>
-      <PlmgSeparator direction="vertical" />
-      <div slot={'right'}>Menu Item</div>
+      <div slot={'right'} style={{ display: 'flex', flexDirection: 'row' }}>
+        <span>Menu Item</span>
+        <PlmgSeparator direction="vertical" />
+        <span>Menu Item 2</span>
+      </div>
     </PlmgHeader>
 
     <PlmgSeparator thickness="thin" direction="vertical" />
