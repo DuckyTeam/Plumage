@@ -67,9 +67,10 @@ export const AllDirections = (args) => {
     .map(
       (direction) =>
         `<div style="display: flex;">
-          <p>Item 1</p>
-        <plmg-separator direction="${direction}"/></div>
-          <p>Item 2</p>
+            <p>Item 1</p>
+            <plmg-separator direction="${direction}"></plmg-separator>
+            <p>Item 2</p>
+          </div>
         `
     )
     .join('')

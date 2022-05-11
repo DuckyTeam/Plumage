@@ -22,7 +22,7 @@ describe('plmg-separator', () => {
       direction.forEach((directionControl) => {
         width.forEach((widthControl) => {
           htmlContent += `
-          <plmg-separator direction="${directionControl}" width="${widthControl}" />
+          <plmg-separator direction="${directionControl}" width="${widthControl}"></plmg-separator>
           <br/>
           `;
         });
