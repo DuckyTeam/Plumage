@@ -286,10 +286,10 @@ const getStyleUrlBoilerplate = () =>
 // -------------------------------------------------
 main-tag {
   // Fixed styles
-  ...
+  
 
   // Controls
-  ...
+  
 
   // States
   &:hover {
