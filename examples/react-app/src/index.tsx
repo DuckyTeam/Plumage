@@ -40,14 +40,24 @@ ReactDOM.render(
       </PlmgSidebarItem>
     </PlmgSidebar>
     <PlmgHeader slot={'header'}>
-      <div slot={'right'} style={{ display: 'flex', flexDirection: 'row' }}>
+      <div
+        slot={'right'}
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+        }}
+      >
         <span>Menu Item</span>
-        <PlmgSeparator direction="vertical" />
+        <PlmgSeparator
+          thickness="thick"
+          direction="vertical"
+          color="#78909C"
+        ></PlmgSeparator>
         <span>Menu Item 2</span>
       </div>
     </PlmgHeader>
 
-    <PlmgSeparator thickness="thin" direction="vertical" />
     <div slot={'content'} style={{ padding: '24px' }}>
       <PlmgButton
         onClick={(e: any) => {
@@ -82,32 +92,12 @@ ReactDOM.render(
       >
         <div slot="slot-1">
           <h1>PlmgCard slot-1</h1>
+          <PlmgSeparator thickness="thick"></PlmgSeparator>
         </div>
-        <PlmgSeparator thickness="thin" />
         <div slot="slot-2">
           <h1>PlmgCard slot-2</h1>
         </div>
       </PlmgCard>
-      <div style={{ display: 'flex', gap: '10px', padding: '5px 0 5px 0' }}>
-        <p>Item</p>
-        <PlmgSeparator direction="vertical" thickness="thick" />
-        <p>Item2</p>
-      </div>
-      <div
-        style={{
-          display: 'flex',
-          alignContent: 'left',
-          width: '150px',
-          justifyContent: 'center',
-          textAlign: 'center',
-          flexDirection: 'column',
-          flexWrap: 'wrap',
-        }}
-      >
-        <p>Item</p>
-        <PlmgSeparator thickness="thick" color="green" />
-        <p>Item2</p>
-      </div>
     </div>
   </PlmgPageContainer>,
   document.getElementById('root')

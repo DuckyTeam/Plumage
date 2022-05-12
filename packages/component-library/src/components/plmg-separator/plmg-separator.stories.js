@@ -26,7 +26,6 @@ const CSS_VARS = [];
 
 const Template = (args) => {
   const el = document.createElement('plmg-separator');
-  // provides a fixed sized wrapper for the component to inherit height and width from
   const wrapper = document.createElement('div');
   wrapper.style.height = '300px';
   wrapper.style.width = '300px';
@@ -48,7 +47,7 @@ export const AllThicknesses = (args) => {
   const htmlContent = thicknesses
     .map(
       (thickness) =>
-        `<div style="width: 300px; height: 300px"><plmg-separator thickness="${thickness}"></div>`
+        `<div style="width: 300px; height: 300px"><plmg-separator thickness="${thickness}"></plmg separator></div>`
     )
     .join('')
     .trim();
