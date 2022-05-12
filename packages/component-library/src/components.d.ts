@@ -99,7 +99,7 @@ export namespace Components {
         /**
           * Define icon's color.  Can be any valid CSS color value.  Default is plmgColorBorderNeutral
          */
-        "color": string | undefined;
+        "color": string;
         /**
           * Define separator's direction.  Allowed values:   - vertical   - horizontal  Default: horizontal
          */
@@ -337,7 +337,7 @@ declare namespace LocalJSX {
         /**
           * Define icon's color.  Can be any valid CSS color value.  Default is plmgColorBorderNeutral
          */
-        "color"?: string | undefined;
+        "color"?: string;
         /**
           * Define separator's direction.  Allowed values:   - vertical   - horizontal  Default: horizontal
          */

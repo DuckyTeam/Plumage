@@ -28,8 +28,8 @@ const Template = (args) => {
   const el = document.createElement('plmg-separator');
   // provides a fixed sized wrapper for the component to inherit height and width from
   const wrapper = document.createElement('div');
-  wrapper.style.height = '200px';
-  wrapper.style.width = '200px';
+  wrapper.style.height = '300px';
+  wrapper.style.width = '300px';
   Utils.bindProps(el, PROPS, args);
   Utils.bindEvents(el, EVENTS, args);
   Utils.bindStyles(el, CSS_VARS, args);
@@ -66,10 +66,8 @@ export const AllDirections = (args) => {
   const htmlContent = directions
     .map(
       (direction) =>
-        `<div style="display: flex;">
-            <p>Item 1</p>
+        `<div style="width: px; height: 300px;">
             <plmg-separator direction="${direction}"></plmg-separator>
-            <p>Item 2</p>
           </div>
         `
     )
@@ -84,3 +82,23 @@ export const AllDirections = (args) => {
   return el;
 };
 AllDirections.storyName = 'All directions';
+
+export const AllVariations = (args) => {
+  let htmlContent = '';
+  directions.forEach((direction) => {
+    thicknesses.forEach((thickness) => {
+      htmlContent += `<div style="width: 300px; height: 300px;">
+      <plmg-separator direction="${direction}" thickness="${thickness}"></plmg-separator>
+    </div>
+  `;
+    });
+  });
+
+  const el = document.createElement('div');
+  el.innerHTML = htmlContent.trim();
+  el.style.display = 'flex';
+  el.style.justifyContent = 'space-between';
+  el.style['flex-wrap'] = 'wrap';
+  return el;
+};
+AllVariations.storyName = 'All variations';

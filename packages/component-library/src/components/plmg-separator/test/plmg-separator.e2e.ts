@@ -16,13 +16,13 @@ describe('plmg-separator', () => {
       const page = await newE2EPage();
 
       const direction = ['vertical', 'horizontal', undefined];
-      const width = ['thick', 'thin', undefined];
+      const thickness = ['thick', 'thin', undefined];
 
       let htmlContent = '';
       direction.forEach((directionControl) => {
-        width.forEach((widthControl) => {
+        thickness.forEach((thicknessControl) => {
           htmlContent += `
-          <plmg-separator direction="${directionControl}" width="${widthControl}"></plmg-separator>
+          <plmg-separator direction="${directionControl}" thickness="${thicknessControl}"></plmg-separator>
           <br/>
           `;
         });

@@ -20,11 +20,11 @@ export class Separator {
    * Default is plmgColorBorderNeutral
    */
 
-  @Prop() color: string | undefined;
+  @Prop() color: string = plmgColorBorderNeutral;
   @Watch('color')
   validateColor(newValue: string) {
     if (typeof newValue !== 'string' || newValue === '')
-      throw new Error('direction: required');
+      throw new Error('color: must be a valid value');
   }
   /**
    * Define separator's direction.
@@ -69,10 +69,6 @@ export class Separator {
       [this.direction]: true,
     };
 
-    const horizontalClasses = {
-      'plmg-separator-container-horizontal': true,
-    };
-
     const seperatorClasses = {
       'plmg-separator': true,
       [this.thickness]: true,
@@ -81,20 +77,17 @@ export class Separator {
 
     const backgroundColorStyle = {
       backgroundColor: this.color ?? plmgColorBorderNeutral,
-      borderColor: this.color ?? plmgColorBorderNeutral,
     };
 
-    if (this.direction === 'vertical')
-      return (
-        <div
-          class={
-            this.direction === 'vertical' ? verticalClasses : horizontalClasses
-          }
-          style={this.direction === 'vertical' && backgroundColorStyle}
-        ></div>
-      );
     return (
-      <div class={horizontalClasses}>
+      <div
+        class={
+          this.direction === 'vertical'
+            ? verticalClasses
+            : 'plmg-separator-container-horizontal'
+        }
+        style={this.direction === 'vertical' && backgroundColorStyle}
+      >
         <hr class={seperatorClasses} style={backgroundColorStyle} />
       </div>
     );
