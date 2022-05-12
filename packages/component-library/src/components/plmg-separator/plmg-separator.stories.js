@@ -65,7 +65,7 @@ export const AllDirections = (args) => {
   const htmlContent = directions
     .map(
       (direction) =>
-        `<div style="width: px; height: 300px;">
+        `<div style="width: 300px; height: 300px;">
             <plmg-separator direction="${direction}"></plmg-separator>
           </div>
         `

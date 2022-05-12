@@ -26,7 +26,7 @@ describe('plmg-separator', () => {
     expect(page.root).toEqualHtml(`
       <plmg-separator direction="vertical">
         <mock:shadow-root>
-          <div class="plmg-separator-container-vertical thin vertical" style="background-color: ${plmgColorBorderNeutral}">
+          <div class="plmg-separator-container-vertical">
             <hr class="plmg-separator thin vertical" style="background-color: ${plmgColorBorderNeutral}">
           </div>
         </mock:shadow-root>
@@ -41,8 +41,8 @@ describe('plmg-separator', () => {
     expect(page.root).toEqualHtml(`
       <plmg-separator thickness="thick">
         <mock:shadow-root>
-            <div class="plmg-separator-container-horizontal">
-              <hr class="plmg-separator horizontal thick" style="background-color: ${plmgColorBorderNeutral}">
+          <div class="plmg-separator-container-horizontal">
+            <hr class="plmg-separator thick horizontal" style="background-color: ${plmgColorBorderNeutral}">
           </div>
         </mock:shadow-root>
       </plmg-separator>
@@ -56,7 +56,7 @@ describe('plmg-separator', () => {
     expect(page.root).toEqualHtml(`
       <plmg-separator direction="vertical" thickness="thick">
         <mock:shadow-root>
-          <div class="plmg-separator-container-vertical thick vertical" style="background-color: ${plmgColorBorderNeutral}">
+          <div class="plmg-separator-container-vertical">
             <hr class="plmg-separator thick vertical" style="background-color: ${plmgColorBorderNeutral}">
           </div>
         </mock:shadow-root>
@@ -71,7 +71,7 @@ describe('plmg-separator', () => {
     expect(page.root).toEqualHtml(`
     <plmg-separator color="#fff" direction="vertical" thickness="thick">
       <mock:shadow-root>
-        <div class="plmg-separator-container-vertical thick vertical" style="background-color: #fff">
+        <div class="plmg-separator-container-vertical">
           <hr class="plmg-separator thick vertical" style="background-color: #fff">
         </div>
       </mock:shadow-root>

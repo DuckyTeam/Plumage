@@ -63,12 +63,6 @@ export class Separator {
   }
 
   render() {
-    const verticalClasses = {
-      'plmg-separator-container-vertical': true,
-      [this.thickness]: true,
-      [this.direction]: true,
-    };
-
     const seperatorClasses = {
       'plmg-separator': true,
       [this.thickness]: true,
@@ -80,14 +74,7 @@ export class Separator {
     };
 
     return (
-      <div
-        class={
-          this.direction === 'vertical'
-            ? verticalClasses
-            : 'plmg-separator-container-horizontal'
-        }
-        style={this.direction === 'vertical' && backgroundColorStyle}
-      >
+      <div class={`plmg-separator-container-${this.direction}`}>
         <hr class={seperatorClasses} style={backgroundColorStyle} />
       </div>
     );

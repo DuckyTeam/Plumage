@@ -18,18 +18,8 @@
 
 .plmg-separator-container-vertical {
   display: flex;
-  border-radius: tokens.$plmg-border-radius-xl;
   height: 100%;
-
-  &.thin {
-    width: tokens.$plmg-border-width-s;
-  }
-
-  &.thick {
-    width: tokens.$plmg-border-width-m;
-  }
 }
-
 .plmg-separator-container-horizontal {
   display: flex;
   width: 100%;
@@ -44,13 +34,20 @@
 
   &.horizontal {
     width: 100%;
-
     &.thin {
       height: tokens.$plmg-border-width-s;
     }
-
     &.thick {
       height: tokens.$plmg-border-width-m;
+    }
+  }
+
+  &.vertical {
+    &.thin {
+      width: tokens.$plmg-border-width-s;
+    }
+    &.thick {
+      width: tokens.$plmg-border-width-m;
     }
   }
 }
