@@ -147,11 +147,9 @@ export class Tooltip {
     };
 
     return (
-      <div class={classes}>
-        <span>
-          <slot />
-        </span>
-      </div>
+      <span class={classes}>
+        <slot />
+      </span>
     );
   }
 

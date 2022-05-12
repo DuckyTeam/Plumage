@@ -22,10 +22,38 @@ $background-color-primary: #263238;
 // ------------------------------
 @mixin set-background-color($background-color) {
   background-color: $background-color;
-  border-top-color: $background-color;
 }
 
-@mixin set-arrow-position($arrow-position, $arrow-side) {
+@mixin set-tooltip-color($tooltip-color) {
+  border-top-color: $tooltip-color;
+}
+
+@mixin tooltip-arrow($tooltip-color, $tooltip-position, $tooltip-side) {
+  &:after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: $tooltip-position;
+    width: 0;
+    height: 0;
+    border: 0.5em solid transparent;
+    transform: translate(-50%, 0);
+    border-top-color: $tooltip-color;
+  }
+
+  @mixin tool-tip-position {
+    &.start {
+      @include tooltip-arrow();
+    }
+  }
+
+  @mixin add-arrow {
+    @include background-color;
+    @include set-arrow-position;
+  }
+
+  @mixin set-arrow-position {
+  }
 }
 
 @mixin background-color {
@@ -38,23 +66,15 @@ $background-color-primary: #263238;
   }
 }
 
-// END Mixins
-// ------------------------------
+@mixin tool-tipcolor {
+  &.neutral {
+    @include set-tooltip-color($background-color-neutral);
+  }
 
-// @mixin set-arrow-color($arrow-color, $arrow-direction, $arrow-position) {
-
-//   &::after {
-//     content: '';
-//     position: absolute;
-//     top: 100%;
-//     left: 25%;
-//     width: 0;
-//     height: 0;
-//     border: .5em solid transparent;
-//     transform: translate(-50%, 0);
-//     border-top-color: $arrow-color;
-//   }
-// }
+  &.primary {
+    @include set-tooltip-color($background-color-primary);
+  }
+}
 
 // ------------- END Mixins ------------------------
 
@@ -63,6 +83,7 @@ $background-color-primary: #263238;
 
 .plmg-tool-tip {
   // Fixed styles
+  position: relative;
   font-family: tokens.$plmg-font-family-sans;
   font-style: normal;
   font-weight: tokens.$plmg-font-weight-regular;
@@ -79,20 +100,34 @@ $background-color-primary: #263238;
   height: auto;
   max-width: 150px;
   color: tokens.$plmg-color-text-neutral-inverted;
-  position: absolute;
+  @include background-color;
 
-  // Controls: Design + Colors + States
+  &.start {
+    &.primary {
+      @include tooltip-arrow($background-color-primary, 25%);
+    }
+    &.neutral {
+      @include tooltip-arrow($background-color-neutral, 25%);
+    }
+  }
 
-  // &::before, &::after {
-  //   content: '';
-  //   position: absolute;
-  //   top: 100%;
-  //   width: 0;
-  //   height: 0;
-  //   border: 0.5em solid transparent;
-  //   transform: translate(-50%, 0);
-  //   @include background-color;
-  // }
+  &.middle {
+    &.primary {
+      @include tooltip-arrow($background-color-primary, 50%);
+    }
+    &.neutral {
+      @include tooltip-arrow($background-color-neutral, 50%);
+    }
+  }
+
+  &.end {
+    &.primary {
+      @include tooltip-arrow($background-color-primary, 75%);
+    }
+    &.neutral {
+      @include tooltip-arrow($background-color-neutral, 75%);
+    }
+  }
 }
 
 // ------------- END Component style ---------------
