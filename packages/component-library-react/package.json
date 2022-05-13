@@ -8,15 +8,14 @@
     "url": "git+https://github.com/DuckyTeam/Plumage.git"
   },
   "scripts": {
-    "build": "npm run clean && npm run compile",
+    "build": "npm run clean && npm run build:esm && npm run build:cjs",
     "clean": "rm -rf dist",
-    "compile": "npm run tsc",
-    "tsc": "tsc -p .",
-    "rollup": "rollup -c"
+    "build:cjs": "tsc -p . --module es2015 --outDir dist/esm",
+    "build:esm": "tsc -p . --module commonjs --outDir dist/cjs"
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/cjs/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "module": "./dist/esm/index.js",
   "files": [
     "dist/"
   ],
