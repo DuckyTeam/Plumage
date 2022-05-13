@@ -15,6 +15,7 @@
 
 $background-color-neutral: #00545d;
 $background-color-primary: #263238;
+$tooltip-arrow-width: 6px;
 
 // ------------- END Variables -----------------
 
@@ -28,34 +29,6 @@ $background-color-primary: #263238;
   border-top-color: $tooltip-color;
 }
 
-@mixin tooltip-arrow($tooltip-color, $tooltip-position, $tooltip-side) {
-  &:after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: $tooltip-position;
-    width: 0;
-    height: 0;
-    border: 0.5em solid transparent;
-    transform: translate(-50%, 0);
-    border-top-color: $tooltip-color;
-  }
-
-  @mixin tool-tip-position {
-    &.start {
-      @include tooltip-arrow();
-    }
-  }
-
-  @mixin add-arrow {
-    @include background-color;
-    @include set-arrow-position;
-  }
-
-  @mixin set-arrow-position {
-  }
-}
-
 @mixin background-color {
   &.neutral {
     @include set-background-color($background-color-neutral);
@@ -67,67 +40,253 @@ $background-color-primary: #263238;
 }
 
 @mixin tool-tipcolor {
-  &.neutral {
+  &.neutral::after {
     @include set-tooltip-color($background-color-neutral);
   }
 
-  &.primary {
+  &.primary::after {
     @include set-tooltip-color($background-color-primary);
   }
 }
 
 // ------------- END Mixins ------------------------
 
+%shared--tooltip-arrow--top-bottom {
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: $tooltip-arrow-width solid transparent;
+    transform: translate(-50%, 0);
+    z-index: 999;
+  }
+}
+
+%shared--tooltip-arrow--left-right {
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: $tooltip-arrow-width solid transparent;
+    transform: translate(-50%, 0%);
+  }
+}
+
 // Component style
 // ------------------------------------------------
 
-.plmg-tool-tip {
-  // Fixed styles
+.plmg-tooltip {
+  // tooltip
   position: relative;
+  display: block;
   font-family: tokens.$plmg-font-family-sans;
   font-style: normal;
   font-weight: tokens.$plmg-font-weight-regular;
   font-size: tokens.$plmg-font-size-x0_75;
   line-height: tokens.$plmg-font-lineheight-loose;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   padding: tokens.$plmg-spacing-x0-25 tokens.$plmg-spacing-x0-5;
   border-radius: tokens.$plmg-border-radius-s;
-  overflow: wrap;
   text-align: center;
-  width: fit-content;
   height: auto;
+  width: fit-content;
   max-width: 150px;
   color: tokens.$plmg-color-text-neutral-inverted;
-  @include background-color;
+
+  // background color control
+
+  &.primary {
+    @include set-background-color($background-color-primary);
+  }
+
+  &.neutral {
+    @include set-background-color($background-color-neutral);
+  }
+
+  // arrow control position xAxis (default)
+
+  &.top {
+    @extend %shared--tooltip-arrow--top-bottom;
+    &::after {
+      bottom: 100%;
+      border-bottom-color: $background-color-primary;
+    }
+  }
+
+  &.bottom {
+    @extend %shared--tooltip-arrow--top-bottom;
+    &::after {
+      top: 100%;
+      border-top-color: $background-color-primary;
+    }
+  }
 
   &.start {
-    &.primary {
-      @include tooltip-arrow($background-color-primary, 25%);
-    }
-    &.neutral {
-      @include tooltip-arrow($background-color-neutral, 25%);
+    @extend %shared--tooltip-arrow--top-bottom;
+    &::after {
+      left: calc(10% + $tooltip-arrow-width);
     }
   }
 
   &.middle {
-    &.primary {
-      @include tooltip-arrow($background-color-primary, 50%);
-    }
-    &.neutral {
-      @include tooltip-arrow($background-color-neutral, 50%);
+    @extend %shared--tooltip-arrow--top-bottom;
+    &::after {
+      left: calc(50% - $tooltip-arrow-width / 2);
     }
   }
 
   &.end {
-    &.primary {
-      @include tooltip-arrow($background-color-primary, 75%);
-    }
-    &.neutral {
-      @include tooltip-arrow($background-color-neutral, 75%);
+    @extend %shared--tooltip-arrow--top-bottom;
+    &::after {
+      right: calc(10% - $tooltip-arrow-width);
     }
   }
+
+  // arrow control position yAxis (default)
+
+  &.yAxis {
+    &.left {
+      @extend %shared--tooltip-arrow--left-right;
+      &::after {
+        left: calc(0% - ($tooltip-arrow-width / 2));
+        border-right-color: $background-color-primary;
+        border-left: 0;
+      }
+    }
+
+    &.right {
+      @extend %shared--tooltip-arrow--left-right;
+      &::after {
+        left: calc(100% + ($tooltip-arrow-width / 2));
+        border-left-color: $background-color-primary;
+      }
+    }
+
+    &.start {
+      @extend %shared--tooltip-arrow--left-right;
+      &::after {
+        top: calc(10% + $tooltip-arrow-width);
+      }
+    }
+
+    &.middle {
+      @extend %shared--tooltip-arrow--left-right;
+      &::after {
+        top: calc(50% - $tooltip-arrow-width);
+      }
+    }
+
+    &.end {
+      @extend %shared--tooltip-arrow--top-bottom;
+      &::after {
+        bottom: calc(10% + $tooltip-arrow-width);
+      }
+    }
+  }
+
+  // tooltip arrow
+  // &.start {
+  //   @extend %shared--tooltip-arrow;
+  //     &::after{
+  //       left: 50%;
+  //       top: 100%;
+  //       border-top-color: $background-color-primary;
+  //     }
+  //   }
+
+  // &.neutral {
+  //   @include set-tooltip-color($background-color-neutral);
+  // }
+  // }
+
+  // &.start {
+  //   @extend %shared--tooltip-arrow;
+  //   &::after{
+  //     left: 50%;
+  //     top: 100%;
+  //   }
+
+  // &.start {
+  //   &.primary {
+  //     @include set-tooltip-color($background-color-primary);
+  //     @extend %shared--tooltip-arrow;
+  //     &::after{
+  //       left: 50%;
+  //       top: 100%;
+  //     }
+  //   }
+  //   &.neutral {
+  //     @include set-tooltip-color($background-color-neutral);
+  //   }
+  // }
+
+  // &.middle {
+  //   &.primary {
+  //     @include set-tooltip-color($background-color-primary);
+  //   }
+  //   &.neutral {
+  //     @include set-tooltip-color($background-color-neutral);
+  //   }
+
+  //   &::after {
+  //     content: '';
+  //     position: absolute;
+  //     top: 100%;
+  //     width: 0;
+  //     height: 0;
+  //     border: 0.5em solid transparent;
+  //     transform: translate(-50%, 0);
+  //     left: 50%;
+  //     @include set-tooltip-color($background-color-neutral);
+  //   }
+  // }
+
+  // &.end {
+  //   &.primary {
+  //     @include set-tooltip-color($background-color-primary);
+  //   }
+  //   &.neutral {
+  //     @include set-tooltip-color($background-color-neutral);
+  //   }
+
+  //   &::after {
+  //     content: '';
+  //     position: absolute;
+  //     top: 100%;
+  //     width: 0;
+  //     height: 0;
+  //     border: 0.5em solid transparent;
+  //     transform: translate(-50%, 0);
+  //     left: 75%;
+  //     @include set-tooltip-color($background-color-neutral);
+  //       }
+  //     }
+  //   }
+
+  //   &.middle {
+  //     &.primary {
+  //       @include set-tooltip-color($background-color-primary);
+  //     }
+  //     &.neutral {
+  //       @include set-tooltip-color($background-color-neutral);
+  //     }
+  //     &:after {
+  //       left: 50%;
+  //     }
+  //   }
+
+  //   &.end {
+  //     &.primary {
+  //       @include set-tooltip-color($background-color-primary);
+  //     }
+  //     &.neutral {
+  //       @include set-tooltip-color($background-color-neutral);
+  //     }
+  //     left: 75%;
+  //   }
 }
 
 // ------------- END Component style ---------------

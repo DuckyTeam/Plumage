@@ -139,10 +139,11 @@ export class Tooltip {
 
   render() {
     const classes = {
-      'plmg-tool-tip': true,
+      'plmg-tooltip': true,
       // conditionally include arrow classes
       ...(this.hasArrow() && { [this.arrowSide]: true }),
       ...(this.hasArrow() && { [this.arrowPosition]: true }),
+      ...(this.hasArrow() && this.isYAxis() && { yAxis: true }),
       [this.bgColor]: true,
     };
 
@@ -156,5 +157,9 @@ export class Tooltip {
   // check if tooltip needs an arrow
   private hasArrow() {
     return this.arrowSide !== 'none' && (this.arrowSide as string) !== '';
+  }
+  // check arrow on the X or Y axis
+  private isYAxis() {
+    return this.arrowSide === 'left' || this.arrowSide === 'right';
   }
 }
