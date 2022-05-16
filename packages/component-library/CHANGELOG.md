@@ -1,6 +1,20 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Thu, 07 Apr 2022 13:53:32 GMT and should not be manually modified.
+This log was last generated on Fri, 06 May 2022 10:06:47 GMT and should not be manually modified.
+
+## 1.0.2
+Fri, 06 May 2022 10:06:47 GMT
+
+### Patches
+
+- fix generate command to create scss file that doesn't break rush build
+
+## 1.0.1
+Wed, 04 May 2022 11:37:57 GMT
+
+### Patches
+
+- Update usage of color tokens with "color" prefix
 
 ## 1.0.0
 Thu, 07 Apr 2022 13:53:32 GMT

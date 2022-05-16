@@ -42,9 +42,9 @@ const Template = (args) => {
 };
 
 const slot1 = (text = 'Slot 1') =>
-  `<div slot="slot-1" style="background-color: var(--plmg-background-primary); color: var(--plmg-text-primary); min-width: 200px; min-height: 100px; display: flex; align-content: center; justify-content: center; align-items: center;">${text}</div>`;
+  `<div slot="slot-1" style="background-color: var(--plmg-color-background-primary); color: var(--plmg-color-text-primary); min-width: 200px; min-height: 100px; display: flex; align-content: center; justify-content: center; align-items: center;">${text}</div>`;
 const slot2 =
-  '<div slot="slot-2" style="background-color: var(--plmg-background-primary); color: var(--plmg-text-primary); min-width: 200px; min-height: 100px; display: flex; align-content: center; justify-content: center; align-items: center;">Slot 2</div>';
+  '<div slot="slot-2" style="background-color: var(--plmg-color-background-primary); color: var(--plmg-color-text-primary); min-width: 200px; min-height: 100px; display: flex; align-content: center; justify-content: center; align-items: center;">Slot 2</div>';
 
 export const Primary = Template.bind({});
 Primary.storyName = 'Card';

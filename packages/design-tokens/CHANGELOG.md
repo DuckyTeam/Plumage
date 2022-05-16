@@ -1,6 +1,20 @@
 # Change Log - @ducky/plumage-tokens
 
-This log was last generated on Fri, 01 Apr 2022 12:07:58 GMT and should not be manually modified.
+This log was last generated on Mon, 16 May 2022 08:39:23 GMT and should not be manually modified.
+
+## 3.1.0
+Mon, 16 May 2022 08:39:23 GMT
+
+### Minor changes
+
+- Add dark mode colors to default theme
+
+## 3.0.0
+Wed, 04 May 2022 11:37:57 GMT
+
+### Breaking changes
+
+- Add "color" prefix for color tokens; BREAKING CHANGE: make sure to rename your color tokens.
 
 ## 2.1.0
 Fri, 01 Apr 2022 12:07:58 GMT
