@@ -63,7 +63,7 @@ export class Separator {
   }
 
   render() {
-    const seperatorClasses = {
+    const separatorClasses = {
       'plmg-separator': true,
       [this.thickness]: true,
       [this.direction]: true,
