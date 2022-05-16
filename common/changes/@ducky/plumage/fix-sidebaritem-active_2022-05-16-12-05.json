@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "Fix SidebarItem background and outline",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
