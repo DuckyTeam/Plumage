@@ -34,7 +34,7 @@ export const Primary = Template.bind({});
 Primary.storyName = 'RadioButton';
 Primary.args = {
   size: 'medium',
-  value: 'test',
+  value: 'Test',
   name: 'formName',
   ['highlighted']: false,
 };

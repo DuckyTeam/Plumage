@@ -13,7 +13,7 @@
     input[type='radio'] {
       background-color: tokens.$plmg-color-background-primary-strong;
       border-color: tokens.$plmg-color-border-primary-strong;
-      transition: background-color 0.1s ease, border-color 0.2s ease;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
 
       &:checked {
         background-color: tokens.$plmg-color-background-neutral-hover;
@@ -106,6 +106,7 @@ input[type='radio']:checked::after {
 }
 
 label {
+  margin-top: -1px;
   color: tokens.$plmg-color-text-neutral;
   font-family: tokens.$plmg-font-family-sans;
   font-style: normal;
