@@ -1,4 +1,4 @@
-import { Component, h, Listen, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Prop, State, Watch } from '@stencil/core';
 import {
   PlmgTooltipBgColor,
   isPlmgTooltipBgColor,
@@ -121,17 +121,29 @@ export class Tooltip {
   //    }
   //  }
 
-  componentDidLoad() {
-    console.log(this.targetElementId);
-    this.tooltipTargetElement = document.getElementById(this.targetElementId);
-  }
+  componentDidLoad() {}
 
   connectedCallback() {
-    // this.abortTooltipListener = new AbortController();
-    this.tooltipTargetElement.addEventListener('mouseover', () =>
-      console.log('hello')
+    this.abortTooltipListener = new AbortController();
+    this.tooltipTargetElement = document.getElementById(this.targetElementId);
+    this.tooltipTargetElement.addEventListener(
+      'mouseover',
+      () => (this.isTooltipVisible = true),
+      { signal: this.abortTooltipListener.signal }
+    );
+
+    this.tooltipTargetElement.addEventListener(
+      'mouseleave',
+      () => (this.isTooltipVisible = false)
+    );
+    this.tooltipTargetElement.addEventListener(
+      'mouseover',
+      () => (this.isTooltipVisible = true),
+      { signal: this.abortTooltipListener.signal }
     );
   }
+
+  // clean-up listener
 
   disconnectedCallback() {
     if (this.abortTooltipListener) this.abortTooltipListener.abort();
@@ -143,12 +155,10 @@ export class Tooltip {
    *
    * Mouse over/ out on user defined target element display / hides tooltip
    */
-  @Listen('expandSidebar', {})
-  onExpandSidebar(e: Event) {
-    this.isSidebarExpanded = true;
-    const sidebarCopy = new Event(e.type);
-    this.sidebar.dispatchEvent(sidebarCopy);
-  }
+  // @Listen('mouseenter')
+  // onMouseEnter(e: Event) {
+  //   console.log(e)
+  // }
 
   render() {
     const classes = {
