@@ -17,26 +17,29 @@ export default {
       options: ['start', 'middle', 'end'],
       control: { type: 'select' },
     },
-    ['target-element']: { control: { type: 'text ' } },
+    ['target-element-id']: { control: { type: 'text ' } },
     ['slot-text']: { control: { type: 'text' } },
   },
 };
 
-const PROPS = ['bg-color', 'arrow-side', 'arrow-position', 'target-element'];
+const PROPS = ['bg-color', 'arrow-side', 'arrow-position', 'target-element-id'];
 const EVENTS = [];
 const CSS_VARS = [];
 const SLOTS = ['tooltip-text'];
 
 const Template = (args) => {
   let wrapper = document.createElement('div');
-  wrapper.style.position = 'relative';
+  let paragraphElement = document.createElement('p');
+  paragraphElement.setAttribute('id', 'targetelement');
+  paragraphElement.textContent = '?';
+  wrapper.appendChild(paragraphElement);
   const el = document.createElement('plmg-tooltip');
-  wrapper.append(el);
+  wrapper.appendChild(el);
   Utils.bindProps(el, PROPS, args);
   Utils.bindEvents(el, EVENTS, args);
   Utils.bindStyles(el, CSS_VARS, args);
   Utils.bindSlots(el, SLOTS, args);
-  return el;
+  return wrapper;
 };
 
 export const Primary = Template.bind({});
@@ -46,7 +49,7 @@ Primary.args = {
   ['bg-color']: 'primary',
   ['arrow-side']: 'none',
   ['arrow-position']: 'middle',
-  ['target-element']: '',
+  ['target-element-id']: 'targetelement',
 };
 
 export const TooltipAction = (args) => {
@@ -54,7 +57,7 @@ export const TooltipAction = (args) => {
   const htmlContent = `
     <div>
     <p id="element">hover me</p>
-      <plmg-tooltip target-element="element" arrow-side="top" arrow-position="middle">Tooltip text</plmg-tooltip>
+      <plmg-tooltip target-element-id="element" arrow-side="top" arrow-position="middle">Tooltip text</plmg-tooltip>
     </div>
   `;
   wrapper.innerHTML = htmlContent;

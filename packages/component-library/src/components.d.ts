@@ -178,7 +178,7 @@ export namespace Components {
         /**
           * ID for connected element. Required for tooltip to function
          */
-        "targetElement": string;
+        "targetElementId": string;
     }
 }
 declare global {
@@ -416,7 +416,7 @@ declare namespace LocalJSX {
         /**
           * ID for connected element. Required for tooltip to function
          */
-        "targetElement"?: string;
+        "targetElementId"?: string;
     }
     interface IntrinsicElements {
         "plmg-button": PlmgButton;

@@ -18,22 +18,24 @@ import {
   shadow: true,
 })
 export class Tooltip {
+  private abortTooltipListener: AbortController;
+  private tooltipTargetElement: HTMLElement;
   /**
    * Store whether the tooltip is currently visible.
    * Default hidden
    */
 
-  @State() tooltipVisible: boolean = true;
+  @State() isTooltipVisible: boolean = false;
 
   /**
    * ID for connected element. Required for tooltip to function
    */
 
-  @Prop() targetElement: string;
-  @Watch('targetElement')
-  validateTargetElement(newValue: string) {
+  @Prop() targetElementId: string;
+  @Watch('targetElementId')
+  validateTargetElementId(newValue: string) {
     if ((newValue && typeof newValue !== 'string') || newValue === '')
-      throw new Error('target element ID must be a string');
+      throw new Error('target element id must be a string');
   }
 
   /**
@@ -98,31 +100,60 @@ export class Tooltip {
   }
 
   /**
+   * Lifecycle method, called once just after the component is first connected to the DOM.
+   * Initialise the state.
+   */
+
+  /**
+   * Lifecycle method, called once just after the component is fully loaded and the first render() occurs.
+   */
+  //  @Listen('mouseover', { target: 'body' })
+  //  onMouseOver(ev) {
+  //    if (ev.target.id !== '' && ev.target.id === this.targetElementID) {
+  //      this.isTooltipVisible = true;
+  //    }
+  //  }
+
+  //  @Listen('mouseout', { target: 'body' })
+  //  onMouseLeave(ev) {
+  //    if (ev.target.id !== '' && ev.target.id === this.targetElementID) {
+  //      this.isTooltipVisible = false;
+  //    }
+  //  }
+
+  componentDidLoad() {
+    console.log(this.targetElementId);
+    this.tooltipTargetElement = document.getElementById(this.targetElementId);
+  }
+
+  connectedCallback() {
+    // this.abortTooltipListener = new AbortController();
+    this.tooltipTargetElement.addEventListener('mouseover', () =>
+      console.log('hello')
+    );
+  }
+
+  disconnectedCallback() {
+    if (this.abortTooltipListener) this.abortTooltipListener.abort();
+  }
+  /**
    * Listeners
    *
    * Listens for mouse over and out events
    *
    * Mouse over/ out on user defined target element display / hides tooltip
    */
-
-  @Listen('mouseover', { target: 'body' })
-  onMouseOver(ev) {
-    if (ev.target.id !== '' && ev.target.id === this.targetElement) {
-      this.tooltipVisible = true;
-    }
-  }
-
-  @Listen('mouseout', { target: 'body' })
-  onMouseLeave(ev) {
-    if (ev.target.id !== '' && ev.target.id === this.targetElement) {
-      this.tooltipVisible = false;
-    }
+  @Listen('expandSidebar', {})
+  onExpandSidebar(e: Event) {
+    this.isSidebarExpanded = true;
+    const sidebarCopy = new Event(e.type);
+    this.sidebar.dispatchEvent(sidebarCopy);
   }
 
   render() {
     const classes = {
       'plmg-tooltip': true,
-      visible: this.tooltipVisible,
+      visible: this.isTooltipVisible,
       // conditionally include arrow classes
       ...(this.hasArrow() && { [this.arrowSide]: true }),
       ...(this.hasArrow() && { [this.arrowPosition]: true }),
