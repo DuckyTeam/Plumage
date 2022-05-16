@@ -13,7 +13,7 @@ import {
 })
 export class Separator {
   /**
-   * Define icon's color.
+   * Define separator's color.
    *
    * Can be any valid CSS color value.
    *
@@ -75,7 +75,7 @@ export class Separator {
 
     return (
       <div class={`plmg-separator-container-${this.direction}`}>
-        <hr class={seperatorClasses} style={backgroundColorStyle} />
+        <hr class={separatorClasses} style={backgroundColorStyle} />
       </div>
     );
   }
