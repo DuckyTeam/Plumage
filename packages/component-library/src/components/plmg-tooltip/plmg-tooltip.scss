@@ -21,38 +21,36 @@ $tooltip-arrow-width: 6px;
 
 // Mixins
 // ------------------------------
-@mixin set-background-color($background-color) {
-  background-color: $background-color;
-}
-
-@mixin set-tooltip-color($tooltip-color) {
-  border-top-color: $tooltip-color;
-}
 
 @mixin background-color {
   &.neutral {
-    @include set-background-color($background-color-neutral);
+    background-color: $background-color-neutral;
+    border-color: $background-color-neutral;
   }
-
   &.primary {
-    @include set-background-color($background-color-primary);
+    background-color: $background-color-primary;
+    border-color: $background-color-primary;
   }
 }
 
-@mixin tool-tipcolor {
+@mixin arrow-color {
   &.neutral::after {
-    @include set-tooltip-color($background-color-neutral);
+    border-color: $background-color-neutral;
   }
 
   &.primary::after {
-    @include set-tooltip-color($background-color-primary);
+    border-color: $background-color-neutral;
   }
 }
 
 // ------------- END Mixins ------------------------
 
-%shared--tooltip-arrow--top-bottom {
+// Silent Classes
+// ------------------------------------------------
+
+%shared--tooltip-arrow {
   &::after {
+    background-color: transparent;
     content: '';
     display: block;
     position: absolute;
@@ -60,19 +58,6 @@ $tooltip-arrow-width: 6px;
     height: 0;
     border: $tooltip-arrow-width solid transparent;
     transform: translate(-50%, 0);
-    z-index: 999;
-  }
-}
-
-%shared--tooltip-arrow--left-right {
-  &::after {
-    content: '';
-    display: block;
-    position: absolute;
-    width: 0;
-    height: 0;
-    border: $tooltip-arrow-width solid transparent;
-    transform: translate(-50%, 0%);
   }
 }
 
@@ -81,6 +66,7 @@ $tooltip-arrow-width: 6px;
 
 .plmg-tooltip {
   // tooltip
+  visibility: hidden;
   position: relative;
   display: block;
   font-family: tokens.$plmg-font-family-sans;
@@ -96,197 +82,159 @@ $tooltip-arrow-width: 6px;
   max-width: 150px;
   color: tokens.$plmg-color-text-neutral-inverted;
 
-  // background color control
-
-  &.primary {
-    @include set-background-color($background-color-primary);
+  // tooltip visibility
+  &.visible {
+    visibility: visible;
   }
 
-  &.neutral {
-    @include set-background-color($background-color-neutral);
-  }
+  @include background-color;
 
-  // arrow control position xAxis (default)
+  // Controls: Arrow Sides & Colors & Positions
 
+  // Control: Arrow Side(Top) & Colors & Positions
   &.top {
-    @extend %shared--tooltip-arrow--top-bottom;
+    @extend %shared--tooltip-arrow;
     &::after {
       bottom: 100%;
+    }
+
+    // Control: Arrow Color
+    &.primary::after {
       border-bottom-color: $background-color-primary;
     }
-  }
 
-  &.bottom {
-    @extend %shared--tooltip-arrow--top-bottom;
-    &::after {
-      top: 100%;
-      border-top-color: $background-color-primary;
-    }
-  }
-
-  &.start {
-    @extend %shared--tooltip-arrow--top-bottom;
-    &::after {
-      left: calc(10% + $tooltip-arrow-width);
-    }
-  }
-
-  &.middle {
-    @extend %shared--tooltip-arrow--top-bottom;
-    &::after {
-      left: calc(50% - $tooltip-arrow-width / 2);
-    }
-  }
-
-  &.end {
-    @extend %shared--tooltip-arrow--top-bottom;
-    &::after {
-      right: calc(10% - $tooltip-arrow-width);
-    }
-  }
-
-  // arrow control position yAxis (default)
-
-  &.yAxis {
-    &.left {
-      @extend %shared--tooltip-arrow--left-right;
-      &::after {
-        left: calc(0% - ($tooltip-arrow-width / 2));
-        border-right-color: $background-color-primary;
-        border-left: 0;
-      }
+    &.neutral::after {
+      border-bottom-color: $background-color-neutral;
     }
 
-    &.right {
-      @extend %shared--tooltip-arrow--left-right;
-      &::after {
-        left: calc(100% + ($tooltip-arrow-width / 2));
-        border-left-color: $background-color-primary;
-      }
-    }
-
+    // Control: Arrow Position
     &.start {
-      @extend %shared--tooltip-arrow--left-right;
+      @extend %shared--tooltip-arrow;
       &::after {
-        top: calc(10% + $tooltip-arrow-width);
+        left: calc(10% + $tooltip-arrow-width);
       }
     }
 
     &.middle {
-      @extend %shared--tooltip-arrow--left-right;
+      @extend %shared--tooltip-arrow;
       &::after {
-        top: calc(50% - $tooltip-arrow-width);
+        left: calc(50% - $tooltip-arrow-width / 2);
       }
     }
 
     &.end {
-      @extend %shared--tooltip-arrow--top-bottom;
+      @extend %shared--tooltip-arrow;
+      &::after {
+        right: calc(10% - $tooltip-arrow-width);
+      }
+    }
+  }
+
+  // Control: Arrow Side(Bottom) & Colors & Positions
+  &.bottom {
+    @extend %shared--tooltip-arrow;
+    &::after {
+      top: 100%;
+    }
+
+    // Control: Arrow Color
+    &.primary::after {
+      border-top-color: $background-color-primary;
+    }
+    &.neutral::after {
+      border-top-color: $background-color-neutral;
+    }
+
+    // Control: Arrow Position
+    &.start {
+      @extend %shared--tooltip-arrow;
+      &::after {
+        left: calc(10% + $tooltip-arrow-width);
+      }
+    }
+    &.middle {
+      @extend %shared--tooltip-arrow;
+      &::after {
+        left: calc(50% - $tooltip-arrow-width / 2);
+      }
+    }
+    &.end {
+      @extend %shared--tooltip-arrow;
+      &::after {
+        right: calc(10% - $tooltip-arrow-width);
+      }
+    }
+  }
+
+  // Control: Arrow Side(Left) & Colors & Positions
+
+  &.left {
+    @extend %shared--tooltip-arrow;
+    &::after {
+      left: calc(0% - ($tooltip-arrow-width / 2));
+      border-left: 0;
+    }
+
+    // Control: Arrow Color
+    &.primary::after {
+      border-right-color: $background-color-primary;
+    }
+    &.neutral::after {
+      border-right-color: $background-color-neutral;
+    }
+    // Control: Arrow Position
+    &.start {
+      &::after {
+        top: calc(10% + $tooltip-arrow-width);
+      }
+    }
+    &.middle {
+      &::after {
+        top: calc(50% - $tooltip-arrow-width);
+      }
+    }
+    &.end {
       &::after {
         bottom: calc(10% + $tooltip-arrow-width);
       }
     }
   }
 
-  // tooltip arrow
-  // &.start {
-  //   @extend %shared--tooltip-arrow;
-  //     &::after{
-  //       left: 50%;
-  //       top: 100%;
-  //       border-top-color: $background-color-primary;
-  //     }
-  //   }
+  // Control: Arrow Side(Right) & Colors & Positions
 
-  // &.neutral {
-  //   @include set-tooltip-color($background-color-neutral);
-  // }
-  // }
+  &.right {
+    @extend %shared--tooltip-arrow;
+    &::after {
+      left: calc(100% + $tooltip-arrow-width);
+    }
 
-  // &.start {
-  //   @extend %shared--tooltip-arrow;
-  //   &::after{
-  //     left: 50%;
-  //     top: 100%;
-  //   }
+    // Arrow Control Color
+    &.primary::after {
+      border-left-color: $background-color-primary;
+    }
+    &.neutral::after {
+      border-left-color: $background-color-neutral;
+    }
 
-  // &.start {
-  //   &.primary {
-  //     @include set-tooltip-color($background-color-primary);
-  //     @extend %shared--tooltip-arrow;
-  //     &::after{
-  //       left: 50%;
-  //       top: 100%;
-  //     }
-  //   }
-  //   &.neutral {
-  //     @include set-tooltip-color($background-color-neutral);
-  //   }
-  // }
-
-  // &.middle {
-  //   &.primary {
-  //     @include set-tooltip-color($background-color-primary);
-  //   }
-  //   &.neutral {
-  //     @include set-tooltip-color($background-color-neutral);
-  //   }
-
-  //   &::after {
-  //     content: '';
-  //     position: absolute;
-  //     top: 100%;
-  //     width: 0;
-  //     height: 0;
-  //     border: 0.5em solid transparent;
-  //     transform: translate(-50%, 0);
-  //     left: 50%;
-  //     @include set-tooltip-color($background-color-neutral);
-  //   }
-  // }
-
-  // &.end {
-  //   &.primary {
-  //     @include set-tooltip-color($background-color-primary);
-  //   }
-  //   &.neutral {
-  //     @include set-tooltip-color($background-color-neutral);
-  //   }
-
-  //   &::after {
-  //     content: '';
-  //     position: absolute;
-  //     top: 100%;
-  //     width: 0;
-  //     height: 0;
-  //     border: 0.5em solid transparent;
-  //     transform: translate(-50%, 0);
-  //     left: 75%;
-  //     @include set-tooltip-color($background-color-neutral);
-  //       }
-  //     }
-  //   }
-
-  //   &.middle {
-  //     &.primary {
-  //       @include set-tooltip-color($background-color-primary);
-  //     }
-  //     &.neutral {
-  //       @include set-tooltip-color($background-color-neutral);
-  //     }
-  //     &:after {
-  //       left: 50%;
-  //     }
-  //   }
-
-  //   &.end {
-  //     &.primary {
-  //       @include set-tooltip-color($background-color-primary);
-  //     }
-  //     &.neutral {
-  //       @include set-tooltip-color($background-color-neutral);
-  //     }
-  //     left: 75%;
-  //   }
+    // Arrow Control Position
+    &.start {
+      @extend %shared--tooltip-arrow;
+      &::after {
+        top: calc(10% + $tooltip-arrow-width);
+      }
+    }
+    &.middle {
+      @extend %shared--tooltip-arrow;
+      &::after {
+        top: calc(50% - $tooltip-arrow-width);
+      }
+    }
+    &.end {
+      @extend %shared--tooltip-arrow;
+      &::after {
+        bottom: calc(10% + $tooltip-arrow-width);
+      }
+    }
+  }
+  // ------------- END Component style ---------------
 }
-
-// ------------- END Component style ---------------

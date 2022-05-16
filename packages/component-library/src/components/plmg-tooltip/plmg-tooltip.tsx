@@ -1,4 +1,4 @@
-import { Component, h, Prop, Watch } from '@stencil/core';
+import { Component, h, Listen, Prop, State, Watch } from '@stencil/core';
 import {
   PlmgTooltipBgColor,
   isPlmgTooltipBgColor,
@@ -18,15 +18,33 @@ import {
   shadow: true,
 })
 export class Tooltip {
-  // @State() isToolTipVisible: boolean;
+  /**
+   * Store whether the tooltip is currently visible.
+   * Default hidden
+   */
 
-  // @Prop() toolTipVisible: boolean = false;
-  // @Watch('toolTipVisible')
-  // onToolTipVisible(newValue: boolean) {
-  //   if (typeof newValue !== 'boolean')
-  //     throw new Error('toolTipVisible: must be boolean');
-  //   this.isToolTipVisible = newValue;
-  // }
+  @State() tooltipVisible: boolean = true;
+
+  /**
+   * ID for connected element. Required for tooltip to function
+   */
+
+  @Prop() targetElement: string;
+  @Watch('targetElement')
+  validateTargetElement(newValue: string) {
+    if ((newValue && typeof newValue !== 'string') || newValue === '')
+      throw new Error('target element ID must be a string');
+  }
+
+  /**
+   * Define tooltip's background color
+   *
+   * Allowed values:
+   *   - neutral
+   *   - primary
+   *
+   * Default: neutral
+   */
 
   @Prop() bgColor: PlmgTooltipBgColor = 'neutral';
   @Watch('bgColor')
@@ -37,8 +55,18 @@ export class Tooltip {
       throw new Error('bgColor must be a valid value');
   }
 
-  // arrow is missing my default
-  // so if arrow is not none then add a arrow class and selectors
+  /**
+   * Define tooltip's arrow side
+   *
+   * Allowed values:
+   *   - none,
+   *   - left,
+   *   - right,
+   *   - top,
+   *   - bottom
+   *
+   * Default: none
+   */
 
   @Prop() arrowSide: PlmgTooltipArrowSide = 'none';
   @Watch('arrowSide')
@@ -49,6 +77,17 @@ export class Tooltip {
       throw new Error('arrow side: must be a valid value');
   }
 
+  /**
+   * Define tooltip arrow position
+   *
+   * Allowed values:
+   *   - start,
+   *   - middle,
+   *   - end
+   *
+   * Default: none
+   */
+
   @Prop() arrowPosition: PlmgTooltipArrowPosition = 'middle';
   @Watch('arrowPosition')
   validateArrowPosition(newValue: string) {
@@ -58,92 +97,35 @@ export class Tooltip {
       throw new Error('arrow postion: must be a valid value');
   }
 
-  // @Prop() label: string | undefined = undefined;
-  // @Watch('label')
-  // validateLabel(newValue: string) {
-  //   if (newValue && typeof newValue !== 'string')
-  //     throw new Error('label must be a string');
-  // }
-
   /**
-   * 2. Reference to host HTML element.
-   * Inlined decorator
+   * Listeners
    *
-   * import { Element } from '@stencil/core';
-   */
-  // @Element() el: HTMLElement;
-
-  /**
-   * 3. State() variables
-   * Inlined decorator, alphabetical order.
+   * Listens for mouse over and out events
    *
-   * import { State } from '@stencil/core';
+   * Mouse over/ out on user defined target element display / hides tooltip
    */
-  // @State() isValidated: boolean;
 
-  /**
-   * 4. Public Property API
-   * Inlined decorator, alphabetical order. These are different than "own properties" in that public props
-   * are exposed as properties and attributes on the host element.
-   * Requires JSDocs for public API documentation.
-   *
-   * import { Prop, Watch } from '@stencil/core';
-   */
-  // @Prop() fullWidth: boolean = false;
-  /** Prop lifecycle events SHOULD go just behind the Prop they listen to. */
-  // @Watch('fullWidth')
-  // validateFullWidth(newValue: boolean) {
-  //   if (typeof newValue !== 'boolean')
-  //     throw new Error('fullWidth: must be boolean');
-  // }
+  @Listen('mouseover', { target: 'body' })
+  onMouseOver(ev) {
+    if (ev.target.id !== '' && ev.target.id === this.targetElement) {
+      this.tooltipVisible = true;
+    }
+  }
 
-  /**
-   * 5. Events section
-   * Inlined decorator, alphabetical order.
-   * Requires JSDocs for public API documentation.
-   *
-   * import { Event, EventEmitter } from '@stencil/core';
-   */
-  // @Event() click: EventEmitter;
-
-  /**
-   * 6. Component lifecycle events
-   * Ordered by their natural call order, for example WillLoad should go before DidLoad.
-   */
-  // connectedCallback() {}
-  // componentWillLoad() {}
-  // componentDidLoad() {}
-  // disconnectedCallback() {}
-
-  /**
-   * 7. Listeners
-   * It is ok to place them in a different location if makes more sense in the context.
-   * Recommend starting a listener method with "on".
-   * Always use two lines.
-   *
-   * import { Listen } from '@stencil/core';
-   */
-  // @Listen('click', {})
-  // onClick(event: UIEvent) { ... }
-
-  /**
-   * 8. Public methods API
-   * These methods are exposed on the host element.
-   * Always use two lines.
-   * Requires JSDocs for public API documentation.
-   *
-   * import { Method } from '@stencil/core';
-   */
-  // @Method()
-  // open() { ... }
+  @Listen('mouseout', { target: 'body' })
+  onMouseLeave(ev) {
+    if (ev.target.id !== '' && ev.target.id === this.targetElement) {
+      this.tooltipVisible = false;
+    }
+  }
 
   render() {
     const classes = {
       'plmg-tooltip': true,
+      visible: this.tooltipVisible,
       // conditionally include arrow classes
       ...(this.hasArrow() && { [this.arrowSide]: true }),
       ...(this.hasArrow() && { [this.arrowPosition]: true }),
-      ...(this.hasArrow() && this.isYAxis() && { yAxis: true }),
       [this.bgColor]: true,
     };
 
@@ -157,9 +139,5 @@ export class Tooltip {
   // check if tooltip needs an arrow
   private hasArrow() {
     return this.arrowSide !== 'none' && (this.arrowSide as string) !== '';
-  }
-  // check arrow on the X or Y axis
-  private isYAxis() {
-    return this.arrowSide === 'left' || this.arrowSide === 'right';
   }
 }

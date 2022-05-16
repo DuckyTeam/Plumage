@@ -163,9 +163,22 @@ export namespace Components {
         "size": string;
     }
     interface PlmgTooltip {
+        /**
+          * Define tooltip arrow position  Allowed values:   - start,   - middle,   - end  Default: none
+         */
         "arrowPosition": PlmgTooltipArrowPosition;
+        /**
+          * Define tooltip's arrow side  Allowed values:   - none,   - left,   - right,   - top,    - bottom  Default: none
+         */
         "arrowSide": PlmgTooltipArrowSide;
+        /**
+          * Define tooltip's background color  Allowed values:   - neutral   - primary  Default: neutral
+         */
         "bgColor": PlmgTooltipBgColor;
+        /**
+          * ID for connected element. Required for tooltip to function
+         */
+        "targetElement": string;
     }
 }
 declare global {
@@ -388,9 +401,22 @@ declare namespace LocalJSX {
         "size"?: string;
     }
     interface PlmgTooltip {
+        /**
+          * Define tooltip arrow position  Allowed values:   - start,   - middle,   - end  Default: none
+         */
         "arrowPosition"?: PlmgTooltipArrowPosition;
+        /**
+          * Define tooltip's arrow side  Allowed values:   - none,   - left,   - right,   - top,    - bottom  Default: none
+         */
         "arrowSide"?: PlmgTooltipArrowSide;
+        /**
+          * Define tooltip's background color  Allowed values:   - neutral   - primary  Default: neutral
+         */
         "bgColor"?: PlmgTooltipBgColor;
+        /**
+          * ID for connected element. Required for tooltip to function
+         */
+        "targetElement"?: string;
     }
     interface IntrinsicElements {
         "plmg-button": PlmgButton;

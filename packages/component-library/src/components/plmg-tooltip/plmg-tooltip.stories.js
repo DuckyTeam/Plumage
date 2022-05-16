@@ -17,11 +17,12 @@ export default {
       options: ['start', 'middle', 'end'],
       control: { type: 'select' },
     },
+    ['target-element']: { control: { type: 'text ' } },
     ['slot-text']: { control: { type: 'text' } },
   },
 };
 
-const PROPS = ['bg-color', 'arrow-side', 'arrow-position'];
+const PROPS = ['bg-color', 'arrow-side', 'arrow-position', 'target-element'];
 const EVENTS = [];
 const CSS_VARS = [];
 const SLOTS = ['tooltip-text'];
@@ -45,4 +46,17 @@ Primary.args = {
   ['bg-color']: 'primary',
   ['arrow-side']: 'none',
   ['arrow-position']: 'middle',
+  ['target-element']: '',
+};
+
+export const TooltipAction = (args) => {
+  let wrapper = document.createElement('div');
+  const htmlContent = `
+    <div>
+    <p id="element">hover me</p>
+      <plmg-tooltip target-element="element" arrow-side="top" arrow-position="middle">Tooltip text</plmg-tooltip>
+    </div>
+  `;
+  wrapper.innerHTML = htmlContent;
+  return wrapper;
 };
