@@ -7,11 +7,12 @@
 
 ## Properties
 
-| Property        | Attribute        | Description | Type                                               | Default     |
-| --------------- | ---------------- | ----------- | -------------------------------------------------- | ----------- |
-| `arrowPosition` | `arrow-position` |             | `"end" \| "middle" \| "start"`                     | `'middle'`  |
-| `arrowSide`     | `arrow-side`     |             | `"bottom" \| "left" \| "none" \| "right" \| "top"` | `'none'`    |
-| `bgColor`       | `bg-color`       |             | `"neutral" \| "primary"`                           | `'neutral'` |
+| Property        | Attribute        | Description                                                                                                    | Type                                               | Default     |
+| --------------- | ---------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- | ----------- |
+| `arrowPosition` | `arrow-position` | Define tooltip arrow position  Allowed values:   - start,   - middle,   - end  Default: none                   | `"end" \| "middle" \| "start"`                     | `'middle'`  |
+| `arrowSide`     | `arrow-side`     | Define tooltip's arrow side  Allowed values:   - none,   - left,   - right,   - top,   - bottom  Default: none | `"bottom" \| "left" \| "none" \| "right" \| "top"` | `'none'`    |
+| `bgColor`       | `bg-color`       | Define tooltip's background color  Allowed values:   - neutral   - primary  Default: neutral                   | `"neutral" \| "primary"`                           | `'neutral'` |
+| `targetElement` | `target-element` | ID for connected element. Required for tooltip to function                                                     | `string`                                           | `undefined` |
 
 
 ## Slots

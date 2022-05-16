@@ -168,7 +168,7 @@ export namespace Components {
          */
         "arrowPosition": PlmgTooltipArrowPosition;
         /**
-          * Define tooltip's arrow side  Allowed values:   - none,   - left,   - right,   - top,    - bottom  Default: none
+          * Define tooltip's arrow side  Allowed values:   - none,   - left,   - right,   - top,   - bottom  Default: none
          */
         "arrowSide": PlmgTooltipArrowSide;
         /**
@@ -406,7 +406,7 @@ declare namespace LocalJSX {
          */
         "arrowPosition"?: PlmgTooltipArrowPosition;
         /**
-          * Define tooltip's arrow side  Allowed values:   - none,   - left,   - right,   - top,    - bottom  Default: none
+          * Define tooltip's arrow side  Allowed values:   - none,   - left,   - right,   - top,   - bottom  Default: none
          */
         "arrowSide"?: PlmgTooltipArrowSide;
         /**
