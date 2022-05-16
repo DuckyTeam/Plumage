@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage-react",
+      "comment": "Add cjs to build output",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage-react"
+}
