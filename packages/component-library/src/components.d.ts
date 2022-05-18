@@ -176,6 +176,10 @@ export namespace Components {
          */
         "bgColor": PlmgTooltipBgColor;
         /**
+          * Force tooltip to remain visible
+         */
+        "forceVisible": boolean;
+        /**
           * ID for connected element. Required for tooltip to function
          */
         "targetElementId": string;
@@ -413,6 +417,10 @@ declare namespace LocalJSX {
           * Define tooltip's background color  Allowed values:   - neutral   - primary  Default: neutral
          */
         "bgColor"?: PlmgTooltipBgColor;
+        /**
+          * Force tooltip to remain visible
+         */
+        "forceVisible"?: boolean;
         /**
           * ID for connected element. Required for tooltip to function
          */

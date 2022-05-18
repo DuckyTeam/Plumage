@@ -25,6 +25,14 @@ export class Tooltip {
    * Default hidden
    */
 
+  toolTipArrowWidth: number = 6;
+  toolTipTextLength: number = 150;
+  toolTipPaddingY: number = 4;
+  toolTipPaddingX: number = 8;
+  toolTipLineHeight: number = 18;
+  toolTipWidth: number = this.toolTipTextLength + this.toolTipPaddingX;
+  toolTipHeight: number = this.toolTipLineHeight + this.toolTipPaddingY;
+
   @State() isTooltipVisible: boolean = false;
 
   /**
@@ -36,6 +44,17 @@ export class Tooltip {
   validateTargetElementId(newValue: string) {
     if ((newValue && typeof newValue !== 'string') || newValue === '')
       throw new Error('target element id must be a string');
+  }
+
+  /**
+   * Force tooltip to remain visible
+   */
+
+  @Prop() forceVisible: boolean = false;
+  @Watch('forceVisible')
+  validateForceVisible(newValue: boolean) {
+    if (newValue && typeof newValue !== 'boolean')
+      throw new Error('force visible must be a boolean');
   }
 
   /**
@@ -99,66 +118,54 @@ export class Tooltip {
       throw new Error('arrow postion: must be a valid value');
   }
 
-  /**
-   * Lifecycle method, called once just after the component is first connected to the DOM.
-   * Initialise the state.
+  /** Listeners
+   *
+   * Listen for mouse over / focus and mouse out / blur events
+   * user defined target element display / hides tooltip
    */
-
-  /**
-   * Lifecycle method, called once just after the component is fully loaded and the first render() occurs.
-   */
-  //  @Listen('mouseover', { target: 'body' })
-  //  onMouseOver(ev) {
-  //    if (ev.target.id !== '' && ev.target.id === this.targetElementID) {
-  //      this.isTooltipVisible = true;
-  //    }
-  //  }
-
-  //  @Listen('mouseout', { target: 'body' })
-  //  onMouseLeave(ev) {
-  //    if (ev.target.id !== '' && ev.target.id === this.targetElementID) {
-  //      this.isTooltipVisible = false;
-  //    }
-  //  }
-
-  componentDidLoad() {}
 
   connectedCallback() {
-    this.abortTooltipListener = new AbortController();
-    this.tooltipTargetElement = document.getElementById(this.targetElementId);
-    this.tooltipTargetElement.addEventListener(
-      'mouseover',
-      () => (this.isTooltipVisible = true),
-      { signal: this.abortTooltipListener.signal }
-    );
+    this.isTooltipVisible = this.forceVisible;
 
-    this.tooltipTargetElement.addEventListener(
-      'mouseleave',
-      () => (this.isTooltipVisible = false)
-    );
-    this.tooltipTargetElement.addEventListener(
-      'mouseover',
-      () => (this.isTooltipVisible = true),
-      { signal: this.abortTooltipListener.signal }
-    );
+    // ForceVisible prop boolean disables event listener
+
+    if (!this.forceVisible) {
+      this.abortTooltipListener = new AbortController();
+      this.tooltipTargetElement = document.getElementById(this.targetElementId);
+      this.tooltipTargetElement.addEventListener(
+        'mouseover',
+        (ev) => {
+          console.log(ev);
+          return (this.isTooltipVisible = true);
+        },
+        { signal: this.abortTooltipListener.signal }
+      );
+
+      this.tooltipTargetElement.addEventListener(
+        'focus',
+        () => (this.isTooltipVisible = true),
+        { signal: this.abortTooltipListener.signal }
+      );
+
+      this.tooltipTargetElement.addEventListener(
+        'mouseleave',
+        () => (this.isTooltipVisible = false)
+      );
+
+      this.tooltipTargetElement.addEventListener(
+        'blur',
+        () => (this.isTooltipVisible = false)
+      );
+    }
   }
 
   // clean-up listener
 
   disconnectedCallback() {
-    if (this.abortTooltipListener) this.abortTooltipListener.abort();
+    if (!this.forceVisible) {
+      if (this.abortTooltipListener) this.abortTooltipListener.abort();
+    }
   }
-  /**
-   * Listeners
-   *
-   * Listens for mouse over and out events
-   *
-   * Mouse over/ out on user defined target element display / hides tooltip
-   */
-  // @Listen('mouseenter')
-  // onMouseEnter(e: Event) {
-  //   console.log(e)
-  // }
 
   render() {
     const classes = {
@@ -171,9 +178,11 @@ export class Tooltip {
     };
 
     return (
-      <span class={classes}>
-        <slot />
-      </span>
+      <div style={this.calculateToolTipPositions()}>
+        <span class={classes}>
+          <slot />
+        </span>
+      </div>
     );
   }
 
@@ -181,4 +190,101 @@ export class Tooltip {
   private hasArrow() {
     return this.arrowSide !== 'none' && (this.arrowSide as string) !== '';
   }
+
+  private calculateToolTipPositions() {
+    let styles = {
+      position: 'fixed',
+      left: '0px',
+      top: '0px',
+    };
+
+    const targetPositions = this.tooltipTargetElement.getBoundingClientRect();
+
+    if (this.arrowSide === 'left' && this.arrowPosition === 'start') {
+      console.log('left start');
+      styles.left = targetPositions.x + targetPositions.width + 'px';
+      styles.top = targetPositions.y + 'px';
+    } else if (this.arrowSide === 'left' && this.arrowPosition === 'middle') {
+      console.log('left middle');
+      console.log(targetPositions);
+      styles.left = targetPositions.x + targetPositions.width + 'px';
+      styles.top = targetPositions.y + 'px';
+    } else if (this.arrowSide === 'left' && this.arrowPosition === 'end') {
+      console.log('left end');
+      styles.left = targetPositions.x + targetPositions.width + 'px';
+      styles.top = targetPositions.y - targetPositions.height + 'px';
+    } else if (this.arrowSide === 'right' && this.arrowPosition === 'start') {
+      console.log('right start');
+      console.log(targetPositions.x);
+      styles.left =
+        targetPositions.x - (this.toolTipWidth + this.toolTipArrowWidth) + 'px';
+      styles.top = targetPositions.y + 'px';
+      console.log(styles.left);
+    } else if (this.arrowSide === 'right' && this.arrowPosition === 'middle') {
+      console.log('right middle');
+      console.log(targetPositions);
+      styles.left =
+        targetPositions.x - (this.toolTipWidth + this.toolTipArrowWidth) + 'px';
+      styles.top = targetPositions.y + 'px';
+    } else if (this.arrowSide === 'right' && this.arrowPosition === 'end') {
+      console.log('right end');
+      styles.left =
+        targetPositions.x - (this.toolTipWidth + this.toolTipArrowWidth) + 'px';
+      styles.top = targetPositions.y - targetPositions.height + 'px';
+    } else if (this.arrowSide === 'top' && this.arrowPosition === 'start') {
+      styles.left = targetPositions.x - targetPositions.width / 2 + 'px';
+      styles.top = targetPositions.y + targetPositions.height + 'px';
+      console.log(styles.left);
+    } else if (this.arrowSide === 'top' && this.arrowPosition === 'middle') {
+      console.log('top middle');
+      console.log(targetPositions.x);
+      styles.left =
+        targetPositions.x -
+        this.toolTipWidth / 2 +
+        targetPositions.width / 2 +
+        'px';
+      styles.top = targetPositions.y + targetPositions.height + 'px';
+    } else if (this.arrowSide === 'top' && this.arrowPosition === 'end') {
+      console.log('top end');
+      styles.left =
+        targetPositions.x - this.toolTipWidth + targetPositions.width + 'px';
+      styles.top = targetPositions.y + targetPositions.height + 'px';
+    } else if (this.arrowSide === 'bottom' && this.arrowPosition === 'start') {
+      console.log('bottom start');
+      styles.left = targetPositions.x - targetPositions.width / 2 + 'px';
+      styles.top =
+        targetPositions.y -
+        (targetPositions.height + this.toolTipHeight) +
+        'px';
+    } else if (this.arrowSide === 'bottom' && this.arrowPosition === 'middle') {
+      console.log('bottom middle');
+      console.log(targetPositions.x);
+      styles.left =
+        targetPositions.x -
+        this.toolTipWidth / 2 +
+        targetPositions.width / 2 +
+        'px';
+      styles.top =
+        targetPositions.y -
+        (targetPositions.height + this.toolTipHeight) +
+        'px';
+    } else if (this.arrowSide === 'bottom' && this.arrowPosition === 'end') {
+      console.log('bottom end');
+      styles.left =
+        targetPositions.x - this.toolTipWidth + targetPositions.width + 'px';
+      styles.top =
+        targetPositions.y -
+        (targetPositions.height + this.toolTipHeight) +
+        'px';
+    }
+
+    return styles;
+  }
+
+  //   if (this.arrowSide === "top") { toolTipYPos = targetPositions.y + targetPositions.height + this.toolTipHeight }
+  //   if (this.arrowPosition === "start" ) { toolTipYPos = targetPositions.top }
+  //   if (this.arrowPosition === "middle" ) { toolTipYPos = targetPositions.top - (this.toolTipHeight / 2)}
+  //   if (this.arrowPosition === "end" ) { toolTipYPos = targetPositions.top + (this.toolTipHeight)}
+  //   return toolTipYPos + "px";
+  // }
 }
