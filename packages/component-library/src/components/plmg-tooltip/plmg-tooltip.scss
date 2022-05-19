@@ -118,7 +118,7 @@ $tooltip-arrow-width: 6px;
     &.middle {
       @extend %shared--tooltip-arrow;
       &::after {
-        left: calc(50% - $tooltip-arrow-width / 2);
+        left: calc(50%);
       }
     }
 
@@ -155,7 +155,7 @@ $tooltip-arrow-width: 6px;
     &.middle {
       @extend %shared--tooltip-arrow;
       &::after {
-        left: calc(50% - $tooltip-arrow-width / 2);
+        left: calc(50%);
       }
     }
     &.end {

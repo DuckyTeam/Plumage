@@ -176,13 +176,17 @@ export namespace Components {
          */
         "bgColor": PlmgTooltipBgColor;
         /**
-          * Force tooltip to remain visible
+          * Force tooltip to remain visible  Used for demonstration / display purposes
          */
         "forceVisible": boolean;
         /**
-          * ID for connected element. Required for tooltip to function
+          * ID for connected element. Required.
          */
         "targetElementId": string;
+        /**
+          * Tooltip Title Text  Any string  Required
+         */
+        "tooltipTitle": string;
     }
 }
 declare global {
@@ -418,13 +422,17 @@ declare namespace LocalJSX {
          */
         "bgColor"?: PlmgTooltipBgColor;
         /**
-          * Force tooltip to remain visible
+          * Force tooltip to remain visible  Used for demonstration / display purposes
          */
         "forceVisible"?: boolean;
         /**
-          * ID for connected element. Required for tooltip to function
+          * ID for connected element. Required.
          */
         "targetElementId"?: string;
+        /**
+          * Tooltip Title Text  Any string  Required
+         */
+        "tooltipTitle"?: string;
     }
     interface IntrinsicElements {
         "plmg-button": PlmgButton;

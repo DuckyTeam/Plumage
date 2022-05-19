@@ -17,10 +17,12 @@ export default {
       options: ['start', 'middle', 'end'],
       control: { type: 'select' },
     },
+    ['tooltip-title']: {
+      control: { type: 'text' },
+    },
     ['force-visible']: {
       options: [true, false],
     },
-    ['slot-text']: { control: { type: 'text' } },
   },
 };
 
@@ -29,18 +31,14 @@ const PROPS = [
   'arrow-side',
   'arrow-position',
   'target-element-id',
+  'tooltip-title',
   'force-visible',
 ];
 const EVENTS = [];
 const CSS_VARS = [];
-const SLOTS = ['tooltip-text'];
+const SLOTS = [];
 
 const Template = (args) => {
-  // let wrapper = document.createElement('div');
-  // let paragraphElement = document.createElement('p');
-  // paragraphElement.setAttribute('id', 'targetelement');
-  // // paragraphElement.textContent = '?';
-  // wrapper.appendChild(paragraphElement);
   const el = document.createElement('plmg-tooltip');
   Utils.bindProps(el, PROPS, args);
   Utils.bindEvents(el, EVENTS, args);
@@ -52,7 +50,7 @@ const Template = (args) => {
 export const Primary = Template.bind({});
 Primary.storyName = 'Tooltip';
 Primary.args = {
-  ['tooltip-text']: 'text',
+  ['tooltip-title']: 'text',
   ['bg-color']: 'primary',
   ['arrow-side']: 'none',
   ['arrow-position']: 'middle',
@@ -60,64 +58,79 @@ Primary.args = {
   ['target-element-id']: 'targetelement',
 };
 
-export const TooltipLeft = (args) => {
-  let wrapper = document.createElement('div');
-  const htmlContent = `
-    <div>
-    <p id="element" tabindex="1" style="padding: 10px; width: fit-content;">?</p>
-      <plmg-tooltip target-element-id="element" arrow-side="left" arrow-position="start">Tooltip text is very long and takes up several lines because there is so much content to display</plmg-tooltip>
-      <p id="element-two" tabindex="1" style="padding: 10px; width: fit-content;">?</p>
-      <plmg-tooltip target-element-id="element-two" arrow-side="left" arrow-position="middle">Tooltip ere is so much content to display</plmg-tooltip>
-      <p id="element-three" tabindex="1" style="padding: 10px; width: fit-content;">?</p>
-      <plmg-tooltip target-element-id="element-three" arrow-side="left" arrow-position="end">Tooltip text is very long and takes up several lines because there is so much content to display</plmg-tooltip>
-    </div>
-  `;
-  wrapper.innerHTML = htmlContent;
-  return wrapper;
-};
-
 export const TooltipRight = (args) => {
   let wrapper = document.createElement('div');
   const htmlContent = `
-    <div style="display: flex; flex-direction: column; height: 100vh; background-color: green">
-    <p id="element" tabindex="1" style="padding: 10px; margin-left: 400px; width: fit-content;">?</p>
-      <plmg-tooltip target-element-id="element" arrow-side="right" arrow-position="start">Tooltip text is very long and takes up several lines because there is so much content to display</plmg-tooltip>
-    <p id="element-two" tabindex="1" style="padding: 10px; margin-left: 150px; width: fit-content;">?</p>
-      <plmg-tooltip target-element-id="element-two" arrow-side="right" arrow-position="middle">Tooltip text is short asd asd asd asd asd </plmg-tooltip>
-    <p id="element-three" tabindex="1" style="padding: 10px; margin-left: 150px; width: fit-content;">?</p>
-    <plmg-tooltip target-element-id="element-three" arrow-side="right" arrow-position="end">Tooltip text is very long and takes up several lines because there is so much content to display</plmg-tooltip>
+  <div style="display: flex; flex-direction: column; height: 100vh;">
+  
+    <p id="element" tabindex="1" style="padding: 10px; margin-left: 150px; width: fit-content;">right start</p>
+    <plmg-tooltip target-element-id="element" arrow-side="left" arrow-position="start" tooltip-title="Tooltip right with arrow at the start of the Y axis"></plmg-tooltip>
+  
+    <p id="element-two" tabindex="2" style="padding: 10px; margin-left: 150px; width: fit-content;">right middle</p>
+    <plmg-tooltip target-element-id="element-two" arrow-side="left" arrow-position="middle" tooltip-title="Tool right with arrow in the middle of the Y axis"></plmg-tooltip>
+  
+    <p id="element-three" tabindex="3" style="padding: 10px; margin-left: 150px; width: fit-content;">right end</p>
+    <plmg-tooltip target-element-id="element-three" arrow-side="left" arrow-position="end" tooltip-title="Tool right with arrow at the end of the Y axis. The height of the tooltip moves its position upwards"></plmg-tooltip>
+    
+  </div>
+  `;
+  wrapper.innerHTML = htmlContent;
+  return wrapper;
+};
+
+export const TooltipLeft = (args) => {
+  let wrapper = document.createElement('div');
+  const htmlContent = `
+  <div style="display: flex; flex-direction: column; height: 100vh;">
+      
+      <p id="element" tabindex="1" style="padding: 10px; margin-left: 300px; width: fit-content;">left start</p>
+      <plmg-tooltip target-element-id="element" arrow-side="right" arrow-position="start" tooltip-title="left start tooltip"></plmg-tooltip>
+      
+      <p id="element-two" tabindex="2" style="padding: 10px; margin-left: 300px; width: fit-content;">left middle</p>
+      <plmg-tooltip target-element-id="element-two" arrow-side="right" arrow-position="middle" tooltip-title=" A longer text will increase the height of the tooltip. It will adjust its positoning to center vertically">left middle</plmg-tooltip>
+      
+      <p id="element-three" tabindex="3" style="padding: 10px; margin-left: 300px; width: fit-content;">left end</p>
+      <plmg-tooltip target-element-id="element-three" arrow-side="right" arrow-position="end" tooltip-title="Tooltip left with arrow at the end"></plmg-tooltip>
+    
     </div>
   `;
   wrapper.innerHTML = htmlContent;
   return wrapper;
 };
 
-export const TooltipTop = (args) => {
+export const TooltipBelow = (args) => {
   let wrapper = document.createElement('div');
   const htmlContent = `
-    <div style="display: flex; flex-direction: column; height: 100vh; background-color: green">
-    <p id="element" tabindex="1" style="padding: 10px; margin-left: 400px; width: fit-content;">?</p>
-      <plmg-tooltip target-element-id="element" arrow-side="top" arrow-position="start">Tooltip text is very long and takes up several lines because there is so much content to display</plmg-tooltip>
-    <p id="element-two" tabindex="1" style="padding: 10px; margin-left: 150px; width: fit-content;">?</p>
-      <plmg-tooltip target-element-id="element-two" arrow-side="top" arrow-position="middle">Tooltip text is short asd asd asd asd asd </plmg-tooltip>
-    <p id="element-three" tabindex="1" style="padding: 10px; margin-left: 150px; width: fit-content;">?</p>
-    <plmg-tooltip target-element-id="element-three" arrow-side="top" arrow-position="end">Tooltip text is very long and takes up several lines because there is so much content to display</plmg-tooltip>
+  <div style="display: flex; flex-direction: column; height: 100vh;">
+      
+      <p id="element" tabindex="1" style="padding: 10px; margin-left: 150px; width: fit-content;">below start</p>
+      <plmg-tooltip target-element-id="element" arrow-side="top" arrow-position="start" tooltip-title="Bottom with arrow start"></plmg-tooltip>
+      
+      <p id="element-two" tabindex="2" style="padding: 10px; margin-left: 150px; width: fit-content;">below middle</p>
+      <plmg-tooltip target-element-id="element-two" arrow-side="top" arrow-position="middle" tooltip-title="Bottom with arrow middle"></plmg-tooltip>
+      
+      <p id="element-three" tabindex="3" style="padding: 10px; margin-left: 150px; width: fit-content;">below end</p>
+      <plmg-tooltip target-element-id="element-three" arrow-side="top" arrow-position="end" tooltip-title="Bottom with arrow end"></plmg-tooltip>
     </div>
     `;
   wrapper.innerHTML = htmlContent;
   return wrapper;
 };
 
-export const TooltipBottom = (args) => {
+export const TooltipAbove = (args) => {
   let wrapper = document.createElement('div');
   const htmlContent = `
-    <div style="display: flex; flex-direction: column; height: 100vh; background-color: green">
-    <p id="element" tabindex="1" style="padding: 10px; margin-top: 100px; margin-left: 200px; width: fit-content;">?</p>
-      <plmg-tooltip target-element-id="element" arrow-side="bottom" arrow-position="start">Tooltip text is very long and takes up several lines because there is so much content to display</plmg-tooltip>
-    <p id="element-two" tabindex="1" style="padding: 10px; margin-top: 50px; margin-left: 200px; width: fit-content;">?</p>
-      <plmg-tooltip target-element-id="element-two" arrow-side="bottom" arrow-position="middle">Tooltip text is short asd asd asd asd asd </plmg-tooltip>
-    <p id="element-three" tabindex="1" style="padding: 10px; margin-top: 50px; margin-left: 200px; width: fit-content;">?</p>
-    <plmg-tooltip target-element-id="element-three" arrow-side="bottom" arrow-position="end">Tooltip text is very long and takes up several lines because there is so much content to display</plmg-tooltip>
+  <div style="display: flex; flex-direction: column; height: 100vh; width: 200px; margin-left: 150px; margin-top: 75px; gap: 20px; width: fit-content;">
+     
+      <p id="element" tabindex="1">above start</p>
+      <plmg-tooltip target-element-id="element" arrow-side="bottom" arrow-position="start" tooltip-title="Tooltip above with arrow start"></plmg-tooltip>
+     
+      <p id="element-two" tabindex="2">above middle</p>
+      <plmg-tooltip target-element-id="element-two" arrow-side="bottom" arrow-position="middle" tooltip-title="Tooltip above with arrow middle"></plmg-tooltip>
+     
+      <p id="element-three" tabindex="3">above end</p>
+      <plmg-tooltip target-element-id="element-three" arrow-side="bottom" arrow-position="end" tooltip-title="Tooltip above with arrow at the end"></plmg-tooltip>
+    
     </div>
     `;
   wrapper.innerHTML = htmlContent;

@@ -1,4 +1,5 @@
 import { Component, h, Prop, State, Watch } from '@stencil/core';
+
 import {
   PlmgTooltipBgColor,
   isPlmgTooltipBgColor,
@@ -8,10 +9,6 @@ import {
   isPlmgTooltipArrowPosition,
 } from './plmg-tooltip.types';
 
-/**
- * @slot tooltip-text - Text content of the tooltip
- */
-
 @Component({
   tag: 'plmg-tooltip',
   styleUrl: 'plmg-tooltip.scss',
@@ -20,23 +17,17 @@ import {
 export class Tooltip {
   private abortTooltipListener: AbortController;
   private tooltipTargetElement: HTMLElement;
+
   /**
    * Store whether the tooltip is currently visible.
+   *
    * Default hidden
    */
-
-  toolTipArrowWidth: number = 6;
-  toolTipTextLength: number = 150;
-  toolTipPaddingY: number = 4;
-  toolTipPaddingX: number = 8;
-  toolTipLineHeight: number = 18;
-  toolTipWidth: number = this.toolTipTextLength + this.toolTipPaddingX;
-  toolTipHeight: number = this.toolTipLineHeight + this.toolTipPaddingY;
 
   @State() isTooltipVisible: boolean = false;
 
   /**
-   * ID for connected element. Required for tooltip to function
+   * ID for connected element. Required.
    */
 
   @Prop() targetElementId: string;
@@ -48,6 +39,8 @@ export class Tooltip {
 
   /**
    * Force tooltip to remain visible
+   *
+   * Used for demonstration / display purposes
    */
 
   @Prop() forceVisible: boolean = false;
@@ -118,10 +111,27 @@ export class Tooltip {
       throw new Error('arrow postion: must be a valid value');
   }
 
-  /** Listeners
+  /**
+   * Tooltip Title Text
    *
-   * Listen for mouse over / focus and mouse out / blur events
-   * user defined target element display / hides tooltip
+   * Any string
+   *
+   * Required
+   */
+
+  @Prop() tooltipTitle: string;
+  @Watch('tooltipTitle')
+  validatetooltipTitle(newValue: string) {
+    if (newValue && !newValue)
+      throw new Error('tooltip must have a title text');
+    if (newValue && typeof newValue !== 'string')
+      throw new Error('target must be a string');
+  }
+
+  /** Life Cycle Methods with Listeners
+   *
+   * Listen for mouse over / focus and mouse out / blur events on the element
+   *
    */
 
   connectedCallback() {
@@ -134,10 +144,7 @@ export class Tooltip {
       this.tooltipTargetElement = document.getElementById(this.targetElementId);
       this.tooltipTargetElement.addEventListener(
         'mouseover',
-        (ev) => {
-          console.log(ev);
-          return (this.isTooltipVisible = true);
-        },
+        () => (this.isTooltipVisible = true),
         { signal: this.abortTooltipListener.signal }
       );
 
@@ -159,7 +166,9 @@ export class Tooltip {
     }
   }
 
-  // clean-up listener
+  /**
+   * Cleanup the event listener
+   */
 
   disconnectedCallback() {
     if (!this.forceVisible) {
@@ -168,20 +177,18 @@ export class Tooltip {
   }
 
   render() {
-    const classes = {
+    const tooltipclasses = {
       'plmg-tooltip': true,
       visible: this.isTooltipVisible,
-      // conditionally include arrow classes
+      // Conditionally include arrow classes
       ...(this.hasArrow() && { [this.arrowSide]: true }),
       ...(this.hasArrow() && { [this.arrowPosition]: true }),
       [this.bgColor]: true,
     };
 
     return (
-      <div style={this.calculateToolTipPositions()}>
-        <span class={classes}>
-          <slot />
-        </span>
+      <div style={!this.forceVisible && this.calculateTooltipPositions()}>
+        <span class={tooltipclasses}>{this.tooltipTitle}</span>
       </div>
     );
   }
@@ -191,100 +198,108 @@ export class Tooltip {
     return this.arrowSide !== 'none' && (this.arrowSide as string) !== '';
   }
 
-  private calculateToolTipPositions() {
+  private calculateTooltipPositions() {
     let styles = {
       position: 'fixed',
+      overflow: 'visible',
       left: '0px',
       top: '0px',
     };
 
+    // Calculate the position for the tooltip relative to the element
+    // Tooltip max width is 150px plus 6px for the arrow = 156px
+    // Maximum numbers of characters per line is 27 characters
+    // Tooltips with up to 27 characters will display on a single line.
+    // Up to 58 characters = 2 lines
+    // height is line height plus y paddin
+
+    // change these values to tokens
+
+    // make them all computer values
+
+    const tooltipLines: number = Math.ceil(this.tooltipTitle.length / 27);
+
+    const lineHeight: number = 18;
+    // change the to tokens
+    const arrowSize = 6;
+    const tooltipPaddingY: number = 8;
+    const tooltipPaddingX: number = 16;
+
+    // The width of each letter
+    const letterNumtoWidthRatio: number = 5.3;
+    const tooltipHeight: number = tooltipLines * lineHeight + tooltipPaddingY;
+
+    // Calculate tooltip width. Max possible width is 166px.
+    const tooltipWidth: number =
+      this.tooltipTitle.length <= 27
+        ? this.tooltipTitle.length * letterNumtoWidthRatio + tooltipPaddingX
+        : 156;
     const targetPositions = this.tooltipTargetElement.getBoundingClientRect();
 
-    if (this.arrowSide === 'left' && this.arrowPosition === 'start') {
-      console.log('left start');
-      styles.left = targetPositions.x + targetPositions.width + 'px';
-      styles.top = targetPositions.y + 'px';
-    } else if (this.arrowSide === 'left' && this.arrowPosition === 'middle') {
-      console.log('left middle');
-      console.log(targetPositions);
-      styles.left = targetPositions.x + targetPositions.width + 'px';
-      styles.top = targetPositions.y + 'px';
-    } else if (this.arrowSide === 'left' && this.arrowPosition === 'end') {
-      console.log('left end');
-      styles.left = targetPositions.x + targetPositions.width + 'px';
-      styles.top = targetPositions.y - targetPositions.height + 'px';
-    } else if (this.arrowSide === 'right' && this.arrowPosition === 'start') {
-      console.log('right start');
-      console.log(targetPositions.x);
-      styles.left =
-        targetPositions.x - (this.toolTipWidth + this.toolTipArrowWidth) + 'px';
-      styles.top = targetPositions.y + 'px';
-      console.log(styles.left);
-    } else if (this.arrowSide === 'right' && this.arrowPosition === 'middle') {
-      console.log('right middle');
-      console.log(targetPositions);
-      styles.left =
-        targetPositions.x - (this.toolTipWidth + this.toolTipArrowWidth) + 'px';
-      styles.top = targetPositions.y + 'px';
-    } else if (this.arrowSide === 'right' && this.arrowPosition === 'end') {
-      console.log('right end');
-      styles.left =
-        targetPositions.x - (this.toolTipWidth + this.toolTipArrowWidth) + 'px';
-      styles.top = targetPositions.y - targetPositions.height + 'px';
-    } else if (this.arrowSide === 'top' && this.arrowPosition === 'start') {
-      styles.left = targetPositions.x - targetPositions.width / 2 + 'px';
-      styles.top = targetPositions.y + targetPositions.height + 'px';
-      console.log(styles.left);
-    } else if (this.arrowSide === 'top' && this.arrowPosition === 'middle') {
-      console.log('top middle');
-      console.log(targetPositions.x);
-      styles.left =
-        targetPositions.x -
-        this.toolTipWidth / 2 +
-        targetPositions.width / 2 +
-        'px';
-      styles.top = targetPositions.y + targetPositions.height + 'px';
-    } else if (this.arrowSide === 'top' && this.arrowPosition === 'end') {
-      console.log('top end');
-      styles.left =
-        targetPositions.x - this.toolTipWidth + targetPositions.width + 'px';
-      styles.top = targetPositions.y + targetPositions.height + 'px';
-    } else if (this.arrowSide === 'bottom' && this.arrowPosition === 'start') {
-      console.log('bottom start');
-      styles.left = targetPositions.x - targetPositions.width / 2 + 'px';
-      styles.top =
-        targetPositions.y -
-        (targetPositions.height + this.toolTipHeight) +
-        'px';
-    } else if (this.arrowSide === 'bottom' && this.arrowPosition === 'middle') {
-      console.log('bottom middle');
-      console.log(targetPositions.x);
-      styles.left =
-        targetPositions.x -
-        this.toolTipWidth / 2 +
-        targetPositions.width / 2 +
-        'px';
-      styles.top =
-        targetPositions.y -
-        (targetPositions.height + this.toolTipHeight) +
-        'px';
-    } else if (this.arrowSide === 'bottom' && this.arrowPosition === 'end') {
-      console.log('bottom end');
-      styles.left =
-        targetPositions.x - this.toolTipWidth + targetPositions.width + 'px';
-      styles.top =
-        targetPositions.y -
-        (targetPositions.height + this.toolTipHeight) +
-        'px';
-    }
+    this.arrowSide === 'left' &&
+      (styles.left = `${targetPositions.x + targetPositions.width}px`);
+    this.arrowSide === 'left' &&
+      this.arrowPosition === 'start' &&
+      (styles.top = `${targetPositions.y}px`);
+    this.arrowSide === 'left' &&
+      this.arrowPosition === 'middle' &&
+      (styles.top = `${
+        targetPositions.y + targetPositions.height / 2 - tooltipHeight / 2
+      }px`);
+    this.arrowSide === 'left' &&
+      this.arrowPosition === 'end' &&
+      (styles.top = `${
+        targetPositions.y + targetPositions.height - tooltipHeight
+      }px`);
+
+    this.arrowSide === 'right' &&
+      (styles.left = `${targetPositions.x - tooltipWidth - arrowSize}px`);
+    this.arrowSide === 'right' &&
+      this.arrowPosition === 'start' &&
+      (styles.top = `${targetPositions.y}px`);
+    this.arrowSide === 'right' &&
+      this.arrowPosition === 'middle' &&
+      (styles.top = `${
+        targetPositions.y + targetPositions.height / 2 - tooltipHeight / 2
+      }px`);
+    this.arrowSide === 'right' &&
+      this.arrowPosition === 'end' &&
+      (styles.top = `${
+        targetPositions.y + targetPositions.height - tooltipHeight
+      }px`);
+
+    this.arrowSide === 'bottom' &&
+      (styles.top = `${targetPositions.y - tooltipHeight - arrowSize}px`);
+    this.arrowSide === 'bottom' &&
+      this.arrowPosition === 'start' &&
+      (styles.left = `${targetPositions.x}px`);
+    this.arrowSide === 'bottom' &&
+      this.arrowPosition === 'middle' &&
+      (styles.left = `${
+        targetPositions.x + targetPositions.width / 2 - tooltipWidth / 2
+      }px`);
+    this.arrowSide === 'bottom' &&
+      this.arrowPosition === 'end' &&
+      (styles.left = `${
+        targetPositions.x + targetPositions.width - tooltipWidth
+      }px`);
+
+    this.arrowSide === 'top' &&
+      (styles.top = `${targetPositions.y + targetPositions.height}px`);
+    this.arrowSide === 'top' &&
+      this.arrowPosition === 'start' &&
+      (styles.left = `${targetPositions.x}px`);
+    this.arrowSide === 'top' &&
+      this.arrowPosition === 'middle' &&
+      (styles.left = `${
+        targetPositions.x + targetPositions.width / 2 - tooltipWidth / 2
+      }px`);
+    this.arrowSide === 'top' &&
+      this.arrowPosition === 'end' &&
+      (styles.left = `${
+        targetPositions.x + targetPositions.width - tooltipWidth
+      }px`);
 
     return styles;
   }
-
-  //   if (this.arrowSide === "top") { toolTipYPos = targetPositions.y + targetPositions.height + this.toolTipHeight }
-  //   if (this.arrowPosition === "start" ) { toolTipYPos = targetPositions.top }
-  //   if (this.arrowPosition === "middle" ) { toolTipYPos = targetPositions.top - (this.toolTipHeight / 2)}
-  //   if (this.arrowPosition === "end" ) { toolTipYPos = targetPositions.top + (this.toolTipHeight)}
-  //   return toolTipYPos + "px";
-  // }
 }
