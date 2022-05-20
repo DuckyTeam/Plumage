@@ -38,9 +38,9 @@ export class Tooltip {
   }
 
   /**
-   * Force tooltip to remain visible
+   * Force tooltip to remain visible for demostration pu
    *
-   * Used for demonstration / display purposes
+   * Disables event listener
    */
 
   @Prop() forceVisible: boolean = false;
@@ -130,7 +130,7 @@ export class Tooltip {
 
   /** Life Cycle Methods with Listeners
    *
-   * Listen for mouse over / focus and mouse out / blur events on the element
+   * Listen for mouse over / focus events and mouse out / blur events on the target element
    *
    */
 
@@ -199,6 +199,8 @@ export class Tooltip {
   }
 
   private calculateTooltipPositions() {
+    // Default style
+
     let styles = {
       position: 'fixed',
       overflow: 'visible',
@@ -209,18 +211,10 @@ export class Tooltip {
     // Calculate the position for the tooltip relative to the element
     // Tooltip max width is 150px plus 6px for the arrow = 156px
     // Maximum numbers of characters per line is 27 characters
-    // Tooltips with up to 27 characters will display on a single line.
-    // Up to 58 characters = 2 lines
-    // height is line height plus y paddin
-
-    // change these values to tokens
-
-    // make them all computer values
+    // Tooltips with up to 27 characters will display on a single line of variable width.
 
     const tooltipLines: number = Math.ceil(this.tooltipTitle.length / 27);
-
     const lineHeight: number = 18;
-    // change the to tokens
     const arrowSize = 6;
     const tooltipPaddingY: number = 8;
     const tooltipPaddingX: number = 16;
@@ -229,12 +223,17 @@ export class Tooltip {
     const letterNumtoWidthRatio: number = 5.3;
     const tooltipHeight: number = tooltipLines * lineHeight + tooltipPaddingY;
 
-    // Calculate tooltip width. Max possible width is 166px.
+    // Calculate tooltip width.
+    // A one line tooltip width will be determined by the number of characters
     const tooltipWidth: number =
       this.tooltipTitle.length <= 27
         ? this.tooltipTitle.length * letterNumtoWidthRatio + tooltipPaddingX
         : 156;
+
+    // Get the position of the target element
     const targetPositions = this.tooltipTargetElement.getBoundingClientRect();
+
+    // Calculate the relative position of the tooltip
 
     this.arrowSide === 'left' &&
       (styles.left = `${targetPositions.x + targetPositions.width}px`);
