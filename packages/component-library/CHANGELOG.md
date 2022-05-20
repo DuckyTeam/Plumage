@@ -1,6 +1,20 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Wed, 04 May 2022 11:37:57 GMT and should not be manually modified.
+This log was last generated on Mon, 16 May 2022 13:05:01 GMT and should not be manually modified.
+
+## 1.1.0
+Mon, 16 May 2022 13:05:01 GMT
+
+### Minor changes
+
+- Created separator component and defined first props
+
+## 1.0.2
+Fri, 06 May 2022 10:06:47 GMT
+
+### Patches
+
+- fix generate command to create scss file that doesn't break rush build
 
 ## 1.0.1
 Wed, 04 May 2022 11:37:57 GMT

@@ -110,6 +110,25 @@
         "value": "#663d00",
         "type": "color",
         "description": "Amber900"
+      },
+      "neutral-dark": {
+        "value": "#ffffff",
+        "type": "color",
+        "description": "White"
+      },
+      "neutral-weak-dark": {
+        "value": "#dfe5e8",
+        "type": "color",
+        "description": "Gray100"
+      },
+      "neutral-disabled-dark": {
+        "value": "#bfcbd1",
+        "type": "color",
+        "description": "Gray200\nNot accessible on background strong"
+      },
+      "neutral-inverted-dark": {
+        "value": "#263238",
+        "type": "color"
       }
     },
     "color-background": {
@@ -141,7 +160,7 @@
       "neutral-strong": {
         "value": "#dfe5e8",
         "type": "color",
-        "description": "Grey100\nUse with care as not all colors are ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¨accessible on this background"
+        "description": "Grey100\nUse with care as not all colors are accessible on this background"
       },
       "primary": {
         "value": "#ccebee",
@@ -292,6 +311,36 @@
         "value": "#ff9800",
         "type": "color",
         "description": "Amber500"
+      },
+      "neutral-dark": {
+        "value": "#263238",
+        "type": "color",
+        "description": "Gray900"
+      },
+      "neutral-hover-dark": {
+        "value": "#35454c",
+        "type": "color",
+        "description": "Gray800"
+      },
+      "neutral-active-dark": {
+        "value": "#435861",
+        "type": "color",
+        "description": "Gray700"
+      },
+      "neutral-weak-dark": {
+        "value": "#35454c",
+        "type": "color",
+        "description": "Gray800"
+      },
+      "neutral-medium-dark": {
+        "value": "#435861",
+        "type": "color",
+        "description": "Gray700"
+      },
+      "neutral-strong-dark": {
+        "value": "#526a76",
+        "type": "color",
+        "description": "Gray600\nUse with care as not all colors are  accessible on this background"
       }
     },
     "color-border": {
@@ -399,6 +448,21 @@
         "value": "#b36a00",
         "type": "color",
         "description": "Amber700\nUse if the border needs to be accessible"
+      },
+      "neutral-dark": {
+        "value": "#a0b1b9",
+        "type": "color",
+        "description": "Gray300"
+      },
+      "neutral-weak-dark": {
+        "value": "#607d8b",
+        "type": "color",
+        "description": "Gray500"
+      },
+      "neutral-strong-dark": {
+        "value": "#bfcbd1",
+        "type": "color",
+        "description": "Gray200\nUse if the border needs to be accessible"
       }
     },
     "color-icon": {
@@ -490,6 +554,25 @@
         "value": "#8c5400",
         "type": "color",
         "description": "Amber800"
+      },
+      "neutral-dark": {
+        "value": "#dfe5e8",
+        "type": "color",
+        "description": "Gray100\nNot accessible on background strong"
+      },
+      "neutral-hover-dark": {
+        "value": "#eff2f3",
+        "type": "color",
+        "description": "Gray50"
+      },
+      "neutral-active-dark": {
+        "value": "#ffffff",
+        "type": "color",
+        "description": "White"
+      },
+      "neutral-inverted-dark": {
+        "value": "#263238",
+        "type": "color"
       }
     },
     "color-decoration": {
@@ -560,6 +643,16 @@
       "standout-weak": {
         "value": "#ffd699",
         "type": "color"
+      },
+      "neutral-dark": {
+        "value": "#bfcbd1",
+        "type": "color",
+        "description": "Gray200"
+      },
+      "neutral-weak-dark": {
+        "value": "#607d8b",
+        "type": "color",
+        "description": "Gray500"
       }
     },
     "border-radius": {
@@ -568,43 +661,36 @@
         "description": "Sharp corners",
         "type": "borderRadius"
       },
-
       "xs": {
         "value": "2px",
         "description": "A very subtle roundness",
         "type": "borderRadius"
       },
-
       "s": {
         "value": "4px",
         "description": "A small roundness",
         "type": "borderRadius"
       },
-
       "m": {
         "value": "8px",
         "description": "A quite visible roundness",
         "type": "borderRadius"
       },
-
       "l": {
         "value": "16px",
         "description": "A large roundness",
         "type": "borderRadius"
       },
-
       "xl": {
         "value": "32px",
         "description": "A very exaggerated roundness",
         "type": "borderRadius"
       },
-
       "circle": {
         "value": "50%",
         "description": "For circles, like circle-buttons",
         "type": "borderRadius"
       },
-
       "pill": {
         "value": "9999px",
         "description": "For pill-shaped elements",
@@ -1501,43 +1587,36 @@
         "description": "Sharp corners",
         "type": "borderRadius"
       },
-
       "xs": {
         "value": "2px",
         "description": "A very subtle roundness",
         "type": "borderRadius"
       },
-
       "s": {
         "value": "4px",
         "description": "A small roundness",
         "type": "borderRadius"
       },
-
       "m": {
         "value": "8px",
         "description": "A quite visible roundness",
         "type": "borderRadius"
       },
-
       "l": {
         "value": "16px",
         "description": "A large roundness",
         "type": "borderRadius"
       },
-
       "xl": {
         "value": "32px",
         "description": "A very exaggerated roundness",
         "type": "borderRadius"
       },
-
       "circle": {
         "value": "50%",
         "description": "For circles, like circle-buttons",
         "type": "borderRadius"
       },
-
       "pill": {
         "value": "9999px",
         "description": "For pill-shaped elements",
@@ -2433,43 +2512,36 @@
         "description": "Sharp corners",
         "type": "borderRadius"
       },
-
       "xs": {
         "value": "2px",
         "description": "A very subtle roundness",
         "type": "borderRadius"
       },
-
       "s": {
         "value": "4px",
         "description": "A small roundness",
         "type": "borderRadius"
       },
-
       "m": {
         "value": "8px",
         "description": "A quite visible roundness",
         "type": "borderRadius"
       },
-
       "l": {
         "value": "16px",
         "description": "A large roundness",
         "type": "borderRadius"
       },
-
       "xl": {
         "value": "32px",
         "description": "A very exaggerated roundness",
         "type": "borderRadius"
       },
-
       "circle": {
         "value": "50%",
         "description": "For circles, like circle-buttons",
         "type": "borderRadius"
       },
-
       "pill": {
         "value": "9999px",
         "description": "For pill-shaped elements",
@@ -2796,5 +2868,6 @@
         "type": "other"
       }
     }
-  }
+  },
+  "$themes": []
 }

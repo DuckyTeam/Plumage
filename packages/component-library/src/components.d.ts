@@ -151,6 +151,20 @@ export namespace Components {
          */
         "values": string[] | string;
     }
+    interface PlmgSeparator {
+        /**
+          * Define separator's color.  Can be any valid CSS color value.  Default is plmgColorBorderNeutral
+         */
+        "color": string;
+        /**
+          * Define separator's direction.  Allowed values:   - vertical   - horizontal  Default: horizontal
+         */
+        "direction": string;
+        /**
+          * Define separator's thickness.  Allowed values:   - thin   - thick  Default: thin
+         */
+        "thickness": string;
+    }
     interface PlmgSidebar {
         /**
           * Invoke this method to collapse the sidebar.
@@ -261,6 +275,12 @@ declare global {
         prototype: HTMLPlmgRadioButtonGroupElement;
         new (): HTMLPlmgRadioButtonGroupElement;
     };
+    interface HTMLPlmgSeparatorElement extends Components.PlmgSeparator, HTMLStencilElement {
+    }
+    var HTMLPlmgSeparatorElement: {
+        prototype: HTMLPlmgSeparatorElement;
+        new (): HTMLPlmgSeparatorElement;
+    };
     interface HTMLPlmgSidebarElement extends Components.PlmgSidebar, HTMLStencilElement {
     }
     var HTMLPlmgSidebarElement: {
@@ -287,6 +307,7 @@ declare global {
         "plmg-page-container": HTMLPlmgPageContainerElement;
         "plmg-radio-button": HTMLPlmgRadioButtonElement;
         "plmg-radio-button-group": HTMLPlmgRadioButtonGroupElement;
+        "plmg-separator": HTMLPlmgSeparatorElement;
         "plmg-sidebar": HTMLPlmgSidebarElement;
         "plmg-sidebar-item": HTMLPlmgSidebarItemElement;
         "plmg-svg-icon": HTMLPlmgSvgIconElement;
@@ -443,6 +464,20 @@ declare namespace LocalJSX {
          */
         "values"?: string[] | string;
     }
+    interface PlmgSeparator {
+        /**
+          * Define separator's color.  Can be any valid CSS color value.  Default is plmgColorBorderNeutral
+         */
+        "color"?: string;
+        /**
+          * Define separator's direction.  Allowed values:   - vertical   - horizontal  Default: horizontal
+         */
+        "direction"?: string;
+        /**
+          * Define separator's thickness.  Allowed values:   - thin   - thick  Default: thin
+         */
+        "thickness"?: string;
+    }
     interface PlmgSidebar {
         /**
           * Define if the item is expanded on startup.
@@ -513,6 +548,7 @@ declare namespace LocalJSX {
         "plmg-page-container": PlmgPageContainer;
         "plmg-radio-button": PlmgRadioButton;
         "plmg-radio-button-group": PlmgRadioButtonGroup;
+        "plmg-separator": PlmgSeparator;
         "plmg-sidebar": PlmgSidebar;
         "plmg-sidebar-item": PlmgSidebarItem;
         "plmg-svg-icon": PlmgSvgIcon;
@@ -529,6 +565,7 @@ declare module "@stencil/core" {
             "plmg-page-container": LocalJSX.PlmgPageContainer & JSXBase.HTMLAttributes<HTMLPlmgPageContainerElement>;
             "plmg-radio-button": LocalJSX.PlmgRadioButton & JSXBase.HTMLAttributes<HTMLPlmgRadioButtonElement>;
             "plmg-radio-button-group": LocalJSX.PlmgRadioButtonGroup & JSXBase.HTMLAttributes<HTMLPlmgRadioButtonGroupElement>;
+            "plmg-separator": LocalJSX.PlmgSeparator & JSXBase.HTMLAttributes<HTMLPlmgSeparatorElement>;
             "plmg-sidebar": LocalJSX.PlmgSidebar & JSXBase.HTMLAttributes<HTMLPlmgSidebarElement>;
             "plmg-sidebar-item": LocalJSX.PlmgSidebarItem & JSXBase.HTMLAttributes<HTMLPlmgSidebarItemElement>;
             "plmg-svg-icon": LocalJSX.PlmgSvgIcon & JSXBase.HTMLAttributes<HTMLPlmgSvgIconElement>;

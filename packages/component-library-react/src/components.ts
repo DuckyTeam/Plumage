@@ -15,6 +15,7 @@ export const PlmgHeader = /*@__PURE__*/createReactComponent<JSX.PlmgHeader, HTML
 export const PlmgPageContainer = /*@__PURE__*/createReactComponent<JSX.PlmgPageContainer, HTMLPlmgPageContainerElement>('plmg-page-container');
 export const PlmgRadioButton = /*@__PURE__*/createReactComponent<JSX.PlmgRadioButton, HTMLPlmgRadioButtonElement>('plmg-radio-button');
 export const PlmgRadioButtonGroup = /*@__PURE__*/createReactComponent<JSX.PlmgRadioButtonGroup, HTMLPlmgRadioButtonGroupElement>('plmg-radio-button-group');
+export const PlmgSeparator = /*@__PURE__*/createReactComponent<JSX.PlmgSeparator, HTMLPlmgSeparatorElement>('plmg-separator');
 export const PlmgSidebar = /*@__PURE__*/createReactComponent<JSX.PlmgSidebar, HTMLPlmgSidebarElement>('plmg-sidebar');
 export const PlmgSidebarItem = /*@__PURE__*/createReactComponent<JSX.PlmgSidebarItem, HTMLPlmgSidebarItemElement>('plmg-sidebar-item');
 export const PlmgSvgIcon = /*@__PURE__*/createReactComponent<JSX.PlmgSvgIcon, HTMLPlmgSvgIconElement>('plmg-svg-icon');
