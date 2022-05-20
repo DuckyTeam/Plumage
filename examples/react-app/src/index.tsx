@@ -86,10 +86,12 @@ ReactDOM.render(
         topActionIcon={'home'}
         topActionLabel={'Top Action'}
         bottomActionText="Click here"
-        bottomButtonAction={() =>
+        onBottomActionClicked={() =>
           console.log('bottomButtonClicked event received')
         }
-        topActionClicked={() => console.log('topActionClicked event received')}
+        onTopActionClicked={() =>
+          console.log('topActionClicked event received')
+        }
       >
         <div slot="slot-1">
           <h1>PlmgCard slot-1</h1>
