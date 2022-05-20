@@ -8,6 +8,7 @@ import {
   PlmgSidebar,
   PlmgSidebarItem,
   PlmgSvgIcon,
+  PlmgSeparator,
 } from '@ducky/plumage-react';
 
 ReactDOM.render(
@@ -39,8 +40,24 @@ ReactDOM.render(
       </PlmgSidebarItem>
     </PlmgSidebar>
     <PlmgHeader slot={'header'}>
-      <div slot={'right'}>MenuItem</div>
+      <div
+        slot={'right'}
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+        }}
+      >
+        <span>Menu Item</span>
+        <PlmgSeparator
+          thickness="thick"
+          direction="vertical"
+          color="#78909C"
+        ></PlmgSeparator>
+        <span>Menu Item 2</span>
+      </div>
     </PlmgHeader>
+
     <div slot={'content'} style={{ padding: '24px' }}>
       <PlmgButton
         onClick={(e: any) => {
@@ -68,13 +85,16 @@ ReactDOM.render(
         topActionIcon={'home'}
         topActionLabel={'Top Action'}
         bottomActionText="Click here"
-        bottomButtonAction={() =>
+        onBottomActionClicked={() =>
           console.log('bottomButtonClicked event received')
         }
-        topActionClicked={() => console.log('topActionClicked event received')}
+        onTopActionClicked={() =>
+          console.log('topActionClicked event received')
+        }
       >
         <div slot="slot-1">
           <h1>PlmgCard slot-1</h1>
+          <PlmgSeparator thickness="thick"></PlmgSeparator>
         </div>
         <div slot="slot-2">
           <h1>PlmgCard slot-2</h1>
