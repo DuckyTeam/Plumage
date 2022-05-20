@@ -38,9 +38,9 @@ export class Tooltip {
   }
 
   /**
-   * Force tooltip to remain visible for demostration pu
+   * Force tooltip to remain visible
    *
-   * Disables event listener
+   * Will disable event listeners
    */
 
   @Prop() forceVisible: boolean = false;
@@ -139,7 +139,7 @@ export class Tooltip {
 
     // ForceVisible prop boolean disables event listener
 
-    if (!this.forceVisible) {
+    if (!this.forceVisible && this.tooltipTargetElement) {
       this.abortTooltipListener = new AbortController();
       this.tooltipTargetElement = document.getElementById(this.targetElementId);
       this.tooltipTargetElement.addEventListener(
@@ -156,12 +156,14 @@ export class Tooltip {
 
       this.tooltipTargetElement.addEventListener(
         'mouseleave',
-        () => (this.isTooltipVisible = false)
+        () => (this.isTooltipVisible = false),
+        { signal: this.abortTooltipListener.signal }
       );
 
       this.tooltipTargetElement.addEventListener(
         'blur',
-        () => (this.isTooltipVisible = false)
+        () => (this.isTooltipVisible = false),
+        { signal: this.abortTooltipListener.signal }
       );
     }
   }

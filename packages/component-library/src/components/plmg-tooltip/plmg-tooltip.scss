@@ -11,10 +11,8 @@
   display: none;
 }
 
-// Variables for development - must be replaced with correct tags
+// Tooltip arrow width
 
-$background-color-neutral: #00545d;
-$background-color-primary: #263238;
 $tooltip-arrow-width: 6px;
 
 // ------------- END Variables -----------------
@@ -24,22 +22,24 @@ $tooltip-arrow-width: 6px;
 
 @mixin background-color {
   &.neutral {
-    background-color: $background-color-neutral;
-    border-color: $background-color-neutral;
+    background-color: tokens.$plmg-color-background-neutral-dark;
+    border-color: tokens.$plmg-color-background-neutral-dark;
+    color: tokens.$plmg-color-text-neutral-dark;
   }
   &.primary {
-    background-color: $background-color-primary;
-    border-color: $background-color-primary;
+    background-color: tokens.$plmg-color-background-primary-strong-active;
+    border-color: tokens.$plmg-color-background-primary-strong-active;
+    color: tokens.$plmg-color-text-neutral-inverted;
   }
 }
 
 @mixin arrow-color {
   &.neutral::after {
-    border-color: $background-color-neutral;
+    border-color: tokens.$plmg-color-background-neutral-dark;
   }
 
   &.primary::after {
-    border-color: $background-color-neutral;
+    border-color: tokens.$plmg-color-background-neutral-dark;
   }
 }
 
@@ -80,7 +80,6 @@ $tooltip-arrow-width: 6px;
   height: auto;
   width: fit-content;
   max-width: 150px;
-  color: tokens.$plmg-color-text-neutral-inverted;
 
   // tooltip visibility
   &.visible {
@@ -100,11 +99,11 @@ $tooltip-arrow-width: 6px;
 
     // Control: Arrow Color
     &.primary::after {
-      border-bottom-color: $background-color-primary;
+      border-bottom-color: tokens.$plmg-color-background-primary-strong-active;
     }
 
     &.neutral::after {
-      border-bottom-color: $background-color-neutral;
+      border-bottom-color: tokens.$plmg-color-background-neutral-dark;
     }
 
     // Control: Arrow Position
@@ -139,10 +138,10 @@ $tooltip-arrow-width: 6px;
 
     // Control: Arrow Color
     &.primary::after {
-      border-top-color: $background-color-primary;
+      border-top-color: tokens.$plmg-color-background-primary-strong-active;
     }
     &.neutral::after {
-      border-top-color: $background-color-neutral;
+      border-top-color: tokens.$plmg-color-background-neutral-dark;
     }
 
     // Control: Arrow Position
@@ -177,10 +176,10 @@ $tooltip-arrow-width: 6px;
 
     // Control: Arrow Color
     &.primary::after {
-      border-right-color: $background-color-primary;
+      border-right-color: tokens.$plmg-color-background-primary-strong-active;
     }
     &.neutral::after {
-      border-right-color: $background-color-neutral;
+      border-right-color: tokens.$plmg-color-background-neutral-dark;
     }
     // Control: Arrow Position
     &.start {
@@ -205,15 +204,16 @@ $tooltip-arrow-width: 6px;
   &.right {
     @extend %shared--tooltip-arrow;
     &::after {
-      left: calc(100% + $tooltip-arrow-width);
+      // 99% to fix a thin line appearing
+      left: calc(99% + $tooltip-arrow-width);
     }
 
     // Arrow Control Color
     &.primary::after {
-      border-left-color: $background-color-primary;
+      border-left-color: tokens.$plmg-color-background-primary-strong-active;
     }
     &.neutral::after {
-      border-left-color: $background-color-neutral;
+      border-left-color: tokens.$plmg-color-background-neutral-dark;
     }
 
     // Arrow Control Position

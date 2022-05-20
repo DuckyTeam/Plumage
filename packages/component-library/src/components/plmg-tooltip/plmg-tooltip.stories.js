@@ -1,4 +1,10 @@
+import { EndOfLineState } from 'typescript';
 import * as Utils from '../../stories/StencilStorybookUtils';
+import {
+  PlmgTooltipArrowSide,
+  PlmgTooltipArrowPosition,
+  PlmgTooltipBgColor,
+} from './plmg-tooltip.types';
 
 export default {
   title: 'Component/Tooltip',
@@ -136,3 +142,29 @@ export const TooltipAbove = (args) => {
   wrapper.innerHTML = htmlContent;
   return wrapper;
 };
+
+export const AllVariations = (args) => {
+  let htmlContent = '';
+  PlmgTooltipBgColor.forEach((bgcolor) => {
+    PlmgTooltipArrowSide.forEach((arrowSide) => {
+      PlmgTooltipArrowPosition.forEach((arrowPosition) => {
+        htmlContent += `
+        <plmg-tooltip force-visible="true" tooltip-title="${bgcolor} ${arrowPosition} ${arrowSide}" bg-color="${bgcolor}" arrow-side="${arrowSide}" arrow-position="${arrowPosition}">
+        </plmg-tooltip>
+        `;
+      });
+    });
+  });
+
+  const el = document.createElement('div');
+  el.innerHTML = htmlContent.trim();
+  el.style.display = 'grid';
+  el.style.gridTemplateColumns = 'repeat(3, 1fr)';
+  el.style.gridTemplateRows = 'repeat(5, 1fr)';
+  el.style.gap = '50px';
+  el.style.justifyContent = 'space-between';
+  el.style['flex-wrap'] = 'wrap';
+  return el;
+};
+
+AllVariations.storyName = 'All variations';

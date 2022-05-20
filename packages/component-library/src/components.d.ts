@@ -190,7 +190,7 @@ export namespace Components {
          */
         "bgColor": PlmgTooltipBgColor;
         /**
-          * Force tooltip to remain visible for demostration pu  Disables event listener
+          * Force tooltip to remain visible  Will disable event listeners
          */
         "forceVisible": boolean;
         /**
@@ -457,7 +457,7 @@ declare namespace LocalJSX {
          */
         "bgColor"?: PlmgTooltipBgColor;
         /**
-          * Force tooltip to remain visible for demostration pu  Disables event listener
+          * Force tooltip to remain visible  Will disable event listeners
          */
         "forceVisible"?: boolean;
         /**
