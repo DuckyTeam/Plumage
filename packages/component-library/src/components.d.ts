@@ -95,6 +95,20 @@ export namespace Components {
          */
         "sidebarExpanded": boolean;
     }
+    interface PlmgSeparator {
+        /**
+          * Define separator's color.  Can be any valid CSS color value.  Default is plmgColorBorderNeutral
+         */
+        "color": string;
+        /**
+          * Define separator's direction.  Allowed values:   - vertical   - horizontal  Default: horizontal
+         */
+        "direction": string;
+        /**
+          * Define separator's thickness.  Allowed values:   - thin   - thick  Default: thin
+         */
+        "thickness": string;
+    }
     interface PlmgSidebar {
         /**
           * Invoke this method to collapse the sidebar.
@@ -187,6 +201,12 @@ declare global {
         prototype: HTMLPlmgPageContainerElement;
         new (): HTMLPlmgPageContainerElement;
     };
+    interface HTMLPlmgSeparatorElement extends Components.PlmgSeparator, HTMLStencilElement {
+    }
+    var HTMLPlmgSeparatorElement: {
+        prototype: HTMLPlmgSeparatorElement;
+        new (): HTMLPlmgSeparatorElement;
+    };
     interface HTMLPlmgSidebarElement extends Components.PlmgSidebar, HTMLStencilElement {
     }
     var HTMLPlmgSidebarElement: {
@@ -210,6 +230,7 @@ declare global {
         "plmg-card": HTMLPlmgCardElement;
         "plmg-header": HTMLPlmgHeaderElement;
         "plmg-page-container": HTMLPlmgPageContainerElement;
+        "plmg-separator": HTMLPlmgSeparatorElement;
         "plmg-sidebar": HTMLPlmgSidebarElement;
         "plmg-sidebar-item": HTMLPlmgSidebarItemElement;
         "plmg-svg-icon": HTMLPlmgSvgIconElement;
@@ -312,6 +333,20 @@ declare namespace LocalJSX {
          */
         "sidebarExpanded"?: boolean;
     }
+    interface PlmgSeparator {
+        /**
+          * Define separator's color.  Can be any valid CSS color value.  Default is plmgColorBorderNeutral
+         */
+        "color"?: string;
+        /**
+          * Define separator's direction.  Allowed values:   - vertical   - horizontal  Default: horizontal
+         */
+        "direction"?: string;
+        /**
+          * Define separator's thickness.  Allowed values:   - thin   - thick  Default: thin
+         */
+        "thickness"?: string;
+    }
     interface PlmgSidebar {
         /**
           * Define if the item is expanded on startup.
@@ -379,6 +414,7 @@ declare namespace LocalJSX {
         "plmg-card": PlmgCard;
         "plmg-header": PlmgHeader;
         "plmg-page-container": PlmgPageContainer;
+        "plmg-separator": PlmgSeparator;
         "plmg-sidebar": PlmgSidebar;
         "plmg-sidebar-item": PlmgSidebarItem;
         "plmg-svg-icon": PlmgSvgIcon;
@@ -392,6 +428,7 @@ declare module "@stencil/core" {
             "plmg-card": LocalJSX.PlmgCard & JSXBase.HTMLAttributes<HTMLPlmgCardElement>;
             "plmg-header": LocalJSX.PlmgHeader & JSXBase.HTMLAttributes<HTMLPlmgHeaderElement>;
             "plmg-page-container": LocalJSX.PlmgPageContainer & JSXBase.HTMLAttributes<HTMLPlmgPageContainerElement>;
+            "plmg-separator": LocalJSX.PlmgSeparator & JSXBase.HTMLAttributes<HTMLPlmgSeparatorElement>;
             "plmg-sidebar": LocalJSX.PlmgSidebar & JSXBase.HTMLAttributes<HTMLPlmgSidebarElement>;
             "plmg-sidebar-item": LocalJSX.PlmgSidebarItem & JSXBase.HTMLAttributes<HTMLPlmgSidebarItemElement>;
             "plmg-svg-icon": LocalJSX.PlmgSvgIcon & JSXBase.HTMLAttributes<HTMLPlmgSvgIconElement>;

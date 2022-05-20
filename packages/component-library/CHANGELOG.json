@@ -2,6 +2,18 @@
   "name": "@ducky/plumage",
   "entries": [
     {
+      "version": "1.1.0",
+      "tag": "@ducky/plumage_v1.1.0",
+      "date": "Mon, 16 May 2022 13:05:01 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Created separator component and defined first props"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.0.2",
       "tag": "@ducky/plumage_v1.0.2",
       "date": "Fri, 06 May 2022 10:06:47 GMT",

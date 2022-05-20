@@ -1,0 +1,54 @@
+@use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
+
+// Common styles to all shadow-DOM components
+// -------------------------------------------------
+:host {
+  height: inherit;
+  width: inherit;
+  display: block;
+}
+
+:host([hidden]) {
+  display: none;
+}
+// ------------- END Common styles -----------------
+
+// Component style
+// -------------------------------------------------
+
+.plmg-separator-container-vertical {
+  display: flex;
+  height: 100%;
+}
+.plmg-separator-container-horizontal {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.plmg-separator {
+  border-radius: tokens.$plmg-border-radius-xl;
+  border: none;
+  margin-block-start: 0;
+  margin-block-end: 0;
+
+  &.horizontal {
+    width: 100%;
+    &.thin {
+      height: tokens.$plmg-border-width-s;
+    }
+    &.thick {
+      height: tokens.$plmg-border-width-m;
+    }
+  }
+
+  &.vertical {
+    &.thin {
+      width: tokens.$plmg-border-width-s;
+    }
+    &.thick {
+      width: tokens.$plmg-border-width-m;
+    }
+  }
+}
+// ------------- END Component style ---------------
