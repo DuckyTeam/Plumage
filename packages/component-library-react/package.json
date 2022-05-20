@@ -10,8 +10,8 @@
   "scripts": {
     "build": "npm run clean && npm run build:esm && npm run build:cjs",
     "clean": "rm -rf dist",
-    "build:cjs": "tsc -p . --module es2015 --outDir dist/esm",
-    "build:esm": "tsc -p . --module commonjs --outDir dist/cjs"
+    "build:esm": "tsc -p . --module es2015 --outDir dist/esm",
+    "build:cjs": "tsc -p . --module commonjs --outDir dist/cjs"
   },
   "main": "./dist/cjs/index.js",
   "types": "./dist/esm/index.d.ts",
