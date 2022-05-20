@@ -9,6 +9,7 @@ import {
   PlmgSidebarItem,
   PlmgSvgIcon,
   PlmgSeparator,
+  PlmgTooltip,
 } from '@ducky/plumage-react';
 
 ReactDOM.render(
@@ -98,6 +99,13 @@ ReactDOM.render(
           <h1>PlmgCard slot-2</h1>
         </div>
       </PlmgCard>
+      <p id="targetelement">hover me</p>
+      <PlmgTooltip
+        targetElementId="targetelement"
+        arrowSide="top"
+        arrowPosition="start"
+        tooltipTitle="Bottom with arrow start"
+      ></PlmgTooltip>
     </div>
   </PlmgPageContainer>,
   document.getElementById('root')
