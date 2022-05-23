@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage-react",
+      "comment": "Add readme",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage-react"
+}

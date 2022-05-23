@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "Add instruction to readme",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
