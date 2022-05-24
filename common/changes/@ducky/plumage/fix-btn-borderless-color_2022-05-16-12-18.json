@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "Fix background color for borderless btton on hover",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
