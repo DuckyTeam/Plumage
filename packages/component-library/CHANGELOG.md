@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Mon, 23 May 2022 05:27:05 GMT and should not be manually modified.
+This log was last generated on Tue, 24 May 2022 12:34:33 GMT and should not be manually modified.
+
+## 1.1.2
+Tue, 24 May 2022 12:34:33 GMT
+
+### Patches
+
+- Fix SidebarItem background and outline
 
 ## 1.1.1
 Mon, 23 May 2022 05:27:05 GMT
