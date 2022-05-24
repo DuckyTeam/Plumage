@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Tue, 24 May 2022 12:34:33 GMT and should not be manually modified.
+This log was last generated on Tue, 24 May 2022 12:56:59 GMT and should not be manually modified.
+
+## 1.1.3
+Tue, 24 May 2022 12:56:59 GMT
+
+### Patches
+
+- Fix background color for borderless btton on hover
 
 ## 1.1.2
 Tue, 24 May 2022 12:34:33 GMT
