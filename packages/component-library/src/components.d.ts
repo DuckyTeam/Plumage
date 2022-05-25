@@ -161,6 +161,25 @@ export namespace Components {
          */
         "text": string;
     }
+    interface PlmgSlider {
+        "marks": number;
+        /**
+          * Define maximum value  Default: 100
+         */
+        "maxValue": number;
+        /**
+          * Define minimum value  Default: 0
+         */
+        "minValue": number;
+        /**
+          * Define step number  Can be any number  If no step provided the slider is continous  If step provided the slider is discrete
+         */
+        "step": number;
+        /**
+          * Define whether thumb label is visible  Default: Visible
+         */
+        "thumbLabel": boolean;
+    }
     interface PlmgSvgIcon {
         /**
           * Define icon's color.  Can be any valid CSS color value.  By default, the icon will have the same color as the parent's element.
@@ -219,6 +238,12 @@ declare global {
         prototype: HTMLPlmgSidebarItemElement;
         new (): HTMLPlmgSidebarItemElement;
     };
+    interface HTMLPlmgSliderElement extends Components.PlmgSlider, HTMLStencilElement {
+    }
+    var HTMLPlmgSliderElement: {
+        prototype: HTMLPlmgSliderElement;
+        new (): HTMLPlmgSliderElement;
+    };
     interface HTMLPlmgSvgIconElement extends Components.PlmgSvgIcon, HTMLStencilElement {
     }
     var HTMLPlmgSvgIconElement: {
@@ -233,6 +258,7 @@ declare global {
         "plmg-separator": HTMLPlmgSeparatorElement;
         "plmg-sidebar": HTMLPlmgSidebarElement;
         "plmg-sidebar-item": HTMLPlmgSidebarItemElement;
+        "plmg-slider": HTMLPlmgSliderElement;
         "plmg-svg-icon": HTMLPlmgSvgIconElement;
     }
 }
@@ -395,6 +421,25 @@ declare namespace LocalJSX {
          */
         "text"?: string;
     }
+    interface PlmgSlider {
+        "marks"?: number;
+        /**
+          * Define maximum value  Default: 100
+         */
+        "maxValue"?: number;
+        /**
+          * Define minimum value  Default: 0
+         */
+        "minValue"?: number;
+        /**
+          * Define step number  Can be any number  If no step provided the slider is continous  If step provided the slider is discrete
+         */
+        "step"?: number;
+        /**
+          * Define whether thumb label is visible  Default: Visible
+         */
+        "thumbLabel"?: boolean;
+    }
     interface PlmgSvgIcon {
         /**
           * Define icon's color.  Can be any valid CSS color value.  By default, the icon will have the same color as the parent's element.
@@ -417,6 +462,7 @@ declare namespace LocalJSX {
         "plmg-separator": PlmgSeparator;
         "plmg-sidebar": PlmgSidebar;
         "plmg-sidebar-item": PlmgSidebarItem;
+        "plmg-slider": PlmgSlider;
         "plmg-svg-icon": PlmgSvgIcon;
     }
 }
@@ -431,6 +477,7 @@ declare module "@stencil/core" {
             "plmg-separator": LocalJSX.PlmgSeparator & JSXBase.HTMLAttributes<HTMLPlmgSeparatorElement>;
             "plmg-sidebar": LocalJSX.PlmgSidebar & JSXBase.HTMLAttributes<HTMLPlmgSidebarElement>;
             "plmg-sidebar-item": LocalJSX.PlmgSidebarItem & JSXBase.HTMLAttributes<HTMLPlmgSidebarItemElement>;
+            "plmg-slider": LocalJSX.PlmgSlider & JSXBase.HTMLAttributes<HTMLPlmgSliderElement>;
             "plmg-svg-icon": LocalJSX.PlmgSvgIcon & JSXBase.HTMLAttributes<HTMLPlmgSvgIconElement>;
         }
     }
