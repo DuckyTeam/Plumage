@@ -10,7 +10,7 @@ describe('plmg-radio-button', () => {
     expect(page.root).toEqualHtml(`
       <plmg-radio-button>
         <div class="radio-button-wrapper">
-          <input type="radio">
+          <input class="plmg-radio-button" type="radio">
           <label></label>
         </div>
       </plmg-radio-button>

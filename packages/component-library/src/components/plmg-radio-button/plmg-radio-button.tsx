@@ -66,8 +66,25 @@ export class RadioButton {
       throw new Error('highlighted: must be boolean');
   }
 
+  /**
+   * Define radio button's required status
+   *
+   * Allowed values:
+   *   - true
+   *   - false
+   *
+   * Default: false
+   */
+  @Prop() required: boolean = false;
+  @Watch('required')
+  validatesRequired(newValue: boolean) {
+    if (typeof newValue !== 'boolean')
+      throw new Error('required: must be boolean');
+  }
+
   render() {
     const inputClasses = {
+      'plmg-radio-button': true,
       large: this.size === 'large',
       highlighted: this.highlighted,
     };
@@ -84,6 +101,7 @@ export class RadioButton {
           name={this.name}
           value={this.value}
           class={inputClasses}
+          required={this.required}
           onMouseDown={(e) => e.preventDefault()}
         />
         <label

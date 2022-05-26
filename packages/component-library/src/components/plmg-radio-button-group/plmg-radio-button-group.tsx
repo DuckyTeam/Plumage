@@ -73,10 +73,6 @@ export class RadioButtonGroup {
   @Prop() values: string[] | string;
   @State() parsedValues: string[];
 
-  componentWillLoad() {
-    this.parseValuesProp(this.values);
-  }
-
   @Watch('values')
   parseValuesProp(newValue: string | string[]) {
     if (newValue) {
@@ -85,6 +81,7 @@ export class RadioButtonGroup {
         : JSON.parse(newValue);
     }
   }
+  @Watch('values')
   validatesValues(newValue: string[] | string) {
     if (
       typeof newValue !== 'object' ||
@@ -116,13 +113,17 @@ export class RadioButtonGroup {
       throw new Error('errorMessage: must be a string if provided');
   }
 
+  componentWillLoad() {
+    this.parseValuesProp(this.values);
+  }
+
   render() {
     const legendClasses = {
       large: this.size === 'large',
     };
 
     return (
-      <fieldset>
+      <fieldset class={'plmg-radio-button-group'}>
         <legend class={legendClasses}>
           {this.label}
           {this.required && <span>*</span>}
@@ -133,6 +134,7 @@ export class RadioButtonGroup {
             name={this.name}
             size={this.size}
             highlighted={!!this.errorMessage}
+            required={this.required}
           />
         ))}
         {!!this.errorMessage && (

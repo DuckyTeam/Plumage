@@ -11,6 +11,7 @@
 | ------------- | ------------- | --------------------------------------------------------------------------------------------------------------- | --------------------- | ----------- |
 | `highlighted` | `highlighted` | Define radio button's highlighted status (in case of error)  Allowed values:   - true   - false  Default: false | `boolean`             | `false`     |
 | `name`        | `name`        | Define form's name'                                                                                             | `string`              | `undefined` |
+| `required`    | `required`    | Define radio button's required status  Allowed values:   - true   - false  Default: false                       | `boolean`             | `false`     |
 | `size`        | `size`        | Define radio button's size.  Allowed values:   - medium   - large  Default: medium                              | `"large" \| "medium"` | `'medium'`  |
 | `value`       | `value`       | Define radio button's value'                                                                                    | `string`              | `undefined` |
 

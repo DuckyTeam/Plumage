@@ -117,6 +117,10 @@ export namespace Components {
          */
         "name": string;
         /**
+          * Define radio button's required status  Allowed values:   - true   - false  Default: false
+         */
+        "required": boolean;
+        /**
           * Define radio button's size.  Allowed values:   - medium   - large  Default: medium
          */
         "size": PlmgRadioButtonSize;
@@ -429,6 +433,10 @@ declare namespace LocalJSX {
           * Define form's name'
          */
         "name"?: string;
+        /**
+          * Define radio button's required status  Allowed values:   - true   - false  Default: false
+         */
+        "required"?: boolean;
         /**
           * Define radio button's size.  Allowed values:   - medium   - large  Default: medium
          */
