@@ -11,6 +11,9 @@ export default {
     ['max-value']: {
       control: { type: 'number' },
     },
+    ['default-value']: {
+      control: { type: 'number' },
+    },
     marks: {
       control: { type: 'number' },
     },
@@ -23,7 +26,14 @@ export default {
   },
 };
 
-const PROPS = ['step', 'thumb-label', 'min-value', 'max-value', 'marks'];
+const PROPS = [
+  'step',
+  'thumb-label',
+  'min-value',
+  'max-value',
+  'default-value',
+  'marks',
+];
 const EVENTS = [];
 const CSS_VARS = [];
 const SLOTS = [];
@@ -42,6 +52,7 @@ Primary.storyName = 'Slider';
 Primary.args = {
   ['min-value']: '0',
   ['max-value']: '100',
+  ['default-value']: '0',
   ['marks']: '5',
   ['thumb-label']: true,
   step: 5,

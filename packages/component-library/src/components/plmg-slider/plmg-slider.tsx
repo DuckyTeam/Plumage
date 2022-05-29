@@ -1,4 +1,8 @@
 import { Component, h, Watch, Prop, State } from '@stencil/core';
+import {
+  plmgColorBorderNeutralWeak,
+  plmgColorBackgroundPrimaryStrong,
+} from '@ducky/plumage-tokens';
 
 @Component({
   tag: 'plmg-slider',
@@ -14,6 +18,19 @@ export class Slider {
   @Prop() minValue: number = 0;
   @Watch('minValue')
   onMinValue(newValue: number) {
+    if (typeof newValue !== 'number')
+      throw new Error('minValue must be a number');
+    this.minValue = newValue;
+  }
+
+  /**
+   * Define default value
+   *
+   * Default: 0
+   */
+  @Prop() defaultValue: number = 0;
+  @Watch('defaultValue')
+  onDefaultValue(newValue: number) {
     if (typeof newValue !== 'number')
       throw new Error('minValue must be a number');
     this.minValue = newValue;
@@ -69,7 +86,8 @@ export class Slider {
   @Prop() step: number = 10;
   @Watch('step')
   onStep(newValue: number) {
-    if (typeof newValue !== 'number') throw new Error('step must be a number');
+    if (typeof newValue !== 'number' || newValue <= 0)
+      throw new Error('step must be a positive integer');
     this.isDiscrete = true;
     this.step = newValue;
   }
@@ -98,7 +116,7 @@ export class Slider {
   @State() markLabels: Array<number>;
 
   componentWillLoad() {
-    this.markLabels = this.setMarkLabels();
+    this.step !== 0 && (this.markLabels = this.setMarkLabels());
   }
 
   /**
@@ -109,6 +127,8 @@ export class Slider {
   handleChange(event) {
     this.currentValue = event.target.value;
   }
+
+  // create an object with label names and relative positions
 
   // @EventEmitter
   // need to emit value somewhere ...
@@ -192,15 +212,26 @@ export class Slider {
   // open() { ... }
 
   render() {
+    const thumbClasses = {
+      'plmg-slider-thumb-label': true,
+      hidden: this.thumbLabel,
+    };
+
     return (
-      // <div class={'plmg-slider-container'}>
-      <div class={'plmg-slider-slider-input-container'}>
+      <div class={'plmg-slider-component-container'}>
+        <div class={'plmg-slider-thumb-label-container'}>
+          <output
+            id="output-range"
+            style={{ left: this.updateThumbLabelPosition() }}
+            class={thumbClasses}
+          >
+            {this.currentValue}
+          </output>
+        </div>
         <div class={'plmg-slider-track-rail-container'}>
-          <label htmlFor="input-range"></label>
           <input
             style={{ background: this.setBackgroundProgressFill() }}
-            // name={rangeName}
-            class="plmg-slider-input-value"
+            // class="plmg-slider-input-value"
             step={this.step}
             type="range"
             id="input-range"
@@ -209,69 +240,70 @@ export class Slider {
             value={this.currentValue}
             onInput={(event) => this.handleChange(event)}
           />
-          <label htmlFor="output-range"></label>
-          {this.thumbLabel && (
-            <output
-              id="output-range"
-              style={{ left: this.updateThumbLabelPosition() }}
-              class={'plmg-slider-thumb-label'}
-            >
-              {this.currentValue}
-            </output>
-          )}
-          <div class={'plmg-slider-tick-labels-container'}>
-            {this.markLabels.map((item, index) => (
-              <span key={index}>{item}</span>
-            ))}
-          </div>
         </div>
-        <label htmlFor="input-field"></label>
-        <input
-          class={'input-field'}
-          type="number"
-          step={this.step}
-          min={this.minValue}
-          max={this.maxValue}
-          value={this.currentValue}
-          onInput={(event) => this.handleChange(event)}
-        />
+        <div class={'plmg-slider-mark-labels-container'}>
+          {this.markLabels.map((item, index) => (
+            <span
+              class="plmg-slider-mark-label-item"
+              style={{
+                left: `${
+                  ((item - this.minValue) / (this.maxValue - this.minValue)) *
+                  100
+                }%`,
+              }}
+              key={index}
+            >
+              {item}
+            </span>
+          ))}
+        </div>
+        <div class={'plmg-slider-input-field-container'}>
+          <input
+            type="number"
+            step={this.step}
+            min={this.minValue}
+            max={this.maxValue}
+            value={this.currentValue}
+            onInput={(event) => this.handleChange(event)}
+          />
+        </div>
       </div>
-      // </div>
     );
   }
 
   private setBackgroundProgressFill(): string {
-    // DOES NOT WORK RIGHT //
-    const newValue = Number(
-      ((this.currentValue - this.minValue) * this.maxValue) /
-        (this.maxValue - this.minValue)
-    );
-    return `linear-gradient(to right, #008290 0%, #008290 ${newValue}%, #BFCBD1 ${newValue}%, #BFCBD1 100%)`;
+    const FILL_PERCENT =
+      (Number(this.currentValue - this.minValue) /
+        (this.maxValue - this.minValue)) *
+      100;
+    return `linear-gradient(to right, 
+      ${plmgColorBackgroundPrimaryStrong} 0%,
+      ${plmgColorBackgroundPrimaryStrong} ${FILL_PERCENT}%,
+      ${plmgColorBorderNeutralWeak} ${FILL_PERCENT}%, 
+      ${plmgColorBorderNeutralWeak} 100%)`;
   }
 
   private setMarkLabels(): Array<number> {
-    // REFACTOR //
-    console.log(this.maxValue, this.minValue, this.step, this.marks);
-    const STEP_SIZE = (this.maxValue - this.minValue) / this.marks;
-    let tickmarks = [];
-
-    for (let i = 0; i <= this.marks; i++) {
-      if (i === 0 && this.minValue === 0) {
-        tickmarks.push(this.minValue);
-      } else {
-        const newValue = Math.round(STEP_SIZE * i) + this.minValue;
-        tickmarks.push(newValue);
-      }
+    let tickArray = [this.minValue];
+    let accumulator = this.step + this.minValue;
+    while (accumulator < this.maxValue) {
+      tickArray.push(accumulator);
+      console.log('acc', accumulator);
+      const pos =
+        ((accumulator - this.minValue) / (this.maxValue / this.minValue)) * 100;
+      console.log(pos);
+      accumulator += this.step;
     }
-    return tickmarks;
+    tickArray.push(this.maxValue);
+    return tickArray;
   }
 
   private updateThumbLabelPosition(): string {
-    const minVal = this.minValue ? this.minValue : 0;
-    const maxVal = this.maxValue ? this.maxValue : 100;
-    const newValue = Number(
-      ((this.currentValue - minVal) * 100) / (maxVal - minVal)
-    );
-    return `calc(${newValue}% + (${8 - newValue * 0.15}px))`;
+    const THUMB_POSITION =
+      (Number(this.currentValue - this.minValue) /
+        (this.maxValue - this.minValue)) *
+      100;
+    const THUMB_LABEL_WIDTH = 6;
+    return `calc(${THUMB_POSITION}% - ${THUMB_LABEL_WIDTH / 2}px)`;
   }
 }

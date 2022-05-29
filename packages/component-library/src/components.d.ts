@@ -162,6 +162,10 @@ export namespace Components {
         "text": string;
     }
     interface PlmgSlider {
+        /**
+          * Define default value  Default: 0
+         */
+        "defaultValue": number;
         "marks": number;
         /**
           * Define maximum value  Default: 100
@@ -172,7 +176,7 @@ export namespace Components {
          */
         "minValue": number;
         /**
-          * Define step number  Can be any number  If no step provided the slider is continous  If step provided the slider is discrete
+          * Define step number  Can be any number  If no step provided the slider is continous If step provided the slider is discrete
          */
         "step": number;
         /**
@@ -422,6 +426,10 @@ declare namespace LocalJSX {
         "text"?: string;
     }
     interface PlmgSlider {
+        /**
+          * Define default value  Default: 0
+         */
+        "defaultValue"?: number;
         "marks"?: number;
         /**
           * Define maximum value  Default: 100
@@ -432,7 +440,7 @@ declare namespace LocalJSX {
          */
         "minValue"?: number;
         /**
-          * Define step number  Can be any number  If no step provided the slider is continous  If step provided the slider is discrete
+          * Define step number  Can be any number  If no step provided the slider is continous If step provided the slider is discrete
          */
         "step"?: number;
         /**

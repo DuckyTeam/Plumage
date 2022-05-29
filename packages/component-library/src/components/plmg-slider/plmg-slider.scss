@@ -1,168 +1,135 @@
 @use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
 
-// Mixins
-// -------------------------------------------------
-@mixin set-border($border-color, $border-width: tokens.$plmg-border-width-s) {
-  border: $border-width solid $border-color;
-}
-// ------------- END Mixins ------------------------
+// // Mixins
+// // -------------------------------------------------
+// @mixin set-border($border-color, $border-width: tokens.$plmg-border-width-s) {
+//   border: $border-width solid $border-color;
+// }
+// // ------------- END Mixins ------------------------
 
 // Component style
 // -------------------------------------------------
 
-.plmg-slider-slider-input-container {
+.plmg-slider-component-container {
+  display: grid;
   width: 100%;
-  position: relative;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 24px;
+  grid-row-gap: 24px;
+
+  grid-template-areas:
+    'thumb input'
+    'trackrail input'
+    'marklabels input';
+}
+.plmg-slider-component-container
+  .plmg-slider-container
+  .plmg-slider-track-rail-container
+  .plmg-slider-mark-labels-container
+  .plmg-slider-input-field-container {
+  width: 100%;
   display: flex;
-  margin-top: 2rem;
-  align-items: center;
-  color: #888;
+}
+.plmg-slider-thumb-label-container {
+  grid-area: thumb;
 }
 
 .plmg-slider-track-rail-container {
-  width: 100%;
+  grid-area: trackrail;
   position: relative;
-  color: #888;
 }
 
-.plmg-slider-tick-labels-container {
-  display: flex;
-  justify-content: space-between;
+.plmg-slider-mark-labels-container {
+  grid-area: marklabels;
+  position: relative;
 }
 
-// Input number
-
-input[type='number'] {
-  height: 100%;
-  border: 1px solid #bfcbd1;
-  padding: 12px 16px;
-  color: #263238;
-  outline: none;
-  box-shadow: inset 1px 2px 4px rgba(38, 50, 56, 0.16);
-  border-radius: 4px;
-  margin-left: 20px;
-  font-size: 18px;
-  margin-right: 10px;
+.plmg-slider-input-field-container {
+  grid-area: input;
+  justify-self: end;
 }
 
-// Thumb Label
+.plmg-slider-mark-labels-container .plmg-slider-thumb-label-container {
+  position: relative;
+}
+
+.plmg-slider-track-rail-container {
+  input[type='range'] {
+    background: tokens.$plmg-color-background-neutral;
+    height: 4px;
+    width: 100%;
+    border-radius: 3px;
+    outline: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    margin: 0;
+    padding-right: 3px;
+  }
+  input[type='range']::-moz-range-track {
+    height: 6px;
+    border: none;
+    border-radius: 3px;
+  }
+}
 
 .plmg-slider-thumb-label {
-  background: #00545d;
-  color: white;
+  background: tokens.$plmg-color-background-primary-strong;
+  color: tokens.$plmg-color-text-neutral-inverted;
   padding: 4px 8px;
-  position: absolute;
-  top: -75%;
   border-radius: 4px;
-  left: 50%;
-  transform: translate(-50%);
+  position: relative;
+
+  &.hidden {
+    visibility: hidden;
+  }
+
+  input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+  }
+  input[type='range']::-moz-range-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+  }
+
+  // Create downarroww
+  &::after {
+    content: '';
+    position: absolute;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid tokens.$plmg-color-background-primary-strong;
+    top: 100%;
+    margin-left: calc(-50% + 3px);
+  }
 }
-// down arrow
-.plmg-slider-thumb-label::after {
-  content: '';
+
+.plmg-slider-mark-label-item {
   position: absolute;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-top: 6px solid #00545d;
-  top: 100%;
-  margin-left: calc(-50% + 3px);
+  text-align: center;
 }
 
-// Input range slider
-
-input[type='range'] {
-  width: 100%;
-  border-radius: 5px;
-  outline: none;
-  -webkit-appearance: none;
-  cursor: pointer;
-}
-
-input[type='range']::-webkit-slider-runnable-track {
-  height: 6px;
-  border: none;
-  border-radius: 3px;
-}
-
-// targets the track in Firefox
-input[type='range']::-moz-range-track {
-  height: 6px;
-  border: none;
-  border-radius: 3px;
-}
-
-/// targets the thumb in Chrome, Safari, Opera and Edge
-input[type='range']::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  border: none;
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  background: #008290;
-  // margin-top = (track height in pixels / 2) - (thumb height in pixels /2)
-  margin-top: calc(3px - 10px);
-}
-
-/// targets the thumb in Firefox
-input[type='range']::-moz-range-thumb {
-  -webkit-appearance: none;
-  border: none;
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  background: #008290;
-  margin-top: -4px;
-  margin-top: calc(3px - 10px);
+.plmg-slider-input-field-container {
+  input[type='number'] {
+    box-sizing: border-box;
+    border: 1px solid tokens.$plmg-color-border-neutral-weak;
+    padding: 12px 16px;
+    background-color: tokens.$plmg-color-background-neutral;
+    color: #263238;
+    outline: none;
+    box-shadow: tokens.$plmg-shadow-inner-s;
+    border-radius: 4px;
+    font-size: 18px;
+  }
 }
 
 // Controls
-
-// States //
-
-/* ---Hover --- */
-
-input[type='range']:hover {
-  outline: none;
-}
-
-input[type='range']:hover::-webkit-slider-thumb {
-  outline: 10px solid hsl(186, 100%, 33%, 0.2);
-}
-
-input[type='range']:hover::-moz-range-thumb {
-  outline: 10px solid hsl(186, 100%, 33%, 0.2);
-}
-
-/* --- Focus --- */
-
-// Reset Chrome and Safari's default focus styles
-input[type='range']:focus {
-  outline: none;
-}
-
-// Chrome and Safari, Edge, Opera
-input[type='range']:focus::-webkit-slider-thumb {
-  outline: 4px solid #ffad33;
-}
-
-input[type='range']:focus::-moz-range-thumb {
-  outline: 4px solid #ffad33;
-}
-
-/* --- Active --- */
-
-// Reset Chrome and Safari's default focus styles
-input[type='range']:active {
-  outline: none;
-}
-
-// Chrome and Safari, Edge, Opera
-input[type='range']:active::-webkit-slider-thumb {
-  outline: 10px solid hsl(186, 100%, 33%, 0.4);
-}
-
-input[type='range']:active::-moz-range-thumb {
-  outline: 10px solid hsl(186, 100%, 33%, 0.4);
-}
 
 // ------------- END Component style ---------------
