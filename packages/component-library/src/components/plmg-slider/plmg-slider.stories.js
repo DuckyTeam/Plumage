@@ -15,7 +15,7 @@ export default {
       control: { type: 'number' },
     },
     marks: {
-      control: { type: 'number' },
+      control: { type: 'boolean' },
     },
     ['thumb-label']: {
       control: { type: 'boolean' },
@@ -23,16 +23,20 @@ export default {
     step: {
       control: { type: 'number' },
     },
+    ['custom-marks']: {
+      control: { type: 'text' },
+    },
   },
 };
 
 const PROPS = [
   'step',
-  'thumb-label',
   'min-value',
   'max-value',
   'default-value',
   'marks',
+  'thumb-label',
+  'custom-marks',
 ];
 const EVENTS = [];
 const CSS_VARS = [];
@@ -52,10 +56,28 @@ Primary.storyName = 'Slider';
 Primary.args = {
   ['min-value']: '0',
   ['max-value']: '100',
-  ['default-value']: '0',
-  ['marks']: '5',
-  ['thumb-label']: true,
+  ['default-value']: '20',
+  marks: true,
+  ['thumb-label']: false,
   step: 5,
+  ['custom-marks']: [
+    {
+      value: 0,
+      label: '0°C',
+    },
+    {
+      value: 20,
+      label: '20°C',
+    },
+    {
+      value: 37,
+      label: '37°C',
+    },
+    {
+      value: 100,
+      label: '100°C',
+    },
+  ],
 };
 
 export const All = (args) => {

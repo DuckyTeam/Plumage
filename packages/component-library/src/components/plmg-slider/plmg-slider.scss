@@ -14,48 +14,26 @@
   display: grid;
   width: 100%;
   grid-template-columns: 1fr auto;
-  grid-template-rows: repeat(3, 1fr);
-  grid-column-gap: 24px;
-  grid-row-gap: 24px;
+  column-gap: 24px;
+  row-gap: 8px;
+  grid-template-rows: auto;
+  font-family: tokens.$plmg-font-family-sans;
+  font-weight: normal;
+  flex-direction: column;
+  color: tokens.$plmg-color-text-neutral;
 
   grid-template-areas:
-    'thumb input'
-    'trackrail input'
-    'marklabels input';
-}
-.plmg-slider-component-container
-  .plmg-slider-container
-  .plmg-slider-track-rail-container
-  .plmg-slider-mark-labels-container
-  .plmg-slider-input-field-container {
-  width: 100%;
-  display: flex;
-}
-.plmg-slider-thumb-label-container {
-  grid-area: thumb;
+    'thumblabel inputfield'
+    'trackrail inputfield'
+    'marklabels .';
 }
 
 .plmg-slider-track-rail-container {
   grid-area: trackrail;
   position: relative;
-}
 
-.plmg-slider-mark-labels-container {
-  grid-area: marklabels;
-  position: relative;
-}
-
-.plmg-slider-input-field-container {
-  grid-area: input;
-  justify-self: end;
-}
-
-.plmg-slider-mark-labels-container .plmg-slider-thumb-label-container {
-  position: relative;
-}
-
-.plmg-slider-track-rail-container {
-  input[type='range'] {
+  input {
+    font-size: 18px;
     background: tokens.$plmg-color-background-neutral;
     height: 4px;
     width: 100%;
@@ -65,59 +43,118 @@
     cursor: pointer;
     margin: 0;
     padding-right: 3px;
+
+    &:hover &:focus &:active {
+      outline: none;
+    }
+
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      border: none;
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      background: tokens.$plmg-color-background-primary-strong;
+      top: 10px;
+      left: 10px;
+      outline: 10px solid hsl(186, 100%, 33%, 0);
+      transition: outline 0.2s;
+
+      &:hover {
+        outline: 10px solid hsl(186, 100%, 33%, 0.2);
+      }
+      &:focus-visible {
+        outline: 4px solid #ffad33;
+      }
+      &:active {
+        outline: 10px solid hsl(186, 100%, 33%, 0.4);
+      }
+    }
   }
-  input[type='range']::-moz-range-track {
+
+  input::-moz-range-track {
     height: 6px;
     border: none;
     border-radius: 3px;
+
+    &:hover {
+      outline: none;
+    }
+
+    &::-moz-range-thumb {
+      -webkit-appearance: none;
+      border: none;
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      background: #008290;
+
+      &:hover {
+        outline: 10px solid hsl(186, 100%, 33%, 0.2);
+      }
+      &:focus-visible {
+        outline: 4px solid #ffad33;
+      }
+      &:active {
+        outline: 10px solid hsl(186, 100%, 33%, 0.4);
+      }
+    }
   }
 }
 
-.plmg-slider-thumb-label {
-  background: tokens.$plmg-color-background-primary-strong;
-  color: tokens.$plmg-color-text-neutral-inverted;
-  padding: 4px 8px;
-  border-radius: 4px;
+.plmg-slider-thumb-label-container {
+  grid-area: thumblabel;
   position: relative;
+  height: 26px;
 
-  &.hidden {
-    visibility: hidden;
-  }
-
-  input[type='range']::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    border: none;
-    height: 20px;
-    width: 20px;
-    border-radius: 50%;
-  }
-  input[type='range']::-moz-range-thumb {
-    -webkit-appearance: none;
-    border: none;
-    height: 20px;
-    width: 20px;
-    border-radius: 50%;
-  }
-
-  // Create downarroww
-  &::after {
-    content: '';
+  .plmg-slider-thumb-label {
+    left: 50%;
+    transform: translateX(-50%);
+    background: tokens.$plmg-color-background-primary-strong;
+    color: tokens.$plmg-color-text-neutral-inverted;
+    padding: 4px 8px;
+    border-radius: 4px;
     position: absolute;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-top: 6px solid tokens.$plmg-color-background-primary-strong;
-    top: 100%;
-    margin-left: calc(-50% + 3px);
+    text-align: center;
+
+    &.hidden {
+      visibility: hidden;
+    }
+
+    // Create downarroww
+    &::after {
+      content: '';
+      position: absolute;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 6px solid tokens.$plmg-color-background-primary-strong;
+      top: 100%;
+      margin-left: calc(-50% + 3px);
+    }
   }
 }
 
-.plmg-slider-mark-label-item {
-  position: absolute;
-  text-align: center;
+.plmg-slider-mark-labels-container {
+  width: 100%;
+  display: flex;
+  font-size: 12px;
+  line-height: 18px;
+  justify-content: space-between;
+  height: auto;
+  overflow: hidden;
+
+  &.plmg-slider-mark-label-item:before {
+    content: '';
+    width: 0;
+    height: auto;
+    text-indent: 0;
+  }
 }
 
 .plmg-slider-input-field-container {
-  input[type='number'] {
+  grid-area: inputfield;
+
+  input {
     box-sizing: border-box;
     border: 1px solid tokens.$plmg-color-border-neutral-weak;
     padding: 12px 16px;
