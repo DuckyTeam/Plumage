@@ -238,7 +238,7 @@ export class Slider {
           <input
             style={{ background: this.setBackgroundProgressFill() }}
             class="plmg-slider-input"
-            step={this.isDiscrete && this.step}
+            step={this.step}
             type="range"
             id="input-range"
             min={this.minValue}
@@ -262,7 +262,7 @@ export class Slider {
         <div class={'plmg-slider-input-field-container'}>
           <input
             type="number"
-            step={this.isDiscrete && this.step}
+            step={this.step}
             min={this.minValue}
             max={this.maxValue}
             value={this.currentValue}

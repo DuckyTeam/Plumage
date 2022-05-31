@@ -163,12 +163,12 @@ export namespace Components {
     }
     interface PlmgSlider {
         /**
-          * Define   Default: 100
+          * Define  Default: 100
          */
         "customMarks": {
-     label: string, 
-     value: number
-    }[];
+    label: string;
+    value: number;
+  }[];
         /**
           * Define default value  Default: 0  Ignored if default value exceeds maxValue
          */
@@ -434,12 +434,12 @@ declare namespace LocalJSX {
     }
     interface PlmgSlider {
         /**
-          * Define   Default: 100
+          * Define  Default: 100
          */
         "customMarks"?: {
-     label: string, 
-     value: number
-    }[];
+    label: string;
+    value: number;
+  }[];
         /**
           * Define default value  Default: 0  Ignored if default value exceeds maxValue
          */
