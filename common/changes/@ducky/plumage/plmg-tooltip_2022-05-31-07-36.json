@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "Tooltip PR requested changes",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
