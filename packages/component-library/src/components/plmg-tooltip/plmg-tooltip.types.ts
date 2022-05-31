@@ -1,25 +1,17 @@
-export const PlmgTooltipBgColor = ['neutral', 'primary'] as const;
-export type PlmgTooltipBgColor = typeof PlmgTooltipBgColor[number];
-export function isPlmgTooltipBgColor(x: any): x is PlmgTooltipBgColor {
-  return PlmgTooltipBgColor.includes(x);
+export const backgroundColors = ['neutral', 'primary'] as const;
+export type backgroundColors = typeof backgroundColors[number];
+export function isBackgroundColor(x: any): x is backgroundColors {
+  return backgroundColors.includes(x);
 }
 
-export const PlmgTooltipArrowSide = [
-  'none',
-  'left',
-  'right',
-  'top',
-  'bottom',
-] as const;
-export type PlmgTooltipArrowSide = typeof PlmgTooltipArrowSide[number];
-export function isPlmgTooltipArrowSide(x: any): x is PlmgTooltipArrowSide {
-  return PlmgTooltipArrowSide.includes(x);
+export const arrowSides = ['none', 'left', 'right', 'top', 'bottom'] as const;
+export type arrowSides = typeof arrowSides[number];
+export function isArrowSide(x: any): x is arrowSides {
+  return arrowSides.includes(x);
 }
 
-export const PlmgTooltipArrowPosition = ['start', 'middle', 'end'] as const;
-export type PlmgTooltipArrowPosition = typeof PlmgTooltipArrowPosition[number];
-export function isPlmgTooltipArrowPosition(
-  x: any
-): x is PlmgTooltipArrowPosition {
-  return PlmgTooltipArrowPosition.includes(x);
+export const arrowPositions = ['start', 'middle', 'end'] as const;
+export type arrowPositions = typeof arrowPositions[number];
+export function isArrowPosition(x: any): x is arrowPositions {
+  return arrowPositions.includes(x);
 }

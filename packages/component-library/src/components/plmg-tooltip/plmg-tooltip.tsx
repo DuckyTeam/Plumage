@@ -1,12 +1,12 @@
 import { Component, h, Prop, State, Watch } from '@stencil/core';
 
 import {
-  PlmgTooltipBgColor,
-  isPlmgTooltipBgColor,
-  PlmgTooltipArrowSide,
-  isPlmgTooltipArrowSide,
-  PlmgTooltipArrowPosition,
-  isPlmgTooltipArrowPosition,
+  backgroundColors,
+  isBackgroundColor,
+  arrowSides,
+  isArrowSide,
+  arrowPositions,
+  isArrowPosition,
 } from './plmg-tooltip.types';
 
 @Component({
@@ -16,25 +16,25 @@ import {
 })
 export class Tooltip {
   private abortTooltipListener: AbortController;
-  private tooltipTargetElement: HTMLElement;
+  private targetHTMLElement: HTMLElement;
 
   /**
-   * Store whether the tooltip is currently visible.
+   * Store tooltip visibility.
    *
    * Default hidden
    */
 
-  @State() isTooltipVisible: boolean = false;
+  @State() isVisible: boolean = false;
 
   /**
    * ID for connected element. Required.
    */
 
-  @Prop() targetElementId: string;
-  @Watch('targetElementId')
-  validateTargetElementId(newValue: string) {
+  @Prop() targetElement: string;
+  @Watch('targetElement')
+  validateTargetElement(newValue: string) {
     if ((newValue && typeof newValue !== 'string') || newValue === '')
-      throw new Error('target element id must be a string');
+      throw new Error('id of the target element must be a string');
   }
 
   /**
@@ -60,34 +60,34 @@ export class Tooltip {
    * Default: neutral
    */
 
-  @Prop() bgColor: PlmgTooltipBgColor = 'neutral';
-  @Watch('bgColor')
+  @Prop() backgroundColor: backgroundColors = 'neutral';
+  @Watch('backgroundColor')
   validateBgColor(newValue: string) {
     if (newValue && typeof newValue !== 'string')
-      throw new Error('bgColor must be a string');
-    if (!isPlmgTooltipBgColor(newValue))
-      throw new Error('bgColor must be a valid value');
+      throw new Error('backgroundColor must be a string');
+    if (!isBackgroundColor(newValue))
+      throw new Error('backgroundColor must be a valid value');
   }
 
   /**
    * Define tooltip's arrow side
    *
    * Allowed values:
-   *   - none,
-   *   - left,
-   *   - right,
-   *   - top,
+   *   - none
+   *   - left
+   *   - right
+   *   - top
    *   - bottom
    *
    * Default: none
    */
 
-  @Prop() arrowSide: PlmgTooltipArrowSide = 'none';
+  @Prop() arrowSide: arrowSides = 'none';
   @Watch('arrowSide')
   validateArrowSide(newValue: string) {
     if (newValue && typeof newValue !== 'string')
       throw new Error('arrow side must be a string');
-    if (!isPlmgTooltipArrowSide(newValue))
+    if (!isArrowSide(newValue))
       throw new Error('arrow side: must be a valid value');
   }
 
@@ -95,81 +95,84 @@ export class Tooltip {
    * Define tooltip arrow position
    *
    * Allowed values:
-   *   - start,
-   *   - middle,
+   *   - start
+   *   - middle
    *   - end
    *
    * Default: none
    */
 
-  @Prop() arrowPosition: PlmgTooltipArrowPosition = 'middle';
+  @Prop() arrowPosition: arrowPositions = 'middle';
   @Watch('arrowPosition')
   validateArrowPosition(newValue: string) {
     if (newValue && typeof newValue !== 'string')
       throw new Error('arrow position must be a string');
-    if (!isPlmgTooltipArrowPosition(newValue))
-      throw new Error('arrow postion: must be a valid value');
+    if (!isArrowPosition(newValue))
+      throw new Error('arrow postion must be a valid value');
   }
 
   /**
    * Tooltip Title Text
    *
-   * Any string
+   * Allowed value: any string
    *
    * Required
    */
 
-  @Prop() tooltipTitle: string;
-  @Watch('tooltipTitle')
+  @Prop() content: string;
+  @Watch('content')
   validatetooltipTitle(newValue: string) {
-    if (newValue && !newValue)
-      throw new Error('tooltip must have a title text');
+    if (newValue && !newValue) throw new Error('tooltip requires content');
     if (newValue && typeof newValue !== 'string')
-      throw new Error('target must be a string');
+      throw new Error('text must be a string');
   }
 
-  /** Life Cycle Methods with Listeners
+  /** Life Cycle Methods & Event Listeners
    *
-   * Listen for mouse over / focus events and mouse out / blur events on the target element
+   * Listen for
    *
+   * mouse over
+   * focus
+   * mouse out
+   * blur
+   *
+   * on the target element
+   *
+   * forceVisibile prop disables the listeners
    */
 
   connectedCallback() {
-    this.isTooltipVisible = this.forceVisible;
-
-    // ForceVisible prop boolean disables event listener
-
-    if (!this.forceVisible && this.tooltipTargetElement) {
-      this.abortTooltipListener = new AbortController();
-      this.tooltipTargetElement = document.getElementById(this.targetElementId);
-      this.tooltipTargetElement.addEventListener(
-        'mouseover',
-        () => (this.isTooltipVisible = true),
-        { signal: this.abortTooltipListener.signal }
-      );
-
-      this.tooltipTargetElement.addEventListener(
-        'focus',
-        () => (this.isTooltipVisible = true),
-        { signal: this.abortTooltipListener.signal }
-      );
-
-      this.tooltipTargetElement.addEventListener(
-        'mouseleave',
-        () => (this.isTooltipVisible = false),
-        { signal: this.abortTooltipListener.signal }
-      );
-
-      this.tooltipTargetElement.addEventListener(
-        'blur',
-        () => (this.isTooltipVisible = false),
-        { signal: this.abortTooltipListener.signal }
-      );
+    this.isVisible = this.forceVisible;
+    if (!this.forceVisible && this.targetElement) {
+      this.targetHTMLElement = document.getElementById(this.targetElement);
+      if (this.targetHTMLElement != null) {
+        this.abortTooltipListener = new AbortController();
+        this.targetHTMLElement.addEventListener(
+          'mouseover',
+          () => (this.isVisible = true),
+          { signal: this.abortTooltipListener.signal }
+        );
+        this.targetHTMLElement.addEventListener(
+          'focus',
+          () => (this.isVisible = true),
+          { signal: this.abortTooltipListener.signal }
+        );
+        this.targetHTMLElement.addEventListener(
+          'mouseleave',
+          () => (this.isVisible = false),
+          { signal: this.abortTooltipListener.signal }
+        );
+        this.targetHTMLElement.addEventListener(
+          'blur',
+          () => (this.isVisible = false),
+          { signal: this.abortTooltipListener.signal }
+        );
+      }
     }
   }
 
   /**
-   * Cleanup the event listener
+   * Remove event listener
    */
 
   disconnectedCallback() {
@@ -179,128 +182,89 @@ export class Tooltip {
   }
 
   render() {
-    const tooltipclasses = {
+    const classes = {
       'plmg-tooltip': true,
-      visible: this.isTooltipVisible,
-      // Conditionally include arrow classes
-      ...(this.hasArrow() && { [this.arrowSide]: true }),
-      ...(this.hasArrow() && { [this.arrowPosition]: true }),
-      [this.bgColor]: true,
+      visible: this.isVisible,
+      // Include arrow classes if side is not set to none
+      ...(this.arrowSide && { [this.arrowSide]: true }),
+      ...(this.arrowSide && { [this.arrowPosition]: true }),
+      [this.backgroundColor]: true,
     };
 
     return (
-      <div style={!this.forceVisible && this.calculateTooltipPositions()}>
-        <span class={tooltipclasses}>{this.tooltipTitle}</span>
+      <div style={!this.forceVisible && this.setPosition()}>
+        <span class={classes}>{this.content}</span>
       </div>
     );
   }
 
-  // check if tooltip needs an arrow
-  private hasArrow() {
-    return this.arrowSide !== 'none' && (this.arrowSide as string) !== '';
-  }
-
-  private calculateTooltipPositions() {
-    // Default style
-
+  private setPosition() {
     let styles = {
       position: 'fixed',
       overflow: 'visible',
-      left: '0px',
-      top: '0px',
+      left: '10%',
+      top: '10%',
     };
 
-    // Calculate the position for the tooltip relative to the element
-    // Tooltip max width is 150px plus 6px for the arrow = 156px
-    // Maximum numbers of characters per line is 27 characters
-    // Tooltips with up to 27 characters will display on a single line of variable width.
+    if (!this.targetHTMLElement) return styles;
 
-    const tooltipLines: number = Math.ceil(this.tooltipTitle.length / 27);
-    const lineHeight: number = 18;
-    const arrowSize = 6;
-    const tooltipPaddingY: number = 8;
-    const tooltipPaddingX: number = 16;
+    /**
+     * Max width is 150px plus 6px for the arrow = 156px
+     * Max numbers of characters per line is 27 characters
+     */
 
-    // The width of each letter
-    const letterNumtoWidthRatio: number = 5.3;
-    const tooltipHeight: number = tooltipLines * lineHeight + tooltipPaddingY;
+    const LINE_NUMBER: number = Math.ceil(this.content.length / 27);
+    const LINE_HEIGHT: number = 18;
+    const ARROW_WIDTH = 6;
+    const PADDING_Y: number = 8;
+    const PADDING_X: number = 16;
+    const LETTER_WIDTH: number = 5.3;
+    const TOOLTIP_HEIGHT: number = LINE_NUMBER * LINE_HEIGHT + PADDING_Y;
 
-    // Calculate tooltip width.
-    // A one line tooltip width will be determined by the number of characters
-    const tooltipWidth: number =
-      this.tooltipTitle.length <= 27
-        ? this.tooltipTitle.length * letterNumtoWidthRatio + tooltipPaddingX
+    // Calculate width of a tooltip with less than 27 characters. A multiline tooltip will be 156px wide.
+    const WIDTH: number =
+      this.content.length <= 27
+        ? this.content.length * LETTER_WIDTH + PADDING_X
         : 156;
 
     // Get the position of the target element
-    const targetPositions = this.tooltipTargetElement.getBoundingClientRect();
+    const targetPositions = this.targetHTMLElement.getBoundingClientRect();
 
     // Calculate the relative position of the tooltip
-
     this.arrowSide === 'left' &&
       (styles.left = `${targetPositions.x + targetPositions.width}px`);
-    this.arrowSide === 'left' &&
-      this.arrowPosition === 'start' &&
-      (styles.top = `${targetPositions.y}px`);
-    this.arrowSide === 'left' &&
-      this.arrowPosition === 'middle' &&
-      (styles.top = `${
-        targetPositions.y + targetPositions.height / 2 - tooltipHeight / 2
-      }px`);
-    this.arrowSide === 'left' &&
-      this.arrowPosition === 'end' &&
-      (styles.top = `${
-        targetPositions.y + targetPositions.height - tooltipHeight
-      }px`);
+    this.arrowSide === 'right' &&
+      (styles.left = `${targetPositions.x - WIDTH - ARROW_WIDTH}px`);
 
-    this.arrowSide === 'right' &&
-      (styles.left = `${targetPositions.x - tooltipWidth - arrowSize}px`);
-    this.arrowSide === 'right' &&
-      this.arrowPosition === 'start' &&
-      (styles.top = `${targetPositions.y}px`);
-    this.arrowSide === 'right' &&
+    if (this.arrowSide === 'left' || this.arrowSide === 'right') {
+      this.arrowPosition === 'start' && (styles.top = `${targetPositions.y}px`);
       this.arrowPosition === 'middle' &&
-      (styles.top = `${
-        targetPositions.y + targetPositions.height / 2 - tooltipHeight / 2
-      }px`);
-    this.arrowSide === 'right' &&
+        (styles.top = `${
+          targetPositions.y + targetPositions.height / 2 - TOOLTIP_HEIGHT / 2
+        }px`);
       this.arrowPosition === 'end' &&
-      (styles.top = `${
-        targetPositions.y + targetPositions.height - tooltipHeight
-      }px`);
+        (styles.top = `${
+          targetPositions.y + targetPositions.height - TOOLTIP_HEIGHT
+        }px`);
+    }
 
     this.arrowSide === 'bottom' &&
-      (styles.top = `${targetPositions.y - tooltipHeight - arrowSize}px`);
-    this.arrowSide === 'bottom' &&
-      this.arrowPosition === 'start' &&
-      (styles.left = `${targetPositions.x}px`);
-    this.arrowSide === 'bottom' &&
-      this.arrowPosition === 'middle' &&
-      (styles.left = `${
-        targetPositions.x + targetPositions.width / 2 - tooltipWidth / 2
-      }px`);
-    this.arrowSide === 'bottom' &&
-      this.arrowPosition === 'end' &&
-      (styles.left = `${
-        targetPositions.x + targetPositions.width - tooltipWidth
-      }px`);
-
+      (styles.top = `${targetPositions.y - TOOLTIP_HEIGHT - ARROW_WIDTH}px`);
     this.arrowSide === 'top' &&
       (styles.top = `${targetPositions.y + targetPositions.height}px`);
-    this.arrowSide === 'top' &&
-      this.arrowPosition === 'start' &&
-      (styles.left = `${targetPositions.x}px`);
-    this.arrowSide === 'top' &&
-      this.arrowPosition === 'middle' &&
-      (styles.left = `${
-        targetPositions.x + targetPositions.width / 2 - tooltipWidth / 2
-      }px`);
-    this.arrowSide === 'top' &&
-      this.arrowPosition === 'end' &&
-      (styles.left = `${
-        targetPositions.x + targetPositions.width - tooltipWidth
-      }px`);
 
+    if (this.arrowSide === 'bottom' || this.arrowSide === 'top') {
+      this.arrowPosition === 'start' &&
+        (styles.left = `${targetPositions.x}px`);
+      this.arrowPosition === 'middle' &&
+        (styles.left = `${
+          targetPositions.x + targetPositions.width / 2 - WIDTH / 2
+        }px`);
+      this.arrowPosition === 'end' &&
+        (styles.left = `${
+          targetPositions.x + targetPositions.width - WIDTH
+        }px`);
+    }
     return styles;
   }
 }

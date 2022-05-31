@@ -11,9 +11,9 @@
   display: none;
 }
 
-// Tooltip arrow width
+// ------------- Variables -----------------
 
-$tooltip-arrow-width: 6px;
+$arrow-width: 6px;
 
 // ------------- END Variables -----------------
 
@@ -48,7 +48,7 @@ $tooltip-arrow-width: 6px;
 // Silent Classes
 // ------------------------------------------------
 
-%shared--tooltip-arrow {
+%arrow {
   &::after {
     background-color: transparent;
     content: '';
@@ -56,16 +56,17 @@ $tooltip-arrow-width: 6px;
     position: absolute;
     width: 0;
     height: 0;
-    border: $tooltip-arrow-width solid transparent;
+    border: $arrow-width solid transparent;
     transform: translate(-50%, 0);
   }
 }
+
+// ------------- END Silent Classes ------------------------
 
 // Component style
 // ------------------------------------------------
 
 .plmg-tooltip {
-  // tooltip
   visibility: hidden;
   position: relative;
   display: block;
@@ -81,7 +82,6 @@ $tooltip-arrow-width: 6px;
   width: fit-content;
   max-width: 150px;
 
-  // tooltip visibility
   &.visible {
     visibility: visible;
   }
@@ -92,7 +92,7 @@ $tooltip-arrow-width: 6px;
 
   // Control: Arrow Side(Top) & Colors & Positions
   &.top {
-    @extend %shared--tooltip-arrow;
+    @extend %arrow;
     &::after {
       bottom: 100%;
     }
@@ -108,30 +108,30 @@ $tooltip-arrow-width: 6px;
 
     // Control: Arrow Position
     &.start {
-      @extend %shared--tooltip-arrow;
+      @extend %arrow;
       &::after {
-        left: calc(10% + $tooltip-arrow-width);
+        left: calc(10% + $arrow-width);
       }
     }
 
     &.middle {
-      @extend %shared--tooltip-arrow;
+      @extend %arrow;
       &::after {
         left: calc(50%);
       }
     }
 
     &.end {
-      @extend %shared--tooltip-arrow;
+      @extend %arrow;
       &::after {
-        right: calc(10% - $tooltip-arrow-width);
+        right: calc(10% - $arrow-width);
       }
     }
   }
 
   // Control: Arrow Side(Bottom) & Colors & Positions
   &.bottom {
-    @extend %shared--tooltip-arrow;
+    @extend %arrow;
     &::after {
       top: 100%;
     }
@@ -146,21 +146,21 @@ $tooltip-arrow-width: 6px;
 
     // Control: Arrow Position
     &.start {
-      @extend %shared--tooltip-arrow;
+      @extend %arrow;
       &::after {
-        left: calc(10% + $tooltip-arrow-width);
+        left: calc(10% + $arrow-width);
       }
     }
     &.middle {
-      @extend %shared--tooltip-arrow;
+      @extend %arrow;
       &::after {
         left: calc(50%);
       }
     }
     &.end {
-      @extend %shared--tooltip-arrow;
+      @extend %arrow;
       &::after {
-        right: calc(10% - $tooltip-arrow-width);
+        right: calc(10% - $arrow-width);
       }
     }
   }
@@ -168,9 +168,9 @@ $tooltip-arrow-width: 6px;
   // Control: Arrow Side(Left) & Colors & Positions
 
   &.left {
-    @extend %shared--tooltip-arrow;
+    @extend %arrow;
     &::after {
-      left: calc(0% - ($tooltip-arrow-width / 2));
+      left: calc(0% - ($arrow-width / 2));
       border-left: 0;
     }
 
@@ -184,17 +184,17 @@ $tooltip-arrow-width: 6px;
     // Control: Arrow Position
     &.start {
       &::after {
-        top: calc(10% + $tooltip-arrow-width);
+        top: calc(10% + $arrow-width);
       }
     }
     &.middle {
       &::after {
-        top: calc(50% - $tooltip-arrow-width);
+        top: calc(50% - $arrow-width);
       }
     }
     &.end {
       &::after {
-        bottom: calc(10% + $tooltip-arrow-width);
+        bottom: calc(10% + $arrow-width);
       }
     }
   }
@@ -202,10 +202,10 @@ $tooltip-arrow-width: 6px;
   // Control: Arrow Side(Right) & Colors & Positions
 
   &.right {
-    @extend %shared--tooltip-arrow;
+    @extend %arrow;
     &::after {
       // 99% to fix a thin line appearing
-      left: calc(99% + $tooltip-arrow-width);
+      left: calc(99% + $arrow-width);
     }
 
     // Arrow Control Color
@@ -218,21 +218,21 @@ $tooltip-arrow-width: 6px;
 
     // Arrow Control Position
     &.start {
-      @extend %shared--tooltip-arrow;
+      @extend %arrow;
       &::after {
-        top: calc(10% + $tooltip-arrow-width);
+        top: calc(10% + $arrow-width);
       }
     }
     &.middle {
-      @extend %shared--tooltip-arrow;
+      @extend %arrow;
       &::after {
-        top: calc(50% - $tooltip-arrow-width);
+        top: calc(50% - $arrow-width);
       }
     }
     &.end {
-      @extend %shared--tooltip-arrow;
+      @extend %arrow;
       &::after {
-        bottom: calc(10% + $tooltip-arrow-width);
+        bottom: calc(10% + $arrow-width);
       }
     }
   }

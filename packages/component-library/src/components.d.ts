@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { PlmgButtonColor, PlmgButtonDesign, PlmgButtonSize, PlmgButtonType } from "./components/plmg-button/plmg-button.types";
-import { PlmgTooltipArrowPosition, PlmgTooltipArrowSide, PlmgTooltipBgColor } from "./components/plmg-tooltip/plmg-tooltip.types";
+import { arrowPositions, arrowSides, backgroundColors } from "./components/plmg-tooltip/plmg-tooltip.types";
 export namespace Components {
     interface PlmgButton {
         /**
@@ -178,17 +178,21 @@ export namespace Components {
     }
     interface PlmgTooltip {
         /**
-          * Define tooltip arrow position  Allowed values:   - start,   - middle,   - end  Default: none
+          * Define tooltip arrow position  Allowed values:   - start   - middle   - end  Default: none
          */
-        "arrowPosition": PlmgTooltipArrowPosition;
+        "arrowPosition": arrowPositions;
         /**
-          * Define tooltip's arrow side  Allowed values:   - none,   - left,   - right,   - top,   - bottom  Default: none
+          * Define tooltip's arrow side  Allowed values:   - none   - left   - right   - top   - bottom  Default: none
          */
-        "arrowSide": PlmgTooltipArrowSide;
+        "arrowSide": arrowSides;
         /**
           * Define tooltip's background color  Allowed values:   - neutral   - primary  Default: neutral
          */
-        "bgColor": PlmgTooltipBgColor;
+        "backgroundColor": backgroundColors;
+        /**
+          * Tooltip Title Text  Allowed value: any string  Required
+         */
+        "content": string;
         /**
           * Force tooltip to remain visible  Will disable event listeners
          */
@@ -196,11 +200,7 @@ export namespace Components {
         /**
           * ID for connected element. Required.
          */
-        "targetElementId": string;
-        /**
-          * Tooltip Title Text  Any string  Required
-         */
-        "tooltipTitle": string;
+        "targetElement": string;
     }
 }
 declare global {
@@ -445,17 +445,21 @@ declare namespace LocalJSX {
     }
     interface PlmgTooltip {
         /**
-          * Define tooltip arrow position  Allowed values:   - start,   - middle,   - end  Default: none
+          * Define tooltip arrow position  Allowed values:   - start   - middle   - end  Default: none
          */
-        "arrowPosition"?: PlmgTooltipArrowPosition;
+        "arrowPosition"?: arrowPositions;
         /**
-          * Define tooltip's arrow side  Allowed values:   - none,   - left,   - right,   - top,   - bottom  Default: none
+          * Define tooltip's arrow side  Allowed values:   - none   - left   - right   - top   - bottom  Default: none
          */
-        "arrowSide"?: PlmgTooltipArrowSide;
+        "arrowSide"?: arrowSides;
         /**
           * Define tooltip's background color  Allowed values:   - neutral   - primary  Default: neutral
          */
-        "bgColor"?: PlmgTooltipBgColor;
+        "backgroundColor"?: backgroundColors;
+        /**
+          * Tooltip Title Text  Allowed value: any string  Required
+         */
+        "content"?: string;
         /**
           * Force tooltip to remain visible  Will disable event listeners
          */
@@ -463,11 +467,7 @@ declare namespace LocalJSX {
         /**
           * ID for connected element. Required.
          */
-        "targetElementId"?: string;
-        /**
-          * Tooltip Title Text  Any string  Required
-         */
-        "tooltipTitle"?: string;
+        "targetElement"?: string;
     }
     interface IntrinsicElements {
         "plmg-button": PlmgButton;

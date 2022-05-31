@@ -1,9 +1,11 @@
 import { EndOfLineState } from 'typescript';
 import * as Utils from '../../stories/StencilStorybookUtils';
 import {
-  PlmgTooltipArrowSide,
-  PlmgTooltipArrowPosition,
-  PlmgTooltipBgColor,
+  arrowSide,
+  arrowPosition,
+  backgroundColors,
+  arrowSides,
+  arrowPositions,
 } from './plmg-tooltip.types';
 
 export default {
@@ -11,7 +13,7 @@ export default {
   parameters: {},
   decorators: [],
   argTypes: {
-    ['bg-color']: {
+    ['background-color']: {
       options: ['neutral', 'primary'],
       control: { type: 'select' },
     },
@@ -23,21 +25,24 @@ export default {
       options: ['start', 'middle', 'end'],
       control: { type: 'select' },
     },
-    ['tooltip-title']: {
+    content: {
       control: { type: 'text' },
     },
     ['force-visible']: {
-      options: [true, false],
+      control: { type: 'boolean' },
+    },
+    ['target-element']: {
+      options: ['id'],
     },
   },
 };
 
 const PROPS = [
-  'bg-color',
+  'background-color',
   'arrow-side',
   'arrow-position',
-  'target-element-id',
-  'tooltip-title',
+  'target-element',
+  'content',
   'force-visible',
 ];
 const EVENTS = [];
@@ -56,12 +61,12 @@ const Template = (args) => {
 export const Primary = Template.bind({});
 Primary.storyName = 'Tooltip';
 Primary.args = {
-  ['tooltip-title']: 'text',
-  ['bg-color']: 'primary',
+  content: 'Tooltip Content',
+  ['background-color']: 'primary',
   ['arrow-side']: 'none',
   ['arrow-position']: 'middle',
   ['force-visible']: true,
-  ['target-element-id']: 'targetelement',
+  ['target-element']: 'targetelement',
 };
 
 export const TooltipRight = (args) => {
@@ -69,14 +74,14 @@ export const TooltipRight = (args) => {
   const htmlContent = `
   <div style="display: flex; flex-direction: column; height: 100vh;">
   
-    <p id="element" tabindex="1" style="padding: 10px; margin-left: 150px; width: fit-content;">right start</p>
-    <plmg-tooltip target-element-id="element" arrow-side="left" arrow-position="start" tooltip-title="Tooltip right with arrow at the start of the Y axis"></plmg-tooltip>
+    <p id="element-one" tabindex="1" style="padding: 10px; margin-left: 150px; width: fit-content;">right start</p>
+    <plmg-tooltip target-element="element-one" arrow-side="left" arrow-position="start" content="Tooltip right with arrow at the start of the Y axis"></plmg-tooltip>
   
     <p id="element-two" tabindex="2" style="padding: 10px; margin-left: 150px; width: fit-content;">right middle</p>
-    <plmg-tooltip target-element-id="element-two" arrow-side="left" arrow-position="middle" tooltip-title="Tool right with arrow in the middle of the Y axis"></plmg-tooltip>
+    <plmg-tooltip target-element="element-two" arrow-side="left" arrow-position="middle" content="Tool right with arrow in the middle of the Y axis"></plmg-tooltip>
   
     <p id="element-three" tabindex="3" style="padding: 10px; margin-left: 150px; width: fit-content;">right end</p>
-    <plmg-tooltip target-element-id="element-three" arrow-side="left" arrow-position="end" tooltip-title="Tool right with arrow at the end of the Y axis. The height of the tooltip moves its position upwards"></plmg-tooltip>
+    <plmg-tooltip target-element="element-three" arrow-side="left" arrow-position="end" content="Tool right with arrow at the end of the Y axis. The height of the tooltip moves its position upwards"></plmg-tooltip>
     
   </div>
   `;
@@ -89,14 +94,14 @@ export const TooltipLeft = (args) => {
   const htmlContent = `
   <div style="display: flex; flex-direction: column; height: 100vh;">
       
-      <p id="element" tabindex="1" style="padding: 10px; margin-left: 300px; width: fit-content;">left start</p>
-      <plmg-tooltip target-element-id="element" arrow-side="right" arrow-position="start" tooltip-title="left start tooltip"></plmg-tooltip>
+      <p id="element-one" tabindex="1" style="padding: 10px; margin-left: 300px; width: fit-content;">left start</p>
+      <plmg-tooltip target-element="element-one" arrow-side="right" arrow-position="start" content="left start tooltip"></plmg-tooltip>
       
       <p id="element-two" tabindex="2" style="padding: 10px; margin-left: 300px; width: fit-content;">left middle</p>
-      <plmg-tooltip target-element-id="element-two" arrow-side="right" arrow-position="middle" tooltip-title=" A longer text will increase the height of the tooltip. It will adjust its positoning to center vertically">left middle</plmg-tooltip>
+      <plmg-tooltip target-element="element-two" arrow-side="right" arrow-position="middle" content=" A longer text will increase the height of the tooltip. It will adjust its positoning to center vertically">left middle</plmg-tooltip>
       
       <p id="element-three" tabindex="3" style="padding: 10px; margin-left: 300px; width: fit-content;">left end</p>
-      <plmg-tooltip target-element-id="element-three" arrow-side="right" arrow-position="end" tooltip-title="Tooltip left with arrow at the end"></plmg-tooltip>
+      <plmg-tooltip target-element="element-three" arrow-side="right" arrow-position="end" content="Tooltip left with arrow at the end"></plmg-tooltip>
     
     </div>
   `;
@@ -109,14 +114,14 @@ export const TooltipBelow = (args) => {
   const htmlContent = `
   <div style="display: flex; flex-direction: column; height: 100vh;">
       
-      <p id="element" tabindex="1" style="padding: 10px; margin-left: 150px; width: fit-content;">below start</p>
-      <plmg-tooltip target-element-id="element" arrow-side="top" arrow-position="start" tooltip-title="Bottom with arrow start"></plmg-tooltip>
+      <p id="element-one" tabindex="1" style="padding: 10px; margin-left: 150px; width: fit-content;">below start</p>
+      <plmg-tooltip target-element="element-one" arrow-side="top" arrow-position="start" content="Bottom with arrow start"></plmg-tooltip>
       
       <p id="element-two" tabindex="2" style="padding: 10px; margin-left: 150px; width: fit-content;">below middle</p>
-      <plmg-tooltip target-element-id="element-two" arrow-side="top" arrow-position="middle" tooltip-title="Bottom with arrow middle"></plmg-tooltip>
+      <plmg-tooltip target-element="element-two" arrow-side="top" arrow-position="middle" content="Bottom with arrow middle"></plmg-tooltip>
       
       <p id="element-three" tabindex="3" style="padding: 10px; margin-left: 150px; width: fit-content;">below end</p>
-      <plmg-tooltip target-element-id="element-three" arrow-side="top" arrow-position="end" tooltip-title="Bottom with arrow end"></plmg-tooltip>
+      <plmg-tooltip target-element="element-three" arrow-side="top" arrow-position="end" content="Bottom with arrow end"></plmg-tooltip>
     </div>
     `;
   wrapper.innerHTML = htmlContent;
@@ -128,14 +133,14 @@ export const TooltipAbove = (args) => {
   const htmlContent = `
   <div style="display: flex; flex-direction: column; height: 100vh; width: 200px; margin-left: 150px; margin-top: 75px; gap: 20px; width: fit-content;">
      
-      <p id="element" tabindex="1">above start</p>
-      <plmg-tooltip target-element-id="element" arrow-side="bottom" arrow-position="start" tooltip-title="Tooltip above with arrow start"></plmg-tooltip>
+      <p id="element-one" tabindex="1">above start</p>
+      <plmg-tooltip target-element="element-one" arrow-side="bottom" arrow-position="start" content="Tooltip above with arrow start"></plmg-tooltip>
      
       <p id="element-two" tabindex="2">above middle</p>
-      <plmg-tooltip target-element-id="element-two" arrow-side="bottom" arrow-position="middle" tooltip-title="Tooltip above with arrow middle"></plmg-tooltip>
+      <plmg-tooltip target-element="element-two" arrow-side="bottom" arrow-position="middle" content="Tooltip above with arrow middle"></plmg-tooltip>
      
       <p id="element-three" tabindex="3">above end</p>
-      <plmg-tooltip target-element-id="element-three" arrow-side="bottom" arrow-position="end" tooltip-title="Tooltip above with arrow at the end"></plmg-tooltip>
+      <plmg-tooltip target-element="element-three" arrow-side="bottom" arrow-position="end" content="Tooltip above with arrow at the end"></plmg-tooltip>
     
     </div>
     `;
@@ -145,11 +150,11 @@ export const TooltipAbove = (args) => {
 
 export const AllVariations = (args) => {
   let htmlContent = '';
-  PlmgTooltipBgColor.forEach((bgcolor) => {
-    PlmgTooltipArrowSide.forEach((arrowSide) => {
-      PlmgTooltipArrowPosition.forEach((arrowPosition) => {
+  backgroundColors.forEach((backgroundColor) => {
+    arrowSides.forEach((arrowSide) => {
+      arrowPositions.forEach((arrowPosition) => {
         htmlContent += `
-        <plmg-tooltip force-visible="true" tooltip-title="${bgcolor} ${arrowPosition} ${arrowSide}" bg-color="${bgcolor}" arrow-side="${arrowSide}" arrow-position="${arrowPosition}">
+        <plmg-tooltip force-visible="true" content="${backgroundColor} ${arrowPosition} ${arrowSide}" background-color="${backgroundColor}" arrow-side="${arrowSide}" arrow-position="${arrowPosition}">
         </plmg-tooltip>
         `;
       });
@@ -158,6 +163,7 @@ export const AllVariations = (args) => {
 
   const el = document.createElement('div');
   el.innerHTML = htmlContent.trim();
+  console.log(el);
   el.style.display = 'grid';
   el.style.gridTemplateColumns = 'repeat(3, 1fr)';
   el.style.gridTemplateRows = 'repeat(5, 1fr)';
@@ -168,3 +174,29 @@ export const AllVariations = (args) => {
 };
 
 AllVariations.storyName = 'All variations';
+
+// export const AllVariations = (args) => {
+//   let htmlContent = '';
+//   PlmgTooltipBgColor.forEach((bgcolor) => {
+//     PlmgTooltipArrowSide.forEach((arrowSide) => {
+//       PlmgTooltipArrowPosition.forEach((arrowPosition) => {
+//         htmlContent += `
+//         <plmg-tooltip force-visible="true" tooltip-title="${bgcolor} ${arrowPosition} ${arrowSide}" bg-color="${bgcolor}" arrow-side="${arrowSide}" arrow-position="${arrowPosition}">
+//         </plmg-tooltip>
+//         `;
+//       });
+//     });
+//   });
+
+//   const el = document.createElement('div');
+//   el.innerHTML = htmlContent.trim();
+//   el.style.display = 'grid';
+//   el.style.gridTemplateColumns = 'repeat(3, 1fr)';
+//   el.style.gridTemplateRows = 'repeat(5, 1fr)';
+//   el.style.gap = '50px';
+//   el.style.justifyContent = 'space-between';
+//   el.style['flex-wrap'] = 'wrap';
+//   return el;
+// };
+
+// AllVariations.storyName = 'All variations';
