@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { PlmgButtonColor, PlmgButtonDesign, PlmgButtonSize, PlmgButtonType } from "./components/plmg-button/plmg-button.types";
-import { arrowPositions, arrowSides, backgroundColors } from "./components/plmg-tooltip/plmg-tooltip.types";
+import { PlmgTooltipArrowPositions, PlmgTooltipArrowSides, PlmgTooltipBackgroundColors } from "./components/plmg-tooltip/plmg-tooltip.types";
 export namespace Components {
     interface PlmgButton {
         /**
@@ -180,17 +180,17 @@ export namespace Components {
         /**
           * Define tooltip arrow position  Allowed values:   - start   - middle   - end  Default: none
          */
-        "arrowPosition": arrowPositions;
+        "arrowPosition": PlmgTooltipArrowPositions;
         /**
           * Define tooltip's arrow side  Allowed values:   - none   - left   - right   - top   - bottom  Default: none
          */
-        "arrowSide": arrowSides;
+        "arrowSide": PlmgTooltipArrowSides;
         /**
           * Define tooltip's background color  Allowed values:   - neutral   - primary  Default: neutral
          */
-        "backgroundColor": backgroundColors;
+        "backgroundColor": PlmgTooltipBackgroundColors;
         /**
-          * Tooltip Title Text  Allowed value: any string  Required
+          * Tooltip Content Text  Allowed value: any string  Required
          */
         "content": string;
         /**
@@ -447,17 +447,17 @@ declare namespace LocalJSX {
         /**
           * Define tooltip arrow position  Allowed values:   - start   - middle   - end  Default: none
          */
-        "arrowPosition"?: arrowPositions;
+        "arrowPosition"?: PlmgTooltipArrowPositions;
         /**
           * Define tooltip's arrow side  Allowed values:   - none   - left   - right   - top   - bottom  Default: none
          */
-        "arrowSide"?: arrowSides;
+        "arrowSide"?: PlmgTooltipArrowSides;
         /**
           * Define tooltip's background color  Allowed values:   - neutral   - primary  Default: neutral
          */
-        "backgroundColor"?: backgroundColors;
+        "backgroundColor"?: PlmgTooltipBackgroundColors;
         /**
-          * Tooltip Title Text  Allowed value: any string  Required
+          * Tooltip Content Text  Allowed value: any string  Required
          */
         "content"?: string;
         /**

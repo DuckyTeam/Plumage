@@ -11,7 +11,8 @@
   display: none;
 }
 
-// ------------- Variables -----------------
+// Variables
+// ---------------------------------------------
 
 $arrow-width: 6px;
 
@@ -81,6 +82,7 @@ $arrow-width: 6px;
   height: auto;
   width: fit-content;
   max-width: 150px;
+  overflow-wrap: break-word;
 
   &.visible {
     visibility: visible;

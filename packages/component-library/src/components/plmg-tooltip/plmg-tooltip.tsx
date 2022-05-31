@@ -1,11 +1,11 @@
 import { Component, h, Prop, State, Watch } from '@stencil/core';
 
 import {
-  backgroundColors,
+  PlmgTooltipBackgroundColors,
   isBackgroundColor,
-  arrowSides,
+  PlmgTooltipArrowSides,
   isArrowSide,
-  arrowPositions,
+  PlmgTooltipArrowPositions,
   isArrowPosition,
 } from './plmg-tooltip.types';
 
@@ -60,7 +60,7 @@ export class Tooltip {
    * Default: neutral
    */
 
-  @Prop() backgroundColor: backgroundColors = 'neutral';
+  @Prop() backgroundColor: PlmgTooltipBackgroundColors = 'neutral';
   @Watch('backgroundColor')
   validateBgColor(newValue: string) {
     if (newValue && typeof newValue !== 'string')
@@ -82,7 +82,7 @@ export class Tooltip {
    * Default: none
    */
 
-  @Prop() arrowSide: arrowSides = 'none';
+  @Prop() arrowSide: PlmgTooltipArrowSides = 'none';
   @Watch('arrowSide')
   validateArrowSide(newValue: string) {
     if (newValue && typeof newValue !== 'string')
@@ -102,7 +102,7 @@ export class Tooltip {
    * Default: none
    */
 
-  @Prop() arrowPosition: arrowPositions = 'middle';
+  @Prop() arrowPosition: PlmgTooltipArrowPositions = 'middle';
   @Watch('arrowPosition')
   validateArrowPosition(newValue: string) {
     if (newValue && typeof newValue !== 'string')
@@ -112,7 +112,7 @@ export class Tooltip {
   }
 
   /**
-   * Tooltip Title Text
+   * Tooltip Content Text
    *
    * Allowed value: any string
    *
@@ -121,7 +121,7 @@ export class Tooltip {
 
   @Prop() content: string;
   @Watch('content')
-  validatetooltipTitle(newValue: string) {
+  validateTooltipContent(newValue: string) {
     if (newValue && !newValue) throw new Error('tooltip requires content');
     if (newValue && typeof newValue !== 'string')
       throw new Error('text must be a string');
@@ -176,8 +176,9 @@ export class Tooltip {
    */
 
   disconnectedCallback() {
-    if (!this.forceVisible) {
-      if (this.abortTooltipListener) this.abortTooltipListener.abort();
+    !this.forceVisible && this.abortTooltipListener;
+    {
+      this.abortTooltipListener.abort();
     }
   }
 
