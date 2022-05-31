@@ -99,12 +99,14 @@ ReactDOM.render(
           <h1>PlmgCard slot-2</h1>
         </div>
       </PlmgCard>
-      <p id="targetelement">hover me</p>
+      <p id="targetelement" style={{ width: 'fit-content' }}>
+        Tooltip Target
+      </p>
       <PlmgTooltip
-        targetElementId="targetelement"
+        targetElement="targetelement"
         arrowSide="top"
         arrowPosition="start"
-        tooltipTitle="Bottom with arrow start"
+        content="Bottom with arrow start"
       ></PlmgTooltip>
     </div>
   </PlmgPageContainer>,
