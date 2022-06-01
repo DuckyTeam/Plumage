@@ -173,14 +173,15 @@ export namespace Components {
           * Define default value  Default: 0  Ignored if default value exceeds maxValue
          */
         "defaultValue": number;
+        /**
+          * Set marks  The first and last items set the minimum and max values  Must contain at least two items
+         */
+        "markValues": Array<number>;
         "marks": boolean;
         /**
           * Define maximum value  Default: 100
          */
         "maxValue": number;
-        /**
-          * Define minimum value  Default: 0
-         */
         "minValue": number;
         /**
           * Define step number  Can be any number  If no step provided the slider is continous If step provided the slider is discrete
@@ -444,14 +445,15 @@ declare namespace LocalJSX {
           * Define default value  Default: 0  Ignored if default value exceeds maxValue
          */
         "defaultValue"?: number;
+        /**
+          * Set marks  The first and last items set the minimum and max values  Must contain at least two items
+         */
+        "markValues"?: Array<number>;
         "marks"?: boolean;
         /**
           * Define maximum value  Default: 100
          */
         "maxValue"?: number;
-        /**
-          * Define minimum value  Default: 0
-         */
         "minValue"?: number;
         /**
           * Define step number  Can be any number  If no step provided the slider is continous If step provided the slider is discrete

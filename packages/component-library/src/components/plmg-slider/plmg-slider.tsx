@@ -11,10 +11,21 @@ import {
 })
 export class Slider {
   /**
-   * Define minimum value
+   * Set marks
    *
-   * Default: 0
+   * The first and last items set the minimum and max values
+   *
+   * Must contain at least two items
    */
+
+  @Prop() markValues: Array<number> = [0, 100];
+  @Watch('markValues')
+  onMarkValues(newValue: Array<number>) {
+    if (!Array.isArray(newValue) || newValue.length < 2)
+      throw new Error('markValues must be an array with at least two items');
+    this.markValues = newValue;
+  }
+
   @Prop() minValue: number = 0;
   @Watch('minValue')
   onMinValue(newValue: number) {
@@ -225,6 +236,7 @@ export class Slider {
 
     return (
       <div class={'plmg-slider-component-container'}>
+        <div>{this.markValues}</div>
         <div class={'plmg-slider-thumb-label-container'}>
           <output
             id="output-range"
@@ -248,17 +260,17 @@ export class Slider {
           />
         </div>
 
-        {this.marks ? (
-          <datalist class={'plmg-slider-mark-labels-container'}>
-            {this.markLabels.map((item, index) => (
-              <option class="plmg-slider-mark-label-item" key={index}>
-                {item}
-              </option>
-            ))}
-          </datalist>
-        ) : (
-          <div class={'plmg-slider-marks-labels-container'} />
-        )}
+        <div class={'plmg-slider-mark-labels-container'}>
+          {this.marks && (
+            <datalist>
+              {this.markLabels.map((item, index) => (
+                <option class="plmg-slider-mark-label-item" key={index}>
+                  {item}
+                </option>
+              ))}
+            </datalist>
+          )}
+        </div>
         <div class={'plmg-slider-input-field-container'}>
           <input
             type="number"
@@ -286,9 +298,7 @@ export class Slider {
   }
 
   private setCustomMarkLabels(): Array<number> {
-    // DO
-
-    let tickArray = [this.minValue];
+    let tickArray = [this.markValues[0]];
     let accumulator = this.step + this.minValue;
     while (accumulator < this.maxValue) {
       tickArray.push(accumulator);
@@ -300,6 +310,20 @@ export class Slider {
     tickArray.push(this.maxValue);
     return tickArray;
   }
+  // private setCustomMarkLabels(): Array<number> {
+
+  //   let tickArray = [this.minValue];
+  //   let accumulator = this.step + this.minValue;
+  //   while (accumulator < this.maxValue) {
+  //     tickArray.push(accumulator);
+  //     const pos =
+  //       ((accumulator - this.minValue) / (this.maxValue / this.minValue)) * 100;
+  //     console.log(pos);
+  //     accumulator += this.step;
+  //   }
+  //   tickArray.push(this.maxValue);
+  //   return tickArray;
+  // }
 
   private setAutoMarkLabels(): Array<number> {
     let tickArray = [this.minValue];

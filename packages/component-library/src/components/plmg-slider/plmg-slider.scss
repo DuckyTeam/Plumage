@@ -25,7 +25,7 @@
   grid-template-areas:
     'thumblabel inputfield'
     'trackrail inputfield'
-    'marklabels .';
+    'marklabels inputfield';
 }
 
 .plmg-slider-track-rail-container {
@@ -135,12 +135,15 @@
 
 .plmg-slider-mark-labels-container {
   width: 100%;
-  display: flex;
-  font-size: 12px;
   line-height: 18px;
-  justify-content: space-between;
-  height: auto;
-  overflow: hidden;
+  min-height: 18px;
+  font-size: 12px;
+
+  datalist {
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+  }
 
   &.plmg-slider-mark-label-item:before {
     content: '';
@@ -152,6 +155,9 @@
 
 .plmg-slider-input-field-container {
   grid-area: inputfield;
+  height: 51px;
+  display: flex;
+  align-self: flex-end;
 
   input {
     box-sizing: border-box;

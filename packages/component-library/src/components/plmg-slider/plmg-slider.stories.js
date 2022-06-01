@@ -11,6 +11,9 @@ export default {
     ['max-value']: {
       control: { type: 'number' },
     },
+    ['mark-values']: {
+      control: { type: 'array' },
+    },
     ['default-value']: {
       control: { type: 'number' },
     },
@@ -31,6 +34,7 @@ export default {
 
 const PROPS = [
   'step',
+  'mark-values',
   'min-value',
   'max-value',
   'default-value',
