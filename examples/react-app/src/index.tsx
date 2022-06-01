@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import ReactDOM from 'react-dom';
 import {
   PlmgButton,
@@ -11,6 +11,27 @@ import {
   PlmgSeparator,
   PlmgTooltip,
 } from '@ducky/plumage-react';
+
+const TooltipRefExample = () => {
+  const [button, setButton] = useState(undefined);
+  const buttonRef = useCallback((node) => {
+    if (node !== null) {
+      setButton(node);
+    }
+  }, []);
+
+  return (
+    <>
+      <PlmgButton ref={buttonRef}>HoverMe</PlmgButton>
+      <PlmgTooltip
+        targetElement={button}
+        arrowSide={'top'}
+        arrowPosition={'start'}
+        content={'Bottom with arrow start'}
+      ></PlmgTooltip>
+    </>
+  );
+};
 
 ReactDOM.render(
   <PlmgPageContainer>
@@ -108,6 +129,7 @@ ReactDOM.render(
         arrowPosition={'start'}
         content={'Bottom with arrow start'}
       ></PlmgTooltip>
+      <TooltipRefExample />
     </div>
   </PlmgPageContainer>,
   document.getElementById('root')

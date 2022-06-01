@@ -27,14 +27,25 @@ export class Tooltip {
   @State() isVisible: boolean = false;
 
   /**
-   * ID for connected element. Required.
+   * Reference to the target element or its ID for connected element.
+   * Required.
    */
 
-  @Prop() targetElement: string;
+  @Prop() targetElement: string | HTMLElement;
   @Watch('targetElement')
   validateTargetElement(newValue: string) {
-    if ((newValue && typeof newValue !== 'string') || newValue === '')
-      throw new Error('id of the target element must be a string');
+    if (
+      (newValue &&
+        typeof newValue !== 'string' &&
+        !((newValue as any) instanceof HTMLElement)) ||
+      newValue === ''
+    )
+      throw new Error(
+        'id of the target element must be an HTMLElement or a string'
+      );
+
+    console.log(newValue);
+    this.connectedCallback();
   }
 
   /**
@@ -108,7 +119,7 @@ export class Tooltip {
     if (newValue && typeof newValue !== 'string')
       throw new Error('arrow position must be a string');
     if (!isArrowPosition(newValue))
-      throw new Error('arrow postion must be a valid value');
+      throw new Error('arrow position must be a valid value');
   }
 
   /**
@@ -144,7 +155,12 @@ export class Tooltip {
   connectedCallback() {
     this.isVisible = this.forceVisible;
     if (!this.forceVisible && this.targetElement) {
-      this.targetHTMLElement = document.getElementById(this.targetElement);
+      if (this.targetElement instanceof HTMLElement) {
+        this.targetHTMLElement = this.targetElement;
+      } else {
+        this.targetHTMLElement = document.getElementById(this.targetElement);
+      }
+
       if (this.targetHTMLElement != null) {
         this.abortTooltipListener = new AbortController();
         this.targetHTMLElement.addEventListener(

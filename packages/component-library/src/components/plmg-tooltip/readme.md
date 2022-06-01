@@ -14,7 +14,7 @@
 | `backgroundColor` | `background-color` | Define tooltip's background color  Allowed values:   - neutral   - primary  Default: neutral               | `"neutral" \| "primary"`                           | `'neutral'` |
 | `content`         | `content`          | Tooltip Content Text  Allowed value: any string  Required                                                  | `string`                                           | `undefined` |
 | `forceVisible`    | `force-visible`    | Force tooltip to remain visible  Will disable event listeners                                              | `boolean`                                          | `false`     |
-| `targetElement`   | `target-element`   | ID for connected element. Required.                                                                        | `string`                                           | `undefined` |
+| `targetElement`   | `target-element`   | Reference to the target element or its ID for connected element. Required.                                 | `HTMLElement \| string`                            | `undefined` |
 
 
 ----------------------------------------------

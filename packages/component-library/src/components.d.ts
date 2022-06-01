@@ -198,9 +198,9 @@ export namespace Components {
          */
         "forceVisible": boolean;
         /**
-          * ID for connected element. Required.
+          * Reference to the target element or its ID for connected element. Required.
          */
-        "targetElement": string;
+        "targetElement": string | HTMLElement;
     }
 }
 declare global {
@@ -465,9 +465,9 @@ declare namespace LocalJSX {
          */
         "forceVisible"?: boolean;
         /**
-          * ID for connected element. Required.
+          * Reference to the target element or its ID for connected element. Required.
          */
-        "targetElement"?: string;
+        "targetElement"?: string | HTMLElement;
     }
     interface IntrinsicElements {
         "plmg-button": PlmgButton;
