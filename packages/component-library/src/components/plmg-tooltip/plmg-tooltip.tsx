@@ -137,8 +137,8 @@ export class Tooltip {
       throw new Error('text must be a string');
   }
 
-  /** Life Cycle Methods & Event Listeners
-   *
+  /**
+   * Life Cycle Methods & Event Listeners
    */
 
   connectedCallback() {
