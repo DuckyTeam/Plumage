@@ -172,7 +172,8 @@ $arrow-width: 6px;
   &.left {
     @extend %arrow;
     &::after {
-      left: calc(0% - ($arrow-width / 2));
+      // 1% to fix a thin line appearing
+      left: calc(1% - ($arrow-width / 2));
       border-left: 0;
     }
 
