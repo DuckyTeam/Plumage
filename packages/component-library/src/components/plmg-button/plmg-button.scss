@@ -333,7 +333,7 @@
 
     &.primary {
       &:hover {
-        @include border-background-none(tokens.$plmg-color-border-primary);
+        @include border-background-none(tokens.$plmg-color-border-primary-weak);
       }
       &:active {
         @include border-background-none(

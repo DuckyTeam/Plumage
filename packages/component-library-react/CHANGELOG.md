@@ -1,6 +1,20 @@
 # Change Log - @ducky/plumage-react
 
-This log was last generated on Thu, 07 Apr 2022 13:53:32 GMT and should not be manually modified.
+This log was last generated on Mon, 23 May 2022 05:27:05 GMT and should not be manually modified.
+
+## 0.4.3
+Mon, 23 May 2022 05:27:05 GMT
+
+### Patches
+
+- Add readme
+
+## 0.4.2
+Fri, 20 May 2022 13:38:47 GMT
+
+### Patches
+
+- Add cjs to build output
 
 ## 0.4.1
 Thu, 07 Apr 2022 13:53:32 GMT

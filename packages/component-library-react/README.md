@@ -1,16 +1,34 @@
-# stencil-ds-react-template
+# Plumage + React
+This is our React library for Plumage.
 
-This is an example repo of building plugins.
+This package exposes Ducky's design system as React components.
+It is built with [Stencil](https://stenciljs.com/docs/react).
 
-## Step 1.
+Read our documentation at https://plumage.ducky.eco/
 
-- Update the `package.json` to have the correct package name for this repo.
-- Replace `component-library` under `dependencies` with your core stencil package name.
+## Installation
 
-## Step 2.
+Install with NPM.
+```shell
+npm install @ducky/plumage-react
+```
 
-- Build your core stencil package.
+## Usage
 
-## Step 3.
+Import components and use them.
+```tsx
+import {PlmgButton} from '@ducky/plumage-react';
 
-- Run build on this package.
+function App() {
+    return (
+        <PlmgButton>Hello world</PlmgButton>
+    );
+}
+export default App;
+```
+
+## Development
+
+Learn how to contribute at https://plumage.ducky.eco/1ef994c2c/p/84ca75-contribute-as-a-developer
+
+Don't edit files in this package. It's all generated from the main component library.
