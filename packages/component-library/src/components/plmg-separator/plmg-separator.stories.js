@@ -82,6 +82,28 @@ export const AllDirections = (args) => {
 };
 AllDirections.storyName = 'All directions';
 
+export const SomeColors = (args) => {
+  const htmlContent = `
+<div style="width: 300px; height: 300px;">
+<plmg-separator></plmg-separator>
+</div>
+<div style="width: 300px; height: 300px;">
+<plmg-separator color="red"></plmg-separator>
+</div>
+<div style="width: 300px; height: 300px;">
+<plmg-separator color="var(--plmg-color-background-standout)"></plmg-separator>
+</div>
+  `;
+
+  const el = document.createElement('div');
+  el.innerHTML = htmlContent;
+  el.style.display = 'flex';
+  el.style.justifyContent = 'space-between';
+  el.style['flex-wrap'] = 'wrap';
+  return el;
+};
+SomeColors.storyName = 'Some colors';
+
 export const AllVariations = (args) => {
   let htmlContent = '';
   directions.forEach((direction) => {
