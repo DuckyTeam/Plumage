@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Tue, 24 May 2022 12:56:59 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Jun 2022 12:31:48 GMT and should not be manually modified.
+
+## 1.1.4
+Wed, 01 Jun 2022 12:31:48 GMT
+
+### Patches
+
+- Add story for Separator with colors
 
 ## 1.1.3
 Tue, 24 May 2022 12:56:59 GMT
