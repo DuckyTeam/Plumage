@@ -71,16 +71,16 @@ export const TooltipLeft = (args) => {
   const htmlContent = `
   <div style="display: flex; flex-direction: column; height: 100vh;">
   
-    <p id="element-one" tabindex="1" style="padding: 10px; margin-left: 150px; width: fit-content;">right start</p>
+    <p id="element-one" tabindex="1" style="margin-left: 300px; width: fit-content;">right start</p>
     <plmg-tooltip target-element="element-one" position="left" arrow-position="start" content="Tooltip left with arrow at the start of the Y axis"></plmg-tooltip>
   
-    <p id="element-two" tabindex="2" style="padding: 10px; margin-left: 150px; width: fit-content;">left middle</p>
+    <p id="element-two" tabindex="2" style="margin-left: 300px; width: fit-content;">left middle</p>
     <plmg-tooltip target-element="element-two" position="left" arrow-position="middle" content="Tool left with arrow in the middle of the Y axis"></plmg-tooltip>
   
-    <p id="element-three" tabindex="3" style="padding: 10px; margin-left: 150px; width: fit-content;">left end</p>
+    <p id="element-three" tabindex="3" style="margin-left: 300px; width: fit-content;">left end</p>
     <plmg-tooltip target-element="element-three" position="left" arrow-position="end" content="Tool left with arrow at the end of the Y axis. The height of the tooltip moves its position upwards"></plmg-tooltip>
     
-    <p id="element-four" tabindex="4" style="padding: 10px; margin-left: 150px; width: fit-content;">left none</p>
+    <p id="element-four" tabindex="4" style="margin-left: 300px; width: fit-content;">left none</p>
     <plmg-tooltip target-element="element-four" position="left" arrow-position="none" content="Tool left with no arrow"></plmg-tooltip>
     
   </div>
@@ -93,16 +93,16 @@ export const TooltipRight = (args) => {
   let wrapper = document.createElement('div');
   const htmlContent = `
   <div style="display: flex; flex-direction: column; height: 100vh;">
-      <p id="element-one" tabindex="1" style="padding: 10px; margin-right: 300px; width: fit-content;">right start</p>
+      <p id="element-one" tabindex="1" style=" width: fit-content;">right start</p>
       <plmg-tooltip target-element="element-one" position="right" arrow-position="start" content="right start tooltip. A longer text will increase the height of the tooltip."></plmg-tooltip>
       
-      <p id="element-two" tabindex="2" style="padding: 10px; margin-right: 300px; width: fit-content;">right middle</p>
+      <p id="element-two" tabindex="2" style=" width: fit-content;">right middle</p>
       <plmg-tooltip target-element="element-two" position="right" arrow-position="middle" content=" A longer text will increase the height of the tooltip. It will adjust its positoning to center vertically">right middle</plmg-tooltip>
       
-      <p id="element-three" tabindex="3" style="padding: 10px; margin-right: 300px; width: fit-content;">right end</p>
+      <p id="element-three" tabindex="3" style=" width: fit-content;">right end</p>
       <plmg-tooltip target-element="element-three" position="right" arrow-position="end" content="Tooltip right with arrow at the end"></plmg-tooltip>
     
-      <p id="element-four" tabindex="4" style="padding: 10px; margin-right: 150px; width: fit-content;">right none</p>
+      <p id="element-four" tabindex="4" style=" width: fit-content;">right none</p>
       <plmg-tooltip target-element="element-four" position="right" arrow-position="none" content="Tool right with no arrow"></plmg-tooltip>
     </div>
   `;
@@ -115,16 +115,16 @@ export const TooltipBottom = (args) => {
   const htmlContent = `
   <div style="display: flex; flex-direction: column; height: 100vh;">
       
-      <p id="element-one" tabindex="1" style="padding: 10px; margin-left: 150px; width: fit-content;">bottom start</p>
+      <p id="element-one" tabindex="1" style="margin-left: 150px; width: fit-content;">bottom start</p>
       <plmg-tooltip target-element="element-one" position="bottom" arrow-position="start" content="Bottom with arrow start"></plmg-tooltip>
       
-      <p id="element-two" tabindex="2" style="padding: 10px; margin-left: 150px; width: fit-content;">bottom middle</p>
+      <p id="element-two" tabindex="2" style="margin-left: 150px; width: fit-content;">bottom middle</p>
       <plmg-tooltip target-element="element-two" position="bottom" arrow-position="middle" content="Bottom with arrow middle"></plmg-tooltip>
       
-      <p id="element-three" tabindex="3" style="padding: 10px; margin-left: 150px; width: fit-content;">bottom end</p>
+      <p id="element-three" tabindex="3" style="margin-left: 150px; width: fit-content;">bottom end</p>
       <plmg-tooltip target-element="element-three" position="bottom" arrow-position="end" content="Bottom with arrow end"></plmg-tooltip>
       
-      <p id="element-four" tabindex="4" style="padding: 10px; margin-left: 150px; width: fit-content;">bottom none</p>
+      <p id="element-four" tabindex="4" style="margin-left: 150px; width: fit-content;">bottom none</p>
       <plmg-tooltip target-element="element-four" position="bottom" arrow-position="none" content="Bottom with no arrow"></plmg-tooltip>
     </div>
     `;

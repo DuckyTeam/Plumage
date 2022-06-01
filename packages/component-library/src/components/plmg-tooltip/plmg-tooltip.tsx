@@ -30,7 +30,6 @@ export class Tooltip {
    * Reference to the target element or its ID for connected element.
    * Required.
    */
-
   @Prop() targetElement: string | HTMLElement;
   @Watch('targetElement')
   validateTargetElement(newValue: string) {
@@ -43,7 +42,9 @@ export class Tooltip {
       throw new Error(
         'id of the target element must be an HTMLElement or a string'
       );
-
+  }
+  @Watch('targetElement')
+  targetElementChange() {
     this.initiateTargetListeners();
   }
 
@@ -52,7 +53,6 @@ export class Tooltip {
    *
    * Will disable event listeners
    */
-
   @Prop() forceVisible: boolean = false;
   @Watch('forceVisible')
   validateForceVisible(newValue: boolean) {
@@ -194,10 +194,7 @@ export class Tooltip {
    */
 
   disconnectedCallback() {
-    !this.forceVisible && this.abortTooltipListener;
-    {
-      this.abortTooltipListener.abort();
-    }
+    if (this.abortTooltipListener) this.abortTooltipListener.abort();
   }
 
   render() {
@@ -234,7 +231,7 @@ export class Tooltip {
 
     const LINE_NUMBER: number = Math.ceil(this.content.length / 27);
     const LINE_HEIGHT: number = 18;
-    const ARROW_WIDTH = this.arrowPosition === 'none' ? 0 : 6;
+    const ARROW_SIZE = this.arrowPosition === 'none' ? 0 : 6;
     const PADDING_Y: number = 8;
     const PADDING_X: number = 16;
     const LETTER_WIDTH: number = 5.3;
@@ -250,14 +247,16 @@ export class Tooltip {
     // Calculate the relative position of the tooltip
     switch (this.position) {
       case 'right':
-        styles.left = `${targetPositions.x + targetPositions.width + OFFSET}px`;
+        styles.left = `${
+          targetPositions.x + targetPositions.width + ARROW_SIZE + OFFSET
+        }px`;
         styles.top = this.getLeftRightArrowPosition(
           targetPositions,
           TOOLTIP_HEIGHT
         );
         break;
       case 'left':
-        styles.left = `${targetPositions.x - WIDTH - ARROW_WIDTH - OFFSET}px`;
+        styles.left = `${targetPositions.x - WIDTH - ARROW_SIZE - OFFSET}px`;
         styles.top = this.getLeftRightArrowPosition(
           targetPositions,
           TOOLTIP_HEIGHT
@@ -265,13 +264,13 @@ export class Tooltip {
         break;
       case 'bottom':
         styles.top = `${
-          targetPositions.y + targetPositions.height + ARROW_WIDTH + OFFSET
+          targetPositions.y + targetPositions.height + ARROW_SIZE + OFFSET
         }px`;
         styles.left = this.getTopBottomArrowPosition(targetPositions, WIDTH);
         break;
       case 'top':
         styles.top = `${
-          targetPositions.y - TOOLTIP_HEIGHT - ARROW_WIDTH - OFFSET
+          targetPositions.y - TOOLTIP_HEIGHT - ARROW_SIZE - OFFSET
         }px`;
         styles.left = this.getTopBottomArrowPosition(targetPositions, WIDTH);
         break;
