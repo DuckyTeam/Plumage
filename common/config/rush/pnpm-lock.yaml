@@ -13,7 +13,7 @@ specifiers:
   '@rush-temp/plumage': file:./projects/plumage.tgz
   '@rush-temp/plumage-react': file:./projects/plumage-react.tgz
   '@rush-temp/plumage-tokens': file:./projects/plumage-tokens.tgz
-  '@stencil/core': ^2.14.2
+  '@stencil/core': ^2.16.0
   '@stencil/eslint-plugin': ~0.4.0
   '@stencil/react-output-target': ^0.3.1
   '@stencil/sass': ^1.5.2
@@ -76,10 +76,10 @@ dependencies:
   '@rush-temp/plumage': file:projects/plumage.tgz_0caa87738ffad273e3f555cf1f2e570e
   '@rush-temp/plumage-react': file:projects/plumage-react.tgz
   '@rush-temp/plumage-tokens': file:projects/plumage-tokens.tgz
-  '@stencil/core': 2.14.2
+  '@stencil/core': 2.16.0
   '@stencil/eslint-plugin': 0.4.0_f970b5f17668cb483b8453d324524a4d
-  '@stencil/react-output-target': 0.3.1_@stencil+core@2.14.2
-  '@stencil/sass': 1.5.2_@stencil+core@2.14.2
+  '@stencil/react-output-target': 0.3.1_@stencil+core@2.16.0
+  '@stencil/sass': 1.5.2_@stencil+core@2.16.0
   '@storybook/addon-actions': 6.4.9_@types+react@17.0.38
   '@storybook/addon-essentials': 6.4.9_f73d3ea9434f46244e13d5f500c930c9
   '@storybook/addon-knobs': 6.4.0_@storybook+addons@6.3.7
@@ -2857,8 +2857,8 @@ packages:
       '@sinonjs/commons': 1.8.3
     dev: false
 
-  /@stencil/core/2.14.2:
-    resolution: {integrity: sha512-NMC5Xi8sPFJxaO4rz6CbMHuD6PteE/RJWtjrbkusmpjKRtMXkfZJPIgOrleZ4xO+vXcNyL535Ru7vUADqEsTiQ==}
+  /@stencil/core/2.16.0:
+    resolution: {integrity: sha512-oKxPYxpH1no0oMFSf8EesuFBcn9hVpoqrpiS2WH0H50RKKL8hhKoxDfn/cNeD12L0Aj7kf6nNtexIllmkYG6lw==}
     engines: {node: '>=12.10.0', npm: '>=6.0.0'}
     hasBin: true
     dev: false
@@ -2881,20 +2881,20 @@ packages:
       typescript: 4.5.4
     dev: false
 
-  /@stencil/react-output-target/0.3.1_@stencil+core@2.14.2:
+  /@stencil/react-output-target/0.3.1_@stencil+core@2.16.0:
     resolution: {integrity: sha512-6d9pPhyajFfdxkqU/pPP2SzI7wn+EklySQc4KXlI/xcdvC2H9BzLmhmR40fR1q2TQoJbJui/nvSWhbYqkE3OBQ==}
     peerDependencies:
       '@stencil/core': ^2.9.0
     dependencies:
-      '@stencil/core': 2.14.2
+      '@stencil/core': 2.16.0
     dev: false
 
-  /@stencil/sass/1.5.2_@stencil+core@2.14.2:
+  /@stencil/sass/1.5.2_@stencil+core@2.16.0:
     resolution: {integrity: sha512-nJ93pUSylsGsMX0eLmhxh1oEljcUjj5mYjhB9ziCdoaydAdjukrUoqDCC7tdVbOcBo2hKptQyWqCtETnBGYsXQ==}
     peerDependencies:
       '@stencil/core': '>=1.0.2'
     dependencies:
-      '@stencil/core': 2.14.2
+      '@stencil/core': 2.16.0
     dev: false
 
   /@storybook/addon-actions/6.4.9_@types+react@17.0.38:
@@ -18391,7 +18391,7 @@ packages:
     dev: false
 
   file:projects/example-react-app.tgz:
-    resolution: {integrity: sha512-TeuQliZPa9tuAxxEoGwrm7EQQDUTWYQLuPhjDXG3D7noxc0XtgI35gx8zVgUTk0MtNTMedEuxiZtziwzuYyQ1w==, tarball: file:projects/example-react-app.tgz}
+    resolution: {integrity: sha512-hE6GM8N0ja14EQSYk06hI+J9Zdkf7KtuD3EQCaQdfuSdlqjLAHRHcO1dc0eVYlGMwzActohz7OyJwwPluaSAeg==, tarball: file:projects/example-react-app.tgz}
     name: '@rush-temp/example-react-app'
     version: 0.0.0
     dependencies:
@@ -18429,7 +18429,7 @@ packages:
     dev: false
 
   file:projects/plumage-react.tgz:
-    resolution: {integrity: sha512-FAhZnvgagwPUP68gWPc1rpbXzLhefROfsJm9CfRWvKnqLD8OEpgv7UZrD8wFlyJoC6gdB+AwCF+gMac8P+xu6A==, tarball: file:projects/plumage-react.tgz}
+    resolution: {integrity: sha512-mUsDlaKl3yqwXmzLU+SnUeYufY/R8qFsFphpiPVHC8oTPsYtTipBA8tA/OhaNJGz4DH2+RwxyuU3p3bkHax4lQ==, tarball: file:projects/plumage-react.tgz}
     name: '@rush-temp/plumage-react'
     version: 0.0.0
     dependencies:
@@ -18453,17 +18453,17 @@ packages:
     dev: false
 
   file:projects/plumage.tgz_0caa87738ffad273e3f555cf1f2e570e:
-    resolution: {integrity: sha512-WHJEmnnc3vXJrCZQvIeTn9t/xa0NO/mEtOnMww6Fv5CBgNSsK8ymyhIAiS80RvXA7/4AkuaA/d31UoPqYwWVaw==, tarball: file:projects/plumage.tgz}
+    resolution: {integrity: sha512-Du5U3wzT4NZ8alelVa9RiWEFg9+5cWlvFppjCpddqn6SEfVyD4b7PKYe36cVW7FlN3X5+Vg/i7CrdxQ0IzUwhw==, tarball: file:projects/plumage.tgz}
     id: file:projects/plumage.tgz
     name: '@rush-temp/plumage'
     version: 0.0.0
     dependencies:
       '@axe-core/puppeteer': 4.4.0_puppeteer@13.3.2
       '@ducky/eslint-config-base': 2.0.0_ed4c5cdfca7229f6ecc40e5501fa01b3
-      '@stencil/core': 2.14.2
+      '@stencil/core': 2.16.0
       '@stencil/eslint-plugin': 0.4.0_f970b5f17668cb483b8453d324524a4d
-      '@stencil/react-output-target': 0.3.1_@stencil+core@2.14.2
-      '@stencil/sass': 1.5.2_@stencil+core@2.14.2
+      '@stencil/react-output-target': 0.3.1_@stencil+core@2.16.0
+      '@stencil/sass': 1.5.2_@stencil+core@2.16.0
       '@storybook/addon-actions': 6.4.9_@types+react@17.0.38
       '@storybook/addon-essentials': 6.4.9_f73d3ea9434f46244e13d5f500c930c9
       '@storybook/addon-knobs': 6.4.0_@storybook+addons@6.3.7

@@ -7,6 +7,9 @@ export const config: Config = {
   globalStyle: 'src/global.scss',
   plugins: [sass()],
   buildEs5: 'prod',
+  extras: {
+    experimentalImportInjection: true,
+  },
   outputTargets: [
     reactOutputTarget({
       componentCorePackage: '@ducky/plumage',
