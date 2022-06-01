@@ -17,6 +17,7 @@ import {
 export class Tooltip {
   private abortTooltipListener: AbortController;
   private targetHTMLElement: HTMLElement;
+  private ref: HTMLDivElement;
 
   /**
    * Store tooltip visibility.
@@ -46,18 +47,6 @@ export class Tooltip {
   @Watch('targetElement')
   targetElementChange() {
     this.initiateTargetListeners();
-  }
-
-  /**
-   * Force tooltip to remain visible
-   *
-   * Will disable event listeners
-   */
-  @Prop() forceVisible: boolean = false;
-  @Watch('forceVisible')
-  validateForceVisible(newValue: boolean) {
-    if (newValue && typeof newValue !== 'boolean')
-      throw new Error('force visible must be a boolean');
   }
 
   /**
@@ -155,8 +144,7 @@ export class Tooltip {
    *
    */
   private initiateTargetListeners() {
-    this.isVisible = this.forceVisible;
-    if (!this.forceVisible && this.targetElement) {
+    if (this.targetElement) {
       if (this.targetElement instanceof HTMLElement) {
         this.targetHTMLElement = this.targetElement;
       } else {
@@ -201,14 +189,16 @@ export class Tooltip {
     const classes = {
       'plmg-tooltip': true,
       visible: this.isVisible,
-      // Include arrow classes if side is not set to none
       [this.position]: true,
       [this.arrowPosition]: true,
       [this.backgroundColor]: true,
     };
 
     return (
-      <div style={!this.forceVisible && this.setPosition()}>
+      <div
+        style={this.setPosition()}
+        ref={(el) => (this.ref = el as HTMLDivElement)}
+      >
         <span class={classes}>{this.content}</span>
       </div>
     );
@@ -233,13 +223,11 @@ export class Tooltip {
     const LINE_HEIGHT: number = 18;
     const ARROW_SIZE = this.arrowPosition === 'none' ? 0 : 6;
     const PADDING_Y: number = 8;
-    const PADDING_X: number = 16;
-    const LETTER_WIDTH: number = 5.3;
     const TOOLTIP_HEIGHT: number = LINE_NUMBER * LINE_HEIGHT + PADDING_Y;
     const OFFSET = 4;
 
     // Calculate width of a tooltip with less than 27 characters. A multiline tooltip will be 156px wide.
-    const WIDTH: number = this.getTooltipWidth(LETTER_WIDTH, PADDING_X);
+    const WIDTH: number = this.getTooltipWidth();
 
     // Get the position of the target element
     const targetPositions = this.targetHTMLElement.getBoundingClientRect();
@@ -303,9 +291,13 @@ export class Tooltip {
       return `${targetPositions.y + targetPositions.height - TOOLTIP_HEIGHT}px`;
   }
 
-  private getTooltipWidth(LETTER_WIDTH: number, PADDING_X: number) {
-    return this.content.length <= 27
-      ? this.content.length * LETTER_WIDTH + PADDING_X
-      : 156;
+  /**
+   * Grab the width of the tooltip itself.
+   * If the tooltip element is not available yet, return a default value.
+   * @private
+   */
+  private getTooltipWidth() {
+    if (this.ref) return this.ref.getBoundingClientRect().width;
+    return 156;
   }
 }

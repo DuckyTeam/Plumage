@@ -190,10 +190,6 @@ export namespace Components {
          */
         "content": string;
         /**
-          * Force tooltip to remain visible  Will disable event listeners
-         */
-        "forceVisible": boolean;
-        /**
           * Define tooltip's position.  Allowed values:   - left   - right   - top   - bottom  Default: top. Required.
          */
         "position": PlmgTooltipPosition;
@@ -456,10 +452,6 @@ declare namespace LocalJSX {
           * Tooltip Content Text  Allowed value: any string  Required
          */
         "content"?: string;
-        /**
-          * Force tooltip to remain visible  Will disable event listeners
-         */
-        "forceVisible"?: boolean;
         /**
           * Define tooltip's position.  Allowed values:   - left   - right   - top   - bottom  Default: top. Required.
          */

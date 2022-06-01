@@ -25,9 +25,6 @@ export default {
     content: {
       control: { type: 'text' },
     },
-    ['force-visible']: {
-      control: { type: 'boolean' },
-    },
     ['target-element']: {
       options: ['id'],
     },
@@ -40,7 +37,6 @@ const PROPS = [
   'arrow-position',
   'target-element',
   'content',
-  'force-visible',
 ];
 const EVENTS = [];
 const CSS_VARS = [];
@@ -52,7 +48,18 @@ const Template = (args) => {
   Utils.bindEvents(el, EVENTS, args);
   Utils.bindStyles(el, CSS_VARS, args);
   Utils.bindSlots(el, SLOTS, args);
-  return el;
+  el.setAttribute('target-element', 'targetelement');
+
+  const target = document.createElement('span');
+  target.setAttribute('id', 'targetelement');
+  target.innerText = 'Hover me';
+
+  const container = document.createElement('div');
+  container.appendChild(el);
+  container.appendChild(target);
+  container.style = 'margin: 150px;';
+
+  return container;
 };
 
 export const Primary = Template.bind({});
@@ -62,7 +69,6 @@ Primary.args = {
   ['background-color']: 'primary',
   ['position']: 'none',
   ['arrow-position']: 'middle',
-  ['force-visible']: true,
   ['target-element']: 'targetelement',
 };
 
@@ -161,7 +167,7 @@ export const AllVariations = (args) => {
     positions.forEach((position) => {
       arrowPositions.forEach((arrowPosition) => {
         htmlContent += `
-        <plmg-tooltip force-visible="true" content="${backgroundColor} ${arrowPosition} ${position}" background-color="${backgroundColor}" position="${position}" arrow-position="${arrowPosition}">
+        <plmg-tooltip content="${backgroundColor} ${arrowPosition} ${position}" background-color="${backgroundColor}" position="${position}" arrow-position="${arrowPosition}">
         </plmg-tooltip>
         `;
       });
