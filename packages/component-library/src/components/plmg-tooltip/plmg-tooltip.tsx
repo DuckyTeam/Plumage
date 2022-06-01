@@ -44,7 +44,7 @@ export class Tooltip {
         'id of the target element must be an HTMLElement or a string'
       );
 
-    this.connectedCallback();
+    this.initiateTargetListeners();
   }
 
   /**
@@ -139,19 +139,23 @@ export class Tooltip {
 
   /** Life Cycle Methods & Event Listeners
    *
-   * Listen for
-   *
-   * mouse over
-   * focus
-   * mouse out
-   * blur
-   *
-   * on the target element
-   *
-   * forceVisibile prop disables the listeners
    */
 
   connectedCallback() {
+    this.initiateTargetListeners();
+  }
+
+  /**
+   * Listen for the following events on the target element:
+   * - mouse over
+   * - focus
+   * - mouse out
+   * - blur
+   *
+   * forceVisible prop disables the listeners
+   *
+   */
+  private initiateTargetListeners() {
     this.isVisible = this.forceVisible;
     if (!this.forceVisible && this.targetElement) {
       if (this.targetElement instanceof HTMLElement) {
