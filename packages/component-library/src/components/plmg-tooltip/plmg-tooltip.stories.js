@@ -163,7 +163,6 @@ export const AllVariations = (args) => {
 
   const el = document.createElement('div');
   el.innerHTML = htmlContent.trim();
-  console.log(el);
   el.style.display = 'grid';
   el.style.gridTemplateColumns = 'repeat(3, 1fr)';
   el.style.gridTemplateRows = 'repeat(5, 1fr)';

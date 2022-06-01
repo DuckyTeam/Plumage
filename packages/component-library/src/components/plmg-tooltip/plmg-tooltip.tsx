@@ -44,7 +44,6 @@ export class Tooltip {
         'id of the target element must be an HTMLElement or a string'
       );
 
-    console.log(newValue);
     this.connectedCallback();
   }
 
