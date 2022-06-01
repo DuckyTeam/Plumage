@@ -1,12 +1,12 @@
 import { Component, h, Prop, State, Watch } from '@stencil/core';
 
 import {
-  PlmgTooltipBackgroundColors,
-  isBackgroundColor,
-  PlmgTooltipArrowSides,
-  isArrowSide,
-  PlmgTooltipArrowPositions,
   isArrowPosition,
+  isArrowSide,
+  isBackgroundColor,
+  PlmgTooltipArrowPositions,
+  PlmgTooltipArrowSides,
+  PlmgTooltipBackgroundColors,
 } from './plmg-tooltip.types';
 
 @Component({
@@ -223,49 +223,67 @@ export class Tooltip {
     const TOOLTIP_HEIGHT: number = LINE_NUMBER * LINE_HEIGHT + PADDING_Y;
 
     // Calculate width of a tooltip with less than 27 characters. A multiline tooltip will be 156px wide.
-    const WIDTH: number =
-      this.content.length <= 27
-        ? this.content.length * LETTER_WIDTH + PADDING_X
-        : 156;
+    const WIDTH: number = this.getTooltipWidth(LETTER_WIDTH, PADDING_X);
 
     // Get the position of the target element
     const targetPositions = this.targetHTMLElement.getBoundingClientRect();
 
     // Calculate the relative position of the tooltip
-    this.arrowSide === 'left' &&
-      (styles.left = `${targetPositions.x + targetPositions.width}px`);
-    this.arrowSide === 'right' &&
-      (styles.left = `${targetPositions.x - WIDTH - ARROW_WIDTH}px`);
-
-    if (this.arrowSide === 'left' || this.arrowSide === 'right') {
-      this.arrowPosition === 'start' && (styles.top = `${targetPositions.y}px`);
-      this.arrowPosition === 'middle' &&
-        (styles.top = `${
-          targetPositions.y + targetPositions.height / 2 - TOOLTIP_HEIGHT / 2
-        }px`);
-      this.arrowPosition === 'end' &&
-        (styles.top = `${
-          targetPositions.y + targetPositions.height - TOOLTIP_HEIGHT
-        }px`);
+    switch (this.arrowSide) {
+      case 'left':
+        styles.left = `${targetPositions.x + targetPositions.width}px`;
+        styles.top = this.getLeftRightArrowPosition(
+          targetPositions,
+          TOOLTIP_HEIGHT
+        );
+        break;
+      case 'right':
+        styles.left = `${targetPositions.x - WIDTH - ARROW_WIDTH}px`;
+        styles.top = this.getLeftRightArrowPosition(
+          targetPositions,
+          TOOLTIP_HEIGHT
+        );
+        break;
+      case 'top':
+        styles.top = `${targetPositions.y + targetPositions.height}px`;
+        styles.left = this.getTopBottomArrowPosition(targetPositions, WIDTH);
+        break;
+      case 'bottom':
+        styles.top = `${targetPositions.y - TOOLTIP_HEIGHT - ARROW_WIDTH}px`;
+        styles.left = this.getTopBottomArrowPosition(targetPositions, WIDTH);
+        break;
     }
 
-    this.arrowSide === 'bottom' &&
-      (styles.top = `${targetPositions.y - TOOLTIP_HEIGHT - ARROW_WIDTH}px`);
-    this.arrowSide === 'top' &&
-      (styles.top = `${targetPositions.y + targetPositions.height}px`);
-
-    if (this.arrowSide === 'bottom' || this.arrowSide === 'top') {
-      this.arrowPosition === 'start' &&
-        (styles.left = `${targetPositions.x}px`);
-      this.arrowPosition === 'middle' &&
-        (styles.left = `${
-          targetPositions.x + targetPositions.width / 2 - WIDTH / 2
-        }px`);
-      this.arrowPosition === 'end' &&
-        (styles.left = `${
-          targetPositions.x + targetPositions.width - WIDTH
-        }px`);
-    }
     return styles;
+  }
+
+  private getTopBottomArrowPosition(
+    targetPositions: DOMRect,
+    WIDTH: number
+  ): string {
+    if (this.arrowPosition === 'start') return `${targetPositions.x}px`;
+    if (this.arrowPosition === 'middle')
+      return `${targetPositions.x + targetPositions.width / 2 - WIDTH / 2}px`;
+    if (this.arrowPosition === 'end')
+      return `${targetPositions.x + targetPositions.width - WIDTH}px`;
+  }
+
+  private getLeftRightArrowPosition(
+    targetPositions: DOMRect,
+    TOOLTIP_HEIGHT: number
+  ): string {
+    if (this.arrowPosition === 'start') return `${targetPositions.y}px`;
+    if (this.arrowPosition === 'middle')
+      return `${
+        targetPositions.y + targetPositions.height / 2 - TOOLTIP_HEIGHT / 2
+      }px`;
+    if (this.arrowPosition === 'end')
+      return `${targetPositions.y + targetPositions.height - TOOLTIP_HEIGHT}px`;
+  }
+
+  private getTooltipWidth(LETTER_WIDTH: number, PADDING_X: number) {
+    return this.content.length <= 27
+      ? this.content.length * LETTER_WIDTH + PADDING_X
+      : 156;
   }
 }
