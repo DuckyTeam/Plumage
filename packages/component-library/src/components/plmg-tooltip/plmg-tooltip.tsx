@@ -234,11 +234,12 @@ export class Tooltip {
 
     const LINE_NUMBER: number = Math.ceil(this.content.length / 27);
     const LINE_HEIGHT: number = 18;
-    const ARROW_WIDTH = 6;
+    const ARROW_WIDTH = this.arrowPosition === 'none' ? 0 : 6;
     const PADDING_Y: number = 8;
     const PADDING_X: number = 16;
     const LETTER_WIDTH: number = 5.3;
     const TOOLTIP_HEIGHT: number = LINE_NUMBER * LINE_HEIGHT + PADDING_Y;
+    const OFFSET = 4;
 
     // Calculate width of a tooltip with less than 27 characters. A multiline tooltip will be 156px wide.
     const WIDTH: number = this.getTooltipWidth(LETTER_WIDTH, PADDING_X);
@@ -249,14 +250,14 @@ export class Tooltip {
     // Calculate the relative position of the tooltip
     switch (this.position) {
       case 'right':
-        styles.left = `${targetPositions.x + targetPositions.width}px`;
+        styles.left = `${targetPositions.x + targetPositions.width + OFFSET}px`;
         styles.top = this.getLeftRightArrowPosition(
           targetPositions,
           TOOLTIP_HEIGHT
         );
         break;
       case 'left':
-        styles.left = `${targetPositions.x - WIDTH - ARROW_WIDTH}px`;
+        styles.left = `${targetPositions.x - WIDTH - ARROW_WIDTH - OFFSET}px`;
         styles.top = this.getLeftRightArrowPosition(
           targetPositions,
           TOOLTIP_HEIGHT
@@ -264,12 +265,14 @@ export class Tooltip {
         break;
       case 'bottom':
         styles.top = `${
-          targetPositions.y + targetPositions.height + ARROW_WIDTH
+          targetPositions.y + targetPositions.height + ARROW_WIDTH + OFFSET
         }px`;
         styles.left = this.getTopBottomArrowPosition(targetPositions, WIDTH);
         break;
       case 'top':
-        styles.top = `${targetPositions.y - TOOLTIP_HEIGHT - ARROW_WIDTH}px`;
+        styles.top = `${
+          targetPositions.y - TOOLTIP_HEIGHT - ARROW_WIDTH - OFFSET
+        }px`;
         styles.left = this.getTopBottomArrowPosition(targetPositions, WIDTH);
         break;
     }
