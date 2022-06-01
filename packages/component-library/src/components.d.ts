@@ -176,6 +176,18 @@ export namespace Components {
         "size": string;
     }
 }
+export interface PlmgCardCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPlmgCardElement;
+}
+export interface PlmgHeaderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPlmgHeaderElement;
+}
+export interface PlmgSidebarCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPlmgSidebarElement;
+}
 declare global {
     interface HTMLPlmgButtonElement extends Components.PlmgButton, HTMLStencilElement {
     }
@@ -303,11 +315,11 @@ declare namespace LocalJSX {
         /**
           * The event "bottomActionClicked" is triggered when the bottom action button is clicked.
          */
-        "onBottomActionClicked"?: (event: CustomEvent<MouseEvent>) => void;
+        "onBottomActionClicked"?: (event: PlmgCardCustomEvent<MouseEvent>) => void;
         /**
           * The event "topActionClicked" is triggered when the top action button is clicked.
          */
-        "onTopActionClicked"?: (event: CustomEvent<MouseEvent>) => void;
+        "onTopActionClicked"?: (event: PlmgCardCustomEvent<MouseEvent>) => void;
         /**
           * Define card's header icon, used as a top action for the card.  If a headerText or an topActionIcon is provided, the heading will be displayed with the icon button on the right. By default, when no headerText nor topActionIcon is provided, the heading is hidden.
          */
@@ -321,7 +333,7 @@ declare namespace LocalJSX {
         /**
           * Event dispatched when the button to expand the sidebar is clicked.
          */
-        "onExpandSidebar"?: (event: CustomEvent<any>) => void;
+        "onExpandSidebar"?: (event: PlmgHeaderCustomEvent<any>) => void;
         /**
           * Define if the sidebar is expanded on startup.
          */
@@ -363,7 +375,7 @@ declare namespace LocalJSX {
         /**
           * Event dispatched when the button to collapse the sidebar is clicked.
          */
-        "onCollapseSidebar"?: (event: CustomEvent<any>) => void;
+        "onCollapseSidebar"?: (event: PlmgSidebarCustomEvent<any>) => void;
     }
     interface PlmgSidebarItem {
         /**
