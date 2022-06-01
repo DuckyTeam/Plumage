@@ -50,15 +50,19 @@ $arrow-width: 6px;
 // ------------------------------------------------
 
 %arrow {
-  &::after {
-    background-color: transparent;
-    content: '';
-    display: block;
-    position: absolute;
-    width: 0;
-    height: 0;
-    border: $arrow-width solid transparent;
-    transform: translate(-50%, 0);
+  &.start,
+  &.end,
+  &.middle {
+    &::after {
+      background-color: transparent;
+      content: '';
+      display: block;
+      position: absolute;
+      width: 0;
+      height: 0;
+      border: $arrow-width solid transparent;
+      transform: translate(-50%, 0);
+    }
   }
 }
 
@@ -90,10 +94,8 @@ $arrow-width: 6px;
 
   @include background-color;
 
-  // Controls: Arrow Sides & Colors & Positions
-
-  // Control: Arrow Side(Top) & Colors & Positions
-  &.top {
+  // Controls: Tooltip positions & Colors & Arrow positions
+  &.bottom {
     @extend %arrow;
     &::after {
       bottom: 100%;
@@ -131,8 +133,7 @@ $arrow-width: 6px;
     }
   }
 
-  // Control: Arrow Side(Bottom) & Colors & Positions
-  &.bottom {
+  &.top {
     @extend %arrow;
     &::after {
       top: 100%;
@@ -167,13 +168,11 @@ $arrow-width: 6px;
     }
   }
 
-  // Control: Arrow Side(Left) & Colors & Positions
-
-  &.left {
+  &.right {
     @extend %arrow;
     &::after {
       // 1% to fix a thin line appearing
-      left: calc(1% - ($arrow-width / 2));
+      left: calc(1% - ($arrow-width));
       border-left: 0;
     }
 
@@ -202,9 +201,7 @@ $arrow-width: 6px;
     }
   }
 
-  // Control: Arrow Side(Right) & Colors & Positions
-
-  &.right {
+  &.left {
     @extend %arrow;
     &::after {
       // 99% to fix a thin line appearing

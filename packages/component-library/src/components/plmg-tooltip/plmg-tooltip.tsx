@@ -2,10 +2,10 @@ import { Component, h, Prop, State, Watch } from '@stencil/core';
 
 import {
   isArrowPosition,
-  isArrowSide,
+  isPosition,
   isBackgroundColor,
   PlmgTooltipArrowPositions,
-  PlmgTooltipArrowSides,
+  PlmgTooltipPosition,
   PlmgTooltipBackgroundColors,
 } from './plmg-tooltip.types';
 
@@ -80,39 +80,38 @@ export class Tooltip {
   }
 
   /**
-   * Define tooltip's arrow side
+   * Define tooltip's position.
    *
    * Allowed values:
-   *   - none
    *   - left
    *   - right
    *   - top
    *   - bottom
    *
-   * Default: none
+   * Default: top.
+   * Required.
    */
-
-  @Prop() arrowSide: PlmgTooltipArrowSides = 'none';
-  @Watch('arrowSide')
-  validateArrowSide(newValue: string) {
+  @Prop() position: PlmgTooltipPosition = 'top';
+  @Watch('position')
+  validateTooltipPosition(newValue: string) {
     if (newValue && typeof newValue !== 'string')
       throw new Error('arrow side must be a string');
-    if (!isArrowSide(newValue))
+    if (!isPosition(newValue))
       throw new Error('arrow side: must be a valid value');
   }
 
   /**
-   * Define tooltip arrow position
+   * Define tooltip arrow position. When 'none' is selected, no arrow is visible.
    *
    * Allowed values:
+   *   - none
    *   - start
    *   - middle
    *   - end
    *
    * Default: none
    */
-
-  @Prop() arrowPosition: PlmgTooltipArrowPositions = 'middle';
+  @Prop() arrowPosition: PlmgTooltipArrowPositions = 'none';
   @Watch('arrowPosition')
   validateArrowPosition(newValue: string) {
     if (newValue && typeof newValue !== 'string')
@@ -206,8 +205,8 @@ export class Tooltip {
       'plmg-tooltip': true,
       visible: this.isVisible,
       // Include arrow classes if side is not set to none
-      ...(this.arrowSide && { [this.arrowSide]: true }),
-      ...(this.arrowSide && { [this.arrowPosition]: true }),
+      [this.position]: true,
+      [this.arrowPosition]: true,
       [this.backgroundColor]: true,
     };
 
@@ -248,28 +247,28 @@ export class Tooltip {
     const targetPositions = this.targetHTMLElement.getBoundingClientRect();
 
     // Calculate the relative position of the tooltip
-    switch (this.arrowSide) {
-      case 'left':
+    switch (this.position) {
+      case 'right':
         styles.left = `${targetPositions.x + targetPositions.width}px`;
         styles.top = this.getLeftRightArrowPosition(
           targetPositions,
           TOOLTIP_HEIGHT
         );
         break;
-      case 'right':
+      case 'left':
         styles.left = `${targetPositions.x - WIDTH - ARROW_WIDTH}px`;
         styles.top = this.getLeftRightArrowPosition(
           targetPositions,
           TOOLTIP_HEIGHT
         );
         break;
-      case 'top':
+      case 'bottom':
         styles.top = `${
           targetPositions.y + targetPositions.height + ARROW_WIDTH
         }px`;
         styles.left = this.getTopBottomArrowPosition(targetPositions, WIDTH);
         break;
-      case 'bottom':
+      case 'top':
         styles.top = `${targetPositions.y - TOOLTIP_HEIGHT - ARROW_WIDTH}px`;
         styles.left = this.getTopBottomArrowPosition(targetPositions, WIDTH);
         break;
@@ -283,7 +282,7 @@ export class Tooltip {
     WIDTH: number
   ): string {
     if (this.arrowPosition === 'start') return `${targetPositions.x}px`;
-    if (this.arrowPosition === 'middle')
+    if (this.arrowPosition === 'middle' || this.arrowPosition === 'none')
       return `${targetPositions.x + targetPositions.width / 2 - WIDTH / 2}px`;
     if (this.arrowPosition === 'end')
       return `${targetPositions.x + targetPositions.width - WIDTH}px`;
@@ -294,7 +293,7 @@ export class Tooltip {
     TOOLTIP_HEIGHT: number
   ): string {
     if (this.arrowPosition === 'start') return `${targetPositions.y}px`;
-    if (this.arrowPosition === 'middle')
+    if (this.arrowPosition === 'middle' || this.arrowPosition === 'none')
       return `${
         targetPositions.y + targetPositions.height / 2 - TOOLTIP_HEIGHT / 2
       }px`;
