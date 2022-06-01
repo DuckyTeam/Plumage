@@ -261,7 +261,9 @@ export class Tooltip {
         );
         break;
       case 'top':
-        styles.top = `${targetPositions.y + targetPositions.height}px`;
+        styles.top = `${
+          targetPositions.y + targetPositions.height + ARROW_WIDTH
+        }px`;
         styles.left = this.getTopBottomArrowPosition(targetPositions, WIDTH);
         break;
       case 'bottom':
