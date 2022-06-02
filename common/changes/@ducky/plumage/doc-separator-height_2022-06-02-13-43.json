@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "Smaller stories for PlmgSeparator",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
