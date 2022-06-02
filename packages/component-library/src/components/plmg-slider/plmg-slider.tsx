@@ -20,12 +20,13 @@ export class Slider {
    * Additional items set the mark values
    */
 
-  @Prop() rangeValues: Array<number> = [0, 5, 8, 12, 60, 90];
+  @Prop() rangeValues: Array<number>;
   @Watch('rangeValues')
   validateRangeValues(newValue: Array<number>) {
+    console.log('foo');
     if (!Array.isArray(newValue) || newValue.length < 2)
       throw new Error('rangeValues must be an array with at least two items');
-    this.rangeValues = newValue;
+    this.setValues();
   }
 
   /**
@@ -37,6 +38,7 @@ export class Slider {
   @Prop() defaultValue: number;
   @Watch('defaultValue')
   validateDefaultValue(newValue: number) {
+    console.log('bar');
     if (typeof newValue !== 'number')
       throw new Error('default value number be a number');
   }
@@ -52,7 +54,6 @@ export class Slider {
   onThumbLabel(newValue: boolean) {
     if (typeof newValue !== 'boolean')
       throw new Error('thumb label must be boolean');
-    this.thumbLabel = newValue;
   }
 
   /**
@@ -67,7 +68,6 @@ export class Slider {
   validateStep(newValue: number) {
     if (typeof newValue !== 'number' || newValue <= 0)
       throw new Error('step must be a positive number');
-    this.step = newValue;
   }
 
   /**
@@ -81,7 +81,6 @@ export class Slider {
   onMarks(newValue: boolean) {
     if (typeof newValue !== 'boolean')
       throw new Error('marks must be a boolean');
-    this.marks = newValue;
   }
 
   /**
@@ -93,30 +92,36 @@ export class Slider {
   @State() maxValue: number;
 
   private setValues() {
+    if (!this.rangeValues) return;
+
     this.minValue = this.rangeValues[0];
     this.maxValue = this.rangeValues[this.rangeValues.length - 1];
     if (
       this.defaultValue >= this.minValue &&
       this.defaultValue <= this.maxValue
     ) {
-      return (this.currentValue = this.defaultValue);
+      this.currentValue = this.defaultValue;
+    } else {
+      this.currentValue = this.minValue;
     }
   }
 
-  componentWillLoad() {
-    this.setValues();
-    this.setBackgroundProgressFill();
-  }
+  // componentWillLoad() {
+  //   this.setValues();
+  //   this.setBackgroundProgressFill();
+  // }
 
-  connectedCallBack() {
-    this.setBackgroundProgressFill();
-  }
+  // connectedCallBack() {
+  //   this.setBackgroundProgressFill();
+  // }
 
   handleChange(event) {
     this.currentValue = event.target.value;
   }
 
   render() {
+    console.log(this.rangeValues);
+
     const thumbClasses = {
       'plmg-slider-thumb-label': true,
       hidden: !this.thumbLabel,
@@ -124,6 +129,23 @@ export class Slider {
 
     return (
       <div class={'plmg-slider-component-container'}>
+        <div class={'plmg-slider-track-rail-container'}>
+          <label>
+            <input
+              style={{ background: this.setBackgroundProgressFill() }}
+              class="plmg-slider-input"
+              step={this.step ? this.step : 0}
+              type="range"
+              id="input-range"
+              aria-label="input-range-slider"
+              aria-valuemin={this.minValue}
+              aria-valuemax={this.maxValue}
+              aria-valuenow={this.currentValue}
+              onInput={(event) => this.handleChange(event)}
+            />
+          </label>
+        </div>
+
         <div class={'plmg-slider-thumb-label-container'}>
           <output
             id="output-range"
@@ -136,19 +158,6 @@ export class Slider {
           >
             {this.currentValue}
           </output>
-        </div>
-        <div class={'plmg-slider-track-rail-container'}>
-          <input
-            style={{ background: this.setBackgroundProgressFill() }}
-            class="plmg-slider-input"
-            step={this.step ? this.step : 0}
-            type="range"
-            id="input-range"
-            min={this.minValue}
-            max={this.maxValue}
-            value={this.currentValue}
-            onInput={(event) => this.handleChange(event)}
-          />
         </div>
 
         {this.marks && (

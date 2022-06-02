@@ -47,24 +47,29 @@ const Template = (args) => {
 export const Primary = Template.bind({});
 Primary.storyName = 'Slider';
 Primary.args = {
+  marks: false,
+  ['thumb-label']: false,
+  ['mark-labels']: true,
+  ['range-values']: [0, 20, 30],
+};
+
+export const Marks = Template.bind({});
+Marks.args = {
   marks: true,
-  ['thumb-label']: true,
-  ['default-value']: 20,
-  ['thumb-label']: true,
+  ['default-value']: 1,
+  ['thumb-label']: false,
 };
 
 export const Steps = Template.bind({});
 Steps.args = {
   step: 5,
-  ['default-value']: 20,
-  ['thumb-label']: true,
+  ['thumb-label']: false,
 };
 
-export const Marks = Template.bind({});
-Steps.args = {
-  marks: true,
-  step: 5,
-  ['default-value']: 20,
+export const ThumbLabel = Template.bind({});
+ThumbLabel.args = {
+  ['default-value']: 0,
+  ['marks']: false,
   ['thumb-label']: true,
 };
 

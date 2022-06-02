@@ -8,21 +8,26 @@ describe('plmg-slider', () => {
     await page.setContent('<plmg-slider></plmg-slider>');
 
     const element = await page.find('plmg-slider');
+
     expect(element).toHaveClass('hydrated');
   });
 
-  describe('all possible variations', () => {
+  describe('slider', () => {
     it('are accessible', async () => {
       const page = await newE2EPage();
 
+      const marks = [true, false];
+      const thumbLabel = [true, false];
+
       let htmlContent = '';
-      someControl.forEach((control) => {
-        htmlContent += `
-    <plmg-slider control="${control}">
-  control="${control}"
-    </plmg-slider>
-<br/>
-    `;
+      marks.forEach((markControl) => {
+        thumbLabel.forEach((thumbLabelControl) => {
+          htmlContent += `
+          <plmg-slider control="${markControl} thumbLabel="${thumbLabelControl}">
+          </plmg-slider>
+        <br/>
+      `;
+        });
       });
       await page.setContent('<main>' + htmlContent + '</main>');
 
