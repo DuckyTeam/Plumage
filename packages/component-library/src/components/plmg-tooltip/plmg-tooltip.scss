@@ -23,20 +23,6 @@ $arrow-width: 6px;
 
 // Mixins
 // ------------------------------
-
-@mixin background-color {
-  &.neutral {
-    background-color: tokens.$plmg-color-background-neutral-dark;
-    border-color: tokens.$plmg-color-background-neutral-dark;
-    color: tokens.$plmg-color-text-neutral-dark;
-  }
-  &.primary {
-    background-color: tokens.$plmg-color-background-primary-strong-active;
-    border-color: tokens.$plmg-color-background-primary-strong-active;
-    color: tokens.$plmg-color-text-neutral-inverted;
-  }
-}
-
 @mixin arrow-color {
   &.neutral::after {
     border-color: tokens.$plmg-color-background-neutral-dark;
@@ -46,7 +32,6 @@ $arrow-width: 6px;
     border-color: tokens.$plmg-color-background-neutral-dark;
   }
 }
-
 // ------------- END Mixins ------------------------
 
 // Silent Classes
@@ -90,7 +75,16 @@ $arrow-width: 6px;
   max-width: 150px;
   overflow-wrap: break-word;
 
-  @include background-color;
+  &.neutral {
+    background-color: tokens.$plmg-color-background-neutral-dark;
+    border-color: tokens.$plmg-color-background-neutral-dark;
+    color: tokens.$plmg-color-text-neutral-dark;
+  }
+  &.primary {
+    background-color: tokens.$plmg-color-background-primary-strong-active;
+    border-color: tokens.$plmg-color-background-primary-strong-active;
+    color: tokens.$plmg-color-text-neutral-inverted;
+  }
 
   // Controls: Tooltip positions & Colors & Arrow positions
   &.bottom {
