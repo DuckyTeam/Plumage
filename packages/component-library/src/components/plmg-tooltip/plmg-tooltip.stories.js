@@ -63,7 +63,7 @@ Primary.storyName = 'Tooltip';
 Primary.args = {
   content: 'Tooltip Content',
   ['background-color']: 'primary',
-  ['position']: 'none',
+  ['position']: 'top',
   ['arrow-position']: 'middle',
   ['target-element']: 'targetelement',
 };
