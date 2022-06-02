@@ -3,7 +3,7 @@
     {
       "packageName": "@ducky/plumage",
       "comment": "Bump Stencil version to 2.16.0, add experimentalImportInjection flag to stencil.config.ts",
-      "type": "patch"
+      "type": "minor"
     }
   ],
   "packageName": "@ducky/plumage"
