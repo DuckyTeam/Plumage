@@ -41,6 +41,7 @@ const Template = (args) => {
   Utils.bindEvents(el, EVENTS, args);
   Utils.bindStyles(el, CSS_VARS, args);
   Utils.bindSlots(el, SLOTS, args);
+  el.rangeValues = args['range-values'];
   return el;
 };
 
