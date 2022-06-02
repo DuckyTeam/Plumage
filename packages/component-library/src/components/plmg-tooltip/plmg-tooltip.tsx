@@ -183,6 +183,7 @@ export class Tooltip {
   render() {
     const spanClasses = {
       'plmg-tooltip': true,
+      visible: this.isVisible,
       [this.position]: true,
       [this.arrowPosition]: true,
       [this.backgroundColor]: true,

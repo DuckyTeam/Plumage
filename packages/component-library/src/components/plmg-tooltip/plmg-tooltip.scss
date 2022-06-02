@@ -74,6 +74,11 @@ $arrow-width: 6px;
   width: fit-content;
   max-width: 150px;
   overflow-wrap: break-word;
+  visibility: hidden;
+
+  &.visible {
+    visibility: visible;
+  }
 
   &.neutral {
     background-color: tokens.$plmg-color-background-neutral-dark;
