@@ -1,7 +1,7 @@
-export const backgroundColors = ['neutral', 'primary'] as const;
-export type PlmgTooltipBackgroundColors = typeof backgroundColors[number];
-export function isBackgroundColor(x: any): x is typeof backgroundColors {
-  return backgroundColors.includes(x);
+export const colors = ['neutral', 'primary'] as const;
+export type PlmgTooltipColors = typeof colors[number];
+export function isTooltipColor(x: any): x is typeof colors {
+  return colors.includes(x);
 }
 
 export const positions = ['left', 'right', 'top', 'bottom'] as const;

@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { PlmgButtonColor, PlmgButtonDesign, PlmgButtonSize, PlmgButtonType } from "./components/plmg-button/plmg-button.types";
-import { PlmgTooltipArrowPositions, PlmgTooltipBackgroundColors, PlmgTooltipPosition } from "./components/plmg-tooltip/plmg-tooltip.types";
+import { PlmgTooltipArrowPositions, PlmgTooltipColors, PlmgTooltipPosition } from "./components/plmg-tooltip/plmg-tooltip.types";
 export namespace Components {
     interface PlmgButton {
         /**
@@ -184,7 +184,7 @@ export namespace Components {
         /**
           * Define tooltip's background color  Allowed values:   - neutral   - primary  Default: neutral
          */
-        "backgroundColor": PlmgTooltipBackgroundColors;
+        "backgroundColor": PlmgTooltipColors;
         /**
           * Tooltip Content Text  Allowed value: any string  Required
          */
@@ -447,7 +447,7 @@ declare namespace LocalJSX {
         /**
           * Define tooltip's background color  Allowed values:   - neutral   - primary  Default: neutral
          */
-        "backgroundColor"?: PlmgTooltipBackgroundColors;
+        "backgroundColor"?: PlmgTooltipColors;
         /**
           * Tooltip Content Text  Allowed value: any string  Required
          */

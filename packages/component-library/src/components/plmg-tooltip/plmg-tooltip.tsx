@@ -3,10 +3,10 @@ import { Component, h, Prop, State, Watch } from '@stencil/core';
 import {
   isArrowPosition,
   isPosition,
-  isBackgroundColor,
+  isTooltipColor,
   PlmgTooltipArrowPositions,
   PlmgTooltipPosition,
-  PlmgTooltipBackgroundColors,
+  PlmgTooltipColors,
 } from './plmg-tooltip.types';
 
 @Component({
@@ -57,13 +57,13 @@ export class Tooltip {
    *
    * Default: neutral
    */
-  @Prop() backgroundColor: PlmgTooltipBackgroundColors = 'neutral';
-  @Watch('backgroundColor')
+  @Prop() color: PlmgTooltipColors = 'neutral';
+  @Watch('color')
   validateBgColor(newValue: string) {
     if (newValue && typeof newValue !== 'string')
-      throw new Error('backgroundColor must be a string');
-    if (!isBackgroundColor(newValue))
-      throw new Error('backgroundColor must be a valid value');
+      throw new Error('color must be a string');
+    if (!isTooltipColor(newValue))
+      throw new Error('color must be a valid value');
   }
 
   /**
@@ -186,7 +186,7 @@ export class Tooltip {
       visible: this.isVisible,
       [this.position]: true,
       [this.arrowPosition]: true,
-      [this.backgroundColor]: true,
+      [this.color]: true,
     };
 
     return (
