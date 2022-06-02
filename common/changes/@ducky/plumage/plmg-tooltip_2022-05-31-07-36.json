@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "@ducky/plumage",
-      "comment": "Tooltip PR requested changes",
-      "type": "patch"
+      "comment": "Create Tooltip component",
+      "type": "minor"
     }
   ],
   "packageName": "@ducky/plumage"
