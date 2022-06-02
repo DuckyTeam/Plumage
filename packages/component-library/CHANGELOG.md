@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Wed, 01 Jun 2022 12:31:48 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Jun 2022 13:49:55 GMT and should not be manually modified.
+
+## 1.1.5
+Thu, 02 Jun 2022 13:49:55 GMT
+
+### Patches
+
+- Smaller stories for PlmgSeparator
 
 ## 1.1.4
 Wed, 01 Jun 2022 12:31:48 GMT
