@@ -1,0 +1,25 @@
+{
+  "name": "vite-react-app",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "vite serve",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ducky/plumage-react": "^0.4.3",
+    "react": "~17.0.2",
+    "react-dom": "~17.0.2"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11",
+    "@vitejs/plugin-react": "^1.3.2",
+    "vite": "~2.9.9",
+    "vite-plugin-html": "^3.2.0"
+  }
+}
