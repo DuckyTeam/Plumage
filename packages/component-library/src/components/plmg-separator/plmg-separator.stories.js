@@ -47,7 +47,7 @@ export const AllThicknesses = (args) => {
   const htmlContent = thicknesses
     .map(
       (thickness) =>
-        `<div style="width: 300px; height: 20px"><plmg-separator thickness="${thickness}"></plmg separator></div>`
+        `<div style="width: 100px; height: 20px"><plmg-separator thickness="${thickness}"></plmg separator></div>`
     )
     .join('')
     .trim();
@@ -65,7 +65,7 @@ export const AllDirections = (args) => {
   const htmlContent = directions
     .map(
       (direction) =>
-        `<div style="width: 300px; height: 300px;">
+        `<div style="width: 100px; height: 100px;">
             <plmg-separator direction="${direction}"></plmg-separator>
           </div>
         `
@@ -84,13 +84,13 @@ AllDirections.storyName = 'All directions';
 
 export const SomeColors = (args) => {
   const htmlContent = `
-<div style="width: 300px; height: 20px;">
+<div style="width: 100px; height: 20px;">
 <plmg-separator></plmg-separator>
 </div>
-<div style="width: 300px; height: 20px;">
+<div style="width: 100px; height: 20px;">
 <plmg-separator color="red"></plmg-separator>
 </div>
-<div style="width: 300px; height: 20px;">
+<div style="width: 100px; height: 20px;">
 <plmg-separator color="var(--plmg-color-background-standout)"></plmg-separator>
 </div>
   `;
@@ -108,7 +108,7 @@ export const AllVariations = (args) => {
   let htmlContent = '';
   directions.forEach((direction) => {
     thicknesses.forEach((thickness) => {
-      htmlContent += `<div style="width: 300px; height: 300px;">
+      htmlContent += `<div style="width: 100px; height: 100px;">
       <plmg-separator direction="${direction}" thickness="${thickness}"></plmg-separator>
     </div>
   `;
