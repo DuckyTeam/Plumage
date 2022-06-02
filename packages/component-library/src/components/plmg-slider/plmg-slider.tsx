@@ -101,14 +101,10 @@ export class Slider {
     }
   }
 
-  // componentWillLoad() {
-  //   this.setValues();
-  //   this.setBackgroundProgressFill();
-  // }
-
-  // connectedCallBack() {
-  //   this.setBackgroundProgressFill();
-  // }
+  componentWillLoad() {
+    this.setValues();
+    this.setBackgroundProgressFill();
+  }
 
   handleChange(event) {
     this.currentValue = event.target.value;
