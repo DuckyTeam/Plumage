@@ -1,6 +1,34 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Mon, 16 May 2022 13:05:01 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Jun 2022 12:31:48 GMT and should not be manually modified.
+
+## 1.1.4
+Wed, 01 Jun 2022 12:31:48 GMT
+
+### Patches
+
+- Add story for Separator with colors
+
+## 1.1.3
+Tue, 24 May 2022 12:56:59 GMT
+
+### Patches
+
+- Fix background color for borderless btton on hover
+
+## 1.1.2
+Tue, 24 May 2022 12:34:33 GMT
+
+### Patches
+
+- Fix SidebarItem background and outline
+
+## 1.1.1
+Mon, 23 May 2022 05:27:05 GMT
+
+### Patches
+
+- Add instruction to readme
 
 ## 1.1.0
 Mon, 16 May 2022 13:05:01 GMT

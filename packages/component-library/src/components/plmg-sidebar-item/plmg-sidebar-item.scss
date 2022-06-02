@@ -16,8 +16,9 @@
   cursor: pointer;
   text-align: start;
   border-radius: tokens.$plmg-border-radius-s;
-  background: tokens.$plmg-color-background-neutral-active;
+  background: tokens.$plmg-color-background-neutral;
   color: tokens.$plmg-color-text-neutral-weak;
+  position: relative;
 
   font-family: tokens.$plmg-font-family-sans;
   font-style: normal;
@@ -92,13 +93,14 @@
   }
 
   // States
-  &:hover {
-    background: tokens.$plmg-color-background-primary;
-  }
   &:focus-visible {
     background: tokens.$plmg-color-background-neutral-hover;
     outline: tokens.$plmg-border-width-l solid
       tokens.$plmg-color-border-standout;
+    z-index: 2;
+  }
+  &:hover {
+    background: tokens.$plmg-color-background-primary;
   }
 }
 // ------------- END Component style ---------------
