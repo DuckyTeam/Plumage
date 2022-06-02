@@ -2,6 +2,18 @@
   "name": "@ducky/plumage",
   "entries": [
     {
+      "version": "1.2.0",
+      "tag": "@ducky/plumage_v1.2.0",
+      "date": "Thu, 02 Jun 2022 19:16:24 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Bump Stencil version to 2.16.0, add experimentalImportInjection flag to stencil.config.ts"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.1.5",
       "tag": "@ducky/plumage_v1.1.5",
       "date": "Thu, 02 Jun 2022 13:49:55 GMT",

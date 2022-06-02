@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Thu, 02 Jun 2022 13:49:55 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Jun 2022 19:16:24 GMT and should not be manually modified.
+
+## 1.2.0
+Thu, 02 Jun 2022 19:16:24 GMT
+
+### Minor changes
+
+- Bump Stencil version to 2.16.0, add experimentalImportInjection flag to stencil.config.ts
 
 ## 1.1.5
 Thu, 02 Jun 2022 13:49:55 GMT
