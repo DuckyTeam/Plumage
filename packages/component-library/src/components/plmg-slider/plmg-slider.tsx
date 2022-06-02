@@ -19,7 +19,6 @@ export class Slider {
    *
    * Additional items set the mark values
    */
-
   @Prop() rangeValues: Array<number>;
   @Watch('rangeValues')
   validateRangeValues(newValue: Array<number>) {
@@ -34,7 +33,6 @@ export class Slider {
    *
    * Allowed: A number
    */
-
   @Prop() defaultValue: number;
   @Watch('defaultValue')
   validateDefaultValue(newValue: number) {
@@ -48,7 +46,6 @@ export class Slider {
    *
    * Default: Visible
    */
-
   @Prop() thumbLabel: boolean = true;
   @Watch('thumbLabel')
   onThumbLabel(newValue: boolean) {
@@ -62,7 +59,6 @@ export class Slider {
    *
    * Can be any number
    */
-
   @Prop() step: number;
   @Watch('step')
   validateStep(newValue: number) {
@@ -75,7 +71,6 @@ export class Slider {
    *
    * Default: true
    */
-
   @Prop() marks: boolean = true;
   @Watch('marks')
   onMarks(newValue: boolean) {
@@ -86,7 +81,6 @@ export class Slider {
   /**
    * Store current value in state
    */
-
   @State() currentValue: number;
   @State() minValue: number;
   @State() maxValue: number;
