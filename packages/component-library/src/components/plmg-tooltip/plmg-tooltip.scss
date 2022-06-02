@@ -5,6 +5,9 @@
 // -------------------------------------------------
 :host {
   display: block;
+  position: fixed;
+  top: -1000px;
+  left: -1000px;
 }
 
 :host([hidden]) {
@@ -72,7 +75,6 @@ $arrow-width: 6px;
 // ------------------------------------------------
 
 .plmg-tooltip {
-  visibility: hidden;
   position: relative;
   display: block;
   font-family: tokens.$plmg-font-family-sans;
@@ -87,10 +89,6 @@ $arrow-width: 6px;
   width: fit-content;
   max-width: 150px;
   overflow-wrap: break-word;
-
-  &.visible {
-    visibility: visible;
-  }
 
   @include background-color;
 

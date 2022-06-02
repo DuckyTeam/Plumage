@@ -186,9 +186,8 @@ export class Tooltip {
   }
 
   render() {
-    const classes = {
+    const spanClasses = {
       'plmg-tooltip': true,
-      visible: this.isVisible,
       [this.position]: true,
       [this.arrowPosition]: true,
       [this.backgroundColor]: true,
@@ -199,7 +198,7 @@ export class Tooltip {
         style={this.setPosition()}
         ref={(el) => (this.ref = el as HTMLDivElement)}
       >
-        <span class={classes}>{this.content}</span>
+        <span class={spanClasses}>{this.content}</span>
       </div>
     );
   }
@@ -208,11 +207,11 @@ export class Tooltip {
     let styles = {
       position: 'fixed',
       overflow: 'visible',
-      left: '10%',
-      top: '10%',
+      left: '-1000px',
+      top: '-1000px',
     };
 
-    if (!this.targetHTMLElement) return styles;
+    if (!this.targetHTMLElement || !this.isVisible) return styles;
 
     /**
      * Max width is 150px plus 6px for the arrow = 156px
