@@ -184,7 +184,7 @@ export namespace Components {
         /**
           * Define tooltip's background color  Allowed values:   - neutral   - primary  Default: neutral
          */
-        "backgroundColor": PlmgTooltipColors;
+        "color": PlmgTooltipColors;
         /**
           * Tooltip Content Text  Allowed value: any string  Required
          */
@@ -447,7 +447,7 @@ declare namespace LocalJSX {
         /**
           * Define tooltip's background color  Allowed values:   - neutral   - primary  Default: neutral
          */
-        "backgroundColor"?: PlmgTooltipColors;
+        "color"?: PlmgTooltipColors;
         /**
           * Tooltip Content Text  Allowed value: any string  Required
          */
