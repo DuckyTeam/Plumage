@@ -148,11 +148,7 @@ export class RadioButtonGroup {
         ))}
 
         {!this.isValid && (
-          <plmg-error-message
-            id={'something'}
-            size={this.size}
-            message={this.errorMessage}
-          />
+          <plmg-error-message size={this.size} message={this.errorMessage} />
         )}
       </fieldset>
     );
