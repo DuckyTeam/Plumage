@@ -16,16 +16,16 @@ describe('plmg-tooltip', () => {
     it('are accessible', async () => {
       const page = await newE2EPage();
 
-      const arrowSides = ['none', 'left', 'right', 'top', 'bottom'];
+      const positions = ['none', 'left', 'right', 'top', 'bottom'];
       const arrowPositions = ['start', 'middle', 'end'];
-      const bgColors = ['neutral', 'primary'];
+      const colors = ['neutral', 'primary'];
 
       let htmlContent = '';
-      bgColors.forEach((bgcolor) => {
-        arrowSides.forEach((arrowSide) => {
+      colors.forEach((color) => {
+        positions.forEach((position) => {
           arrowPositions.forEach((arrowPosition) => {
             htmlContent += `
-            <plmg-tooltip bg-color="${bgcolor} arrow-side="${arrowSide} arrow-position="${arrowPosition}">
+            <plmg-tooltip color="${color} position="${position} arrow-position="${arrowPosition}">
             </plmg-tooltip>
             `;
           });
