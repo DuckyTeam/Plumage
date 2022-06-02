@@ -39,6 +39,12 @@ export class RadioButton {
   }
 
   /**
+   * Callback to provide validity of radio input to
+   * radio button group
+   */
+  @Prop() isValid: (valid: boolean) => void;
+
+  /**
    * Define form's name'
    */
   @Prop() name: string;
@@ -101,8 +107,13 @@ export class RadioButton {
           name={this.name}
           value={this.value}
           class={inputClasses}
-          required={this.required}
           onMouseDown={(e) => e.preventDefault()}
+          onInvalid={(e) => {
+            e.preventDefault();
+            this.isValid(false);
+          }}
+          onInput={() => this.isValid(true)}
+          required={this.required}
         />
         <label
           htmlFor={this.value}

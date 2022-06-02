@@ -113,6 +113,10 @@ export namespace Components {
          */
         "highlighted": boolean;
         /**
+          * Callback to provide validity of radio input to radio button group
+         */
+        "isValid": (valid: boolean) => void;
+        /**
           * Define form's name'
          */
         "name": string;
@@ -131,7 +135,7 @@ export namespace Components {
     }
     interface PlmgRadioButtonGroup {
         /**
-          * Define error message for radio group  Will render one error message for the radio button group, affects styling of all radio buttons in group
+          * Define error message for radio group to be displayed if form validation fails  Will render one error message for the radio button group, affects styling of all radio buttons in group
          */
         "errorMessage"?: string | undefined;
         /**
@@ -430,6 +434,10 @@ declare namespace LocalJSX {
          */
         "highlighted"?: boolean;
         /**
+          * Callback to provide validity of radio input to radio button group
+         */
+        "isValid"?: (valid: boolean) => void;
+        /**
           * Define form's name'
          */
         "name"?: string;
@@ -448,7 +456,7 @@ declare namespace LocalJSX {
     }
     interface PlmgRadioButtonGroup {
         /**
-          * Define error message for radio group  Will render one error message for the radio button group, affects styling of all radio buttons in group
+          * Define error message for radio group to be displayed if form validation fails  Will render one error message for the radio button group, affects styling of all radio buttons in group
          */
         "errorMessage"?: string | undefined;
         /**

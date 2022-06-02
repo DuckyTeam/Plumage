@@ -72,6 +72,7 @@ export class RadioButtonGroup {
    */
   @Prop() values: string[] | string;
   @State() parsedValues: string[];
+  @State() isValid: boolean;
 
   @Watch('values')
   parseValuesProp(newValue: string | string[]) {
@@ -101,6 +102,8 @@ export class RadioButtonGroup {
 
   /**
    * Define error message for radio group
+   * to be displayed if form validation
+   * fails
    *
    * Will render one error message for the
    * radio button group, affects styling of
@@ -115,6 +118,7 @@ export class RadioButtonGroup {
 
   componentWillLoad() {
     this.parseValuesProp(this.values);
+    this.isValid = true;
   }
 
   render() {
@@ -133,12 +137,22 @@ export class RadioButtonGroup {
             value={radio}
             name={this.name}
             size={this.size}
-            highlighted={!!this.errorMessage}
+            highlighted={!this.isValid}
+            isValid={(inputValid: boolean) => {
+              if (this.isValid !== inputValid) {
+                this.isValid = inputValid;
+              }
+            }}
             required={this.required}
           />
         ))}
-        {!!this.errorMessage && (
-          <plmg-error-message size={this.size} message={this.errorMessage} />
+
+        {!this.isValid && (
+          <plmg-error-message
+            id={'something'}
+            size={this.size}
+            message={this.errorMessage}
+          />
         )}
       </fieldset>
     );
