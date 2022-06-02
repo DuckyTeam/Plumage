@@ -22,7 +22,6 @@ export class Slider {
   @Prop() rangeValues: Array<number>;
   @Watch('rangeValues')
   validateRangeValues(newValue: Array<number>) {
-    console.log('foo');
     if (!Array.isArray(newValue) || newValue.length < 2)
       throw new Error('rangeValues must be an array with at least two items');
     this.setValues();
@@ -36,7 +35,6 @@ export class Slider {
   @Prop() defaultValue: number;
   @Watch('defaultValue')
   validateDefaultValue(newValue: number) {
-    console.log('bar');
     if (typeof newValue !== 'number')
       throw new Error('default value number be a number');
   }
@@ -114,8 +112,6 @@ export class Slider {
   }
 
   render() {
-    console.log(this.rangeValues);
-
     const thumbClasses = {
       'plmg-slider-thumb-label': true,
       hidden: !this.thumbLabel,
