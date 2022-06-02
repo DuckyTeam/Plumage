@@ -383,6 +383,10 @@
    */
   "projects": [
     {
+      "packageName": "vite-react-app",
+      "projectFolder": "examples/vite-react-app"
+    },
+    {
       "packageName": "example-react-app",
       "projectFolder": "examples/react-app"
     },
