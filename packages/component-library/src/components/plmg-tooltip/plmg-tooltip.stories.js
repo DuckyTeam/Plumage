@@ -1,10 +1,7 @@
-import { EndOfLineState } from 'typescript';
 import * as Utils from '../../stories/StencilStorybookUtils';
 import {
-  arrowSide,
-  arrowPosition,
   backgroundColors,
-  arrowSides,
+  positions,
   arrowPositions,
 } from './plmg-tooltip.types';
 
@@ -17,19 +14,16 @@ export default {
       options: ['neutral', 'primary'],
       control: { type: 'select' },
     },
-    ['arrow-side']: {
-      options: ['none', 'left', 'right', 'top', 'bottom'],
+    ['position']: {
+      options: ['left', 'right', 'top', 'bottom'],
       control: { type: 'select' },
     },
     ['arrow-position']: {
-      options: ['start', 'middle', 'end'],
+      options: ['none', 'start', 'middle', 'end'],
       control: { type: 'select' },
     },
     content: {
       control: { type: 'text' },
-    },
-    ['force-visible']: {
-      control: { type: 'boolean' },
     },
     ['target-element']: {
       options: ['id'],
@@ -39,11 +33,10 @@ export default {
 
 const PROPS = [
   'background-color',
-  'arrow-side',
+  'position',
   'arrow-position',
   'target-element',
   'content',
-  'force-visible',
 ];
 const EVENTS = [];
 const CSS_VARS = [];
@@ -55,7 +48,18 @@ const Template = (args) => {
   Utils.bindEvents(el, EVENTS, args);
   Utils.bindStyles(el, CSS_VARS, args);
   Utils.bindSlots(el, SLOTS, args);
-  return el;
+  el.setAttribute('target-element', 'targetelement');
+
+  const target = document.createElement('span');
+  target.setAttribute('id', 'targetelement');
+  target.innerText = 'Hover me';
+
+  const container = document.createElement('div');
+  container.appendChild(el);
+  container.appendChild(target);
+  container.style = 'margin: 150px;';
+
+  return container;
 };
 
 export const Primary = Template.bind({});
@@ -63,25 +67,27 @@ Primary.storyName = 'Tooltip';
 Primary.args = {
   content: 'Tooltip Content',
   ['background-color']: 'primary',
-  ['arrow-side']: 'none',
+  ['position']: 'none',
   ['arrow-position']: 'middle',
-  ['force-visible']: true,
   ['target-element']: 'targetelement',
 };
 
-export const TooltipRight = (args) => {
+export const TooltipLeft = (args) => {
   let wrapper = document.createElement('div');
   const htmlContent = `
   <div style="display: flex; flex-direction: column; height: 100vh;">
   
-    <p id="element-one" tabindex="1" style="padding: 10px; margin-left: 150px; width: fit-content;">right start</p>
-    <plmg-tooltip target-element="element-one" arrow-side="left" arrow-position="start" content="Tooltip right with arrow at the start of the Y axis"></plmg-tooltip>
+    <p id="element-one" tabindex="1" style="margin-left: 300px; width: fit-content;">right start</p>
+    <plmg-tooltip target-element="element-one" position="left" arrow-position="start" content="Tooltip left with arrow at the start of the Y axis"></plmg-tooltip>
   
-    <p id="element-two" tabindex="2" style="padding: 10px; margin-left: 150px; width: fit-content;">right middle</p>
-    <plmg-tooltip target-element="element-two" arrow-side="left" arrow-position="middle" content="Tool right with arrow in the middle of the Y axis"></plmg-tooltip>
+    <p id="element-two" tabindex="2" style="margin-left: 300px; width: fit-content;">left middle</p>
+    <plmg-tooltip target-element="element-two" position="left" arrow-position="middle" content="Tool left with arrow in the middle of the Y axis"></plmg-tooltip>
   
-    <p id="element-three" tabindex="3" style="padding: 10px; margin-left: 150px; width: fit-content;">right end</p>
-    <plmg-tooltip target-element="element-three" arrow-side="left" arrow-position="end" content="Tool right with arrow at the end of the Y axis. The height of the tooltip moves its position upwards"></plmg-tooltip>
+    <p id="element-three" tabindex="3" style="margin-left: 300px; width: fit-content;">left end</p>
+    <plmg-tooltip target-element="element-three" position="left" arrow-position="end" content="Tool left with arrow at the end of the Y axis. The height of the tooltip moves its position upwards"></plmg-tooltip>
+    
+    <p id="element-four" tabindex="4" style="margin-left: 300px; width: fit-content;">left none</p>
+    <plmg-tooltip target-element="element-four" position="left" arrow-position="none" content="Tool left with no arrow"></plmg-tooltip>
     
   </div>
   `;
@@ -89,58 +95,65 @@ export const TooltipRight = (args) => {
   return wrapper;
 };
 
-export const TooltipLeft = (args) => {
+export const TooltipRight = (args) => {
   let wrapper = document.createElement('div');
   const htmlContent = `
   <div style="display: flex; flex-direction: column; height: 100vh;">
+      <p id="element-one" tabindex="1" style=" width: fit-content;">right start</p>
+      <plmg-tooltip target-element="element-one" position="right" arrow-position="start" content="right start tooltip. A longer text will increase the height of the tooltip."></plmg-tooltip>
       
-      <p id="element-one" tabindex="1" style="padding: 10px; margin-left: 300px; width: fit-content;">left start</p>
-      <plmg-tooltip target-element="element-one" arrow-side="right" arrow-position="start" content="left start tooltip"></plmg-tooltip>
+      <p id="element-two" tabindex="2" style=" width: fit-content;">right middle</p>
+      <plmg-tooltip target-element="element-two" position="right" arrow-position="middle" content=" A longer text will increase the height of the tooltip. It will adjust its positoning to center vertically">right middle</plmg-tooltip>
       
-      <p id="element-two" tabindex="2" style="padding: 10px; margin-left: 300px; width: fit-content;">left middle</p>
-      <plmg-tooltip target-element="element-two" arrow-side="right" arrow-position="middle" content=" A longer text will increase the height of the tooltip. It will adjust its positoning to center vertically">left middle</plmg-tooltip>
-      
-      <p id="element-three" tabindex="3" style="padding: 10px; margin-left: 300px; width: fit-content;">left end</p>
-      <plmg-tooltip target-element="element-three" arrow-side="right" arrow-position="end" content="Tooltip left with arrow at the end"></plmg-tooltip>
+      <p id="element-three" tabindex="3" style=" width: fit-content;">right end</p>
+      <plmg-tooltip target-element="element-three" position="right" arrow-position="end" content="Tooltip right with arrow at the end"></plmg-tooltip>
     
+      <p id="element-four" tabindex="4" style=" width: fit-content;">right none</p>
+      <plmg-tooltip target-element="element-four" position="right" arrow-position="none" content="Tool right with no arrow"></plmg-tooltip>
     </div>
   `;
   wrapper.innerHTML = htmlContent;
   return wrapper;
 };
 
-export const TooltipBelow = (args) => {
+export const TooltipBottom = (args) => {
   let wrapper = document.createElement('div');
   const htmlContent = `
   <div style="display: flex; flex-direction: column; height: 100vh;">
       
-      <p id="element-one" tabindex="1" style="padding: 10px; margin-left: 150px; width: fit-content;">below start</p>
-      <plmg-tooltip target-element="element-one" arrow-side="top" arrow-position="start" content="Bottom with arrow start"></plmg-tooltip>
+      <p id="element-one" tabindex="1" style="margin-left: 150px; width: fit-content;">bottom start</p>
+      <plmg-tooltip target-element="element-one" position="bottom" arrow-position="start" content="Bottom with arrow start"></plmg-tooltip>
       
-      <p id="element-two" tabindex="2" style="padding: 10px; margin-left: 150px; width: fit-content;">below middle</p>
-      <plmg-tooltip target-element="element-two" arrow-side="top" arrow-position="middle" content="Bottom with arrow middle"></plmg-tooltip>
+      <p id="element-two" tabindex="2" style="margin-left: 150px; width: fit-content;">bottom middle</p>
+      <plmg-tooltip target-element="element-two" position="bottom" arrow-position="middle" content="Bottom with arrow middle"></plmg-tooltip>
       
-      <p id="element-three" tabindex="3" style="padding: 10px; margin-left: 150px; width: fit-content;">below end</p>
-      <plmg-tooltip target-element="element-three" arrow-side="top" arrow-position="end" content="Bottom with arrow end"></plmg-tooltip>
+      <p id="element-three" tabindex="3" style="margin-left: 150px; width: fit-content;">bottom end</p>
+      <plmg-tooltip target-element="element-three" position="bottom" arrow-position="end" content="Bottom with arrow end"></plmg-tooltip>
+      
+      <p id="element-four" tabindex="4" style="margin-left: 150px; width: fit-content;">bottom none</p>
+      <plmg-tooltip target-element="element-four" position="bottom" arrow-position="none" content="Bottom with no arrow"></plmg-tooltip>
     </div>
     `;
   wrapper.innerHTML = htmlContent;
   return wrapper;
 };
 
-export const TooltipAbove = (args) => {
+export const TooltipTop = (args) => {
   let wrapper = document.createElement('div');
   const htmlContent = `
   <div style="display: flex; flex-direction: column; height: 100vh; width: 200px; margin-left: 150px; margin-top: 75px; gap: 20px; width: fit-content;">
      
-      <p id="element-one" tabindex="1">above start</p>
-      <plmg-tooltip target-element="element-one" arrow-side="bottom" arrow-position="start" content="Tooltip above with arrow start"></plmg-tooltip>
+      <p id="element-one" tabindex="1">top start</p>
+      <plmg-tooltip target-element="element-one" position="top" arrow-position="start" content="Tooltip top with arrow start"></plmg-tooltip>
      
-      <p id="element-two" tabindex="2">above middle</p>
-      <plmg-tooltip target-element="element-two" arrow-side="bottom" arrow-position="middle" content="Tooltip above with arrow middle"></plmg-tooltip>
+      <p id="element-two" tabindex="2">top middle</p>
+      <plmg-tooltip target-element="element-two" position="top" arrow-position="middle" content="Tooltip top with arrow middle"></plmg-tooltip>
      
-      <p id="element-three" tabindex="3">above end</p>
-      <plmg-tooltip target-element="element-three" arrow-side="bottom" arrow-position="end" content="Tooltip above with arrow at the end"></plmg-tooltip>
+      <p id="element-three" tabindex="3">top end</p>
+      <plmg-tooltip target-element="element-three" position="top" arrow-position="end" content="Tooltip top with arrow at the end"></plmg-tooltip>
+    
+        <p id="element-four" tabindex="3">top none</p>
+      <plmg-tooltip target-element="element-four" position="top" arrow-position="none" content="Tooltip top with no arrow"></plmg-tooltip>
     
     </div>
     `;
@@ -151,10 +164,10 @@ export const TooltipAbove = (args) => {
 export const AllVariations = (args) => {
   let htmlContent = '';
   backgroundColors.forEach((backgroundColor) => {
-    arrowSides.forEach((arrowSide) => {
+    positions.forEach((position) => {
       arrowPositions.forEach((arrowPosition) => {
         htmlContent += `
-        <plmg-tooltip force-visible="true" content="${backgroundColor} ${arrowPosition} ${arrowSide}" background-color="${backgroundColor}" arrow-side="${arrowSide}" arrow-position="${arrowPosition}">
+        <plmg-tooltip content="${backgroundColor} ${arrowPosition} ${position}" background-color="${backgroundColor}" position="${position}" arrow-position="${arrowPosition}">
         </plmg-tooltip>
         `;
       });
@@ -163,7 +176,6 @@ export const AllVariations = (args) => {
 
   const el = document.createElement('div');
   el.innerHTML = htmlContent.trim();
-  console.log(el);
   el.style.display = 'grid';
   el.style.gridTemplateColumns = 'repeat(3, 1fr)';
   el.style.gridTemplateRows = 'repeat(5, 1fr)';

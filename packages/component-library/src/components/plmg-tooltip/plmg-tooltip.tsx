@@ -2,10 +2,10 @@ import { Component, h, Prop, State, Watch } from '@stencil/core';
 
 import {
   isArrowPosition,
-  isArrowSide,
+  isPosition,
   isBackgroundColor,
   PlmgTooltipArrowPositions,
-  PlmgTooltipArrowSides,
+  PlmgTooltipPosition,
   PlmgTooltipBackgroundColors,
 } from './plmg-tooltip.types';
 
@@ -17,6 +17,7 @@ import {
 export class Tooltip {
   private abortTooltipListener: AbortController;
   private targetHTMLElement: HTMLElement;
+  private ref: HTMLDivElement;
 
   /**
    * Store tooltip visibility.
@@ -30,7 +31,6 @@ export class Tooltip {
    * Reference to the target element or its ID for connected element.
    * Required.
    */
-
   @Prop() targetElement: string | HTMLElement;
   @Watch('targetElement')
   validateTargetElement(newValue: string) {
@@ -43,22 +43,10 @@ export class Tooltip {
       throw new Error(
         'id of the target element must be an HTMLElement or a string'
       );
-
-    console.log(newValue);
-    this.connectedCallback();
   }
-
-  /**
-   * Force tooltip to remain visible
-   *
-   * Will disable event listeners
-   */
-
-  @Prop() forceVisible: boolean = false;
-  @Watch('forceVisible')
-  validateForceVisible(newValue: boolean) {
-    if (newValue && typeof newValue !== 'boolean')
-      throw new Error('force visible must be a boolean');
+  @Watch('targetElement')
+  targetElementChange() {
+    this.initiateTargetListeners();
   }
 
   /**
@@ -81,39 +69,38 @@ export class Tooltip {
   }
 
   /**
-   * Define tooltip's arrow side
+   * Define tooltip's position.
    *
    * Allowed values:
-   *   - none
    *   - left
    *   - right
    *   - top
    *   - bottom
    *
-   * Default: none
+   * Default: top.
+   * Required.
    */
-
-  @Prop() arrowSide: PlmgTooltipArrowSides = 'none';
-  @Watch('arrowSide')
-  validateArrowSide(newValue: string) {
+  @Prop() position: PlmgTooltipPosition = 'top';
+  @Watch('position')
+  validateTooltipPosition(newValue: string) {
     if (newValue && typeof newValue !== 'string')
       throw new Error('arrow side must be a string');
-    if (!isArrowSide(newValue))
+    if (!isPosition(newValue))
       throw new Error('arrow side: must be a valid value');
   }
 
   /**
-   * Define tooltip arrow position
+   * Define tooltip arrow position. When 'none' is selected, no arrow is visible.
    *
    * Allowed values:
+   *   - none
    *   - start
    *   - middle
    *   - end
    *
    * Default: none
    */
-
-  @Prop() arrowPosition: PlmgTooltipArrowPositions = 'middle';
+  @Prop() arrowPosition: PlmgTooltipArrowPositions = 'none';
   @Watch('arrowPosition')
   validateArrowPosition(newValue: string) {
     if (newValue && typeof newValue !== 'string')
@@ -138,23 +125,26 @@ export class Tooltip {
       throw new Error('text must be a string');
   }
 
-  /** Life Cycle Methods & Event Listeners
-   *
-   * Listen for
-   *
-   * mouse over
-   * focus
-   * mouse out
-   * blur
-   *
-   * on the target element
-   *
-   * forceVisibile prop disables the listeners
+  /**
+   * Life Cycle Methods & Event Listeners
    */
 
   connectedCallback() {
-    this.isVisible = this.forceVisible;
-    if (!this.forceVisible && this.targetElement) {
+    this.initiateTargetListeners();
+  }
+
+  /**
+   * Listen for the following events on the target element:
+   * - mouse over
+   * - focus
+   * - mouse out
+   * - blur
+   *
+   * forceVisible prop disables the listeners
+   *
+   */
+  private initiateTargetListeners() {
+    if (this.targetElement) {
       if (this.targetElement instanceof HTMLElement) {
         this.targetHTMLElement = this.targetElement;
       } else {
@@ -192,24 +182,23 @@ export class Tooltip {
    */
 
   disconnectedCallback() {
-    !this.forceVisible && this.abortTooltipListener;
-    {
-      this.abortTooltipListener.abort();
-    }
+    if (this.abortTooltipListener) this.abortTooltipListener.abort();
   }
 
   render() {
     const classes = {
       'plmg-tooltip': true,
       visible: this.isVisible,
-      // Include arrow classes if side is not set to none
-      ...(this.arrowSide && { [this.arrowSide]: true }),
-      ...(this.arrowSide && { [this.arrowPosition]: true }),
+      [this.position]: true,
+      [this.arrowPosition]: true,
       [this.backgroundColor]: true,
     };
 
     return (
-      <div style={!this.forceVisible && this.setPosition()}>
+      <div
+        style={this.setPosition()}
+        ref={(el) => (this.ref = el as HTMLDivElement)}
+      >
         <span class={classes}>{this.content}</span>
       </div>
     );
@@ -232,42 +221,45 @@ export class Tooltip {
 
     const LINE_NUMBER: number = Math.ceil(this.content.length / 27);
     const LINE_HEIGHT: number = 18;
-    const ARROW_WIDTH = 6;
+    const ARROW_SIZE = this.arrowPosition === 'none' ? 0 : 6;
     const PADDING_Y: number = 8;
-    const PADDING_X: number = 16;
-    const LETTER_WIDTH: number = 5.3;
     const TOOLTIP_HEIGHT: number = LINE_NUMBER * LINE_HEIGHT + PADDING_Y;
+    const OFFSET = 4;
 
     // Calculate width of a tooltip with less than 27 characters. A multiline tooltip will be 156px wide.
-    const WIDTH: number = this.getTooltipWidth(LETTER_WIDTH, PADDING_X);
+    const WIDTH: number = this.getTooltipWidth();
 
     // Get the position of the target element
     const targetPositions = this.targetHTMLElement.getBoundingClientRect();
 
     // Calculate the relative position of the tooltip
-    switch (this.arrowSide) {
-      case 'left':
-        styles.left = `${targetPositions.x + targetPositions.width}px`;
-        styles.top = this.getLeftRightArrowPosition(
-          targetPositions,
-          TOOLTIP_HEIGHT
-        );
-        break;
+    switch (this.position) {
       case 'right':
-        styles.left = `${targetPositions.x - WIDTH - ARROW_WIDTH}px`;
+        styles.left = `${
+          targetPositions.x + targetPositions.width + ARROW_SIZE + OFFSET
+        }px`;
         styles.top = this.getLeftRightArrowPosition(
           targetPositions,
           TOOLTIP_HEIGHT
         );
         break;
-      case 'top':
+      case 'left':
+        styles.left = `${targetPositions.x - WIDTH - ARROW_SIZE - OFFSET}px`;
+        styles.top = this.getLeftRightArrowPosition(
+          targetPositions,
+          TOOLTIP_HEIGHT
+        );
+        break;
+      case 'bottom':
         styles.top = `${
-          targetPositions.y + targetPositions.height + ARROW_WIDTH
+          targetPositions.y + targetPositions.height + ARROW_SIZE + OFFSET
         }px`;
         styles.left = this.getTopBottomArrowPosition(targetPositions, WIDTH);
         break;
-      case 'bottom':
-        styles.top = `${targetPositions.y - TOOLTIP_HEIGHT - ARROW_WIDTH}px`;
+      case 'top':
+        styles.top = `${
+          targetPositions.y - TOOLTIP_HEIGHT - ARROW_SIZE - OFFSET
+        }px`;
         styles.left = this.getTopBottomArrowPosition(targetPositions, WIDTH);
         break;
     }
@@ -280,7 +272,7 @@ export class Tooltip {
     WIDTH: number
   ): string {
     if (this.arrowPosition === 'start') return `${targetPositions.x}px`;
-    if (this.arrowPosition === 'middle')
+    if (this.arrowPosition === 'middle' || this.arrowPosition === 'none')
       return `${targetPositions.x + targetPositions.width / 2 - WIDTH / 2}px`;
     if (this.arrowPosition === 'end')
       return `${targetPositions.x + targetPositions.width - WIDTH}px`;
@@ -291,7 +283,7 @@ export class Tooltip {
     TOOLTIP_HEIGHT: number
   ): string {
     if (this.arrowPosition === 'start') return `${targetPositions.y}px`;
-    if (this.arrowPosition === 'middle')
+    if (this.arrowPosition === 'middle' || this.arrowPosition === 'none')
       return `${
         targetPositions.y + targetPositions.height / 2 - TOOLTIP_HEIGHT / 2
       }px`;
@@ -299,9 +291,13 @@ export class Tooltip {
       return `${targetPositions.y + targetPositions.height - TOOLTIP_HEIGHT}px`;
   }
 
-  private getTooltipWidth(LETTER_WIDTH: number, PADDING_X: number) {
-    return this.content.length <= 27
-      ? this.content.length * LETTER_WIDTH + PADDING_X
-      : 156;
+  /**
+   * Grab the width of the tooltip itself.
+   * If the tooltip element is not available yet, return a default value.
+   * @private
+   */
+  private getTooltipWidth() {
+    if (this.ref) return this.ref.getBoundingClientRect().width;
+    return 156;
   }
 }

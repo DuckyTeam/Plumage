@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { PlmgButtonColor, PlmgButtonDesign, PlmgButtonSize, PlmgButtonType } from "./components/plmg-button/plmg-button.types";
-import { PlmgTooltipArrowPositions, PlmgTooltipArrowSides, PlmgTooltipBackgroundColors } from "./components/plmg-tooltip/plmg-tooltip.types";
+import { PlmgTooltipArrowPositions, PlmgTooltipBackgroundColors, PlmgTooltipPosition } from "./components/plmg-tooltip/plmg-tooltip.types";
 export namespace Components {
     interface PlmgButton {
         /**
@@ -178,13 +178,9 @@ export namespace Components {
     }
     interface PlmgTooltip {
         /**
-          * Define tooltip arrow position  Allowed values:   - start   - middle   - end  Default: none
+          * Define tooltip arrow position. When 'none' is selected, no arrow is visible.  Allowed values:   - none   - start   - middle   - end  Default: none
          */
         "arrowPosition": PlmgTooltipArrowPositions;
-        /**
-          * Define tooltip's arrow side  Allowed values:   - none   - left   - right   - top   - bottom  Default: none
-         */
-        "arrowSide": PlmgTooltipArrowSides;
         /**
           * Define tooltip's background color  Allowed values:   - neutral   - primary  Default: neutral
          */
@@ -194,9 +190,9 @@ export namespace Components {
          */
         "content": string;
         /**
-          * Force tooltip to remain visible  Will disable event listeners
+          * Define tooltip's position.  Allowed values:   - left   - right   - top   - bottom  Default: top. Required.
          */
-        "forceVisible": boolean;
+        "position": PlmgTooltipPosition;
         /**
           * Reference to the target element or its ID for connected element. Required.
          */
@@ -445,13 +441,9 @@ declare namespace LocalJSX {
     }
     interface PlmgTooltip {
         /**
-          * Define tooltip arrow position  Allowed values:   - start   - middle   - end  Default: none
+          * Define tooltip arrow position. When 'none' is selected, no arrow is visible.  Allowed values:   - none   - start   - middle   - end  Default: none
          */
         "arrowPosition"?: PlmgTooltipArrowPositions;
-        /**
-          * Define tooltip's arrow side  Allowed values:   - none   - left   - right   - top   - bottom  Default: none
-         */
-        "arrowSide"?: PlmgTooltipArrowSides;
         /**
           * Define tooltip's background color  Allowed values:   - neutral   - primary  Default: neutral
          */
@@ -461,9 +453,9 @@ declare namespace LocalJSX {
          */
         "content"?: string;
         /**
-          * Force tooltip to remain visible  Will disable event listeners
+          * Define tooltip's position.  Allowed values:   - left   - right   - top   - bottom  Default: top. Required.
          */
-        "forceVisible"?: boolean;
+        "position"?: PlmgTooltipPosition;
         /**
           * Reference to the target element or its ID for connected element. Required.
          */
