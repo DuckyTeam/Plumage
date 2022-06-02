@@ -11,76 +11,42 @@ import {
 })
 export class Slider {
   /**
-   * Set marks
+   * Define the range of value
    *
-   * The first and last items set the minimum and max values
+   * Must be an array with at least two items
    *
-   * Must contain at least two items
+   * First and last items in the array set the minimum and max values
+   *
+   * Additional items set the mark values
    */
 
-  @Prop() markValues: Array<number> = [0, 100];
-  @Watch('markValues')
-  onMarkValues(newValue: Array<number>) {
+  @Prop() rangeValues: Array<number> = [0, 5, 8, 12, 60, 90];
+  @Watch('rangeValues')
+  validateRangeValues(newValue: Array<number>) {
     if (!Array.isArray(newValue) || newValue.length < 2)
-      throw new Error('markValues must be an array with at least two items');
-    this.markValues = newValue;
-  }
-
-  @Prop() minValue: number = 0;
-  @Watch('minValue')
-  onMinValue(newValue: number) {
-    if (typeof newValue !== 'number')
-      throw new Error('minValue must be a number');
-    this.minValue = newValue;
+      throw new Error('rangeValues must be an array with at least two items');
+    this.rangeValues = newValue;
   }
 
   /**
-   * Define default value
+   * Define the default value
    *
-   * Default: 0
-   *
-   * Ignored if default value exceeds maxValue
+   * Allowed: A number
    */
-  @Prop() defaultValue: number = 0;
+
+  @Prop() defaultValue: number;
   @Watch('defaultValue')
-  onDefaultValue(newValue: number) {
+  validateDefaultValue(newValue: number) {
     if (typeof newValue !== 'number')
-      throw new Error('minValue must be a number');
-    this.minValue = newValue;
+      throw new Error('default value number be a number');
   }
 
   /**
-   * Define
-   *
-   * Default: 100
-   */
-  @Prop() customMarks: {
-    label: string;
-    value: number;
-  }[];
-  @Watch('customMarks')
-  onCustomMarks(newValue: any): void {
-    this.maxValue = newValue;
-  }
-
-  /**
-   * Define maximum value
-   *
-   * Default: 100
-   */
-  @Prop() maxValue: number = 100;
-  @Watch('maxValue')
-  onmaxValue(newValue: number) {
-    if (typeof newValue !== 'number')
-      throw new Error('maxValue must be a number');
-    this.maxValue = newValue;
-  }
-
-  /**
-   * Define whether thumb label is visible
+   * Thumb label visibility
    *
    * Default: Visible
    */
+
   @Prop() thumbLabel: boolean = true;
   @Watch('thumbLabel')
   onThumbLabel(newValue: boolean) {
@@ -90,25 +56,26 @@ export class Slider {
   }
 
   /**
-   * Define step number
+   *
+   * Define step
    *
    * Can be any number
-   *
-   * If no step provided the slider is continous
-   * If step provided the slider is discrete
    */
-  @Prop() step: number = 10;
+
+  @Prop() step: number;
   @Watch('step')
-  onStep(newValue: number) {
+  validateStep(newValue: number) {
     if (typeof newValue !== 'number' || newValue <= 0)
-      throw new Error('step must be a positive integer');
+      throw new Error('step must be a positive number');
     this.step = newValue;
   }
-  //  /**
-  //  * Define mark values are used
-  //  *
-  //  * Default: true
-  //  */
+
+  /**
+   * Define if mark values are used
+   *
+   * Default: true
+   */
+
   @Prop() marks: boolean = true;
   @Watch('marks')
   onMarks(newValue: boolean) {
@@ -118,115 +85,36 @@ export class Slider {
   }
 
   /**
-   * Store where slider is continuous or discrete
+   * Store current value in state
    */
-  @State() isDiscrete: boolean;
 
-  /**
-   * Create state for the mark for values
-   */
-  @State() markLabels: Array<number>;
+  @State() currentValue: number;
+  @State() minValue: number;
+  @State() maxValue: number;
 
-  componentWillLoad() {
-    this.customMarks && (this.markLabels = this.setCustomMarkLabels());
-    this.step !== 0 && (this.markLabels = this.setAutoMarkLabels());
-    this.step && (this.isDiscrete = false);
-    this.defaultValue && this.defaultValue <= this.maxValue
-      ? (this.currentValue = this.defaultValue)
-      : (this.defaultValue = this.minValue);
+  private setValues() {
+    this.minValue = this.rangeValues[0];
+    this.maxValue = this.rangeValues[this.rangeValues.length - 1];
+    if (
+      this.defaultValue >= this.minValue &&
+      this.defaultValue <= this.maxValue
+    ) {
+      return (this.currentValue = this.defaultValue);
+    }
   }
 
-  /**
-   * Store current value is state
-   */
-  @State() currentValue: number = 0;
+  componentWillLoad() {
+    this.setValues();
+    this.setBackgroundProgressFill();
+  }
+
+  connectedCallBack() {
+    this.setBackgroundProgressFill();
+  }
 
   handleChange(event) {
     this.currentValue = event.target.value;
   }
-
-  // create an object with label names and relative positions
-
-  // @EventEmitter
-  // need to emit value somewhere ...
-
-  /**se properties do not have the @Prop() decorator, they will not be exposed
-   * publicly on the host eleme
-   * nt, but only used internally.
-   */
-  // flag: boolean = false;
-
-  /**
-   * 2. Reference to host HTML element.
-   * Inlined decorator
-   *
-   * import { Element } from '@stencil/core';
-   */
-  // @Element() el: HTMLElement;
-
-  /**
-   * 3. State() variables
-   * Inlined decorator, alphabetical order.
-   *
-   * import { State } from '@stencil/core';
-   */
-  // @State() isValidated: boolean;
-
-  /**
-   * 4. Public Property API
-   * Inlined decorator, alphabetical order. These are different than "own properties" in that public props
-   * are exposed as properties and attributes on the host element.
-   * Requires JSDocs for public API documentation.
-   *
-   * import { Prop, Watch } from '@stencil/core';
-   */
-  // @Prop() fullWidth: boolean = false;
-  /** Prop lifecycle events SHOULD go just behind the Prop they listen to. */
-  // @Watch('fullWidth')
-  // validateFullWidth(newValue: boolean) {
-  //   if (typeof newValue !== 'boolean')
-  //     throw new Error('fullWidth: must be boolean');
-  // }
-
-  /**
-   * 5. Events section
-   * Inlined decorator, alphabetical order.
-   * Requires JSDocs for public API documentation.
-   *
-   * import { Event, EventEmitter } from '@stencil/core';
-   */
-  // @Event() click: EventEmitter;
-
-  /**
-   * 6. Component lifecycle events
-   * Ordered by their natural call order, for example WillLoad should go before DidLoad.
-   */
-  // connectedCallback() {}
-  // componentWillLoad() {}
-  // componentDidLoad() {}
-  // disconnectedCallback() {}
-
-  /**
-   * 7. Listeners
-   * It is ok to place them in a different location if makes more sense in the context.
-   * Recommend starting a listener method with "on".
-   * Always use two lines.
-   *
-   * import { Listen } from '@stencil/core';
-   */
-  // @Listen('click', {})
-  // onClick(event: UIEvent) { ... }
-
-  /**
-   * 8. Public methods API
-   * These methods are exposed on the host element.
-   * Always use two lines.
-   * Requires JSDocs for public API documentation.
-   *
-   * import { Method } from '@stencil/core';
-   */
-  // @Method()
-  // open() { ... }
 
   render() {
     const thumbClasses = {
@@ -236,11 +124,14 @@ export class Slider {
 
     return (
       <div class={'plmg-slider-component-container'}>
-        <div>{this.markValues}</div>
         <div class={'plmg-slider-thumb-label-container'}>
           <output
             id="output-range"
-            style={{ left: this.updateThumbLabelPosition() }}
+            style={{
+              left: `${
+                (this.currentValue / (this.maxValue - this.minValue)) * 100
+              }%`,
+            }}
             class={thumbClasses}
           >
             {this.currentValue}
@@ -250,7 +141,7 @@ export class Slider {
           <input
             style={{ background: this.setBackgroundProgressFill() }}
             class="plmg-slider-input"
-            step={this.step}
+            step={this.step ? this.step : 0}
             type="range"
             id="input-range"
             min={this.minValue}
@@ -260,21 +151,41 @@ export class Slider {
           />
         </div>
 
+        {this.marks && (
+          <div class={'plmg-slider-mark-container'}>
+            {this.rangeValues.map((item, index) => (
+              <span
+                key={index}
+                style={{
+                  left: `${(item / (this.maxValue - this.minValue)) * 100}%`,
+                }}
+              ></span>
+            ))}
+          </div>
+        )}
+
         <div class={'plmg-slider-mark-labels-container'}>
           {this.marks && (
             <datalist>
-              {this.markLabels.map((item, index) => (
-                <option class="plmg-slider-mark-label-item" key={index}>
+              {this.rangeValues.map((item, index) => (
+                <option
+                  class="plmg-slider-mark-label-item"
+                  key={index}
+                  style={{
+                    left: `${(item / (this.maxValue - this.minValue)) * 100}%`,
+                  }}
+                >
                   {item}
                 </option>
               ))}
             </datalist>
           )}
         </div>
+
         <div class={'plmg-slider-input-field-container'}>
           <input
             type="number"
-            step={this.step}
+            step={this.step ? this.step : 0}
             min={this.minValue}
             max={this.maxValue}
             value={this.currentValue}
@@ -295,55 +206,5 @@ export class Slider {
       ${plmgColorBackgroundPrimaryStrong} ${FILL_PERCENT}%,
       ${plmgColorBorderNeutralWeak} ${FILL_PERCENT}%, 
       ${plmgColorBorderNeutralWeak} 100%)`;
-  }
-
-  private setCustomMarkLabels(): Array<number> {
-    let tickArray = [this.markValues[0]];
-    let accumulator = this.step + this.minValue;
-    while (accumulator < this.maxValue) {
-      tickArray.push(accumulator);
-      const pos =
-        ((accumulator - this.minValue) / (this.maxValue / this.minValue)) * 100;
-      console.log(pos);
-      accumulator += this.step;
-    }
-    tickArray.push(this.maxValue);
-    return tickArray;
-  }
-  // private setCustomMarkLabels(): Array<number> {
-
-  //   let tickArray = [this.minValue];
-  //   let accumulator = this.step + this.minValue;
-  //   while (accumulator < this.maxValue) {
-  //     tickArray.push(accumulator);
-  //     const pos =
-  //       ((accumulator - this.minValue) / (this.maxValue / this.minValue)) * 100;
-  //     console.log(pos);
-  //     accumulator += this.step;
-  //   }
-  //   tickArray.push(this.maxValue);
-  //   return tickArray;
-  // }
-
-  private setAutoMarkLabels(): Array<number> {
-    let tickArray = [this.minValue];
-    let accumulator = this.step + this.minValue;
-    while (accumulator < this.maxValue) {
-      tickArray.push(accumulator);
-      const pos =
-        ((accumulator - this.minValue) / (this.maxValue / this.minValue)) * 100;
-      console.log(pos);
-      accumulator += this.step;
-    }
-    tickArray.push(this.maxValue);
-    return tickArray;
-  }
-
-  private updateThumbLabelPosition(): string {
-    const REL_POS = Number(
-      ((this.currentValue - this.minValue) * 100) /
-        (this.maxValue - this.minValue)
-    );
-    return `calc(${REL_POS}% + (${8 - REL_POS * 0.15}px))`;
   }
 }

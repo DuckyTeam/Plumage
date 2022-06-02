@@ -163,32 +163,23 @@ export namespace Components {
     }
     interface PlmgSlider {
         /**
-          * Define  Default: 100
-         */
-        "customMarks": {
-    label: string;
-    value: number;
-  }[];
-        /**
-          * Define default value  Default: 0  Ignored if default value exceeds maxValue
+          * Define the default value  Allowed: A number
          */
         "defaultValue": number;
         /**
-          * Set marks  The first and last items set the minimum and max values  Must contain at least two items
+          * Define if mark values are used  Default: true
          */
-        "markValues": Array<number>;
         "marks": boolean;
         /**
-          * Define maximum value  Default: 100
+          * Define the range of value  Must be an array with at least two items  First and last items in the array set the minimum and max values  Additional items set the mark values
          */
-        "maxValue": number;
-        "minValue": number;
+        "rangeValues": Array<number>;
         /**
-          * Define step number  Can be any number  If no step provided the slider is continous If step provided the slider is discrete
+          * Define step  Can be any number
          */
         "step": number;
         /**
-          * Define whether thumb label is visible  Default: Visible
+          * Thumb label visibility  Default: Visible
          */
         "thumbLabel": boolean;
     }
@@ -435,32 +426,23 @@ declare namespace LocalJSX {
     }
     interface PlmgSlider {
         /**
-          * Define  Default: 100
-         */
-        "customMarks"?: {
-    label: string;
-    value: number;
-  }[];
-        /**
-          * Define default value  Default: 0  Ignored if default value exceeds maxValue
+          * Define the default value  Allowed: A number
          */
         "defaultValue"?: number;
         /**
-          * Set marks  The first and last items set the minimum and max values  Must contain at least two items
+          * Define if mark values are used  Default: true
          */
-        "markValues"?: Array<number>;
         "marks"?: boolean;
         /**
-          * Define maximum value  Default: 100
+          * Define the range of value  Must be an array with at least two items  First and last items in the array set the minimum and max values  Additional items set the mark values
          */
-        "maxValue"?: number;
-        "minValue"?: number;
+        "rangeValues"?: Array<number>;
         /**
-          * Define step number  Can be any number  If no step provided the slider is continous If step provided the slider is discrete
+          * Define step  Can be any number
          */
         "step"?: number;
         /**
-          * Define whether thumb label is visible  Default: Visible
+          * Thumb label visibility  Default: Visible
          */
         "thumbLabel"?: boolean;
     }

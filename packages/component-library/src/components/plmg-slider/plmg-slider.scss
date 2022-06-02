@@ -25,6 +25,7 @@
   grid-template-areas:
     'thumblabel inputfield'
     'trackrail inputfield'
+    'marks inputfield'
     'marklabels inputfield';
 }
 
@@ -42,7 +43,6 @@
     -webkit-appearance: none;
     cursor: pointer;
     margin: 0;
-    padding-right: 3px;
 
     &:hover &:focus &:active {
       outline: none;
@@ -107,7 +107,6 @@
   height: 26px;
 
   .plmg-slider-thumb-label {
-    left: 50%;
     transform: translateX(-50%);
     background: tokens.$plmg-color-background-primary-strong;
     color: tokens.$plmg-color-text-neutral-inverted;
@@ -133,16 +132,42 @@
   }
 }
 
-.plmg-slider-mark-labels-container {
+.plmg-slider-mark-container {
+  grid-area: marks;
   width: 100%;
-  line-height: 18px;
+  position: relative;
+  z-index: -1;
+
+  span {
+    display: flex;
+    top: -12px;
+    justify-content: center;
+    position: absolute;
+    text-align: center;
+    padding: 0;
+    background: tokens.$plmg-color-background-neutral-strong;
+    margin-bottom: 8px;
+    width: 2px;
+    height: 4px;
+  }
+}
+
+.plmg-slider-mark-labels-container {
+  grid-area: marklabels;
+  width: 100%;
   min-height: 18px;
   font-size: 12px;
 
   datalist {
     display: flex;
-    justify-content: space-between;
-    overflow: hidden;
+    position: relative;
+  }
+
+  option {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    color: tokens.$plmg-color-text-neutral;
   }
 
   &.plmg-slider-mark-label-item:before {
@@ -155,11 +180,12 @@
 
 .plmg-slider-input-field-container {
   grid-area: inputfield;
-  height: 51px;
   display: flex;
   align-self: flex-end;
 
   input {
+    height: 51px;
+    width: 86px;
     box-sizing: border-box;
     border: 1px solid tokens.$plmg-color-border-neutral-weak;
     padding: 12px 16px;

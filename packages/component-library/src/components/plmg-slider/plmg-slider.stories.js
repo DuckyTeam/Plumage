@@ -5,13 +5,7 @@ export default {
   parameters: {},
   decorators: [],
   argTypes: {
-    ['min-value']: {
-      control: { type: 'number' },
-    },
-    ['max-value']: {
-      control: { type: 'number' },
-    },
-    ['mark-values']: {
+    ['range-values']: {
       control: { type: 'array' },
     },
     ['default-value']: {
@@ -26,17 +20,12 @@ export default {
     step: {
       control: { type: 'number' },
     },
-    ['custom-marks']: {
-      control: { type: 'text' },
-    },
   },
 };
 
 const PROPS = [
   'step',
-  'mark-values',
-  'min-value',
-  'max-value',
+  'range-values',
   'default-value',
   'marks',
   'thumb-label',
@@ -58,12 +47,25 @@ const Template = (args) => {
 export const Primary = Template.bind({});
 Primary.storyName = 'Slider';
 Primary.args = {
-  ['min-value']: '0',
-  ['max-value']: '100',
-  ['default-value']: '20',
   marks: true,
-  ['thumb-label']: false,
+  ['thumb-label']: true,
+  ['default-value']: 20,
+  ['thumb-label']: true,
+};
+
+export const Steps = Template.bind({});
+Steps.args = {
   step: 5,
+  ['default-value']: 20,
+  ['thumb-label']: true,
+};
+
+export const Marks = Template.bind({});
+Steps.args = {
+  marks: true,
+  step: 5,
+  ['default-value']: 20,
+  ['thumb-label']: true,
 };
 
 export const All = (args) => {
