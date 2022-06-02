@@ -47,7 +47,7 @@ export const AllThicknesses = (args) => {
   const htmlContent = thicknesses
     .map(
       (thickness) =>
-        `<div style="width: 300px; height: 300px"><plmg-separator thickness="${thickness}"></plmg separator></div>`
+        `<div style="width: 300px; height: 20px"><plmg-separator thickness="${thickness}"></plmg separator></div>`
     )
     .join('')
     .trim();
@@ -84,13 +84,13 @@ AllDirections.storyName = 'All directions';
 
 export const SomeColors = (args) => {
   const htmlContent = `
-<div style="width: 300px; height: 300px;">
+<div style="width: 300px; height: 20px;">
 <plmg-separator></plmg-separator>
 </div>
-<div style="width: 300px; height: 300px;">
+<div style="width: 300px; height: 20px;">
 <plmg-separator color="red"></plmg-separator>
 </div>
-<div style="width: 300px; height: 300px;">
+<div style="width: 300px; height: 20px;">
 <plmg-separator color="var(--plmg-color-background-standout)"></plmg-separator>
 </div>
   `;
