@@ -68,94 +68,101 @@ Primary.args = {
   ['target-element']: 'targetelement',
 };
 
-export const TooltipLeft = (args) => {
-  let wrapper = document.createElement('div');
-  const htmlContent = `
-  <div style="display: flex; flex-direction: column; height: 100vh;">
-  
-    <p id="element-one" tabindex="1" style="margin-left: 300px; width: fit-content;">right start</p>
-    <plmg-tooltip target-element="element-one" position="left" arrow-position="start" content="Tooltip left with arrow at the start of the Y axis"></plmg-tooltip>
-  
-    <p id="element-two" tabindex="2" style="margin-left: 300px; width: fit-content;">left middle</p>
-    <plmg-tooltip target-element="element-two" position="left" arrow-position="middle" content="Tool left with arrow in the middle of the Y axis"></plmg-tooltip>
-  
-    <p id="element-three" tabindex="3" style="margin-left: 300px; width: fit-content;">left end</p>
-    <plmg-tooltip target-element="element-three" position="left" arrow-position="end" content="Tool left with arrow at the end of the Y axis. The height of the tooltip moves its position upwards"></plmg-tooltip>
-    
-    <p id="element-four" tabindex="4" style="margin-left: 300px; width: fit-content;">left none</p>
-    <plmg-tooltip target-element="element-four" position="left" arrow-position="none" content="Tool left with no arrow"></plmg-tooltip>
-    
-  </div>
-  `;
-  wrapper.innerHTML = htmlContent;
-  return wrapper;
-};
+export const AllColors = (args) => {
+  let htmlContent = `
+<div style="display: flex; justify-content: space-between; width: 300px; margin-top: 50px;">
+    <span id="neutral">Neutral</span>
+    <plmg-tooltip target-element="neutral" content="neutral" background-color="neutral" position="bottom" arrow-position="none">
+    </plmg-tooltip>
+    <span id="primary">Primary</span>
+    <plmg-tooltip target-element="primary" content="primary" background-color="primary" position="bottom" arrow-position="none">
+    </plmg-tooltip>
+</div>
+`;
 
-export const TooltipRight = (args) => {
-  let wrapper = document.createElement('div');
-  const htmlContent = `
-  <div style="display: flex; flex-direction: column; height: 100vh;">
-      <p id="element-one" tabindex="1" style=" width: fit-content;">right start</p>
-      <plmg-tooltip target-element="element-one" position="right" arrow-position="start" content="right start tooltip. A longer text will increase the height of the tooltip."></plmg-tooltip>
-      
-      <p id="element-two" tabindex="2" style=" width: fit-content;">right middle</p>
-      <plmg-tooltip target-element="element-two" position="right" arrow-position="middle" content=" A longer text will increase the height of the tooltip. It will adjust its positoning to center vertically">right middle</plmg-tooltip>
-      
-      <p id="element-three" tabindex="3" style=" width: fit-content;">right end</p>
-      <plmg-tooltip target-element="element-three" position="right" arrow-position="end" content="Tooltip right with arrow at the end"></plmg-tooltip>
-    
-      <p id="element-four" tabindex="4" style=" width: fit-content;">right none</p>
-      <plmg-tooltip target-element="element-four" position="right" arrow-position="none" content="Tool right with no arrow"></plmg-tooltip>
-    </div>
-  `;
-  wrapper.innerHTML = htmlContent;
-  return wrapper;
+  return htmlContent;
 };
+AllColors.storyName = 'All Colors';
 
-export const TooltipBottom = (args) => {
-  let wrapper = document.createElement('div');
-  const htmlContent = `
-  <div style="display: flex; flex-direction: column; height: 100vh;">
-      
-      <p id="element-one" tabindex="1" style="margin-left: 150px; width: fit-content;">bottom start</p>
-      <plmg-tooltip target-element="element-one" position="bottom" arrow-position="start" content="Bottom with arrow start"></plmg-tooltip>
-      
-      <p id="element-two" tabindex="2" style="margin-left: 150px; width: fit-content;">bottom middle</p>
-      <plmg-tooltip target-element="element-two" position="bottom" arrow-position="middle" content="Bottom with arrow middle"></plmg-tooltip>
-      
-      <p id="element-three" tabindex="3" style="margin-left: 150px; width: fit-content;">bottom end</p>
-      <plmg-tooltip target-element="element-three" position="bottom" arrow-position="end" content="Bottom with arrow end"></plmg-tooltip>
-      
-      <p id="element-four" tabindex="4" style="margin-left: 150px; width: fit-content;">bottom none</p>
-      <plmg-tooltip target-element="element-four" position="bottom" arrow-position="none" content="Bottom with no arrow"></plmg-tooltip>
-    </div>
-    `;
-  wrapper.innerHTML = htmlContent;
-  return wrapper;
-};
+export const AllPositions = (args) => {
+  let htmlContent = `
+<div style="display: grid; grid-template-columns: 150px 150px 150px; gap: 10px; margin-top: 50px; margin-bottom: 50px;">
+    <span style="grid-column: 1/4; text-align: center;" id="top">top</span>
+    <plmg-tooltip target-element="top" content="top" background-color="neutral" position="top" arrow-position="none">
+    </plmg-tooltip>
+    <span id="neutral-left-none">left</span>
+    <plmg-tooltip target-element="neutral-left-none" content="left" background-color="neutral" position="left" arrow-position="none">
+    </plmg-tooltip>
+    <span></span>
+    <span style="text-align: end" id="neutral-right-none">right</span>
+    <plmg-tooltip target-element="neutral-right-none" content="right" background-color="neutral" position="right" arrow-position="none">
+    </plmg-tooltip>
+    <span style="grid-column: 1/4; text-align: center;" id="neutral-bottom-none">bottom</span>
+    <plmg-tooltip target-element="neutral-bottom-none" content="bottom" background-color="neutral" position="bottom" arrow-position="none">
+    </plmg-tooltip>
+</div>
+`;
 
-export const TooltipTop = (args) => {
-  let wrapper = document.createElement('div');
-  const htmlContent = `
-  <div style="display: flex; flex-direction: column; height: 100vh; width: 200px; margin-left: 150px; margin-top: 75px; gap: 20px; width: fit-content;">
-     
-      <p id="element-one" tabindex="1">top start</p>
-      <plmg-tooltip target-element="element-one" position="top" arrow-position="start" content="Tooltip top with arrow start"></plmg-tooltip>
-     
-      <p id="element-two" tabindex="2">top middle</p>
-      <plmg-tooltip target-element="element-two" position="top" arrow-position="middle" content="Tooltip top with arrow middle"></plmg-tooltip>
-     
-      <p id="element-three" tabindex="3">top end</p>
-      <plmg-tooltip target-element="element-three" position="top" arrow-position="end" content="Tooltip top with arrow at the end"></plmg-tooltip>
-    
-        <p id="element-four" tabindex="3">top none</p>
-      <plmg-tooltip target-element="element-four" position="top" arrow-position="none" content="Tooltip top with no arrow"></plmg-tooltip>
-    
-    </div>
-    `;
-  wrapper.innerHTML = htmlContent;
-  return wrapper;
+  return htmlContent;
 };
+AllPositions.storyName = 'All Positions';
+AllPositions.parameters = { layout: 'centered' };
+
+export const AllArrowPositions = (args) => {
+  let htmlContent = `
+<div style="display: grid; grid-template-columns: 150px 150px 150px; gap: 10px; margin-top: 50px; margin-bottom: 50px;">
+    <div style="grid-column: 1/4; display: grid; grid-template-columns: auto auto auto; gap: 10px; ">
+        <span id="top-start">top start</span>
+        <plmg-tooltip target-element="top-start" content="top start" background-color="neutral" position="top" arrow-position="start">
+        </plmg-tooltip>
+        <span style="text-align: center" id="top-middle">top middle</span>
+        <plmg-tooltip target-element="top-middle" content="top middle" background-color="neutral" position="top" arrow-position="middle">
+        </plmg-tooltip>
+        <span style="text-align: end" id="top-end">top end</span>
+        <plmg-tooltip target-element="top-end" content="top end" background-color="neutral" position="top" arrow-position="end">
+        </plmg-tooltip>
+    </div>
+     
+    <span id="left-start">left start</span><span></span>
+    <plmg-tooltip target-element="left-start" content="left start Lorem_Ipsum_for_longer_tooltip" background-color="neutral" position="left" arrow-position="start">
+    </plmg-tooltip>
+    <span style="text-align: end" id="right-start">right start</span>
+    <plmg-tooltip target-element="right-start" content="right start Lorem_Ipsum_for_longer_tooltip" background-color="neutral" position="right" arrow-position="start">
+    </plmg-tooltip>
+    
+    
+    <span id="left-middle">left middle</span><span></span>
+    <plmg-tooltip target-element="left-middle" content="left middle Lorem_Ipsum_for_longer_tooltip" background-color="neutral" position="left" arrow-position="middle">
+    </plmg-tooltip>
+    <span style="text-align: end" id="right-middle">right middle</span>
+    <plmg-tooltip target-element="right-middle" content="right middle Lorem_Ipsum_for_longer_tooltip" background-color="neutral" position="right" arrow-position="middle">
+    </plmg-tooltip>
+    
+    <span id="left-end">left end</span><span></span>
+    <plmg-tooltip target-element="left-end" content="left end Lorem_Ipsum_for_longer_tooltip" background-color="neutral" position="left" arrow-position="end">
+    </plmg-tooltip>
+    <span style="text-align: end" id="right-end">right end</span>
+    <plmg-tooltip target-element="right-end" content="right end Lorem_Ipsum_for_longer_tooltip" background-color="neutral" position="right" arrow-position="end">
+    </plmg-tooltip>
+    
+    <div style="grid-column: 1/4; display: grid; grid-template-columns: auto auto auto; gap: 10px; ">
+        <span id="bottom-start">bottom start</span>
+        <plmg-tooltip target-element="bottom-start" content="bottom start" background-color="neutral" position="bottom" arrow-position="start">
+        </plmg-tooltip>
+        <span style="text-align: center" id="bottom-middle">bottom middle</span>
+        <plmg-tooltip target-element="bottom-middle" content="bottom middle" background-color="neutral" position="bottom" arrow-position="middle">
+        </plmg-tooltip>
+        <span style="text-align: end" id="bottom-end">bottom end</span>
+        <plmg-tooltip target-element="bottom-end" content="bottom end" background-color="neutral" position="bottom" arrow-position="end">
+        </plmg-tooltip>
+    </div>
+</div>
+`;
+
+  return htmlContent;
+};
+AllArrowPositions.storyName = 'All Arrow Positions';
+AllArrowPositions.parameters = { layout: 'centered' };
 
 export const AllVariations = (args) => {
   let htmlContent = ``;
