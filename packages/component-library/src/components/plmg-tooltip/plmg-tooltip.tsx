@@ -24,7 +24,6 @@ export class Tooltip {
    *
    * Default hidden
    */
-
   @State() isVisible: boolean = false;
 
   /**
@@ -58,7 +57,6 @@ export class Tooltip {
    *
    * Default: neutral
    */
-
   @Prop() backgroundColor: PlmgTooltipBackgroundColors = 'neutral';
   @Watch('backgroundColor')
   validateBgColor(newValue: string) {
@@ -116,7 +114,6 @@ export class Tooltip {
    *
    * Required
    */
-
   @Prop() content: string;
   @Watch('content')
   validateTooltipContent(newValue: string) {
@@ -128,7 +125,6 @@ export class Tooltip {
   /**
    * Life Cycle Methods & Event Listeners
    */
-
   connectedCallback() {
     this.initiateTargetListeners();
   }
@@ -180,7 +176,6 @@ export class Tooltip {
   /**
    * Remove event listener
    */
-
   disconnectedCallback() {
     if (this.abortTooltipListener) this.abortTooltipListener.abort();
   }
