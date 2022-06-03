@@ -57,6 +57,7 @@ input {
   cursor: pointer;
   margin: 0;
 
+  //Reset input styles
   &:hover &:focus &:active {
     outline: none;
   }
@@ -95,6 +96,7 @@ input {
       visibility: hidden;
     }
 
+    // Create thumb label arrow
     &::after {
       content: '';
       position: absolute;
@@ -116,6 +118,7 @@ input {
 
   span {
     top: -4px;
+    margin-left: 4px;
     position: absolute;
     background: tokens.$plmg-color-background-neutral-strong;
     width: 2px;
@@ -167,7 +170,5 @@ input {
     font-size: 18px;
   }
 }
-
-// Controls
 
 // ------------- END Component style ---------------

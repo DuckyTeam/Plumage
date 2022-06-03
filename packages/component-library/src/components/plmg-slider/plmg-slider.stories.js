@@ -8,6 +8,9 @@ export default {
     ['range-values']: {
       control: { type: 'array' },
     },
+    name: {
+      control: { type: 'text' },
+    },
     ['default-value']: {
       control: { type: 'number' },
     },
@@ -20,10 +23,21 @@ export default {
     step: {
       control: { type: 'number' },
     },
+    ['input-id']: {
+      control: { type: 'text' },
+    },
   },
 };
 
-const PROPS = ['step', 'range-values', 'default-value', 'marks', 'thumb-label'];
+const PROPS = [
+  'step',
+  'range-values',
+  'default-value',
+  'marks',
+  'name',
+  'thumb-label',
+  'input-id',
+];
 const EVENTS = [];
 const CSS_VARS = [];
 const SLOTS = [];
@@ -42,14 +56,17 @@ export const Primary = Template.bind({});
 Primary.storyName = 'Slider';
 Primary.args = {
   marks: false,
+  name: 'range-slider',
   ['thumb-label']: false,
   marks: true,
   ['range-values']: [0, 100],
+  ['input-id']: '',
 };
 
 export const Marks = Template.bind({});
 Marks.args = {
   marks: true,
+  name: 'range-slider',
   ['default-value']: 5,
   ['thumb-label']: false,
   ['range-values']: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
@@ -58,6 +75,7 @@ Marks.args = {
 export const Steps = Template.bind({});
 Steps.args = {
   step: 5,
+  name: 'range-slider',
   ['thumb-label']: false,
   ['range-values']: [5, 10, 15, 20, 25],
 };
@@ -65,32 +83,8 @@ Steps.args = {
 export const ThumbLabel = Template.bind({});
 ThumbLabel.args = {
   ['default-value']: 25,
+  name: 'range-slider',
   marks: true,
   ['thumb-label']: true,
   ['range-values']: [0, 5, 10, 20, 30, 50],
 };
-
-// export const All = (args) => {
-//   const marks = [true, false]
-//   const steps = [5]
-//   const defaultValue = [3]
-//   const thumbLabel = [true, false]
-
-//   let htmlContent = '';
-//   marks.forEach((mark) => {
-//     steps.forEach((step) => {
-//       defaultValue.forEach((defaultVal) => {
-//         thumbLabel.forEach((thumbLabel) => {
-//           htmlContent += `
-//             <plmg-slider mark="${mark}" range-value="[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]" step="${step} defaultValue="${defaultVal} thumbLabel="${thumbLabel}></plmg-slider>
-//           `
-//         })
-//       })
-//     })
-//   })
-
-//   const el = document.createElement('div');
-//   el.innerHTML = htmlContent.trim();
-//   return el;
-// };
-// All.storyName = 'All variations';

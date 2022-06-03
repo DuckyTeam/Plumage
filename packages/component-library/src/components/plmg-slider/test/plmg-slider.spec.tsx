@@ -8,7 +8,7 @@ describe('plmg-slider', () => {
       html: `<plmg-slider></plmg-slider>`,
     });
     expect(page.root).toEqualHtml(`
-      <plmg-slider range-values="0, 10, 20" marks="false" thumb-label="false" class="hydrated">
+      <plmg-slider range-values="0, 10" marks="false" thumb-label="false" class="hydrated">
       <div class="plmg-slider-component-container">
         <div class="plmg-slider-track-rail-container">
           <label htmlfor="input-range"></label>

@@ -163,23 +163,31 @@ export namespace Components {
     }
     interface PlmgSlider {
         /**
-          * Define the default value  Allowed: A number
+          * Define the default value.  Sets the starting value for the slider.  Allowed: Any number  When the default value is outside of the min and max values or is undefined the starting value is set to the min value.
          */
         "defaultValue": number;
         /**
-          * Define if mark values are used  Default: true
+          * Define an id attribute for the input  Any string
+         */
+        "inputId": string;
+        /**
+          * Define if marks and marks labels are visible  Default: true
          */
         "marks": boolean;
         /**
-          * Define the range of value  Array must include at least two items  Required  First and last items in the array set the minimum and max values  Additional items set the mark values
+          * Define a name for the slider  Any string
+         */
+        "name": string;
+        /**
+          * Define the range of values  Must be a list of values with at least two items  First and last items set min and max values  Additional values set mark additional labels  Required
          */
         "rangeValues": Array<number>;
         /**
-          * Define step  Can be any number
+          * Define step  Slider's value will increase or decrease in steps  Allowed values - Any number
          */
         "step": number;
         /**
-          * Thumb label visibility  Default: Visible
+          * Define thumb label visibility  Allowed values  - true  - false  Default: true
          */
         "thumbLabel": boolean;
     }
@@ -426,23 +434,31 @@ declare namespace LocalJSX {
     }
     interface PlmgSlider {
         /**
-          * Define the default value  Allowed: A number
+          * Define the default value.  Sets the starting value for the slider.  Allowed: Any number  When the default value is outside of the min and max values or is undefined the starting value is set to the min value.
          */
         "defaultValue"?: number;
         /**
-          * Define if mark values are used  Default: true
+          * Define an id attribute for the input  Any string
+         */
+        "inputId"?: string;
+        /**
+          * Define if marks and marks labels are visible  Default: true
          */
         "marks"?: boolean;
         /**
-          * Define the range of value  Array must include at least two items  Required  First and last items in the array set the minimum and max values  Additional items set the mark values
+          * Define a name for the slider  Any string
+         */
+        "name"?: string;
+        /**
+          * Define the range of values  Must be a list of values with at least two items  First and last items set min and max values  Additional values set mark additional labels  Required
          */
         "rangeValues"?: Array<number>;
         /**
-          * Define step  Can be any number
+          * Define step  Slider's value will increase or decrease in steps  Allowed values - Any number
          */
         "step"?: number;
         /**
-          * Thumb label visibility  Default: Visible
+          * Define thumb label visibility  Allowed values  - true  - false  Default: true
          */
         "thumbLabel"?: boolean;
     }

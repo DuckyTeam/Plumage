@@ -11,16 +11,15 @@ import {
 })
 export class Slider {
   /**
-   * Define the range of value
+   * Define the range of values
    *
-   * Array must include at least two items
+   * Must be a list of values with at least two items
+   *
+   * First and last items set min and max values
+   *
+   * Additional values set mark additional labels
    *
    * Required
-   *
-   * First and last items in the array set the minimum and max values
-   *
-   * Additional items set the mark values
-   *
    */
   @Prop() rangeValues: Array<number>;
   @Watch('rangeValues')
@@ -34,9 +33,13 @@ export class Slider {
   }
 
   /**
-   * Define the default value
+   * Define the default value.
    *
-   * Allowed: A number
+   * Sets the starting value for the slider.
+   *
+   * Allowed: Any number
+   *
+   * When the default value is outside of the min and max values or is undefined the starting value is set to the min value.
    */
   @Prop() defaultValue: number;
   @Watch('defaultValue')
@@ -46,9 +49,37 @@ export class Slider {
   }
 
   /**
-   * Thumb label visibility
+   * Define a name for the slider
    *
-   * Default: Visible
+   * Any string
+   */
+  @Prop() name: string;
+  @Watch('name')
+  validateName(newValue: string) {
+    if (newValue && typeof newValue !== 'string')
+      throw new Error('name must be a string');
+  }
+
+  /**
+   * Define an id attribute for the input
+   *
+   * Any string
+   */
+  @Prop() inputId: string;
+  @Watch('inputId')
+  validateID(newValue: string) {
+    if (newValue && typeof newValue !== 'string')
+      throw new Error('input Id must be a string with no white space');
+  }
+
+  /**
+   * Define thumb label visibility
+   *
+   * Allowed values
+   *  - true
+   *  - false
+   *
+   * Default: true
    */
   @Prop() thumbLabel: boolean = true;
   @Watch('thumbLabel')
@@ -58,10 +89,12 @@ export class Slider {
   }
 
   /**
-   *
    * Define step
    *
-   * Can be any number
+   * Slider's value will increase or decrease in steps
+   *
+   * Allowed values
+   * - Any number
    */
   @Prop() step: number;
   @Watch('step')
@@ -71,7 +104,7 @@ export class Slider {
   }
 
   /**
-   * Define if mark values are used
+   * Define if marks and marks labels are visible
    *
    * Default: true
    */
@@ -121,34 +154,38 @@ export class Slider {
     return (
       <div class={'plmg-slider-component-container'}>
         <div class={'plmg-slider-track-rail-container'}>
-          <label htmlfor={'input-range'} />
-          <input
-            style={{ background: this.setBackgroundProgressFill() }}
-            class={'plmg-slider-input'}
-            step={this.step && this.step}
-            type={'range'}
-            id={'input-range'}
-            aria-valuemin={this.minValue}
-            aria-valuemax={this.maxValue}
-            aria-valuenow={this.currentValue}
-            min={this.minValue}
-            max={this.maxValue}
-            value={this.currentValue}
-            onInput={(event) => this.handleChange(event)}
-          />
+          <label htmlfor={this.name}>
+            <input
+              id={this.inputId}
+              role="slider"
+              style={{ background: this.setBackgroundProgressFill() }}
+              class={'plmg-slider-input'}
+              step={this.step && this.step}
+              type={'range'}
+              name={this.name}
+              aria-valuemin={this.minValue}
+              aria-valuemax={this.maxValue}
+              aria-valuenow={this.currentValue}
+              min={this.minValue}
+              max={this.maxValue}
+              value={this.currentValue}
+              onInput={(event) => this.handleChange(event)}
+            />
+          </label>
         </div>
 
         <div class={'plmg-slider-thumb-label-container'}>
-          <label htmlfor={'output-range'} />
-          <output
-            id={'output-range'}
-            style={{
-              left: this.updateThumbLabelPosition(),
-            }}
-            class={thumbClasses}
-          >
-            {this.currentValue}
-          </output>
+          <label htmlfor={this.name}>
+            <output
+              name={this.name}
+              style={{
+                left: this.updateThumbLabelPosition(),
+              }}
+              class={thumbClasses}
+            >
+              {this.currentValue}
+            </output>
+          </label>
         </div>
 
         {this.marks && (
@@ -183,10 +220,10 @@ export class Slider {
         </div>
 
         <div class={'plmg-slider-input-field-container'}>
-          <label htmlfor={'input-field'} />
+          <label htmlfor={this.name} />
           <input
             type={'number'}
-            id={'input-field'}
+            name={this.name}
             tabIndex={0}
             step={this.step && this.step}
             aria-valuemin={this.minValue}
@@ -202,7 +239,7 @@ export class Slider {
     );
   }
 
-  private calculateRelativePosition(value) {
+  private calculateRelativePosition(value: number) {
     return (
       (Number(value - this.minValue) / (this.maxValue - this.minValue)) * 100
     );
