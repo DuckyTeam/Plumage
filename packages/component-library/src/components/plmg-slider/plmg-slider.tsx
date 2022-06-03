@@ -13,11 +13,14 @@ export class Slider {
   /**
    * Define the range of value
    *
-   * Must be an array with at least two items
+   * Array must include at least two items
+   *
+   * Required
    *
    * First and last items in the array set the minimum and max values
    *
    * Additional items set the mark values
+   *
    */
   @Prop() rangeValues: Array<number>;
   @Watch('rangeValues')
@@ -101,9 +104,8 @@ export class Slider {
     }
   }
 
-  componentWillLoad() {
+  connectedCallback() {
     this.setValues();
-    this.setBackgroundProgressFill();
   }
 
   handleChange(event) {
@@ -119,29 +121,29 @@ export class Slider {
     return (
       <div class={'plmg-slider-component-container'}>
         <div class={'plmg-slider-track-rail-container'}>
-          <label>
-            <input
-              style={{ background: this.setBackgroundProgressFill() }}
-              class="plmg-slider-input"
-              step={this.step ? this.step : 0}
-              type="range"
-              id="input-range"
-              aria-label="input-range-slider"
-              aria-valuemin={this.minValue}
-              aria-valuemax={this.maxValue}
-              aria-valuenow={this.currentValue}
-              onInput={(event) => this.handleChange(event)}
-            />
-          </label>
+          <label htmlfor={'input-range'} />
+          <input
+            style={{ background: this.setBackgroundProgressFill() }}
+            class={'plmg-slider-input'}
+            step={this.step && this.step}
+            type={'range'}
+            id={'input-range'}
+            aria-valuemin={this.minValue}
+            aria-valuemax={this.maxValue}
+            aria-valuenow={this.currentValue}
+            min={this.minValue}
+            max={this.maxValue}
+            value={this.currentValue}
+            onInput={(event) => this.handleChange(event)}
+          />
         </div>
 
         <div class={'plmg-slider-thumb-label-container'}>
+          <label htmlfor={'output-range'} />
           <output
-            id="output-range"
+            id={'output-range'}
             style={{
-              left: `${
-                (this.currentValue / (this.maxValue - this.minValue)) * 100
-              }%`,
+              left: this.updateThumbLabelPosition(),
             }}
             class={thumbClasses}
           >
@@ -155,7 +157,7 @@ export class Slider {
               <span
                 key={index}
                 style={{
-                  left: `${(item / (this.maxValue - this.minValue)) * 100}%`,
+                  left: this.setTickPositions(item),
                 }}
               ></span>
             ))}
@@ -167,10 +169,10 @@ export class Slider {
             <datalist>
               {this.rangeValues.map((item, index) => (
                 <option
-                  class="plmg-slider-mark-label-item"
+                  class={'plmg-slider-mark-label-item'}
                   key={index}
                   style={{
-                    left: `${(item / (this.maxValue - this.minValue)) * 100}%`,
+                    left: this.setTickPositions(item),
                   }}
                 >
                   {item}
@@ -181,9 +183,15 @@ export class Slider {
         </div>
 
         <div class={'plmg-slider-input-field-container'}>
+          <label htmlfor={'input-field'} />
           <input
-            type="number"
-            step={this.step ? this.step : 0}
+            type={'number'}
+            id={'input-field'}
+            tabIndex={0}
+            step={this.step && this.step}
+            aria-valuemin={this.minValue}
+            aria-valuemax={this.maxValue}
+            aria-valuenow={this.currentValue}
             min={this.minValue}
             max={this.maxValue}
             value={this.currentValue}
@@ -194,11 +202,26 @@ export class Slider {
     );
   }
 
+  private calculateRelativePosition(value) {
+    return (
+      (Number(value - this.minValue) / (this.maxValue - this.minValue)) * 100
+    );
+  }
+
+  private updateThumbLabelPosition(): string {
+    const THUMB_POSITION = this.calculateRelativePosition(this.currentValue);
+    return `calc(${THUMB_POSITION}% + (${8 - THUMB_POSITION * 0.15}px))`;
+  }
+
+  private setTickPositions(item: number): string {
+    const CALCULATE_TICK_POSITION = this.calculateRelativePosition(item);
+    return `calc(${CALCULATE_TICK_POSITION}% + (${
+      3 - CALCULATE_TICK_POSITION * 0.15
+    }px))`;
+  }
+
   private setBackgroundProgressFill(): string {
-    const FILL_PERCENT =
-      (Number(this.currentValue - this.minValue) /
-        (this.maxValue - this.minValue)) *
-      100;
+    const FILL_PERCENT = this.calculateRelativePosition(this.currentValue);
     return `linear-gradient(to right, 
       ${plmgColorBackgroundPrimaryStrong} 0%,
       ${plmgColorBackgroundPrimaryStrong} ${FILL_PERCENT}%,

@@ -171,7 +171,7 @@ export namespace Components {
          */
         "marks": boolean;
         /**
-          * Define the range of value  Must be an array with at least two items  First and last items in the array set the minimum and max values  Additional items set the mark values
+          * Define the range of value  Array must include at least two items  Required  First and last items in the array set the minimum and max values  Additional items set the mark values
          */
         "rangeValues": Array<number>;
         /**
@@ -434,7 +434,7 @@ declare namespace LocalJSX {
          */
         "marks"?: boolean;
         /**
-          * Define the range of value  Must be an array with at least two items  First and last items in the array set the minimum and max values  Additional items set the mark values
+          * Define the range of value  Array must include at least two items  Required  First and last items in the array set the minimum and max values  Additional items set the mark values
          */
         "rangeValues"?: Array<number>;
         /**

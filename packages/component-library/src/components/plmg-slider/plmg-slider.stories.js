@@ -23,14 +23,7 @@ export default {
   },
 };
 
-const PROPS = [
-  'step',
-  'range-values',
-  'default-value',
-  'marks',
-  'thumb-label',
-  'custom-marks',
-];
+const PROPS = ['step', 'range-values', 'default-value', 'marks', 'thumb-label'];
 const EVENTS = [];
 const CSS_VARS = [];
 const SLOTS = [];
@@ -50,43 +43,54 @@ Primary.storyName = 'Slider';
 Primary.args = {
   marks: false,
   ['thumb-label']: false,
-  ['mark-labels']: true,
-  ['range-values']: [0, 20, 30],
+  marks: true,
+  ['range-values']: [0, 100],
 };
 
 export const Marks = Template.bind({});
 Marks.args = {
   marks: true,
-  ['default-value']: 1,
+  ['default-value']: 5,
   ['thumb-label']: false,
+  ['range-values']: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
 };
 
 export const Steps = Template.bind({});
 Steps.args = {
   step: 5,
   ['thumb-label']: false,
+  ['range-values']: [5, 10, 15, 20, 25],
 };
 
 export const ThumbLabel = Template.bind({});
 ThumbLabel.args = {
-  ['default-value']: 0,
-  ['marks']: false,
+  ['default-value']: 25,
+  marks: true,
   ['thumb-label']: true,
+  ['range-values']: [0, 5, 10, 20, 30, 50],
 };
 
-export const All = (args) => {
-  let htmlContent = '';
-  someControls.forEach((control) => {
-    htmlContent += `
-<plmg-slider control="${control}" >
-    control="${control}"
-</plmg-slider>
-<br/>
-              `;
-  });
+// export const All = (args) => {
+//   const marks = [true, false]
+//   const steps = [5]
+//   const defaultValue = [3]
+//   const thumbLabel = [true, false]
 
-  const el = document.createElement('div');
-  el.innerHTML = htmlContent.trim();
-  return el;
-};
-All.storyName = 'All variations';
+//   let htmlContent = '';
+//   marks.forEach((mark) => {
+//     steps.forEach((step) => {
+//       defaultValue.forEach((defaultVal) => {
+//         thumbLabel.forEach((thumbLabel) => {
+//           htmlContent += `
+//             <plmg-slider mark="${mark}" range-value="[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]" step="${step} defaultValue="${defaultVal} thumbLabel="${thumbLabel}></plmg-slider>
+//           `
+//         })
+//       })
+//     })
+//   })
+
+//   const el = document.createElement('div');
+//   el.innerHTML = htmlContent.trim();
+//   return el;
+// };
+// All.storyName = 'All variations';

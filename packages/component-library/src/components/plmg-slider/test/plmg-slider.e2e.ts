@@ -23,7 +23,7 @@ describe('plmg-slider', () => {
       marks.forEach((markControl) => {
         thumbLabel.forEach((thumbLabelControl) => {
           htmlContent += `
-          <plmg-slider control="${markControl} thumbLabel="${thumbLabelControl}">
+          <plmg-slider control="${markControl} thumb-label="${thumbLabelControl}">
           </plmg-slider>
         <br/>
       `;

@@ -2,9 +2,22 @@
 
 // // Mixins
 // // -------------------------------------------------
-// @mixin set-border($border-color, $border-width: tokens.$plmg-border-width-s) {
-//   border: $border-width solid $border-color;
-// }
+@mixin set-states {
+  &:hover {
+    $hover-opacity: 0.2;
+    outline: 10px solid
+      rgba(tokens.$plmg-color-decoration-primary, $hover-opacity);
+  }
+  &:focus {
+    outline: 4px solid rgba(tokens.$plmg-color-border-standout, 1);
+  }
+  &:active {
+    $active-opacity: 0.4;
+    outline: 10px solid
+      rgba(tokens.$plmg-color-decoration-primary, $active-opacity);
+  }
+}
+
 // // ------------- END Mixins ------------------------
 
 // Component style
@@ -31,72 +44,35 @@
 .plmg-slider-track-rail-container {
   grid-area: trackrail;
   position: relative;
+}
 
-  input {
-    font-size: 18px;
-    background: tokens.$plmg-color-background-primary-strong;
-    height: 4px;
-    width: 100%;
-    border-radius: 3px;
+input {
+  font-size: 18px;
+  background: tokens.$plmg-color-background-primary-strong;
+  height: 4px;
+  width: 100%;
+  border-radius: 3px;
+  outline: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  margin: 0;
+
+  &:hover &:focus &:active {
     outline: none;
-    -webkit-appearance: none;
-    cursor: pointer;
-    margin: 0;
-
-    &:hover &:focus &:active {
-      outline: none;
-    }
-
-    &::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      border: none;
-      height: 20px;
-      width: 20px;
-      border-radius: 50%;
-      background: tokens.$plmg-color-background-primary-strong;
-      top: 10px;
-      left: 10px;
-      outline: 10px solid hsl(186, 100%, 33%, 0);
-
-      &:hover {
-        outline: 10px solid hsl(186, 100%, 33%, 0.2);
-      }
-      &:focus-visible {
-        outline: 4px solid #ffad33;
-      }
-      &:active {
-        outline: 10px solid hsl(186, 100%, 33%, 0.4);
-      }
-    }
   }
 
-  input::-moz-range-track {
-    height: 6px;
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
     border: none;
-    border-radius: 3px;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: tokens.$plmg-color-background-primary-strong;
+    top: 10px;
+    left: 10px;
+    outline: 10px solid hsl(186, 100%, 33%, 0);
 
-    &:hover {
-      outline: none;
-    }
-
-    &::-moz-range-thumb {
-      -webkit-appearance: none;
-      border: none;
-      height: 20px;
-      width: 20px;
-      border-radius: 50%;
-      background: #008290;
-
-      &:hover {
-        outline: 10px solid hsl(186, 100%, 33%, 0.2);
-      }
-      &:focus-visible {
-        outline: 4px solid #ffad33;
-      }
-      &:active {
-        outline: 10px solid hsl(186, 100%, 33%, 0.4);
-      }
-    }
+    @include set-states;
   }
 }
 
@@ -119,7 +95,6 @@
       visibility: hidden;
     }
 
-    // Create downarroww
     &::after {
       content: '';
       position: absolute;
@@ -140,7 +115,7 @@
   height: 10px;
 
   span {
-    top: -3px;
+    top: -4px;
     position: absolute;
     background: tokens.$plmg-color-background-neutral-strong;
     width: 2px;
