@@ -9,6 +9,7 @@ import {
   PlmgSidebarItem,
   PlmgSvgIcon,
   PlmgSeparator,
+  PlmgSlider,
 } from '@ducky/plumage-react';
 
 ReactDOM.render(
@@ -98,6 +99,12 @@ ReactDOM.render(
           <h1>PlmgCard slot-2</h1>
         </div>
       </PlmgCard>
+      <PlmgSlider
+        marks={true}
+        thumbLabel={false}
+        step={5}
+        rangeValues={[0, 50, 70, 100]}
+      ></PlmgSlider>
     </div>
   </PlmgPageContainer>,
   document.getElementById('root')
