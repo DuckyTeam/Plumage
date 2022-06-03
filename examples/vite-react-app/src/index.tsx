@@ -11,6 +11,8 @@ import {
   PlmgSeparator,
 } from '@ducky/plumage-react';
 
+import Button from './Button';
+
 ReactDOM.render(
   <PlmgPageContainer>
     <PlmgSidebar
@@ -60,6 +62,7 @@ ReactDOM.render(
 
     <div slot={'content'} style={{ padding: '24px' }}>
       <PlmgButton type={'button'}>PlmgButton</PlmgButton>
+      <Button />
     </div>
   </PlmgPageContainer>,
   document.getElementById('root')
