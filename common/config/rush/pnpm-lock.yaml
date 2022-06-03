@@ -14,7 +14,7 @@ specifiers:
   '@rush-temp/plumage-react': file:./projects/plumage-react.tgz
   '@rush-temp/plumage-tokens': file:./projects/plumage-tokens.tgz
   '@rush-temp/vite-react-app': file:./projects/vite-react-app.tgz
-  '@stencil/core': ^2.16.0
+  '@stencil/core': ^2.16.1
   '@stencil/eslint-plugin': ~0.4.0
   '@stencil/react-output-target': ^0.3.1
   '@stencil/sass': ^1.5.2
@@ -81,10 +81,10 @@ dependencies:
   '@rush-temp/plumage-react': file:projects/plumage-react.tgz
   '@rush-temp/plumage-tokens': file:projects/plumage-tokens.tgz
   '@rush-temp/vite-react-app': file:projects/vite-react-app.tgz_sass@1.46.0
-  '@stencil/core': 2.16.0
+  '@stencil/core': 2.16.1
   '@stencil/eslint-plugin': 0.4.0_f970b5f17668cb483b8453d324524a4d
-  '@stencil/react-output-target': 0.3.1_@stencil+core@2.16.0
-  '@stencil/sass': 1.5.2_@stencil+core@2.16.0
+  '@stencil/react-output-target': 0.3.1_@stencil+core@2.16.1
+  '@stencil/sass': 1.5.2_@stencil+core@2.16.1
   '@storybook/addon-actions': 6.4.9_@types+react@17.0.38
   '@storybook/addon-essentials': 6.4.9_f73d3ea9434f46244e13d5f500c930c9
   '@storybook/addon-knobs': 6.4.0_@storybook+addons@6.3.7
@@ -4112,8 +4112,8 @@ packages:
       '@sinonjs/commons': 1.8.3
     dev: false
 
-  /@stencil/core/2.16.0:
-    resolution: {integrity: sha512-oKxPYxpH1no0oMFSf8EesuFBcn9hVpoqrpiS2WH0H50RKKL8hhKoxDfn/cNeD12L0Aj7kf6nNtexIllmkYG6lw==}
+  /@stencil/core/2.16.1:
+    resolution: {integrity: sha512-s/UJp9qxExL3DyQPT70kiuWeb3AdjbUZM+5lEIXn30I2DLcLYPOPXfsoWJODieQywq+3vPiLZeIdkoqjf6jcSw==}
     engines: {node: '>=12.10.0', npm: '>=6.0.0'}
     hasBin: true
     dev: false
@@ -4136,20 +4136,20 @@ packages:
       typescript: 4.5.4
     dev: false
 
-  /@stencil/react-output-target/0.3.1_@stencil+core@2.16.0:
+  /@stencil/react-output-target/0.3.1_@stencil+core@2.16.1:
     resolution: {integrity: sha512-6d9pPhyajFfdxkqU/pPP2SzI7wn+EklySQc4KXlI/xcdvC2H9BzLmhmR40fR1q2TQoJbJui/nvSWhbYqkE3OBQ==}
     peerDependencies:
       '@stencil/core': ^2.9.0
     dependencies:
-      '@stencil/core': 2.16.0
+      '@stencil/core': 2.16.1
     dev: false
 
-  /@stencil/sass/1.5.2_@stencil+core@2.16.0:
+  /@stencil/sass/1.5.2_@stencil+core@2.16.1:
     resolution: {integrity: sha512-nJ93pUSylsGsMX0eLmhxh1oEljcUjj5mYjhB9ziCdoaydAdjukrUoqDCC7tdVbOcBo2hKptQyWqCtETnBGYsXQ==}
     peerDependencies:
       '@stencil/core': '>=1.0.2'
     dependencies:
-      '@stencil/core': 2.16.0
+      '@stencil/core': 2.16.1
     dev: false
 
   /@storybook/addon-actions/6.4.9_@types+react@17.0.38:
@@ -20114,7 +20114,7 @@ packages:
     dev: false
 
   file:projects/plumage-react.tgz:
-    resolution: {integrity: sha512-mUsDlaKl3yqwXmzLU+SnUeYufY/R8qFsFphpiPVHC8oTPsYtTipBA8tA/OhaNJGz4DH2+RwxyuU3p3bkHax4lQ==, tarball: file:projects/plumage-react.tgz}
+    resolution: {integrity: sha512-YSAm33r+SqaOm/gdPopv/yVeTRkNiSp5jJU/byDAISyWuTfcqfC2ZivYi17VIwiMDAFbY3dGJ/lrPNew9/0mLg==, tarball: file:projects/plumage-react.tgz}
     name: '@rush-temp/plumage-react'
     version: 0.0.0
     dependencies:
@@ -20138,17 +20138,17 @@ packages:
     dev: false
 
   file:projects/plumage.tgz_0caa87738ffad273e3f555cf1f2e570e:
-    resolution: {integrity: sha512-Du5U3wzT4NZ8alelVa9RiWEFg9+5cWlvFppjCpddqn6SEfVyD4b7PKYe36cVW7FlN3X5+Vg/i7CrdxQ0IzUwhw==, tarball: file:projects/plumage.tgz}
+    resolution: {integrity: sha512-7AP14zjvKnJdrdgpEBrySnFGDTxMz+8nSnYokRHioIyJPOLKo8bB+jGuPtJfr1YGKNMy5ZKGQsJH0cQ9w2FmLQ==, tarball: file:projects/plumage.tgz}
     id: file:projects/plumage.tgz
     name: '@rush-temp/plumage'
     version: 0.0.0
     dependencies:
       '@axe-core/puppeteer': 4.4.0_puppeteer@13.3.2
       '@ducky/eslint-config-base': 2.0.0_ed4c5cdfca7229f6ecc40e5501fa01b3
-      '@stencil/core': 2.16.0
+      '@stencil/core': 2.16.1
       '@stencil/eslint-plugin': 0.4.0_f970b5f17668cb483b8453d324524a4d
-      '@stencil/react-output-target': 0.3.1_@stencil+core@2.16.0
-      '@stencil/sass': 1.5.2_@stencil+core@2.16.0
+      '@stencil/react-output-target': 0.3.1_@stencil+core@2.16.1
+      '@stencil/sass': 1.5.2_@stencil+core@2.16.1
       '@storybook/addon-actions': 6.4.9_@types+react@17.0.38
       '@storybook/addon-essentials': 6.4.9_f73d3ea9434f46244e13d5f500c930c9
       '@storybook/addon-knobs': 6.4.0_@storybook+addons@6.3.7
