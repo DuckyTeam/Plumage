@@ -24,16 +24,17 @@
 // -------------------------------------------------
 
 .plmg-slider-component-container {
+  font-family: tokens.$plmg-font-family-sans;
+  font-weight: tokens.$plmg-font-weight-regular;
+  font-size: tokens.$plmg-font-size-x0-75;
+  line-height: tokens.$plmg-font-lineheight-loose;
+  flex-direction: column;
+  color: tokens.$plmg-color-text-neutral;
   display: grid;
   width: 100%;
   grid-template-columns: 1fr auto;
   column-gap: 24px;
   grid-template-rows: auto;
-  font-family: tokens.$plmg-font-family-sans;
-  font-weight: normal;
-  flex-direction: column;
-  color: tokens.$plmg-color-text-neutral;
-
   grid-template-areas:
     'thumblabel inputfield'
     'trackrail inputfield'
@@ -47,7 +48,6 @@
 }
 
 input {
-  font-size: 18px;
   background: tokens.$plmg-color-background-primary-strong;
   height: 4px;
   width: 100%;
@@ -81,11 +81,11 @@ input {
   grid-area: thumblabel;
   position: relative;
   height: 26px;
-  margin-bottom: 4px;
+  margin-bottom: 10px;
 
   .plmg-slider-thumb-label {
     transform: translateX(-50%);
-    background: tokens.$plmg-color-background-primary-strong;
+    background-color: tokens.$plmg-color-background-primary-strong;
     color: tokens.$plmg-color-text-neutral-inverted;
     padding: 4px 8px;
     border-radius: 4px;
@@ -112,9 +112,8 @@ input {
 .plmg-slider-mark-container {
   grid-area: marks;
   position: relative;
-
+  min-height: 10px;
   z-index: -1;
-  height: 10px;
 
   span {
     top: -4px;
@@ -130,7 +129,7 @@ input {
   grid-area: marklabels;
   width: 100%;
   min-height: 18px;
-  font-size: 12px;
+  color: tokens.$plmg-color-text-neutral;
 
   datalist {
     display: block;
@@ -140,7 +139,6 @@ input {
   option {
     position: absolute;
     padding: none;
-    color: tokens.$plmg-color-text-neutral;
   }
 
   &.plmg-slider-mark-label-item:before {
@@ -157,17 +155,19 @@ input {
   align-self: flex-end;
 
   input {
+    // Missing token
+    font-size: 18px;
     height: 51px;
     width: 86px;
     box-sizing: border-box;
-    border: 1px solid tokens.$plmg-color-border-neutral-weak;
+    border: tokens.$plmg-border-width-s solid
+      tokens.$plmg-color-border-neutral-weak;
     padding: 12px 16px;
     background-color: tokens.$plmg-color-background-neutral;
     color: #263238;
     outline: none;
     box-shadow: tokens.$plmg-shadow-inner-s;
     border-radius: 4px;
-    font-size: 18px;
   }
 }
 
