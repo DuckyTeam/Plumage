@@ -146,14 +146,15 @@ export class Slider {
   }
 
   private handleInputChange(event) {
-    console.log(event.target.value);
+    if (event.target.value == '') return;
+    if (isNaN(parseInt(event.target.value))) return;
     if (
       event.target.value == '' ||
       event.target.value > this.maxValue ||
       event.target.value < this.minValue
     )
       return;
-    this.currentValue = event.target.value;
+    this.currentValue = parseInt(event.target.value);
   }
 
   render() {
