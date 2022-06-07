@@ -141,7 +141,18 @@ export class Slider {
     this.setValues();
   }
 
-  handleChange(event) {
+  private handleSliderChange(event) {
+    this.currentValue = event.target.value;
+  }
+
+  private handleInputChange(event) {
+    console.log(event.target.value);
+    if (
+      event.target.value == '' ||
+      event.target.value > this.maxValue ||
+      event.target.value < this.minValue
+    )
+      return;
     this.currentValue = event.target.value;
   }
 
@@ -169,7 +180,7 @@ export class Slider {
               min={this.minValue}
               max={this.maxValue}
               value={this.currentValue}
-              onInput={(event) => this.handleChange(event)}
+              onInput={(event) => this.handleSliderChange(event)}
             />
           </label>
         </div>
@@ -232,7 +243,7 @@ export class Slider {
             min={this.minValue}
             max={this.maxValue}
             value={this.currentValue}
-            onInput={(event) => this.handleChange(event)}
+            onInput={(event) => this.handleInputChange(event)}
           />
         </div>
       </div>
