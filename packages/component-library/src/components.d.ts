@@ -163,7 +163,7 @@ export namespace Components {
     }
     interface PlmgSlider {
         /**
-          * Define the default value.  Sets the starting value for the slider.  Allowed: Any number  When the default value is outside of the min and max values or is undefined the starting value is set to the min value.
+          * Define the default value.  Sets the starting value for the slider.  Allowed: Any number  When the default value is outside of the min and max values or undefined, default value is set to the min value.
          */
         "defaultValue": number;
         /**
@@ -183,7 +183,7 @@ export namespace Components {
          */
         "rangeValues": Array<number>;
         /**
-          * Define step  Slider's value will increase or decrease in steps  Allowed values - Any number
+          * Define step  Slider's value will increase or decrease in stepValue  Allowed values - Any number  When step is not provided step, step is set to 1% of the range
          */
         "step": number;
         /**
@@ -434,7 +434,7 @@ declare namespace LocalJSX {
     }
     interface PlmgSlider {
         /**
-          * Define the default value.  Sets the starting value for the slider.  Allowed: Any number  When the default value is outside of the min and max values or is undefined the starting value is set to the min value.
+          * Define the default value.  Sets the starting value for the slider.  Allowed: Any number  When the default value is outside of the min and max values or undefined, default value is set to the min value.
          */
         "defaultValue"?: number;
         /**
@@ -454,7 +454,7 @@ declare namespace LocalJSX {
          */
         "rangeValues"?: Array<number>;
         /**
-          * Define step  Slider's value will increase or decrease in steps  Allowed values - Any number
+          * Define step  Slider's value will increase or decrease in stepValue  Allowed values - Any number  When step is not provided step, step is set to 1% of the range
          */
         "step"?: number;
         /**

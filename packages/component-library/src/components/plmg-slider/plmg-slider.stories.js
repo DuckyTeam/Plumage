@@ -14,6 +14,9 @@ export default {
     ['default-value']: {
       control: { type: 'number' },
     },
+    ['decimal-places']: {
+      control: { type: 'number' },
+    },
     marks: {
       control: { type: 'boolean' },
     },
@@ -78,6 +81,13 @@ Steps.args = {
   name: 'range-slider',
   ['thumb-label']: false,
   ['range-values']: [5, 10, 15, 20, 25],
+};
+
+export const Decimals = Template.bind({});
+Decimals.args = {
+  name: 'range-slider',
+  ['thumb-label']: true,
+  ['range-values']: [0.1, 0.2, 0.3, 0.4, 0.5],
 };
 
 export const ThumbLabel = Template.bind({});

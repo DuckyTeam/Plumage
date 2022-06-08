@@ -1,4 +1,4 @@
-import { Component, h, Watch, Prop, State } from '@stencil/core';
+import { Component, h, Watch, Prop, State, Host } from '@stencil/core';
 import {
   plmgColorBorderNeutralWeak,
   plmgColorBackgroundPrimaryStrong,
@@ -22,6 +22,7 @@ export class Slider {
    * Required
    */
   @Prop() rangeValues: Array<number>;
+  Event: any;
   @Watch('rangeValues')
   validateRangeValues(newValue: Array<number>) {
     if (!Array.isArray(newValue) || newValue.length < 2)
@@ -39,7 +40,7 @@ export class Slider {
    *
    * Allowed: Any number
    *
-   * When the default value is outside of the min and max values or is undefined the starting value is set to the min value.
+   * When the default value is outside of the min and max values or undefined, default value is set to the min value.
    */
   @Prop() defaultValue: number;
   @Watch('defaultValue')
@@ -69,7 +70,7 @@ export class Slider {
   @Watch('inputId')
   validateID(newValue: string) {
     if (newValue && typeof newValue !== 'string')
-      throw new Error('input Id must be a string with no white space');
+      throw new Error('input id must be a string');
   }
 
   /**
@@ -91,10 +92,12 @@ export class Slider {
   /**
    * Define step
    *
-   * Slider's value will increase or decrease in steps
+   * Slider's value will increase or decrease in stepValue
    *
    * Allowed values
    * - Any number
+   *
+   * When step is not provided step, step is set to 1% of the range
    */
   @Prop() step: number;
   @Watch('step')
@@ -116,15 +119,17 @@ export class Slider {
   }
 
   /**
-   * Store current value in state
+   * Store currentValue, min, max and step states
    */
   @State() currentValue: number;
+  @State() inputFieldValue: number;
   @State() minValue: number;
   @State() maxValue: number;
+  @State() stepValue: number;
+  @State() allowedInputs: Array<number>;
 
   private setValues() {
     if (!this.rangeValues) return;
-
     this.minValue = this.rangeValues[0];
     this.maxValue = this.rangeValues[this.rangeValues.length - 1];
     if (
@@ -135,26 +140,53 @@ export class Slider {
     } else {
       this.currentValue = this.minValue;
     }
+    if (!this.step) {
+      this.stepValue = (this.maxValue - this.minValue) / 100;
+    } else {
+      this.stepValue = this.step;
+    }
+  }
+
+  private getAllowedInputs() {
+    let inputs = [];
+    inputs.push(this.minValue);
+    while (inputs[inputs.length - 1] <= this.maxValue) {
+      const PREV = inputs[inputs.length - 1];
+      // Correct for floating point errors by rounding when necessary
+      const NEXT =
+        Math.round((PREV + this.stepValue + Number.EPSILON) * 1000000) /
+        1000000;
+      // Escape valve in case of over rounding
+      if (!(NEXT > PREV)) return;
+      inputs.push(NEXT);
+    }
+    return inputs;
   }
 
   connectedCallback() {
     this.setValues();
   }
 
-  private handleSliderChange(event) {
-    this.currentValue = event.target.value;
+  private handleSliderChange(ev) {
+    this.currentValue = ev.target.value;
+    this.inputFieldValue = this.currentValue;
   }
 
-  private handleInputChange(event) {
-    if (event.target.value == '') return;
-    if (isNaN(parseInt(event.target.value))) return;
+  private handleInputFieldChange(ev) {
+    // Ignore Empty Strings
+    if (ev.target.value == '') return;
+    // Get an array of allowed inputs
+    const SET_ALLOWED_INPUTS = this.getAllowedInputs();
+    // Check input is allowed value, within range and one of the allowed inputs
+    const newValue = parseFloat(ev.target.value);
     if (
-      event.target.value == '' ||
-      event.target.value > this.maxValue ||
-      event.target.value < this.minValue
+      isNaN(newValue) ||
+      newValue > this.maxValue ||
+      newValue < this.minValue ||
+      !SET_ALLOWED_INPUTS.includes(newValue)
     )
       return;
-    this.currentValue = parseInt(event.target.value);
+    this.currentValue = newValue;
   }
 
   render() {
@@ -164,90 +196,91 @@ export class Slider {
     };
 
     return (
-      <div class={'plmg-slider-component-container'}>
-        <div class={'plmg-slider-track-rail-container'}>
-          <label htmlfor={this.name}>
+      <Host value={this.currentValue}>
+        <div class={'plmg-slider-component-container'}>
+          <div class={'plmg-slider-track-rail-container'}>
+            <label htmlfor={this.name}>
+              <input
+                id={this.inputId}
+                role="slider"
+                style={{ background: this.setBackgroundProgressFill() }}
+                class={'plmg-slider-input'}
+                step={this.stepValue}
+                type={'range'}
+                name={this.name}
+                min={this.minValue}
+                max={this.maxValue}
+                value={this.currentValue}
+                aria-valuemin={this.minValue}
+                aria-valuemax={this.maxValue}
+                aria-valuenow={this.currentValue}
+                onInput={(ev) => this.handleSliderChange(ev)}
+              />
+            </label>
+          </div>
+
+          <div class={'plmg-slider-thumb-label-container'}>
+            <label htmlfor={this.name}>
+              <output
+                name={this.name}
+                style={{
+                  left: this.updateThumbLabelPosition(),
+                }}
+                class={thumbClasses}
+              >
+                {this.currentValue}
+              </output>
+            </label>
+          </div>
+
+          {this.marks && (
+            <div class={'plmg-slider-mark-container'}>
+              {this.rangeValues.map((item, index) => (
+                <span
+                  key={index}
+                  style={{
+                    left: this.setTickPositions(item),
+                  }}
+                ></span>
+              ))}
+            </div>
+          )}
+
+          <div class={'plmg-slider-mark-labels-container'}>
+            {this.marks && (
+              <datalist>
+                {this.rangeValues.map((item, index) => (
+                  <option
+                    class={'plmg-slider-mark-label-item'}
+                    key={index}
+                    style={{
+                      left: this.setTickPositions(item),
+                    }}
+                  >
+                    {item}
+                  </option>
+                ))}
+              </datalist>
+            )}
+          </div>
+
+          <div class={'plmg-slider-input-field-container'}>
+            <label htmlfor={this.name} />
             <input
-              id={this.inputId}
-              role="slider"
-              style={{ background: this.setBackgroundProgressFill() }}
-              class={'plmg-slider-input'}
-              step={this.step && this.step}
-              type={'range'}
+              type={'number'}
               name={this.name}
+              step={this.stepValue}
               aria-valuemin={this.minValue}
               aria-valuemax={this.maxValue}
               aria-valuenow={this.currentValue}
               min={this.minValue}
               max={this.maxValue}
-              value={this.currentValue}
-              onInput={(event) => this.handleSliderChange(event)}
+              value={this.inputFieldValue}
+              onInput={(Event) => this.handleInputFieldChange(Event)}
             />
-          </label>
-        </div>
-
-        <div class={'plmg-slider-thumb-label-container'}>
-          <label htmlfor={this.name}>
-            <output
-              name={this.name}
-              style={{
-                left: this.updateThumbLabelPosition(),
-              }}
-              class={thumbClasses}
-            >
-              {this.currentValue}
-            </output>
-          </label>
-        </div>
-
-        {this.marks && (
-          <div class={'plmg-slider-mark-container'}>
-            {this.rangeValues.map((item, index) => (
-              <span
-                key={index}
-                style={{
-                  left: this.setTickPositions(item),
-                }}
-              ></span>
-            ))}
           </div>
-        )}
-
-        <div class={'plmg-slider-mark-labels-container'}>
-          {this.marks && (
-            <datalist>
-              {this.rangeValues.map((item, index) => (
-                <option
-                  class={'plmg-slider-mark-label-item'}
-                  key={index}
-                  style={{
-                    left: this.setTickPositions(item),
-                  }}
-                >
-                  {item}
-                </option>
-              ))}
-            </datalist>
-          )}
         </div>
-
-        <div class={'plmg-slider-input-field-container'}>
-          <label htmlfor={this.name} />
-          <input
-            type={'number'}
-            name={this.name}
-            tabIndex={0}
-            step={this.step && this.step}
-            aria-valuemin={this.minValue}
-            aria-valuemax={this.maxValue}
-            aria-valuenow={this.currentValue}
-            min={this.minValue}
-            max={this.maxValue}
-            value={this.currentValue}
-            onInput={(event) => this.handleInputChange(event)}
-          />
-        </div>
-      </div>
+      </Host>
     );
   }
 
@@ -271,7 +304,7 @@ export class Slider {
 
   private setBackgroundProgressFill(): string {
     const FILL_PERCENT = this.calculateRelativePosition(this.currentValue);
-    return `linear-gradient(to right, 
+    return `linear-gradient(to right,
       ${plmgColorBackgroundPrimaryStrong} 0%,
       ${plmgColorBackgroundPrimaryStrong} ${FILL_PERCENT}%,
       ${plmgColorBorderNeutralWeak} ${FILL_PERCENT}%, 

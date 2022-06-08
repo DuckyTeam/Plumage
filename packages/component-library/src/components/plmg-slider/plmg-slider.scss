@@ -157,8 +157,9 @@ input {
   input {
     // Missing token
     font-size: 18px;
-    height: 51px;
-    width: 86px;
+    min-height: 51px;
+    min-width: 86px;
+    width: fit-content;
     box-sizing: border-box;
     border: tokens.$plmg-border-width-s solid
       tokens.$plmg-color-border-neutral-weak;
