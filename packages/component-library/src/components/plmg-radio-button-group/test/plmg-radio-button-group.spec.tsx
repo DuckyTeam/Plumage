@@ -19,20 +19,4 @@ describe('plmg-radio-button-group', () => {
       </fieldset>
     `);
   });
-  it('renders with error message', async () => {
-    const page = await newSpecPage({
-      components: [RadioButtonGroup],
-      html: `<plmg-radio-button-group values='${JSON.stringify([
-        'val 1',
-      ])}' error-message='uh oh!'></plmg-radio-button-group>`,
-    });
-    expect(page.root).toEqualHtml(`
-      <plmg-radio-button-group values="[&quot;val 1&quot]" error-message='uh oh!'>
-        <fieldset class="plmg-radio-button-group">
-          <legend></legend>
-        <plmg-radio-button highlighted="" size="medium" value="val 1"></plmg-radio-button>
-        <plmg-error-message message="uh oh!" size="medium"></plmg-error-message>
-      </fieldset>
-    `);
-  });
 });
