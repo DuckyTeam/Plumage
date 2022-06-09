@@ -12,6 +12,15 @@ import {
   PlmgSlider,
 } from '@ducky/plumage-react';
 
+const handleSliders = (e: any) => {
+  alert(`Submitted Slider Values
+    Stepped Slider: ${'TODO'}
+    Decimal Slider: ${'TODO'}
+    Large Value Slider: ${'TODO'}
+  `);
+  e.preventDefault();
+};
+
 ReactDOM.render(
   <PlmgPageContainer>
     <PlmgSidebar
@@ -99,12 +108,33 @@ ReactDOM.render(
           <h1>PlmgCard slot-2</h1>
         </div>
       </PlmgCard>
-      <PlmgSlider
-        marks={true}
-        thumbLabel={false}
-        step={5}
-        rangeValues={[0, 50, 70, 100]}
-      ></PlmgSlider>
+      <div style={{ border: '4px dotted blue' }}>
+        <h2>My Slider Form</h2>
+        <form name={'sliders'} onSubmit={handleSliders}>
+          <span>Stepped Slider (5)</span>
+          <PlmgSlider
+            marks={true}
+            thumbLabel={false}
+            step={5}
+            rangeValues={[0, 50, 70, 100]}
+          />
+          <br />
+          <span>Decimal Slider</span>
+          <PlmgSlider thumbLabel rangeValues={[0.1, 0.2, 0.3, 0.4, 0.5]} />
+          <br />
+          <span>Large Value Slider</span>
+          <PlmgSlider
+            step={10000}
+            rangeValues={[100000, 200000, 300000, 400000, 500000]}
+          />
+          <br />
+          <input
+            style={{ height: '20px' }}
+            type={'submit'}
+            value={'Submit Sliders'}
+          />
+        </form>
+      </div>
     </div>
   </PlmgPageContainer>,
   document.getElementById('root')
