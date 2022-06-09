@@ -135,6 +135,14 @@ ReactDOM.render(
           />
         </form>
       </div>
+      <br />
+      <span>Marked Slider</span>
+      <PlmgSlider
+        marks={true}
+        thumbLabel={false}
+        rangeValues={[0, 10, 20, 30]}
+      />
+      <span>{`Current Marked Slider Value: ${'TODO'}`}</span>
     </div>
   </PlmgPageContainer>,
   document.getElementById('root')
