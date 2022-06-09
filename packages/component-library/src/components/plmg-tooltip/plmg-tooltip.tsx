@@ -135,9 +135,6 @@ export class Tooltip {
    * - focus
    * - mouse out
    * - blur
-   *
-   * forceVisible prop disables the listeners
-   *
    */
   private initiateTargetListeners() {
     if (this.targetElement) {
