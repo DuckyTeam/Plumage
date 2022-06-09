@@ -22,12 +22,16 @@ const TooltipRefExample = () => {
 
   return (
     <>
-      <PlmgButton ref={buttonRef}>HoverMe</PlmgButton>
+      <PlmgButton label={'hover-me-button'} ref={buttonRef}>
+        HoverMe
+      </PlmgButton>
       <PlmgTooltip
+        tooltipId={'hover-me-button'}
         targetElement={button}
-        arrowSide={'top'}
+        position={'top'}
+        color={'primary'}
         arrowPosition={'start'}
-        content={'Bottom with arrow start'}
+        content={'Top with arrow start'}
       ></PlmgTooltip>
     </>
   );
@@ -122,14 +126,21 @@ ReactDOM.render(
           <h1>PlmgCard slot-2</h1>
         </div>
       </PlmgCard>
-      <p id={'targetelement'} style={{ width: 'fit-content' }}>
+      <p
+        tabIndex={0}
+        id={'targetelement'}
+        aria-describeby={'tooltip-demonstration'}
+        style={{ width: 'fit-content' }}
+      >
         Tooltip Target
       </p>
       <PlmgTooltip
+        role={'tooltip'}
+        id={'tooltip-demonstration'}
         targetElement={'targetelement'}
-        arrowSide={'top'}
-        arrowPosition={'start'}
-        content={'Bottom with arrow start'}
+        position={'right'}
+        arrowPosition={'middle'}
+        content={'Right with arrow middle'}
       ></PlmgTooltip>
       <TooltipRefExample />
     </div>
