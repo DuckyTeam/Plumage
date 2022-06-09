@@ -198,7 +198,7 @@ export namespace Components {
          */
         "targetElement": string | HTMLElement;
         /**
-          * Define an id for the tooltip. Links the target element to the tooltip.  Target element must reference this id using aria-label.  Required for accessibility.
+          * Define an id for the tooltip. Links the target element to the tooltip.  Target element must reference the tooltip's id using aria-describeby or aria-label.  When the target element is tab focussed the tooltip is visible and hidden with the escape key.  Required for accessibility.
          */
         "tooltipId": string;
     }
@@ -465,7 +465,7 @@ declare namespace LocalJSX {
          */
         "targetElement"?: string | HTMLElement;
         /**
-          * Define an id for the tooltip. Links the target element to the tooltip.  Target element must reference this id using aria-label.  Required for accessibility.
+          * Define an id for the tooltip. Links the target element to the tooltip.  Target element must reference the tooltip's id using aria-describeby or aria-label.  When the target element is tab focussed the tooltip is visible and hidden with the escape key.  Required for accessibility.
          */
         "tooltipId"?: string;
     }
