@@ -1,5 +1,5 @@
 export const colors = ['neutral', 'primary'] as const;
-export type PlmgTooltipColors = typeof colors[number];
+export type PlmgTooltipColor = typeof colors[number];
 export function isTooltipColor(x: any): x is typeof colors {
   return colors.includes(x);
 }

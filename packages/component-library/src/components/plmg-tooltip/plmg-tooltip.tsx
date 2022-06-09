@@ -6,7 +6,7 @@ import {
   isTooltipColor,
   PlmgTooltipArrowPositions,
   PlmgTooltipPosition,
-  PlmgTooltipColors,
+  PlmgTooltipColor,
 } from './plmg-tooltip.types';
 
 @Component({
@@ -57,7 +57,7 @@ export class Tooltip {
    *
    * Default: neutral
    */
-  @Prop() color: PlmgTooltipColors = 'neutral';
+  @Prop() color: PlmgTooltipColor = 'neutral';
   @Watch('color')
   validateBgColor(newValue: string) {
     if (newValue && typeof newValue !== 'string')
