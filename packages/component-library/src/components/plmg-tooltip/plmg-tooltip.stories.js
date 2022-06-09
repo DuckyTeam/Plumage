@@ -71,8 +71,8 @@ Primary.args = {
 export const AllColors = (args) => {
   let htmlContent = `
 <div style="display: flex; justify-content: space-between; width: 300px; margin-top: 50px;">
-    <span id="neutral">Neutral</span>
-    <plmg-tooltip target-element="neutral" content="neutral" color="neutral" position="bottom" arrow-position="none">
+    <button id="neutral" aria-label="neutral-button">Neutral</button>
+    <plmg-tooltip target-element="neutral" tooltip-id="neutral-button" content="neutral" color="neutral" position="bottom" arrow-position="none">
     </plmg-tooltip>
     <span id="primary">Primary</span>
     <plmg-tooltip target-element="primary" content="primary" color="primary" position="bottom" arrow-position="none">

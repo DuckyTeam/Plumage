@@ -27,7 +27,8 @@ export class Tooltip {
   @State() isVisible: boolean = false;
 
   /**
-   * Reference to the target element or its ID for connected element.
+   * Reference to the target element or its ID for connected element
+   *
    * Required.
    */
   @Prop() targetElement: string | HTMLElement;
@@ -46,6 +47,24 @@ export class Tooltip {
   @Watch('targetElement')
   targetElementChange() {
     this.initiateTargetListeners();
+  }
+
+  /**
+   * Define an id for the tooltip. Links the target element to the tooltip.
+   *
+   * Target element must reference the tooltip's id using aria-describeby or aria-label.
+   *
+   * When the target element is tab focussed the tooltip is visible and hidden with the escape key.
+   *
+   * Required for accessibility.
+   */
+  @Prop() tooltipId: string = undefined;
+  @Watch('tooltipId')
+  validateIconCenter(newValue: string) {
+    if (newValue && typeof newValue !== 'string' && !this.tooltipId)
+      throw new Error('Tootltip must have an id accessibility reasons');
+    if (newValue && typeof newValue !== 'string')
+      throw new Error('id must be a string');
   }
 
   /**
@@ -135,6 +154,7 @@ export class Tooltip {
    * - focus
    * - mouse out
    * - blur
+   * - keydown (escape)
    */
   private initiateTargetListeners() {
     if (this.targetElement) {
@@ -162,6 +182,15 @@ export class Tooltip {
           { signal: this.abortTooltipListener.signal }
         );
         this.targetHTMLElement.addEventListener(
+          'keydown',
+          (ev) => {
+            if (ev.key === 'Escape') {
+              this.isVisible = false;
+            }
+          },
+          { signal: this.abortTooltipListener.signal }
+        );
+        this.targetHTMLElement.addEventListener(
           'blur',
           () => (this.isVisible = false),
           { signal: this.abortTooltipListener.signal }
@@ -171,7 +200,7 @@ export class Tooltip {
   }
 
   /**
-   * Remove event listener
+   * Remove event listeners
    */
   disconnectedCallback() {
     if (this.abortTooltipListener) this.abortTooltipListener.abort();
@@ -188,6 +217,9 @@ export class Tooltip {
 
     return (
       <div
+        role={'tooltip'}
+        id={this.tooltipId}
+        aria-hidden={this.isVisible ? 'false' : 'true'}
         style={this.setPosition()}
         ref={(el) => (this.ref = el as HTMLDivElement)}
       >

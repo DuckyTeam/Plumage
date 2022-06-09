@@ -194,9 +194,13 @@ export namespace Components {
          */
         "position": PlmgTooltipPosition;
         /**
-          * Reference to the target element or its ID for connected element. Required.
+          * Reference to the target element or its ID for connected element  Required.
          */
         "targetElement": string | HTMLElement;
+        /**
+          * Define an id for the tooltip. Links the target element to the tooltip.  Target element must reference this id using aria-label.  Required for accessibility.
+         */
+        "tooltipId": string;
     }
 }
 declare global {
@@ -457,9 +461,13 @@ declare namespace LocalJSX {
          */
         "position"?: PlmgTooltipPosition;
         /**
-          * Reference to the target element or its ID for connected element. Required.
+          * Reference to the target element or its ID for connected element  Required.
          */
         "targetElement"?: string | HTMLElement;
+        /**
+          * Define an id for the tooltip. Links the target element to the tooltip.  Target element must reference this id using aria-label.  Required for accessibility.
+         */
+        "tooltipId"?: string;
     }
     interface IntrinsicElements {
         "plmg-button": PlmgButton;

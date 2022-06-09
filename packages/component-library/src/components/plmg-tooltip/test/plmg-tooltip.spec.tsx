@@ -10,7 +10,7 @@ describe('plmg-tooltip', () => {
     expect(page.root).toEqualHtml(`
       <plmg-tooltip>
         <mock:shadow-root>
-           <div style="position: fixed; overflow: visible; left: -1000px; top: -1000px;">
+           <div aria-hidden="true" role="tooltip" style="position: fixed; overflow: visible; left: -1000px; top: -1000px;">
                 <span class="neutral none plmg-tooltip top"></span>
            </div>
         </mock:shadow-root>
