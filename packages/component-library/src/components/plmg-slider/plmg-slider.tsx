@@ -1,4 +1,13 @@
-import { Component, h, Watch, Prop, State, Host } from '@stencil/core';
+import {
+  Component,
+  h,
+  Watch,
+  Prop,
+  State,
+  Host,
+  Event,
+  EventEmitter,
+} from '@stencil/core';
 import {
   plmgColorBorderNeutralWeak,
   plmgColorBackgroundPrimaryStrong,
@@ -136,9 +145,9 @@ export class Slider {
       this.defaultValue >= this.minValue &&
       this.defaultValue <= this.maxValue
     ) {
-      this.currentValue = this.defaultValue;
+      this.updateValue(this.defaultValue);
     } else {
-      this.currentValue = this.minValue;
+      this.updateValue(this.minValue);
     }
     if (!this.step) {
       this.stepValue = (this.maxValue - this.minValue) / 100;
@@ -168,8 +177,7 @@ export class Slider {
   }
 
   private handleSliderChange(ev) {
-    this.currentValue = ev.target.value;
-    this.inputFieldValue = this.currentValue;
+    this.updateValue(ev.target.value);
   }
 
   private handleInputFieldChange(ev) {
@@ -186,8 +194,18 @@ export class Slider {
       !SET_ALLOWED_INPUTS.includes(newValue)
     )
       return;
-    this.currentValue = newValue;
+    this.updateValue(newValue);
   }
+
+  private updateValue(newValue) {
+    this.currentValue = newValue;
+    if (this.inputFieldValue !== this.currentValue) {
+      this.inputFieldValue = this.currentValue;
+    }
+    this.valueUpdated.emit({ value: this.currentValue });
+  }
+
+  @Event() valueUpdated: EventEmitter;
 
   render() {
     const thumbClasses = {
