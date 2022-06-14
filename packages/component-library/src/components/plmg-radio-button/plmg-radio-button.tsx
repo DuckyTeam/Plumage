@@ -102,7 +102,7 @@ export class RadioButton {
     };
 
     return (
-      <div class={'radio-button-wrapper'}>
+      <div class={'plmg-radio-button-wrapper'}>
         <input
           type="radio"
           id={this.value}
