@@ -6,6 +6,8 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { PlmgButtonColor, PlmgButtonDesign, PlmgButtonSize, PlmgButtonType } from "./components/plmg-button/plmg-button.types";
+import { PlmgErrorMessageSize } from "./components/plmg-error-message/plmg-error-message.types";
+import { PlmgRadioButtonSize } from "./components/plmg-radio-button/plmg-radio-button.types";
 export namespace Components {
     interface PlmgButton {
         /**
@@ -79,6 +81,16 @@ export namespace Components {
          */
         "topActionLabel": string | undefined;
     }
+    interface PlmgErrorMessage {
+        /**
+          * Define error message's message
+         */
+        "message": string;
+        /**
+          * Define error message's size  Allowed values:   - medium   - large  Default: medium
+         */
+        "size": PlmgErrorMessageSize;
+    }
     interface PlmgHeader {
         /**
           * Invoke this method to reveals the "expand" icon and update the margin left
@@ -94,6 +106,58 @@ export namespace Components {
           * Define if the sidebar is expanded on startup.
          */
         "sidebarExpanded": boolean;
+    }
+    interface PlmgRadioButton {
+        /**
+          * Define radio button's highlighted status (in case of error)  Allowed values:   - true   - false  Default: false
+         */
+        "highlighted": boolean;
+        /**
+          * Callback to provide validity of radio input to radio button group
+         */
+        "isValid": (valid: boolean) => void;
+        /**
+          * Define form's name'
+         */
+        "name": string;
+        /**
+          * Define radio button's required status  Allowed values:   - true   - false  Default: false
+         */
+        "required": boolean;
+        /**
+          * Define radio button's size.  Allowed values:   - medium   - large  Default: medium
+         */
+        "size": PlmgRadioButtonSize;
+        /**
+          * Define radio button's value'
+         */
+        "value": string;
+    }
+    interface PlmgRadioButtonGroup {
+        /**
+          * Define error message for radio group to be displayed if form validation fails  Will render one error message for the radio button group, affects styling of all radio buttons in group
+         */
+        "errorMessage"?: string | undefined;
+        /**
+          * Define text for the form's label
+         */
+        "label": string;
+        /**
+          * Define form's name, used to group all radio buttons within together
+         */
+        "name": string;
+        /**
+          * Define radio group's required status  Allowed values:   - true   - false  Default: false
+         */
+        "required": boolean;
+        /**
+          * Define size of all radio button's in radio button group.  Allowed values:   - medium   - large  Default: medium
+         */
+        "size": PlmgRadioButtonSize;
+        /**
+          * Define each radio button's value  Accepts an array or JSON string
+         */
+        "values": string[] | string;
     }
     interface PlmgSeparator {
         /**
@@ -201,6 +265,12 @@ declare global {
         prototype: HTMLPlmgCardElement;
         new (): HTMLPlmgCardElement;
     };
+    interface HTMLPlmgErrorMessageElement extends Components.PlmgErrorMessage, HTMLStencilElement {
+    }
+    var HTMLPlmgErrorMessageElement: {
+        prototype: HTMLPlmgErrorMessageElement;
+        new (): HTMLPlmgErrorMessageElement;
+    };
     interface HTMLPlmgHeaderElement extends Components.PlmgHeader, HTMLStencilElement {
     }
     var HTMLPlmgHeaderElement: {
@@ -212,6 +282,18 @@ declare global {
     var HTMLPlmgPageContainerElement: {
         prototype: HTMLPlmgPageContainerElement;
         new (): HTMLPlmgPageContainerElement;
+    };
+    interface HTMLPlmgRadioButtonElement extends Components.PlmgRadioButton, HTMLStencilElement {
+    }
+    var HTMLPlmgRadioButtonElement: {
+        prototype: HTMLPlmgRadioButtonElement;
+        new (): HTMLPlmgRadioButtonElement;
+    };
+    interface HTMLPlmgRadioButtonGroupElement extends Components.PlmgRadioButtonGroup, HTMLStencilElement {
+    }
+    var HTMLPlmgRadioButtonGroupElement: {
+        prototype: HTMLPlmgRadioButtonGroupElement;
+        new (): HTMLPlmgRadioButtonGroupElement;
     };
     interface HTMLPlmgSeparatorElement extends Components.PlmgSeparator, HTMLStencilElement {
     }
@@ -240,8 +322,11 @@ declare global {
     interface HTMLElementTagNameMap {
         "plmg-button": HTMLPlmgButtonElement;
         "plmg-card": HTMLPlmgCardElement;
+        "plmg-error-message": HTMLPlmgErrorMessageElement;
         "plmg-header": HTMLPlmgHeaderElement;
         "plmg-page-container": HTMLPlmgPageContainerElement;
+        "plmg-radio-button": HTMLPlmgRadioButtonElement;
+        "plmg-radio-button-group": HTMLPlmgRadioButtonGroupElement;
         "plmg-separator": HTMLPlmgSeparatorElement;
         "plmg-sidebar": HTMLPlmgSidebarElement;
         "plmg-sidebar-item": HTMLPlmgSidebarItemElement;
@@ -329,6 +414,16 @@ declare namespace LocalJSX {
          */
         "topActionLabel"?: string | undefined;
     }
+    interface PlmgErrorMessage {
+        /**
+          * Define error message's message
+         */
+        "message"?: string;
+        /**
+          * Define error message's size  Allowed values:   - medium   - large  Default: medium
+         */
+        "size"?: PlmgErrorMessageSize;
+    }
     interface PlmgHeader {
         /**
           * Event dispatched when the button to expand the sidebar is clicked.
@@ -344,6 +439,58 @@ declare namespace LocalJSX {
           * Define if the sidebar is expanded on startup.
          */
         "sidebarExpanded"?: boolean;
+    }
+    interface PlmgRadioButton {
+        /**
+          * Define radio button's highlighted status (in case of error)  Allowed values:   - true   - false  Default: false
+         */
+        "highlighted"?: boolean;
+        /**
+          * Callback to provide validity of radio input to radio button group
+         */
+        "isValid"?: (valid: boolean) => void;
+        /**
+          * Define form's name'
+         */
+        "name"?: string;
+        /**
+          * Define radio button's required status  Allowed values:   - true   - false  Default: false
+         */
+        "required"?: boolean;
+        /**
+          * Define radio button's size.  Allowed values:   - medium   - large  Default: medium
+         */
+        "size"?: PlmgRadioButtonSize;
+        /**
+          * Define radio button's value'
+         */
+        "value"?: string;
+    }
+    interface PlmgRadioButtonGroup {
+        /**
+          * Define error message for radio group to be displayed if form validation fails  Will render one error message for the radio button group, affects styling of all radio buttons in group
+         */
+        "errorMessage"?: string | undefined;
+        /**
+          * Define text for the form's label
+         */
+        "label"?: string;
+        /**
+          * Define form's name, used to group all radio buttons within together
+         */
+        "name"?: string;
+        /**
+          * Define radio group's required status  Allowed values:   - true   - false  Default: false
+         */
+        "required"?: boolean;
+        /**
+          * Define size of all radio button's in radio button group.  Allowed values:   - medium   - large  Default: medium
+         */
+        "size"?: PlmgRadioButtonSize;
+        /**
+          * Define each radio button's value  Accepts an array or JSON string
+         */
+        "values"?: string[] | string;
     }
     interface PlmgSeparator {
         /**
@@ -424,8 +571,11 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "plmg-button": PlmgButton;
         "plmg-card": PlmgCard;
+        "plmg-error-message": PlmgErrorMessage;
         "plmg-header": PlmgHeader;
         "plmg-page-container": PlmgPageContainer;
+        "plmg-radio-button": PlmgRadioButton;
+        "plmg-radio-button-group": PlmgRadioButtonGroup;
         "plmg-separator": PlmgSeparator;
         "plmg-sidebar": PlmgSidebar;
         "plmg-sidebar-item": PlmgSidebarItem;
@@ -438,8 +588,11 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "plmg-button": LocalJSX.PlmgButton & JSXBase.HTMLAttributes<HTMLPlmgButtonElement>;
             "plmg-card": LocalJSX.PlmgCard & JSXBase.HTMLAttributes<HTMLPlmgCardElement>;
+            "plmg-error-message": LocalJSX.PlmgErrorMessage & JSXBase.HTMLAttributes<HTMLPlmgErrorMessageElement>;
             "plmg-header": LocalJSX.PlmgHeader & JSXBase.HTMLAttributes<HTMLPlmgHeaderElement>;
             "plmg-page-container": LocalJSX.PlmgPageContainer & JSXBase.HTMLAttributes<HTMLPlmgPageContainerElement>;
+            "plmg-radio-button": LocalJSX.PlmgRadioButton & JSXBase.HTMLAttributes<HTMLPlmgRadioButtonElement>;
+            "plmg-radio-button-group": LocalJSX.PlmgRadioButtonGroup & JSXBase.HTMLAttributes<HTMLPlmgRadioButtonGroupElement>;
             "plmg-separator": LocalJSX.PlmgSeparator & JSXBase.HTMLAttributes<HTMLPlmgSeparatorElement>;
             "plmg-sidebar": LocalJSX.PlmgSidebar & JSXBase.HTMLAttributes<HTMLPlmgSidebarElement>;
             "plmg-sidebar-item": LocalJSX.PlmgSidebarItem & JSXBase.HTMLAttributes<HTMLPlmgSidebarItemElement>;

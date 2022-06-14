@@ -8,6 +8,7 @@ import {
   PlmgSidebar,
   PlmgSidebarItem,
   PlmgSvgIcon,
+  PlmgRadioButtonGroup,
   PlmgSeparator,
 } from '@ducky/plumage-react';
 
@@ -100,6 +101,38 @@ ReactDOM.render(
           <h1>PlmgCard slot-2</h1>
         </div>
       </PlmgCard>
+      <br />
+      <form>
+        <PlmgRadioButtonGroup
+          name="colours"
+          label="What's your favourite colour"
+          size="medium"
+          required
+          values='[
+          "red",
+          "blue",
+          "yellow",
+          "green",
+          "purple (the obvious choice)"
+        ]'
+          errorMessage={'Please select a colour'}
+        />
+        <PlmgRadioButtonGroup
+          name="other colours"
+          label="What's your favourite fruit"
+          size="medium"
+          required
+          values='[
+          "apples",
+          "blueberries",
+          "bananas",
+          "kiwis",
+          "grapes"
+        ]'
+          errorMessage={'Please select a fruit'}
+        />
+        <input type="submit"></input>
+      </form>
     </div>
   </PlmgPageContainer>,
   document.getElementById('root')
