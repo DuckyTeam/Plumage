@@ -10,6 +10,8 @@ import {
   shadow: false,
 })
 export class RadioButton {
+  private inputElement: HTMLInputElement;
+
   /**
    * Define radio button's size.
    *
@@ -114,13 +116,14 @@ export class RadioButton {
           }}
           onInput={() => this.isValid(true)}
           required={this.required}
+          ref={(el) => (this.inputElement = el as HTMLInputElement)}
         />
         <label
           htmlFor={this.value}
           class={labelClasses}
           onClick={(e) => {
             e.preventDefault();
-            document.getElementById(this.value).click();
+            this.inputElement.click();
           }}
         >
           {this.value}
