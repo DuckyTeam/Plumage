@@ -2,6 +2,18 @@
   "name": "@ducky/plumage",
   "entries": [
     {
+      "version": "1.4.0",
+      "tag": "@ducky/plumage_v1.4.0",
+      "date": "Tue, 14 Jun 2022 09:02:22 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "3 new components, plmg-radio-button, plmg-radio-button-group, and error-message have been created"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.3.0",
       "tag": "@ducky/plumage_v1.3.0",
       "date": "Wed, 08 Jun 2022 06:39:49 GMT",

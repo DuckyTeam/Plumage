@@ -2,6 +2,23 @@
   "name": "@ducky/plumage-react",
   "entries": [
     {
+      "version": "0.5.0",
+      "tag": "@ducky/plumage-react_v0.5.0",
+      "date": "Tue, 14 Jun 2022 09:02:22 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "3 new components, PlmgRadioButton, PlmgRadioButtonGroup, and PlmgErrorMessage have been created"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ducky/plumage\" from `^1.3.0` to `^1.4.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.4.3",
       "tag": "@ducky/plumage-react_v0.4.3",
       "date": "Mon, 23 May 2022 05:27:05 GMT",
