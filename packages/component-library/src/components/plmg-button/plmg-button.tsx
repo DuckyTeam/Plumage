@@ -226,6 +226,13 @@ export class Button {
       throw new Error('label must be a string');
   }
 
+  /**
+   * Text content of the button
+   *
+   * You must provide this when providing iconCenter.
+   */
+  @Prop() text: string;
+
   render() {
     const classes = {
       'plmg-button': true,
@@ -252,7 +259,7 @@ export class Button {
           {this.hasIconCenter() && (
             <plmg-svg-icon class={'icon-center'} icon={this.iconCenter} />
           )}
-          <slot></slot>
+          {this.text}
           {this.hasIconRight() && (
             <plmg-svg-icon class={'icon-right'} icon={this.iconRight} />
           )}
@@ -268,7 +275,7 @@ export class Button {
         {this.hasIconCenter() && (
           <plmg-svg-icon class={'icon-center'} icon={this.iconCenter} />
         )}
-        <slot></slot>
+        {this.text}
         {this.hasIconRight() && (
           <plmg-svg-icon class={'icon-right'} icon={this.iconRight} />
         )}
