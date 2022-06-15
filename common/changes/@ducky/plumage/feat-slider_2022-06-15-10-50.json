@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "Updated slider component by removing rangeValues watcher",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
