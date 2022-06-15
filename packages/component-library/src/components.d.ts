@@ -248,6 +248,10 @@ export interface PlmgHeaderCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPlmgHeaderElement;
 }
+export interface PlmgRadioButtonGroupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPlmgRadioButtonGroupElement;
+}
 export interface PlmgSidebarCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPlmgSidebarElement;
@@ -482,7 +486,7 @@ declare namespace LocalJSX {
         /**
           * Event emitted when the selected radio button changed
          */
-        "onValueChanged"?: (event: CustomEvent<{ selectedValue: string }>) => void;
+        "onValueChanged"?: (event: PlmgRadioButtonGroupCustomEvent<{ selectedValue: string }>) => void;
         /**
           * Define radio group's required status  Allowed values:   - true   - false  Default: false
          */

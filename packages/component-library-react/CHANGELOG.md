@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage-react
 
-This log was last generated on Tue, 14 Jun 2022 09:02:22 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Jun 2022 10:53:46 GMT and should not be manually modified.
+
+## 0.5.1
+Wed, 15 Jun 2022 10:53:46 GMT
+
+### Patches
+
+- Emit onValueChanged from PlmgRadioButtonGroup
 
 ## 0.5.0
 Tue, 14 Jun 2022 09:02:22 GMT
