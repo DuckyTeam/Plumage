@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "Emit onValueChanged from PlmgRadioButtonGroup",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}

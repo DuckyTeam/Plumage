@@ -116,6 +116,9 @@ ReactDOM.render(
           "purple (the obvious choice)"
         ]'
           errorMessage={'Please select a colour'}
+          onValueChanged={(e: CustomEvent<{ selectedValue: string }>) => {
+            console.log('Radio Button colours:', e.detail.selectedValue);
+          }}
         />
         <PlmgRadioButtonGroup
           name="other colours"
@@ -130,6 +133,9 @@ ReactDOM.render(
           "grapes"
         ]'
           errorMessage={'Please select a fruit'}
+          onValueChanged={(e: CustomEvent<{ selectedValue: string }>) => {
+            console.log('Radio Button other colours:', e.detail.selectedValue);
+          }}
         />
         <input type="submit"></input>
       </form>
