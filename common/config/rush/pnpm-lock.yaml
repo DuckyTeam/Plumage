@@ -1623,6 +1623,13 @@ packages:
       regenerator-runtime: 0.13.9
     dev: false
 
+  /@babel/runtime/7.18.3:
+    resolution: {integrity: sha512-38Y8f7YUhce/K7RMwTp7m0uCumpv9hZkitCbBClqQIow1qSbCvGkcegKOXpEWCQLfWmevgRiWokZ1GkpfhbZug==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      regenerator-runtime: 0.13.9
+    dev: false
+
   /@babel/template/7.16.7:
     resolution: {integrity: sha512-I8j/x8kHUrbYRTUxXrrMbfCa7jxkE7tZre39x3kjr9hvI82cK1FfqLygotcWN5kdPGWcLdWMHpSBavse5tWw3w==}
     engines: {node: '>=6.9.0'}
@@ -18391,7 +18398,7 @@ packages:
     dev: false
 
   file:projects/example-react-app.tgz:
-    resolution: {integrity: sha512-TeuQliZPa9tuAxxEoGwrm7EQQDUTWYQLuPhjDXG3D7noxc0XtgI35gx8zVgUTk0MtNTMedEuxiZtziwzuYyQ1w==, tarball: file:projects/example-react-app.tgz}
+    resolution: {integrity: sha512-fT7b/wV0oz3J+lqVg9nybWsxQUNb+hSdvNJYlyw15ukUDPzOgYVyYnDIfgmAbpBXiPGS0ko5FBMBMew/eyHqIA==, tarball: file:projects/example-react-app.tgz}
     name: '@rush-temp/example-react-app'
     version: 0.0.0
     dependencies:
@@ -18401,6 +18408,7 @@ packages:
       '@babel/preset-env': 7.16.7_@babel+core@7.16.7
       '@babel/preset-react': 7.16.7_@babel+core@7.16.7
       '@babel/preset-typescript': 7.16.7_@babel+core@7.16.7
+      '@babel/runtime': 7.18.3
       '@types/react': 17.0.38
       '@types/react-dom': 17.0.11
       babel-loader: 8.2.3_c391fd7145c194be609b87ed083bbc6a
@@ -18429,7 +18437,7 @@ packages:
     dev: false
 
   file:projects/plumage-react.tgz:
-    resolution: {integrity: sha512-FAhZnvgagwPUP68gWPc1rpbXzLhefROfsJm9CfRWvKnqLD8OEpgv7UZrD8wFlyJoC6gdB+AwCF+gMac8P+xu6A==, tarball: file:projects/plumage-react.tgz}
+    resolution: {integrity: sha512-e8kqLsKS2Ef3BlE0+l2ircEVgetrBWu6hJqxJjYl2zEOxFxJ9y67ENmHMd+75z9o2e4wn1f/ZdH+O5hPloDa3A==, tarball: file:projects/plumage-react.tgz}
     name: '@rush-temp/plumage-react'
     version: 0.0.0
     dependencies:
@@ -18453,7 +18461,7 @@ packages:
     dev: false
 
   file:projects/plumage.tgz_0caa87738ffad273e3f555cf1f2e570e:
-    resolution: {integrity: sha512-WHJEmnnc3vXJrCZQvIeTn9t/xa0NO/mEtOnMww6Fv5CBgNSsK8ymyhIAiS80RvXA7/4AkuaA/d31UoPqYwWVaw==, tarball: file:projects/plumage.tgz}
+    resolution: {integrity: sha512-xAgGz9uywEsvllYnj0rHDFHI/lBC0SM4ZFAsGyYZlB7uoTuLl3qmMq40SFCnsJR/Psb1mwLCqCGbT7A/TQk+wg==, tarball: file:projects/plumage.tgz}
     id: file:projects/plumage.tgz
     name: '@rush-temp/plumage'
     version: 0.0.0
