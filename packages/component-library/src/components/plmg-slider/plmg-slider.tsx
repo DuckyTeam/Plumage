@@ -237,13 +237,14 @@ export class Slider {
             <label htmlfor={this.name}>
               <output
                 name={this.name}
-                style={{
-                  left: this.updateThumbLabelPosition(),
-                }}
+                // style={{
+                //   left: this.updateThumbLabelPosition(),
+                // }}
                 class={thumbClasses}
               >
                 {this.currentValue}
               </output>
+              <span class={'plmg-thumb-triangle'} />
             </label>
           </div>
 
@@ -299,6 +300,12 @@ export class Slider {
   }
 
   private calculateRelativePosition(value: number) {
+    console.log(
+      'value - this.minValue',
+      value - this.minValue,
+      'this.maxValue - this.minValue',
+      this.maxValue - this.minValue
+    );
     return (
       (Number(value - this.minValue) / (this.maxValue - this.minValue)) * 100
     );
@@ -306,6 +313,9 @@ export class Slider {
 
   private updateThumbLabelPosition(): string {
     const THUMB_POSITION = this.calculateRelativePosition(this.currentValue);
+    console.log('Base THUMB_POSITION', THUMB_POSITION);
+    console.log('Offset', 8 - THUMB_POSITION * 0.15);
+    console.log('Final Postion', THUMB_POSITION + (8 - THUMB_POSITION * 0.15));
     return `calc(${THUMB_POSITION}% + (${8 - THUMB_POSITION * 0.15}px))`;
   }
 

@@ -84,7 +84,7 @@ input {
   margin-bottom: 10px;
 
   .plmg-slider-thumb-label {
-    transform: translateX(-50%);
+    // transform: translateX(-50%);
     background-color: tokens.$plmg-color-background-primary-strong;
     color: tokens.$plmg-color-text-neutral-inverted;
     padding: 4px 8px;
@@ -97,15 +97,21 @@ input {
     }
 
     // Create thumb label arrow
-    &::after {
-      content: '';
-      position: absolute;
-      border-left: 6px solid transparent;
-      border-right: 6px solid transparent;
-      border-top: 6px solid tokens.$plmg-color-background-primary-strong;
-      top: 100%;
-      margin-left: calc(-50% + 3px);
-    }
+    // &::after {
+    //   content: '';
+    //   position: absolute;
+    //   border-left: 6px solid transparent;
+    //   border-right: 6px solid transparent;
+    //   border-top: 6px solid tokens.$plmg-color-background-primary-strong;
+    //   top: 100%;
+    //   margin-left: calc(-50% + 3px);
+    // }
+  }
+
+  .plmg-thumb-triangle {
+    border-left: 6px solid red;
+    border-right: 6px solid blue;
+    border-top: 6px solid tokens.$plmg-color-background-primary-strong;
   }
 }
 
