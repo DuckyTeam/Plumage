@@ -1,4 +1,12 @@
-import { Component, h, Prop, State, Watch } from '@stencil/core';
+import {
+  Component,
+  Event,
+  EventEmitter,
+  h,
+  Prop,
+  State,
+  Watch,
+} from '@stencil/core';
 import {
   PlmgRadioButtonSize,
   isPlmgRadioButtonSize,
@@ -116,6 +124,11 @@ export class RadioButtonGroup {
       throw new Error('errorMessage: must be a string if provided');
   }
 
+  /**
+   * Event emitted when the selected radio button changed
+   */
+  @Event() valueChanged: EventEmitter<{ selectedValue: string }>;
+
   componentWillLoad() {
     this.parseValuesProp(this.values);
     this.isValid = true;
@@ -144,6 +157,9 @@ export class RadioButtonGroup {
               }
             }}
             required={this.required}
+            onChange={(e: any) => {
+              this.valueChanged.emit({ selectedValue: e.target.value });
+            }}
           />
         ))}
 

@@ -17,6 +17,13 @@
 | `values`       | `values`        | Define each radio button's value  Accepts an array or JSON string                                                                                                                      | `string \| string[]`  | `undefined` |
 
 
+## Events
+
+| Event          | Description                                          | Type                                      |
+| -------------- | ---------------------------------------------------- | ----------------------------------------- |
+| `valueChanged` | Event emitted when the selected radio button changed | `CustomEvent<{ selectedValue: string; }>` |
+
+
 ## Dependencies
 
 ### Depends on
