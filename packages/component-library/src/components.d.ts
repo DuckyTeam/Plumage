@@ -449,6 +449,7 @@ declare namespace LocalJSX {
           * Define a name for the slider  Any string
          */
         "name"?: string;
+        "onValueUpdated"?: (event: CustomEvent<any>) => void;
         /**
           * Define the range of values  Must be a list of values with at least two items  First and last items set min and max values  Additional values set mark additional labels  Required
          */

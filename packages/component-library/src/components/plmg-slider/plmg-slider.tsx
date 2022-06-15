@@ -37,10 +37,6 @@ export class Slider {
     if (!Array.isArray(newValue) || newValue.length < 2)
       throw new Error('rangeValues must be an array with at least two items');
   }
-  @Watch('rangeValues')
-  onRangeValuesChanged() {
-    this.setValues();
-  }
 
   /**
    * Define the default value.

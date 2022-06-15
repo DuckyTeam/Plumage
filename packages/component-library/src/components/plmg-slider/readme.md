@@ -18,6 +18,13 @@
 | `thumbLabel`   | `thumb-label`   | Define thumb label visibility  Allowed values  - true  - false  Default: true                                                                                                                             | `boolean`  | `true`      |
 
 
+## Events
+
+| Event          | Description | Type               |
+| -------------- | ----------- | ------------------ |
+| `valueUpdated` |             | `CustomEvent<any>` |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
