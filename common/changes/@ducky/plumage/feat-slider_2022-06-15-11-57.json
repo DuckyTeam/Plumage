@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "Use html elements for slider thumb",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
