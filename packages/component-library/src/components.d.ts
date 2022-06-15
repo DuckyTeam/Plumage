@@ -468,6 +468,10 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
+          * Event emitted when the selected radio button changed
+         */
+        "onValueChanged"?: (event: CustomEvent<{ selectedValue: string }>) => void;
+        /**
           * Define radio group's required status  Allowed values:   - true   - false  Default: false
          */
         "required"?: boolean;
