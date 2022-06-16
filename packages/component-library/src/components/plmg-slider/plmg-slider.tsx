@@ -204,48 +204,49 @@ export class Slider {
   @Event() valueUpdated: EventEmitter;
 
   render() {
-    const thumbClasses = {
-      'plmg-slider-thumb-label': true,
+    const thumbLabelContainerClasses = {
+      'plmg-slider-thumb-label-container': true,
       hidden: !this.thumbLabel,
     };
 
     return (
       <Host value={this.currentValue}>
         <div class={'plmg-slider-component-container'}>
-          <div class={'plmg-slider-track-rail-container'}>
-            <label htmlfor={this.name}>
-              <input
-                id={this.inputId}
-                role="slider"
-                style={{ background: this.setBackgroundProgressFill() }}
-                class={'plmg-slider-input'}
-                step={this.stepValue}
-                type={'range'}
-                name={this.name}
-                min={this.minValue}
-                max={this.maxValue}
-                value={this.currentValue}
-                aria-valuemin={this.minValue}
-                aria-valuemax={this.maxValue}
-                aria-valuenow={this.currentValue}
-                onInput={(ev) => this.handleSliderChange(ev)}
-              />
-            </label>
-          </div>
-
-          <div class={'plmg-slider-thumb-label-container'}>
-            <label htmlfor={this.name}>
-              <output
-                name={this.name}
-                // style={{
-                //   left: this.updateThumbLabelPosition(),
-                // }}
-                class={thumbClasses}
-              >
+          <div class={'plmg-slider-thumb-label-track'}>
+            <div
+              class={thumbLabelContainerClasses}
+              style={{
+                left: `${this.calculateRelativePosition(this.currentValue)}%`,
+              }}
+            >
+              {/* <label htmlfor={this.name}> */}
+              <output class={'plmg-slider-thumb-label'} name={this.name}>
                 {this.currentValue}
               </output>
               <span class={'plmg-thumb-triangle'} />
-            </label>
+              {/* </label> */}
+            </div>
+          </div>
+
+          <div class={'plmg-slider-track-rail-container'}>
+            {/* <label htmlfor={this.name}> */}
+            <input
+              id={this.inputId}
+              role="slider"
+              style={{ background: this.setBackgroundProgressFill() }}
+              class={'plmg-slider-input'}
+              step={this.stepValue}
+              type={'range'}
+              name={this.name}
+              min={this.minValue}
+              max={this.maxValue}
+              value={this.currentValue}
+              aria-valuemin={this.minValue}
+              aria-valuemax={this.maxValue}
+              aria-valuenow={this.currentValue}
+              onInput={(ev) => this.handleSliderChange(ev)}
+            />
+            {/* </label> */}
           </div>
 
           {this.marks && (
@@ -254,7 +255,7 @@ export class Slider {
                 <span
                   key={index}
                   style={{
-                    left: this.setTickPositions(item),
+                    left: `${this.calculateRelativePosition(item)}%`,
                   }}
                 ></span>
               ))}
@@ -263,19 +264,19 @@ export class Slider {
 
           <div class={'plmg-slider-mark-labels-container'}>
             {this.marks && (
-              <datalist>
+              <div>
                 {this.rangeValues.map((item, index) => (
-                  <option
+                  <span
                     class={'plmg-slider-mark-label-item'}
                     key={index}
                     style={{
-                      left: this.setTickPositions(item),
+                      left: `${this.calculateRelativePosition(item)}%`,
                     }}
                   >
                     {item}
-                  </option>
+                  </span>
                 ))}
-              </datalist>
+              </div>
             )}
           </div>
 
@@ -311,12 +312,32 @@ export class Slider {
     );
   }
 
+  // calculate label offest
+  // that is going to be the width of the label - number of characters plus padding
+  // using a monospaced font, each character is 6px except decimals which are 3px
+  // let work out the offest without decimals to start with
+
+  private calculateTextWidth(value: number) {
+    return value.toString().length;
+  }
+
   private updateThumbLabelPosition(): string {
     const THUMB_POSITION = this.calculateRelativePosition(this.currentValue);
-    console.log('Base THUMB_POSITION', THUMB_POSITION);
-    console.log('Offset', 8 - THUMB_POSITION * 0.15);
-    console.log('Final Postion', THUMB_POSITION + (8 - THUMB_POSITION * 0.15));
+    // calculate the width of thumb and remove it from its position
+
     return `calc(${THUMB_POSITION}% + (${8 - THUMB_POSITION * 0.15}px))`;
+  }
+
+  // get width of container in pixels
+
+  private calculateThumbWidth(value: number) {
+    // get length of string
+    const STRING_WIDTH = value.toString().length;
+    // add padding - 4px on each side
+    const PADDING_LEFT_RIGHT = 8;
+    const THUMB_LABEL_WIDTH = STRING_WIDTH + PADDING_LEFT_RIGHT;
+    // return width of the box
+    // remove 50% of this number
   }
 
   private setTickPositions(item: number): string {
