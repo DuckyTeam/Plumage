@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "Updated slider component styling",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
