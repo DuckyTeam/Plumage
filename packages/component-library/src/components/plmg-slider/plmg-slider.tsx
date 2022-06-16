@@ -19,6 +19,7 @@ import {
   shadow: false,
 })
 export class Slider {
+  private ref: HTMLDivElement;
   /**
    * Define the range of values
    *
@@ -213,40 +214,43 @@ export class Slider {
       <Host value={this.currentValue}>
         <div class={'plmg-slider-component-container'}>
           <div class={'plmg-slider-thumb-label-track'}>
-            <div
-              class={thumbLabelContainerClasses}
-              style={{
-                left: `${this.calculateRelativePosition(this.currentValue)}%`,
-              }}
-            >
-              {/* <label htmlfor={this.name}> */}
-              <output class={'plmg-slider-thumb-label'} name={this.name}>
-                {this.currentValue}
-              </output>
-              <span class={'plmg-thumb-triangle'} />
-              {/* </label> */}
-            </div>
+            <label htmlfor={this.name}>
+              <div
+                class={thumbLabelContainerClasses}
+                style={{
+                  left: `${this.calculateRelativePosition(this.currentValue)}`,
+                }}
+              >
+                <output class={'plmg-slider-thumb-label'} name={this.name}>
+                  {this.currentValue}
+                </output>
+                <span class={'plmg-thumb-triangle'} />
+              </div>
+            </label>
           </div>
 
-          <div class={'plmg-slider-track-rail-container'}>
-            {/* <label htmlfor={this.name}> */}
-            <input
-              id={this.inputId}
-              role="slider"
-              style={{ background: this.setBackgroundProgressFill() }}
-              class={'plmg-slider-input'}
-              step={this.stepValue}
-              type={'range'}
-              name={this.name}
-              min={this.minValue}
-              max={this.maxValue}
-              value={this.currentValue}
-              aria-valuemin={this.minValue}
-              aria-valuemax={this.maxValue}
-              aria-valuenow={this.currentValue}
-              onInput={(ev) => this.handleSliderChange(ev)}
-            />
-            {/* </label> */}
+          <div
+            ref={(el) => (this.ref = el as HTMLDivElement)}
+            class={'plmg-slider-track-rail-container'}
+          >
+            <label htmlfor={this.name} tabIndex={0}>
+              <input
+                id={this.inputId}
+                role="slider"
+                style={{ background: this.setBackgroundProgressFill() }}
+                class={'plmg-slider-input'}
+                step={this.stepValue}
+                type={'range'}
+                name={this.name}
+                min={this.minValue}
+                max={this.maxValue}
+                value={this.currentValue}
+                aria-valuemin={this.minValue}
+                aria-valuemax={this.maxValue}
+                aria-valuenow={this.currentValue}
+                onInput={(ev) => this.handleSliderChange(ev)}
+              />
+            </label>
           </div>
 
           {this.marks && (
@@ -255,7 +259,7 @@ export class Slider {
                 <span
                   key={index}
                   style={{
-                    left: `${this.calculateRelativePosition(item)}%`,
+                    left: `${this.setTickLabelPosition(item)}px`,
                   }}
                 ></span>
               ))}
@@ -270,7 +274,7 @@ export class Slider {
                     class={'plmg-slider-mark-label-item'}
                     key={index}
                     style={{
-                      left: `${this.calculateRelativePosition(item)}%`,
+                      left: `${this.setTickMarkPosition(item)}px`,
                     }}
                   >
                     {item}
@@ -301,12 +305,16 @@ export class Slider {
   }
 
   private calculateRelativePosition(value: number) {
-    console.log(
-      'value - this.minValue',
-      value - this.minValue,
-      'this.maxValue - this.minValue',
-      this.maxValue - this.minValue
-    );
+    // Does not account for floating point numbers
+
+    // console.log(
+    //   'value - this.minValue',
+    //   value - this.minValue,
+    //   'this.maxValue - this.minValue',
+    //   this.maxValue - this.minValue
+    // );
+    // console.log(this.getTrackWidth());
+    //
     return (
       (Number(value - this.minValue) / (this.maxValue - this.minValue)) * 100
     );
@@ -321,30 +329,37 @@ export class Slider {
     return value.toString().length;
   }
 
-  private updateThumbLabelPosition(): string {
-    const THUMB_POSITION = this.calculateRelativePosition(this.currentValue);
-    // calculate the width of thumb and remove it from its position
+  private setTickLabelPosition(item: number): number {
+    // this needs to change
+    const FONT_SIZE = 6;
+    const RELATIVE_POSITION_PERCENT = this.calculateRelativePosition(item);
+    const TEXT_WIDTH = this.calculateTextWidth(item) * FONT_SIZE;
+    const TRACK_WIDTH = this.getTrackWidth();
+    // const CALCULATE_TICK_POSITION = this.calculateRelativePosition(item);
 
-    return `calc(${THUMB_POSITION}% + (${8 - THUMB_POSITION * 0.15}px))`;
+    // move from % to proporition of the track width
+    console.log(
+      'relative position',
+      RELATIVE_POSITION_PERCENT,
+      'text-width',
+      TEXT_WIDTH,
+      'track-width',
+      TRACK_WIDTH
+    );
+    return (RELATIVE_POSITION_PERCENT / 100) * TRACK_WIDTH - TEXT_WIDTH / 2;
   }
 
-  // get width of container in pixels
+  private setTickMarkPosition(item: number): number {
+    const TICK_MARK_WIDTH = 2;
+    const RELATIVE_POSITION_PERCENT = this.calculateRelativePosition(item);
+    const TRACK_WIDTH = this.getTrackWidth();
+    // const CALCULATE_TICK_POSITION = this.calculateRelativePosition(item);
 
-  private calculateThumbWidth(value: number) {
-    // get length of string
-    const STRING_WIDTH = value.toString().length;
-    // add padding - 4px on each side
-    const PADDING_LEFT_RIGHT = 8;
-    const THUMB_LABEL_WIDTH = STRING_WIDTH + PADDING_LEFT_RIGHT;
-    // return width of the box
-    // remove 50% of this number
-  }
+    // move from % to proporition of the track width
 
-  private setTickPositions(item: number): string {
-    const CALCULATE_TICK_POSITION = this.calculateRelativePosition(item);
-    return `calc(${CALCULATE_TICK_POSITION}% + (${
-      3 - CALCULATE_TICK_POSITION * 0.15
-    }px))`;
+    return (
+      (RELATIVE_POSITION_PERCENT / 100) * TRACK_WIDTH - TICK_MARK_WIDTH / 2
+    );
   }
 
   private setBackgroundProgressFill(): string {
@@ -354,5 +369,15 @@ export class Slider {
       ${plmgColorBackgroundPrimaryStrong} ${FILL_PERCENT}%,
       ${plmgColorBorderNeutralWeak} ${FILL_PERCENT}%, 
       ${plmgColorBorderNeutralWeak} 100%)`;
+  }
+
+  /**
+   * Grab the width of the track rail container.
+   * If the element is not available yet, return a default value.
+   * @private
+   */
+  private getTrackWidth() {
+    if (this.ref) return this.ref.getBoundingClientRect().width;
+    return 100;
   }
 }
