@@ -24,8 +24,8 @@
 // -------------------------------------------------
 
 .plmg-slider-component-container {
-  // font-family: tokens.$plmg-font-family-sans;
-  font-family: tokens.$plmg-font-family-code;
+  font-family: tokens.$plmg-font-family-sans;
+  font-variant-numeric: tabular-nums;
   font-weight: tokens.$plmg-font-weight-regular;
   font-size: tokens.$plmg-font-size-x0-75;
   line-height: tokens.$plmg-font-lineheight-loose;
@@ -33,13 +33,12 @@
   display: grid;
   width: 100%;
   grid-template-columns: 1fr auto;
-  column-gap: 24px;
   grid-template-rows: auto;
   grid-template-areas:
-    'thumblabel inputfield'
-    'trackrail inputfield'
-    'marks inputfield'
-    'marklabels inputfield';
+    'thumblabel'
+    'trackrail'
+    'marks'
+    'marklabels';
 }
 
 .plmg-slider-track-rail-container {
@@ -156,29 +155,6 @@
 
   span {
     position: absolute;
-  }
-}
-
-.plmg-slider-input-field-container {
-  grid-area: inputfield;
-  display: flex;
-  align-self: flex-end;
-
-  input {
-    // Missing token
-    font-size: 18px;
-    min-height: 51px;
-    min-width: 86px;
-    width: fit-content;
-    box-sizing: border-box;
-    border: tokens.$plmg-border-width-s solid
-      tokens.$plmg-color-border-neutral-weak;
-    padding: 12px 16px;
-    background-color: tokens.$plmg-color-background-neutral;
-    color: #263238;
-    outline: none;
-    box-shadow: tokens.$plmg-shadow-inner-s;
-    border-radius: 4px;
   }
 }
 
