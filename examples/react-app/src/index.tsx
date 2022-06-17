@@ -26,7 +26,8 @@ const TooltipRefExample = () => {
         HoverMe
       </PlmgButton>
       <PlmgTooltip
-        tooltipId={'hover-me-button'}
+        role={'tooltip'}
+        id={'hover-me-button'}
         targetElement={button}
         position={'top'}
         color={'primary'}
