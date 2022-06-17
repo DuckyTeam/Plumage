@@ -1,6 +1,34 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Thu, 02 Jun 2022 13:49:55 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Jun 2022 10:53:46 GMT and should not be manually modified.
+
+## 1.4.1
+Wed, 15 Jun 2022 10:53:46 GMT
+
+### Patches
+
+- Emit onValueChanged from PlmgRadioButtonGroup
+
+## 1.4.0
+Tue, 14 Jun 2022 09:02:22 GMT
+
+### Minor changes
+
+- 3 new components, plmg-radio-button, plmg-radio-button-group, and error-message have been created
+
+## 1.3.0
+Wed, 08 Jun 2022 06:39:49 GMT
+
+### Minor changes
+
+- Bump Stencil to 2.16.1
+
+## 1.2.0
+Thu, 02 Jun 2022 19:16:24 GMT
+
+### Minor changes
+
+- Bump Stencil version to 2.16.0, add experimentalImportInjection flag to stencil.config.ts
 
 ## 1.1.5
 Thu, 02 Jun 2022 13:49:55 GMT

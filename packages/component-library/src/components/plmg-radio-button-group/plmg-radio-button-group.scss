@@ -1,0 +1,38 @@
+@use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
+
+// Component style
+// -------------------------------------------------
+
+.plmg-radio-button-group {
+  border: 0;
+  padding: 0;
+  .plmg-radio-button-wrapper {
+    margin-bottom: 4px;
+    margin-top: 8px;
+  }
+
+  legend {
+    color: tokens.$plmg-color-text-neutral-weak;
+    font-family: tokens.$plmg-font-family-sans;
+    font-style: normal;
+    font-weight: tokens.$plmg-font-weight-semibold;
+    font-size: tokens.$plmg-font-size-x1;
+    line-height: tokens.$plmg-font-lineheight-loose;
+    margin-bottom: -4px;
+  }
+  &.large {
+    font-size: tokens.$plmg-font-size-x1-125;
+  }
+
+  span {
+    color: tokens.$plmg-color-text-danger-strong;
+    font-family: tokens.$plmg-font-family-sans;
+    font-style: normal;
+    font-weight: tokens.$plmg-font-weight-semibold;
+    font-size: tokens.$plmg-font-size-x1;
+    line-height: tokens.$plmg-font-lineheight-loose;
+    margin-left: 2px;
+  }
+}
+
+// ------------- END Component style ---------------
