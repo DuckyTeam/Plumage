@@ -8,6 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { PlmgButtonColor, PlmgButtonDesign, PlmgButtonSize, PlmgButtonType } from "./components/plmg-button/plmg-button.types";
 import { PlmgErrorMessageSize } from "./components/plmg-error-message/plmg-error-message.types";
 import { PlmgRadioButtonSize } from "./components/plmg-radio-button/plmg-radio-button.types";
+import { PlmgTooltipArrowPosition, PlmgTooltipColor, PlmgTooltipPosition } from "./components/plmg-tooltip/plmg-tooltip.types";
 export namespace Components {
     interface PlmgButton {
         /**
@@ -239,6 +240,32 @@ export namespace Components {
          */
         "size": string;
     }
+    interface PlmgTooltip {
+        /**
+          * Define tooltip arrow position. When 'none' is selected, no arrow is visible.  Allowed values:   - none   - start   - middle   - end  Default: none
+         */
+        "arrowPosition": PlmgTooltipArrowPosition;
+        /**
+          * Define tooltip's background color  Allowed values:   - neutral   - primary  Default: neutral
+         */
+        "color": PlmgTooltipColor;
+        /**
+          * Tooltip Content Text  Allowed value: any string  Required
+         */
+        "content": string;
+        /**
+          * Define tooltip's position.  Allowed values:   - left   - right   - top   - bottom  Default: top. Required.
+         */
+        "position": PlmgTooltipPosition;
+        /**
+          * Reference to the target element or its ID for connected element  Required.
+         */
+        "targetElement": string | HTMLElement;
+        /**
+          * Define an id for the tooltip. Links the target element to the tooltip.  Target element must reference the tooltip's id using aria-describeby or aria-label.  When the target element is tab focussed the tooltip is visible and hidden with the escape key.  Required for accessibility.
+         */
+        "tooltipId": string;
+    }
 }
 export interface PlmgCardCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -323,6 +350,12 @@ declare global {
         prototype: HTMLPlmgSvgIconElement;
         new (): HTMLPlmgSvgIconElement;
     };
+    interface HTMLPlmgTooltipElement extends Components.PlmgTooltip, HTMLStencilElement {
+    }
+    var HTMLPlmgTooltipElement: {
+        prototype: HTMLPlmgTooltipElement;
+        new (): HTMLPlmgTooltipElement;
+    };
     interface HTMLElementTagNameMap {
         "plmg-button": HTMLPlmgButtonElement;
         "plmg-card": HTMLPlmgCardElement;
@@ -335,6 +368,7 @@ declare global {
         "plmg-sidebar": HTMLPlmgSidebarElement;
         "plmg-sidebar-item": HTMLPlmgSidebarItemElement;
         "plmg-svg-icon": HTMLPlmgSvgIconElement;
+        "plmg-tooltip": HTMLPlmgTooltipElement;
     }
 }
 declare namespace LocalJSX {
@@ -576,6 +610,32 @@ declare namespace LocalJSX {
          */
         "size"?: string;
     }
+    interface PlmgTooltip {
+        /**
+          * Define tooltip arrow position. When 'none' is selected, no arrow is visible.  Allowed values:   - none   - start   - middle   - end  Default: none
+         */
+        "arrowPosition"?: PlmgTooltipArrowPosition;
+        /**
+          * Define tooltip's background color  Allowed values:   - neutral   - primary  Default: neutral
+         */
+        "color"?: PlmgTooltipColor;
+        /**
+          * Tooltip Content Text  Allowed value: any string  Required
+         */
+        "content"?: string;
+        /**
+          * Define tooltip's position.  Allowed values:   - left   - right   - top   - bottom  Default: top. Required.
+         */
+        "position"?: PlmgTooltipPosition;
+        /**
+          * Reference to the target element or its ID for connected element  Required.
+         */
+        "targetElement"?: string | HTMLElement;
+        /**
+          * Define an id for the tooltip. Links the target element to the tooltip.  Target element must reference the tooltip's id using aria-describeby or aria-label.  When the target element is tab focussed the tooltip is visible and hidden with the escape key.  Required for accessibility.
+         */
+        "tooltipId"?: string;
+    }
     interface IntrinsicElements {
         "plmg-button": PlmgButton;
         "plmg-card": PlmgCard;
@@ -588,6 +648,7 @@ declare namespace LocalJSX {
         "plmg-sidebar": PlmgSidebar;
         "plmg-sidebar-item": PlmgSidebarItem;
         "plmg-svg-icon": PlmgSvgIcon;
+        "plmg-tooltip": PlmgTooltip;
     }
 }
 export { LocalJSX as JSX };
@@ -605,6 +666,7 @@ declare module "@stencil/core" {
             "plmg-sidebar": LocalJSX.PlmgSidebar & JSXBase.HTMLAttributes<HTMLPlmgSidebarElement>;
             "plmg-sidebar-item": LocalJSX.PlmgSidebarItem & JSXBase.HTMLAttributes<HTMLPlmgSidebarItemElement>;
             "plmg-svg-icon": LocalJSX.PlmgSvgIcon & JSXBase.HTMLAttributes<HTMLPlmgSvgIconElement>;
+            "plmg-tooltip": LocalJSX.PlmgTooltip & JSXBase.HTMLAttributes<HTMLPlmgTooltipElement>;
         }
     }
 }

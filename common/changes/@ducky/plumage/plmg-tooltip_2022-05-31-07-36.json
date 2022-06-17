@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "Create Tooltip component",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}

@@ -1,0 +1,237 @@
+@use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
+
+// Common styles to all shadow-DOM components
+// Remove this section if your component does not use shadow DOM
+// -------------------------------------------------
+:host {
+  display: block;
+  position: fixed;
+  top: -1000px;
+  left: -1000px;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+// Variables
+// ---------------------------------------------
+
+$arrow-width: 6px;
+
+// ------------- END Variables -----------------
+
+// Mixins
+// ------------------------------
+@mixin arrow-color {
+  &.neutral::after {
+    border-color: tokens.$plmg-color-background-neutral-dark;
+  }
+
+  &.primary::after {
+    border-color: tokens.$plmg-color-background-neutral-dark;
+  }
+}
+// ------------- END Mixins ------------------------
+
+// Silent Classes
+// ------------------------------------------------
+
+%arrow {
+  &.start,
+  &.end,
+  &.middle {
+    &::after {
+      background-color: transparent;
+      content: '';
+      display: block;
+      position: absolute;
+      width: 0;
+      height: 0;
+      border: $arrow-width solid transparent;
+      transform: translate(-50%, 0);
+    }
+  }
+}
+
+// ------------- END Silent Classes ------------------------
+
+// Component style
+// ------------------------------------------------
+
+.plmg-tooltip {
+  position: relative;
+  display: block;
+  font-family: tokens.$plmg-font-family-sans;
+  font-style: normal;
+  font-weight: tokens.$plmg-font-weight-regular;
+  font-size: tokens.$plmg-font-size-x0_75;
+  line-height: tokens.$plmg-font-lineheight-loose;
+  padding: tokens.$plmg-spacing-x0-25 tokens.$plmg-spacing-x0-5;
+  border-radius: tokens.$plmg-border-radius-s;
+  text-align: center;
+  height: auto;
+  width: fit-content;
+  max-width: 150px;
+  overflow-wrap: break-word;
+  visibility: hidden;
+
+  &.visible {
+    visibility: visible;
+  }
+
+  &.neutral {
+    background-color: tokens.$plmg-color-background-neutral-dark;
+    border-color: tokens.$plmg-color-background-neutral-dark;
+    color: tokens.$plmg-color-text-neutral-dark;
+  }
+  &.primary {
+    background-color: tokens.$plmg-color-background-primary-strong-active;
+    border-color: tokens.$plmg-color-background-primary-strong-active;
+    color: tokens.$plmg-color-text-neutral-inverted;
+  }
+
+  // Controls: Tooltip positions & Colors & Arrow positions
+  &.bottom {
+    @extend %arrow;
+    &::after {
+      bottom: 100%;
+    }
+
+    // Control: Arrow Color
+    &.primary::after {
+      border-bottom-color: tokens.$plmg-color-background-primary-strong-active;
+    }
+
+    &.neutral::after {
+      border-bottom-color: tokens.$plmg-color-background-neutral-dark;
+    }
+
+    // Control: Arrow Position
+    &.start {
+      @extend %arrow;
+      &::after {
+        left: calc(10% + $arrow-width);
+      }
+    }
+
+    &.middle {
+      @extend %arrow;
+      &::after {
+        left: calc(50%);
+      }
+    }
+
+    &.end {
+      @extend %arrow;
+      &::after {
+        right: calc(10% - $arrow-width);
+      }
+    }
+  }
+
+  &.top {
+    @extend %arrow;
+    &::after {
+      top: 100%;
+    }
+
+    // Control: Arrow Color
+    &.primary::after {
+      border-top-color: tokens.$plmg-color-background-primary-strong-active;
+    }
+    &.neutral::after {
+      border-top-color: tokens.$plmg-color-background-neutral-dark;
+    }
+
+    // Control: Arrow Position
+    &.start {
+      @extend %arrow;
+      &::after {
+        left: calc(10% + $arrow-width);
+      }
+    }
+    &.middle {
+      @extend %arrow;
+      &::after {
+        left: calc(50%);
+      }
+    }
+    &.end {
+      @extend %arrow;
+      &::after {
+        right: calc(10% - $arrow-width);
+      }
+    }
+  }
+
+  &.right {
+    @extend %arrow;
+    &::after {
+      // 1% to fix a thin line appearing
+      left: calc(1% - ($arrow-width));
+      border-left: 0;
+    }
+
+    // Control: Arrow Color
+    &.primary::after {
+      border-right-color: tokens.$plmg-color-background-primary-strong-active;
+    }
+    &.neutral::after {
+      border-right-color: tokens.$plmg-color-background-neutral-dark;
+    }
+    // Control: Arrow Position
+    &.start {
+      &::after {
+        top: calc(10% + $arrow-width);
+      }
+    }
+    &.middle {
+      &::after {
+        top: calc(50% - $arrow-width);
+      }
+    }
+    &.end {
+      &::after {
+        bottom: calc(10% + $arrow-width);
+      }
+    }
+  }
+
+  &.left {
+    @extend %arrow;
+    &::after {
+      // 99% to fix a thin line appearing
+      left: calc(99% + $arrow-width);
+    }
+
+    // Arrow Control Color
+    &.primary::after {
+      border-left-color: tokens.$plmg-color-background-primary-strong-active;
+    }
+    &.neutral::after {
+      border-left-color: tokens.$plmg-color-background-neutral-dark;
+    }
+
+    // Arrow Control Position
+    &.start {
+      @extend %arrow;
+      &::after {
+        top: calc(10% + $arrow-width);
+      }
+    }
+    &.middle {
+      @extend %arrow;
+      &::after {
+        top: calc(50% - $arrow-width);
+      }
+    }
+    &.end {
+      @extend %arrow;
+      &::after {
+        bottom: calc(10% + $arrow-width);
+      }
+    }
+  }
+  // ------------- END Component style ---------------
+}

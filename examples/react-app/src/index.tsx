@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import ReactDOM from 'react-dom';
 import {
   PlmgButton,
@@ -10,7 +10,34 @@ import {
   PlmgSvgIcon,
   PlmgRadioButtonGroup,
   PlmgSeparator,
+  PlmgTooltip,
 } from '@ducky/plumage-react';
+
+const TooltipRefExample = () => {
+  const [button, setButton] = useState(undefined);
+  const buttonRef = useCallback((node) => {
+    if (node !== null) {
+      setButton(node);
+    }
+  }, []);
+
+  return (
+    <>
+      <PlmgButton label={'hover-me-button'} ref={buttonRef}>
+        HoverMe
+      </PlmgButton>
+      <PlmgTooltip
+        role={'tooltip'}
+        id={'hover-me-button'}
+        targetElement={button}
+        position={'top'}
+        color={'primary'}
+        arrowPosition={'start'}
+        content={'Top with arrow start'}
+      ></PlmgTooltip>
+    </>
+  );
+};
 
 ReactDOM.render(
   <PlmgPageContainer>
@@ -101,6 +128,23 @@ ReactDOM.render(
           <h1>PlmgCard slot-2</h1>
         </div>
       </PlmgCard>
+      <p
+        tabIndex={0}
+        id={'targetelement'}
+        aria-describeby={'tooltip-demonstration'}
+        style={{ width: 'fit-content' }}
+      >
+        Tooltip Target
+      </p>
+      <PlmgTooltip
+        role={'tooltip'}
+        id={'tooltip-demonstration'}
+        targetElement={'targetelement'}
+        position={'right'}
+        arrowPosition={'middle'}
+        content={'Right with arrow middle'}
+      ></PlmgTooltip>
+      <TooltipRefExample />
       <br />
       <form>
         <PlmgRadioButtonGroup
