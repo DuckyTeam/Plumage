@@ -4,7 +4,7 @@ import {
   isArrowPosition,
   isPosition,
   isTooltipColor,
-  PlmgTooltipArrowPositions,
+  PlmgTooltipArrowPosition,
   PlmgTooltipPosition,
   PlmgTooltipColor,
 } from './plmg-tooltip.types';
@@ -117,7 +117,7 @@ export class Tooltip {
    *
    * Default: none
    */
-  @Prop() arrowPosition: PlmgTooltipArrowPositions = 'none';
+  @Prop() arrowPosition: PlmgTooltipArrowPosition = 'none';
   @Watch('arrowPosition')
   validateArrowPosition(newValue: string) {
     if (newValue && typeof newValue !== 'string')

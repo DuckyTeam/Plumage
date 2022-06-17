@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { PlmgButtonColor, PlmgButtonDesign, PlmgButtonSize, PlmgButtonType } from "./components/plmg-button/plmg-button.types";
-import { PlmgTooltipArrowPositions, PlmgTooltipColor, PlmgTooltipPosition } from "./components/plmg-tooltip/plmg-tooltip.types";
+import { PlmgTooltipArrowPosition, PlmgTooltipColor, PlmgTooltipPosition } from "./components/plmg-tooltip/plmg-tooltip.types";
 export namespace Components {
     interface PlmgButton {
         /**
@@ -180,7 +180,7 @@ export namespace Components {
         /**
           * Define tooltip arrow position. When 'none' is selected, no arrow is visible.  Allowed values:   - none   - start   - middle   - end  Default: none
          */
-        "arrowPosition": PlmgTooltipArrowPositions;
+        "arrowPosition": PlmgTooltipArrowPosition;
         /**
           * Define tooltip's background color  Allowed values:   - neutral   - primary  Default: neutral
          */
@@ -447,7 +447,7 @@ declare namespace LocalJSX {
         /**
           * Define tooltip arrow position. When 'none' is selected, no arrow is visible.  Allowed values:   - none   - start   - middle   - end  Default: none
          */
-        "arrowPosition"?: PlmgTooltipArrowPositions;
+        "arrowPosition"?: PlmgTooltipArrowPosition;
         /**
           * Define tooltip's background color  Allowed values:   - neutral   - primary  Default: neutral
          */

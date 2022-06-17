@@ -11,7 +11,7 @@ export function isPosition(x: any): x is typeof positions {
 }
 
 export const arrowPositions = ['none', 'start', 'middle', 'end'] as const;
-export type PlmgTooltipArrowPositions = typeof arrowPositions[number];
+export type PlmgTooltipArrowPosition = typeof arrowPositions[number];
 export function isArrowPosition(x: any): x is typeof arrowPositions {
   return arrowPositions.includes(x);
 }
