@@ -1,0 +1,47 @@
+@use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
+
+// Component style
+// ------------------------------
+.plmg-text-input {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border: tokens.$plmg-border-width-m solid
+    tokens.$plmg-color-border-neutral-weak;
+  align-items: center;
+  border-radius: tokens.$plmg-border-radius-s;
+  background-color: tokens.$plmg-color-background-neutral;
+
+  font-family: tokens.$plmg-font-family-sans;
+  font-style: normal;
+  font-weight: tokens.$plmg-font-weight-regular;
+
+  // Controls: Size
+  &.medium {
+    padding-top: tokens.$plmg-spacing-x0-75;
+    padding-bottom: tokens.$plmg-spacing-x0-75;
+    padding-right: tokens.$plmg-spacing-x1;
+    padding-left: tokens.$plmg-spacing-x1;
+  }
+  &.large {
+    padding-top: tokens.$plmg-spacing-x1;
+    padding-bottom: tokens.$plmg-spacing-x1;
+    padding-right: tokens.$plmg-spacing-x1-5;
+    padding-left: tokens.$plmg-spacing-x1-5;
+  }
+  // States
+  &:hover {
+    background-color: tokens.$plmg-color-background-neutral-hover;
+  }
+  &:active {
+    border: tokens.$plmg-border-width-m solid
+      tokens.$plmg-color-border-primary-strong;
+  }
+
+  &:focus-visible {
+    outline: none;
+    border: tokens.$plmg-border-width-m solid tokens.$plmg-color-border-standout;
+  }
+}
+// END Component style
+// ------------------------------
