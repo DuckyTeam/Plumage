@@ -19,7 +19,6 @@ import {
   shadow: false,
 })
 export class Slider {
-  private ref: HTMLDivElement;
   /**
    * Define the range of values
    *
@@ -128,9 +127,11 @@ export class Slider {
    * Store currentValue, min, max and step states
    */
   @State() currentValue: number;
+  @State() inputFieldValue: number;
   @State() minValue: number;
   @State() maxValue: number;
   @State() stepValue: number;
+  @State() allowedInputs: Array<number>;
 
   private setValues() {
     if (!this.rangeValues) return;
@@ -151,6 +152,22 @@ export class Slider {
     }
   }
 
+  private getAllowedInputs() {
+    let inputs = [];
+    inputs.push(this.minValue);
+    while (inputs[inputs.length - 1] <= this.maxValue) {
+      const PREV = inputs[inputs.length - 1];
+      // Correct for floating point errors by rounding when necessary
+      const NEXT =
+        Math.round((PREV + this.stepValue + Number.EPSILON) * 1000000) /
+        1000000;
+      // Escape valve in case of over rounding
+      if (!(NEXT > PREV)) return;
+      inputs.push(NEXT);
+    }
+    return inputs;
+  }
+
   connectedCallback() {
     this.setValues();
   }
@@ -159,8 +176,28 @@ export class Slider {
     this.updateValue(ev.target.value);
   }
 
+  private handleInputFieldChange(ev) {
+    // Ignore Empty Strings
+    if (ev.target.value == '') return;
+    // Get an array of allowed inputs
+    const SET_ALLOWED_INPUTS = this.getAllowedInputs();
+    // Check input is allowed value, within range and one of the allowed inputs
+    const newValue = parseFloat(ev.target.value);
+    if (
+      isNaN(newValue) ||
+      newValue > this.maxValue ||
+      newValue < this.minValue ||
+      !SET_ALLOWED_INPUTS.includes(newValue)
+    )
+      return;
+    this.updateValue(newValue);
+  }
+
   private updateValue(newValue) {
     this.currentValue = newValue;
+    if (this.inputFieldValue !== this.currentValue) {
+      this.inputFieldValue = this.currentValue;
+    }
     this.valueUpdated.emit({ value: this.currentValue });
   }
 
@@ -176,25 +213,23 @@ export class Slider {
       <Host value={this.currentValue}>
         <div class={'plmg-slider-component-container'}>
           <div class={'plmg-slider-thumb-label-track'}>
-            <label htmlfor={this.name}>
-              <div
-                class={thumbLabelContainerClasses}
-                style={{
-                  left: `${this.calculateRelativePosition(this.currentValue)}`,
-                }}
-              >
-                <div class={'plmg-slider-thumb-label'}>
-                  <span>{this.currentValue}</span>
-                </div>
-                <span class={'plmg-thumb-triangle'} />
-              </div>
-            </label>
+            <div
+              class={thumbLabelContainerClasses}
+              style={{
+                left: `${this.calculateRelativePosition(this.currentValue)}%`,
+              }}
+            >
+              {/* <label htmlfor={this.name}> */}
+              <output class={'plmg-slider-thumb-label'} name={this.name}>
+                {this.currentValue}
+              </output>
+              <span class={'plmg-thumb-triangle'} />
+              {/* </label> */}
+            </div>
           </div>
 
-          <div
-            ref={(el) => (this.ref = el as HTMLDivElement)}
-            class={'plmg-slider-track-rail-container'}
-          >
+          <div class={'plmg-slider-track-rail-container'}>
+            {/* <label htmlfor={this.name}> */}
             <input
               id={this.inputId}
               role="slider"
@@ -211,7 +246,7 @@ export class Slider {
               aria-valuenow={this.currentValue}
               onInput={(ev) => this.handleSliderChange(ev)}
             />
-            <label htmlfor={this.name} tabIndex={0}></label>
+            {/* </label> */}
           </div>
 
           {this.marks && (
@@ -220,7 +255,7 @@ export class Slider {
                 <span
                   key={index}
                   style={{
-                    left: `${this.setTickLabelPosition(item)}px`,
+                    left: `${this.calculateRelativePosition(item)}%`,
                   }}
                 ></span>
               ))}
@@ -235,7 +270,7 @@ export class Slider {
                     class={'plmg-slider-mark-label-item'}
                     key={index}
                     style={{
-                      left: `${this.setTickMarkPosition(item)}px`,
+                      left: `${this.calculateRelativePosition(item)}%`,
                     }}
                   >
                     {item}
@@ -244,22 +279,34 @@ export class Slider {
               </div>
             )}
           </div>
+
+          <div class={'plmg-slider-input-field-container'}>
+            <label htmlfor={this.name} />
+            <input
+              type={'number'}
+              name={this.name}
+              step={this.stepValue}
+              aria-valuemin={this.minValue}
+              aria-valuemax={this.maxValue}
+              aria-valuenow={this.currentValue}
+              min={this.minValue}
+              max={this.maxValue}
+              value={this.inputFieldValue}
+              onInput={(Event) => this.handleInputFieldChange(Event)}
+            />
+          </div>
         </div>
       </Host>
     );
   }
 
   private calculateRelativePosition(value: number) {
-    // Does not account for floating point numbers
-
-    // console.log(
-    //   'value - this.minValue',
-    //   value - this.minValue,
-    //   'this.maxValue - this.minValue',
-    //   this.maxValue - this.minValue
-    // );
-    // console.log(this.getTrackWidth());
-    //
+    console.log(
+      'value - this.minValue',
+      value - this.minValue,
+      'this.maxValue - this.minValue',
+      this.maxValue - this.minValue
+    );
     return (
       (Number(value - this.minValue) / (this.maxValue - this.minValue)) * 100
     );
@@ -274,37 +321,30 @@ export class Slider {
     return value.toString().length;
   }
 
-  private setTickLabelPosition(item: number): number {
-    // this needs to change
-    const FONT_SIZE = 6;
-    const RELATIVE_POSITION_PERCENT = this.calculateRelativePosition(item);
-    const TEXT_WIDTH = this.calculateTextWidth(item) * FONT_SIZE;
-    const TRACK_WIDTH = this.getTrackWidth();
-    // const CALCULATE_TICK_POSITION = this.calculateRelativePosition(item);
+  private updateThumbLabelPosition(): string {
+    const THUMB_POSITION = this.calculateRelativePosition(this.currentValue);
+    // calculate the width of thumb and remove it from its position
 
-    // move from % to proporition of the track width
-    // console.log(
-    //   'relative position',
-    //   RELATIVE_POSITION_PERCENT,
-    //   'text-width',
-    //   TEXT_WIDTH,
-    //   'track-width',
-    //   TRACK_WIDTH
-    // );
-    return (RELATIVE_POSITION_PERCENT / 100) * TRACK_WIDTH - TEXT_WIDTH / 2;
+    return `calc(${THUMB_POSITION}% + (${8 - THUMB_POSITION * 0.15}px))`;
   }
 
-  private setTickMarkPosition(item: number): number {
-    const TICK_MARK_WIDTH = 2;
-    const RELATIVE_POSITION_PERCENT = this.calculateRelativePosition(item);
-    const TRACK_WIDTH = this.getTrackWidth();
-    // const CALCULATE_TICK_POSITION = this.calculateRelativePosition(item);
+  // get width of container in pixels
 
-    // move from % to proporition of the track width
+  private calculateThumbWidth(value: number) {
+    // get length of string
+    const STRING_WIDTH = value.toString().length;
+    // add padding - 4px on each side
+    const PADDING_LEFT_RIGHT = 8;
+    const THUMB_LABEL_WIDTH = STRING_WIDTH + PADDING_LEFT_RIGHT;
+    // return width of the box
+    // remove 50% of this number
+  }
 
-    return (
-      (RELATIVE_POSITION_PERCENT / 100) * TRACK_WIDTH - TICK_MARK_WIDTH / 2
-    );
+  private setTickPositions(item: number): string {
+    const CALCULATE_TICK_POSITION = this.calculateRelativePosition(item);
+    return `calc(${CALCULATE_TICK_POSITION}% + (${
+      3 - CALCULATE_TICK_POSITION * 0.15
+    }px))`;
   }
 
   private setBackgroundProgressFill(): string {
@@ -314,15 +354,5 @@ export class Slider {
       ${plmgColorBackgroundPrimaryStrong} ${FILL_PERCENT}%,
       ${plmgColorBorderNeutralWeak} ${FILL_PERCENT}%, 
       ${plmgColorBorderNeutralWeak} 100%)`;
-  }
-
-  /**
-   * Grab the width of the track rail container.
-   * If the element is not available yet, return a default value.
-   * @private
-   */
-  private getTrackWidth() {
-    if (this.ref) return this.ref.getBoundingClientRect().width;
-    return 100;
   }
 }

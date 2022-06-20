@@ -18,33 +18,36 @@
   }
 }
 
-// Cross Browser Compatability
-// // -------------------------------------------------
-
 // // ------------- END Mixins ------------------------
 
 // Component style
 // -------------------------------------------------
 
 .plmg-slider-component-container {
-  font-family: tokens.$plmg-font-family-sans;
-  // font-family: tokens.$plmg-font-family-code;
-  font-variant-numeric: tabular-nums;
+  // font-family: tokens.$plmg-font-family-sans;
+  font-family: tokens.$plmg-font-family-code;
   font-weight: tokens.$plmg-font-weight-regular;
   font-size: tokens.$plmg-font-size-x0-75;
   line-height: tokens.$plmg-font-lineheight-loose;
   color: tokens.$plmg-color-text-neutral;
-  display: flex;
-  flex-direction: column;
+  display: grid;
   width: 100%;
+  grid-template-columns: 1fr auto;
+  column-gap: 24px;
+  grid-template-rows: auto;
+  grid-template-areas:
+    'thumblabel inputfield'
+    'trackrail inputfield'
+    'marks inputfield'
+    'marklabels inputfield';
 }
 
 .plmg-slider-track-rail-container {
+  grid-area: trackrail;
   position: relative;
   height: 4px;
 
-  input[type='range' i] {
-    font-size: tokens.$plmg-font-size-x0-75;
+  input[type='range'] {
     width: 100%;
     display: block;
     background: tokens.$plmg-color-background-primary-strong;
@@ -62,7 +65,6 @@
     &::-webkit-slider-runnable-track {
       width: 100%;
       height: 4px;
-      box-sizing: border-box;
     }
 
     &::-webkit-slider-thumb {
@@ -88,6 +90,7 @@
   // on hover state the triangle will be overlap the thumb ring but visible due to opacity
   // use fixed height to provide empty track when thumb hidden
   height: 40px;
+  grid-area: thumblabel;
   position: relative;
 
   .plmg-slider-thumb-label-container {
@@ -124,11 +127,13 @@
 .plmg-slider-mark-container {
   // each mark is 4px high. 0px between rail and each mark.
   // gap between the marks and the mark labels is 8px
+  grid-area: marks;
   position: relative;
   height: 10px;
   z-index: -1;
 
   span {
+    // margin-left: 4px;
     position: absolute;
     background: tokens.$plmg-color-background-neutral-strong;
     width: 2px;
@@ -137,8 +142,10 @@
 }
 
 .plmg-slider-mark-labels-container {
+  grid-area: marklabels;
   width: 100%;
   height: 18px;
+  // background-color: darkblue;
   color: tokens.$plmg-color-text-neutral;
   position: relative;
   display: block;
@@ -150,6 +157,29 @@
 
   span {
     position: absolute;
+  }
+}
+
+.plmg-slider-input-field-container {
+  grid-area: inputfield;
+  display: flex;
+  align-self: flex-end;
+
+  input {
+    // Missing token
+    font-size: 18px;
+    min-height: 51px;
+    min-width: 86px;
+    width: fit-content;
+    box-sizing: border-box;
+    border: tokens.$plmg-border-width-s solid
+      tokens.$plmg-color-border-neutral-weak;
+    padding: 12px 16px;
+    background-color: tokens.$plmg-color-background-neutral;
+    color: #263238;
+    outline: none;
+    box-shadow: tokens.$plmg-shadow-inner-s;
+    border-radius: 4px;
   }
 }
 
