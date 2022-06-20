@@ -167,16 +167,30 @@ export class Slider {
   @Event() valueUpdated: EventEmitter;
 
   render() {
-    // const thumbLabelContainerClasses = {
-    //   'plmg-slider-thumb-label-container': true,
-    //   hidden: !this.thumbLabel,
-    // };
+    const thumbLabelContainerClasses = {
+      'plmg-slider-thumb-label-container': true,
+      hidden: !this.thumbLabel,
+    };
 
     return (
       <Host value={this.currentValue}>
         <div class={'plmg-slider-component-container'}>
-          <div class={'plmg-slider-thumb-label-track'}></div>
-          {renderThumb(this.currentValue)}
+          <div class={'plmg-slider-thumb-label-track'}>
+            <label htmlfor={this.name}>
+              <div
+                class={thumbLabelContainerClasses}
+                style={{
+                  left: `${this.calculateRelativePosition(this.currentValue)}`,
+                }}
+              >
+                <div class={'plmg-slider-thumb-label'}>
+                  <span>{this.currentValue}</span>
+                </div>
+                <span class={'plmg-thumb-triangle'} />
+              </div>
+            </label>
+          </div>
+
           <div
             ref={(el) => (this.ref = el as HTMLDivElement)}
             class={'plmg-slider-track-rail-container'}
@@ -312,12 +326,3 @@ export class Slider {
     return 100;
   }
 }
-
-const renderThumb = (value) => {
-  return (
-    <div class={'plmg-slider-thumb-label-container'}>
-      <div class={'plmg-slider-thumb-label'}>{value}</div>
-      <span class={'plmg-thumb-triangle'} />
-    </div>
-  );
-};
