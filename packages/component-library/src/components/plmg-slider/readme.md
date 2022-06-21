@@ -25,6 +25,21 @@
 | `valueUpdated` |             | `CustomEvent<any>` |
 
 
+## Dependencies
+
+### Depends on
+
+- [plmg-slider-thumb](../plmg-slider-thumb)
+- [plmg-slider-marks](../plmg-slider-marks)
+
+### Graph
+```mermaid
+graph TD;
+  plmg-slider --> plmg-slider-thumb
+  plmg-slider --> plmg-slider-marks
+  style plmg-slider fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
