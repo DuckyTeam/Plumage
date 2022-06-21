@@ -16,4 +16,6 @@ export const PlmgSeparator = /*@__PURE__*/createReactComponent<JSX.PlmgSeparator
 export const PlmgSidebar = /*@__PURE__*/createReactComponent<JSX.PlmgSidebar, HTMLPlmgSidebarElement>('plmg-sidebar');
 export const PlmgSidebarItem = /*@__PURE__*/createReactComponent<JSX.PlmgSidebarItem, HTMLPlmgSidebarItemElement>('plmg-sidebar-item');
 export const PlmgSlider = /*@__PURE__*/createReactComponent<JSX.PlmgSlider, HTMLPlmgSliderElement>('plmg-slider');
+export const PlmgSliderMarks = /*@__PURE__*/createReactComponent<JSX.PlmgSliderMarks, HTMLPlmgSliderMarksElement>('plmg-slider-marks');
+export const PlmgSliderThumb = /*@__PURE__*/createReactComponent<JSX.PlmgSliderThumb, HTMLPlmgSliderThumbElement>('plmg-slider-thumb');
 export const PlmgSvgIcon = /*@__PURE__*/createReactComponent<JSX.PlmgSvgIcon, HTMLPlmgSvgIconElement>('plmg-svg-icon');
