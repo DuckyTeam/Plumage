@@ -16,7 +16,7 @@ import {
 @Component({
   tag: 'plmg-slider',
   styleUrl: 'plmg-slider.scss',
-  shadow: false,
+  shadow: true,
 })
 export class Slider {
   private ref: HTMLDivElement;
@@ -214,24 +214,18 @@ export class Slider {
     return (
       <Host value={this.currentValue}>
         <div class={'plmg-slider-component-container'}>
-          <div class={'plmg-slider-thumb-container'}>
-            {/* Dummy thumb to get actual size
-             */}
-            <div class={'plmg-slider-thumb-label-track'}>
-              {this.thumbLabel && (
-                <label htmlfor={this.name}>
-                  <div
-                    id={'fake-thumb'}
-                    class={'plmg-slider-thumb-label-container'}
-                  >
-                    <output class={'plmg-slider-thumb-label'} name={this.name}>
-                      {this.currentValue}
-                    </output>
-                    <span class={'plmg-thumb-triangle'} />
-                  </div>
-                </label>
-              )}
+          {this.thumbLabel && (
+            <div class={'plmg-slider-dummy-thumb-label-track'}>
+              <div
+                id={'fake-thumb'}
+                class={'plmg-slider-dummy-thumb-label-container'}
+              >
+                <div class={'plmg-slider-dummy-thumb'}>{this.currentValue}</div>
+              </div>
             </div>
+          )}
+
+          <div class={'plmg-slider-thumb-container'}>
             {this.trackWidth && (
               <plmg-slider-thumb
                 calculatedThumbWidth={this.calculateThumb()}
@@ -298,6 +292,22 @@ export class Slider {
               onInput={(Event) => this.handleInputFieldChange(Event)}
             />
           </div>
+
+          <div class={'plmg-slider-input-field-container'}>
+            <label htmlfor={this.name} />
+            <input
+              type={'number'}
+              name={this.name}
+              step={this.stepValue}
+              aria-valuemin={this.minValue}
+              aria-valuemax={this.maxValue}
+              aria-valuenow={this.currentValue}
+              min={this.minValue}
+              max={this.maxValue}
+              value={this.inputFieldValue}
+              onInput={(Event) => this.handleInputFieldChange(Event)}
+            />
+          </div>
         </div>
       </Host>
     );
@@ -312,16 +322,12 @@ export class Slider {
   }
 
   private calculateRelativePosition(value: number) {
-    // Does not account for floating point numbers
-
-    // console.log(
-    //   'value - this.minValue',
-    //   value - this.minValue,
-    //   'this.maxValue - this.minValue',
-    //   this.maxValue - this.minValue
-    // );
-    // console.log(this.getTrackWidth());
-    //
+    console.log(
+      'value - this.minValue',
+      value - this.minValue,
+      'this.maxValue - this.minValue',
+      this.maxValue - this.minValue
+    );
     return (
       (Number(value - this.minValue) / (this.maxValue - this.minValue)) * 100
     );

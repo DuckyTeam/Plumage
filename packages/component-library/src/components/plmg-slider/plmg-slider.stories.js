@@ -63,7 +63,7 @@ Primary.args = {
   ['thumb-label']: false,
   marks: true,
   ['range-values']: [0, 100],
-  ['input-id']: 'slider-id',
+  ['input-id']: '',
 };
 
 export const Marks = Template.bind({});

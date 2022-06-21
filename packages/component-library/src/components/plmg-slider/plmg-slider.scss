@@ -24,7 +24,8 @@
 // -------------------------------------------------
 
 .plmg-slider-component-container {
-  font-family: tokens.$plmg-font-family-sans;
+  // font-family: tokens.$plmg-font-family-sans;
+  font-family: tokens.$plmg-font-family-code;
   font-weight: tokens.$plmg-font-weight-regular;
   font-size: tokens.$plmg-font-size-x0-75;
   line-height: tokens.$plmg-font-lineheight-loose;
@@ -39,11 +40,6 @@
     'trackrail inputfield'
     'marks inputfield'
     'marklabels inputfield';
-}
-
-.plmg-slider-thumb-container {
-  height: 40px;
-  grid-area: thumblabel;
 }
 
 .plmg-slider-track-rail-container {
@@ -86,10 +82,15 @@
   }
 }
 
-.plmg-slider-marks-container {
-  // each mark is 4px high. 0px between rail and each mark.
-  // gap between the marks and the mark labels is 8px
-  grid-area: marks;
+.plmg-slider-thumb-label-track {
+  // provides the space for the thumb label to run along
+  // the gap between the bottom of the label is 10px
+  // the thumb triangle is 6px high
+  // therefore the gap between the bottom of the triangle and the thumb is 4px
+  // on hover state the triangle will be overlap the thumb ring but visible due to opacity
+  // use fixed height to provide empty track when thumb hidden
+  height: 40px;
+  grid-area: thumblabel;
   position: relative;
   height: 10px;
 }
@@ -116,38 +117,90 @@
     border-radius: 4px;
   }
 }
-
-// Thumb Styles - Required to for spoof
-
-.plmg-slider-thumb-label-track {
-  font-family: tokens.$plmg-font-family-sans;
-  font-weight: tokens.$plmg-font-weight-regular;
-  font-size: tokens.$plmg-font-size-x0-75;
-  line-height: tokens.$plmg-font-lineheight-loose;
-  color: tokens.$plmg-color-text-neutral;
+.plmg-slider-fake-thumb-inner-container {
   display: relative;
   width: 100%;
+}
 
-  .plmg-slider-thumb-label-container {
+.plmg-slider-thumb-label-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  visibility: hidden;
+}
+
+.plmg-slider-thumb-label {
+  background-color: tokens.$plmg-color-background-primary-strong;
+  color: tokens.$plmg-color-text-neutral-inverted;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.plmg-thumb-triangle {
+  align-self: center;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid tokens.$plmg-color-background-primary-strong;
+}
+
+.plmg-slider-mark-container {
+  // each mark is 4px high. 0px between rail and each mark.
+  // gap between the marks and the mark labels is 8px
+  grid-area: marks;
+  position: relative;
+  height: 10px;
+  z-index: -1;
+
+  span {
+    // margin-left: 4px;
     position: absolute;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    visibility: hidden;
-  }
-
-  .plmg-slider-thumb-label {
-    background-color: tokens.$plmg-color-background-primary-strong;
-    color: tokens.$plmg-color-text-neutral-inverted;
-    padding: 4px 8px;
-    border-radius: 4px;
-  }
-
-  .plmg-thumb-triangle {
-    align-self: center;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-top: 6px solid tokens.$plmg-color-background-primary-strong;
+    background: tokens.$plmg-color-background-neutral-strong;
+    width: 2px;
+    height: 4px;
   }
 }
+
+.plmg-slider-mark-labels-container {
+  grid-area: marklabels;
+  width: 100%;
+  height: 18px;
+  // background-color: darkblue;
+  color: tokens.$plmg-color-text-neutral;
+  position: relative;
+  display: block;
+
+  div {
+    display: block;
+    position: relative;
+  }
+
+  span {
+    position: absolute;
+  }
+}
+
+.plmg-slider-input-field-container {
+  grid-area: inputfield;
+  display: flex;
+  align-self: flex-end;
+
+  input {
+    // Missing token
+    font-size: 18px;
+    min-height: 51px;
+    min-width: 86px;
+    width: fit-content;
+    box-sizing: border-box;
+    border: tokens.$plmg-border-width-s solid
+      tokens.$plmg-color-border-neutral-weak;
+    padding: 12px 16px;
+    background-color: tokens.$plmg-color-background-neutral;
+    color: #263238;
+    outline: none;
+    box-shadow: tokens.$plmg-shadow-inner-s;
+    border-radius: 4px;
+  }
+}
+
 // ------------- END Component style ---------------
