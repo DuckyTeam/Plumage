@@ -1,0 +1,42 @@
+@use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
+
+// Component style
+// -------------------------------------------------
+
+.plmg-slider-thumb-label-track {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.plmg-slider-thumb-label-container {
+  font-family: tokens.$plmg-font-family-sans;
+  font-weight: tokens.$plmg-font-weight-regular;
+  font-size: tokens.$plmg-font-size-x0-75;
+  line-height: tokens.$plmg-font-lineheight-loose;
+  color: tokens.$plmg-color-text-neutral;
+
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  &.hidden {
+    visibility: hidden;
+  }
+}
+
+.plmg-slider-thumb-label {
+  background-color: tokens.$plmg-color-background-primary-strong;
+  color: tokens.$plmg-color-text-neutral-inverted;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.plmg-thumb-triangle {
+  align-self: center;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid tokens.$plmg-color-background-primary-strong;
+}
+
+// ------------- END Component style ---------------
