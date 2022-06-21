@@ -191,6 +191,24 @@ export namespace Components {
          */
         "thumbLabel": boolean;
     }
+    interface PlmgSliderMarks {
+        "marks": boolean;
+        "max": number;
+        "min": number;
+        "name": string;
+        "range": Array<number>;
+        "value": number;
+        "width": number;
+    }
+    interface PlmgSliderThumb {
+        "calculatedThumbWidth": number;
+        "max": number;
+        "min": number;
+        "name": string;
+        "thumbLabel": boolean;
+        "value": number;
+        "width": number;
+    }
     interface PlmgSvgIcon {
         /**
           * Define icon's color.  Can be any valid CSS color value.  By default, the icon will have the same color as the parent's element.
@@ -205,6 +223,22 @@ export namespace Components {
          */
         "size": string;
     }
+}
+export interface PlmgCardCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPlmgCardElement;
+}
+export interface PlmgHeaderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPlmgHeaderElement;
+}
+export interface PlmgSidebarCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPlmgSidebarElement;
+}
+export interface PlmgSliderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPlmgSliderElement;
 }
 declare global {
     interface HTMLPlmgButtonElement extends Components.PlmgButton, HTMLStencilElement {
@@ -255,6 +289,18 @@ declare global {
         prototype: HTMLPlmgSliderElement;
         new (): HTMLPlmgSliderElement;
     };
+    interface HTMLPlmgSliderMarksElement extends Components.PlmgSliderMarks, HTMLStencilElement {
+    }
+    var HTMLPlmgSliderMarksElement: {
+        prototype: HTMLPlmgSliderMarksElement;
+        new (): HTMLPlmgSliderMarksElement;
+    };
+    interface HTMLPlmgSliderThumbElement extends Components.PlmgSliderThumb, HTMLStencilElement {
+    }
+    var HTMLPlmgSliderThumbElement: {
+        prototype: HTMLPlmgSliderThumbElement;
+        new (): HTMLPlmgSliderThumbElement;
+    };
     interface HTMLPlmgSvgIconElement extends Components.PlmgSvgIcon, HTMLStencilElement {
     }
     var HTMLPlmgSvgIconElement: {
@@ -270,6 +316,8 @@ declare global {
         "plmg-sidebar": HTMLPlmgSidebarElement;
         "plmg-sidebar-item": HTMLPlmgSidebarItemElement;
         "plmg-slider": HTMLPlmgSliderElement;
+        "plmg-slider-marks": HTMLPlmgSliderMarksElement;
+        "plmg-slider-thumb": HTMLPlmgSliderThumbElement;
         "plmg-svg-icon": HTMLPlmgSvgIconElement;
     }
 }
@@ -340,11 +388,11 @@ declare namespace LocalJSX {
         /**
           * The event "bottomActionClicked" is triggered when the bottom action button is clicked.
          */
-        "onBottomActionClicked"?: (event: CustomEvent<MouseEvent>) => void;
+        "onBottomActionClicked"?: (event: PlmgCardCustomEvent<MouseEvent>) => void;
         /**
           * The event "topActionClicked" is triggered when the top action button is clicked.
          */
-        "onTopActionClicked"?: (event: CustomEvent<MouseEvent>) => void;
+        "onTopActionClicked"?: (event: PlmgCardCustomEvent<MouseEvent>) => void;
         /**
           * Define card's header icon, used as a top action for the card.  If a headerText or an topActionIcon is provided, the heading will be displayed with the icon button on the right. By default, when no headerText nor topActionIcon is provided, the heading is hidden.
          */
@@ -358,7 +406,7 @@ declare namespace LocalJSX {
         /**
           * Event dispatched when the button to expand the sidebar is clicked.
          */
-        "onExpandSidebar"?: (event: CustomEvent<any>) => void;
+        "onExpandSidebar"?: (event: PlmgHeaderCustomEvent<any>) => void;
         /**
           * Define if the sidebar is expanded on startup.
          */
@@ -400,7 +448,7 @@ declare namespace LocalJSX {
         /**
           * Event dispatched when the button to collapse the sidebar is clicked.
          */
-        "onCollapseSidebar"?: (event: CustomEvent<any>) => void;
+        "onCollapseSidebar"?: (event: PlmgSidebarCustomEvent<any>) => void;
     }
     interface PlmgSidebarItem {
         /**
@@ -449,7 +497,7 @@ declare namespace LocalJSX {
           * Define a name for the slider  Any string
          */
         "name"?: string;
-        "onValueUpdated"?: (event: CustomEvent<any>) => void;
+        "onValueUpdated"?: (event: PlmgSliderCustomEvent<any>) => void;
         /**
           * Define the range of values  Must be a list of values with at least two items  First and last items set min and max values  Additional values set mark additional labels  Required
          */
@@ -462,6 +510,24 @@ declare namespace LocalJSX {
           * Define thumb label visibility  Allowed values  - true  - false  Default: true
          */
         "thumbLabel"?: boolean;
+    }
+    interface PlmgSliderMarks {
+        "marks"?: boolean;
+        "max"?: number;
+        "min"?: number;
+        "name"?: string;
+        "range"?: Array<number>;
+        "value"?: number;
+        "width"?: number;
+    }
+    interface PlmgSliderThumb {
+        "calculatedThumbWidth"?: number;
+        "max"?: number;
+        "min"?: number;
+        "name"?: string;
+        "thumbLabel"?: boolean;
+        "value"?: number;
+        "width"?: number;
     }
     interface PlmgSvgIcon {
         /**
@@ -486,6 +552,8 @@ declare namespace LocalJSX {
         "plmg-sidebar": PlmgSidebar;
         "plmg-sidebar-item": PlmgSidebarItem;
         "plmg-slider": PlmgSlider;
+        "plmg-slider-marks": PlmgSliderMarks;
+        "plmg-slider-thumb": PlmgSliderThumb;
         "plmg-svg-icon": PlmgSvgIcon;
     }
 }
@@ -501,6 +569,8 @@ declare module "@stencil/core" {
             "plmg-sidebar": LocalJSX.PlmgSidebar & JSXBase.HTMLAttributes<HTMLPlmgSidebarElement>;
             "plmg-sidebar-item": LocalJSX.PlmgSidebarItem & JSXBase.HTMLAttributes<HTMLPlmgSidebarItemElement>;
             "plmg-slider": LocalJSX.PlmgSlider & JSXBase.HTMLAttributes<HTMLPlmgSliderElement>;
+            "plmg-slider-marks": LocalJSX.PlmgSliderMarks & JSXBase.HTMLAttributes<HTMLPlmgSliderMarksElement>;
+            "plmg-slider-thumb": LocalJSX.PlmgSliderThumb & JSXBase.HTMLAttributes<HTMLPlmgSliderThumbElement>;
             "plmg-svg-icon": LocalJSX.PlmgSvgIcon & JSXBase.HTMLAttributes<HTMLPlmgSvgIconElement>;
         }
     }
