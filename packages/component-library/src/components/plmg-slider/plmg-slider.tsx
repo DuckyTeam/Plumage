@@ -128,9 +128,12 @@ export class Slider {
    * Store currentValue, min, max and step states
    */
   @State() currentValue: number;
+  @State() inputFieldValue: number;
   @State() minValue: number;
   @State() maxValue: number;
   @State() stepValue: number;
+  @State() allowedInputs: Array<number>;
+  @State() trackWidth: number;
 
   private setValues() {
     if (!this.rangeValues) return;
@@ -151,102 +154,161 @@ export class Slider {
     }
   }
 
+  private getAllowedInputs() {
+    let inputs = [];
+    inputs.push(this.minValue);
+    while (inputs[inputs.length - 1] <= this.maxValue) {
+      const PREV = inputs[inputs.length - 1];
+      // Correct for floating point errors by rounding when necessary
+      const NEXT =
+        Math.round((PREV + this.stepValue + Number.EPSILON) * 1000000) /
+        1000000;
+      // Escape valve in case of over rounding
+      if (!(NEXT > PREV)) return;
+      inputs.push(NEXT);
+    }
+    return inputs;
+  }
+
   connectedCallback() {
     this.setValues();
+  }
+
+  componentDidLoad() {
+    this.trackWidth = this.ref.getBoundingClientRect().width;
+    console.log(this.trackWidth);
   }
 
   private handleSliderChange(ev) {
     this.updateValue(ev.target.value);
   }
 
+  private handleInputFieldChange(ev) {
+    // Ignore Empty Strings
+    if (ev.target.value == '') return;
+    // Get an array of allowed inputs
+    const SET_ALLOWED_INPUTS = this.getAllowedInputs();
+    // Check input is allowed value, within range and one of the allowed inputs
+    const newValue = parseFloat(ev.target.value);
+    if (
+      isNaN(newValue) ||
+      newValue > this.maxValue ||
+      newValue < this.minValue ||
+      !SET_ALLOWED_INPUTS.includes(newValue)
+    )
+      return;
+    this.updateValue(newValue);
+  }
+
   private updateValue(newValue) {
     this.currentValue = newValue;
+    if (this.inputFieldValue !== this.currentValue) {
+      this.inputFieldValue = this.currentValue;
+    }
     this.valueUpdated.emit({ value: this.currentValue });
   }
 
   @Event() valueUpdated: EventEmitter;
 
   render() {
-    const thumbLabelContainerClasses = {
-      'plmg-slider-thumb-label-container': true,
-      hidden: !this.thumbLabel,
-    };
-
     return (
       <Host value={this.currentValue}>
         <div class={'plmg-slider-component-container'}>
-          <div class={'plmg-slider-thumb-label-track'}>
-            <label htmlfor={this.name}>
-              <div
-                class={thumbLabelContainerClasses}
-                style={{
-                  left: `${this.calculateRelativePosition(this.currentValue)}`,
-                }}
-              >
-                <div class={'plmg-slider-thumb-label'}>
-                  <span>{this.currentValue}</span>
-                </div>
-                <span class={'plmg-thumb-triangle'} />
-              </div>
-            </label>
+          <div class={'plmg-slider-thumb-container'}>
+            {/* Dummy thumb to get actual size
+             */}
+            <div class={'plmg-slider-thumb-label-track'}>
+              {this.thumbLabel && (
+                <label htmlfor={this.name}>
+                  <div
+                    id={'fake-thumb'}
+                    class={'plmg-slider-thumb-label-container'}
+                  >
+                    <output class={'plmg-slider-thumb-label'} name={this.name}>
+                      {this.currentValue}
+                    </output>
+                    <span class={'plmg-thumb-triangle'} />
+                  </div>
+                </label>
+              )}
+            </div>
+            {this.trackWidth && (
+              <plmg-slider-thumb
+                calculatedThumbWidth={this.calculateThumb()}
+                thumbLabel={this.thumbLabel}
+                value={this.currentValue}
+                name={this.name}
+                width={this.trackWidth}
+                min={this.minValue}
+                max={this.maxValue}
+              />
+            )}
           </div>
 
           <div
             ref={(el) => (this.ref = el as HTMLDivElement)}
             class={'plmg-slider-track-rail-container'}
           >
+            <label htmlfor={this.name} tabIndex={0}>
+              <input
+                id={this.inputId}
+                role="slider"
+                style={{ background: this.setBackgroundProgressFill() }}
+                class={'plmg-slider-input'}
+                step={this.stepValue}
+                type={'range'}
+                name={this.name}
+                min={this.minValue}
+                max={this.maxValue}
+                value={this.currentValue}
+                aria-valuemin={this.minValue}
+                aria-valuemax={this.maxValue}
+                aria-valuenow={this.currentValue}
+                onInput={(ev) => this.handleSliderChange(ev)}
+              />
+            </label>
+          </div>
+
+          <div class={'plmg-slider-marks-container'}>
+            {this.marks && (
+              <plmg-slider-marks
+                range={this.rangeValues}
+                marks={this.marks}
+                value={this.currentValue}
+                name={this.name}
+                width={this.trackWidth}
+                min={this.minValue}
+                max={this.maxValue}
+              />
+            )}
+          </div>
+
+          <div class={'plmg-slider-input-field-container'}>
+            <label htmlfor={this.name} />
             <input
-              id={this.inputId}
-              role="slider"
-              style={{ background: this.setBackgroundProgressFill() }}
-              class={'plmg-slider-input'}
-              step={this.stepValue}
-              type={'range'}
+              type={'number'}
               name={this.name}
-              min={this.minValue}
-              max={this.maxValue}
-              value={this.currentValue}
+              step={this.stepValue}
               aria-valuemin={this.minValue}
               aria-valuemax={this.maxValue}
               aria-valuenow={this.currentValue}
-              onInput={(ev) => this.handleSliderChange(ev)}
+              min={this.minValue}
+              max={this.maxValue}
+              value={this.inputFieldValue}
+              onInput={(Event) => this.handleInputFieldChange(Event)}
             />
-            <label htmlfor={this.name} tabIndex={0}></label>
-          </div>
-
-          {this.marks && (
-            <div class={'plmg-slider-mark-container'}>
-              {this.rangeValues.map((item, index) => (
-                <span
-                  key={index}
-                  style={{
-                    left: `${this.setTickLabelPosition(item)}px`,
-                  }}
-                ></span>
-              ))}
-            </div>
-          )}
-
-          <div class={'plmg-slider-mark-labels-container'}>
-            {this.marks && (
-              <div>
-                {this.rangeValues.map((item, index) => (
-                  <span
-                    class={'plmg-slider-mark-label-item'}
-                    key={index}
-                    style={{
-                      left: `${this.setTickMarkPosition(item)}px`,
-                    }}
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
-            )}
           </div>
         </div>
       </Host>
     );
+  }
+
+  private calculateThumb() {
+    const elmnt = document.getElementById('fake-thumb');
+    console.log(elmnt);
+    if (elmnt) {
+      return elmnt.offsetWidth;
+    }
   }
 
   private calculateRelativePosition(value: number) {
@@ -265,48 +327,6 @@ export class Slider {
     );
   }
 
-  // calculate label offest
-  // that is going to be the width of the label - number of characters plus padding
-  // using a monospaced font, each character is 6px except decimals which are 3px
-  // let work out the offest without decimals to start with
-
-  private calculateTextWidth(value: number) {
-    return value.toString().length;
-  }
-
-  private setTickLabelPosition(item: number): number {
-    // this needs to change
-    const FONT_SIZE = 6;
-    const RELATIVE_POSITION_PERCENT = this.calculateRelativePosition(item);
-    const TEXT_WIDTH = this.calculateTextWidth(item) * FONT_SIZE;
-    const TRACK_WIDTH = this.getTrackWidth();
-    // const CALCULATE_TICK_POSITION = this.calculateRelativePosition(item);
-
-    // move from % to proporition of the track width
-    // console.log(
-    //   'relative position',
-    //   RELATIVE_POSITION_PERCENT,
-    //   'text-width',
-    //   TEXT_WIDTH,
-    //   'track-width',
-    //   TRACK_WIDTH
-    // );
-    return (RELATIVE_POSITION_PERCENT / 100) * TRACK_WIDTH - TEXT_WIDTH / 2;
-  }
-
-  private setTickMarkPosition(item: number): number {
-    const TICK_MARK_WIDTH = 2;
-    const RELATIVE_POSITION_PERCENT = this.calculateRelativePosition(item);
-    const TRACK_WIDTH = this.getTrackWidth();
-    // const CALCULATE_TICK_POSITION = this.calculateRelativePosition(item);
-
-    // move from % to proporition of the track width
-
-    return (
-      (RELATIVE_POSITION_PERCENT / 100) * TRACK_WIDTH - TICK_MARK_WIDTH / 2
-    );
-  }
-
   private setBackgroundProgressFill(): string {
     const FILL_PERCENT = this.calculateRelativePosition(this.currentValue);
     return `linear-gradient(to right,
@@ -314,15 +334,5 @@ export class Slider {
       ${plmgColorBackgroundPrimaryStrong} ${FILL_PERCENT}%,
       ${plmgColorBorderNeutralWeak} ${FILL_PERCENT}%, 
       ${plmgColorBorderNeutralWeak} 100%)`;
-  }
-
-  /**
-   * Grab the width of the track rail container.
-   * If the element is not available yet, return a default value.
-   * @private
-   */
-  private getTrackWidth() {
-    if (this.ref) return this.ref.getBoundingClientRect().width;
-    return 100;
   }
 }
