@@ -18,9 +18,6 @@
   }
 }
 
-// Cross Browser Compatability
-// // -------------------------------------------------
-
 // // ------------- END Mixins ------------------------
 
 // Component style
@@ -28,23 +25,33 @@
 
 .plmg-slider-component-container {
   font-family: tokens.$plmg-font-family-sans;
-  // font-family: tokens.$plmg-font-family-code;
-  font-variant-numeric: tabular-nums;
   font-weight: tokens.$plmg-font-weight-regular;
   font-size: tokens.$plmg-font-size-x0-75;
   line-height: tokens.$plmg-font-lineheight-loose;
   color: tokens.$plmg-color-text-neutral;
-  display: flex;
-  flex-direction: column;
+  display: grid;
   width: 100%;
+  grid-template-columns: 1fr auto;
+  column-gap: 24px;
+  grid-template-rows: auto;
+  grid-template-areas:
+    'thumblabel inputfield'
+    'trackrail inputfield'
+    'marks inputfield'
+    'marklabels inputfield';
+}
+
+.plmg-slider-thumb-container {
+  height: 40px;
+  grid-area: thumblabel;
 }
 
 .plmg-slider-track-rail-container {
+  grid-area: trackrail;
   position: relative;
   height: 4px;
 
-  input[type='range' i] {
-    font-size: tokens.$plmg-font-size-x0-75;
+  input[type='range'] {
     width: 100%;
     display: block;
     background: tokens.$plmg-color-background-primary-strong;
@@ -62,7 +69,6 @@
     &::-webkit-slider-runnable-track {
       width: 100%;
       height: 4px;
-      box-sizing: border-box;
     }
 
     &::-webkit-slider-thumb {
@@ -80,33 +86,57 @@
   }
 }
 
-.plmg-slider-thumb-label-track {
-  // provides the space for the thumb label to run along
-  // the gap between the bottom of the label is 10px
-  // the thumb triangle is 6px high
-  // therefore the gap between the bottom of the triangle and the thumb is 4px
-  // on hover state the triangle will be overlap the thumb ring but visible due to opacity
-  // use fixed height to provide empty track when thumb hidden
-  height: 40px;
+.plmg-slider-marks-container {
+  // each mark is 4px high. 0px between rail and each mark.
+  // gap between the marks and the mark labels is 8px
+  grid-area: marks;
   position: relative;
+  height: 10px;
+}
+
+.plmg-slider-input-field-container {
+  grid-area: inputfield;
+  display: flex;
+  align-self: flex-end;
+
+  input {
+    // Missing token
+    font-size: 18px;
+    min-height: 51px;
+    min-width: 86px;
+    width: fit-content;
+    box-sizing: border-box;
+    border: tokens.$plmg-border-width-s solid
+      tokens.$plmg-color-border-neutral-weak;
+    padding: 12px 16px;
+    background-color: tokens.$plmg-color-background-neutral;
+    color: #263238;
+    outline: none;
+    box-shadow: tokens.$plmg-shadow-inner-s;
+    border-radius: 4px;
+  }
+}
+
+// Thumb Styles - Required to for spoof
+
+.plmg-slider-thumb-label-track {
+  font-family: tokens.$plmg-font-family-sans;
+  font-weight: tokens.$plmg-font-weight-regular;
+  font-size: tokens.$plmg-font-size-x0-75;
+  line-height: tokens.$plmg-font-lineheight-loose;
+  color: tokens.$plmg-color-text-neutral;
+  display: relative;
+  width: 100%;
 
   .plmg-slider-thumb-label-container {
-    // provide a container for the thumb label and triangle
-    // flex centers the triangle on the thumb label
     position: absolute;
     display: flex;
     flex-direction: column;
-
-    &.hidden {
-      visibility: hidden;
-    }
+    text-align: center;
+    visibility: hidden;
   }
 
   .plmg-slider-thumb-label {
-    // the thumb height is always 26px including padding
-    // font size is 12px; line-height is 150% (18px). Letter spacing 0.01em;
-    // box height is 18px
-    // the gap between the bottom of the label is 10px
     background-color: tokens.$plmg-color-background-primary-strong;
     color: tokens.$plmg-color-text-neutral-inverted;
     padding: 4px 8px;
@@ -120,37 +150,4 @@
     border-top: 6px solid tokens.$plmg-color-background-primary-strong;
   }
 }
-
-.plmg-slider-mark-container {
-  // each mark is 4px high. 0px between rail and each mark.
-  // gap between the marks and the mark labels is 8px
-  position: relative;
-  height: 10px;
-  z-index: -1;
-
-  span {
-    position: absolute;
-    background: tokens.$plmg-color-background-neutral-strong;
-    width: 2px;
-    height: 4px;
-  }
-}
-
-.plmg-slider-mark-labels-container {
-  width: 100%;
-  height: 18px;
-  color: tokens.$plmg-color-text-neutral;
-  position: relative;
-  display: block;
-
-  div {
-    display: block;
-    position: relative;
-  }
-
-  span {
-    position: absolute;
-  }
-}
-
 // ------------- END Component style ---------------
