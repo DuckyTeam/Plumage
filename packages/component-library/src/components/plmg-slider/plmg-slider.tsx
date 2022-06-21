@@ -19,7 +19,6 @@ import {
   shadow: false,
 })
 export class Slider {
-  private ref: HTMLDivElement;
   /**
    * Define the range of values
    *
@@ -298,6 +297,22 @@ export class Slider {
               onInput={(Event) => this.handleInputFieldChange(Event)}
             />
           </div>
+
+          <div class={'plmg-slider-input-field-container'}>
+            <label htmlfor={this.name} />
+            <input
+              type={'number'}
+              name={this.name}
+              step={this.stepValue}
+              aria-valuemin={this.minValue}
+              aria-valuemax={this.maxValue}
+              aria-valuenow={this.currentValue}
+              min={this.minValue}
+              max={this.maxValue}
+              value={this.inputFieldValue}
+              onInput={(Event) => this.handleInputFieldChange(Event)}
+            />
+          </div>
         </div>
       </Host>
     );
@@ -312,16 +327,12 @@ export class Slider {
   }
 
   private calculateRelativePosition(value: number) {
-    // Does not account for floating point numbers
-
-    // console.log(
-    //   'value - this.minValue',
-    //   value - this.minValue,
-    //   'this.maxValue - this.minValue',
-    //   this.maxValue - this.minValue
-    // );
-    // console.log(this.getTrackWidth());
-    //
+    console.log(
+      'value - this.minValue',
+      value - this.minValue,
+      'this.maxValue - this.minValue',
+      this.maxValue - this.minValue
+    );
     return (
       (Number(value - this.minValue) / (this.maxValue - this.minValue)) * 100
     );
