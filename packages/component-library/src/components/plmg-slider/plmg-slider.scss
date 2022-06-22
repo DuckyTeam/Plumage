@@ -82,18 +82,48 @@
   }
 }
 
-.plmg-slider-thumb-label-track {
-  // provides the space for the thumb label to run along
-  // the gap between the bottom of the label is 10px
-  // the thumb triangle is 6px high
-  // therefore the gap between the bottom of the triangle and the thumb is 4px
-  // on hover state the triangle will be overlap the thumb ring but visible due to opacity
-  // use fixed height to provide empty track when thumb hidden
-  height: 40px;
+.plmg-slider-thumb-container {
   grid-area: thumblabel;
-  position: relative;
   height: 10px;
 }
+
+// dummy thumb
+
+.plmg-slider-dummy-thumb-label-track {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.plmg-slider-dummy-thumb-label-container {
+  font-family: tokens.$plmg-font-family-sans;
+  font-weight: tokens.$plmg-font-weight-regular;
+  font-size: tokens.$plmg-font-size-x0-75;
+  line-height: tokens.$plmg-font-lineheight-loose;
+  color: tokens.$plmg-color-text-neutral;
+
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  visibility: hidden;
+}
+
+.plmg-slider-dummy-thumb-label {
+  background-color: tokens.$plmg-color-background-primary-strong;
+  color: tokens.$plmg-color-text-neutral-inverted;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.plmg-slider-dummy-thumb-triangle {
+  align-self: center;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid tokens.$plmg-color-background-primary-strong;
+}
+
+// end dummy thumb
 
 .plmg-slider-input-field-container {
   grid-area: inputfield;
@@ -117,31 +147,9 @@
     border-radius: 4px;
   }
 }
-.plmg-slider-fake-thumb-inner-container {
+.plmg-slider-dummy-container {
   display: relative;
   width: 100%;
-}
-
-.plmg-slider-thumb-label-container {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  visibility: hidden;
-}
-
-.plmg-slider-thumb-label {
-  background-color: tokens.$plmg-color-background-primary-strong;
-  color: tokens.$plmg-color-text-neutral-inverted;
-  padding: 4px 8px;
-  border-radius: 4px;
-}
-
-.plmg-thumb-triangle {
-  align-self: center;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-top: 6px solid tokens.$plmg-color-background-primary-strong;
 }
 
 .plmg-slider-mark-container {
