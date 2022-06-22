@@ -3,7 +3,7 @@ import { Component, Watch, Prop, h } from '@stencil/core';
 @Component({
   tag: 'plmg-slider-thumb',
   styleUrl: 'plmg-slider-thumb.scss',
-  shadow: true,
+  scoped: true,
 })
 export class SliderThumb {
   @Prop() value: number;
@@ -62,7 +62,7 @@ export class SliderThumb {
         {this.thumbLabel && (
           // <label htmlfor={this.name}>
           <div
-            class={'plmg-slider-thumb-label-container'}
+            class={'plmg-slider-thumb-label-triangle-container'}
             style={this.setThumbPosition(this.value)}
           >
             <output class={'plmg-slider-thumb-label'} name={this.name}>
