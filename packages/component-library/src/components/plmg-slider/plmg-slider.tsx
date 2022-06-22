@@ -214,15 +214,13 @@ export class Slider {
     return (
       <Host value={this.currentValue}>
         <div class={'plmg-slider-component-container'}>
-          <div class={'plmg-slider-thumb-container'}>
-            {/* Dummy thumb to get actual size
-             */}
+          <div class={'plmg-thumb-track-rail-container'}>
             <div class={'plmg-slider-thumb-label-track'}>
               {this.thumbLabel && (
                 <label htmlfor={this.name}>
                   <div
                     id={'fake-thumb'}
-                    class={'plmg-slider-thumb-label-container'}
+                    class={'plmg-slider-thumb-label-triangle-container'}
                   >
                     <output class={'plmg-slider-thumb-label'} name={this.name}>
                       {this.currentValue}
@@ -231,58 +229,58 @@ export class Slider {
                   </div>
                 </label>
               )}
+
+              {this.trackWidth && (
+                <plmg-slider-thumb
+                  calculatedThumbWidth={this.calculateThumb()}
+                  thumbLabel={this.thumbLabel}
+                  value={this.currentValue}
+                  name={this.name}
+                  width={this.trackWidth}
+                  min={this.minValue}
+                  max={this.maxValue}
+                />
+              )}
             </div>
-            {this.trackWidth && (
-              <plmg-slider-thumb
-                calculatedThumbWidth={this.calculateThumb()}
-                thumbLabel={this.thumbLabel}
-                value={this.currentValue}
-                name={this.name}
-                width={this.trackWidth}
-                min={this.minValue}
-                max={this.maxValue}
-              />
-            )}
-          </div>
 
-          <div
-            ref={(el) => (this.ref = el as HTMLDivElement)}
-            class={'plmg-slider-track-rail-container'}
-          >
-            <label htmlfor={this.name} tabIndex={0}>
-              <input
-                id={this.inputId}
-                role="slider"
-                style={{ background: this.setBackgroundProgressFill() }}
-                class={'plmg-slider-input'}
-                step={this.stepValue}
-                type={'range'}
-                name={this.name}
-                min={this.minValue}
-                max={this.maxValue}
-                value={this.currentValue}
-                aria-valuemin={this.minValue}
-                aria-valuemax={this.maxValue}
-                aria-valuenow={this.currentValue}
-                onInput={(ev) => this.handleSliderChange(ev)}
-              />
-            </label>
-          </div>
+            <div
+              ref={(el) => (this.ref = el as HTMLDivElement)}
+              class={'plmg-slider-track-rail-container'}
+            >
+              <label htmlfor={this.name} tabIndex={0}>
+                <input
+                  id={this.inputId}
+                  role="slider"
+                  style={{ background: this.setBackgroundProgressFill() }}
+                  class={'plmg-slider-input'}
+                  step={this.stepValue}
+                  type={'range'}
+                  name={this.name}
+                  min={this.minValue}
+                  max={this.maxValue}
+                  value={this.currentValue}
+                  aria-valuemin={this.minValue}
+                  aria-valuemax={this.maxValue}
+                  aria-valuenow={this.currentValue}
+                  onInput={(ev) => this.handleSliderChange(ev)}
+                />
+              </label>
+            </div>
 
-          <div class={'plmg-slider-marks-container'}>
-            {this.marks && (
-              <plmg-slider-marks
-                range={this.rangeValues}
-                marks={this.marks}
-                value={this.currentValue}
-                name={this.name}
-                width={this.trackWidth}
-                min={this.minValue}
-                max={this.maxValue}
-              />
-            )}
+            <div class={'plmg-slider-marks-container'}>
+              {this.marks && (
+                <plmg-slider-marks
+                  range={this.rangeValues}
+                  marks={this.marks}
+                  value={this.currentValue}
+                  name={this.name}
+                  width={this.trackWidth}
+                  min={this.minValue}
+                  max={this.maxValue}
+                />
+              )}
+            </div>
           </div>
-
           <div class={'plmg-slider-input-field-container'}>
             <label htmlfor={this.name} />
             <input
