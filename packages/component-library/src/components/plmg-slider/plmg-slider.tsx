@@ -176,7 +176,6 @@ export class Slider {
 
   componentDidLoad() {
     this.trackWidth = this.ref.getBoundingClientRect().width;
-    console.log(this.trackWidth);
   }
 
   private handleSliderChange(ev) {
@@ -217,16 +216,21 @@ export class Slider {
           {this.thumbLabel && (
             <div class={'plmg-slider-dummy-thumb-label-track'}>
               <div
-                id={'fake-thumb'}
                 class={'plmg-slider-dummy-thumb-label-container'}
+                id={'dummy'}
               >
-                <div class={'plmg-slider-dummy-thumb'}>{this.currentValue}</div>
+                <output
+                  class={'plmg-slider-dummy-thumb-label'}
+                  name={this.name}
+                >
+                  {this.currentValue}
+                </output>
+                <span class={'plmg-slider-dummy-thumb-triangle'} />
               </div>
             </div>
           )}
-
-          <div class={'plmg-slider-thumb-container'}>
-            {this.trackWidth && (
+          {this.trackWidth && (
+            <div class={'plmg-slider-thumb-container'}>
               <plmg-slider-thumb
                 calculatedThumbWidth={this.calculateThumb()}
                 thumbLabel={this.thumbLabel}
@@ -236,8 +240,8 @@ export class Slider {
                 min={this.minValue}
                 max={this.maxValue}
               />
-            )}
-          </div>
+            </div>
+          )}
 
           <div
             ref={(el) => (this.ref = el as HTMLDivElement)}
@@ -292,42 +296,27 @@ export class Slider {
               onInput={(Event) => this.handleInputFieldChange(Event)}
             />
           </div>
-
-          <div class={'plmg-slider-input-field-container'}>
-            <label htmlfor={this.name} />
-            <input
-              type={'number'}
-              name={this.name}
-              step={this.stepValue}
-              aria-valuemin={this.minValue}
-              aria-valuemax={this.maxValue}
-              aria-valuenow={this.currentValue}
-              min={this.minValue}
-              max={this.maxValue}
-              value={this.inputFieldValue}
-              onInput={(Event) => this.handleInputFieldChange(Event)}
-            />
-          </div>
         </div>
       </Host>
     );
   }
 
   private calculateThumb() {
-    const elmnt = document.getElementById('fake-thumb');
+    const elmnt = document.getElementById('dummy');
     console.log(elmnt);
     if (elmnt) {
       return elmnt.offsetWidth;
     }
+    return 0;
   }
 
   private calculateRelativePosition(value: number) {
-    console.log(
-      'value - this.minValue',
-      value - this.minValue,
-      'this.maxValue - this.minValue',
-      this.maxValue - this.minValue
-    );
+    // console.log(
+    //   'value - this.minValue',
+    //   value - this.minValue,
+    //   'this.maxValue - this.minValue',
+    //   this.maxValue - this.minValue
+    // );
     return (
       (Number(value - this.minValue) / (this.maxValue - this.minValue)) * 100
     );
