@@ -35,7 +35,18 @@ const Template = (args) => {
   const el = document.createElement('plmg-radio-button-group');
   Utils.bindProps(el, PROPS, args);
   Utils.bindJSProps(el, JS_PROPS, args);
-  return el;
+
+  const form = document.createElement('form');
+  form.setAttribute('action', "javascript:alert('Form submitted');");
+  form.appendChild(el);
+
+  const submitBtn = document.createElement('plmg-button');
+  submitBtn.setAttribute('type', 'submit');
+  submitBtn.innerText = 'Submit';
+
+  form.appendChild(submitBtn);
+
+  return form;
 };
 
 export const Primary = Template.bind({});
@@ -46,6 +57,7 @@ Primary.args = {
   label: 'Click One',
   ['required']: true,
   ['values']: ['Option 1', 'Option 2'],
+  'error-message': 'Select one option',
 };
 
 export const AllSizes = (args) => {
