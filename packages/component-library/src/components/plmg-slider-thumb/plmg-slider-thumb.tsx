@@ -3,7 +3,7 @@ import { Component, Watch, Prop, h } from '@stencil/core';
 @Component({
   tag: 'plmg-slider-thumb',
   styleUrl: 'plmg-slider-thumb.scss',
-  scoped: true,
+  shadow: true,
 })
 export class SliderThumb {
   @Prop() value: number;
@@ -37,11 +37,11 @@ export class SliderThumb {
       throw new Error('thumb label must be boolean');
   }
 
-  @Prop() width: number;
+  @Prop() trackWidth: number;
   @Watch('value')
   validateWidth(newValue: number) {
     if (typeof newValue !== 'number')
-      throw new Error('width number be a number');
+      throw new Error('trackWidth number be a number');
   }
 
   @Prop() min: number;
@@ -60,47 +60,82 @@ export class SliderThumb {
     return (
       <div class={'plmg-slider-thumb-label-track'}>
         {this.thumbLabel && (
-          // <label htmlfor={this.name}>
-          <div
-            class={'plmg-slider-thumb-label-triangle-container'}
-            style={this.setThumbPosition(this.value)}
-          >
-            <output class={'plmg-slider-thumb-label'} name={this.name}>
-              {this.value}
-            </output>
-            <span class={'plmg-thumb-triangle'} />
-          </div>
-          // </label>
+          <label htmlfor={this.name}>
+            <div
+              class={'plmg-slider-thumb-label-triangle-container'}
+              style={this.setThumbPosition(this.value)}
+            >
+              <output class={'plmg-slider-thumb-label'} name={this.name}>
+                {this.value}
+              </output>
+              <span class={'plmg-thumb-triangle'} />
+            </div>
+          </label>
         )}
       </div>
     );
   }
 
   private calculateRelativePosition(value: number) {
-    // Does not account for floating point numbers
+    // Get the relative position of the current value based on the range
+    // TODO Account for floating point numbers
     return (Number(value - this.min) / (this.max - this.min)) * 100;
   }
   private setThumbPosition(value: number) {
-    //  offset of half of the calculate thumb
-    //  we need the difference between the center of the label and the thumb
-    // proportional to the distance travelled along the track
+    // label width. received as a prop
+    const LABEL_WIDTH = this.calculatedThumbWidth;
 
+    // width of the track. received as a prop
+    const TRACK_WIDTH = this.trackWidth;
+
+    // Store relative position
     const RELATIVE_POSITION = this.calculateRelativePosition(value);
-    const OFFSET =
-      (1 - (this.width - this.calculatedThumbWidth / 2) / this.width) * 100;
-    const HALF_THUMB_WIDTH_PER = (1 - (this.width - 10) / this.width) * 100;
-    console.log(RELATIVE_POSITION);
-    console.log('half thumb %', HALF_THUMB_WIDTH_PER);
-    console.log('track width', this.width);
-    console.log('calculate thumb', this.calculatedThumbWidth);
-    console.log('rel pos %', this.calculateRelativePosition(value));
-    console.log('offset', OFFSET);
+
+    // Width of label as percent
+    const HALF_LABEL_WIDTH_AS_PERCENTAGE_OF_TRACK =
+      ((LABEL_WIDTH / TRACK_WIDTH) * 100) / 2;
+
+    // Calculate offset.
+    // Example: Label width: 23px. Offset at 0% = 11.5px. 50% = 0. 100% = -11.5px.
+    const LABEL_OFFSET_PIXEL_VALUE =
+      LABEL_WIDTH / 2 - (RELATIVE_POSITION / 100) * LABEL_WIDTH;
+
+    // Calculate relative offset in pixels as % of the track width.
+    // Example: Track width = 200px. Label width: 23px. Position: 0%. Offset value = 20px
+    // Example: Track width = 200px. Label width: 30px. Position: 100%. Offset value = -15px
+    const LABEL_OFFSET_RELATIVE_VALUE =
+      LABEL_OFFSET_PIXEL_VALUE + (RELATIVE_POSITION * TRACK_WIDTH) / 100;
+
+    // Convert from pixel offset to % offset
+    // Example: Track width = 200px. Label width: 30px. Position: 100%. Offset value = 15px. Offset value = -15%.
+    // Example: Track width = 200px. Label width: 30px. Position: 100%. Offset value = -15%. Offset value = -15%.
+    // Example: Track width = 500px. Label width: 60px. Position: 25%. Offset value = 30px. Offset value = 30%.
+    const LABEL_OFFSET_AS_PERCENT_OF_TRACK =
+      (LABEL_OFFSET_RELATIVE_VALUE / TRACK_WIDTH) * 100;
+
+    // Remove half of the label width as percent of the track
+    const ADJUSTED_LABEL_OFFSET =
+      LABEL_OFFSET_AS_PERCENT_OF_TRACK -
+      HALF_LABEL_WIDTH_AS_PERCENTAGE_OF_TRACK;
+
+    // console.log('label width', LABEL_WIDTH, 'px');
+    // console.log('track width', TRACK_WIDTH, 'px');
+    // console.log('relative position', RELATIVE_POSITION, '%');
+    // console.log('label offset', LABEL_OFFSET_PIXEL_VALUE, 'px');
+    // console.log('label offset', LABEL_OFFSET_RELATIVE_VALUE, '%');
+    // console.log(
+    //   'half of label as per of track',
+    //   HALF_LABEL_WIDTH_AS_PERCENTAGE_OF_TRACK
+    // );
+    // console.log(
+    //   'label offset as % of track',
+    //   LABEL_OFFSET_AS_PERCENT_OF_TRACK,
+    //   '%'
+    // );
+    // console.log('adjusted label offset', ADJUSTED_LABEL_OFFSET);
 
     return {
-      left: `${RELATIVE_POSITION - OFFSET + HALF_THUMB_WIDTH_PER}%`,
+      left: `${ADJUSTED_LABEL_OFFSET}%`,
     };
   }
 }
-
-// at the start it should be 0
-// at the end it should be 348
