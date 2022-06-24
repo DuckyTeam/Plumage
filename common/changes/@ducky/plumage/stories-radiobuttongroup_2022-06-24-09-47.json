@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "Improve documentation for PlmgRadioButtonGroup",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
