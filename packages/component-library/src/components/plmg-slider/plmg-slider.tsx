@@ -236,7 +236,7 @@ export class Slider {
                   thumbLabel={this.thumbLabel}
                   value={this.currentValue}
                   name={this.name}
-                  width={this.trackWidth}
+                  trackWidth={this.trackWidth}
                   min={this.minValue}
                   max={this.maxValue}
                 />
@@ -267,19 +267,21 @@ export class Slider {
               </label>
             </div>
 
-            <div class={'plmg-slider-marks-container'}>
-              {this.marks && (
-                <plmg-slider-marks
-                  range={this.rangeValues}
-                  marks={this.marks}
-                  value={this.currentValue}
-                  name={this.name}
-                  width={this.trackWidth}
-                  min={this.minValue}
-                  max={this.maxValue}
-                />
-              )}
-            </div>
+            {this.trackWidth && (
+              <div class={'plmg-slider-marks-container'}>
+                {this.marks && (
+                  <plmg-slider-marks
+                    range={this.rangeValues}
+                    marks={this.marks}
+                    value={this.currentValue}
+                    name={this.name}
+                    trackWidth={this.trackWidth}
+                    min={this.minValue}
+                    max={this.maxValue}
+                  />
+                )}
+              </div>
+            )}
           </div>
           <div class={'plmg-slider-input-field-container'}>
             <label htmlfor={this.name} />
