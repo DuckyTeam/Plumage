@@ -122,3 +122,28 @@ export const AllErrors = (args) => {
   return el;
 };
 AllErrors.storyName = 'All errors';
+
+export const AllLabels = (args) => {
+  const htmlContent = [
+    `<plmg-radio-button-group size="medium" name="no label" values='[
+    "No",
+    "label",
+    "here"
+  ]'></plmg-radio-button-group>`,
+    `<plmg-radio-button-group size="medium" label="With label" name="label" values='[
+    "Look",
+    "at this",
+    "label"
+  ]'></plmg-radio-button-group>`,
+  ]
+    .join('')
+    .trim();
+
+  const el = document.createElement('div');
+  el.innerHTML = htmlContent;
+  el.style.display = 'flex';
+  el.style.justifyContent = 'space-between';
+  el.style['flex-wrap'] = 'wrap';
+  return el;
+};
+AllLabels.storyName = 'All labels';
