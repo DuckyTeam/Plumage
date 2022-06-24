@@ -73,9 +73,7 @@ AllSizes.storyName = 'All sizes';
 export const AllRequired = (args) => {
   const htmlContent = [true, false]
     .map(
-      (
-        required
-      ) => `<plmg-radio-button-group size="medium" required="${required}" label="${
+      (required) => `<plmg-radio-button-group required="${required}" label="${
         required ? 'Required' : 'Not Required'
       }" name="${required ? 'Required' : 'Not Required'}" values='[
         "some",
@@ -98,17 +96,43 @@ AllRequired.storyName = 'All required';
 
 export const AllErrors = (args) => {
   const htmlContent = [
-    `<plmg-radio-button-group size="medium" error-message="Uh Oh! Something awful has happened!!!" label="With Error" name="error" values='[
+    `<plmg-radio-button-group error-message="Uh Oh! Something awful has happened!!!" required label="With Error" name="error" values='[
     "some",
     "error-riddled",
     "radio",
     "buttons"
   ]'></plmg-radio-button-group>`,
-    `<plmg-radio-button-group size="medium" label="Without Error" name="no error" values='[
+    `<plmg-radio-button-group  label="Without Error" name="no error" values='[
     "some",
     "error-free",
     "radio",
     "buttons"
+  ]'></plmg-radio-button-group>`,
+    `<plmg-button type="submit" style="width: 100%; margin-top: 25px;">Click to reveal the error</plmg-button>`,
+  ]
+    .join('')
+    .trim();
+
+  const el = document.createElement('form');
+  el.innerHTML = htmlContent;
+  el.style.display = 'flex';
+  el.style.justifyContent = 'space-between';
+  el.style['flex-wrap'] = 'wrap';
+  return el;
+};
+AllErrors.storyName = 'All errors';
+
+export const AllLabels = (args) => {
+  const htmlContent = [
+    `<plmg-radio-button-group size="medium" name="no label" values='[
+    "No",
+    "label",
+    "here"
+  ]'></plmg-radio-button-group>`,
+    `<plmg-radio-button-group size="medium" label="With label" name="label" values='[
+    "Look",
+    "at this",
+    "label"
   ]'></plmg-radio-button-group>`,
   ]
     .join('')
@@ -121,4 +145,4 @@ export const AllErrors = (args) => {
   el.style['flex-wrap'] = 'wrap';
   return el;
 };
-AllErrors.storyName = 'All errors';
+AllLabels.storyName = 'All labels';
