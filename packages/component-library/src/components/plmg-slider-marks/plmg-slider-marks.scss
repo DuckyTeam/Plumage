@@ -1,34 +1,31 @@
 @use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
-
-// Common styles to all shadow-DOM components
-// Remove this section if your component does not use shadow DOM
-// -------------------------------------------------
 :host {
-  display: block;
+  height: inherit;
+  background-color: inherit;
+  width: inherit;
 }
 
 :host([hidden]) {
   display: none;
 }
+@mixin set-typography {
+  font-family: tokens.$plmg-font-family-sans;
+  font-weight: tokens.$plmg-font-weight-regular;
+  font-size: tokens.$plmg-font-size-x0-75;
+  line-height: tokens.$plmg-font-lineheight-loose;
+  color: tokens.$plmg-color-text-neutral;
+}
+
 // ------------- END Common styles -----------------
 
 // Mixins
 // -------------------------------------------------
 
 .plmg-slider-mark-container {
-  font-family: tokens.$plmg-font-family-sans;
-  font-weight: tokens.$plmg-font-weight-regular;
-  font-size: tokens.$plmg-font-size-x0-75;
-  line-height: tokens.$plmg-font-lineheight-loose;
-  color: tokens.$plmg-color-text-neutral;
-  height: 30px;
+  @include set-typography;
   width: 100%;
-}
-
-.plmg-slider-inner {
-  display: relative;
-  margin: 0 3px;
   height: 100%;
+  position: relative;
 }
 
 .plmg-slider-mark-label-item {
