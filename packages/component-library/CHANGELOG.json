@@ -2,6 +2,18 @@
   "name": "@ducky/plumage",
   "entries": [
     {
+      "version": "1.5.1",
+      "tag": "@ducky/plumage_v1.5.1",
+      "date": "Fri, 24 Jun 2022 09:58:39 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Improve documentation for PlmgRadioButtonGroup"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.5.0",
       "tag": "@ducky/plumage_v1.5.0",
       "date": "Fri, 24 Jun 2022 09:33:45 GMT",
