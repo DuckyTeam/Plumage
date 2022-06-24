@@ -197,8 +197,8 @@ export namespace Components {
         "min": number;
         "name": string;
         "range": Array<number>;
+        "trackWidth": number;
         "value": number;
-        "width": number;
     }
     interface PlmgSliderThumb {
         "calculatedThumbWidth": number;
@@ -206,8 +206,8 @@ export namespace Components {
         "min": number;
         "name": string;
         "thumbLabel": boolean;
+        "trackWidth": number;
         "value": number;
-        "width": number;
     }
     interface PlmgSvgIcon {
         /**
@@ -517,8 +517,8 @@ declare namespace LocalJSX {
         "min"?: number;
         "name"?: string;
         "range"?: Array<number>;
+        "trackWidth"?: number;
         "value"?: number;
-        "width"?: number;
     }
     interface PlmgSliderThumb {
         "calculatedThumbWidth"?: number;
@@ -526,8 +526,8 @@ declare namespace LocalJSX {
         "min"?: number;
         "name"?: string;
         "thumbLabel"?: boolean;
+        "trackWidth"?: number;
         "value"?: number;
-        "width"?: number;
     }
     interface PlmgSvgIcon {
         /**
