@@ -35,11 +35,11 @@ export class SliderMarks {
       throw new Error('thumb label must be boolean');
   }
 
-  @Prop() width: number;
+  @Prop() trackWidth: number;
   @Watch('value')
   validateWidth(newValue: number) {
     if (typeof newValue !== 'number')
-      throw new Error('width number be a number');
+      throw new Error('trackWidth number be a number');
   }
 
   @Prop() min: number;
@@ -55,46 +55,70 @@ export class SliderMarks {
   }
 
   connectedCallback() {
-    console.log(this.width);
+    console.log(this.trackWidth);
   }
   render() {
     return (
       <div class={'plmg-slider-mark-container'}>
-        {this.marks && (
-          <div class={'plmg-slider-inner'}>
-            {this.range.map((item, index) => (
-              <div
-                key={index}
-                class={'plmg-slider-mark-label-item'}
-                style={this.setTickLabelPosition(item)}
-              >
-                <span class={'plmg-slider-tick'}>&#8205;</span>
-                <span>{item}</span>
-              </div>
-            ))}
+        {this.range.map((item, index) => (
+          <div
+            key={index}
+            class={'plmg-slider-mark-label-item'}
+            style={this.setTickLabelPosition(item)}
+          >
+            <span class={'plmg-slider-tick'}>&#8205;</span>
+            <span>{item}</span>
           </div>
-        )}
+        ))}
       </div>
     );
   }
 
   private calculateRelativePosition(value: number) {
-    // Does not account for floating point numbers
+    // Get the relative position of the current value based on the range
+    // TODO Account for floating point numbers
     return (Number(value - this.min) / (this.max - this.min)) * 100;
   }
 
   private setTickLabelPosition(item: number) {
+    // Store relative position
+    const RELATIVE_POSITION = this.calculateRelativePosition(item);
+    // width of the track. received as a prop
+    const TRACK_WIDTH = this.trackWidth;
+    // Get length of each string
     const STRING_LENGTH = item.toString().length;
+    // Define size of each character
     const CHARACTER_SIZE = 8;
-
+    // All ticks are postioned with 2px left and right
+    // const MARGIN_LEFT_RIGHT = 2;
+    // Calculate the container width
     const CONTAINER_WIDTH = STRING_LENGTH * CHARACTER_SIZE;
-    const OFFSET =
-      (this.calculateRelativePosition(item) / 100) * this.width -
-      CONTAINER_WIDTH / 2;
+    // Calculate offset.
+    const CONTAINER_OFFSET_PIXEL_VALUE =
+      CONTAINER_WIDTH / 2 - (RELATIVE_POSITION / 100) * CONTAINER_WIDTH;
+    // Calculate position. px as % of track
+    const CONTAINER_OFFSET_RELATIVE_VALUE =
+      CONTAINER_OFFSET_PIXEL_VALUE + (RELATIVE_POSITION * TRACK_WIDTH) / 100;
+    const CONTAINER_OFFSET_AS_PERCENT_OF_TRACK =
+      (CONTAINER_OFFSET_RELATIVE_VALUE / TRACK_WIDTH) * 100;
+
+    console.log('current value', item);
+    console.log('relative postion', RELATIVE_POSITION);
+    console.log('track width', TRACK_WIDTH);
+    console.log('string length', STRING_LENGTH);
+    console.log('container size', CONTAINER_WIDTH, 'px');
+    console.log('container offset', CONTAINER_OFFSET_PIXEL_VALUE, 'px'),
+      console.log('conatainer offset value', CONTAINER_OFFSET_PIXEL_VALUE, '%');
+    console.log(
+      'conataine offset relative ',
+      CONTAINER_OFFSET_AS_PERCENT_OF_TRACK,
+      '%'
+    );
 
     return {
       width: `${CONTAINER_WIDTH}px`,
-      left: `${OFFSET}px`,
+      background: 'pink',
+      left: `${CONTAINER_OFFSET_AS_PERCENT_OF_TRACK}%`,
     };
   }
 }
