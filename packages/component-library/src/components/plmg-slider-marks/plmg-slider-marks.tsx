@@ -89,36 +89,83 @@ export class SliderMarks {
     const STRING_LENGTH = item.toString().length;
     // Define size of each character
     const CHARACTER_SIZE = 8;
-    // All ticks are postioned with 2px left and right
-    // const MARGIN_LEFT_RIGHT = 2;
+    const THUMB_WIDTH = 20;
     // Calculate the container width
     const CONTAINER_WIDTH = STRING_LENGTH * CHARACTER_SIZE;
-    // Calculate offset.
-    const CONTAINER_OFFSET_PIXEL_VALUE =
-      CONTAINER_WIDTH / 2 - (RELATIVE_POSITION / 100) * CONTAINER_WIDTH;
-    // Calculate position. px as % of track
-    const CONTAINER_OFFSET_RELATIVE_VALUE =
-      CONTAINER_OFFSET_PIXEL_VALUE + (RELATIVE_POSITION * TRACK_WIDTH) / 100;
-    const CONTAINER_OFFSET_AS_PERCENT_OF_TRACK =
-      (CONTAINER_OFFSET_RELATIVE_VALUE / TRACK_WIDTH) * 100;
+    const CONTAINER_WIDTH_REL = CONTAINER_WIDTH * (TRACK_WIDTH / TRACK_WIDTH);
+    const RELATIVE_POSITION_AS_PER_TRACK =
+      RELATIVE_POSITION * (TRACK_WIDTH / TRACK_WIDTH);
 
+    // Calculate thumb pixel offset
+    // Example: 0%. Offset: -10.
+    // Example: 50%. Offset: 0.
+    // Example: 100%. Offset: 10.
+    const THUMB_PIXEL_OFFSET =
+      THUMB_WIDTH / 2 - (RELATIVE_POSITION / 100) * THUMB_WIDTH;
+    // convert thumb pixel offset to %
+    const THUMB_OFFSET_AS_PER = 1 - (THUMB_PIXEL_OFFSET / TRACK_WIDTH) * 100;
+    // Calculate tick mark container offset
+
+    const CONTAINER_OFFSET =
+      1 -
+      (CONTAINER_WIDTH_REL / 2 -
+        (RELATIVE_POSITION / 100) * CONTAINER_WIDTH_REL);
+    // convert conatiner offset to %
+    const CONTAINER_OFFSET_AS_PER = (CONTAINER_OFFSET / TRACK_WIDTH) * 100;
+
+    const ADJUSTED_RELATIVE_POSITION =
+      RELATIVE_POSITION_AS_PER_TRACK <= 50
+        ? RELATIVE_POSITION_AS_PER_TRACK +
+          CONTAINER_OFFSET_AS_PER -
+          THUMB_OFFSET_AS_PER
+        : RELATIVE_POSITION - CONTAINER_OFFSET_AS_PER - THUMB_OFFSET_AS_PER;
+
+    const ADJUST_RELATIVE_POSITION_FOR_THUMB_OFFSET =
+      CONTAINER_OFFSET - THUMB_OFFSET_AS_PER;
+
+    const ADJUST_RELATIVE_POSITION_FOR_CONTAINER_OFFEST =
+      ADJUST_RELATIVE_POSITION_FOR_THUMB_OFFSET + CONTAINER_OFFSET;
+
+    // Calculate the container width
+
+    // Calculate offset.
+    // at value 0% thumb positive 2.5% offset.
+    // container offset is 0%
+    // conatiner needs to be 0 - 2.5%
+    // at value 50% thumb is 0% offset
+    // container needs to be at 50 - 0
+    // at value 100% thumb is negative 2.5% offset
+
+    // first mark needs to be 2px in
+    // last mark needs to be 2px out
+    // or actually just relative to the thumb and the label
+    // label needs to be positoned relative to the thumb offset - half of its width
+    // console.log(
+    //   'relative position as pixel % of track',
+    //   RELATIVE_POSITION_AS_PER_TRACK,
+    //   '%'
+    // );
     console.log('current value', item);
-    console.log('relative postion', RELATIVE_POSITION);
-    console.log('track width', TRACK_WIDTH);
+    console.log('thumb pixel offset', THUMB_PIXEL_OFFSET, 'px');
+    console.log('thumb percentage offset', THUMB_OFFSET_AS_PER, '%');
+    console.log('container width', CONTAINER_WIDTH);
+    console.log('container width', CONTAINER_WIDTH_REL);
+    console.log('container pix offest', CONTAINER_OFFSET);
+    console.log('container percentage offset', CONTAINER_OFFSET_AS_PER, '%');
+    console.log('relative postion', RELATIVE_POSITION, '%');
+    console.log('adjusted relative position', ADJUSTED_RELATIVE_POSITION);
+    console.log('contained offset percent', CONTAINER_OFFSET_AS_PER);
+    console.log(
+      'adjust for container offset',
+      ADJUST_RELATIVE_POSITION_FOR_CONTAINER_OFFEST
+    );
+    console.log('track width', TRACK_WIDTH, 'px');
     console.log('string length', STRING_LENGTH);
     console.log('container size', CONTAINER_WIDTH, 'px');
-    console.log('container offset', CONTAINER_OFFSET_PIXEL_VALUE, 'px'),
-      console.log('conatainer offset value', CONTAINER_OFFSET_PIXEL_VALUE, '%');
-    console.log(
-      'conataine offset relative ',
-      CONTAINER_OFFSET_AS_PERCENT_OF_TRACK,
-      '%'
-    );
 
     return {
       width: `${CONTAINER_WIDTH}px`,
-      background: 'pink',
-      left: `${CONTAINER_OFFSET_AS_PERCENT_OF_TRACK}%`,
+      left: `${ADJUSTED_RELATIVE_POSITION}%`,
     };
   }
 }

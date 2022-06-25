@@ -230,7 +230,7 @@ export class Slider {
                 </label>
               )}
 
-              {this.trackWidth && (
+              {/* {this.trackWidth && (
                 <plmg-slider-thumb
                   calculatedThumbWidth={this.calculateThumb()}
                   thumbLabel={this.thumbLabel}
@@ -240,7 +240,7 @@ export class Slider {
                   min={this.minValue}
                   max={this.maxValue}
                 />
-              )}
+              )} */}
             </div>
 
             <div
@@ -264,23 +264,25 @@ export class Slider {
                   aria-valuenow={this.currentValue}
                   onInput={(ev) => this.handleSliderChange(ev)}
                 />
+                <div class={'plmg-slider-thumb-label-triangle-container'}>
+                  <output class={'plmg-slider-thumb-label'} name={this.name}>
+                    {this.currentValue}
+                  </output>
+                  <span class={'plmg-thumb-triangle'} />
+                </div>
               </label>
             </div>
 
-            {this.trackWidth && (
-              <div class={'plmg-slider-marks-container'}>
-                {this.marks && (
-                  <plmg-slider-marks
-                    range={this.rangeValues}
-                    marks={this.marks}
-                    value={this.currentValue}
-                    name={this.name}
-                    trackWidth={this.trackWidth}
-                    min={this.minValue}
-                    max={this.maxValue}
-                  />
-                )}
-              </div>
+            {this.trackWidth && this.marks && (
+              <plmg-slider-marks
+                range={this.rangeValues}
+                marks={this.marks}
+                value={this.currentValue}
+                name={this.name}
+                trackWidth={this.trackWidth}
+                min={this.minValue}
+                max={this.maxValue}
+              />
             )}
           </div>
           <div class={'plmg-slider-input-field-container'}>
@@ -303,13 +305,13 @@ export class Slider {
     );
   }
 
-  private calculateThumb() {
-    const elmnt = document.getElementById('fake-thumb');
-    console.log(elmnt);
-    if (elmnt) {
-      return elmnt.offsetWidth;
-    }
-  }
+  // private calculateThumb() {
+  //   const elmnt = document.getElementById('fake-thumb');
+  //   console.log(elmnt);
+  //   if (elmnt) {
+  //     return elmnt.offsetWidth;
+  //   }
+  // }
 
   private calculateRelativePosition(value: number) {
     // Does not account for floating point numbers

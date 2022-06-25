@@ -88,6 +88,7 @@ export class SliderThumb {
     // width of the track. received as a prop
     const TRACK_WIDTH = this.trackWidth;
 
+    const THUMB_WIDTH = 20;
     // Store relative position
     const RELATIVE_POSITION = this.calculateRelativePosition(value);
 
@@ -118,21 +119,29 @@ export class SliderThumb {
       LABEL_OFFSET_AS_PERCENT_OF_TRACK -
       HALF_LABEL_WIDTH_AS_PERCENTAGE_OF_TRACK;
 
-    // console.log('label width', LABEL_WIDTH, 'px');
-    // console.log('track width', TRACK_WIDTH, 'px');
-    // console.log('relative position', RELATIVE_POSITION, '%');
-    // console.log('label offset', LABEL_OFFSET_PIXEL_VALUE, 'px');
-    // console.log('label offset', LABEL_OFFSET_RELATIVE_VALUE, '%');
-    // console.log(
-    //   'half of label as per of track',
-    //   HALF_LABEL_WIDTH_AS_PERCENTAGE_OF_TRACK
-    // );
-    // console.log(
-    //   'label offset as % of track',
-    //   LABEL_OFFSET_AS_PERCENT_OF_TRACK,
-    //   '%'
-    // );
-    // console.log('adjusted label offset', ADJUSTED_LABEL_OFFSET);
+    const THUMB_PIXEL_OFFSET =
+      THUMB_WIDTH / 2 - (RELATIVE_POSITION / 100) * THUMB_WIDTH;
+    // convert thumb pixel offset to %
+    const THUMB_OFFSET_AS_PER = 1 - (THUMB_PIXEL_OFFSET / TRACK_WIDTH) * 100;
+    // Calculate tick mark container offset
+
+    console.log('label width', LABEL_WIDTH, 'px');
+    console.log('track width', TRACK_WIDTH, 'px');
+    console.log('relative position', RELATIVE_POSITION, '%');
+    console.log('label offset', LABEL_OFFSET_PIXEL_VALUE, 'px');
+    console.log('label offset', LABEL_OFFSET_RELATIVE_VALUE, '%');
+    console.log(
+      'half of label as per of track',
+      HALF_LABEL_WIDTH_AS_PERCENTAGE_OF_TRACK
+    );
+    console.log(
+      'label offset as % of track',
+      LABEL_OFFSET_AS_PERCENT_OF_TRACK,
+      '%'
+    );
+    console.log(THUMB_PIXEL_OFFSET, 'thumb pixel offset');
+    console.log(THUMB_OFFSET_AS_PER);
+    console.log('adjusted label offset', ADJUSTED_LABEL_OFFSET);
 
     return {
       left: `${ADJUSTED_LABEL_OFFSET}%`,
