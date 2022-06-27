@@ -191,23 +191,35 @@ export namespace Components {
          */
         "thumbLabel": boolean;
     }
-    interface PlmgSliderMarks {
+    interface PlmgSliderRemake {
+        /**
+          * Define the default value.  Sets the starting value for the slider.  Allowed: Any number  When the default value is outside of the min and max values or undefined, default value is set to the min value.
+         */
+        "defaultValue": number;
+        /**
+          * Define an id attribute for the input  Any string
+         */
+        "inputId": string;
+        /**
+          * Define if marks and marks labels are visible  Default: true
+         */
         "marks": boolean;
-        "max": number;
-        "min": number;
+        /**
+          * Define a name for the slider  Any string
+         */
         "name": string;
-        "range": Array<number>;
-        "trackWidth": number;
-        "value": number;
-    }
-    interface PlmgSliderThumb {
-        "calculatedThumbWidth": number;
-        "max": number;
-        "min": number;
-        "name": string;
+        /**
+          * Define the range of values  Must be a list of values with at least two items  First and last items set min and max values  Additional values set mark additional labels  Required
+         */
+        "rangeValues": Array<number>;
+        /**
+          * Define step  Slider's value will increase or decrease in stepValue  Allowed values - Any number  When step is not provided step, step is set to 1% of the range
+         */
+        "step": number;
+        /**
+          * Define thumb label visibility  Allowed values  - true  - false  Default: true
+         */
         "thumbLabel": boolean;
-        "trackWidth": number;
-        "value": number;
     }
     interface PlmgSvgIcon {
         /**
@@ -235,10 +247,6 @@ export interface PlmgHeaderCustomEvent<T> extends CustomEvent<T> {
 export interface PlmgSidebarCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPlmgSidebarElement;
-}
-export interface PlmgSliderCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLPlmgSliderElement;
 }
 declare global {
     interface HTMLPlmgButtonElement extends Components.PlmgButton, HTMLStencilElement {
@@ -289,17 +297,11 @@ declare global {
         prototype: HTMLPlmgSliderElement;
         new (): HTMLPlmgSliderElement;
     };
-    interface HTMLPlmgSliderMarksElement extends Components.PlmgSliderMarks, HTMLStencilElement {
+    interface HTMLPlmgSliderRemakeElement extends Components.PlmgSliderRemake, HTMLStencilElement {
     }
-    var HTMLPlmgSliderMarksElement: {
-        prototype: HTMLPlmgSliderMarksElement;
-        new (): HTMLPlmgSliderMarksElement;
-    };
-    interface HTMLPlmgSliderThumbElement extends Components.PlmgSliderThumb, HTMLStencilElement {
-    }
-    var HTMLPlmgSliderThumbElement: {
-        prototype: HTMLPlmgSliderThumbElement;
-        new (): HTMLPlmgSliderThumbElement;
+    var HTMLPlmgSliderRemakeElement: {
+        prototype: HTMLPlmgSliderRemakeElement;
+        new (): HTMLPlmgSliderRemakeElement;
     };
     interface HTMLPlmgSvgIconElement extends Components.PlmgSvgIcon, HTMLStencilElement {
     }
@@ -316,8 +318,7 @@ declare global {
         "plmg-sidebar": HTMLPlmgSidebarElement;
         "plmg-sidebar-item": HTMLPlmgSidebarItemElement;
         "plmg-slider": HTMLPlmgSliderElement;
-        "plmg-slider-marks": HTMLPlmgSliderMarksElement;
-        "plmg-slider-thumb": HTMLPlmgSliderThumbElement;
+        "plmg-slider-remake": HTMLPlmgSliderRemakeElement;
         "plmg-svg-icon": HTMLPlmgSvgIconElement;
     }
 }
@@ -497,7 +498,6 @@ declare namespace LocalJSX {
           * Define a name for the slider  Any string
          */
         "name"?: string;
-        "onValueUpdated"?: (event: PlmgSliderCustomEvent<any>) => void;
         /**
           * Define the range of values  Must be a list of values with at least two items  First and last items set min and max values  Additional values set mark additional labels  Required
          */
@@ -511,23 +511,35 @@ declare namespace LocalJSX {
          */
         "thumbLabel"?: boolean;
     }
-    interface PlmgSliderMarks {
+    interface PlmgSliderRemake {
+        /**
+          * Define the default value.  Sets the starting value for the slider.  Allowed: Any number  When the default value is outside of the min and max values or undefined, default value is set to the min value.
+         */
+        "defaultValue"?: number;
+        /**
+          * Define an id attribute for the input  Any string
+         */
+        "inputId"?: string;
+        /**
+          * Define if marks and marks labels are visible  Default: true
+         */
         "marks"?: boolean;
-        "max"?: number;
-        "min"?: number;
+        /**
+          * Define a name for the slider  Any string
+         */
         "name"?: string;
-        "range"?: Array<number>;
-        "trackWidth"?: number;
-        "value"?: number;
-    }
-    interface PlmgSliderThumb {
-        "calculatedThumbWidth"?: number;
-        "max"?: number;
-        "min"?: number;
-        "name"?: string;
+        /**
+          * Define the range of values  Must be a list of values with at least two items  First and last items set min and max values  Additional values set mark additional labels  Required
+         */
+        "rangeValues"?: Array<number>;
+        /**
+          * Define step  Slider's value will increase or decrease in stepValue  Allowed values - Any number  When step is not provided step, step is set to 1% of the range
+         */
+        "step"?: number;
+        /**
+          * Define thumb label visibility  Allowed values  - true  - false  Default: true
+         */
         "thumbLabel"?: boolean;
-        "trackWidth"?: number;
-        "value"?: number;
     }
     interface PlmgSvgIcon {
         /**
@@ -552,8 +564,7 @@ declare namespace LocalJSX {
         "plmg-sidebar": PlmgSidebar;
         "plmg-sidebar-item": PlmgSidebarItem;
         "plmg-slider": PlmgSlider;
-        "plmg-slider-marks": PlmgSliderMarks;
-        "plmg-slider-thumb": PlmgSliderThumb;
+        "plmg-slider-remake": PlmgSliderRemake;
         "plmg-svg-icon": PlmgSvgIcon;
     }
 }
@@ -569,8 +580,7 @@ declare module "@stencil/core" {
             "plmg-sidebar": LocalJSX.PlmgSidebar & JSXBase.HTMLAttributes<HTMLPlmgSidebarElement>;
             "plmg-sidebar-item": LocalJSX.PlmgSidebarItem & JSXBase.HTMLAttributes<HTMLPlmgSidebarItemElement>;
             "plmg-slider": LocalJSX.PlmgSlider & JSXBase.HTMLAttributes<HTMLPlmgSliderElement>;
-            "plmg-slider-marks": LocalJSX.PlmgSliderMarks & JSXBase.HTMLAttributes<HTMLPlmgSliderMarksElement>;
-            "plmg-slider-thumb": LocalJSX.PlmgSliderThumb & JSXBase.HTMLAttributes<HTMLPlmgSliderThumbElement>;
+            "plmg-slider-remake": LocalJSX.PlmgSliderRemake & JSXBase.HTMLAttributes<HTMLPlmgSliderRemakeElement>;
             "plmg-svg-icon": LocalJSX.PlmgSvgIcon & JSXBase.HTMLAttributes<HTMLPlmgSvgIconElement>;
         }
     }

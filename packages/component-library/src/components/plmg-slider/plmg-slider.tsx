@@ -1,25 +1,15 @@
-import {
-  Component,
-  h,
-  Watch,
-  Prop,
-  State,
-  Host,
-  Event,
-  EventEmitter,
-} from '@stencil/core';
-import {
-  plmgColorBorderNeutralWeak,
-  plmgColorBackgroundPrimaryStrong,
-} from '@ducky/plumage-tokens';
+import { Component, Host, h, State, Prop, Watch } from '@stencil/core';
+import * as tokens from '@ducky/plumage-tokens';
 
 @Component({
   tag: 'plmg-slider',
   styleUrl: 'plmg-slider.scss',
-  shadow: false,
+  shadow: true,
 })
 export class Slider {
   private ref: HTMLDivElement;
+  private abortResizeListener: AbortController;
+
   /**
    * Define the range of values
    *
@@ -127,47 +117,44 @@ export class Slider {
   /**
    * Store currentValue, min, max and step states
    */
-  @State() currentValue: number;
-  @State() inputFieldValue: number;
-  @State() minValue: number;
-  @State() maxValue: number;
-  @State() stepValue: number;
-  @State() allowedInputs: Array<number>;
+  @State() value: number;
+  @State() min: number;
+  @State() max: number;
   @State() trackWidth: number;
+  @State() stepValue: number;
+  @State() maxCharacterLength: number;
+
+  private handleSliderChange(ev) {
+    this.updateValue(ev.target.value);
+  }
+
+  private getLongestCharacterLength() {
+    return Math.max(...this.rangeValues.map((item) => item.toString().length));
+  }
+
+  private updateValue(newValue) {
+    this.value = newValue;
+  }
 
   private setValues() {
     if (!this.rangeValues) return;
-    this.minValue = this.rangeValues[0];
-    this.maxValue = this.rangeValues[this.rangeValues.length - 1];
-    if (
-      this.defaultValue >= this.minValue &&
-      this.defaultValue <= this.maxValue
-    ) {
+    this.min = this.rangeValues[0];
+    this.max = this.rangeValues[this.rangeValues.length - 1];
+    this.maxCharacterLength = this.getLongestCharacterLength();
+    if (this.defaultValue >= this.min && this.defaultValue <= this.max) {
       this.updateValue(this.defaultValue);
     } else {
-      this.updateValue(this.minValue);
+      this.updateValue(this.min);
     }
     if (!this.step) {
-      this.stepValue = (this.maxValue - this.minValue) / 100;
+      this.stepValue = (this.max - this.min) / 100;
     } else {
       this.stepValue = this.step;
     }
   }
 
-  private getAllowedInputs() {
-    let inputs = [];
-    inputs.push(this.minValue);
-    while (inputs[inputs.length - 1] <= this.maxValue) {
-      const PREV = inputs[inputs.length - 1];
-      // Correct for floating point errors by rounding when necessary
-      const NEXT =
-        Math.round((PREV + this.stepValue + Number.EPSILON) * 1000000) /
-        1000000;
-      // Escape valve in case of over rounding
-      if (!(NEXT > PREV)) return;
-      inputs.push(NEXT);
-    }
-    return inputs;
+  private resizeHandler() {
+    this.trackWidth = this.ref.getBoundingClientRect().width;
   }
 
   connectedCallback() {
@@ -176,165 +163,100 @@ export class Slider {
 
   componentDidLoad() {
     this.trackWidth = this.ref.getBoundingClientRect().width;
-    console.log(this.trackWidth);
+    this.abortResizeListener = new AbortController();
+    window.addEventListener('resize', () => this.resizeHandler(), {
+      signal: this.abortResizeListener.signal,
+    });
   }
 
-  private handleSliderChange(ev) {
-    this.updateValue(ev.target.value);
+  disconnectedCallback() {
+    if (this.abortResizeListener) this.abortResizeListener.abort();
   }
-
-  private handleInputFieldChange(ev) {
-    // Ignore Empty Strings
-    if (ev.target.value == '') return;
-    // Get an array of allowed inputs
-    const SET_ALLOWED_INPUTS = this.getAllowedInputs();
-    // Check input is allowed value, within range and one of the allowed inputs
-    const newValue = parseFloat(ev.target.value);
-    if (
-      isNaN(newValue) ||
-      newValue > this.maxValue ||
-      newValue < this.minValue ||
-      !SET_ALLOWED_INPUTS.includes(newValue)
-    )
-      return;
-    this.updateValue(newValue);
-  }
-
-  private updateValue(newValue) {
-    this.currentValue = newValue;
-    if (this.inputFieldValue !== this.currentValue) {
-      this.inputFieldValue = this.currentValue;
-    }
-    this.valueUpdated.emit({ value: this.currentValue });
-  }
-
-  @Event() valueUpdated: EventEmitter;
-
   render() {
     return (
-      <Host value={this.currentValue}>
-        <div class={'plmg-slider-component-container'}>
-          <div class={'plmg-thumb-track-rail-container'}>
-            <div class={'plmg-slider-thumb-label-track'}>
-              {this.thumbLabel && (
-                <label htmlfor={this.name}>
-                  <div
-                    id={'fake-thumb'}
-                    class={'plmg-slider-thumb-label-triangle-container'}
-                  >
-                    <output class={'plmg-slider-thumb-label'} name={this.name}>
-                      {this.currentValue}
-                    </output>
-                    <span class={'plmg-thumb-triangle'} />
-                  </div>
-                </label>
-              )}
-
-              {/* {this.trackWidth && (
-                <plmg-slider-thumb
-                  calculatedThumbWidth={this.calculateThumb()}
-                  thumbLabel={this.thumbLabel}
-                  value={this.currentValue}
-                  name={this.name}
-                  trackWidth={this.trackWidth}
-                  min={this.minValue}
-                  max={this.maxValue}
-                />
-              )} */}
-            </div>
-
-            <div
-              ref={(el) => (this.ref = el as HTMLDivElement)}
-              class={'plmg-slider-track-rail-container'}
+      <Host value={this.value}>
+        <div
+          class={'plmg-slider-container'}
+          ref={(el) => (this.ref = el as HTMLDivElement)}
+        >
+          <input
+            min={this.min}
+            max={this.max}
+            step={this.stepValue}
+            onInput={(ev) => this.handleSliderChange(ev)}
+            id="r"
+            type="range"
+            value={this.value}
+          />
+          {this.thumbLabel && (
+            <output
+              style={this.setThumbPosition()}
+              class={'plmg-slider-thumb-label'}
+              htmlFor="r"
             >
-              <label htmlfor={this.name} tabIndex={0}>
-                <input
-                  id={this.inputId}
-                  role="slider"
-                  style={{ background: this.setBackgroundProgressFill() }}
-                  class={'plmg-slider-input'}
-                  step={this.stepValue}
-                  type={'range'}
-                  name={this.name}
-                  min={this.minValue}
-                  max={this.maxValue}
-                  value={this.currentValue}
-                  aria-valuemin={this.minValue}
-                  aria-valuemax={this.maxValue}
-                  aria-valuenow={this.currentValue}
-                  onInput={(ev) => this.handleSliderChange(ev)}
-                />
-                <div class={'plmg-slider-thumb-label-triangle-container'}>
-                  <output class={'plmg-slider-thumb-label'} name={this.name}>
-                    {this.currentValue}
-                  </output>
-                  <span class={'plmg-thumb-triangle'} />
-                </div>
-              </label>
-            </div>
-
-            {this.trackWidth && this.marks && (
-              <plmg-slider-marks
-                range={this.rangeValues}
-                marks={this.marks}
-                value={this.currentValue}
-                name={this.name}
-                trackWidth={this.trackWidth}
-                min={this.minValue}
-                max={this.maxValue}
-              />
-            )}
-          </div>
-          <div class={'plmg-slider-input-field-container'}>
-            <label htmlfor={this.name} />
-            <input
-              type={'number'}
-              name={this.name}
-              step={this.stepValue}
-              aria-valuemin={this.minValue}
-              aria-valuemax={this.maxValue}
-              aria-valuenow={this.currentValue}
-              min={this.minValue}
-              max={this.maxValue}
-              value={this.inputFieldValue}
-              onInput={(Event) => this.handleInputFieldChange(Event)}
-            />
+              {this.value}
+              <span class={'plmg-thumb-triangle'} />
+            </output>
+          )}
+          <div class={'labels'}>
+            {this.rangeValues.map((item, index) => (
+              <div
+                class={'label'}
+                key={index}
+                style={{ transform: this.setLabelPosition(item) }}
+              >
+                <span class={'tick'}>&#8205;</span>
+                <span>{item}</span>
+              </div>
+            ))}
           </div>
         </div>
       </Host>
     );
   }
 
-  // private calculateThumb() {
-  //   const elmnt = document.getElementById('fake-thumb');
-  //   console.log(elmnt);
-  //   if (elmnt) {
-  //     return elmnt.offsetWidth;
-  //   }
-  // }
+  // To Do:
+  // fix font size using REM not PX
+  // restore background progress fill
+  // set width of the thumb to something sensible
+  // pull into input field
+  // Check aria accessibilty
+  // hover states
+  // polyfill
+  // tests
+  // storybook - proper examples
+  // Check react functioning
 
-  private calculateRelativePosition(value: number) {
-    // Does not account for floating point numbers
-
-    // console.log(
-    //   'value - this.minValue',
-    //   value - this.minValue,
-    //   'this.maxValue - this.minValue',
-    //   this.maxValue - this.minValue
-    // );
-    // console.log(this.getTrackWidth());
-    //
-    return (
-      (Number(value - this.minValue) / (this.maxValue - this.minValue)) * 100
+  private setThumbPosition() {
+    const FONT_SIZE_IN_PIXELS = 12;
+    const RELATIVE_POSITION = (this.value - this.min) / (this.max - this.min);
+    const THUMB_D = 1.5;
+    const DIST = this.trackWidth / FONT_SIZE_IN_PIXELS - THUMB_D;
+    const PLMG_FONT_SIZE = tokens.plmgFontSizeX075;
+    console.log(PLMG_FONT_SIZE);
+    // Use tokens.plmgFontSizeX075 (0.75rem) not FONT_SIZE_IN_PIXELS
+    console.log(
+      `translate(calc(${RELATIVE_POSITION} * (${this.trackWidth} / 1 - 1.5rem) - 50%))`
     );
+    return {
+      transform: `translate(calc(${RELATIVE_POSITION} * ${DIST}em - 50%)`,
+      // transform: `translate(calc(${RELATIVE_POSITION} * (${this.trackWidth} / 1 - 1.5rem) - 50%))`,
+    };
   }
 
-  private setBackgroundProgressFill(): string {
-    const FILL_PERCENT = this.calculateRelativePosition(this.currentValue);
-    return `linear-gradient(to right,
-      ${plmgColorBackgroundPrimaryStrong} 0%,
-      ${plmgColorBackgroundPrimaryStrong} ${FILL_PERCENT}%,
-      ${plmgColorBorderNeutralWeak} ${FILL_PERCENT}%, 
-      ${plmgColorBorderNeutralWeak} 100%)`;
+  // const PLMG_FONT_SIZE = tokens.plmgFontSizeX075;
+
+  private setLabelPosition(item) {
+    const RELATIVE_POSITION = (item - this.min) / (this.max - this.min);
+    const font = 12;
+    const thumb_d = 1.5;
+    const dist = this.trackWidth / font - thumb_d;
+
+    return `translate(calc(${RELATIVE_POSITION} * ${dist}em - 50%)`;
   }
 }
+
+// private calculateRelativePosition(value: number) {
+//   // Does not account for floating point numbers
+//   return Number(value - this.min) / (this.max - this.min);
+// }

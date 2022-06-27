@@ -14,9 +14,6 @@ export default {
     ['default-value']: {
       control: { type: 'number' },
     },
-    ['decimal-places']: {
-      control: { type: 'number' },
-    },
     marks: {
       control: { type: 'boolean' },
     },
@@ -46,7 +43,7 @@ const CSS_VARS = [];
 const SLOTS = [];
 
 const Template = (args) => {
-  const el = document.createElement('plmg-slider');
+  const el = document.createElement('plmg-slider-remake');
   Utils.bindProps(el, PROPS, args);
   Utils.bindEvents(el, EVENTS, args);
   Utils.bindStyles(el, CSS_VARS, args);
