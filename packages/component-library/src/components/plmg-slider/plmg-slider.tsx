@@ -1,8 +1,4 @@
 import { Component, Host, h, State, Prop, Watch } from '@stencil/core';
-// import {
-//   plmgColorBorderNeutralWeak,
-//   plmgColorBackgroundPrimaryStrong,
-// } from '@ducky/plumage-tokens';
 
 @Component({
   tag: 'plmg-slider',
