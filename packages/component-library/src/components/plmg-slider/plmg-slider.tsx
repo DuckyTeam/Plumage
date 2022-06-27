@@ -1,5 +1,8 @@
 import { Component, Host, h, State, Prop, Watch } from '@stencil/core';
-import * as tokens from '@ducky/plumage-tokens';
+// import {
+//   plmgColorBorderNeutralWeak,
+//   plmgColorBackgroundPrimaryStrong,
+// } from '@ducky/plumage-tokens';
 
 @Component({
   tag: 'plmg-slider',
@@ -122,14 +125,9 @@ export class Slider {
   @State() max: number;
   @State() trackWidth: number;
   @State() stepValue: number;
-  @State() maxCharacterLength: number;
 
   private handleSliderChange(ev) {
     this.updateValue(ev.target.value);
-  }
-
-  private getLongestCharacterLength() {
-    return Math.max(...this.rangeValues.map((item) => item.toString().length));
   }
 
   private updateValue(newValue) {
@@ -140,7 +138,6 @@ export class Slider {
     if (!this.rangeValues) return;
     this.min = this.rangeValues[0];
     this.max = this.rangeValues[this.rangeValues.length - 1];
-    this.maxCharacterLength = this.getLongestCharacterLength();
     if (this.defaultValue >= this.min && this.defaultValue <= this.max) {
       this.updateValue(this.defaultValue);
     } else {
@@ -184,7 +181,8 @@ export class Slider {
             max={this.max}
             step={this.stepValue}
             onInput={(ev) => this.handleSliderChange(ev)}
-            id="r"
+            // style={{ background: this.setBackgroundProgressFill() }}
+            id="range"
             type="range"
             value={this.value}
           />
@@ -192,7 +190,7 @@ export class Slider {
             <output
               style={this.setThumbPosition()}
               class={'plmg-slider-thumb-label'}
-              htmlFor="r"
+              htmlFor="range"
             >
               {this.value}
               <span class={'plmg-thumb-triangle'} />
@@ -216,47 +214,42 @@ export class Slider {
   }
 
   // To Do:
-  // fix font size using REM not PX
   // restore background progress fill
-  // set width of the thumb to something sensible
   // pull into input field
+  // tidy up scss
   // Check aria accessibilty
-  // hover states
+  // focus state
   // polyfill
   // tests
   // storybook - proper examples
   // Check react functioning
 
+  // private setBackgroundProgressFill(): string {
+  //   const RELATIVE_POSITION = (this.value - this.min) / (this.max - this.min);
+  //   return `linear-gradient(to right,
+  //     ${plmgColorBackgroundPrimaryStrong} 0%,
+  //     ${plmgColorBackgroundPrimaryStrong} ${RELATIVE_POSITION}%,
+  //     ${plmgColorBorderNeutralWeak} ${RELATIVE_POSITION}%,
+  //     ${plmgColorBorderNeutralWeak} 100%)`;
+  // }
+
   private setThumbPosition() {
-    // const FONT_SIZE_IN_PIXELS = 12;
     const RELATIVE_POSITION = (this.value - this.min) / (this.max - this.min);
-    // const THUMB_D = 1.5;
-    // const DIST = this.trackWidth / FONT_SIZE_IN_PIXELS - THUMB_D;
-    const PLMG_FONT_SIZE = tokens.plmgFontSizeX075;
-    console.log(PLMG_FONT_SIZE);
-    // Use tokens.plmgFontSizeX075 (0.75rem) not FONT_SIZE_IN_PIXELS
-    console.log(
-      `translate(calc(${RELATIVE_POSITION} * (${this.trackWidth} / 1 - 1.5rem) - 50%))`
-    );
+
+    // console.log(`calc(1.5em * ${this.getLongestCharacterLength}`);
+    // Use the longest character in the range to set a min width. Prevents rapid shrink / expand as non-monospaced font varies width of the thumb label.
     return {
+      minWidth: `calc(.5em * ${this.getLongestCharacterLength()}`,
       transform: `translate(calc(${RELATIVE_POSITION}em * (${this.trackWidth} / 12 - 1.5) - 50%)`,
-      // transform: `translate(calc(${RELATIVE_POSITION} * (${this.trackWidth} / 1 - 1.5rem) - 50%))`,
     };
   }
 
-  // const PLMG_FONT_SIZE = tokens.plmgFontSizeX075;
-
   private setLabelPosition(item) {
     const RELATIVE_POSITION = (item - this.min) / (this.max - this.min);
-    const font = 12;
-    const thumb_d = 1.5;
-    const dist = this.trackWidth / font - thumb_d;
+    return `translate(calc(${RELATIVE_POSITION}em * (${this.trackWidth} / 12 - 1.5) - 50%)`;
+  }
 
-    return `translate(calc(${RELATIVE_POSITION} * ${dist}em - 50%)`;
+  private getLongestCharacterLength() {
+    return Math.max(...this.rangeValues.map((item) => item.toString().length));
   }
 }
-
-// private calculateRelativePosition(value: number) {
-//   // Does not account for floating point numbers
-//   return Number(value - this.min) / (this.max - this.min);
-// }

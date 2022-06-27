@@ -20,6 +20,12 @@
   color: tokens.$plmg-color-text-neutral;
 }
 
+@mixin state-reset {
+  &:hover &:focus &:focus-visible &:active {
+    outline: none;
+  }
+}
+
 @mixin set-background {
   background-color: tokens.$plmg-color-background-primary-strong;
   color: tokens.$plmg-color-text-neutral-inverted;
@@ -55,9 +61,13 @@ $dist: $track-w - $thumb-d;
   box-sizing: border-box;
   border: none;
   width: $track-w;
-  height: $track-h;
+  // height: $track-h;
   background: $track-c;
   border-radius: 0.25em;
+  height: 4px;
+  &:focus-visible {
+    outline: none;
+  }
 }
 
 @mixin thumb() {
@@ -67,6 +77,7 @@ $dist: $track-w - $thumb-d;
   height: $thumb-d;
   border-radius: 50%;
   @include set-background;
+
   @include set-states;
 }
 
@@ -79,13 +90,13 @@ $dist: $track-w - $thumb-d;
   @include set-typography;
 
   input[type='range'] {
+    &:focus-visible {
+      outline: none;
+    }
+
     &,
     &::-webkit-slider-thumb {
       -webkit-appearance: none;
-    }
-
-    &:hover &:focus &:active {
-      outline: none;
     }
 
     flex: 1;
@@ -125,6 +136,7 @@ $dist: $track-w - $thumb-d;
   output {
     display: none;
     margin-top: -1em;
+    text-align: center;
 
     &.plmg-slider-thumb-label {
       display: flex;
