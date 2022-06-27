@@ -228,10 +228,10 @@ export class Slider {
   // Check react functioning
 
   private setThumbPosition() {
-    const FONT_SIZE_IN_PIXELS = 12;
+    // const FONT_SIZE_IN_PIXELS = 12;
     const RELATIVE_POSITION = (this.value - this.min) / (this.max - this.min);
-    const THUMB_D = 1.5;
-    const DIST = this.trackWidth / FONT_SIZE_IN_PIXELS - THUMB_D;
+    // const THUMB_D = 1.5;
+    // const DIST = this.trackWidth / FONT_SIZE_IN_PIXELS - THUMB_D;
     const PLMG_FONT_SIZE = tokens.plmgFontSizeX075;
     console.log(PLMG_FONT_SIZE);
     // Use tokens.plmgFontSizeX075 (0.75rem) not FONT_SIZE_IN_PIXELS
@@ -239,7 +239,7 @@ export class Slider {
       `translate(calc(${RELATIVE_POSITION} * (${this.trackWidth} / 1 - 1.5rem) - 50%))`
     );
     return {
-      transform: `translate(calc(${RELATIVE_POSITION} * ${DIST}em - 50%)`,
+      transform: `translate(calc(${RELATIVE_POSITION}em * (${this.trackWidth} / 12 - 1.5) - 50%)`,
       // transform: `translate(calc(${RELATIVE_POSITION} * (${this.trackWidth} / 1 - 1.5rem) - 50%))`,
     };
   }

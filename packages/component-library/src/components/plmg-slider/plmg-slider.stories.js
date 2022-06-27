@@ -43,7 +43,7 @@ const CSS_VARS = [];
 const SLOTS = [];
 
 const Template = (args) => {
-  const el = document.createElement('plmg-slider-remake');
+  const el = document.createElement('plmg-slider');
   Utils.bindProps(el, PROPS, args);
   Utils.bindEvents(el, EVENTS, args);
   Utils.bindStyles(el, CSS_VARS, args);
