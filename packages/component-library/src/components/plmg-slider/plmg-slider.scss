@@ -125,6 +125,7 @@ $dist: $track-w - $thumb-d;
   output {
     display: none;
     margin-top: -1em;
+    text-align: center;
 
     &.plmg-slider-thumb-label {
       display: flex;
