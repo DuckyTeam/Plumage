@@ -15,7 +15,6 @@
 @mixin set-typography {
   font-family: tokens.$plmg-font-family-sans;
   font-weight: tokens.$plmg-font-weight-regular;
-  font-size: tokens.$plmg-font-size-x0-75;
   line-height: tokens.$plmg-font-lineheight-loose;
   color: tokens.$plmg-color-text-neutral;
 }
@@ -26,22 +25,20 @@
   }
 }
 
-@mixin set-background {
-  background-color: tokens.$plmg-color-background-primary-strong;
-  color: tokens.$plmg-color-text-neutral-inverted;
-  outline: 10px solid hsl(186, 100%, 33%, 0);
-}
 @mixin set-states {
   &:hover {
     $hover-opacity: 0.2;
     outline: 10px solid
       rgba(tokens.$plmg-color-decoration-primary, $hover-opacity);
+    border-radius: 50%;
   }
   &:focus {
+    border-radius: 50%;
     outline: 4px solid rgba(tokens.$plmg-color-border-standout, 1);
   }
   &:active {
     $active-opacity: 0.4;
+    border-radius: 50%;
     outline: 10px solid
       rgba(tokens.$plmg-color-decoration-primary, $active-opacity);
   }
@@ -54,16 +51,13 @@
 $track-w: 12.5em;
 $track-h: 0.33em;
 $thumb-d: 1.5em;
-$track-c: #ccc;
+// $track-c: #ccc;
 $dist: $track-w - $thumb-d;
 
 @mixin track() {
   box-sizing: border-box;
   border: none;
   width: $track-w;
-  // height: $track-h;
-  background: $track-c;
-  border-radius: 0.25em;
   height: 4px;
   &:focus-visible {
     outline: none;
@@ -76,92 +70,100 @@ $dist: $track-w - $thumb-d;
   width: $thumb-d;
   height: $thumb-d;
   border-radius: 50%;
-  @include set-background;
-
-  @include set-states;
+  background-color: tokens.$plmg-color-background-primary-strong;
+  color: tokens.$plmg-color-text-neutral-inverted;
+  outline: 10px solid hsl(186, 100%, 33%, 0);
 }
 
-.plmg-slider-container {
+.plmg-component-container {
   display: flex;
+  gap: 1rem;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
 
-  flex-direction: column;
-  position: relative;
-  height: 3.5 * $thumb-d;
-  @include set-typography;
-
-  input[type='range'] {
-    &:focus-visible {
-      outline: none;
-    }
-
-    &,
-    &::-webkit-slider-thumb {
-      -webkit-appearance: none;
-    }
-
+  .plmg-slider-container {
+    display: flex;
     flex: 1;
-    margin: 0;
-    padding: 0;
-    min-height: $thumb-d;
-    background: transparent;
-    font: inherit;
+    flex-direction: column;
+    position: relative;
+    @include set-typography;
+    align-self: flex-end;
 
-    &::-webkit-slider-runnable-track {
-      @include track;
-    }
-    &::-moz-range-track {
-      @include track;
-    }
-    &::-ms-track {
-      @include track;
-    }
+    input[type='range'] {
+      border-radius: 3px;
+      height: 4px;
 
-    &::-webkit-slider-thumb {
-      margin-top: 0.5 * ($track-h - $thumb-d);
-      @include thumb;
-    }
-    &::-moz-range-thumb {
-      @include thumb;
-    }
-    &::-ms-thumb {
-      margin-top: 0;
-      @include thumb;
-    }
+      &:focus-visible {
+        outline: none;
+      }
 
-    &::-ms-tooltip {
-      display: none;
+      &,
+      &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+      }
+
+      margin: 0;
+      padding: 0;
+      background: transparent;
+      font: inherit;
+
+      &::-webkit-slider-runnable-track {
+        @include track;
+      }
+      &::-moz-range-track {
+        @include track;
+      }
+      &::-ms-track {
+        @include track;
+      }
+
+      &::-webkit-slider-thumb {
+        @include set-states;
+        margin-top: 0.5 * ($track-h - $thumb-d);
+        @include thumb;
+      }
+      &::-moz-range-thumb {
+        @include thumb;
+      }
     }
   }
 
-  output {
-    display: none;
-    margin-top: -1em;
-    text-align: center;
+  .thumb-label-container {
+    height: 2.5rem;
 
-    &.plmg-slider-thumb-label {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      left: 0.5 * $thumb-d;
-      top: 0;
-      padding: 4px 8px;
-      border-radius: 4px;
+    output {
+      margin-top: -0.25rem;
+      display: relative;
+      text-align: center;
+      background-color: tokens.$plmg-color-background-primary-strong;
+      color: tokens.$plmg-color-text-neutral-inverted;
 
-      @include set-background;
-
-      .plmg-thumb-triangle {
+      &.plmg-slider-thumb-label {
+        display: flex;
+        flex-direction: column;
         position: absolute;
-        align-self: center;
-        top: 100%;
+        left: 0.5 * $thumb-d;
+        top: 0;
+        padding: 4px 8px;
+        border-radius: 4px;
 
-        border-left: 6px solid transparent;
-        border-right: 6px solid transparent;
-        border-top: 6px solid tokens.$plmg-color-background-primary-strong;
+        .plmg-thumb-triangle {
+          position: absolute;
+          align-self: center;
+          top: 100%;
+
+          border-left: 6px solid transparent;
+          border-right: 6px solid transparent;
+          border-top: 6px solid tokens.$plmg-color-background-primary-strong;
+        }
       }
     }
   }
 
   .labels {
+    margin-top: 2.5em;
+
     position: relative;
     .label {
       display: flex;
@@ -179,5 +181,34 @@ $dist: $track-w - $thumb-d;
         margin-bottom: 8px;
       }
     }
+  }
+}
+
+.plmg-slider-input-field-container {
+  input {
+    @include set-typography;
+    $plmg-font-size-x1-5: 1.5rem;
+    min-width: 2.5rem;
+    width: fit-content;
+    border: tokens.$plmg-border-width-s solid
+      tokens.$plmg-color-border-neutral-weak;
+    padding: 12px 16px;
+    background-color: tokens.$plmg-color-background-neutral;
+    outline: none;
+    box-shadow: tokens.$plmg-shadow-inner-s;
+    border-radius: 4px;
+  }
+
+  /* Remove input arrows */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Remove input arrows - firefox */
+  input[type='number'] {
+    -moz-appearance: textfield;
+    max-width: 3.5rem;
   }
 }

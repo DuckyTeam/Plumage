@@ -167,10 +167,6 @@ export namespace Components {
          */
         "defaultValue": number;
         /**
-          * Define an id attribute for the input  Any string
-         */
-        "inputId": string;
-        /**
           * Define if marks and marks labels are visible  Default: true
          */
         "marks": boolean;
@@ -449,10 +445,6 @@ declare namespace LocalJSX {
           * Define the default value.  Sets the starting value for the slider.  Allowed: Any number  When the default value is outside of the min and max values or undefined, default value is set to the min value.
          */
         "defaultValue"?: number;
-        /**
-          * Define an id attribute for the input  Any string
-         */
-        "inputId"?: string;
         /**
           * Define if marks and marks labels are visible  Default: true
          */

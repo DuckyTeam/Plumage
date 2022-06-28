@@ -1,4 +1,8 @@
 import { Component, Host, h, State, Prop, Watch } from '@stencil/core';
+import {
+  plmgColorBorderNeutralWeak,
+  plmgColorBackgroundPrimaryStrong,
+} from '@ducky/plumage-tokens';
 
 @Component({
   tag: 'plmg-slider',
@@ -56,17 +60,17 @@ export class Slider {
       throw new Error('name must be a string');
   }
 
-  /**
-   * Define an id attribute for the input
-   *
-   * Any string
-   */
-  @Prop() inputId: string;
-  @Watch('inputId')
-  validateID(newValue: string) {
-    if (newValue && typeof newValue !== 'string')
-      throw new Error('input id must be a string');
-  }
+  // /**
+  //  * Define an id attribute for the input
+  //  *
+  //  * Any string
+  //  */
+  // @Prop() inputId: string;
+  // @Watch('inputId')
+  // validateID(newValue: string) {
+  //   if (newValue && typeof newValue !== 'string')
+  //     throw new Error('input id must be a string');
+  // }
 
   /**
    * Define thumb label visibility
@@ -121,6 +125,7 @@ export class Slider {
   @State() max: number;
   @State() trackWidth: number;
   @State() stepValue: number;
+  @State() inputFieldValue: number;
 
   private handleSliderChange(ev) {
     this.updateValue(ev.target.value);
@@ -128,6 +133,42 @@ export class Slider {
 
   private updateValue(newValue) {
     this.value = newValue;
+    if (this.inputFieldValue !== this.value) {
+      this.inputFieldValue = this.value;
+    }
+    // this.valueUpdated.emit({ value: this.value });
+  }
+
+  private getAllowedInputs() {
+    let inputs = [];
+    inputs.push(this.min);
+    while (inputs[inputs.length - 1] <= this.max) {
+      const PREV = inputs[inputs.length - 1];
+      // Correct for floating point errors by rounding when necessary
+      const NEXT =
+        Math.round((PREV + this.stepValue + Number.EPSILON) * 1000000) /
+        1000000;
+      // Escape valve in case of over rounding
+      if (!(NEXT > PREV)) return;
+      inputs.push(NEXT);
+    }
+    return inputs;
+  }
+  private handleInputFieldChange(ev) {
+    // Ignore Empty Strings
+    if (ev.target.value == '') return;
+    // Get an array of allowed inputs
+    const SET_ALLOWED_INPUTS = this.getAllowedInputs();
+    // Check input is allowed value, within range and one of the allowed inputs
+    const newValue = parseFloat(ev.target.value);
+    if (
+      isNaN(newValue) ||
+      newValue > this.max ||
+      newValue < this.min ||
+      !SET_ALLOWED_INPUTS.includes(newValue)
+    )
+      return;
+    this.updateValue(newValue);
   }
 
   private setValues() {
@@ -168,71 +209,98 @@ export class Slider {
   render() {
     return (
       <Host value={this.value}>
-        <div
-          class={'plmg-slider-container'}
-          ref={(el) => (this.ref = el as HTMLDivElement)}
-        >
-          <input
-            min={this.min}
-            max={this.max}
-            step={this.stepValue}
-            onInput={(ev) => this.handleSliderChange(ev)}
-            // style={{ background: this.setBackgroundProgressFill() }}
-            id="range"
-            type="range"
-            value={this.value}
-          />
-          {this.thumbLabel && (
-            <output
-              style={this.setThumbPosition()}
-              class={'plmg-slider-thumb-label'}
-              htmlFor="range"
-            >
-              {this.value}
-              <span class={'plmg-thumb-triangle'} />
-            </output>
-          )}
-          <div class={'labels'}>
-            {this.rangeValues.map((item, index) => (
-              <div
-                class={'label'}
-                key={index}
-                style={{ transform: this.setLabelPosition(item) }}
-              >
-                <span class={'tick'}>&#8205;</span>
-                <span>{item}</span>
+        <div class={'plmg-component-container'}>
+          <div
+            class={'plmg-slider-container'}
+            ref={(el) => (this.ref = el as HTMLDivElement)}
+          >
+            {this.thumbLabel && (
+              <div class={'thumb-label-container'}>
+                <output
+                  style={this.setThumbPosition()}
+                  class={'plmg-slider-thumb-label'}
+                  htmlFor={this.name}
+                >
+                  {this.value}
+                  <span class={'plmg-thumb-triangle'} />
+                </output>
               </div>
-            ))}
+            )}
+
+            <input
+              min={this.min}
+              max={this.max}
+              name={this.name}
+              value={this.value}
+              aria-valuemin={this.min}
+              aria-valuemax={this.max}
+              aria-valuenow={this.value}
+              step={this.stepValue}
+              onInput={(ev) => this.handleSliderChange(ev)}
+              style={{ background: this.setBackgroundProgressFill() }}
+              id="range"
+              type="range"
+            />
+
+            {this.marks && (
+              <div class={'labels'}>
+                {this.rangeValues.map((item, index) => (
+                  <div
+                    class={'label'}
+                    key={index}
+                    style={{ transform: this.setLabelPosition(item) }}
+                  >
+                    <span class={'tick'}>&#8205;</span>
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
+          <label htmlfor={this.name} tabIndex={0}>
+            <div class={'plmg-slider-input-field-container'}>
+              <label htmlfor={this.name} />
+              <input
+                type={'number'}
+                name={this.name}
+                step={this.stepValue}
+                aria-valuemin={this.min}
+                aria-valuemax={this.max}
+                aria-valuenow={this.value}
+                min={this.min}
+                max={this.max}
+                value={this.inputFieldValue}
+                onInput={(Event) => this.handleInputFieldChange(Event)}
+              />
+            </div>
+          </label>
         </div>
       </Host>
     );
   }
 
   // To Do:
-  // restore background progress fill
-  // pull into input field
-  // tidy up scss
-  // Check aria accessibilty
+  // input field focus
   // focus state
-  // polyfill
+  // polyfill - thumb
+  // tidy up scss
   // tests
   // storybook - proper examples
   // Check react functioning
 
-  // private setBackgroundProgressFill(): string {
-  //   const RELATIVE_POSITION = (this.value - this.min) / (this.max - this.min);
-  //   return `linear-gradient(to right,
-  //     ${plmgColorBackgroundPrimaryStrong} 0%,
-  //     ${plmgColorBackgroundPrimaryStrong} ${RELATIVE_POSITION}%,
-  //     ${plmgColorBorderNeutralWeak} ${RELATIVE_POSITION}%,
-  //     ${plmgColorBorderNeutralWeak} 100%)`;
-  // }
+  private setBackgroundProgressFill(): string {
+    const RELATIVE_POSITION =
+      ((this.value - this.min) / (this.max - this.min)) * 100;
+    return `linear-gradient(to right,
+      ${plmgColorBackgroundPrimaryStrong} 0%,
+      ${plmgColorBackgroundPrimaryStrong} ${RELATIVE_POSITION}%,
+      ${plmgColorBorderNeutralWeak} ${RELATIVE_POSITION}%,
+      ${plmgColorBorderNeutralWeak} 100%)`;
+  }
 
   private setThumbPosition() {
     const RELATIVE_POSITION = (this.value - this.min) / (this.max - this.min);
 
-    // console.log(`calc(1.5em * ${this.getLongestCharacterLength}`);
     // Use the longest character in the range to set a min width. Prevents rapid shrink / expand as non-monospaced font varies width of the thumb label.
     return {
       minWidth: `calc(.5em * ${this.getLongestCharacterLength()}`,
