@@ -1,4 +1,13 @@
-import { Component, Host, h, State, Prop, Watch } from '@stencil/core';
+import {
+  Component,
+  Host,
+  h,
+  State,
+  Prop,
+  Watch,
+  Event,
+  EventEmitter,
+} from '@stencil/core';
 import {
   plmgColorBorderNeutralWeak,
   plmgColorBackgroundPrimaryStrong,
@@ -59,18 +68,6 @@ export class Slider {
     if (newValue && typeof newValue !== 'string')
       throw new Error('name must be a string');
   }
-
-  // /**
-  //  * Define an id attribute for the input
-  //  *
-  //  * Any string
-  //  */
-  // @Prop() inputId: string;
-  // @Watch('inputId')
-  // validateID(newValue: string) {
-  //   if (newValue && typeof newValue !== 'string')
-  //     throw new Error('input id must be a string');
-  // }
 
   /**
    * Define thumb label visibility
@@ -136,8 +133,10 @@ export class Slider {
     if (this.inputFieldValue !== this.value) {
       this.inputFieldValue = this.value;
     }
-    // this.valueUpdated.emit({ value: this.value });
+    this.valueUpdated.emit({ value: this.value });
   }
+
+  @Event() valueUpdated: EventEmitter;
 
   private getAllowedInputs() {
     let inputs = [];
@@ -207,11 +206,16 @@ export class Slider {
     if (this.abortResizeListener) this.abortResizeListener.abort();
   }
   render() {
+    const containerClasses = {
+      'plmg-slider-container': true,
+      marks: this.marks,
+    };
+
     return (
       <Host value={this.value}>
         <div class={'plmg-component-container'}>
           <div
-            class={'plmg-slider-container'}
+            class={containerClasses}
             ref={(el) => (this.ref = el as HTMLDivElement)}
           >
             {this.thumbLabel && (
@@ -278,15 +282,6 @@ export class Slider {
       </Host>
     );
   }
-
-  // To Do:
-  // input field focus
-  // focus state
-  // polyfill - thumb
-  // tidy up scss
-  // tests
-  // storybook - proper examples
-  // Check react functioning
 
   private setBackgroundProgressFill(): string {
     const RELATIVE_POSITION =
