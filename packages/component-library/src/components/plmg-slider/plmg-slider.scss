@@ -12,6 +12,8 @@
   display: none;
 }
 
+// Mixins
+// ------------------------------
 @mixin set-typography {
   font-family: tokens.$plmg-font-family-sans;
   font-weight: tokens.$plmg-font-weight-regular;
@@ -24,7 +26,6 @@
     outline: none;
   }
 }
-
 @mixin set-states {
   &:hover {
     $hover-opacity: 0.2;
@@ -32,10 +33,12 @@
       rgba(tokens.$plmg-color-decoration-primary, $hover-opacity);
     border-radius: 50%;
   }
-  &:focus {
+
+  &:focus-visible {
     border-radius: 50%;
-    outline: 4px solid rgba(tokens.$plmg-color-border-standout, 1);
+    outline: 4px solid rgba(tokens.$plmg-color-border-standout, 1) !important;
   }
+
   &:active {
     $active-opacity: 0.4;
     border-radius: 50%;
@@ -43,16 +46,15 @@
       rgba(tokens.$plmg-color-decoration-primary, $active-opacity);
   }
 }
+// END Mixins
+// ------------------------------
 
-// ------------- END Common styles -----------------
+// Component style
+// ------------------------------
 
-// Mixins
-// -------------------------------------------------
 $track-w: 12.5em;
 $track-h: 0.33em;
 $thumb-d: 1.5em;
-// $track-c: #ccc;
-$dist: $track-w - $thumb-d;
 
 @mixin track() {
   box-sizing: border-box;
@@ -88,15 +90,16 @@ $dist: $track-w - $thumb-d;
     flex-direction: column;
     position: relative;
     @include set-typography;
-    align-self: flex-end;
+
+    &.marks {
+      align-self: flex-end;
+    }
 
     input[type='range'] {
       border-radius: 3px;
       height: 4px;
 
-      &:focus-visible {
-        outline: none;
-      }
+      @include state-reset;
 
       &,
       &::-webkit-slider-thumb {
@@ -190,13 +193,27 @@ $dist: $track-w - $thumb-d;
     $plmg-font-size-x1-5: 1.5rem;
     min-width: 2.5rem;
     width: fit-content;
-    border: tokens.$plmg-border-width-s solid
+    border: tokens.$plmg-border-width-m solid
       tokens.$plmg-color-border-neutral-weak;
     padding: 12px 16px;
     background-color: tokens.$plmg-color-background-neutral;
     outline: none;
     box-shadow: tokens.$plmg-shadow-inner-s;
     border-radius: 4px;
+
+    &:hover {
+      background-color: tokens.$plmg-color-background-neutral-hover;
+    }
+    &:active {
+      border: tokens.$plmg-border-width-m solid
+        tokens.$plmg-color-border-primary-strong;
+    }
+
+    &:focus-visible {
+      outline: none;
+      border: tokens.$plmg-border-width-m solid
+        tokens.$plmg-color-border-standout;
+    }
   }
 
   /* Remove input arrows */
