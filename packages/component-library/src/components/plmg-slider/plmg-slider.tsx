@@ -140,6 +140,7 @@ export class Slider {
   @State() stepValue: number;
   @State() inputFieldValue: number;
   @State() value: number;
+  @State() valueCharacterLength: number;
 
   private handleSliderChange(ev) {
     this.updateValue(ev.target.value);
@@ -150,6 +151,8 @@ export class Slider {
     if (this.inputFieldValue !== this.value) {
       this.inputFieldValue = this.value;
     }
+    this.valueCharacterLength = this.value.toString().length;
+
     this.valueUpdated.emit({ value: this.value });
   }
 
@@ -196,6 +199,7 @@ export class Slider {
     } else {
       this.updateValue(this.min);
     }
+    this.valueCharacterLength = this.value.toString.length;
     if (!this.step) {
       this.stepValue = (this.max - this.min) / 100;
     } else {
@@ -325,27 +329,26 @@ export class Slider {
     return (this.value - this.min) / (this.max - this.min);
   }
 
-  private getLongestCharacterLength() {
-    return Math.max(
-      ...this.rangeValues.map((character) => character.toString().length)
-    );
-  }
-
   private setThumbPosition() {
-    // Use the longest character in the range to set a min width.
+    // Use prev
     // Prevents rapid shrink / expand as non-monospaced font varies width of the thumb label.
 
+    const trackBasis = 12;
+    const thumbDiameter = 1.5;
+
     return {
-      minWidth: `calc(.5em * ${this.getLongestCharacterLength()}`,
+      minWidth: `calc(.6em * ${this.valueCharacterLength})`,
       transform: `translate(calc(${this.calculateValueAsDecimalFraction()}em * (${
         this.trackWidth
-      } / 12 - 1.5) - 50%)`,
+      } / ${trackBasis} - ${thumbDiameter}) - 50%)`,
     };
   }
 
   private setLabelPosition(labelvalue) {
+    const trackBasis = 12;
+    const thumbDiameter = 1.5;
     return `translate(calc(${this.calculateValueAsDecimalFraction(
       labelvalue
-    )}em * (${this.trackWidth} / 12 - 1.5) - 50%)`;
+    )}em * (${this.trackWidth} / ${trackBasis} - ${thumbDiameter}) - 50%)`;
   }
 }
