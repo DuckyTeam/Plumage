@@ -131,7 +131,7 @@ $thumb-diameter: 1.5em;
     }
   }
 
-  .thumb-label-container {
+  .plmg-thumb-label-container {
     height: 2.5rem;
 
     output {
@@ -162,11 +162,11 @@ $thumb-diameter: 1.5em;
     }
   }
 
-  .labels {
+  .plmg-marks {
     margin-top: 2.5em;
 
     position: relative;
-    .label {
+    .plmg-mark-label {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -175,7 +175,7 @@ $thumb-diameter: 1.5em;
       left: 0.5 * $thumb-diameter;
       z-index: -1;
 
-      .tick {
+      .plmg-mark-tick {
         background-color: tokens.$plmg-color-background-neutral-strong;
         width: 2px;
         height: 4px;

@@ -221,6 +221,7 @@ export class Slider {
   disconnectedCallback() {
     if (this.abortResizeListener) this.abortResizeListener.abort();
   }
+
   render() {
     const containerClasses = {
       'plmg-slider-container': true,
@@ -235,7 +236,7 @@ export class Slider {
             ref={(el) => (this.ref = el as HTMLDivElement)}
           >
             {this.thumbLabel && (
-              <div class={'thumb-label-container'}>
+              <div class={'plmg-thumb-label-container'}>
                 <output
                   style={this.setThumbPosition()}
                   class={'plmg-slider-thumb-label'}
@@ -263,14 +264,14 @@ export class Slider {
             />
 
             {this.marks && (
-              <div class={'labels'}>
+              <div class={'plmg-marks'}>
                 {this.rangeValues.map((item, index) => (
                   <div
-                    class={'label'}
+                    class={'plmg-mark-label'}
                     key={index}
                     style={{ transform: this.setLabelPosition(item) }}
                   >
-                    <span class={'tick'}>&#8205;</span>
+                    <span class={'plmg-mark-tick'}>&#8205;</span>
                     <span>{item}</span>
                   </div>
                 ))}
