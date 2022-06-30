@@ -29,7 +29,7 @@ export class Slider {
    *
    * First and last items set min and max values
    *
-   * Additional values set mark additional labels
+   * Additional values set additional marks and labels
    *
    * Required
    */
@@ -42,13 +42,13 @@ export class Slider {
   }
 
   /**
-   * Define the default value.
+   * Define the default value
    *
-   * Sets the starting value for the slider.
+   * Sets the starting value for the slider
    *
    * Allowed: Any number
    *
-   * When the default value is outside of the min and max values or undefined, default value is set to the min value.
+   * When the default value is outside of the min and max values or undefined, default value is set to the min value
    */
   @Prop() defaultValue: number;
   @Watch('defaultValue')
@@ -88,12 +88,12 @@ export class Slider {
   /**
    * Define step
    *
-   * Slider's value will increase or decrease in stepValue
+   * Slider's value will increase or decrease by stepValue
    *
    * Allowed values
    * - Any number
    *
-   * When step is not provided step, step is set to 1% of the range
+   * When step is not provided step is set to 1% of the range
    */
   @Prop() step: number;
   @Watch('step')
@@ -103,6 +103,7 @@ export class Slider {
   }
 
   /**
+   *
    * Define if marks and marks labels are visible
    *
    * Default: true
@@ -115,6 +116,7 @@ export class Slider {
   }
 
   /**
+   *
    * Store currentValue, min, max and step states
    */
   @State() value: number;
