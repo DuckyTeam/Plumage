@@ -21,38 +21,16 @@ import {
 export class Slider {
   private ref: HTMLDivElement;
   private abortResizeListener: AbortController;
-
-  /**
-   * Define the range of values
-   *
-   * Must be a list of values with at least two items
-   *
-   * First and last items set min and max values
-   *
-   * Additional values set additional marks and labels
-   *
-   * The string passed to the rangeValues array has to be sorted on the client
-   *
-   * The component will not sort the array
-   *
-   * Required
-   */
-  @Prop() rangeValues: Array<number>;
-  Event: any;
-  @Watch('rangeValues')
-  validateRangeValues(newValue: Array<number>) {
-    if (!Array.isArray(newValue) || newValue.length < 2)
-      throw new Error('rangeValues must be an array with at least two items');
-  }
-
   /**
    * Define the default value
    *
    * Sets the starting value for the slider
    *
-   * Allowed: Any number
+   * Allowed values:
+   * - any number
    *
-   * When the default value is outside of the min and max values or undefined, default value is set to the min value
+   * If default value is outside of min and max range or undefined
+   * default value is set to the min value
    */
   @Prop() defaultValue: number;
   @Watch('defaultValue')
@@ -60,17 +38,27 @@ export class Slider {
     if (typeof newValue !== 'number')
       throw new Error('default value be a number');
   }
-
+  /**
+   *
+   * Define mark visibility
+   *
+   * Default: true
+   */
+  @Prop() marks: boolean = true;
+  @Watch('marks')
+  onMarks(newValue: boolean) {
+    if (typeof newValue !== 'boolean')
+      throw new Error('marks must be a boolean');
+  }
   /**
    * Define a descriptive name for the slider
    *
-   * Allowed: Any string
+   * Allowed values:
+   * - any string
    *
    * Used internally by the component to connect inputs and outputs
    *
-   * Required for accessibility
-   *
-   * Sould be unique and descriptive
+   * Required for accessibility and should be a unique and descriptive
    *
    */
   @Prop() name: string;
@@ -81,9 +69,29 @@ export class Slider {
   }
 
   /**
+   * Define a range of values
+   *
+   * Allowed values:
+   * - An array of with at least two items
+   *
+   * Must be a list of values with at least two items
+   * with the first and last items set min and max values
+   * additional values set additional marks and labels
+   * sort the string passed to component on the client
+   * component will not sort the array
+   */
+  @Prop() rangeValues: Array<number>;
+  Event: any;
+  @Watch('rangeValues')
+  validateRangeValues(newValue: Array<number>) {
+    if (!Array.isArray(newValue) || newValue.length < 2)
+      throw new Error('rangeValues must be an array with at least two items');
+  }
+
+  /**
    * Define thumb label visibility
    *
-   * Allowed values
+   * Allowed values:
    *  - true
    *  - false
    *
@@ -99,10 +107,10 @@ export class Slider {
   /**
    * Define step
    *
-   * Slider's value will increase or decrease by stepValue
-   *
-   * Allowed values
+   * Allowed values:
    * - Any number
+   *
+   * Slider's value will increase or decrease by stepValue
    *
    * When step is not provided the stepValue is set to 1% of the range
    */
@@ -111,19 +119,6 @@ export class Slider {
   validateStep(newValue: number) {
     if (typeof newValue !== 'number' || newValue <= 0)
       throw new Error('step must be a positive number');
-  }
-
-  /**
-   *
-   * Define if marks and mark labels are visible
-   *
-   * Default: true
-   */
-  @Prop() marks: boolean = true;
-  @Watch('marks')
-  onMarks(newValue: boolean) {
-    if (typeof newValue !== 'boolean')
-      throw new Error('marks must be a boolean');
   }
 
   /**
@@ -330,9 +325,6 @@ export class Slider {
   }
 
   private setThumbPosition() {
-    // Use prev
-    // Prevents rapid shrink / expand as non-monospaced font varies width of the thumb label.
-
     const trackBasis = 12;
     const thumbDiameter = 1.5;
 
