@@ -54,7 +54,7 @@ export class Slider {
   @Watch('defaultValue')
   validateDefaultValue(newValue: number) {
     if (typeof newValue !== 'number')
-      throw new Error('default value number be a number');
+      throw new Error('default value be a number');
   }
 
   /**
@@ -93,7 +93,7 @@ export class Slider {
    * Allowed values
    * - Any number
    *
-   * When step is not provided step is set to 1% of the range
+   * When step is not provided the stepValue is set to 1% of the range
    */
   @Prop() step: number;
   @Watch('step')
@@ -104,7 +104,7 @@ export class Slider {
 
   /**
    *
-   * Define if marks and marks labels are visible
+   * Define if marks and mark labels are visible
    *
    * Default: true
    */
@@ -160,7 +160,7 @@ export class Slider {
     if (ev.target.value == '') return;
     // Get an array of allowed inputs
     const SET_ALLOWED_INPUTS = this.getAllowedInputs();
-    // Check input is allowed value, within range and one of the allowed inputs
+    // Check if input is allowed value, within range and one of the allowed inputs
     const newValue = parseFloat(ev.target.value);
     if (
       isNaN(newValue) ||
