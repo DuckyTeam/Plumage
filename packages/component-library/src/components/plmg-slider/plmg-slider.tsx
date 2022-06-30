@@ -133,12 +133,13 @@ export class Slider {
    * trackWidth stores the width of container after the component loads to calculate relative positions.
    *
    */
-  @State() value: number;
+
   @State() min: number;
   @State() max: number;
   @State() trackWidth: number;
   @State() stepValue: number;
   @State() inputFieldValue: number;
+  @State() value: number;
 
   private handleSliderChange(ev) {
     this.updateValue(ev.target.value);
@@ -265,14 +266,14 @@ export class Slider {
 
             {this.marks && (
               <div class={'plmg-marks'}>
-                {this.rangeValues.map((item, index) => (
+                {this.rangeValues.map((labelvalue, index) => (
                   <div
                     class={'plmg-mark-label'}
                     key={index}
-                    style={{ transform: this.setLabelPosition(item) }}
+                    style={{ transform: this.setLabelPosition(labelvalue) }}
                   >
                     <span class={'plmg-mark-tick'}>&#8205;</span>
-                    <span>{item}</span>
+                    <span>{labelvalue}</span>
                   </div>
                 ))}
               </div>
@@ -301,31 +302,50 @@ export class Slider {
   }
 
   private setBackgroundProgressFill(): string {
-    const RELATIVE_POSITION =
-      ((this.value - this.min) / (this.max - this.min)) * 100;
     return `linear-gradient(to right,
       ${plmgColorBackgroundPrimaryStrong} 0%,
-      ${plmgColorBackgroundPrimaryStrong} ${RELATIVE_POSITION}%,
-      ${plmgColorBorderNeutralWeak} ${RELATIVE_POSITION}%,
+      ${plmgColorBackgroundPrimaryStrong} ${this.calculateValueAsDecimalFraction(
+      null,
+      100
+    )}%,
+      ${plmgColorBorderNeutralWeak} ${this.calculateValueAsDecimalFraction(
+      null,
+      100
+    )}%,
       ${plmgColorBorderNeutralWeak} 100%)`;
   }
 
-  private setThumbPosition() {
-    const RELATIVE_POSITION = (this.value - this.min) / (this.max - this.min);
-
-    // Use the longest character in the range to set a min width. Prevents rapid shrink / expand as non-monospaced font varies width of the thumb label.
-    return {
-      minWidth: `calc(.5em * ${this.getLongestCharacterLength()}`,
-      transform: `translate(calc(${RELATIVE_POSITION}em * (${this.trackWidth} / 12 - 1.5) - 50%)`,
-    };
-  }
-
-  private setLabelPosition(item) {
-    const RELATIVE_POSITION = (item - this.min) / (this.max - this.min);
-    return `translate(calc(${RELATIVE_POSITION}em * (${this.trackWidth} / 12 - 1.5) - 50%)`;
+  private calculateValueAsDecimalFraction(labelvalue?, multipler?) {
+    if (multipler) {
+      return ((this.value - this.min) / (this.max - this.min)) * multipler;
+    }
+    if (labelvalue || labelvalue === 0) {
+      return (labelvalue - this.min) / (this.max - this.min);
+    }
+    return (this.value - this.min) / (this.max - this.min);
   }
 
   private getLongestCharacterLength() {
-    return Math.max(...this.rangeValues.map((item) => item.toString().length));
+    return Math.max(
+      ...this.rangeValues.map((character) => character.toString().length)
+    );
+  }
+
+  private setThumbPosition() {
+    // Use the longest character in the range to set a min width.
+    // Prevents rapid shrink / expand as non-monospaced font varies width of the thumb label.
+
+    return {
+      minWidth: `calc(.5em * ${this.getLongestCharacterLength()}`,
+      transform: `translate(calc(${this.calculateValueAsDecimalFraction()}em * (${
+        this.trackWidth
+      } / 12 - 1.5) - 50%)`,
+    };
+  }
+
+  private setLabelPosition(labelvalue) {
+    return `translate(calc(${this.calculateValueAsDecimalFraction(
+      labelvalue
+    )}em * (${this.trackWidth} / 12 - 1.5) - 50%)`;
   }
 }
