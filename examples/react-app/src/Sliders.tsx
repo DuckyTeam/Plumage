@@ -38,18 +38,17 @@ export default function Sliders() {
         <form name={'sliders'} onSubmit={handleSubmit}>
           <span>Stepped Slider (5)</span>
           <PlmgSlider
-            inputId={'stepped'}
             name={'stepped'}
             marks={true}
+            defaultValue={20}
             thumbLabel={false}
             step={5}
-            rangeValues={[0, 50, 70, 100]}
+            rangeValues={[0, 20, 50, 70, 100]}
             onValueUpdated={(e) => handleSlider(e)}
           />
           <br />
           <span>Decimal Slider</span>
           <PlmgSlider
-            inputId={'decimal'}
             name={'decimal'}
             thumbLabel
             rangeValues={[0.1, 0.2, 0.3, 0.4, 0.5]}
@@ -58,7 +57,6 @@ export default function Sliders() {
           <br />
           <span>Large Value Slider</span>
           <PlmgSlider
-            inputId={'large'}
             name={'large'}
             step={10000}
             rangeValues={[100000, 200000, 300000, 400000, 500000]}
@@ -76,7 +74,6 @@ export default function Sliders() {
       <h2>Single Sliders</h2>
       <span>Marked Slider</span>
       <PlmgSlider
-        inputId={'marked'}
         name={'marked'}
         marks={true}
         thumbLabel={false}
