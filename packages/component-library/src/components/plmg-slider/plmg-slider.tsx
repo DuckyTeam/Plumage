@@ -31,6 +31,10 @@ export class Slider {
    *
    * Additional values set additional marks and labels
    *
+   * The string passed to the rangeValues array has to be sorted on the client
+   *
+   * The component will not sort the array
+   *
    * Required
    */
   @Prop() rangeValues: Array<number>;
