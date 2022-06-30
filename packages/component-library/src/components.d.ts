@@ -8,7 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { PlmgButtonColor, PlmgButtonDesign, PlmgButtonSize, PlmgButtonType } from "./components/plmg-button/plmg-button.types";
 import { PlmgErrorMessageSize } from "./components/plmg-error-message/plmg-error-message.types";
 import { PlmgRadioButtonSize } from "./components/plmg-radio-button/plmg-radio-button.types";
-import { PlmgTextInputSize, PlmgTextInputType } from "./components/plmg-text-input/plmg-text-input.types";
+import { PlmgTextInputSize } from "./components/plmg-text-input/plmg-text-input.types";
 import { PlmgTooltipArrowPosition, PlmgTooltipColor, PlmgTooltipPosition } from "./components/plmg-tooltip/plmg-tooltip.types";
 export namespace Components {
     interface PlmgButton {
@@ -243,15 +243,19 @@ export namespace Components {
     }
     interface PlmgTextInput {
         /**
-          * Define defaultValue  Allowed values - Any number - Any string  When type is set to number
+          * Define default  Allowed values - Any string
          */
-        "defaultValue": number | string;
+        "default": string;
         /**
-          * Define error message.  Allowed value: any string  Displayed when text input state is in error.
+          * Toggle error state:  Allowed values: - true - false
+         */
+        "error": boolean;
+        /**
+          * Define error message  Allowed value: any string  Displayed when text input state is in error
          */
         "errorMessage": string;
         /**
-          * Define if input value is pre-filled with defaultValue.  Allowed values: - true - false  Default: false
+          * Define if input value is pre-filled with default.  Allowed values: - true - false  Default: false
          */
         "filled": boolean;
         /**
@@ -259,13 +263,9 @@ export namespace Components {
          */
         "label": boolean;
         /**
-          * Define max  When type is set to number, max sets the maximum allowed value  Allowed values - Any number  When type is number and step is not defined, no max value is set
+          * Define if the label is displayed.  Allowed values: - true - false  Default: true
          */
-        "max": number;
-        /**
-          * Define min  When type is set to number, min sets the minimum allowed value  Allowed values - Any number  When type is number and step is not defined, min defaults to 0
-         */
-        "min": number;
+        "labelText": string;
         /**
           * Provide an name to label the input.  Name is required for accessibility.
          */
@@ -279,21 +279,13 @@ export namespace Components {
          */
         "size": PlmgTextInputSize;
         /**
-          * Define step  When type is set to number, step will increase or decrease the stepValue of the input field  Allowed values - Any number  When type is number and step is not defined, step defaults to 1
-         */
-        "step": number;
-        /**
-          * Define tip text.  Allowed value: any string
+          * Define tip text  Allowed value: any string  Displayed when tip text show is enabled.
          */
         "tipText": string;
         /**
           * Define if tip text is displayed.  Allowed values: - true - false  Default: false
          */
         "tipTextShow": boolean;
-        /**
-          * Define text input's types.  Sets type on the native HTML input element.  Allowed values:   - text   - number  Default: text
-         */
-        "type": PlmgTextInputType;
     }
     interface PlmgTooltip {
         /**
@@ -321,6 +313,22 @@ export namespace Components {
          */
         "tooltipId": string;
     }
+}
+export interface PlmgCardCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPlmgCardElement;
+}
+export interface PlmgHeaderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPlmgHeaderElement;
+}
+export interface PlmgRadioButtonGroupCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPlmgRadioButtonGroupElement;
+}
+export interface PlmgSidebarCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPlmgSidebarElement;
 }
 declare global {
     interface HTMLPlmgButtonElement extends Components.PlmgButton, HTMLStencilElement {
@@ -484,11 +492,11 @@ declare namespace LocalJSX {
         /**
           * The event "bottomActionClicked" is triggered when the bottom action button is clicked.
          */
-        "onBottomActionClicked"?: (event: CustomEvent<MouseEvent>) => void;
+        "onBottomActionClicked"?: (event: PlmgCardCustomEvent<MouseEvent>) => void;
         /**
           * The event "topActionClicked" is triggered when the top action button is clicked.
          */
-        "onTopActionClicked"?: (event: CustomEvent<MouseEvent>) => void;
+        "onTopActionClicked"?: (event: PlmgCardCustomEvent<MouseEvent>) => void;
         /**
           * Define card's header icon, used as a top action for the card.  If a headerText or an topActionIcon is provided, the heading will be displayed with the icon button on the right. By default, when no headerText nor topActionIcon is provided, the heading is hidden.
          */
@@ -512,7 +520,7 @@ declare namespace LocalJSX {
         /**
           * Event dispatched when the button to expand the sidebar is clicked.
          */
-        "onExpandSidebar"?: (event: CustomEvent<any>) => void;
+        "onExpandSidebar"?: (event: PlmgHeaderCustomEvent<any>) => void;
         /**
           * Define if the sidebar is expanded on startup.
          */
@@ -566,7 +574,7 @@ declare namespace LocalJSX {
         /**
           * Event emitted when the selected radio button changed
          */
-        "onValueChanged"?: (event: CustomEvent<{ selectedValue: string }>) => void;
+        "onValueChanged"?: (event: PlmgRadioButtonGroupCustomEvent<{ selectedValue: string }>) => void;
         /**
           * Define radio group's required status  Allowed values:   - true   - false  Default: false
          */
@@ -610,7 +618,7 @@ declare namespace LocalJSX {
         /**
           * Event dispatched when the button to collapse the sidebar is clicked.
          */
-        "onCollapseSidebar"?: (event: CustomEvent<any>) => void;
+        "onCollapseSidebar"?: (event: PlmgSidebarCustomEvent<any>) => void;
     }
     interface PlmgSidebarItem {
         /**
@@ -658,15 +666,19 @@ declare namespace LocalJSX {
     }
     interface PlmgTextInput {
         /**
-          * Define defaultValue  Allowed values - Any number - Any string  When type is set to number
+          * Define default  Allowed values - Any string
          */
-        "defaultValue"?: number | string;
+        "default"?: string;
         /**
-          * Define error message.  Allowed value: any string  Displayed when text input state is in error.
+          * Toggle error state:  Allowed values: - true - false
+         */
+        "error"?: boolean;
+        /**
+          * Define error message  Allowed value: any string  Displayed when text input state is in error
          */
         "errorMessage"?: string;
         /**
-          * Define if input value is pre-filled with defaultValue.  Allowed values: - true - false  Default: false
+          * Define if input value is pre-filled with default.  Allowed values: - true - false  Default: false
          */
         "filled"?: boolean;
         /**
@@ -674,13 +686,9 @@ declare namespace LocalJSX {
          */
         "label"?: boolean;
         /**
-          * Define max  When type is set to number, max sets the maximum allowed value  Allowed values - Any number  When type is number and step is not defined, no max value is set
+          * Define if the label is displayed.  Allowed values: - true - false  Default: true
          */
-        "max"?: number;
-        /**
-          * Define min  When type is set to number, min sets the minimum allowed value  Allowed values - Any number  When type is number and step is not defined, min defaults to 0
-         */
-        "min"?: number;
+        "labelText"?: string;
         /**
           * Provide an name to label the input.  Name is required for accessibility.
          */
@@ -694,21 +702,13 @@ declare namespace LocalJSX {
          */
         "size"?: PlmgTextInputSize;
         /**
-          * Define step  When type is set to number, step will increase or decrease the stepValue of the input field  Allowed values - Any number  When type is number and step is not defined, step defaults to 1
-         */
-        "step"?: number;
-        /**
-          * Define tip text.  Allowed value: any string
+          * Define tip text  Allowed value: any string  Displayed when tip text show is enabled.
          */
         "tipText"?: string;
         /**
           * Define if tip text is displayed.  Allowed values: - true - false  Default: false
          */
         "tipTextShow"?: boolean;
-        /**
-          * Define text input's types.  Sets type on the native HTML input element.  Allowed values:   - text   - number  Default: text
-         */
-        "type"?: PlmgTextInputType;
     }
     interface PlmgTooltip {
         /**
