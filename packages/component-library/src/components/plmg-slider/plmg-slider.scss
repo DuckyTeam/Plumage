@@ -26,6 +26,7 @@
     outline: none;
   }
 }
+
 @mixin set-states {
   &:hover {
     $hover-opacity: 0.2;
@@ -46,20 +47,11 @@
       rgba(tokens.$plmg-color-decoration-primary, $active-opacity);
   }
 }
-// END Mixins
-// ------------------------------
-
-// Component style
-// ------------------------------
-
-$track-w: 12.5em;
-$track-h: 0.33em;
-$thumb-d: 1.5em;
 
 @mixin track() {
   box-sizing: border-box;
   border: none;
-  width: $track-w;
+  width: $track-width;
   height: 4px;
   &:focus-visible {
     outline: none;
@@ -69,13 +61,23 @@ $thumb-d: 1.5em;
 @mixin thumb() {
   box-sizing: border-box;
   border: none;
-  width: $thumb-d;
-  height: $thumb-d;
+  width: $thumb-diameter;
+  height: $thumb-diameter;
   border-radius: 50%;
   background-color: tokens.$plmg-color-background-primary-strong;
   color: tokens.$plmg-color-text-neutral-inverted;
   outline: 10px solid hsl(186, 100%, 33%, 0);
 }
+
+// END Mixins
+// ------------------------------
+
+// Component style
+// ------------------------------
+
+$track-width: 12.5em;
+$track-height: 0.33em;
+$thumb-diameter: 1.5em;
 
 .plmg-component-container {
   display: flex;
@@ -123,7 +125,7 @@ $thumb-d: 1.5em;
 
       &::-webkit-slider-thumb {
         @include set-states;
-        margin-top: 0.5 * ($track-h - $thumb-d);
+        margin-top: 0.5 * ($track-height - $thumb-diameter);
         @include thumb;
       }
       &::-moz-range-thumb {
@@ -146,7 +148,7 @@ $thumb-d: 1.5em;
         display: flex;
         flex-direction: column;
         position: absolute;
-        left: 0.5 * $thumb-d;
+        left: 0.5 * $thumb-diameter;
         top: 0;
         padding: 4px 8px;
         border-radius: 4px;
@@ -174,7 +176,7 @@ $thumb-d: 1.5em;
       align-items: center;
       position: absolute;
       bottom: 0;
-      left: 0.5 * $thumb-d;
+      left: 0.5 * $thumb-diameter;
       z-index: -1;
 
       .tick {
