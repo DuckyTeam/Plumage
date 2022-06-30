@@ -1,76 +1,67 @@
-import { Component, Host, h, Prop, Element, Watch, State } from '@stencil/core';
+import { Component, h, Prop, Watch, State } from '@stencil/core';
 import {
   isPlmgTextInputSize,
-  isPlmgTextInputType,
   PlmgTextInputSize,
-  PlmgTextInputType,
 } from './plmg-text-input.types';
 
 @Component({
   tag: 'plmg-text-input',
   styleUrl: 'plmg-text-input.scss',
-  shadow: true,
+  shadow: false,
 })
 export class TextInput {
   /**
-   * Reference to host HTML element.
-   */
-  @Element() el!: HTMLElement;
-  /**
-   * Reference to host HTML element.
-   */
-  @State() value: number | string;
-  @State() hasFocus: boolean = false;
-  @State() isActive: boolean = false;
-  @State() isHovered: boolean = false;
-  @State() isValidated: boolean = false;
-  @State() isError: boolean = false;
-  /**
-   * Define text input's size
+   * Define default
    *
-   * Allowed values:
-   *   - medium
-   *   - large
-   *
-   * Default: medium
+   * Allowed values
+   * - Any string
    */
-  @Prop() size: PlmgTextInputSize = 'medium';
-  @Watch('size')
-  validateSize(newValue: string) {
-    if (typeof newValue !== 'string' || newValue === '')
-      throw new Error('size: required');
-    if (!isPlmgTextInputSize(newValue))
-      throw new Error('size: must be a valid value');
+  @Prop() default: string;
+  @Watch('default')
+  validateDefaultValue(newValue: string) {
+    if (typeof newValue !== 'string')
+      throw new Error('default value must be a string');
   }
   /**
-   * Define text input's types.
-   *
-   * Sets type on the native HTML input element.
+   * Toggle error state:
    *
    * Allowed values:
-   *   - text
-   *   - number
-   *
-   * Default: text
+   * - true
+   * - false
    */
-  @Prop() type: PlmgTextInputType = 'text';
-  @Watch('type')
-  validateType(newValue: string) {
-    if (typeof newValue !== 'string' || newValue === '')
-      throw new Error('type: required');
-    if (!isPlmgTextInputType(newValue))
-      throw new Error('type: must be a valid value');
+  @Prop() error: boolean = false;
+  @Watch('error')
+  validateError(newValue: boolean) {
+    if (typeof newValue !== 'boolean') throw new Error('error must be boolean');
   }
   /**
-   * Provide an name to label the input.
+   * Define error message
    *
-   * Name is required for accessibility.
+   * Allowed value: any string
+   *
+   * Displayed when text input state is in error
    */
-  @Prop() name: string;
-  @Watch('name')
-  validateName(newValue: string) {
-    if (newValue && typeof newValue !== 'string' && !this.name)
-      throw new Error('name must have a name and be a string');
+  @Prop() errorMessage: string;
+  @Watch('errorMessage')
+  validateErrorMessage(newValue: string) {
+    if (newValue && typeof newValue !== 'string')
+      throw new Error('error message must be a string');
+  }
+  /**
+   * Define if input value is pre-filled with default.
+   *
+   * Allowed values:
+   * - true
+   * - false
+   *
+   * Default: false
+   *
+   */
+  @Prop() filled: boolean = false;
+  @Watch('filled')
+  validateFilled(newValue: boolean) {
+    if (typeof newValue !== 'boolean')
+      throw new Error('filled: must be boolean');
   }
   /**
    * Define if the label is displayed.
@@ -88,6 +79,38 @@ export class TextInput {
       throw new Error('label: must be boolean');
   }
   /**
+   * Define if the label is displayed.
+   *
+   * Allowed values:
+   * - true
+   * - false
+   *
+   * Default: true
+   */
+  @Prop() labelText: string;
+  @Watch('labelText')
+  validateLabelMessage(newValue: string) {
+    if (typeof newValue !== 'string')
+      throw new Error('label text must be string');
+  }
+  /**
+   * Provide an name to label the input.
+   *
+   * Name is required for accessibility.
+   */
+  // @Prop() name: string;
+  // @Watch('name')
+  // validateName(newValue: string) {
+  //   if (newValue && typeof newValue !== 'string' && !this.name)
+  //     throw new Error('name must have a name and be a string');
+  // }
+  @Prop() name: string;
+  @Watch('name')
+  validateName(newValue: string) {
+    if (newValue && typeof newValue !== 'string')
+      throw new Error(' must have a name and be a string');
+  }
+  /**
    * Define if an input is required.
    *
    * Allowed values:
@@ -103,85 +126,29 @@ export class TextInput {
       throw new Error('required: must be boolean');
   }
   /**
-   * Define step
    *
-   * When type is set to number, step will increase or decrease the stepValue of the input field
-   *
-   * Allowed values
-   * - Any number
-   *
-   * When type is number and step is not defined, step defaults to 1
-   */
-  @Prop() step: number;
-  @Watch('step')
-  validateStep(newValue: number) {
-    if (typeof newValue !== 'number' || newValue <= 0)
-      throw new Error('step must be a positive number');
-  }
-  /**
-   * Define min
-   *
-   * When type is set to number, min sets the minimum allowed value
-   *
-   * Allowed values
-   * - Any number
-   *
-   * When type is number and step is not defined, min defaults to 0
-   */
-  @Prop() min: number;
-  @Watch('min')
-  validateMin(newValue: number) {
-    if (typeof newValue !== 'number') throw new Error('min must be a number');
-  }
-  /**
-   * Define max
-   *
-   * When type is set to number, max sets the maximum allowed value
-   *
-   * Allowed values
-   * - Any number
-   *
-   * When type is number and step is not defined, no max value is set
-   */
-  @Prop() max: number;
-  @Watch('max')
-  validateMax(newValue: number) {
-    if (typeof newValue !== 'number') throw new Error('max must be a number');
-  }
-  /**
-   * Define defaultValue
-   *
-   * Allowed values
-   * - Any number
-   * - Any string
-   *
-   * When type is set to number
-   */
-  @Prop() defaultValue: number | string;
-  @Watch('defaultValue')
-  validateDefaultValue(newValue: number | string) {
-    if (typeof newValue !== 'number' || 'string')
-      throw new Error('defaultValue must be a number or string');
-  }
-  /**
-   * Define if input value is pre-filled with defaultValue.
+   * Define text input's size
    *
    * Allowed values:
-   * - true
-   * - false
+   *   - medium
+   *   - large
    *
-   * Default: false
+   * Default: medium
    */
-  @Prop() filled: boolean = false;
-  @Watch('filled')
-  validateFilled(newValue: boolean) {
-    if (typeof newValue !== 'boolean')
-      throw new Error('filled: must be boolean');
+  @Prop() size: PlmgTextInputSize = 'medium';
+  @Watch('size')
+  validateSize(newValue: string) {
+    if (typeof newValue !== 'string' || newValue === '')
+      throw new Error('size: required');
+    if (!isPlmgTextInputSize(newValue))
+      throw new Error('size: must be a valid value');
   }
   /**
-   * Define tip text.
+   * Define tip text
    *
    * Allowed value: any string
+   *
+   * Displayed when tip text show is enabled.
    */
   @Prop() tipText: string;
   @Watch('tipText')
@@ -205,51 +172,30 @@ export class TextInput {
       throw new Error('tipTextShow: must be boolean');
   }
   /**
-   * Define error message.
-   *
-   * Allowed value: any string
-   *
-   * Displayed when text input state is in error.
-   */
-  @Prop() errorMessage: string;
-  @Watch('errorMessage')
-  validateTipContent(newValue: string) {
-    if (newValue && typeof newValue !== 'string')
-      throw new Error('text must be a string');
-  }
-
-  /**
    * 3. State() variables
    * Inlined decorator, alphabetical order.
    *
    * import { State } from '@stencil/core';
    */
   // @State() isValidated: boolean;
-  connectedCallback() {
-    this.setValues();
-  }
 
-  private setValues() {
-    // if (this.type === "text" && this.val)
-    // this.min = this.rangeValues[0];
-    // this.max = this.rangeValues[this.rangeValues.length - 1];
-    // if (
-    //   this.defaultValue >= this.minValue &&
-    //   this.defaultValue <= this.maxValue
-    // ) {
-    //   this.updateValue(this.defaultValue);
-    // } else {
-    //   this.updateValue(this.minValue);
-    // }
-    // if (!this.step) {
-    //   this.stepValue = (this.maxValue - this.minValue) / 100;
-    // } else {
-    //   this.stepValue = this.step;
-    // }
-  }
+  /**
+   * Reference to host HTML element.
+   */
+  @State() value: number | string;
+  @State() isValidated: boolean = false;
+  @State() isError: boolean = false;
 
   private handleInputChange(ev) {
     this.value = ev.target.value;
+  }
+  /**
+   * Life Cycle Methods & Event Listeners
+   */
+  connectedCallback() {
+    if (this.filled) {
+      this.value = this.default;
+    }
   }
 
   /**
@@ -309,26 +255,42 @@ export class TextInput {
   // open() { ... }
 
   render() {
-    const classes = {
-      'plmg-text-input': true,
+    const inputClasses = {
       [this.size]: true,
     };
 
+    const tipClasses = {
+      [this.size]: true,
+      tip: true,
+    };
+
+    const labelClasses = {
+      [this.size]: true,
+      label: true,
+    };
+
     return (
-      <Host value={this.value}>
-        <input
-          class={classes}
-          aria-labelledby={this.label}
-          min={this.type == 'number' && this.min}
-          max={this.type == 'number' && this.max}
-          name={this.name}
-          required={this.required}
-          step={this.type == 'number' && this.step}
-          type={this.type}
-          value={this.value}
-          onInput={(ev) => this.handleInputChange(ev)}
-        />
-      </Host>
+      <div class={'plmg-text-input-wrapper'}>
+        {this.label && <span class={labelClasses}>{this.labelText}</span>}
+        <label>
+          <input
+            class={inputClasses}
+            aria-labelledby={this.label}
+            name={this.name}
+            required={this.required}
+            type={'text'}
+            value={this.value}
+            onInput={(ev) => this.handleInputChange(ev)}
+          />
+        </label>
+        {this.tipText && <span class={tipClasses}>{this.tipText}</span>}
+        {this.error && (
+          <plmg-error-message
+            size={this.size}
+            message={this.errorMessage}
+          ></plmg-error-message>
+        )}
+      </div>
     );
   }
 }
