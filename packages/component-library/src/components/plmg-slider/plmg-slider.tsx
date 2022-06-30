@@ -62,14 +62,21 @@ export class Slider {
   }
 
   /**
-   * Define a name for the slider
+   * Define a descriptive name for the slider
    *
-   * Any string
+   * Allowed: Any string
+   *
+   * Used internally by the component to connect inputs and outputs.
+   *
+   * Required for accessibility.
+   *
+   * Sould be unique and descriptive.
+   *
    */
   @Prop() name: string;
   @Watch('name')
   validateName(newValue: string) {
-    if (newValue && typeof newValue !== 'string')
+    if (newValue && typeof newValue !== 'string' && !this.name)
       throw new Error('name must be a string');
   }
 
