@@ -66,11 +66,11 @@ export class Slider {
    *
    * Allowed: Any string
    *
-   * Used internally by the component to connect inputs and outputs.
+   * Used internally by the component to connect inputs and outputs
    *
-   * Required for accessibility.
+   * Required for accessibility
    *
-   * Sould be unique and descriptive.
+   * Sould be unique and descriptive
    *
    */
   @Prop() name: string;
@@ -128,7 +128,10 @@ export class Slider {
 
   /**
    *
-   * Store currentValue, min, max and step states
+   * Store value, min, max, trackwidth, inputfield and step states
+   *
+   * trackWidth stores the width of container after the component loads to calculate relative positions.
+   *
    */
   @State() value: number;
   @State() min: number;
