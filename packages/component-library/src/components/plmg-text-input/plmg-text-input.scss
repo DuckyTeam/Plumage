@@ -1,47 +1,112 @@
 @use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
 
-// Component style
+// Mixins
 // ------------------------------
-.plmg-text-input {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  border: tokens.$plmg-border-width-m solid
-    tokens.$plmg-color-border-neutral-weak;
-  align-items: center;
-  border-radius: tokens.$plmg-border-radius-s;
-  background-color: tokens.$plmg-color-background-neutral;
-
+@mixin typography($font-size, $font-weight) {
   font-family: tokens.$plmg-font-family-sans;
   font-style: normal;
-  font-weight: tokens.$plmg-font-weight-regular;
+  line-height: tokens.$plmg-font-lineheight-loose;
+  font-weight: $font-weight;
+  font-size: $font-size;
+}
+@mixin plmg-font-form-text-m {
+  @include typography(
+    tokens.$plmg-font-size-x1-125,
+    tokens.$plmg-font-weight-regular
+  );
+}
+@mixin plmg-font-form-text-l {
+  @include typography(
+    tokens.$plmg-font-size-x1-25,
+    tokens.$plmg-font-weight-regular
+  );
+}
+@mixin plmg-font-form-label-m {
+  @include typography(
+    tokens.$plmg-font-size-x1,
+    tokens.$plmg-font-weight-semibold
+  );
+}
+@mixin plmg-font-form-label-l {
+  @include typography(
+    tokens.$plmg-font-size-x1_125,
+    tokens.$plmg-font-weight-semibold
+  );
+}
+@mixin plmg-font-form-tip-m {
+  @include typography(
+    tokens.$plmg-font-size-x0-75,
+    tokens.$plmg-font-weight-regular
+  );
+}
+@mixin plmg-font-form-tip-l {
+  @include typography(
+    tokens.$plmg-font-size-x0-875,
+    tokens.$plmg-font-weight-regular
+  );
+}
+// END Mixins
+// ------------------------------
+
+// Component style
+// ------------------------------
+.plmg-text-input-wrapper {
+  flex-direction: column;
+  display: flex;
+  align-items: left;
 
   // Controls: Size
-  &.medium {
-    padding-top: tokens.$plmg-spacing-x0-75;
-    padding-bottom: tokens.$plmg-spacing-x0-75;
-    padding-right: tokens.$plmg-spacing-x1;
-    padding-left: tokens.$plmg-spacing-x1;
-  }
-  &.large {
-    padding-top: tokens.$plmg-spacing-x1;
-    padding-bottom: tokens.$plmg-spacing-x1;
-    padding-right: tokens.$plmg-spacing-x1-5;
-    padding-left: tokens.$plmg-spacing-x1-5;
-  }
-  // States
-  &:hover {
-    background-color: tokens.$plmg-color-background-neutral-hover;
-  }
-  &:active {
+
+  input {
     border: tokens.$plmg-border-width-m solid
-      tokens.$plmg-color-border-primary-strong;
+      tokens.$plmg-color-border-neutral-weak;
+    color: tokens.$plmg-color-text-neutral;
+    border-radius: tokens.$plmg-border-radius-s;
+    background-color: tokens.$plmg-color-background-neutral;
+
+    &.medium {
+      @include plmg-font-form-text-m;
+      padding: tokens.$plmg-spacing-x0-75 tokens.$plmg-spacing-x1;
+    }
+    &.large {
+      @include plmg-font-form-text-l;
+      padding: tokens.$plmg-spacing-x1 tokens.$plmg-spacing-x1-5;
+    }
+    // States
+    &:hover {
+      background-color: tokens.$plmg-color-background-neutral-hover;
+    }
+    &:active {
+      border: tokens.$plmg-border-width-m solid
+        tokens.$plmg-color-border-primary-strong;
+    }
+    &:focus-within {
+      outline: none;
+      border: tokens.$plmg-border-width-m solid
+        tokens.$plmg-color-border-standout;
+    }
   }
 
-  &:focus-visible {
-    outline: none;
-    border: tokens.$plmg-border-width-m solid tokens.$plmg-color-border-standout;
+  .label {
+    color: tokens.$plmg-color-text-neutral-weak;
+    &.medium {
+      @include plmg-font-form-text-m;
+    }
+    &.large {
+      @include plmg-font-form-text-l;
+    }
+  }
+
+  .tip {
+    color: tokens.$plmg-color-text-neutral-weak;
+    &.medium {
+      @include plmg-font-form-tip-m;
+    }
+    &.large {
+      @include plmg-font-form-tip-l;
+    }
   }
 }
-// END Component style
-// ------------------------------
+
+// // END Component style
+// // ------------------------------
