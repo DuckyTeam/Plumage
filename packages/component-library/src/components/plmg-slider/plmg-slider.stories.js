@@ -87,11 +87,10 @@ Steps.args = {
 
 export const AllOptions = Template.bind({});
 AllOptions.args = {
-  ['default-value']: 25,
+  ['default-value']: 0,
   step: 100,
-  ['default-value']: 900,
   name: 'range-slider',
   marks: true,
   ['thumb-label']: true,
-  ['range-values']: [100, 200, 500, 900, 1500, 2000],
+  ['range-values']: [-1000, -500, 0, 500, 1000],
 };
