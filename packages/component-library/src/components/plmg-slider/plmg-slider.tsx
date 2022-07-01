@@ -135,7 +135,6 @@ export class Slider {
   @State() stepValue: number;
   @State() inputFieldValue: number;
   @State() value: number;
-  @State() valueCharacterLength: number;
 
   private handleSliderChange(ev) {
     this.updateValue(ev.target.value);
@@ -146,8 +145,6 @@ export class Slider {
     if (this.inputFieldValue !== this.value) {
       this.inputFieldValue = this.value;
     }
-    this.valueCharacterLength = this.value.toString().length;
-
     this.valueUpdated.emit({ value: this.value });
   }
 
@@ -194,7 +191,6 @@ export class Slider {
     } else {
       this.updateValue(this.min);
     }
-    this.valueCharacterLength = this.value.toString.length;
     if (!this.step) {
       this.stepValue = (this.max - this.min) / 100;
     } else {
@@ -329,7 +325,7 @@ export class Slider {
     const thumbDiameter = 1.5;
 
     return {
-      minWidth: `calc(.6em * ${this.valueCharacterLength})`,
+      minWidth: `calc(.6em * ${this.value.toString().length})`,
       transform: `translate(calc(${this.calculateValueAsDecimalFraction()}em * (${
         this.trackWidth
       } / ${trackBasis} - ${thumbDiameter}) - 50%)`,
