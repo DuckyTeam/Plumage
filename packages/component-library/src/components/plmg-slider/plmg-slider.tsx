@@ -7,6 +7,7 @@ import {
   Watch,
   Event,
   EventEmitter,
+  Fragment,
 } from '@stencil/core';
 import {
   plmgColorBorderNeutralWeak,
@@ -231,55 +232,64 @@ export class Slider {
             class={containerClasses}
             ref={(el) => (this.ref = el as HTMLDivElement)}
           >
-            {this.thumbLabel && (
-              <div class={'plmg-thumb-label-container'}>
-                <output
-                  style={this.setThumbPosition()}
-                  class={'plmg-slider-thumb-label'}
-                  htmlFor={this.name}
-                >
-                  {this.value}
-                  <span class={'plmg-thumb-triangle'} />
-                </output>
-              </div>
-            )}
-
-            <input
-              min={this.min}
-              max={this.max}
-              name={this.name}
-              value={this.value}
-              aria-valuemin={this.min}
-              aria-valuemax={this.max}
-              aria-valuenow={this.value}
-              step={this.stepValue}
-              onInput={(ev) => this.handleSliderChange(ev)}
-              style={{ background: this.setBackgroundProgressFill() }}
-              id="range"
-              type="range"
-            />
-
-            {this.marks && (
-              <div class={'plmg-marks'}>
-                {this.rangeValues.map((labelvalue, index) => (
-                  <div
-                    class={'plmg-mark-label'}
-                    key={index}
-                    style={{ transform: this.setLabelPosition(labelvalue) }}
-                  >
-                    <span class={'plmg-mark-tick'}>&#8205;</span>
-                    <span>{labelvalue}</span>
+            {this.trackWidth && (
+              <Fragment>
+                {this.thumbLabel && (
+                  <div class={'plmg-thumb-label-container'}>
+                    <output
+                      style={this.setThumbPosition()}
+                      class={'plmg-slider-thumb-label'}
+                      htmlFor={this.name}
+                      aria-labelleby={this.name}
+                    >
+                      {this.value}
+                      <span class={'plmg-thumb-triangle'} />
+                    </output>
                   </div>
-                ))}
-              </div>
+                )}
+                {this.trackWidth && (
+                  <Fragment>
+                    <label htmlFor={'slider'}></label>
+                    <input
+                      min={this.min}
+                      max={this.max}
+                      name={this.name}
+                      step={this.stepValue}
+                      onInput={(ev) => this.handleSliderChange(ev)}
+                      style={{ background: this.setBackgroundProgressFill() }}
+                      id={'slider'}
+                      type={'range'}
+                      value={this.value}
+                      aria-valuemin={this.min}
+                      aria-valuemax={this.max}
+                      aria-valuenow={this.value}
+                    />
+                  </Fragment>
+                )}
+
+                {this.marks && (
+                  <div class={'plmg-marks'}>
+                    {this.rangeValues.map((labelvalue, index) => (
+                      <div
+                        class={'plmg-mark-label'}
+                        key={index}
+                        style={{ transform: this.setLabelPosition(labelvalue) }}
+                      >
+                        <span class={'plmg-mark-tick'}>&#8205;</span>
+                        <span>{labelvalue}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </Fragment>
             )}
           </div>
-          <label htmlfor={this.name} tabIndex={0}>
-            <div class={'plmg-slider-input-field-container'}>
-              <label htmlfor={this.name} />
+
+          <div class={'plmg-slider-input-field-container'}>
+            <label htmlfor="slider-input">
               <input
                 type={'number'}
-                name={this.name}
+                name={'slider-input'}
                 step={this.stepValue}
                 aria-valuemin={this.min}
                 aria-valuemax={this.max}
@@ -289,35 +299,35 @@ export class Slider {
                 value={this.inputFieldValue}
                 onInput={(Event) => this.handleInputFieldChange(Event)}
               />
-            </div>
-          </label>
+            </label>
+          </div>
         </div>
       </Host>
     );
   }
 
   private setBackgroundProgressFill(): string {
-    return `linear-gradient(to right,
-      ${plmgColorBackgroundPrimaryStrong} 0%,
-      ${plmgColorBackgroundPrimaryStrong} ${this.calculateValueAsDecimalFraction(
+    return `linear-gradient(to right, ${plmgColorBackgroundPrimaryStrong} 0%, ${plmgColorBackgroundPrimaryStrong} ${this.calculateValueAsDecimalFraction(
       null,
       100
-    )}%,
-      ${plmgColorBorderNeutralWeak} ${this.calculateValueAsDecimalFraction(
+    )}%, ${plmgColorBorderNeutralWeak} ${this.calculateValueAsDecimalFraction(
       null,
       100
-    )}%,
-      ${plmgColorBorderNeutralWeak} 100%)`;
+    )}%,${plmgColorBorderNeutralWeak} 100%)`;
   }
 
   private calculateValueAsDecimalFraction(labelvalue?, multipler?) {
-    if (multipler) {
+    if (multipler && this.value) {
       return ((this.value - this.min) / (this.max - this.min)) * multipler;
     }
     if (labelvalue || labelvalue === 0) {
       return (labelvalue - this.min) / (this.max - this.min);
     }
-    return (this.value - this.min) / (this.max - this.min);
+    if (this.value) {
+      return (this.value - this.min) / (this.max - this.min);
+    }
+    // return default if no value available
+    return 0;
   }
 
   private setThumbPosition() {
