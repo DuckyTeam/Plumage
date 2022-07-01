@@ -314,17 +314,13 @@ export class Slider {
   }
 
   private calculateValueAsDecimalFraction(labelvalue?, multipler?) {
-    if (multipler && this.value) {
+    if (multipler) {
       return ((this.value - this.min) / (this.max - this.min)) * multipler;
     }
     if (labelvalue || labelvalue === 0) {
       return (labelvalue - this.min) / (this.max - this.min);
     }
-    if (this.value) {
-      return (this.value - this.min) / (this.max - this.min);
-    }
-    // return default if no value available
-    return 0;
+    return (this.value - this.min) / (this.max - this.min);
   }
 
   private setThumbPosition() {
