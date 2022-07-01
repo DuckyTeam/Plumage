@@ -12,7 +12,6 @@ describe('plmg-slider', () => {
         <mock:shadow-root>
           <div class="plmg-component-container">
           <div class="plmg-slider-container">
-          0
           </div>
           <div class="plmg-slider-input-field-container">
             <label htmlfor="slider-input">

@@ -57,8 +57,6 @@ export class Slider {
    * Allowed values:
    * - any string
    *
-   * Used internally by the component to connect inputs and outputs
-   *
    * Required for accessibility and should be a unique and descriptive
    *
    */
@@ -207,6 +205,8 @@ export class Slider {
     this.setValues();
   }
 
+  // This usage creates the warning 'The state/prop "trackWidth" changed during "componentDidLoad()", this triggers extra re-renders, try to setup on "componentWillLoad()'
+  // The component has to appear in the DOM before we can get the ref to calculate relative positons based on the track width.
   componentDidLoad() {
     this.trackWidth = this.ref.getBoundingClientRect().width;
     this.abortResizeListener = new AbortController();
@@ -232,42 +232,39 @@ export class Slider {
             class={containerClasses}
             ref={(el) => (this.ref = el as HTMLDivElement)}
           >
-            {this.trackWidth && (
+            {this.trackWidth ? (
               <Fragment>
-                {this.thumbLabel && (
+                {this.thumbLabel ? (
                   <div class={'plmg-thumb-label-container'}>
                     <output
                       style={this.setThumbPosition()}
                       class={'plmg-slider-thumb-label'}
-                      htmlFor={this.name}
+                      htmlFor={'slider'}
                       aria-labelleby={this.name}
                     >
                       {this.value}
                       <span class={'plmg-thumb-triangle'} />
                     </output>
                   </div>
-                )}
-                {this.trackWidth && (
-                  <Fragment>
-                    <label htmlFor={'slider'}></label>
-                    <input
-                      min={this.min}
-                      max={this.max}
-                      name={this.name}
-                      step={this.stepValue}
-                      onInput={(ev) => this.handleSliderChange(ev)}
-                      style={{ background: this.setBackgroundProgressFill() }}
-                      id={'slider'}
-                      type={'range'}
-                      value={this.value}
-                      aria-valuemin={this.min}
-                      aria-valuemax={this.max}
-                      aria-valuenow={this.value}
-                    />
-                  </Fragment>
-                )}
+                ) : null}
 
-                {this.marks && (
+                <label htmlFor={'slider'}></label>
+                <input
+                  min={this.min}
+                  max={this.max}
+                  name={this.name}
+                  step={this.stepValue}
+                  onInput={(ev) => this.handleSliderChange(ev)}
+                  style={{ background: this.setBackgroundProgressFill() }}
+                  id={'slider'}
+                  type={'range'}
+                  value={this.value}
+                  aria-valuemin={this.min}
+                  aria-valuemax={this.max}
+                  aria-valuenow={this.value}
+                />
+
+                {this.marks ? (
                   <div class={'plmg-marks'}>
                     {this.rangeValues.map((labelvalue, index) => (
                       <div
@@ -280,9 +277,9 @@ export class Slider {
                       </div>
                     ))}
                   </div>
-                )}
+                ) : null}
               </Fragment>
-            )}
+            ) : null}
           </div>
 
           <div class={'plmg-slider-input-field-container'}>
