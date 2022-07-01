@@ -82,105 +82,105 @@ $thumb-diameter: 1.5em;
   gap: 1rem;
   flex: 1;
   align-items: center;
+}
 
-  .plmg-slider-container {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    position: relative;
-    @include set-typography;
+.plmg-slider-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  position: relative;
+  @include set-typography;
 
-    &.marks {
-      align-self: flex-end;
-    }
-
-    input[type='range'] {
-      border-radius: 3px;
-      height: 4px;
-
-      @include state-reset;
-
-      &,
-      &::-webkit-slider-thumb {
-        -webkit-appearance: none;
-      }
-
-      margin: 0;
-      padding: 0;
-      background: transparent;
-      font: inherit;
-
-      &::-webkit-slider-runnable-track {
-        @include track;
-      }
-      &::-moz-range-track {
-        @include track;
-      }
-      &::-ms-track {
-        @include track;
-      }
-
-      &::-webkit-slider-thumb {
-        @include set-states;
-        margin-top: 0.5 * ($track-height - $thumb-diameter);
-        @include thumb;
-      }
-      &::-moz-range-thumb {
-        @include thumb;
-      }
-    }
+  &.marks {
+    align-self: flex-end;
   }
 
-  .plmg-thumb-label-container {
-    height: 2.5rem;
+  input[type='range'] {
+    border-radius: 3px;
+    height: 4px;
 
-    output {
-      margin-top: -0.25rem;
-      text-align: center;
-      background-color: tokens.$plmg-color-background-primary-strong;
-      color: tokens.$plmg-color-text-neutral-inverted;
+    @include state-reset;
 
-      &.plmg-slider-thumb-label {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        left: 0.5 * $thumb-diameter;
-        top: 0;
-        padding: 4px 8px;
-        border-radius: 4px;
+    &,
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+    }
 
-        .plmg-thumb-triangle {
-          position: absolute;
-          align-self: center;
-          top: 100%;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    font: inherit;
 
-          border-left: 6px solid transparent;
-          border-right: 6px solid transparent;
-          border-top: 6px solid tokens.$plmg-color-background-primary-strong;
-        }
-      }
+    &::-webkit-slider-runnable-track {
+      @include track;
+    }
+    &::-moz-range-track {
+      @include track;
+    }
+    &::-ms-track {
+      @include track;
+    }
+
+    &::-webkit-slider-thumb {
+      @include set-states;
+      margin-top: 0.5 * ($track-height - $thumb-diameter);
+      @include thumb;
+    }
+    &::-moz-range-thumb {
+      @include thumb;
     }
   }
+}
 
-  .plmg-marks {
-    margin-top: 2.5em;
+.plmg-thumb-label-container {
+  height: 2.5rem;
 
-    position: relative;
-    .plmg-mark-label {
+  output {
+    margin-top: -0.25rem;
+    text-align: center;
+    background-color: tokens.$plmg-color-background-primary-strong;
+    color: tokens.$plmg-color-text-neutral-inverted;
+
+    &.plmg-slider-thumb-label {
       display: flex;
       flex-direction: column;
-      align-items: center;
       position: absolute;
-      bottom: 0;
       left: 0.5 * $thumb-diameter;
-      z-index: -1;
+      top: 0;
+      padding: 4px 8px;
+      border-radius: 4px;
 
-      .plmg-mark-tick {
-        background-color: tokens.$plmg-color-background-neutral-strong;
-        width: 2px;
-        height: 4px;
-        margin-bottom: 8px;
+      .plmg-thumb-triangle {
+        position: absolute;
+        align-self: center;
+        top: 100%;
+
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-top: 6px solid tokens.$plmg-color-background-primary-strong;
       }
+    }
+  }
+}
+
+.plmg-marks {
+  margin-top: 2.5em;
+
+  position: relative;
+  .plmg-mark-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    left: 0.5 * $thumb-diameter;
+    z-index: -1;
+
+    .plmg-mark-tick {
+      background-color: tokens.$plmg-color-background-neutral-strong;
+      width: 2px;
+      height: 4px;
+      margin-bottom: 8px;
     }
   }
 }
