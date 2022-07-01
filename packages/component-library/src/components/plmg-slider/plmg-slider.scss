@@ -35,11 +35,6 @@
     border-radius: 50%;
   }
 
-  &:focus-visible {
-    border-radius: 50%;
-    outline: 4px solid rgba(tokens.$plmg-color-border-standout, 1) !important;
-  }
-
   &:active {
     $active-opacity: 0.4;
     border-radius: 50%;
@@ -53,7 +48,7 @@
   border: none;
   width: $track-width;
   height: 4px;
-  &:focus-visible {
+  &:focus {
     outline: none;
   }
 }
@@ -106,6 +101,10 @@ $thumb-diameter: 1.5em;
       -webkit-appearance: none;
     }
 
+    &:focus {
+      outline: none;
+    }
+
     margin: 0;
     padding: 0;
     background: transparent;
@@ -122,9 +121,13 @@ $thumb-diameter: 1.5em;
     }
 
     &::-webkit-slider-thumb {
-      @include set-states;
       margin-top: 0.5 * ($track-height - $thumb-diameter);
       @include thumb;
+      @include set-states;
+    }
+    &:focus-visible::-webkit-slider-thumb {
+      border-radius: 50%;
+      outline: 4px solid rgba(tokens.$plmg-color-border-standout, 1) !important;
     }
     &::-moz-range-thumb {
       @include thumb;
