@@ -171,7 +171,7 @@ export namespace Components {
          */
         "marks": boolean;
         /**
-          * Define a descriptive name for the slider  Allowed values: - any string  Used internally by the component to connect inputs and outputs  Required for accessibility and should be a unique and descriptive
+          * Define a descriptive name for the slider  Allowed values: - any string  Required for accessibility and should be a unique and descriptive
          */
         "name": string;
         /**
@@ -454,7 +454,7 @@ declare namespace LocalJSX {
          */
         "marks"?: boolean;
         /**
-          * Define a descriptive name for the slider  Allowed values: - any string  Used internally by the component to connect inputs and outputs  Required for accessibility and should be a unique and descriptive
+          * Define a descriptive name for the slider  Allowed values: - any string  Required for accessibility and should be a unique and descriptive
          */
         "name"?: string;
         "onValueUpdated"?: (event: PlmgSliderCustomEvent<any>) => void;
