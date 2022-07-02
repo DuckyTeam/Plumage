@@ -30,7 +30,7 @@
 @mixin set-states {
   &:hover {
     $hover-opacity: 0.2;
-    outline: 10px solid
+    box-shadow: 0 0 0 10px
       rgba(tokens.$plmg-color-decoration-primary, $hover-opacity);
     border-radius: 50%;
   }
@@ -38,7 +38,7 @@
   &:active {
     $active-opacity: 0.4;
     border-radius: 50%;
-    outline: 10px solid
+    box-shadow: 0 0 0 10px
       rgba(tokens.$plmg-color-decoration-primary, $active-opacity);
   }
 }
@@ -123,11 +123,12 @@ $thumb-diameter: 1.5em;
     &::-webkit-slider-thumb {
       margin-top: 0.5 * ($track-height - $thumb-diameter);
       @include thumb;
+
       @include set-states;
     }
     &:focus-visible::-webkit-slider-thumb {
       border-radius: 50%;
-      outline: 4px solid rgba(tokens.$plmg-color-border-standout, 1);
+      box-shadow: 0 0 0 4px rgba(tokens.$plmg-color-border-standout, 1);
     }
     &::-moz-range-thumb {
       @include thumb;
