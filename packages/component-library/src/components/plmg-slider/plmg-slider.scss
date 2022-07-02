@@ -28,6 +28,21 @@
 }
 
 @mixin set-states {
+  &:hover:not(:focus-visible) {
+    $hover-opacity: 0.2;
+    box-shadow: 0 0 0 10px
+      rgba(tokens.$plmg-color-decoration-primary, $hover-opacity);
+    border-radius: 50%;
+  }
+
+  &:active:not(:focus-visible) {
+    $active-opacity: 0.4;
+    border-radius: 50%;
+    box-shadow: 0 0 0 10px
+      rgba(tokens.$plmg-color-decoration-primary, $active-opacity);
+  }
+}
+@mixin set-states-moz {
   &:hover {
     $hover-opacity: 0.2;
     box-shadow: 0 0 0 10px
@@ -42,7 +57,6 @@
       rgba(tokens.$plmg-color-decoration-primary, $active-opacity);
   }
 }
-
 @mixin track() {
   box-sizing: border-box;
   border: none;
@@ -132,7 +146,7 @@ $thumb-diameter: 1.5em;
     }
     &::-moz-range-thumb {
       @include thumb;
-      @include set-states;
+      @include set-states-moz;
     }
     &:focus-visible::-moz-range-thumb {
       outline: 4px solid rgba(tokens.$plmg-color-border-standout, 1);
