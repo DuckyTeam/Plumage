@@ -127,10 +127,14 @@ $thumb-diameter: 1.5em;
     }
     &:focus-visible::-webkit-slider-thumb {
       border-radius: 50%;
-      outline: 4px solid rgba(tokens.$plmg-color-border-standout, 1) !important;
+      outline: 4px solid rgba(tokens.$plmg-color-border-standout, 1);
     }
     &::-moz-range-thumb {
       @include thumb;
+      @include set-states;
+    }
+    &:focus-visible::-moz-range-thumb {
+      outline: 4px solid rgba(tokens.$plmg-color-border-standout, 1);
     }
   }
 }
