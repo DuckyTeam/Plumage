@@ -221,18 +221,13 @@ $thumb-diameter: 1.5em;
     box-shadow: tokens.$plmg-shadow-inner-s;
     border-radius: 4px;
 
-    &:hover {
+    &:hover:not(:focus-within) {
       background-color: tokens.$plmg-color-background-neutral-hover;
     }
-    &:active {
+
+    &:focus-within {
       border: tokens.$plmg-border-width-m solid
         tokens.$plmg-color-border-primary-strong;
-    }
-
-    &:focus-visible {
-      outline: none;
-      border: tokens.$plmg-border-width-m solid
-        tokens.$plmg-color-border-standout;
     }
   }
 
