@@ -1,4 +1,4 @@
-import { Component, h, Prop, Watch, State } from '@stencil/core';
+import { Component, h, Prop, Watch, State, Fragment } from '@stencil/core';
 import {
   isPlmgTextInputSize,
   PlmgTextInputSize,
@@ -270,27 +270,31 @@ export class TextInput {
     };
 
     return (
-      <div class={'plmg-text-input-wrapper'}>
-        {this.label && <span class={labelClasses}>{this.labelText}</span>}
-        <label>
-          <input
-            class={inputClasses}
-            aria-labelledby={this.label}
-            name={this.name}
-            required={this.required}
-            type={'text'}
-            value={this.value}
-            onInput={(ev) => this.handleInputChange(ev)}
-          />
-        </label>
-        {this.tipText && <span class={tipClasses}>{this.tipText}</span>}
-        {this.error && (
-          <plmg-error-message
-            size={this.size}
-            message={this.errorMessage}
-          ></plmg-error-message>
-        )}
-      </div>
+      <Fragment>
+        <div class={'plmg-text-input-wrapper'} tabIndex={0}>
+          {this.label && <span class={labelClasses}>{this.labelText}</span>}
+          <label>
+            <input
+              class={inputClasses}
+              aria-labelledby={this.label}
+              name={this.name}
+              required={this.required}
+              type={'text'}
+              value={this.value}
+              onInput={(ev) => this.handleInputChange(ev)}
+            />
+          </label>
+        </div>
+        <div>
+          {this.tipText && <span class={tipClasses}>{this.tipText}</span>}
+          {this.error && (
+            <plmg-error-message
+              size={this.size}
+              message={this.errorMessage}
+            ></plmg-error-message>
+          )}
+        </div>
+      </Fragment>
     );
   }
 }

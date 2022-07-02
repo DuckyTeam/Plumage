@@ -51,16 +51,23 @@
 // Component style
 // ------------------------------
 .plmg-text-input-wrapper {
-  flex-direction: column;
-  display: flex;
-  align-items: left;
-
   // Controls: Size
+  width: 100%;
 
+  &:focus-visible {
+    outline: tokens.$plmg-border-width-l solid
+      tokens.$plmg-color-border-standout;
+    border-radius: tokens.$plmg-border-radius-s;
+  }
   input {
-    border: tokens.$plmg-border-width-m solid
+    // outline: none;
+    border: none;
+    box-sizing: border-box;
+    width: 100%;
+    outline: tokens.$plmg-border-width-m solid
       tokens.$plmg-color-border-neutral-weak;
     color: tokens.$plmg-color-text-neutral;
+
     border-radius: tokens.$plmg-border-radius-s;
     background-color: tokens.$plmg-color-background-neutral;
 
@@ -72,39 +79,37 @@
       @include plmg-font-form-text-l;
       padding: tokens.$plmg-spacing-x1 tokens.$plmg-spacing-x1-5;
     }
+    &:hover &:focus &:focus-visible {
+      outline: none;
+    }
     // States
-    &:hover {
+    &:hover:not(:focus) {
       background-color: tokens.$plmg-color-background-neutral-hover;
     }
-    &:active {
-      border: tokens.$plmg-border-width-m solid
+    &:focus {
+      outline: tokens.$plmg-border-width-m solid
         tokens.$plmg-color-border-primary-strong;
     }
-    &:focus-within {
-      outline: none;
-      border: tokens.$plmg-border-width-m solid
-        tokens.$plmg-color-border-standout;
-    }
   }
+}
 
-  .label {
-    color: tokens.$plmg-color-text-neutral-weak;
-    &.medium {
-      @include plmg-font-form-text-m;
-    }
-    &.large {
-      @include plmg-font-form-text-l;
-    }
+.label {
+  color: tokens.$plmg-color-text-neutral-weak;
+  &.medium {
+    @include plmg-font-form-text-m;
   }
+  &.large {
+    @include plmg-font-form-text-l;
+  }
+}
 
-  .tip {
-    color: tokens.$plmg-color-text-neutral-weak;
-    &.medium {
-      @include plmg-font-form-tip-m;
-    }
-    &.large {
-      @include plmg-font-form-tip-l;
-    }
+.tip {
+  color: tokens.$plmg-color-text-neutral-weak;
+  &.medium {
+    @include plmg-font-form-tip-m;
+  }
+  &.large {
+    @include plmg-font-form-tip-l;
   }
 }
 
