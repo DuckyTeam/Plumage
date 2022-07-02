@@ -60,7 +60,6 @@
     border-radius: tokens.$plmg-border-radius-s;
   }
   input {
-    // outline: none;
     border: none;
     box-sizing: border-box;
     width: 100%;
@@ -88,7 +87,7 @@
     }
     &:focus {
       outline: tokens.$plmg-border-width-m solid
-        tokens.$plmg-color-border-primary-strong;
+        tokens.$plmg-color-border-primary;
     }
   }
 }
