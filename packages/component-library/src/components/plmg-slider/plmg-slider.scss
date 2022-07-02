@@ -88,7 +88,7 @@ $thumb-diameter: 1.5em;
 
 .plmg-component-container {
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
   flex: 1;
   align-items: center;
 }
@@ -208,26 +208,34 @@ $thumb-diameter: 1.5em;
 }
 
 .plmg-slider-input-field-container {
+  &:focus-visible {
+    outline: tokens.$plmg-border-width-l solid
+      tokens.$plmg-color-border-standout;
+    border-radius: tokens.$plmg-border-radius-s;
+  }
+  width: fit-content;
   input {
     @include set-typography;
-    $plmg-font-size-x1-5: 1.5rem;
-    min-width: 2.5rem;
+    border: none;
+    box-sizing: border-box;
+    font-size: tokens.$plmg-font-size-x1-125;
+    min-width: 5.2rem;
     width: fit-content;
-    border: tokens.$plmg-border-width-m solid
+    outline: tokens.$plmg-border-width-m solid
       tokens.$plmg-color-border-neutral-weak;
-    padding: 12px 16px;
+    padding: tokens.$plmg-spacing-x0-75 tokens.$plmg-spacing-x1;
     background-color: tokens.$plmg-color-background-neutral;
-    outline: none;
     box-shadow: tokens.$plmg-shadow-inner-s;
-    border-radius: 4px;
-
-    &:hover:not(:focus-within) {
+    border-radius: tokens.$plmg-border-radius-s;
+    &:hover &:focus &:focus-visible {
+      outline: none;
+    }
+    &:hover:not(:focus) {
       background-color: tokens.$plmg-color-background-neutral-hover;
     }
-
-    &:focus-within {
-      border: tokens.$plmg-border-width-m solid
-        tokens.$plmg-color-border-primary-strong;
+    &:focus {
+      outline: tokens.$plmg-border-width-m solid
+        tokens.$plmg-color-border-primary;
     }
   }
 
@@ -241,6 +249,5 @@ $thumb-diameter: 1.5em;
   /* Remove input arrows - firefox */
   input[type='number'] {
     -moz-appearance: textfield;
-    max-width: 3.5rem;
   }
 }

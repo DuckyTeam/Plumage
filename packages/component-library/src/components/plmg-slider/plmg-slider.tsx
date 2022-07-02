@@ -282,7 +282,7 @@ export class Slider {
             ) : null}
           </div>
 
-          <div class={'plmg-slider-input-field-container'}>
+          <div class={'plmg-slider-input-field-container'} tabIndex={0}>
             <label htmlfor="slider-input">
               <input
                 type={'number'}
