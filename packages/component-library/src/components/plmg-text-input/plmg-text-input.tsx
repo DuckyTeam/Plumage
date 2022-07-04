@@ -1,4 +1,4 @@
-import { Component, h, Prop, Watch, State, Fragment } from '@stencil/core';
+import { Component, h, Prop, Watch, State } from '@stencil/core';
 import {
   isPlmgTextInputSize,
   PlmgTextInputSize,
@@ -72,7 +72,7 @@ export class TextInput {
    *
    * Default: true
    */
-  @Prop() label: boolean = true;
+  @Prop() label: boolean = false;
   @Watch('label')
   validateLabel(newValue: boolean) {
     if (typeof newValue !== 'boolean')
@@ -148,7 +148,7 @@ export class TextInput {
    *
    * Allowed value: any string
    *
-   * Displayed when tip text show is enabled.
+   * Displayed when tip is true
    */
   @Prop() tipText: string;
   @Watch('tipText')
@@ -165,11 +165,10 @@ export class TextInput {
    *
    * Default: false
    */
-  @Prop() tipTextShow: boolean = false;
-  @Watch('tipTextShow')
+  @Prop() tip: boolean = false;
+  @Watch('tip')
   validateTipTextShow(newValue: boolean) {
-    if (typeof newValue !== 'boolean')
-      throw new Error('tipTextShow: must be boolean');
+    if (typeof newValue !== 'boolean') throw new Error('tip must be boolean');
   }
   /**
    * 3. State() variables
@@ -257,6 +256,7 @@ export class TextInput {
   render() {
     const inputClasses = {
       [this.size]: true,
+      error: this.error,
     };
 
     const tipClasses = {
@@ -270,12 +270,13 @@ export class TextInput {
     };
 
     return (
-      <Fragment>
-        <div class={'plmg-text-input-wrapper'} tabIndex={0}>
-          {this.label && <span class={labelClasses}>{this.labelText}</span>}
+      <div class={'plmg-text-input-wrapper'}>
+        {this.label && <span class={labelClasses}>{this.labelText}</span>}
+        <div class={'plmg-text-input-field-wrapper'} tabIndex={0}>
           <label>
             <input
               class={inputClasses}
+              autoComplete={'off'}
               aria-labelledby={this.label}
               name={this.name}
               required={this.required}
@@ -285,16 +286,22 @@ export class TextInput {
             />
           </label>
         </div>
-        <div>
-          {this.tipText && <span class={tipClasses}>{this.tipText}</span>}
-          {this.error && (
-            <plmg-error-message
-              size={this.size}
-              message={this.errorMessage}
-            ></plmg-error-message>
-          )}
-        </div>
-      </Fragment>
+
+        {this.tip && <span class={tipClasses}>{this.tipText}</span>}
+        {this.error && (
+          <plmg-error-message
+            size={this.size}
+            style={{ marginTop: '8px' }}
+            message={this.errorMessage}
+          ></plmg-error-message>
+        )}
+      </div>
     );
   }
 }
+
+// Finalise actual component
+// Write stories
+// Write tests
+//
+//
