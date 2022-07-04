@@ -107,23 +107,25 @@ $thumb-diameter: 1.5em;
   input[type='range'] {
     border-radius: 3px;
     height: 4px;
-
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    font: inherit;
     @include state-reset;
 
     &,
     &::-webkit-slider-thumb {
       -webkit-appearance: none;
     }
-
-    &:focus {
-      outline: none;
+    &::-webkit-slider-thumb {
+      margin-top: 0.5 * ($track-height - $thumb-diameter);
+      @include thumb;
+      @include set-states;
     }
-
-    margin: 0;
-    padding: 0;
-    background: transparent;
-    font: inherit;
-
+    &::-moz-range-thumb {
+      @include thumb;
+      @include set-states-moz;
+    }
     &::-webkit-slider-runnable-track {
       @include track;
     }
@@ -133,20 +135,12 @@ $thumb-diameter: 1.5em;
     &::-ms-track {
       @include track;
     }
-
-    &::-webkit-slider-thumb {
-      margin-top: 0.5 * ($track-height - $thumb-diameter);
-      @include thumb;
-
-      @include set-states;
+    &:focus {
+      outline: none;
     }
     &:focus-visible::-webkit-slider-thumb {
       border-radius: 50%;
       box-shadow: 0 0 0 4px rgba(tokens.$plmg-color-border-standout, 1);
-    }
-    &::-moz-range-thumb {
-      @include thumb;
-      @include set-states-moz;
     }
     &:focus-visible::-moz-range-thumb {
       outline: 4px solid rgba(tokens.$plmg-color-border-standout, 1);
@@ -176,7 +170,6 @@ $thumb-diameter: 1.5em;
         position: absolute;
         align-self: center;
         top: 100%;
-
         border-left: 6px solid transparent;
         border-right: 6px solid transparent;
         border-top: 6px solid tokens.$plmg-color-background-primary-strong;
@@ -187,8 +180,8 @@ $thumb-diameter: 1.5em;
 
 .plmg-marks {
   margin-top: 2.5em;
-
   position: relative;
+
   .plmg-mark-label {
     display: flex;
     flex-direction: column;
@@ -208,12 +201,14 @@ $thumb-diameter: 1.5em;
 }
 
 .plmg-slider-input-field-container {
+  width: fit-content;
+
   &:focus-visible {
     outline: tokens.$plmg-border-width-l solid
       tokens.$plmg-color-border-standout;
     border-radius: tokens.$plmg-border-radius-s;
   }
-  width: fit-content;
+
   input {
     @include set-typography;
     border: none;
@@ -227,6 +222,7 @@ $thumb-diameter: 1.5em;
     background-color: tokens.$plmg-color-background-neutral;
     box-shadow: tokens.$plmg-shadow-inner-s;
     border-radius: tokens.$plmg-border-radius-s;
+
     &:hover &:focus &:focus-visible {
       outline: none;
     }
