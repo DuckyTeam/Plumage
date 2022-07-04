@@ -271,20 +271,23 @@ export class TextInput {
 
     return (
       <div class={'plmg-text-input-wrapper'}>
-        {this.label && <span class={labelClasses}>{this.labelText}</span>}
-        <div class={'plmg-text-input-field-wrapper'} tabIndex={0}>
-          <label>
-            <input
-              class={inputClasses}
-              autoComplete={'off'}
-              aria-labelledby={this.label}
-              name={this.name}
-              required={this.required}
-              type={'text'}
-              value={this.value}
-              onInput={(ev) => this.handleInputChange(ev)}
-            />
+        {this.label && (
+          <label class={labelClasses} htmlFor={'text-input'}>
+            {this.labelText}
+            {this.required && <span class={'required'}>*</span>}
           </label>
+        )}
+        <div class={'plmg-text-input-field-wrapper'} tabIndex={0}>
+          <input
+            class={inputClasses}
+            autoComplete={'off'}
+            name={this.name}
+            id={'text-input'}
+            required={this.required}
+            type={'text'}
+            value={this.value}
+            onInput={(ev) => this.handleInputChange(ev)}
+          />
         </div>
 
         {this.tip && <span class={tipClasses}>{this.tipText}</span>}

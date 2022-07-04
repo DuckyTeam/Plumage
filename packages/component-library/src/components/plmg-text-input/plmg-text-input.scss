@@ -59,6 +59,7 @@
 .plmg-text-input-wrapper {
   // Tab focus
   .plmg-text-input-field-wrapper {
+    width: fit-content;
     &:focus-visible {
       outline: tokens.$plmg-border-width-l solid
         tokens.$plmg-color-border-standout;
@@ -100,22 +101,32 @@
         @include plmg-font-form-text-l;
         padding: tokens.$plmg-spacing-x1 tokens.$plmg-spacing-x1-5;
       }
-
-      // States
-
-      @include reset-states;
     }
+
+    // States
+
+    @include reset-states;
   }
 }
 
 .label {
   margin-bottom: 8px;
+  display: block;
   color: tokens.$plmg-color-text-neutral-weak;
+
   &.medium {
-    @include plmg-font-form-text-m;
+    @include plmg-font-form-label-m;
   }
   &.large {
-    @include plmg-font-form-text-l;
+    @include plmg-font-form-label-l;
+  }
+
+  .required {
+    color: tokens.$plmg-color-text-danger-strong;
+    font-weight: tokens.$plmg-font-weight-semibold;
+    font-size: tokens.$plmg-font-size-x0-875;
+    line-height: tokens.$plmg-font-lineheight-loose;
+    margin-left: 2px;
   }
 }
 
