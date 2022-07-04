@@ -45,54 +45,71 @@
     tokens.$plmg-font-weight-regular
   );
 }
+@mixin reset-states {
+  &:hover &:focus &:focus-visible {
+    outline: none;
+  }
+}
+
 // END Mixins
 // ------------------------------
 
 // Component style
 // ------------------------------
 .plmg-text-input-wrapper {
-  // Controls: Size
-  width: 100%;
+  // Tab focus
+  .plmg-text-input-field-wrapper {
+    &:focus-visible {
+      outline: tokens.$plmg-border-width-l solid
+        tokens.$plmg-color-border-standout;
+      border-radius: tokens.$plmg-border-radius-s;
+    }
 
-  &:focus-visible {
-    outline: tokens.$plmg-border-width-l solid
-      tokens.$plmg-color-border-standout;
-    border-radius: tokens.$plmg-border-radius-s;
-  }
-  input {
-    border: none;
-    box-sizing: border-box;
-    width: 100%;
-    outline: tokens.$plmg-border-width-m solid
-      tokens.$plmg-color-border-neutral-weak;
-    color: tokens.$plmg-color-text-neutral;
-
-    border-radius: tokens.$plmg-border-radius-s;
-    background-color: tokens.$plmg-color-background-neutral;
-
-    &.medium {
-      @include plmg-font-form-text-m;
-      padding: tokens.$plmg-spacing-x0-75 tokens.$plmg-spacing-x1;
-    }
-    &.large {
-      @include plmg-font-form-text-l;
-      padding: tokens.$plmg-spacing-x1 tokens.$plmg-spacing-x1-5;
-    }
-    &:hover &:focus &:focus-visible {
-      outline: none;
-    }
-    // States
-    &:hover:not(:focus) {
-      background-color: tokens.$plmg-color-background-neutral-hover;
-    }
-    &:focus {
+    input {
+      border: none;
+      box-sizing: border-box;
+      width: fit-content;
       outline: tokens.$plmg-border-width-m solid
-        tokens.$plmg-color-border-primary;
+        tokens.$plmg-color-border-neutral-weak;
+      color: tokens.$plmg-color-text-neutral;
+
+      border-radius: tokens.$plmg-border-radius-s;
+      background-color: tokens.$plmg-color-background-neutral;
+
+      // Controls: Size
+      @include reset-states;
+
+      &:hover:not(:focus) {
+        background-color: tokens.$plmg-color-background-neutral-hover;
+      }
+      &:focus {
+        outline: tokens.$plmg-border-width-m solid
+          tokens.$plmg-color-border-primary;
+      }
+
+      &.error {
+        outline: tokens.$plmg-border-width-m solid
+          tokens.$plmg-color-border-danger-strong;
+      }
+
+      &.medium {
+        @include plmg-font-form-text-m;
+        padding: tokens.$plmg-spacing-x0-75 tokens.$plmg-spacing-x1;
+      }
+      &.large {
+        @include plmg-font-form-text-l;
+        padding: tokens.$plmg-spacing-x1 tokens.$plmg-spacing-x1-5;
+      }
+
+      // States
+
+      @include reset-states;
     }
   }
 }
 
 .label {
+  margin-bottom: 8px;
   color: tokens.$plmg-color-text-neutral-weak;
   &.medium {
     @include plmg-font-form-text-m;
@@ -103,6 +120,7 @@
 }
 
 .tip {
+  margin-top: 8px;
   color: tokens.$plmg-color-text-neutral-weak;
   &.medium {
     @include plmg-font-form-tip-m;
