@@ -22,6 +22,7 @@ import {
 export class Slider {
   private ref: HTMLDivElement;
   private abortResizeListener: AbortController;
+
   /**
    * Define the default value
    *
@@ -30,14 +31,14 @@ export class Slider {
    * Allowed values:
    * - any number
    *
-   * If default value is outside of min and max range or undefined
-   * default value is set to the min value
+   * If defaultValue is outside of min and max range or undefined
+   * defaultValue is set to the min value
    */
   @Prop() defaultValue: number;
   @Watch('defaultValue')
   validateDefaultValue(newValue: number) {
     if (typeof newValue !== 'number')
-      throw new Error('default value be a number');
+      throw new Error('defaultValue must be a number');
   }
   /**
    *
@@ -58,7 +59,6 @@ export class Slider {
    * - any string
    *
    * Required for accessibility and should be a unique and descriptive
-   *
    */
   @Prop() name: string;
   @Watch('name')
@@ -74,10 +74,10 @@ export class Slider {
    * - An array of with at least two items
    *
    * Must be a list of values with at least two items
-   * with the first and last items set min and max values
-   * additional values set additional marks and labels
-   * sort the string passed to component on the client
-   * component will not sort the array
+   * with the first and last items set min and max values.
+   * Additional values set additional marks and labels.
+   * Sort the array passed to component on the client, the
+   * component will not sort the array.
    */
   @Prop() rangeValues: Array<number>;
   Event: any;
@@ -100,7 +100,7 @@ export class Slider {
   @Watch('thumbLabel')
   onThumbLabel(newValue: boolean) {
     if (typeof newValue !== 'boolean')
-      throw new Error('thumb label must be boolean');
+      throw new Error('thumbLabel must be boolean');
   }
 
   /**
@@ -109,9 +109,9 @@ export class Slider {
    * Allowed values:
    * - Any number
    *
-   * Slider's value will increase or decrease by stepValue
+   * Slider's value will increase or decrease by the step value
    *
-   * When step is not provided the stepValue is set to 1% of the range
+   * When step is not provided the step value is set to 1% of the range
    */
   @Prop() step: number;
   @Watch('step')
@@ -121,13 +121,10 @@ export class Slider {
   }
 
   /**
-   *
-   * Store value, min, max, trackwidth, inputfield and step states
+   * Store value, min, max, trackWidth, inputFieldValue and stepValue states
    *
    * trackWidth stores the width of container after the component loads to calculate relative positions.
-   *
    */
-
   @State() min: number;
   @State() max: number;
   @State() trackWidth: number;

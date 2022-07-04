@@ -163,7 +163,7 @@ export namespace Components {
     }
     interface PlmgSlider {
         /**
-          * Define the default value  Sets the starting value for the slider  Allowed values: - any number  If default value is outside of min and max range or undefined default value is set to the min value
+          * Define the default value  Sets the starting value for the slider  Allowed values: - any number  If defaultValue is outside of min and max range or undefined defaultValue is set to the min value
          */
         "defaultValue": number;
         /**
@@ -175,11 +175,11 @@ export namespace Components {
          */
         "name": string;
         /**
-          * Define a range of values  Allowed values: - An array of with at least two items  Must be a list of values with at least two items with the first and last items set min and max values additional values set additional marks and labels sort the string passed to component on the client component will not sort the array
+          * Define a range of values  Allowed values: - An array of with at least two items  Must be a list of values with at least two items with the first and last items set min and max values. Additional values set additional marks and labels. Sort the array passed to component on the client, the component will not sort the array.
          */
         "rangeValues": Array<number>;
         /**
-          * Define step  Allowed values: - Any number  Slider's value will increase or decrease by stepValue  When step is not provided the stepValue is set to 1% of the range
+          * Define step  Allowed values: - Any number  Slider's value will increase or decrease by the step value  When step is not provided the step value is set to 1% of the range
          */
         "step": number;
         /**
@@ -446,7 +446,7 @@ declare namespace LocalJSX {
     }
     interface PlmgSlider {
         /**
-          * Define the default value  Sets the starting value for the slider  Allowed values: - any number  If default value is outside of min and max range or undefined default value is set to the min value
+          * Define the default value  Sets the starting value for the slider  Allowed values: - any number  If defaultValue is outside of min and max range or undefined defaultValue is set to the min value
          */
         "defaultValue"?: number;
         /**
@@ -459,11 +459,11 @@ declare namespace LocalJSX {
         "name"?: string;
         "onValueUpdated"?: (event: PlmgSliderCustomEvent<any>) => void;
         /**
-          * Define a range of values  Allowed values: - An array of with at least two items  Must be a list of values with at least two items with the first and last items set min and max values additional values set additional marks and labels sort the string passed to component on the client component will not sort the array
+          * Define a range of values  Allowed values: - An array of with at least two items  Must be a list of values with at least two items with the first and last items set min and max values. Additional values set additional marks and labels. Sort the array passed to component on the client, the component will not sort the array.
          */
         "rangeValues"?: Array<number>;
         /**
-          * Define step  Allowed values: - Any number  Slider's value will increase or decrease by stepValue  When step is not provided the stepValue is set to 1% of the range
+          * Define step  Allowed values: - Any number  Slider's value will increase or decrease by the step value  When step is not provided the step value is set to 1% of the range
          */
         "step"?: number;
         /**
