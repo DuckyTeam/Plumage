@@ -457,6 +457,9 @@ declare namespace LocalJSX {
           * Define a descriptive name for the slider  Allowed values: - any string  Required for accessibility and should be a unique and descriptive
          */
         "name"?: string;
+        /**
+          * The event "valueUpdated" is triggered when the slider value changes either by moving the thumb or entering in the text field.
+         */
         "onValueUpdated"?: (event: PlmgSliderCustomEvent<any>) => void;
         /**
           * Define a range of values  Allowed values: - An array of with at least two items  Must be a list of values with at least two items with the first and last items set min and max values. Additional values set additional marks and labels. Sort the array passed to component on the client, the component will not sort the array.

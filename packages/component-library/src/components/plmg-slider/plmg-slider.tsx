@@ -132,6 +132,11 @@ export class Slider {
   @State() inputFieldValue: number;
   @State() value: number;
 
+  /**
+   * The event "valueUpdated" is triggered when the slider value changes either by moving the thumb or entering in the text field.
+   */
+  @Event() valueUpdated: EventEmitter;
+
   private handleSliderChange(ev) {
     this.updateValue(ev.target.value);
   }
@@ -143,8 +148,6 @@ export class Slider {
     }
     this.valueUpdated.emit({ value: this.value });
   }
-
-  @Event() valueUpdated: EventEmitter;
 
   private getAllowedInputs() {
     let inputs = [];
@@ -161,6 +164,7 @@ export class Slider {
     }
     return inputs;
   }
+
   private handleInputFieldChange(ev) {
     // Ignore Empty Strings
     if (ev.target.value == '') return;
@@ -278,7 +282,6 @@ export class Slider {
               </Fragment>
             ) : null}
           </div>
-
           <div class={'plmg-slider-input-field-container'} tabIndex={0}>
             <label htmlfor="slider-input">
               <input
