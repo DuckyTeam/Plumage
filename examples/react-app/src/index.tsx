@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import ReactDOM from 'react-dom';
 import {
   PlmgButton,
@@ -8,9 +8,37 @@ import {
   PlmgSidebar,
   PlmgSidebarItem,
   PlmgSvgIcon,
+  PlmgRadioButtonGroup,
   PlmgSeparator,
+  PlmgTooltip,
 } from '@ducky/plumage-react';
 import Sliders from './Sliders';
+
+const TooltipRefExample = () => {
+  const [button, setButton] = useState(undefined);
+  const buttonRef = useCallback((node) => {
+    if (node !== null) {
+      setButton(node);
+    }
+  }, []);
+
+  return (
+    <>
+      <PlmgButton label={'hover-me-button'} ref={buttonRef}>
+        HoverMe
+      </PlmgButton>
+      <PlmgTooltip
+        role={'tooltip'}
+        id={'hover-me-button'}
+        targetElement={button}
+        position={'top'}
+        color={'primary'}
+        arrowPosition={'start'}
+        content={'Top with arrow start'}
+      ></PlmgTooltip>
+    </>
+  );
+};
 
 ReactDOM.render(
   <PlmgPageContainer>
@@ -86,10 +114,12 @@ ReactDOM.render(
         topActionIcon={'home'}
         topActionLabel={'Top Action'}
         bottomActionText="Click here"
-        bottomButtonAction={() =>
+        onBottomActionClicked={() =>
           console.log('bottomButtonClicked event received')
         }
-        topActionClicked={() => console.log('topActionClicked event received')}
+        onTopActionClicked={() =>
+          console.log('topActionClicked event received')
+        }
       >
         <div slot="slot-1">
           <h1>PlmgCard slot-1</h1>
@@ -100,6 +130,61 @@ ReactDOM.render(
         </div>
       </PlmgCard>
       <Sliders />
+      <p
+        tabIndex={0}
+        id={'targetelement'}
+        aria-describeby={'tooltip-demonstration'}
+        style={{ width: 'fit-content' }}
+      >
+        Tooltip Target
+      </p>
+      <PlmgTooltip
+        role={'tooltip'}
+        id={'tooltip-demonstration'}
+        targetElement={'targetelement'}
+        position={'right'}
+        arrowPosition={'middle'}
+        content={'Right with arrow middle'}
+      ></PlmgTooltip>
+      <TooltipRefExample />
+      <br />
+      <form>
+        <PlmgRadioButtonGroup
+          name="colours"
+          label="What's your favourite colour"
+          size="medium"
+          required
+          values='[
+          "red",
+          "blue",
+          "yellow",
+          "green",
+          "purple (the obvious choice)"
+        ]'
+          errorMessage={'Please select a colour'}
+          onValueChanged={(e: CustomEvent<{ selectedValue: string }>) => {
+            console.log('Radio Button colours:', e.detail.selectedValue);
+          }}
+        />
+        <PlmgRadioButtonGroup
+          name="other colours"
+          label="What's your favourite fruit"
+          size="medium"
+          required
+          values='[
+          "apples",
+          "blueberries",
+          "bananas",
+          "kiwis",
+          "grapes"
+        ]'
+          errorMessage={'Please select a fruit'}
+          onValueChanged={(e: CustomEvent<{ selectedValue: string }>) => {
+            console.log('Radio Button other colours:', e.detail.selectedValue);
+          }}
+        />
+        <input type="submit"></input>
+      </form>
     </div>
   </PlmgPageContainer>,
   document.getElementById('root')

@@ -7,7 +7,7 @@
     "build": "webpack --config webpack.config.js --env env=production"
   },
   "dependencies": {
-    "@ducky/plumage-react": "^0.4.1",
+    "@ducky/plumage-react": "^0.5.1",
     "react": "~17.0.2",
     "react-dom": "~17.0.2",
     "@babel/runtime": "~7.18.3"
@@ -19,6 +19,7 @@
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
     "@babel/plugin-transform-runtime": "^7.17.0",
+    "@babel/runtime": "~7.18.3",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
     "babel-loader": "^8.2.3",

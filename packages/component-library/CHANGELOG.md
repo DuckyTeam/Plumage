@@ -1,6 +1,87 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Mon, 16 May 2022 13:05:01 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Jun 2022 09:58:39 GMT and should not be manually modified.
+
+## 1.5.1
+Fri, 24 Jun 2022 09:58:39 GMT
+
+### Patches
+
+- Improve documentation for PlmgRadioButtonGroup
+
+## 1.5.0
+Fri, 24 Jun 2022 09:33:45 GMT
+
+### Minor changes
+
+- Create Tooltip component
+
+### Patches
+
+- Add Stories to PlmgRadioButtonGroup
+
+## 1.4.1
+Wed, 15 Jun 2022 10:53:46 GMT
+
+### Patches
+
+- Emit onValueChanged from PlmgRadioButtonGroup
+
+## 1.4.0
+Tue, 14 Jun 2022 09:02:22 GMT
+
+### Minor changes
+
+- 3 new components, plmg-radio-button, plmg-radio-button-group, and error-message have been created
+
+## 1.3.0
+Wed, 08 Jun 2022 06:39:49 GMT
+
+### Minor changes
+
+- Bump Stencil to 2.16.1
+
+## 1.2.0
+Thu, 02 Jun 2022 19:16:24 GMT
+
+### Minor changes
+
+- Bump Stencil version to 2.16.0, add experimentalImportInjection flag to stencil.config.ts
+
+## 1.1.5
+Thu, 02 Jun 2022 13:49:55 GMT
+
+### Patches
+
+- Smaller stories for PlmgSeparator
+
+## 1.1.4
+Wed, 01 Jun 2022 12:31:48 GMT
+
+### Patches
+
+- Add story for Separator with colors
+
+## 1.1.3
+Tue, 24 May 2022 12:56:59 GMT
+
+### Patches
+
+- Fix background color for borderless btton on hover
+
+## 1.1.2
+Tue, 24 May 2022 12:34:33 GMT
+
+### Patches
+
+- Fix SidebarItem background and outline
+
+## 1.1.1
+Mon, 23 May 2022 05:27:05 GMT
+
+### Patches
+
+- Add instruction to readme
 
 ## 1.1.0
 Mon, 16 May 2022 13:05:01 GMT

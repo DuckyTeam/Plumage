@@ -1,6 +1,34 @@
 # Change Log - @ducky/plumage-react
 
-This log was last generated on Thu, 07 Apr 2022 13:53:32 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Jun 2022 10:53:46 GMT and should not be manually modified.
+
+## 0.5.1
+Wed, 15 Jun 2022 10:53:46 GMT
+
+### Patches
+
+- Emit onValueChanged from PlmgRadioButtonGroup
+
+## 0.5.0
+Tue, 14 Jun 2022 09:02:22 GMT
+
+### Minor changes
+
+- 3 new components, PlmgRadioButton, PlmgRadioButtonGroup, and PlmgErrorMessage have been created
+
+## 0.4.3
+Mon, 23 May 2022 05:27:05 GMT
+
+### Patches
+
+- Add readme
+
+## 0.4.2
+Fri, 20 May 2022 13:38:47 GMT
+
+### Patches
+
+- Add cjs to build output
 
 ## 0.4.1
 Thu, 07 Apr 2022 13:53:32 GMT
