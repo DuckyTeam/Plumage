@@ -1,5 +1,5 @@
 import * as Utils from '../../stories/StencilStorybookUtils';
-import { sizes, types } from './plmg-text-input.types';
+import { sizes } from './plmg-text-input.types';
 
 export default {
   title: 'Component/TextInput',
@@ -37,7 +37,7 @@ export default {
     ['tip-text']: {
       control: { type: 'text' },
     },
-    ['tip-text-show']: {
+    ['tip']: {
       control: { type: 'boolean' },
     },
     type: {
@@ -56,7 +56,7 @@ const PROPS = [
   'label-text',
   'name',
   'required',
-  'tip-text-show',
+  'tip',
   'tip-text',
   'type',
 ];
@@ -109,14 +109,51 @@ export const TipText = Template.bind({});
 TipText.storyName = 'TipText';
 TipText.args = {
   name: 'TextInput',
+  tip: true,
   ['tip-text']: 'Helpful Text',
 };
+
+export const AllVariations = (args) => {
+  const errors = [true, false];
+  const filled = [true, false];
+  const labels = [true, false];
+  const tip = [true, false];
+  const required = [true, false];
+
+  let htmlContent = '';
+
+  errors.forEach((error) => {
+    labels.forEach((label) => {
+      sizes.forEach((size) => {
+        filled.forEach((fill) => {
+          if (error) {
+            htmlContent += `
+    <plmg-text-input size="${size}" label label-text="${size}" error=${error} error-message="User, we have an error" filled="${fill}" default="${size}"></plmg-text-input>`;
+          } else {
+            htmlContent += `
+        <plmg-text-input size="${size}" filled="${fill}" default="${size}"></plmg-text-input>`;
+          }
+        });
+      });
+    });
+  });
+
+  console.log(htmlContent);
+  const el = document.createElement('div');
+  el.innerHTML = htmlContent;
+  el.style.display = 'flex';
+  el.style.justifyContent = 'space-between';
+
+  return el;
+};
+
+AllVariations.storyName = 'All variations';
 
 export const AllSizes = (args) => {
   const htmlContent = sizes
     .map(
       (size) =>
-        `<plmg-text-input size="${size}" filled default="${size}"></plmg text-input>`
+        `<plmg-text-input size="${size}" filled default="${size}"></plmg-text-input>`
     )
     .join('')
     .trim();
