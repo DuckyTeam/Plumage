@@ -122,6 +122,21 @@ Required.args = {
   required: true,
 };
 
+export const AllOn = Template.bind({});
+AllOn.storyName = 'AllOn';
+AllOn.args = {
+  name: 'TextInput',
+  filled: true,
+  default: 'default',
+  label: true,
+  ['label-text']: 'All On Medium',
+  tip: true,
+  ['tip-text']: 'Helpful Text',
+  error: true,
+  ['error-message']: 'Error message',
+  required: true,
+};
+
 export const AllVariations = (args) => {
   const filled = [true, false];
   const labels = [true, false];
