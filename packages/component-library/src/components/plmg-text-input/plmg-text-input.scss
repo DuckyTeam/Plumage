@@ -130,7 +130,7 @@
 
 .label {
   margin-bottom: 8px;
-  display: block;
+  display: inline-flex;
   color: tokens.$plmg-color-text-neutral-weak;
 
   &.medium {
@@ -141,6 +141,7 @@
   }
 
   .required {
+    align-self: start;
     color: tokens.$plmg-color-text-danger-strong;
     font-weight: tokens.$plmg-font-weight-semibold;
     font-size: tokens.$plmg-font-size-x0-875;
