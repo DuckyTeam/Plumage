@@ -267,14 +267,14 @@ export class Slider {
 
                 {this.marks ? (
                   <div class={'plmg-marks'}>
-                    {this.rangeValues.map((labelvalue, index) => (
+                    {this.rangeValues.map((labelValue, index) => (
                       <div
                         class={'plmg-mark-label'}
                         key={index}
-                        style={{ transform: this.setLabelPosition(labelvalue) }}
+                        style={{ transform: this.setLabelPosition(labelValue) }}
                       >
                         <span class={'plmg-mark-tick'}>&#8205;</span>
-                        <span>{labelvalue}</span>
+                        <span>{labelValue}</span>
                       </div>
                     ))}
                   </div>
@@ -313,12 +313,12 @@ export class Slider {
     )}%,${plmgColorBorderNeutralWeak} 100%)`;
   }
 
-  private calculateValueAsDecimalFraction(labelvalue?, multipler?) {
+  private calculateValueAsDecimalFraction(labelValue?, multipler?) {
     if (multipler) {
       return ((this.value - this.min) / (this.max - this.min)) * multipler;
     }
-    if (labelvalue || labelvalue === 0) {
-      return (labelvalue - this.min) / (this.max - this.min);
+    if (labelValue || labelValue === 0) {
+      return (labelValue - this.min) / (this.max - this.min);
     }
     return (this.value - this.min) / (this.max - this.min);
   }
@@ -335,11 +335,11 @@ export class Slider {
     };
   }
 
-  private setLabelPosition(labelvalue) {
+  private setLabelPosition(labelValue) {
     const trackBasis = 12;
     const thumbDiameter = 1.5;
     return `translate(calc(${this.calculateValueAsDecimalFraction(
-      labelvalue
+      labelValue
     )}em * (${this.trackWidth} / ${trackBasis} - ${thumbDiameter}) - 50%)`;
   }
 }
