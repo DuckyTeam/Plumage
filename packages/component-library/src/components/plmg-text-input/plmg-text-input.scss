@@ -67,7 +67,7 @@
 
 // Wrapper allows tab
 .plmg-text-input-field-wrapper {
-  width: fit-content;
+  width: inherit;
   box-sizing: border-box;
 
   &:focus-visible {
@@ -83,9 +83,10 @@
   }
 
   input {
+    width: 100%;
+    min-width: fit-content;
     border: none;
     box-sizing: border-box;
-    width: fit-content;
     border: tokens.$plmg-border-width-m solid
       tokens.$plmg-color-border-neutral-weak;
     color: tokens.$plmg-color-text-neutral;
