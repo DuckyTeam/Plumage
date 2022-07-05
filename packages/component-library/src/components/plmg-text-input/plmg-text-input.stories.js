@@ -77,14 +77,16 @@ const Template = (args) => {
 export const Primary = Template.bind({});
 Primary.storyName = 'Text Input';
 Primary.args = {
-  name: 'TextInput',
+  ['label-text']: 'Text Input',
   size: 'medium',
+  ['label-visible']: false,
 };
+
 export const AllSizes = (args) => {
   const htmlContent = sizes
     .map(
       (size) =>
-        `<plmg-text-input size="${size}" filled default="${size}"></plmg-text-input>`
+        `<plmg-text-input label-text=${size} size="${size}" labelfilled default="${size}"></plmg-text-input>`
     )
     .join('')
     .trim();
@@ -98,43 +100,42 @@ export const AllSizes = (args) => {
 };
 AllSizes.storyName = 'All Sizes';
 
+export const LabelVisible = Template.bind({});
+LabelVisible.storyName = 'Label';
+LabelVisible.args = {
+  ['label-text']: 'Text Input',
+  ['label-visible']: true,
+  ['label-text']: 'Label Text',
+};
+
 export const Error = Template.bind({});
 Error.storyName = 'Error';
 Error.args = {
-  name: 'TextInput',
   error: true,
+  ['label-text']: 'Text Input',
   ['error-message']: 'Error Message',
 };
 
 export const Filled = Template.bind({});
 Filled.storyName = 'Filled';
 Filled.args = {
-  name: 'TextInput',
+  ['label-text']: 'Filled with default',
   filled: true,
   ['default']: 'Default',
-};
-
-export const LabelVisible = Template.bind({});
-LabelVisible.storyName = 'Label';
-LabelVisible.args = {
-  name: 'TextInput',
-  ['label-visible']: true,
-  ['label-text']: 'Label Text',
 };
 
 export const TipText = Template.bind({});
 TipText.storyName = 'Tip Text';
 TipText.args = {
-  name: 'TextInput',
   tip: true,
+  ['label-text']: 'Tip Text',
   ['tip-text']: 'Helpful Text',
 };
 
 export const Required = Template.bind({});
 Required.storyName = 'Required';
 Required.args = {
-  name: 'TextInput',
-  label: true,
+  ['label-visible']: true,
   ['label-text']: 'Required',
   required: true,
 };
@@ -145,7 +146,7 @@ AllOn.args = {
   name: 'TextInput',
   filled: true,
   default: 'really long default text that might things weird',
-  label: true,
+  ['label-visible']: true,
   ['label-text']: 'All On Medium',
   tip: true,
   ['tip-text']: 'Helpful Text',
@@ -160,7 +161,7 @@ export const AllVariations = (args) => {
   const tips = [false, true];
   const required = [false, true];
 
-  // create
+  // labael
   let htmlContent = '';
   htmlContent += `<span>Label</span>`;
   LabelVisible.forEach((label) => {
@@ -168,29 +169,29 @@ export const AllVariations = (args) => {
       if (label)
         required.forEach((require) => {
           htmlContent += `
-      <plmg-text-input tip=${tip} required=${require} tip-text='Helpful message' label=${label} label-text="Label"></plmg-text-input>
+      <plmg-text-input tip=${tip} required=${require} tip-text='Helpful message' label-visible=${label} label-text="Label"></plmg-text-input>
       `;
         });
       else
         htmlContent += `
-      <plmg-text-input tip=${tip} tip-text='Helpful message' label=${label} label-text="Label"></plmg-text-input>
+      <plmg-text-input tip=${tip} tip-text='Helpful message' label-visible=${label} label-text="Label"></plmg-text-input>
       `;
     });
   });
 
-  // let htmlContent2 = '';
+  // error
   htmlContent += `<span>Error</span>`;
   LabelVisible.forEach((label) => {
     tips.forEach((tip) => {
       if (label)
         required.forEach((require) => {
           htmlContent += `
-      <plmg-text-input error error-message='Error message' required=${require} tip-text='Helpful message' label=${label} label-text="Label"></plmg-text-input>
+      <plmg-text-input error error-message='Error message' required=${require} tip-text='Helpful message' label-visible=${label} label-text="Label"></plmg-text-input>
       `;
         });
       else
         htmlContent += `
-      <plmg-text-input error error-message='Error message' tip=${tip} tip-text='Helpful message' label=${label} label-text="Label"></plmg-text-input>
+      <plmg-text-input error error-message='Error message' tip=${tip} tip-text='Helpful message' label-visible=${label} label-text="Label"></plmg-text-input>
       `;
     });
   });
@@ -201,13 +202,13 @@ export const AllVariations = (args) => {
       if (label)
         required.forEach((require) => {
           htmlContent += `
-      <plmg-text-input filled default='filled' error-message='Error message' required=${require} tip-text='Helpful message' label=${label} label-text="Label"></plmg-text-input>
+      <plmg-text-input filled default='filled' error-message='Error message' required=${require} tip-text='Helpful message' label-visible=${label} label-text="Label"></plmg-text-input>
       `;
         });
       else
         htmlContent += `
 
-      <plmg-text-input filled default='filled' error-message='Error message' tip=${tip} tip-text='Helpful message' label=${label} label-text="Label"></plmg-text-input>
+      <plmg-text-input filled default='filled' error-message='Error message' tip=${tip} tip-text='Helpful message' label-visible=${label} label-text="Label"></plmg-text-input>
       `;
     });
   });
@@ -218,12 +219,12 @@ export const AllVariations = (args) => {
       if (label)
         required.forEach((require) => {
           htmlContent += `
-      <plmg-text-input error error-message='Error message' filled default='filled' error-message='Error message' required=${require} tip-text='Helpful message' label=${label} label-text="Label"></plmg-text-input>
+      <plmg-text-input error error-message='Error message' filled default='filled' error-message='Error message' required=${require} tip-text='Helpful message' label-visible=${label} label-text="Label"></plmg-text-input>
       `;
         });
       else
         htmlContent += `
-      <plmg-text-input error error-message='Error message' filled default='filled' error-message='Error message' tip=${tip} tip-text='Helpful message' label=${label} label-text="Label"></plmg-text-input>
+      <plmg-text-input error error-message='Error message' filled default='filled' error-message='Error message' tip=${tip} tip-text='Helpful message' label-visible=${label} label-text="Label"></plmg-text-input>
       `;
     });
   });

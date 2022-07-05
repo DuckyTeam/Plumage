@@ -72,7 +72,7 @@ export class TextInput {
    *
    * Default: true
    */
-  @Prop() LabelVisible: boolean = false;
+  @Prop() LabelVisible: boolean = true;
   @Watch('LabelVisible')
   validateLabel(newValue: boolean) {
     if (typeof newValue !== 'boolean')
@@ -84,9 +84,7 @@ export class TextInput {
    * Allowed values:
    * - Any string
    *
-   * Required
-   *
-   * Default: true
+   * Required for accesibility
    */
   @Prop() labelText: string;
   @Watch('labelText')
@@ -94,23 +92,23 @@ export class TextInput {
     if (typeof newValue !== 'string' || !this.labelText)
       throw new Error('label text is required. label text must be string');
   }
-  /**
-   * Provide an name to label the input.
-   *
-   * Name is required for accessibility.
-   */
+  // /**
+  //  * Provide an name to label the input.
+  //  *
+  //  * Name is required for accessibility.
+  //  */
+  // // @Prop() name: string;
+  // // @Watch('name')
+  // // validateName(newValue: string) {
+  // //   if (newValue && typeof newValue !== 'string' && !this.name)
+  // //     throw new Error('name must have a name and be a string');
+  // // }
   // @Prop() name: string;
   // @Watch('name')
   // validateName(newValue: string) {
-  //   if (newValue && typeof newValue !== 'string' && !this.name)
-  //     throw new Error('name must have a name and be a string');
+  //   if (newValue && typeof newValue !== 'string')
+  //     throw new Error(' must have a name and be a string');
   // }
-  @Prop() name: string;
-  @Watch('name')
-  validateName(newValue: string) {
-    if (newValue && typeof newValue !== 'string')
-      throw new Error(' must have a name and be a string');
-  }
   /**
    * Define if an input is required.
    *
@@ -273,7 +271,7 @@ export class TextInput {
       <Fragment>
         <label
           class={labelClasses}
-          htmlFor={'text-input'}
+          htmlFor={this.labelToId()}
           aria-hidden={this.ariaHidden()}
         >
           {this.showText()}
@@ -283,8 +281,8 @@ export class TextInput {
           <input
             class={inputClasses}
             autoComplete={'off'}
-            name={'text-input'}
-            id={'text-input'}
+            name={this.labelText}
+            id={this.labelToId()}
             required={this.required}
             type={'text'}
             value={this.value}
@@ -305,6 +303,11 @@ export class TextInput {
   }
 
   // provide an empty content to set line height when
+  private labelToId() {
+    console.log(this.labelText.toLowerCase().replace(/\s+/g, '-'));
+    return this.labelText.toLowerCase().replace(/\s+/g, '-');
+  }
+
   private showText() {
     return this.LabelVisible ? this.labelText : '\u00A0';
   }
