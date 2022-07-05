@@ -92,23 +92,6 @@ export class TextInput {
     if (typeof newValue !== 'string' || !this.labelText)
       throw new Error('label text is required. label text must be string');
   }
-  // /**
-  //  * Provide an name to label the input.
-  //  *
-  //  * Name is required for accessibility.
-  //  */
-  // // @Prop() name: string;
-  // // @Watch('name')
-  // // validateName(newValue: string) {
-  // //   if (newValue && typeof newValue !== 'string' && !this.name)
-  // //     throw new Error('name must have a name and be a string');
-  // // }
-  // @Prop() name: string;
-  // @Watch('name')
-  // validateName(newValue: string) {
-  //   if (newValue && typeof newValue !== 'string')
-  //     throw new Error(' must have a name and be a string');
-  // }
   /**
    * Define if an input is required.
    *
@@ -195,62 +178,6 @@ export class TextInput {
     }
   }
 
-  /**
-   * 4. Public Property API
-   * Inlined decorator, alphabetical order. These are different than "own properties" in that public props
-   * are exposed as properties and attributes on the host element.
-   * Requires JSDocs for public API documentation.
-   *
-   * import { Prop, Watch } from '@stencil/core';
-   */
-  // @Prop() fullWidth: boolean = false;
-  /** Prop lifecycle events SHOULD go just behind the Prop they listen to. */
-  // @Watch('fullWidth')
-  // validateFullWidth(newValue: boolean) {
-  //   if (typeof newValue !== 'boolean')
-  //     throw new Error('fullWidth: must be boolean');
-  // }
-
-  /**
-   * 5. Events section
-   * Inlined decorator, alphabetical order.
-   * Requires JSDocs for public API documentation.
-   *
-   * import { Event, EventEmitter } from '@stencil/core';
-   */
-  // @Event() click: EventEmitter;
-
-  /**
-   * 6. Component lifecycle events
-   * Ordered by their natural call order, for example WillLoad should go before DidLoad.
-   */
-  // connectedCallback() {}
-  // componentWillLoad() {}
-  // componentDidLoad() {}
-  // disconnectedCallback() {}
-
-  /**
-   * 7. Listeners
-   * It is ok to place them in a different location if makes more sense in the context.
-   * Recommend starting a listener method with "on".
-   * Always use two lines.
-   *
-   * import { Listen } from '@stencil/core';
-   */
-  // @Listen('click', {})
-  // onClick(event: UIEvent) { ... }
-
-  /**
-   * 8. Public methods API
-   * These methods are exposed on the host element.
-   * Always use two lines.
-   * Requires JSDocs for public API documentation.
-   *
-   * import { Method } from '@stencil/core';
-   */
-  // @Method()
-  // open() { ... }
-
   render() {
     const inputClasses = {
       [this.size]: true,
@@ -280,7 +207,6 @@ export class TextInput {
         <div class={'plmg-text-input-field-wrapper'} tabIndex={0}>
           <input
             class={inputClasses}
-            autoComplete={'off'}
             name={this.labelText}
             id={this.labelToId()}
             required={this.required}
@@ -302,9 +228,8 @@ export class TextInput {
     );
   }
 
-  // provide an empty content to set line height when
+  // use label name as id
   private labelToId() {
-    console.log(this.labelText.toLowerCase().replace(/\s+/g, '-'));
     return this.labelText.toLowerCase().replace(/\s+/g, '-');
   }
 
@@ -320,11 +245,3 @@ export class TextInput {
     return this.LabelVisible && this.required && this.labelText !== '';
   }
 }
-
-// pass empty strings to create spacer
-// All variations - nice story layout - wrap with some stuff
-// what order should stories list?
-// Write tests - check all working
-// check browswers
-
-// Wait for design to come back about spacer issue
