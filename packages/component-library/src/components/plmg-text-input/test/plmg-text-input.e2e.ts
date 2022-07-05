@@ -15,15 +15,27 @@ describe('plmg-text-input', () => {
     it('are accessible', async () => {
       const page = await newE2EPage();
 
-      const sizes = ['medium', 'large'];
+      const sizes = ['medium', 'large', undefined];
+      const errors = [true, false, undefined];
+      const filled = [true, false, undefined];
+      const labelVisibles = [true, false, undefined];
+      const tips = [true, false, undefined];
 
       let htmlContent = '';
       sizes.forEach((sizeControl) => {
-        htmlContent += `
-    <plmg-text-input size="${sizeControl}">
+        errors.forEach((error) => {
+          filled.forEach((fill) => {
+            labelVisibles.forEach((labelVisible) => {
+              tips.forEach((tip) => {
+                htmlContent += `
+    <plmg-text-input size="${sizeControl}" tip=${tip} label-visible=${labelVisible} fill=${fill} errors=${error}>
     </plmg-text-input>
 <br/>
     `;
+              });
+            });
+          });
+        });
       });
       await page.setContent('<main>' + htmlContent + '</main>');
 
