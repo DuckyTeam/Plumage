@@ -84,12 +84,12 @@ export class TextInput {
    * Allowed values:
    * - Any string
    *
-   * Required for accesibility
+   * Label is used to generate id and must be unique to the page
    */
-  @Prop() labelText: string;
-  @Watch('labelText')
+  @Prop() label: string;
+  @Watch('label')
   validateLabelMessage(newValue: string) {
-    if (typeof newValue !== 'string' || !this.labelText)
+    if (typeof newValue !== 'string' || !this.label)
       throw new Error('label text is required. label text must be string');
   }
   /**
@@ -199,7 +199,7 @@ export class TextInput {
         <label
           class={labelClasses}
           htmlFor={this.labelToId()}
-          aria-hidden={this.ariaHidden()}
+          aria-label={this.label}
         >
           {this.showText()}
           {this.showRequiredAsterix() && <span class={'required'}>*</span>}
@@ -207,8 +207,8 @@ export class TextInput {
         <div class={'plmg-text-input-field-wrapper'} tabIndex={0}>
           <input
             class={inputClasses}
-            name={this.labelText}
             id={this.labelToId()}
+            name={this.label}
             required={this.required}
             type={'text'}
             value={this.value}
@@ -230,18 +230,14 @@ export class TextInput {
 
   // use label name as id
   private labelToId() {
-    return this.labelText.toLowerCase().replace(/\s+/g, '-');
+    return this.label.toLowerCase().replace(/\s+/g, '-');
   }
 
   private showText() {
-    return this.LabelVisible ? this.labelText : '\u00A0';
-  }
-
-  private ariaHidden() {
-    return this.LabelVisible ? 'false' : 'true';
+    return this.LabelVisible ? this.label : '\u00A0';
   }
 
   private showRequiredAsterix() {
-    return this.LabelVisible && this.required && this.labelText !== '';
+    return this.LabelVisible && this.required && this.label !== '';
   }
 }
