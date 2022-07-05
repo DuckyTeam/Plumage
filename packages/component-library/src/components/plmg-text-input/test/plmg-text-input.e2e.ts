@@ -15,11 +15,12 @@ describe('plmg-text-input', () => {
     it('are accessible', async () => {
       const page = await newE2EPage();
 
+      const sizes = ['medium', 'large'];
+
       let htmlContent = '';
-      someControl.forEach((control) => {
+      sizes.forEach((sizeControl) => {
         htmlContent += `
-    <plmg-text-input control="${control}">
-  control="${control}"
+    <plmg-text-input size="${sizeControl}">
     </plmg-text-input>
 <br/>
     `;
