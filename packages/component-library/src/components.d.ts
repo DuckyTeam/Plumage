@@ -243,6 +243,10 @@ export namespace Components {
     }
     interface PlmgTextInput {
         /**
+          * Define if the label is visible.  Allowed values: - true - false  Default: true
+         */
+        "LabelVisible": boolean;
+        /**
           * Define default  Allowed values - Any string
          */
         "default": string;
@@ -259,17 +263,9 @@ export namespace Components {
          */
         "filled": boolean;
         /**
-          * Define if the label is displayed.  Allowed values: - true - false  Default: true
+          * Define the text content of the label  Allowed values: - Any string  Label is used to generate id and must be unique to the page
          */
-        "label": boolean;
-        /**
-          * Define if the label is displayed.  Allowed values: - true - false  Default: true
-         */
-        "labelText": string;
-        /**
-          * Provide an name to label the input.  Name is required for accessibility.
-         */
-        "name": string;
+        "label": string;
         /**
           * Define if an input is required.  Allowed values: - true - false  Default: false
          */
@@ -279,13 +275,13 @@ export namespace Components {
          */
         "size": PlmgTextInputSize;
         /**
-          * Define tip text  Allowed value: any string  Displayed when tip text show is enabled.
-         */
-        "tipText": string;
-        /**
           * Define if tip text is displayed.  Allowed values: - true - false  Default: false
          */
-        "tipTextShow": boolean;
+        "tip": boolean;
+        /**
+          * Define tip text  Allowed value: any string  Displayed when tip is true
+         */
+        "tipText": string;
     }
     interface PlmgTooltip {
         /**
@@ -666,6 +662,10 @@ declare namespace LocalJSX {
     }
     interface PlmgTextInput {
         /**
+          * Define if the label is visible.  Allowed values: - true - false  Default: true
+         */
+        "LabelVisible"?: boolean;
+        /**
           * Define default  Allowed values - Any string
          */
         "default"?: string;
@@ -682,17 +682,9 @@ declare namespace LocalJSX {
          */
         "filled"?: boolean;
         /**
-          * Define if the label is displayed.  Allowed values: - true - false  Default: true
+          * Define the text content of the label  Allowed values: - Any string  Label is used to generate id and must be unique to the page
          */
-        "label"?: boolean;
-        /**
-          * Define if the label is displayed.  Allowed values: - true - false  Default: true
-         */
-        "labelText"?: string;
-        /**
-          * Provide an name to label the input.  Name is required for accessibility.
-         */
-        "name"?: string;
+        "label"?: string;
         /**
           * Define if an input is required.  Allowed values: - true - false  Default: false
          */
@@ -702,13 +694,13 @@ declare namespace LocalJSX {
          */
         "size"?: PlmgTextInputSize;
         /**
-          * Define tip text  Allowed value: any string  Displayed when tip text show is enabled.
-         */
-        "tipText"?: string;
-        /**
           * Define if tip text is displayed.  Allowed values: - true - false  Default: false
          */
-        "tipTextShow"?: boolean;
+        "tip"?: boolean;
+        /**
+          * Define tip text  Allowed value: any string  Displayed when tip is true
+         */
+        "tipText"?: string;
     }
     interface PlmgTooltip {
         /**
