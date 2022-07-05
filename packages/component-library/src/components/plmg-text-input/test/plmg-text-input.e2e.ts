@@ -5,38 +5,165 @@ import { Page } from 'puppeteer';
 describe('plmg-text-input', () => {
   it('renders', async () => {
     const page = await newE2EPage();
-    await page.setContent('<plmg-text-input></plmg-text-input>');
+    await page.setContent('<plmg-text-input label="label"></plmg-text-input>');
 
     const element = await page.find('plmg-text-input');
     expect(element).toHaveClass('hydrated');
   });
 
-  describe('all possible variations', () => {
+  describe('all sizes', () => {
     it('are accessible', async () => {
       const page = await newE2EPage();
 
-      const sizes = ['medium', 'large', undefined];
-      const errors = [true, false, undefined];
-      const filled = [true, false, undefined];
-      const labelVisibles = [true, false, undefined];
-      const tips = [true, false, undefined];
-
+      const sizes = ['medium', 'large'];
       let htmlContent = '';
       sizes.forEach((sizeControl) => {
-        errors.forEach((error) => {
-          filled.forEach((fill) => {
-            labelVisibles.forEach((labelVisible) => {
-              tips.forEach((tip) => {
-                htmlContent += `
-    <plmg-text-input size="${sizeControl}" tip=${tip} label-visible=${labelVisible} fill=${fill} errors=${error}>
+        htmlContent += `
+    <plmg-text-input label='label name ${sizeControl}' size='${sizeControl}'>
     </plmg-text-input>
-<br/>
     `;
-              });
-            });
-          });
-        });
       });
+
+      await page.setContent('<main>' + htmlContent + '</main>');
+
+      const results = await new AxePuppeteer(page as unknown as Page)
+        .disableRules([
+          'document-title',
+          'html-has-lang',
+          'landmark-one-main',
+          'page-has-heading-one',
+        ])
+        .analyze();
+
+      expect(results.violations).toHaveLength(0);
+    });
+  });
+
+  describe('all error states', () => {
+    it('are accessible', async () => {
+      const page = await newE2EPage();
+
+      const errors = [true, false];
+      let htmlContent = '';
+      errors.forEach((errorControl) => {
+        htmlContent += `
+    <plmg-text-input label='error ${errorControl}' error='${errorControl}' error-message="error">
+    </plmg-text-input>
+    `;
+      });
+
+      await page.setContent('<main>' + htmlContent + '</main>');
+
+      const results = await new AxePuppeteer(page as unknown as Page)
+        .disableRules([
+          'document-title',
+          'html-has-lang',
+          'landmark-one-main',
+          'page-has-heading-one',
+        ])
+        .analyze();
+
+      expect(results.violations).toHaveLength(0);
+    });
+  });
+
+  describe('label visibilties', () => {
+    it('are accessible', async () => {
+      const page = await newE2EPage();
+
+      const labelVisibilities = [true, false];
+      let htmlContent = '';
+      labelVisibilities.forEach((labelVisibleControl) => {
+        htmlContent += `
+    <plmg-text-input label='label visible ${labelVisibleControl}' label-visible='${labelVisibleControl}'>
+    </plmg-text-input>
+    `;
+      });
+
+      await page.setContent('<main>' + htmlContent + '</main>');
+
+      const results = await new AxePuppeteer(page as unknown as Page)
+        .disableRules([
+          'document-title',
+          'html-has-lang',
+          'landmark-one-main',
+          'page-has-heading-one',
+        ])
+        .analyze();
+
+      expect(results.violations).toHaveLength(0);
+    });
+  });
+
+  describe('tip text', () => {
+    it('are accessible', async () => {
+      const page = await newE2EPage();
+
+      const tips = [true, false];
+      let htmlContent = '';
+      tips.forEach((tipTextControl) => {
+        htmlContent += `
+    <plmg-text-input label='tip ${tipTextControl}' tip-text='tip text'>
+    </plmg-text-input>
+    `;
+      });
+
+      await page.setContent('<main>' + htmlContent + '</main>');
+
+      const results = await new AxePuppeteer(page as unknown as Page)
+        .disableRules([
+          'document-title',
+          'html-has-lang',
+          'landmark-one-main',
+          'page-has-heading-one',
+        ])
+        .analyze();
+
+      expect(results.violations).toHaveLength(0);
+    });
+  });
+
+  describe('required field or not', () => {
+    it('is accessible', async () => {
+      const page = await newE2EPage();
+
+      const required = [true, false];
+      let htmlContent = '';
+      required.forEach((requiredControl) => {
+        htmlContent += `
+    <plmg-text-input label='required ${requiredControl}' required=${requiredControl}>
+    </plmg-text-input>
+    `;
+      });
+
+      await page.setContent('<main>' + htmlContent + '</main>');
+
+      const results = await new AxePuppeteer(page as unknown as Page)
+        .disableRules([
+          'document-title',
+          'html-has-lang',
+          'landmark-one-main',
+          'page-has-heading-one',
+        ])
+        .analyze();
+
+      expect(results.violations).toHaveLength(0);
+    });
+  });
+
+  describe('default filled', () => {
+    it('is accessible', async () => {
+      const page = await newE2EPage();
+
+      const filledOptions = [true, false];
+      let htmlContent = '';
+      filledOptions.forEach((filledControl) => {
+        htmlContent += `
+      <plmg-text-input label='required ${filledControl}' filled=${filledControl}>
+      </plmg-text-input>
+      `;
+      });
+
       await page.setContent('<main>' + htmlContent + '</main>');
 
       const results = await new AxePuppeteer(page as unknown as Page)
