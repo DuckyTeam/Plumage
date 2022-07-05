@@ -1,4 +1,4 @@
-import { Component, h, Prop, Watch, State } from '@stencil/core';
+import { Component, h, Prop, Watch, State, Fragment } from '@stencil/core';
 import {
   isPlmgTextInputSize,
   PlmgTextInputSize,
@@ -64,7 +64,7 @@ export class TextInput {
       throw new Error('filled: must be boolean');
   }
   /**
-   * Define if the label is displayed.
+   * Define if the label is visible.
    *
    * Allowed values:
    * - true
@@ -72,26 +72,27 @@ export class TextInput {
    *
    * Default: true
    */
-  @Prop() label: boolean = false;
-  @Watch('label')
+  @Prop() LabelVisible: boolean = false;
+  @Watch('LabelVisible')
   validateLabel(newValue: boolean) {
     if (typeof newValue !== 'boolean')
-      throw new Error('label: must be boolean');
+      throw new Error('LabelVisible: must be boolean');
   }
   /**
-   * Define if the label is displayed.
+   * Define the text content of the label
    *
    * Allowed values:
-   * - true
-   * - false
+   * - Any string
+   *
+   * Required
    *
    * Default: true
    */
   @Prop() labelText: string;
   @Watch('labelText')
   validateLabelMessage(newValue: string) {
-    if (typeof newValue !== 'string')
-      throw new Error('label text must be string');
+    if (typeof newValue !== 'string' || !this.labelText)
+      throw new Error('label text is required. label text must be string');
   }
   /**
    * Provide an name to label the input.
@@ -182,7 +183,6 @@ export class TextInput {
    * Reference to host HTML element.
    */
   @State() value: number | string;
-  @State() isValidated: boolean = false;
   @State() isError: boolean = false;
 
   private handleInputChange(ev) {
@@ -270,18 +270,20 @@ export class TextInput {
     };
 
     return (
-      <div class={'plmg-text-input-wrapper'}>
-        {this.label && (
-          <label class={labelClasses} htmlFor={'text-input'}>
-            {this.labelText}
-            {this.required && <span class={'required'}>*</span>}
-          </label>
-        )}
+      <Fragment>
+        <label
+          class={labelClasses}
+          htmlFor={'text-input'}
+          aria-hidden={this.ariaHidden()}
+        >
+          {this.showText()}
+          {this.showRequiredAsterix() && <span class={'required'}>*</span>}
+        </label>
         <div class={'plmg-text-input-field-wrapper'} tabIndex={0}>
           <input
             class={inputClasses}
             autoComplete={'off'}
-            name={this.name}
+            name={'text-input'}
             id={'text-input'}
             required={this.required}
             type={'text'}
@@ -294,17 +296,32 @@ export class TextInput {
         {this.error && (
           <plmg-error-message
             size={this.size}
-            style={{ marginTop: '8px' }}
+            style={{ display: 'block', marginTop: '8px' }}
             message={this.errorMessage}
           ></plmg-error-message>
         )}
-      </div>
+      </Fragment>
     );
+  }
+
+  // provide an empty content to set line height when
+  private showText() {
+    return this.LabelVisible ? this.labelText : '\u00A0';
+  }
+
+  private ariaHidden() {
+    return this.LabelVisible ? 'false' : 'true';
+  }
+
+  private showRequiredAsterix() {
+    return this.LabelVisible && this.required && this.labelText !== '';
   }
 }
 
-// Finalise actual component
-// Write stories
-// Write tests
-//
-//
+// pass empty strings to create spacer
+// All variations - nice story layout - wrap with some stuff
+// what order should stories list?
+// Write tests - check all working
+// check browswers
+
+// Wait for design to come back about spacer issue

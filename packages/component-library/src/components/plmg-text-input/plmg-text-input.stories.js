@@ -18,7 +18,7 @@ export default {
     filled: {
       control: { type: 'boolean' },
     },
-    label: {
+    ['label-visible']: {
       control: { type: 'boolean' },
     },
     ['label-text']: {
@@ -52,7 +52,7 @@ const PROPS = [
   'error',
   'error-message',
   'filled',
-  'label',
+  'label-visible',
   'label-text',
   'name',
   'required',
@@ -75,11 +75,28 @@ const Template = (args) => {
 };
 
 export const Primary = Template.bind({});
-Primary.storyName = 'TextInput';
+Primary.storyName = 'Text Input';
 Primary.args = {
   name: 'TextInput',
   size: 'medium',
 };
+export const AllSizes = (args) => {
+  const htmlContent = sizes
+    .map(
+      (size) =>
+        `<plmg-text-input size="${size}" filled default="${size}"></plmg-text-input>`
+    )
+    .join('')
+    .trim();
+
+  const el = document.createElement('div');
+  el.innerHTML = htmlContent;
+  el.style.display = 'flex';
+  el.style.justifyContent = 'space-between';
+
+  return el;
+};
+AllSizes.storyName = 'All Sizes';
 
 export const Error = Template.bind({});
 Error.storyName = 'Error';
@@ -97,16 +114,16 @@ Filled.args = {
   ['default']: 'Default',
 };
 
-export const Label = Template.bind({});
-Label.storyName = 'Label';
-Label.args = {
+export const LabelVisible = Template.bind({});
+LabelVisible.storyName = 'Label';
+LabelVisible.args = {
   name: 'TextInput',
-  label: true,
+  ['label-visible']: true,
   ['label-text']: 'Label Text',
 };
 
 export const TipText = Template.bind({});
-TipText.storyName = 'TipText';
+TipText.storyName = 'Tip Text';
 TipText.args = {
   name: 'TextInput',
   tip: true,
@@ -127,7 +144,7 @@ AllOn.storyName = 'AllOn';
 AllOn.args = {
   name: 'TextInput',
   filled: true,
-  default: 'default',
+  default: 'really long default text that might things weird',
   label: true,
   ['label-text']: 'All On Medium',
   tip: true,
@@ -138,23 +155,80 @@ AllOn.args = {
 };
 
 export const AllVariations = (args) => {
-  const filled = [true, false];
-  const labels = [true, false];
-  const tips = [true, false];
-  const required = [true, false];
+  const filled = [false, true];
+  const LabelVisible = [false, true];
+  const tips = [false, true];
+  const required = [false, true];
 
+  // create
   let htmlContent = '';
-
-  labels.forEach((label) => {
+  htmlContent += `<span>Label</span>`;
+  LabelVisible.forEach((label) => {
     tips.forEach((tip) => {
-      htmlContent += `
-      <plmg-text-input tip=${tip} tip-text='Helpful message' label="${label}" label-text="label"></plmg-text-input>
+      if (label)
+        required.forEach((require) => {
+          htmlContent += `
+      <plmg-text-input tip=${tip} required=${require} tip-text='Helpful message' label=${label} label-text="Label"></plmg-text-input>
+      `;
+        });
+      else
+        htmlContent += `
+      <plmg-text-input tip=${tip} tip-text='Helpful message' label=${label} label-text="Label"></plmg-text-input>
       `;
     });
   });
 
+  // let htmlContent2 = '';
+  htmlContent += `<span>Error</span>`;
+  LabelVisible.forEach((label) => {
+    tips.forEach((tip) => {
+      if (label)
+        required.forEach((require) => {
+          htmlContent += `
+      <plmg-text-input error error-message='Error message' required=${require} tip-text='Helpful message' label=${label} label-text="Label"></plmg-text-input>
+      `;
+        });
+      else
+        htmlContent += `
+      <plmg-text-input error error-message='Error message' tip=${tip} tip-text='Helpful message' label=${label} label-text="Label"></plmg-text-input>
+      `;
+    });
+  });
+
+  htmlContent += `<span>Filled</span>`;
+  LabelVisible.forEach((label) => {
+    tips.forEach((tip) => {
+      if (label)
+        required.forEach((require) => {
+          htmlContent += `
+      <plmg-text-input filled default='filled' error-message='Error message' required=${require} tip-text='Helpful message' label=${label} label-text="Label"></plmg-text-input>
+      `;
+        });
+      else
+        htmlContent += `
+
+      <plmg-text-input filled default='filled' error-message='Error message' tip=${tip} tip-text='Helpful message' label=${label} label-text="Label"></plmg-text-input>
+      `;
+    });
+  });
+
+  htmlContent += `<span>Filled Error</span>`;
+  LabelVisible.forEach((label) => {
+    tips.forEach((tip) => {
+      if (label)
+        required.forEach((require) => {
+          htmlContent += `
+      <plmg-text-input error error-message='Error message' filled default='filled' error-message='Error message' required=${require} tip-text='Helpful message' label=${label} label-text="Label"></plmg-text-input>
+      `;
+        });
+      else
+        htmlContent += `
+      <plmg-text-input error error-message='Error message' filled default='filled' error-message='Error message' tip=${tip} tip-text='Helpful message' label=${label} label-text="Label"></plmg-text-input>
+      `;
+    });
+  });
   // errors.forEach((error) => {
-  //   labels.forEach((label) => {
+  //   LabelVisible.forEach((label) => {
   //     tip.forEach((tip) => {
   //       sizes.forEach((size) => {
   //         filled.forEach((fill) => {
@@ -171,34 +245,16 @@ export const AllVariations = (args) => {
   //   });
   // });
 
-  console.log(htmlContent);
   const el = document.createElement('div');
+
   el.innerHTML = htmlContent;
   el.style.display = 'grid';
   el.style.gap = '16px';
-  el.style.gridTemplateColumns = 'repeat(6, 1fr)';
-  el.style.gridTemplateRows = '100px';
+  el.style.gridTemplateColumns = '30px repeat(6, 1fr)';
+  el.style.gridTemplateRows = 'repeat(6, 180px)';
+
+  console.log(el);
 
   return el;
 };
-
 AllVariations.storyName = 'All variations';
-
-export const AllSizes = (args) => {
-  const htmlContent = sizes
-    .map(
-      (size) =>
-        `<plmg-text-input size="${size}" filled default="${size}"></plmg-text-input>`
-    )
-    .join('')
-    .trim();
-
-  const el = document.createElement('div');
-  el.innerHTML = htmlContent;
-  el.style.display = 'flex';
-  el.style.justifyContent = 'space-between';
-
-  return el;
-};
-
-AllSizes.storyName = 'All sizes';
