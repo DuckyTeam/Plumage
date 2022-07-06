@@ -1,14 +1,4 @@
 @use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
-// :host {
-//   height: inherit;
-//   width: inherit;
-//   display: block;
-// }
-
-// :host([hidden]) {
-//   display: none;
-// }
-// Mixins
 // ------------------------------
 @mixin typography($font-size, $font-weight) {
   font-family: tokens.$plmg-font-family-sans;
@@ -67,9 +57,6 @@
 
 // Wrapper allows tab
 .plmg-text-input-field-wrapper {
-  width: inherit;
-  box-sizing: border-box;
-
   &:focus-visible {
     outline: none;
   }
@@ -127,8 +114,8 @@
 }
 
 .label {
+  display: block;
   margin-bottom: 8px;
-  display: inline-flex;
   color: tokens.$plmg-color-text-neutral-weak;
 
   &.medium {
@@ -139,7 +126,7 @@
   }
 
   .required {
-    align-self: start;
+    vertical-align: top;
     color: tokens.$plmg-color-text-danger-strong;
     font-weight: tokens.$plmg-font-weight-semibold;
     font-size: tokens.$plmg-font-size-x0-875;
