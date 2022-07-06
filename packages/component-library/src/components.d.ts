@@ -326,6 +326,10 @@ export interface PlmgSidebarCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPlmgSidebarElement;
 }
+export interface PlmgTextInputCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPlmgTextInputElement;
+}
 declare global {
     interface HTMLPlmgButtonElement extends Components.PlmgButton, HTMLStencilElement {
     }
@@ -685,6 +689,7 @@ declare namespace LocalJSX {
           * Define a label name for the input field.  Allowed values: - Any string  A unique label name for each element in a form is required for accessibility
          */
         "label"?: string;
+        "onValueUpdated"?: (event: PlmgTextInputCustomEvent<any>) => void;
         /**
           * Define if an input is required.  Allowed values: - true - false  Default: false
          */
