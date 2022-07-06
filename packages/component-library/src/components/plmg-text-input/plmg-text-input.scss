@@ -72,6 +72,7 @@
   input {
     width: 100%;
     min-width: fit-content;
+    box-shadow: tokens.$plmg-shadow-inner-s;
     border: none;
     box-sizing: border-box;
     border: tokens.$plmg-border-width-m solid
