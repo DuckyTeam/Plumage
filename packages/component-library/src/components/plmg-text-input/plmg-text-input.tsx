@@ -11,7 +11,7 @@ import {
 })
 export class TextInput {
   /**
-   * Define default
+   * Define default value
    *
    * Allowed values
    * - Any string
@@ -48,7 +48,7 @@ export class TextInput {
       throw new Error('error message must be a string');
   }
   /**
-   * Define if input value is pre-filled with default.
+   * Define if input value is pre-filled with default
    *
    * Allowed values:
    * - true
@@ -64,7 +64,7 @@ export class TextInput {
       throw new Error('filled: must be boolean');
   }
   /**
-   * Define if the label is visible.
+   * Define if the label is visible
    *
    * Allowed values:
    * - true
@@ -79,12 +79,12 @@ export class TextInput {
       throw new Error('LabelVisible: must be boolean');
   }
   /**
-   * Define the text content of the label
+   * Define a label name for the input field.
    *
    * Allowed values:
    * - Any string
    *
-   * Label is used to generate id and must be unique to the page
+   * A unique label name for each element in a form is required for accessibility
    */
   @Prop() label: string;
   @Watch('label')
@@ -228,7 +228,6 @@ export class TextInput {
     );
   }
 
-  // use label name as id
   private labelToId() {
     return this.label.toLowerCase().replace(/\s+/g, '-');
   }
