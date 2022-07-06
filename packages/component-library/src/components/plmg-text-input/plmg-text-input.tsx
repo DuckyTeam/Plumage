@@ -1,8 +1,9 @@
-import { Component, h, Prop, Watch, State, Fragment } from '@stencil/core';
+import { Component, h, Prop, Watch, State } from '@stencil/core';
 import {
   isPlmgTextInputSize,
   PlmgTextInputSize,
 } from './plmg-text-input.types';
+import * as tokens from '@ducky/plumage-tokens';
 
 @Component({
   tag: 'plmg-text-input',
@@ -195,7 +196,7 @@ export class TextInput {
     };
 
     return (
-      <Fragment>
+      <div class={'plmg-text-input-wrapper'}>
         <label
           class={labelClasses}
           htmlFor={this.labelToId()}
@@ -220,11 +221,13 @@ export class TextInput {
         {this.error && (
           <plmg-error-message
             size={this.size}
-            style={{ display: 'block', marginTop: '8px' }}
+            style={{
+              marginTop: tokens.plmgSpacingX025,
+            }}
             message={this.errorMessage}
           ></plmg-error-message>
         )}
-      </Fragment>
+      </div>
     );
   }
 
