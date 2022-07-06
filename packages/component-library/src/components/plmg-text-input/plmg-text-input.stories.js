@@ -131,20 +131,24 @@ Required.args = {
   required: true,
 };
 
-export const AllOn = Template.bind({});
-AllOn.storyName = 'AllOn';
-AllOn.args = {
-  filled: true,
-  size: 'large',
-  default: 'default text',
-  ['label-visible']: true,
-  label: 'All on',
-  tip: true,
-  ['tip-text']: 'Helpful Text',
-  error: true,
-  ['error-message']: 'Error message',
-  required: true,
+export const AllOnSizes = (args) => {
+  const htmlContent = sizes
+    .map(
+      (size) =>
+        `<plmg-text-input filled=true required size=${size} error error-message="error" label="All On ${size}" tip tip-text="Helpful message" size=${size} label default="${size}"></plmg-text-input>`
+    )
+    .join('')
+    .trim();
+
+  const el = document.createElement('div');
+  el.innerHTML = htmlContent;
+  el.style.display = 'flex';
+  el.style.flexWrap = 'wrap';
+  el.style.justifyContent = 'space-between';
+
+  return el;
 };
+AllOnSizes.storyName = 'All Controls On';
 
 export const AllVariations = (args) => {
   const filled = [false, true];
@@ -177,7 +181,7 @@ export const AllVariations = (args) => {
         if (label)
           required.forEach((require) => {
             htmlContent += `
-      <plmg-text-input size=${size} error error-message='Error message' required=${require} tip-text='Helpful message' label-visible=${label} label="Label"></plmg-text-input>
+      <plmg-text-input size=${size} error error-message='Error message' required=${require} tip=${tip} tip-text='Helpful message' label-visible=${label} label="Label"></plmg-text-input>
       `;
           });
         else
@@ -193,7 +197,7 @@ export const AllVariations = (args) => {
         if (label)
           required.forEach((require) => {
             htmlContent += `
-      <plmg-text-input size=${size} filled default='filled' error-message='Error message' required=${require} tip-text='Helpful message' label-visible=${label} label="Label"></plmg-text-input>
+      <plmg-text-input size=${size} filled default='filled' error-message='Error message' required=${require} tip=${tip} tip-text='Helpful message' label-visible=${label} label="Label"></plmg-text-input>
       `;
           });
         else
@@ -210,7 +214,7 @@ export const AllVariations = (args) => {
         if (label)
           required.forEach((require) => {
             htmlContent += `
-      <plmg-text-input size=${size} error error-message='Error message' filled default='filled' error-message='Error message' required=${require} tip-text='Helpful message' label-visible=${label} label="Label"></plmg-text-input>
+      <plmg-text-input size=${size} error error-message='Error message' filled default='filled' error-message='Error message' required=${require} tip=${tip} tip-text='Helpful message' label-visible=${label} label="Label"></plmg-text-input>
       `;
           });
         else
@@ -228,8 +232,6 @@ export const AllVariations = (args) => {
   el.style.gap = '16px';
   el.style.gridTemplateColumns = '40px repeat(6, 1fr)';
   el.style.gridTemplateRows = 'repeat(6, 180px)';
-
-  console.log(el);
 
   return el;
 };
