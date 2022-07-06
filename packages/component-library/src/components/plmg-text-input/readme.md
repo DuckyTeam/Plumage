@@ -21,6 +21,13 @@
 | `tipText`      | `tip-text`      | Define tip text  Allowed value: any string  Displayed when tip is true                                                                               | `string`              | `undefined` |
 
 
+## Events
+
+| Event          | Description | Type               |
+| -------------- | ----------- | ------------------ |
+| `valueUpdated` |             | `CustomEvent<any>` |
+
+
 ## Dependencies
 
 ### Depends on
