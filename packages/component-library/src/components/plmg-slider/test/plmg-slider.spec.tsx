@@ -13,7 +13,7 @@ describe('plmg-slider', () => {
           <div class="plmg-component-container">
           <div class="plmg-slider-container">
           </div>
-          <div class="plmg-slider-input-field-container">
+          <div class="plmg-slider-input-field-container" tabindex="0">
             <label htmlfor="slider-input">
             <input aria-valuemax="0" aria-valuemin="0" aria-valuenow="0" max="0" min="0" name="slider-input" step="1" type="number" value="0">
             </label>
