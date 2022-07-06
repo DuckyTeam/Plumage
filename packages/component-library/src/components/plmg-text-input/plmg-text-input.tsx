@@ -1,4 +1,13 @@
-import { Component, h, Prop, Watch, State } from '@stencil/core';
+import {
+  Component,
+  h,
+  Prop,
+  Watch,
+  State,
+  Host,
+  Event,
+  EventEmitter,
+} from '@stencil/core';
 import {
   isPlmgTextInputSize,
   PlmgTextInputSize,
@@ -169,7 +178,10 @@ export class TextInput {
 
   private handleInputChange(ev) {
     this.value = ev.target.value;
+    this.valueUpdated.emit({ value: this.value });
   }
+
+  @Event() valueUpdated: EventEmitter;
   /**
    * Life Cycle Methods & Event Listeners
    */
