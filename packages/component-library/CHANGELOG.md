@@ -1,6 +1,24 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Wed, 15 Jun 2022 10:53:46 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Jun 2022 09:58:39 GMT and should not be manually modified.
+
+## 1.5.1
+Fri, 24 Jun 2022 09:58:39 GMT
+
+### Patches
+
+- Improve documentation for PlmgRadioButtonGroup
+
+## 1.5.0
+Fri, 24 Jun 2022 09:33:45 GMT
+
+### Minor changes
+
+- Create Tooltip component
+
+### Patches
+
+- Add Stories to PlmgRadioButtonGroup
 
 ## 1.4.1
 Wed, 15 Jun 2022 10:53:46 GMT
