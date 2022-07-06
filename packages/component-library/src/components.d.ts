@@ -243,11 +243,11 @@ export namespace Components {
     }
     interface PlmgTextInput {
         /**
-          * Define if the label is visible.  Allowed values: - true - false  Default: true
+          * Define if the label is visible  Allowed values: - true - false  Default: true
          */
         "LabelVisible": boolean;
         /**
-          * Define default  Allowed values - Any string
+          * Define default value  Allowed values - Any string
          */
         "default": string;
         /**
@@ -259,11 +259,11 @@ export namespace Components {
          */
         "errorMessage": string;
         /**
-          * Define if input value is pre-filled with default.  Allowed values: - true - false  Default: false
+          * Define if input value is pre-filled with default  Allowed values: - true - false  Default: false
          */
         "filled": boolean;
         /**
-          * Define the text content of the label  Allowed values: - Any string  Label is used to generate id and must be unique to the page
+          * Define a label name for the input field.  Allowed values: - Any string  A unique label name for each element in a form is required for accessibility
          */
         "label": string;
         /**
@@ -662,11 +662,11 @@ declare namespace LocalJSX {
     }
     interface PlmgTextInput {
         /**
-          * Define if the label is visible.  Allowed values: - true - false  Default: true
+          * Define if the label is visible  Allowed values: - true - false  Default: true
          */
         "LabelVisible"?: boolean;
         /**
-          * Define default  Allowed values - Any string
+          * Define default value  Allowed values - Any string
          */
         "default"?: string;
         /**
@@ -678,11 +678,11 @@ declare namespace LocalJSX {
          */
         "errorMessage"?: string;
         /**
-          * Define if input value is pre-filled with default.  Allowed values: - true - false  Default: false
+          * Define if input value is pre-filled with default  Allowed values: - true - false  Default: false
          */
         "filled"?: boolean;
         /**
-          * Define the text content of the label  Allowed values: - Any string  Label is used to generate id and must be unique to the page
+          * Define a label name for the input field.  Allowed values: - Any string  A unique label name for each element in a form is required for accessibility
          */
         "label"?: string;
         /**
