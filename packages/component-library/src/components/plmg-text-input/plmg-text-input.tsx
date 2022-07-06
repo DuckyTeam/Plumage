@@ -4,7 +4,6 @@ import {
   Prop,
   Watch,
   State,
-  Host,
   Event,
   EventEmitter,
 } from '@stencil/core';
