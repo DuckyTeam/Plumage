@@ -233,7 +233,7 @@ export class TextInput {
   }
 
   private showText() {
-    return this.LabelVisible ? this.label : '\u00A0';
+    return this.LabelVisible && this.label;
   }
 
   private showRequiredAsterix() {
