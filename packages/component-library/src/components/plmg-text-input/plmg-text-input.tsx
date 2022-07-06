@@ -192,7 +192,7 @@ export class TextInput {
 
     const labelClasses = {
       [this.size]: true,
-      label: true,
+      ['label-visible']: this.LabelVisible,
     };
 
     return (
@@ -222,7 +222,7 @@ export class TextInput {
           <plmg-error-message
             size={this.size}
             style={{
-              marginTop: tokens.plmgSpacingX025,
+              marginTop: tokens.plmgSpacingX05,
             }}
             message={this.errorMessage}
           ></plmg-error-message>
