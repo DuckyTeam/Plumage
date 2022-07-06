@@ -2,43 +2,57 @@ import { useState } from 'react';
 import { PlmgTextInput } from '@ducky/plumage-react';
 
 export default function TextForm() {
-  const [input, setInputs] = useState({
-    text: '',
+  const [inputs, setInputs] = useState({
+    textInput: 'default value',
+    textInputTwo: '',
   });
 
   const handleChange = (event: any) => {
-    console.log(event);
-    const { label } = event.target;
+    const { id } = event.target;
     const { value } = event.detail;
-    if (input[label] !== value) {
+    if (inputs[id] !== value) {
       setInputs((prevState) => ({
         ...prevState,
-        [label]: value,
+        [id]: value,
       }));
     }
     event.preventDefault();
     event.stopPropagation();
   };
 
-  // const handleSubmit = () => {
-  //   alert(`Submitted Slider Values
-  //     Stepped Slider: ${text - inputs}
-  //   `);
-  // };
+  const handleSubmit = () => {
+    alert(`Submitted Slider Values
+      Text Input: ${inputs.textInput}
+      Text Input 2: ${inputs.textInputTwo}
+    `);
+  };
 
   return (
-    <div>
-      <h1>Text Input Form</h1>
-      <div style={{ border: '4px dotted blue', padding: '0px 5px 5px 5px' }}>
-        <h2>Text Input Form</h2>
-        <form name={'text-inputs'}>
+    <div style={{ border: '2px dashed blue' }}>
+      <h2>Text Input Form</h2>
+      <form name={'text-inputs'} onSubmit={handleSubmit}>
+        <div style={{ display: 'flex' }}>
           <PlmgTextInput
-            label={'text'}
-            onValueUpdated={(event) => handleChange(event)}
+            id={'textInput'}
+            label={'text input'}
+            tip
+            tipText={'helpful message'}
+            filled
+            default={inputs.textInput}
+            onValueUpdated={(e) => handleChange(e)}
+          />{' '}
+          <PlmgTextInput
+            label={'textInput2'}
+            error
+            tip
+            tipText={'helpful message'}
+            errorMessage="I failed"
+            id={'textInputTwo'}
+            onValueUpdated={(e) => handleChange(e)}
           />
-          <p>{input.text}</p>
-        </form>
-      </div>
+        </div>
+        <input type={'submit'} value={'Submit Sliders'} />
+      </form>
       <br />
     </div>
   );
