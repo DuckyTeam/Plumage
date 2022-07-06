@@ -229,8 +229,8 @@ export const AllVariations = (args) => {
 
   el.innerHTML = htmlContent;
   el.style.display = 'grid';
-  el.style.gap = '16px';
-  el.style.gridTemplateColumns = '40px repeat(6, 1fr)';
+  el.style.gap = '8px';
+  el.style.gridTemplateColumns = '50px repeat(6, 1fr)';
   el.style.gridTemplateRows = 'repeat(6, 180px)';
 
   return el;
