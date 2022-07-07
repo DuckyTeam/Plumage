@@ -26,6 +26,8 @@ export class TextInput {
    * Allowed values
    * - Any string
    *
+   * Empty strings are ignored
+   *
    * Sets the value of the input
    */
   @Prop() defaultInput: string;
@@ -39,7 +41,7 @@ export class TextInput {
    *
    * Allowed value: any string
    *
-   * Displays an error message and red border
+   * Sets error style and error message
    */
   @Prop() error: string;
   @Watch('error')
@@ -127,7 +129,9 @@ export class TextInput {
     this.value = ev.target.value;
     this.valueUpdated.emit({ value: this.value });
   }
-
+  /**
+   * Event emitted when value changed
+   */
   @Event() valueUpdated: EventEmitter;
   /**
    * Life Cycle Methods & Event Listeners
@@ -159,7 +163,7 @@ export class TextInput {
       <div class={'plmg-text-input-wrapper'}>
         <label class={labelClasses} htmlFor={this.labelToId()}>
           {this.label}
-          {this.required && <span class={'required'}>*</span>}
+          {this.showLabel && this.required && <span class={'required'}>*</span>}
         </label>
         <div class={'plmg-text-input-field-wrapper'} tabIndex={0}>
           <input
