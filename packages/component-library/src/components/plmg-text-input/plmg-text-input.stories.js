@@ -48,6 +48,7 @@ const PROPS = [
   'label-visible',
   'label',
   'required',
+  'size',
   'tip',
   'tip-text',
 ];
@@ -66,7 +67,6 @@ export const Primary = Template.bind({});
 Primary.storyName = 'Text Input';
 Primary.args = {
   label: 'Text Input',
-  size: 'medium',
   ['label-visible']: false,
   error: false,
   ['filled']: false,
