@@ -71,11 +71,11 @@ describe('plmg-text-input', () => {
     it('are accessible', async () => {
       const page = await newE2EPage();
 
-      const labelVisibilities = [true, false];
+      const showLabels = [true, false];
       let htmlContent = '';
-      labelVisibilities.forEach((labelVisibleControl) => {
+      showLabels.forEach((showLabel) => {
         htmlContent += `
-    <plmg-text-input label='label visible ${labelVisibleControl}' label-visible='${labelVisibleControl}'>
+    <plmg-text-input label='show-label ${showLabel}' show-label='${showLabel}'>
     </plmg-text-input>
     `;
       });
@@ -123,7 +123,7 @@ describe('plmg-text-input', () => {
     });
   });
 
-  describe('required field or not', () => {
+  describe('required', () => {
     it('is accessible', async () => {
       const page = await newE2EPage();
 
@@ -155,11 +155,11 @@ describe('plmg-text-input', () => {
     it('is accessible', async () => {
       const page = await newE2EPage();
 
-      const filledOptions = [true, false];
+      const defaults = ['something', undefined];
       let htmlContent = '';
-      filledOptions.forEach((filledControl) => {
+      defaults.forEach((defaultControl) => {
         htmlContent += `
-      <plmg-text-input label='required ${filledControl}' filled=${filledControl}>
+      <plmg-text-input label='default ${defaultControl}' default-input=${defaultControl} >
       </plmg-text-input>
       `;
       });
