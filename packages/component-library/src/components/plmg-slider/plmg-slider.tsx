@@ -59,6 +59,8 @@ export class Slider {
    * - any string
    *
    * Required for accessibility and should be a unique and descriptive
+   *
+   * Used to generate internal ids linking label and inputs
    */
   @Prop() name: string;
   @Watch('name')
@@ -240,8 +242,8 @@ export class Slider {
                     <output
                       style={this.setThumbPosition()}
                       class={'plmg-slider-thumb-label'}
-                      htmlFor={'slider'}
-                      aria-labelleby={this.name}
+                      htmlFor={this.nameToId('-range-input')}
+                      aria-label={this.name}
                     >
                       {this.value}
                       <span class={'plmg-thumb-triangle'} />
@@ -249,7 +251,10 @@ export class Slider {
                   </div>
                 ) : null}
 
-                <label htmlFor={'slider'}></label>
+                <label
+                  aria-label={this.name}
+                  htmlFor={this.nameToId('-range-input')}
+                ></label>
                 <input
                   min={this.min}
                   max={this.max}
@@ -257,7 +262,7 @@ export class Slider {
                   step={this.stepValue}
                   onInput={(ev) => this.handleSliderChange(ev)}
                   style={{ background: this.setBackgroundProgressFill() }}
-                  id={'slider'}
+                  id={this.nameToId('-range-input')}
                   type={'range'}
                   value={this.value}
                   aria-valuemin={this.min}
@@ -283,10 +288,14 @@ export class Slider {
             ) : null}
           </div>
           <div class={'plmg-slider-input-field-container'} tabIndex={0}>
-            <label htmlfor="slider-input">
+            <label
+              aria-label={this.name}
+              htmlfor={this.nameToId('-number-input')}
+            >
               <input
                 type={'number'}
-                name={'slider-input'}
+                id={this.nameToId('-number-input')}
+                name={this.name}
                 step={this.stepValue}
                 aria-valuemin={this.min}
                 aria-valuemax={this.max}
@@ -301,6 +310,10 @@ export class Slider {
         </div>
       </Host>
     );
+  }
+
+  private nameToId(inputType) {
+    return this.name.toLowerCase().replace(/\s+/g, '-') + inputType;
   }
 
   private setBackgroundProgressFill(): string {

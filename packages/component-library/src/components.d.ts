@@ -236,7 +236,7 @@ export namespace Components {
          */
         "marks": boolean;
         /**
-          * Define a descriptive name for the slider  Allowed values: - any string  Required for accessibility and should be a unique and descriptive
+          * Define a descriptive name for the slider  Allowed values: - any string  Required for accessibility and should be a unique and descriptive  Used to generate internal ids linking label and inputs
          */
         "name": string;
         /**
@@ -643,7 +643,7 @@ declare namespace LocalJSX {
          */
         "marks"?: boolean;
         /**
-          * Define a descriptive name for the slider  Allowed values: - any string  Required for accessibility and should be a unique and descriptive
+          * Define a descriptive name for the slider  Allowed values: - any string  Required for accessibility and should be a unique and descriptive  Used to generate internal ids linking label and inputs
          */
         "name"?: string;
         /**
