@@ -137,7 +137,7 @@ export class TextInput {
    * Life Cycle Methods & Event Listeners
    */
   connectedCallback() {
-    if (!!this.defaultInput) {
+    if (this.defaultInput) {
       this.value = this.defaultInput;
     }
   }
@@ -194,3 +194,8 @@ export class TextInput {
     return this.label.toLowerCase().replace(/\s+/g, '-');
   }
 }
+
+// To do
+// Rewrite tests
+// Rewrite stories
+// React app use case with error message
