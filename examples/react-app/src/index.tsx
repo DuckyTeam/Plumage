@@ -137,6 +137,7 @@ ReactDOM.render(
       >
         Tooltip Target
       </p>
+      <TextForm />
       <PlmgTooltip
         role={'tooltip'}
         id={'tooltip-demonstration'}
@@ -184,7 +185,6 @@ ReactDOM.render(
         />
         <input type="submit"></input>
       </form>
-      <TextForm />
     </div>
   </PlmgPageContainer>,
   document.getElementById('root')
