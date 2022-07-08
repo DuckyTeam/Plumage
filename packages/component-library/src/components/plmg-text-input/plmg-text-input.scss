@@ -124,10 +124,12 @@
     }
     &.medium {
       @include plmg-font-form-text-m;
+      height: 51px;
       padding: tokens.$plmg-spacing-x0-75 tokens.$plmg-spacing-x1;
     }
     &.large {
       @include plmg-font-form-text-l;
+      height: 62px;
       padding: tokens.$plmg-spacing-x1 tokens.$plmg-spacing-x1-5;
     }
     @include reset-states;
