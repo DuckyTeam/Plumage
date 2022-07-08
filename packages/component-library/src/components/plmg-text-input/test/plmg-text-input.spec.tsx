@@ -97,11 +97,11 @@ describe('plmg-text-input', () => {
   it('renders error', async () => {
     const page = await newSpecPage({
       components: [TextInput],
-      html: `<plmg-text-input error="error" label="Error"></plmg-text-input>`,
+      html: `<plmg-text-input error-message="error" label="Error"></plmg-text-input>`,
     });
     expect(page.root).toEqualHtml(`
 
-    <plmg-text-input label="Error" error="error">
+    <plmg-text-input label="Error" error-message="error">
     <div class="plmg-text-input-wrapper">
     <label class="medium plmg-text-input-label" htmlfor="error">Error</label>
       <div class="plmg-text-input-field-wrapper" tabindex="0">

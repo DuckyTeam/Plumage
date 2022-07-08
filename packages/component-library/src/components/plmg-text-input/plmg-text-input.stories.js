@@ -6,7 +6,7 @@ export default {
   parameters: {},
   decorators: [],
   argTypes: {
-    error: {
+    ['error-message']: {
       control: { type: 'text' },
     },
     label: {
@@ -28,7 +28,14 @@ export default {
   },
 };
 
-const PROPS = ['error', 'show-label', 'label', 'required', 'size', 'tip'];
+const PROPS = [
+  'error-message',
+  'show-label',
+  'label',
+  'required',
+  'size',
+  'tip',
+];
 
 const EVENTS = [];
 const CSS_VARS = [];
@@ -44,7 +51,7 @@ export const Primary = Template.bind({});
 Primary.storyName = 'Text Input';
 Primary.args = {
   label: 'Text Input',
-  error: '',
+  ['error-message']: '',
   ['show-label']: false,
   required: false,
 };
@@ -74,11 +81,11 @@ showLabel.args = {
   ['show-label']: true,
 };
 
-export const Error = Template.bind({});
-Error.storyName = 'Error';
-Error.args = {
-  label: 'Error',
-  error: 'Error Message',
+export const errorMessage = Template.bind({});
+errorMessage.storyName = 'Error';
+errorMessage.args = {
+  label: 'Error Message',
+  ['error-message']: 'This is an error message',
 };
 
 export const Tip = Template.bind({});
@@ -101,7 +108,7 @@ export const AllOn = (args) => {
   const htmlContent = sizes
     .map(
       (size) =>
-        `<plmg-text-input size=${size} required size=${size} error="error" label="All On ${size}" tip="Helpful message"></plmg-text-input>`
+        `<plmg-text-input size=${size} required size=${size} error-message='error message' label="All On ${size}" tip="Helpful message"></plmg-text-input>`
     )
     .join('')
     .trim();
@@ -117,7 +124,7 @@ export const AllOn = (args) => {
 AllOn.storyName = 'All Controls On';
 
 export const AllVariations = (args) => {
-  const error = ['error', ''];
+  const errorMessage = ['error-message', ''];
   const showLabels = [true, false];
   const tips = ['', 'helpful message'];
   const requireds = [false, true];
@@ -145,17 +152,17 @@ export const AllVariations = (args) => {
       });
     });
 
-    htmlContent += `<span>${size} error</span>`;
+    htmlContent += `<span>${size} error </span>`;
     showLabels.forEach((showLabel) => {
       tips.forEach((tip) => {
         if (!showLabel) {
           htmlContent += `
-      <plmg-text-input size=${size} tip="${tip}" error="error" show-label="${showLabel}" label="Label Name"></plmg-text-input>
+      <plmg-text-input size=${size} tip="${tip}" error-message='error-message' show-label="${showLabel}" label="Label Name"></plmg-text-input>
       `;
         } else {
           requireds.forEach((required) => {
             htmlContent += `
-        <plmg-text-input size=${size} tip="${tip}" error="error" required="${required}" show-label="${showLabel}" label="Label Name"></plmg-text-input>
+        <plmg-text-input size=${size} tip="${tip}" error-message='error-message' required="${required}" show-label="${showLabel}" label="Label Name"></plmg-text-input>
         `;
           });
         }

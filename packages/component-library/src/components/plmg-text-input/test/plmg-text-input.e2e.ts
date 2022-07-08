@@ -43,11 +43,11 @@ describe('plmg-text-input', () => {
     it('are accessible', async () => {
       const page = await newE2EPage();
 
-      const errors = [true, false];
+      const errors = ['error', undefined];
       let htmlContent = '';
       errors.forEach((errorControl) => {
         htmlContent += `
-    <plmg-text-input label='error ${errorControl}' error='${errorControl}' error-message="error">
+    <plmg-text-input label='error ${errorControl}' error-message='${errorControl}'>
     </plmg-text-input>
     `;
       });

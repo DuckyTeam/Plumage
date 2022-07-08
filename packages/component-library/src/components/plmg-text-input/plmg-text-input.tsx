@@ -27,8 +27,8 @@ export class TextInput {
    *
    * Sets error style and error message
    */
-  @Prop() error: string;
-  @Watch('error')
+  @Prop() errorMessage: string;
+  @Watch('errorMessage')
   validateError(newValue: string) {
     if (newValue && typeof newValue !== 'string')
       throw new Error('error message must be a string');
@@ -124,7 +124,7 @@ export class TextInput {
   render() {
     const inputClasses = {
       [this.size]: true,
-      ['error']: !!this.error,
+      ['error']: !!this.errorMessage,
     };
 
     const tipClasses = {
@@ -156,13 +156,13 @@ export class TextInput {
           />
         </div>
         {!!this.tip && <span class={tipClasses}>{this.tip}</span>}
-        {!!this.error && (
+        {!!this.errorMessage && (
           <plmg-error-message
             size={this.size}
             style={{
               marginTop: tokens.plmgSpacingX05,
             }}
-            message={this.error}
+            message={this.errorMessage}
           ></plmg-error-message>
         )}
       </div>
