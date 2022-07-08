@@ -39,6 +39,24 @@ describe('plmg-text-input', () => {
     </plmg-text-input>
     `);
   });
+  it('renders large', async () => {
+    const page = await newSpecPage({
+      components: [TextInput],
+      html: `<plmg-text-input size="small" label="small"></plmg-text-input>`,
+    });
+    expect(page.root).toEqualHtml(`
+
+    <plmg-text-input label="small" size="small">
+    <div class="plmg-text-input-wrapper">
+    <label class="small plmg-text-input-label" htmlfor="small">
+    small
+    </label>
+      <div class="plmg-text-input-field-wrapper" tabindex="0">
+        <input class="small" id="small" type="text" name="small">
+        </div>
+    </plmg-text-input>
+    `);
+  });
   it('renders labeless', async () => {
     const page = await newSpecPage({
       components: [TextInput],

@@ -9,9 +9,6 @@ export default {
     error: {
       control: { type: 'text' },
     },
-    ['default-input']: {
-      control: { type: 'text' },
-    },
     label: {
       control: { type: 'text' },
     },
@@ -31,15 +28,7 @@ export default {
   },
 };
 
-const PROPS = [
-  'default-input',
-  'error',
-  'show-label',
-  'label',
-  'required',
-  'size',
-  'tip',
-];
+const PROPS = ['error', 'show-label', 'label', 'required', 'size', 'tip'];
 
 const EVENTS = [];
 const CSS_VARS = [];
@@ -57,7 +46,6 @@ Primary.args = {
   label: 'Text Input',
   error: '',
   ['show-label']: false,
-  ['default-input']: '',
   required: false,
 };
 
@@ -93,14 +81,6 @@ Error.args = {
   error: 'Error Message',
 };
 
-export const DefaultInput = Template.bind({});
-DefaultInput.storyName = 'Default Input';
-DefaultInput.args = {
-  label: 'default input',
-  ['show-label']: false,
-  ['default-input']: 'default input',
-};
-
 export const Tip = Template.bind({});
 Tip.storyName = 'Tip Text';
 Tip.args = {
@@ -121,7 +101,7 @@ export const AllOn = (args) => {
   const htmlContent = sizes
     .map(
       (size) =>
-        `<plmg-text-input size=${size} default-input="default" required size=${size} error="error" label="All On ${size}" tip="Helpful message"></plmg-text-input>`
+        `<plmg-text-input size=${size} required size=${size} error="error" label="All On ${size}" tip="Helpful message"></plmg-text-input>`
     )
     .join('')
     .trim();
@@ -138,7 +118,6 @@ AllOn.storyName = 'All Controls On';
 
 export const AllVariations = (args) => {
   const error = ['error', ''];
-  const defaultInput = ['default'];
   const showLabels = [true, false];
   const tips = ['', 'helpful message'];
   const requireds = [false, true];
@@ -177,40 +156,6 @@ export const AllVariations = (args) => {
           requireds.forEach((required) => {
             htmlContent += `
         <plmg-text-input size=${size} tip="${tip}" error="error" required="${required}" show-label="${showLabel}" label="Label Name"></plmg-text-input>
-        `;
-          });
-        }
-      });
-    });
-
-    htmlContent += `<span>${size} default</span>`;
-    showLabels.forEach((showLabel) => {
-      tips.forEach((tip) => {
-        if (!showLabel) {
-          htmlContent += `
-      <plmg-text-input size=${size} tip="${tip}" default-input="default" show-label="${showLabel}" label="Label Name"></plmg-text-input>
-      `;
-        } else {
-          requireds.forEach((required) => {
-            htmlContent += `
-        <plmg-text-input size=${size} tip="${tip}" default-input="default" required="${required}" show-label="${showLabel}" label="Label Name"></plmg-text-input>
-        `;
-          });
-        }
-      });
-    });
-
-    htmlContent += `<span>${size} default error</span>`;
-    showLabels.forEach((showLabel) => {
-      tips.forEach((tip) => {
-        if (!showLabel) {
-          htmlContent += `
-      <plmg-text-input size=${size} tip="${tip}" error="error" default-input="default" show-label="${showLabel}" label="Label Name"></plmg-text-input>
-      `;
-        } else {
-          requireds.forEach((required) => {
-            htmlContent += `
-        <plmg-text-input size=${size} tip="${tip}" error="error" default-input="default" required="${required}" show-label="${showLabel}" label="Label Name"></plmg-text-input>
         `;
           });
         }

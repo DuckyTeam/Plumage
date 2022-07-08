@@ -21,22 +21,6 @@ import * as tokens from '@ducky/plumage-tokens';
 export class TextInput {
   @State() value: string;
   /**
-   * Define default input value
-   *
-   * Allowed values
-   * - Any string
-   *
-   * Empty strings are ignored
-   *
-   * Sets the value of the input
-   */
-  @Prop() defaultInput: string;
-  @Watch('defaultInput')
-  validateDefaultValue(newValue: string) {
-    if (typeof newValue !== 'string')
-      throw new Error('default value must be a string');
-  }
-  /**
    * Define error message
    *
    * Allowed value: any string
@@ -136,11 +120,6 @@ export class TextInput {
   /**
    * Life Cycle Methods & Event Listeners
    */
-  connectedCallback() {
-    if (this.defaultInput) {
-      this.value = this.defaultInput;
-    }
-  }
 
   render() {
     const inputClasses = {
@@ -194,8 +173,3 @@ export class TextInput {
     return this.label.toLowerCase().replace(/\s+/g, '-');
   }
 }
-
-// To do
-// Rewrite tests
-// Rewrite stories
-// React app use case with error message
