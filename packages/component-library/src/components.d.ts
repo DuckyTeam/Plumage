@@ -243,25 +243,9 @@ export namespace Components {
     }
     interface PlmgTextInput {
         /**
-          * Define if the label is visible  Allowed values: - true - false  Default: true
-         */
-        "LabelVisible": boolean;
-        /**
-          * Define default value  Allowed values - Any string
-         */
-        "default": string;
-        /**
-          * Toggle error state:  Allowed values: - true - false
-         */
-        "error": boolean;
-        /**
-          * Define error message  Allowed value: any string  Displayed when text input state is in error
+          * Define error message  Allowed value: any string  Sets error style and error message
          */
         "errorMessage": string;
-        /**
-          * Define if input value is pre-filled with default  Allowed values: - true - false  Default: false
-         */
-        "filled": boolean;
         /**
           * Define a label name for the input field.  Allowed values: - Any string  A unique label name for each element in a form is required for accessibility
          */
@@ -271,17 +255,17 @@ export namespace Components {
          */
         "required": boolean;
         /**
+          * Define if the label is shown  Allowed values: - true - false  Default: true
+         */
+        "showLabel": boolean;
+        /**
           * Define text input's size  Allowed values:   - medium   - large  Default: medium
          */
         "size": PlmgTextInputSize;
         /**
-          * Define if tip text is displayed.  Allowed values: - true - false  Default: false
+          * Define tip  Allowed value: any string  Displays a tip message
          */
-        "tip": boolean;
-        /**
-          * Define tip text  Allowed value: any string  Displayed when tip is true
-         */
-        "tipText": string;
+        "tip": string;
     }
     interface PlmgTooltip {
         /**
@@ -666,46 +650,33 @@ declare namespace LocalJSX {
     }
     interface PlmgTextInput {
         /**
-          * Define if the label is visible  Allowed values: - true - false  Default: true
-         */
-        "LabelVisible"?: boolean;
-        /**
-          * Define default value  Allowed values - Any string
-         */
-        "default"?: string;
-        /**
-          * Toggle error state:  Allowed values: - true - false
-         */
-        "error"?: boolean;
-        /**
-          * Define error message  Allowed value: any string  Displayed when text input state is in error
+          * Define error message  Allowed value: any string  Sets error style and error message
          */
         "errorMessage"?: string;
-        /**
-          * Define if input value is pre-filled with default  Allowed values: - true - false  Default: false
-         */
-        "filled"?: boolean;
         /**
           * Define a label name for the input field.  Allowed values: - Any string  A unique label name for each element in a form is required for accessibility
          */
         "label"?: string;
+        /**
+          * Event emitted when value changed
+         */
         "onValueUpdated"?: (event: PlmgTextInputCustomEvent<any>) => void;
         /**
           * Define if an input is required.  Allowed values: - true - false  Default: false
          */
         "required"?: boolean;
         /**
+          * Define if the label is shown  Allowed values: - true - false  Default: true
+         */
+        "showLabel"?: boolean;
+        /**
           * Define text input's size  Allowed values:   - medium   - large  Default: medium
          */
         "size"?: PlmgTextInputSize;
         /**
-          * Define if tip text is displayed.  Allowed values: - true - false  Default: false
+          * Define tip  Allowed value: any string  Displays a tip message
          */
-        "tip"?: boolean;
-        /**
-          * Define tip text  Allowed value: any string  Displayed when tip is true
-         */
-        "tipText"?: string;
+        "tip"?: string;
     }
     interface PlmgTooltip {
         /**
