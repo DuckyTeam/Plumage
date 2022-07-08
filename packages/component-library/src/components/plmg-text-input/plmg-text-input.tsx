@@ -155,8 +155,8 @@ export class TextInput {
             onInput={(ev) => this.handleInputChange(ev)}
           />
         </div>
-        {!!this.tip && <span class={tipClasses}>{this.tip}</span>}
-        {!!this.errorMessage && (
+        {this.tip && <span class={tipClasses}>{this.tip}</span>}
+        {this.errorMessage && (
           <plmg-error-message
             size={this.size}
             style={{
