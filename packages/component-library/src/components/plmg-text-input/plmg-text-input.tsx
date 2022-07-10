@@ -117,9 +117,6 @@ export class TextInput {
    * Event emitted when value changed
    */
   @Event() valueUpdated: EventEmitter;
-  /**
-   * Life Cycle Methods & Event Listeners
-   */
 
   render() {
     const inputClasses = {
