@@ -65,7 +65,6 @@ export default function TextForm() {
     const targetId = event.target.id;
     const newInputFields = inputFields.map((inputField: any) => {
       if (inputField.id === targetId) {
-        console.log('inputField to validate', inputField);
         inputField.error = !inputField.value.match(inputField.pattern);
       }
       return inputField;
@@ -85,8 +84,6 @@ export default function TextForm() {
   }, [inputFields]);
 
   const handleSubmit = (event: any) => {
-    event.preventDefault();
-    event.stopPropagation();
     alert(
       `Submitted: ${JSON.stringify(
         inputFields.map(
@@ -101,8 +98,9 @@ export default function TextForm() {
       <h2>Text Input Form</h2>
       <form name={'text-inputFields'} onSubmit={handleSubmit}>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          {inputFields.map((input) => (
+          {inputFields.map((input, index) => (
             <PlmgTextInput
+              key={`${input.id}_${index}`}
               id={input.id}
               errorMessage={input.error ? input.errorMessage : ''}
               label={input.inputLabel}
