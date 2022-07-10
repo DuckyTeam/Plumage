@@ -8,7 +8,6 @@ describe('plmg-text-input', () => {
       html: `<plmg-text-input label="Default"></plmg-text-input>`,
     });
     expect(page.root).toEqualHtml(`
-
     <plmg-text-input label="Default">
     <div class="plmg-text-input-wrapper">
     <label class="medium plmg-text-input-label" htmlfor="default">
@@ -18,7 +17,6 @@ describe('plmg-text-input', () => {
         <input class="medium" id="default" type="text" name="Default">
       </div>
     </plmg-text-input>
-
     `);
   });
   it('renders large', async () => {
@@ -27,7 +25,6 @@ describe('plmg-text-input', () => {
       html: `<plmg-text-input size="large" label="Large"></plmg-text-input>`,
     });
     expect(page.root).toEqualHtml(`
-
     <plmg-text-input label="Large" size="large">
     <div class="plmg-text-input-wrapper">
     <label class="large plmg-text-input-label" htmlfor="large">
@@ -39,31 +36,31 @@ describe('plmg-text-input', () => {
     </plmg-text-input>
     `);
   });
-  it('renders large', async () => {
+  it('renders default size if wrong size prop passed', async () => {
     const page = await newSpecPage({
       components: [TextInput],
-      html: `<plmg-text-input size="small" label="small"></plmg-text-input>`,
+      html: `<plmg-text-input size="small" label="no such size"></plmg-text-input>`,
     });
     expect(page.root).toEqualHtml(`
-
-    <plmg-text-input label="small" size="small">
+    <plmg-text-input label="no such size" size="small">
     <div class="plmg-text-input-wrapper">
-    <label class="small plmg-text-input-label" htmlfor="small">
-    small
+    <label class="medium plmg-text-input-label" htmlfor="no-such-size">
+    no such size
     </label>
       <div class="plmg-text-input-field-wrapper" tabindex="0">
-        <input class="small" id="small" type="text" name="small">
+        <input class="medium" id="no-such-size" type="text" name="no such size">
         </div>
     </plmg-text-input>
     `);
   });
-  it('renders labeless', async () => {
+
+  // This test is failing because the component is accepting small as a valid size.
+  it('renders with the label hidden', async () => {
     const page = await newSpecPage({
       components: [TextInput],
       html: `<plmg-text-input show-label="false" label="Hidden"></plmg-text-input>`,
     });
     expect(page.root).toEqualHtml(`
-
     <plmg-text-input label="Hidden" show-label="false">
     <div class="plmg-text-input-wrapper">
     <label class="medium plmg-text-input-label visually-hidden" htmlfor="hidden">
@@ -81,7 +78,6 @@ describe('plmg-text-input', () => {
       html: `<plmg-text-input tip="Tip Text" label="Tip"></plmg-text-input>`,
     });
     expect(page.root).toEqualHtml(`
-
     <plmg-text-input label="Tip" tip="Tip Text">
     <div class="plmg-text-input-wrapper">
     <label class="medium plmg-text-input-label" htmlfor="tip">
@@ -94,35 +90,19 @@ describe('plmg-text-input', () => {
     </plmg-text-input>
     `);
   });
-  it('renders error', async () => {
+  it('renders error message', async () => {
     const page = await newSpecPage({
       components: [TextInput],
       html: `<plmg-text-input error-message="error" label="Error"></plmg-text-input>`,
     });
     expect(page.root).toEqualHtml(`
-
     <plmg-text-input label="Error" error-message="error">
     <div class="plmg-text-input-wrapper">
     <label class="medium plmg-text-input-label" htmlfor="error">Error</label>
       <div class="plmg-text-input-field-wrapper" tabindex="0">
       <input class="error medium" name="Error" id="error" type="text">
         </div>
-        <plmg-error-message message="error" size="medium" style="margin-top: 8px;"></plmg-error-message>
-    `);
-  });
-  it('renders default value', async () => {
-    const page = await newSpecPage({
-      components: [TextInput],
-      html: `<plmg-text-input default-value="default value" label="Default Value"></plmg-text-input>`,
-    });
-    expect(page.root).toEqualHtml(`
-
-    <plmg-text-input default-value="default value" label="Default Value">
-    <div class="plmg-text-input-wrapper">
-    <label class="medium plmg-text-input-label" htmlfor="default-value">Default Value</label>
-      <div class="plmg-text-input-field-wrapper" tabindex="0">
-        <input class="medium" name="Default Value" id="default-value" type="text">
-      </div>
+        <plmg-error-message message="error" size="medium" class="plmg-text-input-error-message"></plmg-error-message>
     `);
   });
   it('renders required', async () => {
@@ -131,7 +111,6 @@ describe('plmg-text-input', () => {
       html: `<plmg-text-input required="true" value="Default" label="Required"></plmg-text-input>`,
     });
     expect(page.root).toEqualHtml(`
-
     <plmg-text-input required="true" label="Required" value="Default">
     <div class="plmg-text-input-wrapper">
     <label class="medium plmg-text-input-label" htmlfor="required">Required
