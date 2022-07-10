@@ -156,9 +156,7 @@ export class TextInput {
         {this.errorMessage && (
           <plmg-error-message
             size={this.size}
-            style={{
-              marginTop: tokens.plmgSpacingX05,
-            }}
+            class={'plmg-text-input-error-message'}
             message={this.errorMessage}
           ></plmg-error-message>
         )}
