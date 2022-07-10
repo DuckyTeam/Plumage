@@ -11,7 +11,6 @@ import {
   isPlmgTextInputSize,
   PlmgTextInputSize,
 } from './plmg-text-input.types';
-import * as tokens from '@ducky/plumage-tokens';
 
 @Component({
   tag: 'plmg-text-input',
