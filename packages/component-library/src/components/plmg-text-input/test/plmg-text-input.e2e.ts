@@ -15,6 +15,7 @@ describe('plmg-text-input', () => {
       const page = await newE2EPage();
 
       const sizes = ['medium', 'large'];
+
       let htmlContent = '';
       sizes.forEach((sizeControl) => {
         htmlContent += `
@@ -22,7 +23,6 @@ describe('plmg-text-input', () => {
     </plmg-text-input>
     `;
       });
-
       await page.setContent('<main>' + htmlContent + '</main>');
 
       const results = await new AxePuppeteer(page as unknown as Page)
@@ -43,6 +43,7 @@ describe('plmg-text-input', () => {
       const page = await newE2EPage();
 
       const errors = ['error', undefined];
+
       let htmlContent = '';
       errors.forEach((errorControl) => {
         htmlContent += `
@@ -71,6 +72,7 @@ describe('plmg-text-input', () => {
       const page = await newE2EPage();
 
       const showLabels = [true, false];
+
       let htmlContent = '';
       showLabels.forEach((showLabel) => {
         htmlContent += `
@@ -98,7 +100,8 @@ describe('plmg-text-input', () => {
     it('are accessible', async () => {
       const page = await newE2EPage();
 
-      const tips = [true, false];
+      const tips = ['tip', undefined];
+
       let htmlContent = '';
       tips.forEach((tipTextControl) => {
         htmlContent += `
