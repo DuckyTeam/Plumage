@@ -6,7 +6,6 @@ describe('plmg-text-input', () => {
   it('renders', async () => {
     const page = await newE2EPage();
     await page.setContent('<plmg-text-input label="label"></plmg-text-input>');
-
     const element = await page.find('plmg-text-input');
     expect(element).toHaveClass('hydrated');
   });
@@ -134,34 +133,6 @@ describe('plmg-text-input', () => {
     <plmg-text-input label='required ${requiredControl}' required=${requiredControl}>
     </plmg-text-input>
     `;
-      });
-
-      await page.setContent('<main>' + htmlContent + '</main>');
-
-      const results = await new AxePuppeteer(page as unknown as Page)
-        .disableRules([
-          'document-title',
-          'html-has-lang',
-          'landmark-one-main',
-          'page-has-heading-one',
-        ])
-        .analyze();
-
-      expect(results.violations).toHaveLength(0);
-    });
-  });
-
-  describe('default filled', () => {
-    it('is accessible', async () => {
-      const page = await newE2EPage();
-
-      const defaults = ['something', undefined];
-      let htmlContent = '';
-      defaults.forEach((defaultControl) => {
-        htmlContent += `
-      <plmg-text-input label='default ${defaultControl}' default-input=${defaultControl} >
-      </plmg-text-input>
-      `;
       });
 
       await page.setContent('<main>' + htmlContent + '</main>');
