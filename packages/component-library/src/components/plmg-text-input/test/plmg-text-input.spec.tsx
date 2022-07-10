@@ -53,7 +53,6 @@ describe('plmg-text-input', () => {
     </plmg-text-input>
     `);
   });
-
   // This test is failing because the component is accepting small as a valid size.
   it('renders with the label hidden', async () => {
     const page = await newSpecPage({
