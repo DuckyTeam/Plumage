@@ -28,7 +28,7 @@ export class TextInput {
    */
   @Prop() errorMessage: string;
   @Watch('errorMessage')
-  validateError(newValue: string) {
+  validateErrorMessage(newValue: string) {
     if (newValue && typeof newValue !== 'string')
       throw new Error('error message must be a string');
   }
@@ -58,7 +58,7 @@ export class TextInput {
   @Prop() showLabel: boolean = true;
   @Watch('showLabel')
   validateShowLabel(newValue: boolean) {
-    if (typeof newValue !== 'boolean')
+    if (newValue && typeof newValue !== 'boolean')
       throw new Error('show label must be boolean');
   }
   /**
@@ -74,7 +74,7 @@ export class TextInput {
   @Watch('required')
   validateRequired(newValue: boolean) {
     if (typeof newValue !== 'boolean')
-      throw new Error('required: must be boolean');
+      throw new Error('required: must be a boolean');
   }
   /**
    *
@@ -89,11 +89,14 @@ export class TextInput {
   @Prop() size: PlmgTextInputSize = 'medium';
   @Watch('size')
   validateSize(newValue: string) {
-    if (typeof newValue !== 'string' || newValue === '')
-      throw new Error('size: required');
-    if (!isPlmgTextInputSize(newValue))
+    if (
+      typeof newValue !== 'string' ||
+      newValue === '' ||
+      !isPlmgTextInputSize(newValue)
+    )
       throw new Error('size: must be a valid value');
   }
+
   /**
    * Define tip
    *
@@ -116,6 +119,10 @@ export class TextInput {
    * Event emitted when value changed
    */
   @Event() valueUpdated: EventEmitter;
+
+  componentWillLoad() {
+    this.validateSize(this.size);
+  }
 
   render() {
     const inputClasses = {

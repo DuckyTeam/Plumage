@@ -36,24 +36,6 @@ describe('plmg-text-input', () => {
     </plmg-text-input>
     `);
   });
-  it('renders default size if wrong size prop passed', async () => {
-    const page = await newSpecPage({
-      components: [TextInput],
-      html: `<plmg-text-input size="small" label="no such size"></plmg-text-input>`,
-    });
-    expect(page.root).toEqualHtml(`
-    <plmg-text-input label="no such size" size="small">
-    <div class="plmg-text-input-wrapper">
-    <label class="medium plmg-text-input-label" htmlfor="no-such-size">
-    no such size
-    </label>
-      <div class="plmg-text-input-field-wrapper" tabindex="0">
-        <input class="medium" id="no-such-size" type="text" name="no such size">
-        </div>
-    </plmg-text-input>
-    `);
-  });
-  // This test is failing because the component is accepting small as a valid size.
   it('renders with the label hidden', async () => {
     const page = await newSpecPage({
       components: [TextInput],
@@ -119,5 +101,15 @@ describe('plmg-text-input', () => {
       <input class="medium" name="Required" id="required" required type="text">
       </div>
     `);
+  });
+  it('should throw an error if the wrong size prop passed', async () => {
+    try {
+      await newSpecPage({
+        components: [TextInput],
+        html: `<plmg-text-input size="small" label="no such size"></plmg-text-input>`,
+      });
+    } catch (e) {
+      expect(e.message).toBe('size: must be a valid value');
+    }
   });
 });
