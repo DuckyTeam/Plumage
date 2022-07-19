@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage-react
 
-This log was last generated on Wed, 15 Jun 2022 10:53:46 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Jul 2022 23:27:29 GMT and should not be manually modified.
+
+## 0.5.2
+Tue, 19 Jul 2022 23:27:29 GMT
+
+### Patches
+
+- generate react textfield component
 
 ## 0.5.1
 Wed, 15 Jun 2022 10:53:46 GMT
