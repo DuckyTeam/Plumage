@@ -656,7 +656,7 @@ declare namespace LocalJSX {
         /**
           * Define a label name for the input field.  Allowed values: - Any string  A unique label name for each element in a form is required for accessibility
          */
-        "label"?: string;
+        "label": string;
         /**
           * Event emitted when value changed
          */

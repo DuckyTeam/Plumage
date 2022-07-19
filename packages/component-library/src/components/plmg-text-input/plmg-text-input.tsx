@@ -40,7 +40,7 @@ export class TextInput {
    *
    * A unique label name for each element in a form is required for accessibility
    */
-  @Prop() label: string;
+  @Prop() label!: string;
   @Watch('label')
   validateLabel(newValue: string) {
     if (typeof newValue !== 'string' || !this.label)
