@@ -8,6 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { PlmgButtonColor, PlmgButtonDesign, PlmgButtonSize, PlmgButtonType } from "./components/plmg-button/plmg-button.types";
 import { PlmgErrorMessageSize } from "./components/plmg-error-message/plmg-error-message.types";
 import { PlmgRadioButtonSize } from "./components/plmg-radio-button/plmg-radio-button.types";
+import { PlmgTextInputSize } from "./components/plmg-text-input/plmg-text-input.types";
 import { PlmgTooltipArrowPosition, PlmgTooltipColor, PlmgTooltipPosition } from "./components/plmg-tooltip/plmg-tooltip.types";
 export namespace Components {
     interface PlmgButton {
@@ -240,6 +241,32 @@ export namespace Components {
          */
         "size": string;
     }
+    interface PlmgTextInput {
+        /**
+          * Define error message  Allowed value: any string  Sets error style and error message
+         */
+        "errorMessage": string;
+        /**
+          * Define a label name for the input field.  Allowed values: - Any string  A unique label name for each element in a form is required for accessibility
+         */
+        "label": string;
+        /**
+          * Define if an input is required.  Allowed values: - true - false  Default: false
+         */
+        "required": boolean;
+        /**
+          * Define if the label is shown  Allowed values: - true - false  Default: true
+         */
+        "showLabel": boolean;
+        /**
+          * Define text input's size  Allowed values:   - medium   - large  Default: medium
+         */
+        "size": PlmgTextInputSize;
+        /**
+          * Define tip  Allowed value: any string  Displays a tip message
+         */
+        "tip": string;
+    }
     interface PlmgTooltip {
         /**
           * Define tooltip arrow position. When 'none' is selected, no arrow is visible.  Allowed values:   - none   - start   - middle   - end  Default: none
@@ -282,6 +309,10 @@ export interface PlmgRadioButtonGroupCustomEvent<T> extends CustomEvent<T> {
 export interface PlmgSidebarCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPlmgSidebarElement;
+}
+export interface PlmgTextInputCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPlmgTextInputElement;
 }
 declare global {
     interface HTMLPlmgButtonElement extends Components.PlmgButton, HTMLStencilElement {
@@ -350,6 +381,12 @@ declare global {
         prototype: HTMLPlmgSvgIconElement;
         new (): HTMLPlmgSvgIconElement;
     };
+    interface HTMLPlmgTextInputElement extends Components.PlmgTextInput, HTMLStencilElement {
+    }
+    var HTMLPlmgTextInputElement: {
+        prototype: HTMLPlmgTextInputElement;
+        new (): HTMLPlmgTextInputElement;
+    };
     interface HTMLPlmgTooltipElement extends Components.PlmgTooltip, HTMLStencilElement {
     }
     var HTMLPlmgTooltipElement: {
@@ -368,6 +405,7 @@ declare global {
         "plmg-sidebar": HTMLPlmgSidebarElement;
         "plmg-sidebar-item": HTMLPlmgSidebarItemElement;
         "plmg-svg-icon": HTMLPlmgSvgIconElement;
+        "plmg-text-input": HTMLPlmgTextInputElement;
         "plmg-tooltip": HTMLPlmgTooltipElement;
     }
 }
@@ -610,6 +648,36 @@ declare namespace LocalJSX {
          */
         "size"?: string;
     }
+    interface PlmgTextInput {
+        /**
+          * Define error message  Allowed value: any string  Sets error style and error message
+         */
+        "errorMessage"?: string;
+        /**
+          * Define a label name for the input field.  Allowed values: - Any string  A unique label name for each element in a form is required for accessibility
+         */
+        "label": string;
+        /**
+          * Event emitted when value changed
+         */
+        "onValueUpdated"?: (event: PlmgTextInputCustomEvent<any>) => void;
+        /**
+          * Define if an input is required.  Allowed values: - true - false  Default: false
+         */
+        "required"?: boolean;
+        /**
+          * Define if the label is shown  Allowed values: - true - false  Default: true
+         */
+        "showLabel"?: boolean;
+        /**
+          * Define text input's size  Allowed values:   - medium   - large  Default: medium
+         */
+        "size"?: PlmgTextInputSize;
+        /**
+          * Define tip  Allowed value: any string  Displays a tip message
+         */
+        "tip"?: string;
+    }
     interface PlmgTooltip {
         /**
           * Define tooltip arrow position. When 'none' is selected, no arrow is visible.  Allowed values:   - none   - start   - middle   - end  Default: none
@@ -648,6 +716,7 @@ declare namespace LocalJSX {
         "plmg-sidebar": PlmgSidebar;
         "plmg-sidebar-item": PlmgSidebarItem;
         "plmg-svg-icon": PlmgSvgIcon;
+        "plmg-text-input": PlmgTextInput;
         "plmg-tooltip": PlmgTooltip;
     }
 }
@@ -666,6 +735,7 @@ declare module "@stencil/core" {
             "plmg-sidebar": LocalJSX.PlmgSidebar & JSXBase.HTMLAttributes<HTMLPlmgSidebarElement>;
             "plmg-sidebar-item": LocalJSX.PlmgSidebarItem & JSXBase.HTMLAttributes<HTMLPlmgSidebarItemElement>;
             "plmg-svg-icon": LocalJSX.PlmgSvgIcon & JSXBase.HTMLAttributes<HTMLPlmgSvgIconElement>;
+            "plmg-text-input": LocalJSX.PlmgTextInput & JSXBase.HTMLAttributes<HTMLPlmgTextInputElement>;
             "plmg-tooltip": LocalJSX.PlmgTooltip & JSXBase.HTMLAttributes<HTMLPlmgTooltipElement>;
         }
     }

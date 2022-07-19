@@ -12,6 +12,7 @@ import {
   PlmgSeparator,
   PlmgTooltip,
 } from '@ducky/plumage-react';
+import TextForm from './TextForm';
 
 const TooltipRefExample = () => {
   const [button, setButton] = useState(undefined);
@@ -136,6 +137,7 @@ ReactDOM.render(
       >
         Tooltip Target
       </p>
+      <TextForm />
       <PlmgTooltip
         role={'tooltip'}
         id={'tooltip-demonstration'}

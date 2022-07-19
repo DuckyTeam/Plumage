@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "create textfield component",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
