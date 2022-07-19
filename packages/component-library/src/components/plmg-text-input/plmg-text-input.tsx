@@ -74,7 +74,7 @@ export class TextInput {
   @Watch('required')
   validateRequired(newValue: boolean) {
     if (typeof newValue !== 'boolean')
-      throw new Error('required: must be a boolean');
+      throw new Error('required must be a boolean');
   }
   /**
    *
@@ -94,7 +94,7 @@ export class TextInput {
       newValue === '' ||
       !isPlmgTextInputSize(newValue)
     )
-      throw new Error('size: must be a valid value');
+      throw new Error('size must be a valid value');
   }
 
   /**

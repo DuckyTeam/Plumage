@@ -138,7 +138,7 @@ describe('plmg-text-input', () => {
         html: `<plmg-text-input size="small" label="no such size"></plmg-text-input>`,
       });
     } catch (e) {
-      expect(e.message).toBe('size: must be a valid value');
+      expect(e.message).toBe('size must be a valid value');
     }
   });
 });
