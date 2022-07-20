@@ -94,7 +94,7 @@ export default function TextForm() {
   };
 
   return (
-    <div style={{ border: '2px dashed blue' }}>
+    <div>
       <h2>Text Input Form</h2>
       <form name={'text-inputFields'} onSubmit={handleSubmit}>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
