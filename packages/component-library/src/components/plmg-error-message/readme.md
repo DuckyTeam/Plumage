@@ -18,6 +18,7 @@
 ### Used by
 
  - [plmg-radio-button-group](../plmg-radio-button-group)
+ - [plmg-text-input](../plmg-text-input)
 
 ### Depends on
 
@@ -28,6 +29,7 @@
 graph TD;
   plmg-error-message --> plmg-svg-icon
   plmg-radio-button-group --> plmg-error-message
+  plmg-text-input --> plmg-error-message
   style plmg-error-message fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

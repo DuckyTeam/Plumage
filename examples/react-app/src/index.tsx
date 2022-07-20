@@ -13,6 +13,7 @@ import {
   PlmgTooltip,
 } from '@ducky/plumage-react';
 import Sliders from './Sliders';
+import TextForm from './TextForm';
 
 const TooltipRefExample = () => {
   const [button, setButton] = useState(undefined);
@@ -130,6 +131,7 @@ ReactDOM.render(
         </div>
       </PlmgCard>
       <Sliders />
+      <TextForm />
       <p
         tabIndex={0}
         id={'targetelement'}

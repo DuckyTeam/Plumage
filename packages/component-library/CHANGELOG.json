@@ -2,6 +2,18 @@
   "name": "@ducky/plumage",
   "entries": [
     {
+      "version": "1.5.2",
+      "tag": "@ducky/plumage_v1.5.2",
+      "date": "Tue, 19 Jul 2022 23:27:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "create textfield component"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.5.1",
       "tag": "@ducky/plumage_v1.5.1",
       "date": "Fri, 24 Jun 2022 09:58:39 GMT",

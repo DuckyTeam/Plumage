@@ -1,0 +1,163 @@
+@use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
+// Mixins
+// -------------------------------------------------
+@mixin typography($font-size, $font-weight) {
+  font-family: tokens.$plmg-font-family-sans;
+  font-style: normal;
+  line-height: tokens.$plmg-font-lineheight-loose;
+  font-weight: $font-weight;
+  font-size: $font-size;
+}
+
+@mixin plmg-font-form-text-m {
+  @include typography(
+    tokens.$plmg-font-size-x1-125,
+    tokens.$plmg-font-weight-regular
+  );
+}
+
+@mixin plmg-font-form-text-l {
+  @include typography(
+    tokens.$plmg-font-size-x1-25,
+    tokens.$plmg-font-weight-regular
+  );
+}
+
+@mixin plmg-font-form-label-m {
+  @include typography(
+    tokens.$plmg-font-size-x1,
+    tokens.$plmg-font-weight-semibold
+  );
+}
+
+@mixin plmg-font-form-label-l {
+  @include typography(
+    tokens.$plmg-font-size-x1_125,
+    tokens.$plmg-font-weight-semibold
+  );
+}
+
+@mixin plmg-font-form-tip-m {
+  @include typography(
+    tokens.$plmg-font-size-x0-75,
+    tokens.$plmg-font-weight-regular
+  );
+}
+@mixin plmg-font-form-tip-l {
+  @include typography(
+    tokens.$plmg-font-size-x0-875,
+    tokens.$plmg-font-weight-regular
+  );
+}
+
+@mixin reset-states {
+  &:hover &:focus &:focus-visible {
+    outline: none;
+  }
+}
+// END Mixins
+// ------------------------------
+
+// Component style
+// ------------------------------
+
+// Wrapper allows tab
+.plmg-text-input-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.plmg-text-input-label {
+  margin-bottom: tokens.$plmg-spacing-x0-5;
+  color: tokens.$plmg-color-text-neutral-weak;
+  &.medium {
+    @include plmg-font-form-label-m;
+  }
+  &.large {
+    @include plmg-font-form-label-l;
+  }
+  &.visually-hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  .required {
+    vertical-align: top;
+    color: tokens.$plmg-color-text-danger-strong;
+    font-weight: tokens.$plmg-font-weight-semibold;
+    font-size: tokens.$plmg-font-size-x0-875;
+    line-height: tokens.$plmg-font-lineheight-loose;
+    margin-left: 2px;
+  }
+}
+
+.plmg-text-input-field-wrapper {
+  &:focus-visible {
+    outline: none;
+  }
+  &:focus-visible > input {
+    outline: tokens.$plmg-border-width-l solid
+      tokens.$plmg-color-border-standout;
+    outline-offset: -2px;
+    border-radius: tokens.$plmg-border-radius-s;
+    background-color: tokens.$plmg-color-background-neutral-hover;
+  }
+  input {
+    width: 100%;
+    min-width: fit-content;
+    box-shadow: tokens.$plmg-shadow-inner-s;
+    border: none;
+    box-sizing: border-box;
+    border: tokens.$plmg-border-width-m solid
+      tokens.$plmg-color-border-neutral-weak;
+    color: tokens.$plmg-color-text-neutral;
+    border-radius: tokens.$plmg-border-radius-s;
+    background-color: tokens.$plmg-color-background-neutral;
+    &.error {
+      border: tokens.$plmg-border-width-m solid
+        tokens.$plmg-color-border-danger-strong;
+    }
+    &.medium {
+      @include plmg-font-form-text-m;
+      height: 51px;
+      padding: tokens.$plmg-spacing-x0-75 tokens.$plmg-spacing-x1;
+    }
+    &.large {
+      @include plmg-font-form-text-l;
+      height: 62px;
+      padding: tokens.$plmg-spacing-x1 tokens.$plmg-spacing-x1-5;
+    }
+    @include reset-states;
+    &:hover:not(:focus) {
+      background-color: tokens.$plmg-color-background-neutral-hover;
+    }
+    &:focus-visible {
+      outline: none;
+      border: tokens.$plmg-border-width-m solid
+        tokens.$plmg-color-border-primary;
+    }
+  }
+}
+
+.plmg-text-input-tip {
+  margin-top: tokens.$plmg-spacing-x0-5;
+  color: tokens.$plmg-color-text-neutral-weak;
+  &.medium {
+    @include plmg-font-form-tip-m;
+  }
+  &.large {
+    @include plmg-font-form-tip-l;
+  }
+}
+
+.plmg-text-input-error-message {
+  margin-top: tokens.$plmg-spacing-x0-5;
+}
+
+// // END Component style
+// // ------------------------------
