@@ -1,0 +1,85 @@
+@use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
+
+// Common styles to all shadow-DOM components
+// Remove this section if your component does not use shadow DOM
+// -------------------------------------------------
+:host {
+  display: block;
+  box-sizing: border-box;
+}
+
+:host([hidden]) {
+  display: none;
+}
+// ------------- END Common styles -----------------
+
+// Component style
+// -------------------------------------------------
+.plmg-tabs-list {
+  display: inline-flex;
+  border-bottom: 1px solid tokens.$plmg-color-background-neutral-weak;
+}
+
+.plmg-tab-button {
+  font-family: tokens.$plmg-font-family-sans;
+  font-style: normal;
+  font-weight: tokens.$plmg-font-weight-regular;
+  line-height: tokens.$plmg-font-lineheight-loose;
+  text-transform: uppercase;
+  color: tokens.$plmg-color-text-primary-strong;
+  border: 0;
+  outline: none;
+  background-color: transparent;
+  min-height: 54px;
+  min-width: 115px;
+  padding: 0 10px;
+  cursor: pointer;
+
+  &:hover:not(:disabled):not(.active) {
+    color: tokens.$plmg-color-text-primary-strong-hover;
+    font-weight: tokens.$plmg-font-weight-semibold;
+  }
+
+  &:disabled {
+    color: tokens.$plmg-color-text-neutral-disabled;
+    cursor: default;
+  }
+
+  &.active {
+    font-weight: tokens.$plmg-font-weight-semibold;
+    border-bottom: 2px solid tokens.$plmg-color-background-standout-active;
+  }
+
+  &:focus-visible {
+    outline: 4px solid tokens.$plmg-color-border-standout;
+    border-radius: 4px;
+  }
+
+  // Breakpoints
+  /* Extra small devices */
+  @media only screen and (min-width: tokens.$plmg-breakpoint-xs) {
+    font-size: tokens.$plmg-font-size-x0-875;
+  }
+  /* Small devices */
+  @media only screen and (min-width: tokens.$plmg-breakpoint-s) {
+    font-size: tokens.$plmg-font-size-x0-875;
+  }
+  /* Medium devices */
+  @media only screen and (min-width: tokens.$plmg-breakpoint-m) {
+    font-size: tokens.$plmg-font-size-x1-125;
+  }
+  /* Large devices */
+  @media only screen and (min-width: tokens.$plmg-breakpoint-l) {
+    font-size: tokens.$plmg-font-size-x1-125;
+  }
+  /* Extra large devices */
+  @media only screen and (min-width: tokens.$plmg-breakpoint-xl) {
+    font-size: tokens.$plmg-font-size-x1-125;
+  }
+}
+
+.plmg-tab-button-icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+// ------------- END Component style ---------------
