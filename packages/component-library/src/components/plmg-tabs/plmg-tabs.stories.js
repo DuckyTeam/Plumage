@@ -1,5 +1,3 @@
-import * as Utils from '../../stories/StencilStorybookUtils';
-
 export default {
   title: 'Component/Tabs',
   parameters: {},

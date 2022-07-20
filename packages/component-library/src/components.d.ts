@@ -287,7 +287,7 @@ export namespace Components {
     }
     interface PlmgTabs {
         /**
-          * Invoke this method on tab change to update active state and emitt onChange handler.
+          * Invoke this method on tab change to update active state and emit onChange handler.
          */
         "openTab": (index: number) => Promise<void>;
     }

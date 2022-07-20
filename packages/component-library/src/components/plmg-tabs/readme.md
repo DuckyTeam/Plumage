@@ -16,7 +16,7 @@
 
 ### `openTab(index: number) => Promise<void>`
 
-Invoke this method on tab change to update active state and emitt onChange handler.
+Invoke this method on tab change to update active state and emit onChange handler.
 
 #### Returns
 
