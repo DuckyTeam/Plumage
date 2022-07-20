@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { PlmgTab, PlmgTabs, PlmgRadioButtonGroup } from '@ducky/plumage-react';
 import Sliders from './Sliders';
 import TextForm from './TextForm';
+import Radios from './Radios';
 
 export default function FormElements() {
   const [currentTab, setTab] = useState(0);
@@ -20,48 +21,7 @@ export default function FormElements() {
     }
 
     if (currentTab === 2) {
-      return (
-        <form>
-          <PlmgRadioButtonGroup
-            name="colours"
-            label="What's your favourite colour"
-            size="medium"
-            required
-            values='[
-              "red",
-              "blue",
-              "yellow",
-              "green",
-              "purple (the obvious choice)"
-            ]'
-            errorMessage={'Please select a colour'}
-            onValueChanged={(e: CustomEvent<{ selectedValue: string }>) => {
-              console.log('Radio Button colours:', e.detail.selectedValue);
-            }}
-          />
-          <PlmgRadioButtonGroup
-            name="other colours"
-            label="What's your favourite fruit"
-            size="medium"
-            required
-            values='[
-              "apples",
-              "blueberries",
-              "bananas",
-              "kiwis",
-              "grapes"
-            ]'
-            errorMessage={'Please select a fruit'}
-            onValueChanged={(e: CustomEvent<{ selectedValue: string }>) => {
-              console.log(
-                'Radio Button other colours:',
-                e.detail.selectedValue
-              );
-            }}
-          />
-          <input type="submit"></input>
-        </form>
-      );
+      return <Radios />;
     }
 
     return null;
