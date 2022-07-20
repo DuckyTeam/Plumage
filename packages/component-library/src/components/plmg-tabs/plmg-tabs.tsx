@@ -63,7 +63,7 @@ export class Tabs {
 
   render() {
     return (
-      <div class={'plmg-tabs-list'}>
+      <div class={'plmg-tabs-list'} role={'tablist'}>
         {this.tabs.map((tab: HTMLPlmgTabElement, index: number) => {
           const tabClasses = {
             'plmg-tab-button': true,
@@ -73,6 +73,7 @@ export class Tabs {
           return (
             <button
               role={'tab'}
+              aria-label={tab.label ? tab.label : tab.icon}
               disabled={tab.disabled}
               class={tabClasses}
               onClick={() => this.openTab(index)}
