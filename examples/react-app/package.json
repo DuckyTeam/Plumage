@@ -9,7 +9,8 @@
   "dependencies": {
     "@ducky/plumage-react": "^0.5.2",
     "react": "~17.0.2",
-    "react-dom": "~17.0.2"
+    "react-dom": "~17.0.2",
+    "@babel/runtime": "~7.18.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.16.7",

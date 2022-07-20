@@ -227,6 +227,32 @@ export namespace Components {
          */
         "text": string;
     }
+    interface PlmgSlider {
+        /**
+          * Define the default value  Sets the starting value for the slider  Allowed values: - any number  If defaultValue is outside of min and max range or undefined defaultValue is set to the min value
+         */
+        "defaultValue": number;
+        /**
+          * Define mark visibility  Default: true
+         */
+        "marks": boolean;
+        /**
+          * Define a descriptive name for the slider  Allowed values: - any string  Required for accessibility and should be a unique and descriptive  Used to generate internal ids linking label and inputs
+         */
+        "name": string;
+        /**
+          * Define a range of values  Allowed values: - An array of with at least two items  Must be a list of values with at least two items with the first and last items set min and max values. Additional values set additional marks and labels. Sort the array passed to component on the client, the component will not sort the array.
+         */
+        "rangeValues": Array<number>;
+        /**
+          * Define step  Allowed values: - Any number  Slider's value will increase or decrease by the step value  When step is not provided the step value is set to 1% of the range
+         */
+        "step": number;
+        /**
+          * Define thumb label visibility  Allowed values:  - true  - false  Default: true
+         */
+        "thumbLabel": boolean;
+    }
     interface PlmgSvgIcon {
         /**
           * Define icon's color.  Can be any valid CSS color value.  By default, the icon will have the same color as the parent's element.
@@ -310,6 +336,10 @@ export interface PlmgSidebarCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPlmgSidebarElement;
 }
+export interface PlmgSliderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPlmgSliderElement;
+}
 export interface PlmgTextInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPlmgTextInputElement;
@@ -375,6 +405,12 @@ declare global {
         prototype: HTMLPlmgSidebarItemElement;
         new (): HTMLPlmgSidebarItemElement;
     };
+    interface HTMLPlmgSliderElement extends Components.PlmgSlider, HTMLStencilElement {
+    }
+    var HTMLPlmgSliderElement: {
+        prototype: HTMLPlmgSliderElement;
+        new (): HTMLPlmgSliderElement;
+    };
     interface HTMLPlmgSvgIconElement extends Components.PlmgSvgIcon, HTMLStencilElement {
     }
     var HTMLPlmgSvgIconElement: {
@@ -404,6 +440,7 @@ declare global {
         "plmg-separator": HTMLPlmgSeparatorElement;
         "plmg-sidebar": HTMLPlmgSidebarElement;
         "plmg-sidebar-item": HTMLPlmgSidebarItemElement;
+        "plmg-slider": HTMLPlmgSliderElement;
         "plmg-svg-icon": HTMLPlmgSvgIconElement;
         "plmg-text-input": HTMLPlmgTextInputElement;
         "plmg-tooltip": HTMLPlmgTooltipElement;
@@ -634,6 +671,36 @@ declare namespace LocalJSX {
          */
         "text"?: string;
     }
+    interface PlmgSlider {
+        /**
+          * Define the default value  Sets the starting value for the slider  Allowed values: - any number  If defaultValue is outside of min and max range or undefined defaultValue is set to the min value
+         */
+        "defaultValue"?: number;
+        /**
+          * Define mark visibility  Default: true
+         */
+        "marks"?: boolean;
+        /**
+          * Define a descriptive name for the slider  Allowed values: - any string  Required for accessibility and should be a unique and descriptive  Used to generate internal ids linking label and inputs
+         */
+        "name"?: string;
+        /**
+          * The event "valueUpdated" is triggered when the slider value changes either by moving the thumb or entering in the text field.
+         */
+        "onValueUpdated"?: (event: PlmgSliderCustomEvent<any>) => void;
+        /**
+          * Define a range of values  Allowed values: - An array of with at least two items  Must be a list of values with at least two items with the first and last items set min and max values. Additional values set additional marks and labels. Sort the array passed to component on the client, the component will not sort the array.
+         */
+        "rangeValues"?: Array<number>;
+        /**
+          * Define step  Allowed values: - Any number  Slider's value will increase or decrease by the step value  When step is not provided the step value is set to 1% of the range
+         */
+        "step"?: number;
+        /**
+          * Define thumb label visibility  Allowed values:  - true  - false  Default: true
+         */
+        "thumbLabel"?: boolean;
+    }
     interface PlmgSvgIcon {
         /**
           * Define icon's color.  Can be any valid CSS color value.  By default, the icon will have the same color as the parent's element.
@@ -715,6 +782,7 @@ declare namespace LocalJSX {
         "plmg-separator": PlmgSeparator;
         "plmg-sidebar": PlmgSidebar;
         "plmg-sidebar-item": PlmgSidebarItem;
+        "plmg-slider": PlmgSlider;
         "plmg-svg-icon": PlmgSvgIcon;
         "plmg-text-input": PlmgTextInput;
         "plmg-tooltip": PlmgTooltip;
@@ -734,6 +802,7 @@ declare module "@stencil/core" {
             "plmg-separator": LocalJSX.PlmgSeparator & JSXBase.HTMLAttributes<HTMLPlmgSeparatorElement>;
             "plmg-sidebar": LocalJSX.PlmgSidebar & JSXBase.HTMLAttributes<HTMLPlmgSidebarElement>;
             "plmg-sidebar-item": LocalJSX.PlmgSidebarItem & JSXBase.HTMLAttributes<HTMLPlmgSidebarItemElement>;
+            "plmg-slider": LocalJSX.PlmgSlider & JSXBase.HTMLAttributes<HTMLPlmgSliderElement>;
             "plmg-svg-icon": LocalJSX.PlmgSvgIcon & JSXBase.HTMLAttributes<HTMLPlmgSvgIconElement>;
             "plmg-text-input": LocalJSX.PlmgTextInput & JSXBase.HTMLAttributes<HTMLPlmgTextInputElement>;
             "plmg-tooltip": LocalJSX.PlmgTooltip & JSXBase.HTMLAttributes<HTMLPlmgTooltipElement>;

@@ -1,0 +1,249 @@
+@use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
+
+// Common styles to all shadow-DOM components
+// Remove this section if your component does not use shadow DOM
+// -------------------------------------------------
+:host {
+  display: block;
+  font-size: tokens.$plmg-font-size-x0-75;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+// Mixins
+// ------------------------------
+@mixin set-typography {
+  font-family: tokens.$plmg-font-family-sans;
+  font-weight: tokens.$plmg-font-weight-regular;
+  line-height: tokens.$plmg-font-lineheight-loose;
+  color: tokens.$plmg-color-text-neutral;
+}
+
+@mixin state-reset {
+  &:hover &:focus &:focus-visible &:active {
+    outline: none;
+  }
+}
+
+@mixin set-states {
+  &:hover:not(:focus-visible) {
+    $hover-opacity: 0.2;
+    box-shadow: 0 0 0 10px
+      rgba(tokens.$plmg-color-decoration-primary, $hover-opacity);
+    border-radius: 50%;
+  }
+
+  &:active:not(:focus-visible) {
+    $active-opacity: 0.4;
+    border-radius: 50%;
+    box-shadow: 0 0 0 10px
+      rgba(tokens.$plmg-color-decoration-primary, $active-opacity);
+  }
+}
+@mixin set-states-moz {
+  &:hover {
+    $hover-opacity: 0.2;
+    box-shadow: 0 0 0 10px
+      rgba(tokens.$plmg-color-decoration-primary, $hover-opacity);
+    border-radius: 50%;
+  }
+
+  &:active {
+    $active-opacity: 0.4;
+    border-radius: 50%;
+    box-shadow: 0 0 0 10px
+      rgba(tokens.$plmg-color-decoration-primary, $active-opacity);
+  }
+}
+@mixin track() {
+  box-sizing: border-box;
+  border: none;
+  width: $track-width;
+  height: 4px;
+  &:focus {
+    outline: none;
+  }
+}
+
+@mixin thumb() {
+  box-sizing: border-box;
+  border: none;
+  width: $thumb-diameter;
+  height: $thumb-diameter;
+  border-radius: 50%;
+  background-color: tokens.$plmg-color-background-primary-strong;
+}
+
+// END Mixins
+// ------------------------------
+
+// Component style
+// ------------------------------
+
+$track-width: 12.5em;
+$track-height: 0.33em;
+$thumb-diameter: 1.5em;
+
+.plmg-component-container {
+  display: flex;
+  gap: 2rem;
+  flex: 1;
+  align-items: center;
+}
+
+.plmg-slider-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  position: relative;
+  @include set-typography;
+
+  &.marks {
+    align-self: flex-end;
+  }
+
+  input[type='range'] {
+    border-radius: 3px;
+    height: 4px;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    font: inherit;
+    @include state-reset;
+
+    &,
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+    }
+    &::-webkit-slider-thumb {
+      margin-top: 0.5 * ($track-height - $thumb-diameter);
+      @include thumb;
+      @include set-states;
+    }
+    &::-moz-range-thumb {
+      @include thumb;
+      @include set-states-moz;
+    }
+    &::-webkit-slider-runnable-track {
+      @include track;
+    }
+    &::-moz-range-track {
+      @include track;
+    }
+    &::-ms-track {
+      @include track;
+    }
+    &:focus {
+      outline: none;
+    }
+    &:focus-visible::-webkit-slider-thumb {
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px rgba(tokens.$plmg-color-border-standout, 1);
+    }
+    &:focus-visible::-moz-range-thumb {
+      outline: 4px solid rgba(tokens.$plmg-color-border-standout, 1);
+    }
+  }
+}
+
+.plmg-thumb-label-container {
+  height: 2.5rem;
+
+  output {
+    margin-top: -0.25rem;
+    text-align: center;
+    background-color: tokens.$plmg-color-background-primary-strong;
+    color: tokens.$plmg-color-text-neutral-inverted;
+
+    &.plmg-slider-thumb-label {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      left: 0.5 * $thumb-diameter;
+      top: 0;
+      padding: 4px 8px;
+      border-radius: 4px;
+
+      .plmg-thumb-triangle {
+        position: absolute;
+        align-self: center;
+        top: 100%;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-top: 6px solid tokens.$plmg-color-background-primary-strong;
+      }
+    }
+  }
+}
+
+.plmg-marks {
+  margin-top: 2.5em;
+  position: relative;
+
+  .plmg-mark-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    left: 0.5 * $thumb-diameter;
+    z-index: -1;
+
+    .plmg-mark-tick {
+      background-color: tokens.$plmg-color-background-neutral-strong;
+      width: 2px;
+      height: 4px;
+      margin-bottom: 8px;
+    }
+  }
+}
+
+.plmg-slider-input-field-container {
+  width: fit-content;
+
+  &:focus-visible {
+    outline: tokens.$plmg-border-width-l solid
+      tokens.$plmg-color-border-standout;
+    border-radius: tokens.$plmg-border-radius-s;
+  }
+
+  input {
+    @include set-typography;
+    border: none;
+    box-sizing: border-box;
+    font-size: tokens.$plmg-font-size-x1-125;
+    min-width: 5.2rem;
+    width: fit-content;
+    outline: tokens.$plmg-border-width-m solid
+      tokens.$plmg-color-border-neutral-weak;
+    padding: tokens.$plmg-spacing-x0-75 tokens.$plmg-spacing-x1;
+    background-color: tokens.$plmg-color-background-neutral;
+    box-shadow: tokens.$plmg-shadow-inner-s;
+    border-radius: tokens.$plmg-border-radius-s;
+
+    &:hover &:focus &:focus-visible {
+      outline: none;
+    }
+    &:hover:not(:focus) {
+      background-color: tokens.$plmg-color-background-neutral-hover;
+    }
+    &:focus {
+      outline: tokens.$plmg-border-width-m solid
+        tokens.$plmg-color-border-primary;
+    }
+  }
+
+  /* Remove input arrows */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Remove input arrows - firefox */
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+}

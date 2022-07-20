@@ -12,6 +12,7 @@ import {
   PlmgSeparator,
   PlmgTooltip,
 } from '@ducky/plumage-react';
+import Sliders from './Sliders';
 import TextForm from './TextForm';
 
 const TooltipRefExample = () => {
@@ -129,6 +130,8 @@ ReactDOM.render(
           <h1>PlmgCard slot-2</h1>
         </div>
       </PlmgCard>
+      <Sliders />
+      <TextForm />
       <p
         tabIndex={0}
         id={'targetelement'}
@@ -137,7 +140,6 @@ ReactDOM.render(
       >
         Tooltip Target
       </p>
-      <TextForm />
       <PlmgTooltip
         role={'tooltip'}
         id={'tooltip-demonstration'}
