@@ -1,6 +1,16 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Tue, 19 Jul 2022 23:27:29 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Jul 2022 00:14:08 GMT and should not be manually modified.
+
+## 1.5.3
+Wed, 20 Jul 2022 00:14:08 GMT
+
+### Patches
+
+- Updated slider component by removing rangeValues watcher
+- Use html elements for slider thumb
+- Updated slider component styling
+- refactor alignment of thumb label and ticks
 
 ## 1.5.2
 Tue, 19 Jul 2022 23:27:29 GMT
