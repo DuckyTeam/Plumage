@@ -17,10 +17,12 @@
 // -------------------------------------------------
 .plmg-tabs-list {
   display: inline-flex;
-  border-bottom: 1px solid tokens.$plmg-color-background-neutral-weak;
 }
 
 .plmg-tab-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: tokens.$plmg-font-family-sans;
   font-style: normal;
   font-weight: tokens.$plmg-font-weight-regular;
@@ -31,10 +33,9 @@
   border: 0;
   outline: none;
   background-color: transparent;
-  min-height: 54px;
-  min-width: 115px;
   padding: 0 10px;
   cursor: pointer;
+  border-bottom: 1px solid tokens.$plmg-color-border-neutral-weak;
 
   &:hover:not([aria-disabled]):not(.active) {
     color: tokens.$plmg-color-text-primary-strong-hover;
@@ -47,40 +48,70 @@
   }
 
   &.active {
-    font-weight: tokens.$plmg-font-weight-semibold;
     border-bottom: 2px solid tokens.$plmg-color-background-standout-active;
+    font-weight: tokens.$plmg-font-weight-semibold;
   }
 
   &:focus-visible {
     outline: 4px solid tokens.$plmg-color-border-standout;
+    outline-offset: -4px;
     border-radius: 4px;
   }
 
   // Breakpoints
   /* Extra small devices */
   @media only screen and (min-width: tokens.$plmg-breakpoint-xs) {
+    min-height: 46px;
+    min-width: 68px;
     font-size: tokens.$plmg-font-size-x0-875;
   }
   /* Small devices */
   @media only screen and (min-width: tokens.$plmg-breakpoint-s) {
+    min-height: 46px;
+    min-width: 68px;
     font-size: tokens.$plmg-font-size-x0-875;
   }
   /* Medium devices */
   @media only screen and (min-width: tokens.$plmg-breakpoint-m) {
+    min-height: 54px;
+    min-width: 115px;
     font-size: tokens.$plmg-font-size-x1-125;
   }
   /* Large devices */
   @media only screen and (min-width: tokens.$plmg-breakpoint-l) {
+    min-height: 54px;
+    min-width: 115px;
     font-size: tokens.$plmg-font-size-x1-125;
   }
   /* Extra large devices */
   @media only screen and (min-width: tokens.$plmg-breakpoint-xl) {
+    min-height: 54px;
+    min-width: 115px;
     font-size: tokens.$plmg-font-size-x1-125;
   }
 }
 
 .plmg-tab-button-icon {
-  display: inline-block;
-  vertical-align: middle;
+  // Breakpoints
+  /* Extra small devices */
+  @media only screen and (min-width: tokens.$plmg-breakpoint-xs) {
+    font-size: 21px;
+  }
+  /* Small devices */
+  @media only screen and (min-width: tokens.$plmg-breakpoint-s) {
+    font-size: 21px;
+  }
+  /* Medium devices */
+  @media only screen and (min-width: tokens.$plmg-breakpoint-m) {
+    font-size: 28px;
+  }
+  /* Large devices */
+  @media only screen and (min-width: tokens.$plmg-breakpoint-l) {
+    font-size: 28px;
+  }
+  /* Extra large devices */
+  @media only screen and (min-width: tokens.$plmg-breakpoint-xl) {
+    font-size: 28px;
+  }
 }
 // ------------- END Component style ---------------

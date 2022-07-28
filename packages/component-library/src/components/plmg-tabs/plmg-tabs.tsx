@@ -79,11 +79,7 @@ export class Tabs {
               onClick={() => this.openTab(index)}
             >
               {this.hasIcon(tab.icon) && (
-                <plmg-svg-icon
-                  class={'plmg-tab-button-icon'}
-                  icon={tab.icon}
-                  size={'28px'}
-                />
+                <plmg-svg-icon class={'plmg-tab-button-icon'} icon={tab.icon} />
               )}
               {tab.label}
             </button>
