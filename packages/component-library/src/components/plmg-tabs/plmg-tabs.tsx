@@ -74,7 +74,7 @@ export class Tabs {
             <button
               role={'tab'}
               aria-label={tab.label ? tab.label : tab.icon}
-              disabled={tab.disabled}
+              aria-disabled={tab.disabled}
               class={tabClasses}
               onClick={() => this.openTab(index)}
             >

@@ -37,5 +37,5 @@ export class Tab {
    *
    * Default: false
    */
-  @Prop({ reflect: true }) disabled: boolean = false;
+  @Prop() disabled: boolean = false;
 }

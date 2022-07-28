@@ -36,12 +36,12 @@
   padding: 0 10px;
   cursor: pointer;
 
-  &:hover:not(:disabled):not(.active) {
+  &:hover:not([aria-disabled]):not(.active) {
     color: tokens.$plmg-color-text-primary-strong-hover;
     font-weight: tokens.$plmg-font-weight-semibold;
   }
 
-  &:disabled {
+  &[aria-disabled] {
     color: tokens.$plmg-color-text-neutral-disabled;
     cursor: default;
   }

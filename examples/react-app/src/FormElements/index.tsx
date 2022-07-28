@@ -34,6 +34,7 @@ export default function FormElements() {
         <PlmgTab active={currentTab === 0} label="Sliders" />
         <PlmgTab label="Text Input" />
         <PlmgTab label="Radios" />
+        <PlmgTab disabled={currentTab === 2} label="Disabled" />
       </PlmgTabs>
       <div style={{ border: '4px dotted blue', padding: '5px', margin: '5px' }}>
         {renderTab()}
