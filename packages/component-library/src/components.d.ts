@@ -5,12 +5,27 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { PlmgAvatarSize } from "./components/plmg-avatar/plmg-avatar.types";
 import { PlmgButtonColor, PlmgButtonDesign, PlmgButtonSize, PlmgButtonType } from "./components/plmg-button/plmg-button.types";
 import { PlmgErrorMessageSize } from "./components/plmg-error-message/plmg-error-message.types";
 import { PlmgRadioButtonSize } from "./components/plmg-radio-button/plmg-radio-button.types";
 import { PlmgTextInputSize } from "./components/plmg-text-input/plmg-text-input.types";
 import { PlmgTooltipArrowPosition, PlmgTooltipColor, PlmgTooltipPosition } from "./components/plmg-tooltip/plmg-tooltip.types";
 export namespace Components {
+    interface PlmgAvatar {
+        /**
+          * Define imageUrl  Allowed value: - Any string  If no image url is passed, default icon is displayed.
+         */
+        "imageUrl": string;
+        /**
+          * Define size  Allowed values: - small - medium - large - extra-large  Required
+         */
+        "size": PlmgAvatarSize;
+        /**
+          * Define userDeleted  Displays the deleted user icon  Allowed values: - true - false  Default: false
+         */
+        "userDeleted": boolean;
+    }
     interface PlmgButton {
         /**
           * Define button's color  Allowed values:   - primary   - neutral   - standout   - danger  Default: primary
@@ -345,6 +360,12 @@ export interface PlmgTextInputCustomEvent<T> extends CustomEvent<T> {
     target: HTMLPlmgTextInputElement;
 }
 declare global {
+    interface HTMLPlmgAvatarElement extends Components.PlmgAvatar, HTMLStencilElement {
+    }
+    var HTMLPlmgAvatarElement: {
+        prototype: HTMLPlmgAvatarElement;
+        new (): HTMLPlmgAvatarElement;
+    };
     interface HTMLPlmgButtonElement extends Components.PlmgButton, HTMLStencilElement {
     }
     var HTMLPlmgButtonElement: {
@@ -430,6 +451,7 @@ declare global {
         new (): HTMLPlmgTooltipElement;
     };
     interface HTMLElementTagNameMap {
+        "plmg-avatar": HTMLPlmgAvatarElement;
         "plmg-button": HTMLPlmgButtonElement;
         "plmg-card": HTMLPlmgCardElement;
         "plmg-error-message": HTMLPlmgErrorMessageElement;
@@ -447,6 +469,20 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface PlmgAvatar {
+        /**
+          * Define imageUrl  Allowed value: - Any string  If no image url is passed, default icon is displayed.
+         */
+        "imageUrl"?: string;
+        /**
+          * Define size  Allowed values: - small - medium - large - extra-large  Required
+         */
+        "size": PlmgAvatarSize;
+        /**
+          * Define userDeleted  Displays the deleted user icon  Allowed values: - true - false  Default: false
+         */
+        "userDeleted"?: boolean;
+    }
     interface PlmgButton {
         /**
           * Define button's color  Allowed values:   - primary   - neutral   - standout   - danger  Default: primary
@@ -772,6 +808,7 @@ declare namespace LocalJSX {
         "tooltipId"?: string;
     }
     interface IntrinsicElements {
+        "plmg-avatar": PlmgAvatar;
         "plmg-button": PlmgButton;
         "plmg-card": PlmgCard;
         "plmg-error-message": PlmgErrorMessage;
@@ -792,6 +829,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "plmg-avatar": LocalJSX.PlmgAvatar & JSXBase.HTMLAttributes<HTMLPlmgAvatarElement>;
             "plmg-button": LocalJSX.PlmgButton & JSXBase.HTMLAttributes<HTMLPlmgButtonElement>;
             "plmg-card": LocalJSX.PlmgCard & JSXBase.HTMLAttributes<HTMLPlmgCardElement>;
             "plmg-error-message": LocalJSX.PlmgErrorMessage & JSXBase.HTMLAttributes<HTMLPlmgErrorMessageElement>;
