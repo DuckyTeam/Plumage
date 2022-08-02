@@ -10,14 +10,11 @@ export default {
       options: ['small', 'medium', 'large', 'extra-large'],
       control: { type: 'select' },
     },
-    label: {
+    ['image-url']: {
       control: { type: 'text' },
     },
     interactive: {
       control: { type: 'boolean' },
-    },
-    ['image-url']: {
-      control: { type: 'text' },
     },
     ['user-deleted']: {
       control: { type: 'boolean' },
@@ -25,7 +22,7 @@ export default {
   },
 };
 
-const PROPS = ['size', 'image-url', 'interactive', 'label', 'user-deleted'];
+const PROPS = ['size', 'image-url', 'interactive', 'user-deleted'];
 
 const Template = (args) => {
   const el = document.createElement('plmg-avatar');
@@ -37,10 +34,9 @@ export const Primary = Template.bind({});
 Primary.storyName = 'Avatar';
 Primary.args = {
   size: 'medium',
-  ['image-url']: 'https://static.ducky.eco/icons/maskable_icon_192.png',
   interactive: true,
+  ['image-url']: 'https://static.ducky.eco/icons/maskable_icon_192.png',
   ['user-deleted']: false,
-  label: 'user avatar',
 };
 
 export const UserDeleted = Template.bind({});
@@ -74,22 +70,24 @@ AllSizes.storyName = 'All Sizes';
 export const AllVariations = (args) => {
   const userDeleted = [true, false];
   const imageUrl = [
-    undefined,
     'https://static.ducky.eco/icons/maskable_icon_192.png',
+    undefined,
   ];
 
   let htmlContent = '';
   imageUrl.forEach((image) => {
     userDeleted.forEach((deleted) => {
       sizes.forEach((size) => {
-        if (image && !deleted) {
-          htmlContent += `<plmg-avatar image-url=${image} size=${size}></plmg-avatar>`;
-        } else if (image || !deleted) {
-          htmlContent += `<plmg-avatar user-deleted=${deleted} size=${size}></plmg-avatar>`;
+        if (image) {
+          htmlContent += `<plmg-avatar interactive image-url=${image} size=${size}></plmg-avatar>`;
+        } else {
+          htmlContent += `<plmg-avatar interactive user-deleted=${deleted} size=${size}></plmg-avatar>`;
         }
       });
     });
   });
+
+  console.log(htmlContent);
 
   const el = document.createElement('div');
   el.innerHTML = htmlContent;
