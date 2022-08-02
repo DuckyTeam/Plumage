@@ -11,9 +11,11 @@ import {
   PlmgRadioButtonGroup,
   PlmgSeparator,
   PlmgTooltip,
+  PlmgAvatar,
 } from '@ducky/plumage-react';
 import Sliders from './Sliders';
 import TextForm from './TextForm';
+import Avatars from './Avatars';
 
 const TooltipRefExample = () => {
   const [button, setButton] = useState(undefined);
@@ -76,18 +78,28 @@ ReactDOM.render(
           display: 'flex',
           flexDirection: 'row',
           justifyContent: 'space-between',
+          alignItems: 'center',
         }}
       >
         <span>Menu Item</span>
+
         <PlmgSeparator
           thickness="thick"
+          style={{ alignSelf: 'stretch' }}
           direction="vertical"
           color="#78909C"
         ></PlmgSeparator>
         <span>Menu Item 2</span>
+        <PlmgAvatar
+          size={'medium'}
+          interactive
+          onAvatarClick={() =>
+            alert(`I'm a clickable avatar, but the others aren't`)
+          }
+        ></PlmgAvatar>
       </div>
     </PlmgHeader>
-
+    <Avatars />
     <div slot={'content'} style={{ padding: '24px' }}>
       <PlmgButton
         onClick={(e: any) => {
@@ -130,6 +142,7 @@ ReactDOM.render(
           <h1>PlmgCard slot-2</h1>
         </div>
       </PlmgCard>
+      <Avatars />
       <Sliders />
       <TextForm />
       <p
