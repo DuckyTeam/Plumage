@@ -26,7 +26,7 @@ export class Tab {
    *
    * Default: false
    */
-  @Prop() active: boolean = false;
+  @Prop({ reflect: true }) active: boolean = false;
 
   /**
    * Define tabs disabled state
