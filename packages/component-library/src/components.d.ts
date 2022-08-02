@@ -335,6 +335,10 @@ export namespace Components {
         "tooltipId": string;
     }
 }
+export interface PlmgAvatarCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPlmgAvatarElement;
+}
 export interface PlmgCardCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPlmgCardElement;
@@ -474,6 +478,7 @@ declare namespace LocalJSX {
           * Define imageUrl  Allowed value: - Any string  If no image url is passed, default icon is displayed.
          */
         "imageUrl"?: string;
+        "onAvatarClick"?: (event: PlmgAvatarCustomEvent<MouseEvent>) => void;
         /**
           * Define size  Allowed values: - small - medium - large - extra-large  Required
          */

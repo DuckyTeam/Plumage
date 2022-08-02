@@ -1,4 +1,4 @@
-import { Component, h, Prop, Watch } from '@stencil/core';
+import { Component, h, Prop, Watch, Event, EventEmitter } from '@stencil/core';
 import { PlmgAvatarSize, isPlmgAvatarSize } from './plmg-avatar.types';
 
 @Component({
@@ -61,6 +61,8 @@ export class Avatar {
     }
   }
 
+  @Event() avatarClick: EventEmitter<MouseEvent>;
+
   render() {
     const classes = {
       'plmg-avatar': true,
@@ -70,6 +72,7 @@ export class Avatar {
     return (
       <div
         tabIndex={0}
+        onClick={(e) => this.avatarClick.emit(e)}
         class={classes}
         style={
           !this.userDeleted && { backgroundImage: `url(${this.imageUrl})` }
