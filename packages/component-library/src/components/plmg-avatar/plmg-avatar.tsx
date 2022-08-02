@@ -23,21 +23,31 @@ export class Avatar {
   }
 
   /**
-   * Define userDeleted
-   *
-   * Displays the deleted user icon
+   * Define if avatar can be interacted with
    *
    * Allowed values:
    * - true
    * - false
    *
+   * If false, the avatar displays an non-interactive image
+   *
    * Default: false
    **/
-  @Prop() userDeleted: boolean = false;
-  @Watch('userDeleted')
-  validateUserDeleted(newValue: boolean) {
+  @Prop() interactive: boolean = false;
+  @Watch('interactive')
+  validateInteractive(newValue: boolean) {
     if (typeof newValue !== 'boolean')
-      throw new Error('userDeleted must be a boolean');
+      throw new Error('interactive must be a boolean');
+  }
+
+  /**
+   * An accessible label. If no label is supplied, the icon or image is hidden from assistive technology.
+   */
+  @Prop() label: string | undefined = undefined;
+  @Watch('label')
+  validateLabel(newValue: string) {
+    if (newValue && typeof newValue !== 'string')
+      throw new Error('label must be a string');
   }
 
   /**
@@ -61,6 +71,27 @@ export class Avatar {
     }
   }
 
+  /**
+   * Define userDeleted
+   *
+   * Displays the deleted user icon
+   *
+   * Allowed values:
+   * - true
+   * - false
+   *
+   * Default: false
+   **/
+  @Prop() userDeleted: boolean = false;
+  @Watch('userDeleted')
+  validateUserDeleted(newValue: boolean) {
+    if (typeof newValue !== 'boolean')
+      throw new Error('userDeleted must be a boolean');
+  }
+
+  /**
+   * Exposes click handler event. Only exposed when interactive is true.
+   **/
   @Event() avatarClick: EventEmitter<MouseEvent>;
 
   render() {
@@ -71,17 +102,18 @@ export class Avatar {
 
     return (
       <div
-        tabIndex={0}
-        onClick={(e) => this.avatarClick.emit(e)}
+        tabIndex={this.interactive ? 0 : -1}
+        onClick={this.interactive ? (e) => this.avatarClick.emit(e) : null}
         class={classes}
-        style={
-          !this.userDeleted && { backgroundImage: `url(${this.imageUrl})` }
-        }
+        aria-label={this.label}
+        role={this.interactive ? 'button' : 'img'}
       >
-        {(!this.imageUrl || this.userDeleted) && (
+        {!this.imageUrl || this.userDeleted ? (
           <plmg-svg-icon
             icon={this.userDeleted ? 'personOff' : 'personOutline'}
           ></plmg-svg-icon>
+        ) : (
+          <img class={'plmg-avatar-image'} src={this.imageUrl} alt="" />
         )}
       </div>
     );

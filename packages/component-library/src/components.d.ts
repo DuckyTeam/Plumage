@@ -18,6 +18,14 @@ export namespace Components {
          */
         "imageUrl": string;
         /**
+          * Define if avatar can be interacted with  Allowed values: - true - false  If false, the avatar displays an non-interactive image  Default: false
+         */
+        "interactive": boolean;
+        /**
+          * An accessible label. If no label is supplied, the icon or image is hidden from assistive technology.
+         */
+        "label": string | undefined;
+        /**
           * Define size  Allowed values: - small - medium - large - extra-large  Required
          */
         "size": PlmgAvatarSize;
@@ -478,6 +486,14 @@ declare namespace LocalJSX {
           * Define imageUrl  Allowed value: - Any string  If no image url is passed, default icon is displayed.
          */
         "imageUrl"?: string;
+        /**
+          * Define if avatar can be interacted with  Allowed values: - true - false  If false, the avatar displays an non-interactive image  Default: false
+         */
+        "interactive"?: boolean;
+        /**
+          * An accessible label. If no label is supplied, the icon or image is hidden from assistive technology.
+         */
+        "label"?: string | undefined;
         "onAvatarClick"?: (event: PlmgAvatarCustomEvent<MouseEvent>) => void;
         /**
           * Define size  Allowed values: - small - medium - large - extra-large  Required
