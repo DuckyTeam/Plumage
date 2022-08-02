@@ -494,6 +494,9 @@ declare namespace LocalJSX {
           * An accessible label. If no label is supplied, the icon or image is hidden from assistive technology.
          */
         "label"?: string | undefined;
+        /**
+          * Exposes click handler event. Only exposed when interactive is true.
+         */
         "onAvatarClick"?: (event: PlmgAvatarCustomEvent<MouseEvent>) => void;
         /**
           * Define size  Allowed values: - small - medium - large - extra-large  Required

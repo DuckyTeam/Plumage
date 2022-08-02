@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "create plmg-avatar component",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
