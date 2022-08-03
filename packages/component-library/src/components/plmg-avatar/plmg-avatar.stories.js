@@ -68,26 +68,37 @@ export const AllSizes = (args) => {
 AllSizes.storyName = 'All Sizes';
 
 export const AllVariations = (args) => {
-  const userDeleted = [true, false];
+  const userDeleted = [false, true];
   const imageUrl = [
     'https://static.ducky.eco/icons/maskable_icon_192.png',
     undefined,
   ];
 
   let htmlContent = '';
+  htmlContent += `<p>Interactive</p><span></span><span></span><span></span>`;
   imageUrl.forEach((image) => {
     userDeleted.forEach((deleted) => {
       sizes.forEach((size) => {
-        if (image) {
-          htmlContent += `<plmg-avatar interactive image-url=${image} size=${size}></plmg-avatar>`;
-        } else {
+        if (image !== undefined) {
+          htmlContent += `<plmg-avatar interactive user-deleted=${deleted} image-url=${image} size=${size}></plmg-avatar>`;
+        } else if (!deleted) {
           htmlContent += `<plmg-avatar interactive user-deleted=${deleted} size=${size}></plmg-avatar>`;
         }
       });
     });
   });
-
-  console.log(htmlContent);
+  htmlContent += `<p>Not Interactive</p><span></span><span></span><span></span>`;
+  imageUrl.forEach((image) => {
+    userDeleted.forEach((deleted) => {
+      sizes.forEach((size) => {
+        if (image !== undefined) {
+          htmlContent += `<plmg-avatar user-deleted=${deleted} image-url=${image} size=${size}></plmg-avatar>`;
+        } else if (!deleted) {
+          htmlContent += `<plmg-avatar user-deleted=${deleted} size=${size}></plmg-avatar>`;
+        }
+      });
+    });
+  });
 
   const el = document.createElement('div');
   el.innerHTML = htmlContent;
