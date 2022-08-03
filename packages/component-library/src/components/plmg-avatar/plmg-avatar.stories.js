@@ -116,10 +116,18 @@ AllSizes.storyName = 'All Sizes';
 export const AllVariations = (args) => {
   let htmlContent = '';
   sizes.forEach((size) => {
-    htmlContent += `<p>Non interactive ${size}</p><plmg-avatar image-url='https://static.ducky.eco/icons/maskable_icon_192.png' size=${size}></plmg-avatar><plmg-avatar size=${size}></plmg-avatar><plmg-avatar user-deleted size=${size}></plmg-avatar>`;
+    htmlContent += `
+    <p>Non interactive ${size}</p>
+    <plmg-avatar image-url='https://static.ducky.eco/icons/maskable_icon_192.png' size=${size}></plmg-avatar>
+    <plmg-avatar size=${size}></plmg-avatar>
+    <plmg-avatar user-deleted size=${size}></plmg-avatar>`;
   });
   sizes.forEach((size) => {
-    htmlContent += `<p>Interactive ${size}</p><plmg-avatar interactive image-url='https://static.ducky.eco/icons/maskable_icon_192.png' size=${size}></plmg-avatar><plmg-avatar interactive size=${size}></plmg-avatar><plmg-avatar interactive user-deleted size=${size}></plmg-avatar>`;
+    htmlContent += `
+    <p>Interactive ${size}</p>
+    <plmg-avatar interactive image-url='https://static.ducky.eco/icons/maskable_icon_192.png' size=${size}></plmg-avatar>
+    <plmg-avatar interactive size=${size}></plmg-avatar>
+    <plmg-avatar interactive user-deleted size=${size}></plmg-avatar>`;
   });
 
   const el = document.createElement('div');
