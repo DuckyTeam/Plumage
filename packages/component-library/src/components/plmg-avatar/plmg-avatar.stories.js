@@ -10,6 +10,9 @@ export default {
       options: ['small', 'medium', 'large', 'extra-large'],
       control: { type: 'select' },
     },
+    label: {
+      control: { type: 'text' },
+    },
     ['image-url']: {
       control: { type: 'text' },
     },
@@ -22,7 +25,7 @@ export default {
   },
 };
 
-const PROPS = ['size', 'image-url', 'interactive', 'user-deleted'];
+const PROPS = ['size', 'image-url', 'interactive', 'label', 'user-deleted'];
 
 const Template = (args) => {
   const el = document.createElement('plmg-avatar');
@@ -35,6 +38,7 @@ Primary.storyName = 'Avatar';
 Primary.args = {
   size: 'medium',
   interactive: true,
+  label: 'label',
   ['image-url']: 'https://static.ducky.eco/icons/maskable_icon_192.png',
   ['user-deleted']: false,
 };
