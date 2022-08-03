@@ -102,4 +102,28 @@ describe('plmg-avatar', () => {
       expect(avatarClickedSpy).not.toHaveReceivedEvent();
     });
   });
+  describe('displays colors', () => {
+    it('correctly displays background color', async () => {
+      const page = await newE2EPage();
+      const htmlContent = `<plmg-avatar label="user avatar" background-color="pink" interactive size="medium" >
+      </plmg-avatar>`;
+
+      await page.setContent('<main>' + htmlContent + '</main>');
+
+      const element = await page.find('plmg-avatar >>> div');
+      const styles = await element.getComputedStyle();
+      expect(styles['background-color']).toEqual('rgb(255, 192, 203)');
+    });
+    it('does not apply a background color image url is present', async () => {
+      const page = await newE2EPage();
+      const htmlContent = `<plmg-avatar label="user avatar" image-url="https://static.ducky.eco/icons/maskable_icon_192.png" background-color="#fff" size="medium" >
+      </plmg-avatar>`;
+
+      await page.setContent('<main>' + htmlContent + '</main>');
+
+      const element = await page.find('plmg-avatar >>> div');
+      const styles = await element.getComputedStyle();
+      expect(styles['background-color']).toEqual('rgba(0, 0, 0, 0)');
+    });
+  });
 });
