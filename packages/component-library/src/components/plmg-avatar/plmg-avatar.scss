@@ -16,11 +16,9 @@
 // -------------------------------------------------
 
 .plmg-avatar {
-  background-color: tokens.$plmg-color-background-neutral-medium;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: tokens.$plmg-color-icon-neutral;
   border-radius: 50%;
 
   // Controls

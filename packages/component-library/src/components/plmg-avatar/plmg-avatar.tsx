@@ -1,5 +1,9 @@
 import { Component, h, Prop, Watch, Event, EventEmitter } from '@stencil/core';
 import { PlmgAvatarSize, isPlmgAvatarSize } from './plmg-avatar.types';
+import {
+  plmgColorBackgroundNeutralMedium,
+  plmgColorIconNeutral,
+} from '@ducky/plumage-tokens';
 
 @Component({
   tag: 'plmg-avatar',
@@ -7,6 +11,32 @@ import { PlmgAvatarSize, isPlmgAvatarSize } from './plmg-avatar.types';
   shadow: true,
 })
 export class Avatar {
+  /**
+   * Define background color.
+   *
+   * Can be any valid CSS color value.
+   *
+   * Default is plmgColorBorderNeutralMedium.
+   */
+  @Prop() backgroundColor: string = plmgColorBackgroundNeutralMedium;
+  @Watch('backgroundColor')
+  validateBackgroundColor(newValue: string) {
+    if (typeof newValue !== 'string' || newValue === '')
+      throw new Error('color: must be a valid value');
+  }
+  /**
+   * Define icon color.
+   *
+   * Can be any valid CSS color value.
+   *
+   * Default is plmgColorIconNeutral
+   */
+  @Prop() iconColor: string = plmgColorIconNeutral;
+  @Watch('iconColor')
+  validateIconColor(newValue: string) {
+    if (typeof newValue !== 'string' || newValue === '')
+      throw new Error('color: must be a valid value');
+  }
   /**
    * Define imageUrl
    *
@@ -100,16 +130,22 @@ export class Avatar {
       [this.size]: true,
     };
 
+    const backgroundColorStyle = {
+      backgroundColor: this.backgroundColor ?? plmgColorBackgroundNeutralMedium,
+    };
+
     return (
       <div
         tabIndex={this.interactive ? 0 : -1}
         onClick={this.interactive ? (e) => this.avatarClick.emit(e) : null}
         class={classes}
+        style={!this.imageUrl && backgroundColorStyle}
         aria-label={this.label}
         role={this.interactive ? 'button' : 'img'}
       >
         {!this.imageUrl || this.userDeleted ? (
           <plmg-svg-icon
+            color={this.iconColor ? this.iconColor : plmgColorIconNeutral}
             icon={this.userDeleted ? 'personOff' : 'personOutline'}
           ></plmg-svg-icon>
         ) : (
