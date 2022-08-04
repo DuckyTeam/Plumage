@@ -91,7 +91,9 @@ ReactDOM.render(
         ></PlmgSeparator>
         <span>Menu Item 2</span>
         <PlmgAvatar
-          size={'medium'}
+          size={'small'}
+          iconColor={'#E81F64'}
+          backgroundColor={'#FAD2E0'}
           interactive
           onAvatarClick={() =>
             alert(`I'm a clickable avatar, but the others aren't`)
