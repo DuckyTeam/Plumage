@@ -14,6 +14,14 @@ import { PlmgTooltipArrowPosition, PlmgTooltipColor, PlmgTooltipPosition } from 
 export namespace Components {
     interface PlmgAvatar {
         /**
+          * Define background color.  Can be any valid CSS color value.  Default is plmgColorBorderNeutralMedium.
+         */
+        "backgroundColor": string;
+        /**
+          * Define icon color.  Can be any valid CSS color value.  Default is plmgColorIconNeutral
+         */
+        "iconColor": string;
+        /**
           * Define imageUrl  Allowed value: - Any string  If no image url is passed, default icon is displayed.
          */
         "imageUrl": string;
@@ -482,6 +490,14 @@ declare global {
 }
 declare namespace LocalJSX {
     interface PlmgAvatar {
+        /**
+          * Define background color.  Can be any valid CSS color value.  Default is plmgColorBorderNeutralMedium.
+         */
+        "backgroundColor"?: string;
+        /**
+          * Define icon color.  Can be any valid CSS color value.  Default is plmgColorIconNeutral
+         */
+        "iconColor"?: string;
         /**
           * Define imageUrl  Allowed value: - Any string  If no image url is passed, default icon is displayed.
          */
