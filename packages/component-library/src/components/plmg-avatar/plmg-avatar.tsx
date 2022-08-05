@@ -134,12 +134,14 @@ export class Avatar {
       backgroundColor: this.backgroundColor ?? plmgColorBackgroundNeutralMedium,
     };
 
+    console.log(backgroundColorStyle);
+
     return (
       <div
         tabIndex={this.interactive ? 0 : -1}
         onClick={this.interactive ? (e) => this.avatarClick.emit(e) : null}
         class={classes}
-        style={!this.imageUrl && backgroundColorStyle}
+        style={(!this.imageUrl || this.userDeleted) && backgroundColorStyle}
         aria-label={this.label}
         role={this.interactive ? 'button' : 'img'}
       >

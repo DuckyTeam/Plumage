@@ -80,6 +80,22 @@ describe('plmg-avatar', () => {
     </plmg-avatar>
   `);
   });
+  it('renders a background color if imageurl exists and userDeleted is true', async () => {
+    const page = await newSpecPage({
+      components: [Avatar],
+      html: `<plmg-avatar size="medium" image-url="https://static.ducky.eco/icons/maskable_icon_192.png" user-deleted="true" background-color="#ffd9d9"></plmg-avatar>`,
+    });
+    expect(page.root).toEqualHtml(`
+    <plmg-avatar size="medium" image-url="https://static.ducky.eco/icons/maskable_icon_192.png" user-deleted="true" background-color="#ffd9d9">
+      <mock:shadow-root>
+      <div style="background-color: #ffd9d9" tabindex="-1" role="img" class="plmg-avatar medium">
+        <plmg-svg-icon color="#526a76" icon="personOff">
+        </plmg-svg-icon>
+      </div> 
+      </mock:shadow-root>
+    </plmg-avatar>
+  `);
+  });
   it('renders as interactive', async () => {
     const page = await newSpecPage({
       components: [Avatar],
@@ -95,15 +111,15 @@ describe('plmg-avatar', () => {
       </plmg-avatar>
     `);
   });
-  it('renders userDeleted icon if userDeleted is true and an image url exists', async () => {
+  it('renders userDeleted icon with the default background if userDeleted is true and an image url exists', async () => {
     const page = await newSpecPage({
       components: [Avatar],
       html: `<plmg-avatar size="medium" user-deleted image-url="https://static.ducky.eco/icons/maskable_icon_192.png"></plmg-avatar>`,
     });
     expect(page.root).toEqualHtml(`
-      <plmg-avatar user-deleted image-url="https://static.ducky.eco/icons/maskable_icon_192.png" size="medium">
+      <plmg-avatar user-deleted image-url="https://static.ducky.eco/icons/maskable_icon_192.png" size="medium" >
         <mock:shadow-root>
-        <div class="medium plmg-avatar" role="img" tabindex="-1">
+        <div class="medium plmg-avatar" role="img" tabindex="-1" style="background-color: #eff2f3;">
           <plmg-svg-icon  color="#526a76" icon="personOff">
           </plmg-svg-icon>
         </div> 
