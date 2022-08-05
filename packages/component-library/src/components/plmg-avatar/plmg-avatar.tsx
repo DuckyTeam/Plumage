@@ -134,8 +134,6 @@ export class Avatar {
       backgroundColor: this.backgroundColor ?? plmgColorBackgroundNeutralMedium,
     };
 
-    console.log(backgroundColorStyle);
-
     return (
       <div
         tabIndex={this.interactive ? 0 : -1}
