@@ -33,23 +33,23 @@ const users = [
   },
 ];
 
-const avatarsComponents = [
-  users.map(({ name, picture, user_id }) => (
-    <PlmgAvatar
-      key={user_id}
-      userDeleted={name === '' ? true : false}
-      imageUrl={picture}
-      size={'medium'}
-      style={user_id !== '1' ? { marginLeft: '-15px' } : null}
-    />
-  )),
-];
+const avatarsComponents = users.map(({ name, picture, user_id }) => (
+  <PlmgAvatar
+    key={user_id}
+    userDeleted={name === ''}
+    imageUrl={picture}
+    size={'medium'}
+    style={{ marginLeft: '-15px' }}
+  />
+));
 
 export default function Avatars() {
   return (
     <>
       <h3>Avatars</h3>
-      <div style={{ display: 'flex' }}>{avatarsComponents}</div>
+      <div style={{ display: 'flex', marginLeft: '15px' }}>
+        {avatarsComponents}
+      </div>
     </>
   );
 }
