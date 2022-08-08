@@ -21,6 +21,7 @@ import {
 })
 export class Slider {
   private ref: HTMLDivElement;
+  private inputFieldRef: HTMLInputElement;
   private abortResizeListener: AbortController;
 
   /**
@@ -75,7 +76,7 @@ export class Slider {
    * Allowed values:
    * - A comma separated list of numbers
    *
-   * Must be a comma separated list of numbers with at least two items
+   * Must be a comma seprated list of numbers with at least two items
    * The first and last items set min and max values
    * Additional values set additional marks and labels
    * Sort the array passed to component on the client, the
@@ -138,6 +139,7 @@ export class Slider {
   @State() inputFieldValue: number;
   @State() value: number;
   @State() internalRangeValues: number[];
+  @State() inputFieldError: boolean;
 
   /**
    * The event "valueUpdated" is triggered when the slider value changes either by moving the thumb or entering in the text field.
@@ -153,6 +155,7 @@ export class Slider {
   }
 
   private updateValue(newValue) {
+    this.inputFieldError = false;
     this.value = newValue;
     if (this.inputFieldValue !== this.value) {
       this.inputFieldValue = this.value;
@@ -188,15 +191,17 @@ export class Slider {
       newValue > this.max ||
       newValue < this.min ||
       !SET_ALLOWED_INPUTS.includes(newValue)
-    )
+    ) {
+      this.inputFieldError = true;
       return;
+    }
+    this.inputFieldError = false;
     this.updateValue(newValue);
   }
 
   private setValues() {
     if (!this.rangeValues) return;
     this.internalRangeValues = this.stringToNumberArray(this.rangeValues);
-    console.log(this.internalRangeValues);
     this.min = this.internalRangeValues[0];
     this.max = this.internalRangeValues[this.internalRangeValues.length - 1];
     if (this.defaultValue >= this.min && this.defaultValue <= this.max) {
@@ -302,21 +307,21 @@ export class Slider {
             <label
               aria-label={this.name}
               htmlfor={this.nameToId('-number-input')}
-            >
-              <input
-                type={'number'}
-                id={this.nameToId('-number-input')}
-                name={this.name}
-                step={this.stepValue}
-                aria-valuemin={this.min}
-                aria-valuemax={this.max}
-                aria-valuenow={this.value}
-                min={this.min}
-                max={this.max}
-                value={this.inputFieldValue}
-                onInput={(Event) => this.handleInputFieldChange(Event)}
-              />
-            </label>
+            ></label>
+            <input
+              class={this.inputFieldError && 'error'}
+              type={'number'}
+              id={this.nameToId('-number-input')}
+              name={this.name}
+              step={this.stepValue}
+              aria-valuemin={this.min}
+              aria-valuemax={this.max}
+              aria-valuenow={this.value}
+              min={this.min}
+              max={this.max}
+              value={this.inputFieldValue}
+              onBlur={(Event) => this.handleInputFieldChange(Event)}
+            />
           </div>
         </div>
       </Host>
