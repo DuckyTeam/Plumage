@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Mon, 08 Aug 2022 11:50:55 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Aug 2022 12:52:47 GMT and should not be manually modified.
+
+## 1.6.0
+Mon, 08 Aug 2022 12:52:47 GMT
+
+### Minor changes
+
+- create plmg-avatar component
 
 ## 1.5.4
 Mon, 08 Aug 2022 11:50:55 GMT

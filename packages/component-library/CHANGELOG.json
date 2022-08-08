@@ -2,6 +2,18 @@
   "name": "@ducky/plumage",
   "entries": [
     {
+      "version": "1.6.0",
+      "tag": "@ducky/plumage_v1.6.0",
+      "date": "Mon, 08 Aug 2022 12:52:47 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "create plmg-avatar component"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.5.4",
       "tag": "@ducky/plumage_v1.5.4",
       "date": "Mon, 08 Aug 2022 11:50:55 GMT",
