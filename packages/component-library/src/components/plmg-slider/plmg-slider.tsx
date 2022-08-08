@@ -75,7 +75,7 @@ export class Slider {
    * Allowed values:
    * - A comma separated list of numbers
    *
-   * Must be a comma seperated list of numbers with at least two items
+   * Must be a comma separated list of numbers with at least two items
    * The first and last items set min and max values
    * Additional values set additional marks and labels
    * Sort the array passed to component on the client, the
@@ -196,6 +196,7 @@ export class Slider {
   private setValues() {
     if (!this.rangeValues) return;
     this.internalRangeValues = this.stringToNumberArray(this.rangeValues);
+    console.log(this.internalRangeValues);
     this.min = this.internalRangeValues[0];
     this.max = this.internalRangeValues[this.internalRangeValues.length - 1];
     if (this.defaultValue >= this.min && this.defaultValue <= this.max) {
