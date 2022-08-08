@@ -1,0 +1,66 @@
+@use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
+
+// Common styles to all shadow-DOM components
+// Remove this section if your component does not use shadow DOM
+// -------------------------------------------------
+:host {
+  display: block;
+}
+
+:host([hidden]) {
+  display: none;
+}
+// ------------- END Common styles -----------------
+
+// Component style
+// -------------------------------------------------
+
+.plmg-avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+
+  // Controls
+  &.small {
+    font-size: 16px;
+    width: 32px;
+    height: 32px;
+  }
+
+  &.medium {
+    font-size: 24px;
+    width: 48px;
+    height: 48px;
+  }
+
+  &.large {
+    font-size: 48px;
+    width: 72px;
+    height: 72px;
+  }
+
+  &.extra-large {
+    font-size: 64px;
+    width: 96px;
+    height: 96px;
+  }
+
+  // States
+  &:hover[role='button'] {
+    filter: brightness(0.9);
+    cursor: pointer;
+  }
+
+  &:focus-visible[role='button'] {
+    outline: 4px solid tokens.$plmg-color-border-standout;
+  }
+}
+
+.plmg-avatar-image {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+}
+
+// ------------- END Component style ---------------
