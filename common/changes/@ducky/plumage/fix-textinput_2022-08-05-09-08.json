@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "fix(story):add missing prop value to storybook example",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
