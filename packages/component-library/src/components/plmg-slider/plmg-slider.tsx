@@ -21,7 +21,6 @@ import {
 })
 export class Slider {
   private ref: HTMLDivElement;
-  private inputFieldRef: HTMLInputElement;
   private abortResizeListener: AbortController;
 
   /**
