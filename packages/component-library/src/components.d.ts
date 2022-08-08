@@ -241,9 +241,9 @@ export namespace Components {
          */
         "name": string;
         /**
-          * Define a range of values  Allowed values: - An array of with at least two items  Must be a list of values with at least two items with the first and last items set min and max values. Additional values set additional marks and labels. Sort the array passed to component on the client, the component will not sort the array.
+          * Define a range of values  Allowed values: - A comma separated list of numbers  Must be a comma seperated list of numbers with at least two items The first and last items set min and max values Additional values set additional marks and labels Sort the array passed to component on the client, the component will not sort the array.
          */
-        "rangeValues": Array<number>;
+        "rangeValues": string;
         /**
           * Define step  Allowed values: - Any number  Slider's value will increase or decrease by the step value  When step is not provided the step value is set to 1% of the range
          */
@@ -689,9 +689,9 @@ declare namespace LocalJSX {
          */
         "onValueUpdated"?: (event: PlmgSliderCustomEvent<any>) => void;
         /**
-          * Define a range of values  Allowed values: - An array of with at least two items  Must be a list of values with at least two items with the first and last items set min and max values. Additional values set additional marks and labels. Sort the array passed to component on the client, the component will not sort the array.
+          * Define a range of values  Allowed values: - A comma separated list of numbers  Must be a comma seperated list of numbers with at least two items The first and last items set min and max values Additional values set additional marks and labels Sort the array passed to component on the client, the component will not sort the array.
          */
-        "rangeValues"?: Array<number>;
+        "rangeValues"?: string;
         /**
           * Define step  Allowed values: - Any number  Slider's value will increase or decrease by the step value  When step is not provided the step value is set to 1% of the range
          */
