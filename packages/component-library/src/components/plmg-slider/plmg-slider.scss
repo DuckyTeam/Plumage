@@ -233,7 +233,7 @@ $thumb-diameter: 1.5em;
     &:hover:not(:focus) {
       background-color: tokens.$plmg-color-background-neutral-hover;
     }
-    &:not(.error):focus {
+    &:focus {
       outline: tokens.$plmg-border-width-m solid
         tokens.$plmg-color-border-primary;
     }
