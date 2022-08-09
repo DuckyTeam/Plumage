@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "fix(slider):make rangevalues a string\"",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
