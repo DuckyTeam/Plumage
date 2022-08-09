@@ -223,10 +223,6 @@ $thumb-diameter: 1.5em;
     box-shadow: tokens.$plmg-shadow-inner-s;
     border-radius: tokens.$plmg-border-radius-s;
 
-    &.error {
-      outline: tokens.$plmg-border-width-m solid
-        tokens.$plmg-color-border-danger-strong;
-    }
     &:hover &:focus &:focus-visible {
       outline: none;
     }
