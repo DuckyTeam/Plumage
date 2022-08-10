@@ -75,11 +75,10 @@ export class Slider {
    * Allowed values:
    * - A comma separated list of numbers
    *
-   * Must be a comma seperated list of numbers with at least two items
+   * Must be a comma separated list of numbers with at least two items
    * The first and last items set min and max values
    * Additional values set additional marks and labels
-   * Sort the array passed to component on the client, the
-   * component will not sort the array.
+   * Pass values in the ascending order, the component does not sort the list
    */
   @Prop() rangeValues: string;
   @Watch('rangeValues')
