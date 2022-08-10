@@ -1,6 +1,4 @@
 import { newE2EPage } from '@stencil/core/testing';
-import { AxePuppeteer } from '@axe-core/puppeteer';
-import { Page } from 'puppeteer';
 
 describe('plmg-slider', () => {
   it('renders the component', async () => {
@@ -11,6 +9,7 @@ describe('plmg-slider', () => {
     const element = await page.find('plmg-slider');
     expect(element).toHaveClass('hydrated');
   });
+
   it('renders the input range', async () => {
     const page = await newE2EPage();
     await page.setContent(
@@ -21,7 +20,7 @@ describe('plmg-slider', () => {
   });
 });
 
-describe('sets the range and initial valuess', () => {
+describe('plmg-slider sets the range and initial values', () => {
   it('sets min and max values', async () => {
     const page = await newE2EPage();
     await page.setContent(
@@ -31,6 +30,7 @@ describe('sets the range and initial valuess', () => {
     expect(element).toEqualAttribute('min', '0.1');
     expect(element).toEqualAttribute('max', '100.31');
   });
+
   it('sets the value to min if not default-value is set', async () => {
     const page = await newE2EPage();
     await page.setContent(
@@ -39,6 +39,7 @@ describe('sets the range and initial valuess', () => {
     const element = await page.find('plmg-slider');
     expect(element).toEqualAttribute('value', '0');
   });
+
   it('sets the inital value if default value is within range', async () => {
     const page = await newE2EPage();
     await page.setContent(
@@ -47,6 +48,7 @@ describe('sets the range and initial valuess', () => {
     const element = await page.find('plmg-slider');
     expect(element).toEqualAttribute('value', '5');
   });
+
   it('sets the value to the min if default value prop is above the allowed range', async () => {
     const page = await newE2EPage();
     await page.setContent(
@@ -55,6 +57,7 @@ describe('sets the range and initial valuess', () => {
     const element = await page.find('plmg-slider');
     expect(element).toEqualAttribute('value', '0');
   });
+
   it('set the value to the min if the default value prop is below the allowed range', async () => {
     const page = await newE2EPage();
     await page.setContent(
@@ -65,7 +68,7 @@ describe('sets the range and initial valuess', () => {
   });
 });
 
-describe('displays marks', () => {
+describe('plmg-slider conditionally displays marks', () => {
   it('displays marks by default', async () => {
     const page = await newE2EPage();
     await page.setContent(
@@ -74,7 +77,8 @@ describe('displays marks', () => {
     const element = await page.find('plmg-slider >>>  .marks');
     expect(element).not.toBe(null);
   });
-  it('displays does not display marks', async () => {
+
+  it('does not display marks when marks props value is false', async () => {
     const page = await newE2EPage();
     await page.setContent(
       '<plmg-slider name="Range Slider" marks="false" range-values="0, 10"></plmg-slider>'
@@ -84,7 +88,7 @@ describe('displays marks', () => {
   });
 });
 
-describe('re-renders when props change', () => {
+describe('plmg-slider re-renders when props change', () => {
   it('adds the thumb label', async () => {
     const page = await newE2EPage();
     await page.setContent(
@@ -105,6 +109,7 @@ describe('re-renders when props change', () => {
       await page.find('plmg-slider >>> .plmg-slider-thumb-label')
     ).not.toBe(null);
   });
+
   it('removes marks', async () => {
     const page = await newE2EPage();
     await page.setContent(
@@ -125,7 +130,7 @@ describe('re-renders when props change', () => {
   });
 });
 
-describe('updates the value', () => {
+describe('plmg-slider updates the value', () => {
   it('when the user enters a valid value', async () => {
     const page = await newE2EPage();
     await page.setContent(
@@ -137,6 +142,7 @@ describe('updates the value', () => {
     await page.waitForChanges();
     expect(inputRange).toEqualAttribute('value', '10');
   });
+
   it('rejects an invalid value', async () => {
     const page = await newE2EPage();
     await page.setContent(
