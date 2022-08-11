@@ -52,6 +52,15 @@ describe('plmg-slider sets the range and initial values', () => {
   it('sets the value to the min if default value prop is above the allowed range', async () => {
     const page = await newE2EPage();
     await page.setContent(
+      '<plmg-slider name="Range Slider" marks="false" range-values="0, 10"></plmg-slider>'
+    );
+    const element = await page.find('plmg-slider >>>  .marks');
+    expect(element).toBe(null);
+  });
+
+  it('does not display marks when marks props value is false', async () => {
+    const page = await newE2EPage();
+    await page.setContent(
       '<plmg-slider name="Range Slider" range-values="0, 10" default-value="10.001"></plmg-slider>'
     );
     const element = await page.find('plmg-slider');

@@ -18,6 +18,7 @@
 
 ### Used by
 
+ - [plmg-avatar](../plmg-avatar)
  - [plmg-button](../plmg-button)
  - [plmg-error-message](../plmg-error-message)
  - [plmg-sidebar-item](../plmg-sidebar-item)
@@ -25,6 +26,7 @@
 ### Graph
 ```mermaid
 graph TD;
+  plmg-avatar --> plmg-svg-icon
   plmg-button --> plmg-svg-icon
   plmg-error-message --> plmg-svg-icon
   plmg-sidebar-item --> plmg-svg-icon
