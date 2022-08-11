@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Mon, 08 Aug 2022 12:52:47 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Aug 2022 12:27:41 GMT and should not be manually modified.
+
+## 1.6.1
+Thu, 11 Aug 2022 12:27:41 GMT
+
+### Patches
+
+- fix(slider):make rangevalues a string"
 
 ## 1.6.0
 Mon, 08 Aug 2022 12:52:47 GMT
