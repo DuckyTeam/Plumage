@@ -137,7 +137,6 @@ export class Slider {
   @State() inputFieldValue: number;
   @State() value: number;
   @State() internalRangeValues: number[];
-  @State() allowedInputs: number[];
 
   /**
    * The event "valueUpdated" is triggered when the slider value changes either by moving the thumb or entering in the text field.
@@ -158,7 +157,7 @@ export class Slider {
     this.valueUpdated.emit({ value: this.value });
   }
 
-  private setAllowedInputs() {
+  private getAllowedInputs() {
     const range = Array.from(
       { length: (this.max - this.min) / this.stepValue + 1 },
       (_, i) => this.min + i * this.stepValue
@@ -173,7 +172,7 @@ export class Slider {
     this.inputFieldValue = ev.target.value;
   }
 
-  private validateInputField(ev) {
+  private validateInput(ev) {
     if (isNaN(ev.target.value)) return;
     if (ev.target.value < this.min) {
       return this.updateValue(this.min);
@@ -181,16 +180,18 @@ export class Slider {
     if (ev.target.value > this.max) {
       return this.updateValue(this.max);
     }
-    if (this.allowedInputs.includes(ev.target.value)) {
-      return this.updateValue(ev.target.value);
-    }
-    return this.updateValue(
-      this.allowedInputs.reduce((prev, curr) =>
+    const ALLOWED_INPUTS = this.getAllowedInputs();
+    if (ALLOWED_INPUTS.includes(ev.target.value)) {
+      this.updateValue(ev.target.value);
+      return (this.inputFieldValue = this.value);
+    } else {
+      const value = ALLOWED_INPUTS.reduce((prev, curr) =>
         Math.abs(curr - ev.target.value) < Math.abs(prev - ev.target.value)
           ? curr
           : prev
-      )
-    );
+      );
+      this.updateValue(value);
+    }
   }
 
   private setValues() {
@@ -198,13 +199,16 @@ export class Slider {
     this.internalRangeValues = this.stringToNumberArray(this.rangeValues);
     this.min = this.internalRangeValues[0];
     this.max = this.internalRangeValues[this.internalRangeValues.length - 1];
-    this.defaultValue >= this.min && this.defaultValue <= this.max
-      ? (this.value = this.defaultValue)
-      : (this.value = this.min);
-    !this.step
-      ? (this.stepValue = (this.max - this.min) / 100)
-      : (this.stepValue = this.step);
-    this.allowedInputs = this.setAllowedInputs();
+    if (this.defaultValue >= this.min && this.defaultValue <= this.max) {
+      this.updateValue(this.defaultValue);
+    } else {
+      this.updateValue(this.min);
+    }
+    if (!this.step) {
+      this.stepValue = (this.max - this.min) / 100;
+    } else {
+      this.stepValue = this.step;
+    }
   }
 
   private resizeHandler() {
@@ -311,7 +315,7 @@ export class Slider {
                 max={this.max}
                 value={this.inputFieldValue}
                 onInput={(ev) => this.handleInputFieldChange(ev)}
-                onBlur={(ev) => this.validateInputField(ev)}
+                onBlur={(ev) => this.validateInput(ev)}
               />
             </label>
           </div>
