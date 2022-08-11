@@ -153,43 +153,45 @@ export class Slider {
 
   private updateValue(newValue) {
     this.value = newValue;
-    if (this.inputFieldValue !== this.value) {
-      this.inputFieldValue = this.value;
-    }
+    this.inputFieldValue = newValue;
     this.valueUpdated.emit({ value: this.value });
   }
 
   private getAllowedInputs() {
-    let inputs = [];
-    inputs.push(this.min);
-    while (inputs[inputs.length - 1] <= this.max) {
-      const PREV = inputs[inputs.length - 1];
-      // Correct for floating point errors by rounding when necessary
-      const NEXT =
-        Math.round((PREV + this.stepValue + Number.EPSILON) * 1000000) /
-        1000000;
-      // Escape valve in case of over rounding
-      if (!(NEXT > PREV)) return;
-      inputs.push(NEXT);
-    }
-    return inputs;
+    const range = Array.from(
+      { length: (this.max - this.min) / this.stepValue + 1 },
+      (_, i) => this.min + i * this.stepValue
+    );
+    const rounded = range.map(
+      (value) => Math.round((value + Number.EPSILON) * 1000000) / 1000000
+    );
+    return rounded;
   }
 
   private handleInputFieldChange(ev) {
-    // Ignore Empty Strings
-    if (ev.target.value == '') return;
-    // Get an array of allowed inputs
-    const SET_ALLOWED_INPUTS = this.getAllowedInputs();
-    // Check if input is allowed value, within range and one of the allowed inputs
-    const newValue = parseFloat(ev.target.value);
-    if (
-      isNaN(newValue) ||
-      newValue > this.max ||
-      newValue < this.min ||
-      !SET_ALLOWED_INPUTS.includes(newValue)
-    )
-      return;
-    this.updateValue(newValue);
+    this.inputFieldValue = ev.target.value;
+  }
+
+  private validateInput(ev) {
+    if (isNaN(ev.target.value)) return;
+    if (ev.target.value < this.min) {
+      return this.updateValue(this.min);
+    }
+    if (ev.target.value > this.max) {
+      return this.updateValue(this.max);
+    }
+    const ALLOWED_INPUTS = this.getAllowedInputs();
+    if (ALLOWED_INPUTS.includes(ev.target.value)) {
+      this.updateValue(ev.target.value);
+      return (this.inputFieldValue = this.value);
+    } else {
+      const value = ALLOWED_INPUTS.reduce((prev, curr) =>
+        Math.abs(curr - ev.target.value) < Math.abs(prev - ev.target.value)
+          ? curr
+          : prev
+      );
+      this.updateValue(value);
+    }
   }
 
   private setValues() {
@@ -312,7 +314,8 @@ export class Slider {
                 min={this.min}
                 max={this.max}
                 value={this.inputFieldValue}
-                onInput={(Event) => this.handleInputFieldChange(Event)}
+                onInput={(ev) => this.handleInputFieldChange(ev)}
+                onBlur={(ev) => this.validateInput(ev)}
               />
             </label>
           </div>
