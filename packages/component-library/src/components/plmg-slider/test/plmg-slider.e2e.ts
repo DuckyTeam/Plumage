@@ -129,3 +129,29 @@ describe('plmg-slider re-renders when props change', () => {
     expect(await page.find('plmg-slider >>> .plmg.marks')).toBe(null);
   });
 });
+
+describe('plmg-slider updates the value', () => {
+  it('when the user enters a valid value', async () => {
+    const page = await newE2EPage();
+    await page.setContent(
+      '<plmg-slider name="Range Slider" range-values="0, 10"></plmg-slider>'
+    );
+    const inputRange = await page.find('plmg-slider');
+    const element = await page.find('plmg-slider >>> input[type="number"]');
+    await element.type(`${10}`);
+    await page.waitForChanges();
+    expect(inputRange).toEqualAttribute('value', '10');
+  });
+
+  it('rejects an invalid value', async () => {
+    const page = await newE2EPage();
+    await page.setContent(
+      '<plmg-slider name="Range Slider" range-values="0, 10"></plmg-slider>'
+    );
+    const inputRange = await page.find('plmg-slider');
+    const element = await page.find('plmg-slider >>> input[type="number"]');
+    await element.type(`${-1}`);
+    await page.waitForChanges();
+    expect(inputRange).toEqualAttribute('value', '0');
+  });
+});
