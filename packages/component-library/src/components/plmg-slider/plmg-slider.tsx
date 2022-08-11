@@ -48,7 +48,7 @@ export class Slider {
    */
   @Prop() marks: boolean = true;
   @Watch('marks')
-  onMarks(newValue: boolean) {
+  validateMarks(newValue: boolean) {
     if (typeof newValue !== 'boolean')
       throw new Error('marks must be a boolean');
   }
@@ -73,20 +73,23 @@ export class Slider {
    * Define a range of values
    *
    * Allowed values:
-   * - An array of with at least two items
+   * - A comma separated list of numbers
    *
-   * Must be a list of values with at least two items
-   * with the first and last items set min and max values.
-   * Additional values set additional marks and labels.
-   * Sort the array passed to component on the client, the
-   * component will not sort the array.
+   * Must be a comma separated list of numbers with at least two items
+   * The first and last items set min and max values
+   * Additional values set additional marks and labels
+   * Pass values in the ascending order, the component does not sort the list
    */
-  @Prop() rangeValues: Array<number>;
-  Event: any;
+  @Prop() rangeValues: string;
   @Watch('rangeValues')
-  validateRangeValues(newValue: Array<number>) {
-    if (!Array.isArray(newValue) || newValue.length < 2)
-      throw new Error('rangeValues must be an array with at least two items');
+  validateRangeValues(newValue: string) {
+    if (
+      !Array.isArray(this.stringToNumberArray(newValue)) ||
+      this.stringToNumberArray(newValue).length < 2
+    )
+      throw new Error(
+        'rangeValues must be a comma separated list with at least two items'
+      );
   }
 
   /**
@@ -100,7 +103,7 @@ export class Slider {
    */
   @Prop() thumbLabel: boolean = true;
   @Watch('thumbLabel')
-  onThumbLabel(newValue: boolean) {
+  validateThumbLabel(newValue: boolean) {
     if (typeof newValue !== 'boolean')
       throw new Error('thumbLabel must be boolean');
   }
@@ -133,11 +136,16 @@ export class Slider {
   @State() stepValue: number;
   @State() inputFieldValue: number;
   @State() value: number;
+  @State() internalRangeValues: number[];
 
   /**
    * The event "valueUpdated" is triggered when the slider value changes either by moving the thumb or entering in the text field.
    */
   @Event() valueUpdated: EventEmitter;
+
+  private stringToNumberArray(newValue: string) {
+    return newValue.split(',').map(Number);
+  }
 
   private handleSliderChange(ev) {
     this.updateValue(ev.target.value);
@@ -186,8 +194,9 @@ export class Slider {
 
   private setValues() {
     if (!this.rangeValues) return;
-    this.min = this.rangeValues[0];
-    this.max = this.rangeValues[this.rangeValues.length - 1];
+    this.internalRangeValues = this.stringToNumberArray(this.rangeValues);
+    this.min = this.internalRangeValues[0];
+    this.max = this.internalRangeValues[this.internalRangeValues.length - 1];
     if (this.defaultValue >= this.min && this.defaultValue <= this.max) {
       this.updateValue(this.defaultValue);
     } else {
@@ -272,7 +281,7 @@ export class Slider {
 
                 {this.marks ? (
                   <div class={'plmg-marks'}>
-                    {this.rangeValues.map((labelValue, index) => (
+                    {this.internalRangeValues.map((labelValue, index) => (
                       <div
                         class={'plmg-mark-label'}
                         key={index}
