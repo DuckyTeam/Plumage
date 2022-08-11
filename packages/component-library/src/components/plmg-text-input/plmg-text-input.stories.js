@@ -93,7 +93,7 @@ Tip.storyName = 'Tip Text';
 Tip.args = {
   label: 'Tip Text',
   ['show-label']: false,
-  tip: '',
+  tip: 'Tip Text',
 };
 
 export const Required = Template.bind({});

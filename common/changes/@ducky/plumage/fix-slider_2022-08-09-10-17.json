@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@ducky/plumage",
-      "comment": "Updated slider component by removing rangeValues watcher",
+      "comment": "fix(slider):make rangevalues a string\"",
       "type": "patch"
     }
   ],

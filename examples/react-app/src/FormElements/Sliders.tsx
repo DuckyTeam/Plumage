@@ -12,10 +12,11 @@ export default function Sliders() {
   const handleSlider = (event: any) => {
     const { name } = event.target;
     const { value } = event.detail;
+
     if (sliders[name] !== value) {
       setSlider((prevState) => ({
         ...prevState,
-        [name]: value,
+        [name]: parseFloat(value),
       }));
     }
     event.preventDefault();
@@ -42,7 +43,7 @@ export default function Sliders() {
             defaultValue={20}
             thumbLabel={false}
             step={5}
-            rangeValues={[0, 20, 50, 70, 100]}
+            rangeValues={'0, 20, 50, 70, 100'}
             onValueUpdated={(e) => handleSlider(e)}
           />
           <br />
@@ -50,7 +51,7 @@ export default function Sliders() {
           <PlmgSlider
             name={'decimal'}
             thumbLabel
-            rangeValues={[0.1, 0.2, 0.3, 0.4, 0.5]}
+            rangeValues={'0.1, 0.2, 0.3, 0.4, 0.5'}
             onValueUpdated={(e) => handleSlider(e)}
           />
           <br />
@@ -58,7 +59,7 @@ export default function Sliders() {
           <PlmgSlider
             name={'large'}
             step={10000}
-            rangeValues={[100000, 200000, 300000, 400000, 500000]}
+            rangeValues={'100000, 200000, 300000, 400000, 500000'}
             onValueUpdated={(e) => handleSlider(e)}
           />
           <br />
@@ -76,7 +77,7 @@ export default function Sliders() {
         name={'marked'}
         marks={true}
         thumbLabel={false}
-        rangeValues={[0, 10, 20, 30]}
+        rangeValues={'0, 10, 20, 30'}
         onValueUpdated={(e) => handleSlider(e)}
       />
       <span>{`Current Marked Slider Value: ${sliders.marked}`}</span>

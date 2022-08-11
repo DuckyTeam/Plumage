@@ -8,6 +8,7 @@ import type { JSX } from '@ducky/plumage';
 import { defineCustomElements } from '@ducky/plumage/loader';
 
 defineCustomElements();
+export const PlmgAvatar = /*@__PURE__*/createReactComponent<JSX.PlmgAvatar, HTMLPlmgAvatarElement>('plmg-avatar');
 export const PlmgButton = /*@__PURE__*/createReactComponent<JSX.PlmgButton, HTMLPlmgButtonElement>('plmg-button');
 export const PlmgCard = /*@__PURE__*/createReactComponent<JSX.PlmgCard, HTMLPlmgCardElement>('plmg-card');
 export const PlmgErrorMessage = /*@__PURE__*/createReactComponent<JSX.PlmgErrorMessage, HTMLPlmgErrorMessageElement>('plmg-error-message');

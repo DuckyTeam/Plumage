@@ -2,6 +2,51 @@
   "name": "@ducky/plumage",
   "entries": [
     {
+      "version": "1.6.0",
+      "tag": "@ducky/plumage_v1.6.0",
+      "date": "Mon, 08 Aug 2022 12:52:47 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "create plmg-avatar component"
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.5.4",
+      "tag": "@ducky/plumage_v1.5.4",
+      "date": "Mon, 08 Aug 2022 11:50:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix(story):add missing prop value to storybook example"
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.5.3",
+      "tag": "@ducky/plumage_v1.5.3",
+      "date": "Wed, 20 Jul 2022 00:14:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updated slider component by removing rangeValues watcher"
+          },
+          {
+            "comment": "Use html elements for slider thumb"
+          },
+          {
+            "comment": "Updated slider component styling"
+          },
+          {
+            "comment": "refactor alignment of thumb label and ticks"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.5.2",
       "tag": "@ducky/plumage_v1.5.2",
       "date": "Tue, 19 Jul 2022 23:27:29 GMT",
