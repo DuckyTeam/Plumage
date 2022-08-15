@@ -213,6 +213,16 @@ export class Slider {
     this.trackWidth = this.ref.getBoundingClientRect().width;
   }
 
+  private handleKeyDown(event) {
+    if (
+      event.key === 'Enter' ||
+      event.key === 'ArrowUp' ||
+      event.key === 'ArrowDown'
+    ) {
+      this.validateInputField(event);
+    }
+  }
+
   connectedCallback() {
     this.setValues();
   }
@@ -312,6 +322,7 @@ export class Slider {
                 min={this.min}
                 max={this.max}
                 value={this.inputFieldValue}
+                onKeyDown={(event) => this.handleKeyDown(event)}
                 onInput={(event) => this.handleInputFieldChange(event)}
                 onBlur={(event) => this.validateInputField(event)}
               />
