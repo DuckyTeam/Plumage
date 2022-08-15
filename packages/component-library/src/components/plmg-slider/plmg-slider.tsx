@@ -169,24 +169,25 @@ export class Slider {
     return rounded;
   }
 
-  private handleInputFieldChange(ev) {
-    this.inputFieldValue = ev.target.value;
+  private handleInputFieldChange(event) {
+    this.inputFieldValue = event.target.value;
   }
 
-  private validateInputField(ev) {
-    if (isNaN(ev.target.value)) return;
-    if (ev.target.value < this.min) {
+  private validateInputField(event) {
+    if (isNaN(event.target.value)) return;
+    if (event.target.value < this.min) {
       return this.updateValue(this.min);
     }
-    if (ev.target.value > this.max) {
+    if (event.target.value > this.max) {
       return this.updateValue(this.max);
     }
-    if (this.allowedInputs.includes(ev.target.value)) {
-      return this.updateValue(ev.target.value);
+    if (this.allowedInputs.includes(event.target.value)) {
+      return this.updateValue(event.target.value);
     }
     return this.updateValue(
       this.allowedInputs.reduce((prev, curr) =>
-        Math.abs(curr - ev.target.value) < Math.abs(prev - ev.target.value)
+        Math.abs(curr - event.target.value) <
+        Math.abs(prev - event.target.value)
           ? curr
           : prev
       )
@@ -268,7 +269,7 @@ export class Slider {
                   max={this.max}
                   name={this.name}
                   step={this.stepValue}
-                  onInput={(ev) => this.handleSliderChange(ev)}
+                  onInput={(event) => this.handleSliderChange(event)}
                   style={{ background: this.setBackgroundProgressFill() }}
                   id={this.nameToId('-range-input')}
                   type={'range'}
@@ -311,8 +312,8 @@ export class Slider {
                 min={this.min}
                 max={this.max}
                 value={this.inputFieldValue}
-                onInput={(ev) => this.handleInputFieldChange(ev)}
-                onBlur={(ev) => this.validateInputField(ev)}
+                onInput={(event) => this.handleInputFieldChange(event)}
+                onBlur={(event) => this.validateInputField(event)}
               />
             </label>
           </div>
