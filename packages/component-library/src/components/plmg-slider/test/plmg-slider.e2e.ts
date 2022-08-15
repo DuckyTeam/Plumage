@@ -168,4 +168,32 @@ describe('plmg-slider value is', () => {
     await page.waitForChanges();
     expect(inputRange).toEqualAttribute('value', '1');
   });
+
+  it('incremented ', async () => {
+    const page = await newE2EPage();
+    await page.setContent(
+      '<plmg-slider name="Range Slider" range-values="0, 10" step="1"></plmg-slider>'
+    );
+    const inputRange = await page.find('plmg-slider');
+    const inputFieldElement = await page.find(
+      'plmg-slider >>> input[type="number"]'
+    );
+    await inputFieldElement.press('ArrowUp');
+    await page.waitForChanges();
+    expect(inputRange).toEqualAttribute('value', '1');
+  });
+
+  it('decremented ', async () => {
+    const page = await newE2EPage();
+    await page.setContent(
+      '<plmg-slider name="Range Slider" default-value="5" range-values="0, 10" step="1"></plmg-slider>'
+    );
+    const inputRange = await page.find('plmg-slider');
+    const inputFieldElement = await page.find(
+      'plmg-slider >>> input[type="number"]'
+    );
+    await inputFieldElement.press('ArrowDown');
+    await page.waitForChanges();
+    expect(inputRange).toEqualAttribute('value', '4');
+  });
 });
