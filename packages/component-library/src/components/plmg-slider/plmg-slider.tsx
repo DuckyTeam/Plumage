@@ -205,6 +205,7 @@ export class Slider {
       ? (this.stepValue = (this.max - this.min) / 100)
       : (this.stepValue = this.step);
     this.allowedInputs = this.setAllowedInputs();
+    this.inputFieldValue = this.value;
   }
 
   private resizeHandler() {
