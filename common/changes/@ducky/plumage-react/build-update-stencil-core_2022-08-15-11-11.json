@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage-react",
+      "comment": "Bump Stencil version to 2.17.3",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ducky/plumage-react"
+}
