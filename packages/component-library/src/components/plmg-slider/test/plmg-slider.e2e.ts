@@ -137,4 +137,20 @@ describe('plmg-slider re-renders when props change', () => {
     await page.waitForChanges();
     expect(await page.find('plmg-slider >>> .plmg.marks')).toBe(null);
   });
+
+  // describe('plmg-slider updates the value', () => {
+  //   it('when the user enters a valid value', async () => {
+  //     const page = await newE2EPage();
+  //     await page.setContent(
+  //       '<plmg-slider name="Range Slider" range-values="0, 10"></plmg-slider>'
+  //     );
+  //     const inputRange = await page.find('plmg-slider');
+  //     const element = await page.find('plmg-slider >>> input[type="number"]');
+  //     await element.type(`${10}`);
+  //     // const inputClicked = await element.spyOnEvent('blur');
+  //     // trigger mockblurevent //
+  //     await page.waitForChanges();
+  //     expect(inputRange).toEqualAttribute('value', '10');
+  //   });
+  // });
 });
