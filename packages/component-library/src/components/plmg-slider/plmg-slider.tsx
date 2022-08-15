@@ -174,7 +174,10 @@ export class Slider {
   }
 
   private validateInputField(event) {
-    if (isNaN(event.target.value)) return;
+    if (!event.target.value) {
+      this.inputFieldValue = this.value;
+      return;
+    }
     if (event.target.value < this.min) {
       return this.updateValue(this.min);
     }
