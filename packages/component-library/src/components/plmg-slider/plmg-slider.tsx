@@ -188,11 +188,11 @@ export class Slider {
       return this.updateValue(event.target.value);
     }
     return this.updateValue(
-      this.allowedInputs.reduce((prev, curr) =>
-        Math.abs(curr - event.target.value) <
-        Math.abs(prev - event.target.value)
-          ? curr
-          : prev
+      this.allowedInputs.reduce((previous, current) =>
+        Math.abs(current - event.target.value) <
+        Math.abs(previous - event.target.value)
+          ? current
+          : previous
       )
     );
   }
