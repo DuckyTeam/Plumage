@@ -123,8 +123,8 @@ describe('plmg-slider re-renders when props change', () => {
   });
 });
 
-describe('plmg-slider value is', () => {
-  it('set to the input field value when the user enters a valid value', async () => {
+describe('number input field conditionally sets plmg-slider value', () => {
+  it('to the input field value when the user enters a valid value', async () => {
     const page = await newE2EPage();
     await page.setContent(
       '<plmg-slider name="Range Slider" range-values="0, 10"></plmg-slider>'
@@ -169,7 +169,7 @@ describe('plmg-slider value is', () => {
     expect(inputRange).toEqualAttribute('value', '1');
   });
 
-  it('incremented ', async () => {
+  it('incremented with the up arrow', async () => {
     const page = await newE2EPage();
     await page.setContent(
       '<plmg-slider name="Range Slider" range-values="0, 10" step="1"></plmg-slider>'
@@ -183,7 +183,7 @@ describe('plmg-slider value is', () => {
     expect(inputRange).toEqualAttribute('value', '1');
   });
 
-  it('decremented ', async () => {
+  it('decremented with the down arrow ', async () => {
     const page = await newE2EPage();
     await page.setContent(
       '<plmg-slider name="Range Slider" default-value="5" range-values="0, 10" step="1"></plmg-slider>'
