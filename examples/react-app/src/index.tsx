@@ -12,6 +12,7 @@ import {
   PlmgSeparator,
   PlmgTooltip,
   PlmgAvatar,
+  PlmgStatus,
 } from '@ducky/plumage-react';
 import Sliders from './Sliders';
 import TextForm from './TextForm';
@@ -82,14 +83,16 @@ ReactDOM.render(
         }}
       >
         <span>Menu Item</span>
-
         <PlmgSeparator
           thickness="thick"
           style={{ alignSelf: 'stretch' }}
           direction="vertical"
           color="#78909C"
         ></PlmgSeparator>
-        <span>Menu Item 2</span>
+        <span>Menu Item 2</span>{' '}
+        <PlmgStatus variant={'foo'} iconLeft={'duck'}>
+          Label
+        </PlmgStatus>
         <PlmgAvatar
           size={'small'}
           iconColor={'#E81F64'}
