@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage-react
 
-This log was last generated on Tue, 19 Jul 2022 23:27:29 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Aug 2022 21:56:47 GMT and should not be manually modified.
+
+## 0.6.0
+Wed, 17 Aug 2022 21:56:47 GMT
+
+### Minor changes
+
+- Bump Stencil version to 2.17.3
 
 ## 0.5.2
 Tue, 19 Jul 2022 23:27:29 GMT

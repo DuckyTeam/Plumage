@@ -2,6 +2,18 @@
   "name": "@ducky/plumage-react",
   "entries": [
     {
+      "version": "0.6.0",
+      "tag": "@ducky/plumage-react_v0.6.0",
+      "date": "Wed, 17 Aug 2022 21:56:47 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Bump Stencil version to 2.17.3"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.5.2",
       "tag": "@ducky/plumage-react_v0.5.2",
       "date": "Tue, 19 Jul 2022 23:27:29 GMT",
