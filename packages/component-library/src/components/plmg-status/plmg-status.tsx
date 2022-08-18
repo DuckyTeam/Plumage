@@ -25,7 +25,7 @@ export class Status {
   @Watch('variant')
   validateVariant(newValue: string) {
     if (!isPlmgStatusVariant(newValue))
-      throw new Error('variant: must be a valid value');
+      throw new Error('variant must be a valid value');
   }
 
   /**
