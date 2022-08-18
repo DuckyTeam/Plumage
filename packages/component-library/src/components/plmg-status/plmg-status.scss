@@ -1,11 +1,4 @@
 @use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
-@use 'sass:math';
-
-// Functions
-// ------------------------------
-@function centerIconFontSize($parentFontSize, $percentageMultiplier) {
-  @return math.div($parentFontSize * $percentageMultiplier, 100%);
-}
 
 // Component style
 // -------------------------------------------------
