@@ -4,6 +4,7 @@ import {
   State,
   Event,
   EventEmitter,
+  Listen,
   Method,
   h,
 } from '@stencil/core';
@@ -11,7 +12,7 @@ import {
 @Component({
   tag: 'plmg-tabs',
   styleUrl: 'plmg-tabs.scss',
-  shadow: true,
+  shadow: false,
 })
 export class Tabs {
   /**
@@ -31,6 +32,24 @@ export class Tabs {
    */
   @Event({ eventName: 'tabChange' })
   onChange: EventEmitter;
+
+  @Listen('keydown')
+  handleKeyDown(event: KeyboardEvent, tabIndex: number) {
+    event.preventDefault();
+    event.stopPropagation();
+    if (event.key === 'Enter') {
+      console.log('enter', tabIndex);
+      this.openTab(tabIndex);
+    }
+    if (event.key === 'ArrowLeft') {
+      console.log('key index left', tabIndex);
+      if (tabIndex > 0) this.activateTab(tabIndex - 1);
+    }
+    if (event.key === 'ArrowRight') {
+      console.log('key index right', tabIndex);
+      if (tabIndex < this.tabs.length - 1) this.activateTab(tabIndex + 1);
+    }
+  }
 
   /**
    * On componentWillLoad dynamically grab tabs from the component to query and render.
@@ -53,11 +72,7 @@ export class Tabs {
       );
     }
     if (!this.tabs[index].disabled) {
-      this.tabs = this.tabs.map((tab, i) => {
-        tab.active = i === index;
-        return tab;
-      });
-      this.onChange.emit({ tabId: index });
+      this.activateTab(index);
     }
   }
 
@@ -73,10 +88,12 @@ export class Tabs {
           return (
             <button
               role={'tab'}
+              tabindex={tab.active ? 0 : -1}
               aria-label={tab.label ? tab.label : tab.icon}
               aria-disabled={tab.disabled}
               class={tabClasses}
               onClick={() => this.openTab(index)}
+              onKeyDown={(event) => this.handleKeyDown(event, index)}
             >
               {this.hasIcon(tab.icon) && (
                 <plmg-svg-icon class={'plmg-tab-button-icon'} icon={tab.icon} />
@@ -91,5 +108,27 @@ export class Tabs {
 
   private hasIcon(icon) {
     return icon && (icon as string) !== '';
+  }
+
+  private activateTab(tabIndex) {
+    console.log('activate tabindex', tabIndex);
+    this.tabs = this.tabs.map((tab, i) => {
+      tab.active = i === tabIndex;
+      // tab.setAttribute('tabindex', 0);
+      if (i === tabIndex) {
+        console.log('focus?', i);
+        console.log('focus?', document.activeElement);
+        console.log('tab', tab);
+        const button = document.getElementsByClassName(
+          'active'
+        )[0] as HTMLElement | null;
+
+        console.log('button', button);
+        button.focus(); // need to focus on the button not the tab
+        console.log('focus tab?', document.activeElement);
+      }
+      return tab;
+    });
+    this.onChange.emit({ tabId: tabIndex });
   }
 }
