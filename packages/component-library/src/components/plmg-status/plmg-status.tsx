@@ -68,22 +68,18 @@ export class Status {
 
     return (
       <span class={classes}>
-        {this.hasIconLeft() && (
+        {this.hasIcon(this.iconLeft) && (
           <plmg-svg-icon class={'icon-left'} icon={this.iconLeft} />
         )}
         <slot></slot>
-        {this.hasIconRight() && (
+        {this.hasIcon(this.iconRight) && (
           <plmg-svg-icon class={'icon-right'} icon={this.iconRight} />
         )}
       </span>
     );
   }
 
-  private hasIconLeft() {
-    return this.iconLeft && (this.iconLeft as string) !== '';
-  }
-
-  private hasIconRight() {
-    return this.iconRight && (this.iconRight as string) !== '';
+  private hasIcon(icon) {
+    return icon && (icon as string) !== '';
   }
 }
