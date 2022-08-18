@@ -89,10 +89,7 @@ ReactDOM.render(
           direction="vertical"
           color="#78909C"
         ></PlmgSeparator>
-        <span>Menu Item 2</span>{' '}
-        <PlmgStatus variant={'foo'} iconLeft={'duck'}>
-          Label
-        </PlmgStatus>
+        <span>Menu Item 2</span>
         <PlmgAvatar
           size={'small'}
           iconColor={'#E81F64'}
@@ -144,7 +141,7 @@ ReactDOM.render(
           <PlmgSeparator thickness="thick"></PlmgSeparator>
         </div>
         <div slot="slot-2">
-          <h1>PlmgCard slot-2</h1>
+          <h1>PlmgCard slot-2 </h1>
         </div>
       </PlmgCard>
       <Avatars />
