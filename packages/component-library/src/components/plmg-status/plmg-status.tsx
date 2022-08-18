@@ -56,7 +56,7 @@ export class Status {
 
   componentWillLoad() {
     this.validateVariant(this.variant);
-    this.validateIconRight(this.iconLeft);
+    this.validateIconLeft(this.iconLeft);
     this.validateIconRight(this.iconRight);
   }
 
