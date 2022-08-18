@@ -141,7 +141,7 @@ ReactDOM.render(
           <PlmgSeparator thickness="thick"></PlmgSeparator>
         </div>
         <div slot="slot-2">
-          <h1>PlmgCard slot-2 </h1>
+          <h1>PlmgCard slot-2</h1>
         </div>
       </PlmgCard>
       <Avatars />
