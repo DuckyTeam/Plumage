@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage-react
 
-This log was last generated on Wed, 17 Aug 2022 21:56:47 GMT and should not be manually modified.
+This log was last generated on Fri, 19 Aug 2022 13:02:34 GMT and should not be manually modified.
+
+## 0.7.0
+Fri, 19 Aug 2022 13:02:34 GMT
+
+### Minor changes
+
+- creates plmg-status react component
 
 ## 0.6.0
 Wed, 17 Aug 2022 21:56:47 GMT

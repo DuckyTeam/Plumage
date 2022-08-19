@@ -2,6 +2,18 @@
   "name": "@ducky/plumage",
   "entries": [
     {
+      "version": "1.7.0",
+      "tag": "@ducky/plumage_v1.7.0",
+      "date": "Fri, 19 Aug 2022 13:02:34 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "create plmg-status component"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.6.1",
       "tag": "@ducky/plumage_v1.6.1",
       "date": "Thu, 11 Aug 2022 12:27:41 GMT",
