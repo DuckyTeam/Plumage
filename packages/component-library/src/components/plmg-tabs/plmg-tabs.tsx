@@ -38,15 +38,12 @@ export class Tabs {
     event.preventDefault();
     event.stopPropagation();
     if (event.key === 'Enter') {
-      console.log('enter', tabIndex);
       this.openTab(tabIndex);
     }
     if (event.key === 'ArrowLeft') {
-      console.log('key index left', tabIndex);
       if (tabIndex > 0) this.activateTab(tabIndex - 1);
     }
     if (event.key === 'ArrowRight') {
-      console.log('key index right', tabIndex);
       if (tabIndex < this.tabs.length - 1) this.activateTab(tabIndex + 1);
     }
   }
@@ -111,23 +108,13 @@ export class Tabs {
   }
 
   private activateTab(tabIndex) {
-    console.log('activate tabindex', tabIndex);
     this.tabs = this.tabs.map((tab, i) => {
       tab.active = i === tabIndex;
-      // tab.setAttribute('tabindex', 0);
       if (i === tabIndex) {
-        console.log('focus?', i);
-        console.log('focus?', document.activeElement);
-        console.log('tab', tab);
         const buttons = document.getElementsByClassName(
           'plmg-tab-button'
         ) as HTMLCollectionOf<HTMLButtonElement>;
-
         buttons.item(i).focus();
-
-        // console.log('button', button);
-        // button.focus(); // need to focus on the button not the tab
-        console.log('focus tab?', document.activeElement);
       }
       return tab;
     });
