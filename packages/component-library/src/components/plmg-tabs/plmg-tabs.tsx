@@ -119,12 +119,14 @@ export class Tabs {
         console.log('focus?', i);
         console.log('focus?', document.activeElement);
         console.log('tab', tab);
-        const button = document.getElementsByClassName(
-          'active'
-        )[0] as HTMLElement | null;
+        const buttons = document.getElementsByClassName(
+          'plmg-tab-button'
+        ) as HTMLCollectionOf<HTMLButtonElement>;
 
-        console.log('button', button);
-        button.focus(); // need to focus on the button not the tab
+        buttons.item(i).focus();
+
+        // console.log('button', button);
+        // button.focus(); // need to focus on the button not the tab
         console.log('focus tab?', document.activeElement);
       }
       return tab;
