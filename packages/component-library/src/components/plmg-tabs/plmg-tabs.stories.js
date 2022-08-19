@@ -50,7 +50,7 @@ export const Disabled = () => {
 };
 Disabled.storyName = 'Disabled Tab';
 
-export const All = () => {
+export const AllVariants = () => {
   const htmlContent = `
   <plmg-tabs>
     <plmg-tab active label="Tab 1"></plmg-tab>
@@ -65,4 +65,4 @@ export const All = () => {
   el.innerHTML = htmlContent.trim();
   return el;
 };
-All.storyName = 'All variations';
+AllVariants.storyName = 'All variants';
