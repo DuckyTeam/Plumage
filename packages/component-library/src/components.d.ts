@@ -272,7 +272,7 @@ export namespace Components {
          */
         "name": string;
         /**
-          * Define a range of values  Allowed values: - A comma separated list of numbers  Must be a comma seperated list of numbers with at least two items The first and last items set min and max values Additional values set additional marks and labels Sort the array passed to component on the client, the component will not sort the array.
+          * Define a range of values  Allowed values: - A comma separated list of numbers  Must be a comma separated list of numbers with at least two items The first and last items set min and max values Additional values set additional marks and labels Pass values in the ascending order, the component does not sort the list
          */
         "rangeValues": string;
         /**
@@ -807,7 +807,7 @@ declare namespace LocalJSX {
          */
         "onValueUpdated"?: (event: PlmgSliderCustomEvent<any>) => void;
         /**
-          * Define a range of values  Allowed values: - A comma separated list of numbers  Must be a comma seperated list of numbers with at least two items The first and last items set min and max values Additional values set additional marks and labels Sort the array passed to component on the client, the component will not sort the array.
+          * Define a range of values  Allowed values: - A comma separated list of numbers  Must be a comma separated list of numbers with at least two items The first and last items set min and max values Additional values set additional marks and labels Pass values in the ascending order, the component does not sort the list
          */
         "rangeValues"?: string;
         /**
