@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage-react",
+      "comment": "creates plmg-status react component",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ducky/plumage-react"
+}
