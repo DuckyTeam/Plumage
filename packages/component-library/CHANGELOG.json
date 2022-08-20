@@ -2,6 +2,18 @@
   "name": "@ducky/plumage",
   "entries": [
     {
+      "version": "1.7.1",
+      "tag": "@ducky/plumage_v1.7.1",
+      "date": "Sat, 20 Aug 2022 09:59:00 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix(page-container): Account for header height in page container height"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.7.0",
       "tag": "@ducky/plumage_v1.7.0",
       "date": "Fri, 19 Aug 2022 13:02:34 GMT",
