@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "fix(page-container): Account for header height in page container height",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
