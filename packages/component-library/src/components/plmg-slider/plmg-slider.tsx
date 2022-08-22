@@ -36,7 +36,7 @@ export class Slider {
    */
   @Prop() defaultValue: number;
   @Watch('defaultValue')
-  validateDefaultValue(newValue: number) {
+  validateDefault(newValue: number) {
     if (typeof newValue !== 'number')
       throw new Error('defaultValue must be a number');
   }
@@ -83,13 +83,12 @@ export class Slider {
   @Prop() rangeValues: string;
   @Watch('rangeValues')
   validateRangeValues(newValue: string) {
-    if (
+    if (newValue)
       !Array.isArray(this.stringToNumberArray(newValue)) ||
-      this.stringToNumberArray(newValue).length < 2
-    )
-      throw new Error(
-        'rangeValues must be a comma separated list with at least two items'
-      );
+        this.stringToNumberArray(newValue).length < 2;
+    throw new Error(
+      'rangeValues must be a comma separated list with at least two items'
+    );
   }
 
   /**
@@ -126,6 +125,24 @@ export class Slider {
   }
 
   /**
+   * Control the value of the slider
+   *
+   * Allowed values:
+   * - Any number
+   *
+   * Sets the value of the slider
+   */
+  @Prop() valueControl: number;
+  @Watch('valueControl')
+  validateValueControl(newValue: number) {
+    if (typeof newValue !== 'number')
+      throw new Error('valueControl must be a number');
+  }
+  @Watch('valueControl')
+  setValue(newValue: number) {
+    this.validateTextInput(newValue);
+  }
+  /**
    * Store value, min, max, trackWidth, inputFieldValue and stepValue states
    *
    * trackWidth stores the width of container after the component loads to calculate relative positions.
@@ -148,8 +165,14 @@ export class Slider {
     return newValue.split(',').map(Number);
   }
 
-  private handleSliderChange(ev) {
-    this.updateValue(ev.target.value);
+  private setAllowedInputs() {
+    const range = Array.from(
+      { length: (this.max - this.min) / this.stepValue + 1 },
+      (_, i) => this.min + i * this.stepValue
+    );
+    return range.map(
+      (value) => Math.round((value + Number.EPSILON) * 1000000) / 1000000
+    );
   }
 
   private updateValue(newValue) {
@@ -158,58 +181,41 @@ export class Slider {
     this.valueUpdated.emit({ value: this.value });
   }
 
-  private setAllowedInputs() {
-    const range = Array.from(
-      { length: (this.max - this.min) / this.stepValue + 1 },
-      (_, i) => this.min + i * this.stepValue
-    );
-    const rounded = range.map(
-      (value) => Math.round((value + Number.EPSILON) * 1000000) / 1000000
-    );
-    return rounded;
-  }
-
   private handleInputFieldChange(event) {
     this.inputFieldValue = event.target.value;
   }
 
-  private validateInputField(event) {
-    if (!event.target.value) {
-      this.inputFieldValue = this.value;
-      return;
-    }
-    if (event.target.value < this.min) {
-      return this.updateValue(this.min);
-    }
-    if (event.target.value > this.max) {
-      return this.updateValue(this.max);
-    }
-    if (this.allowedInputs.includes(event.target.value)) {
-      return this.updateValue(event.target.value);
-    }
-    return this.updateValue(
-      this.allowedInputs.reduce((previous, current) =>
-        Math.abs(current - event.target.value) <
-        Math.abs(previous - event.target.value)
-          ? current
-          : previous
-      )
+  private handleSliderChange(event) {
+    this.updateValue(event.target.value);
+  }
+
+  private getClosestValidValue(value) {
+    return this.allowedInputs.reduce((previous, current) =>
+      Math.abs(current - value) < Math.abs(previous - value)
+        ? current
+        : previous
     );
   }
 
-  private setValues() {
-    if (!this.rangeValues) return;
-    this.internalRangeValues = this.stringToNumberArray(this.rangeValues);
-    this.min = this.internalRangeValues[0];
-    this.max = this.internalRangeValues[this.internalRangeValues.length - 1];
-    this.defaultValue >= this.min && this.defaultValue <= this.max
-      ? (this.value = this.defaultValue)
-      : (this.value = this.min);
-    !this.step
-      ? (this.stepValue = (this.max - this.min) / 100)
-      : (this.stepValue = this.step);
-    this.allowedInputs = this.setAllowedInputs();
-    this.inputFieldValue = this.value;
+  private handleTextInput(event) {
+    const { value } = event.target;
+    this.validateTextInput(value);
+  }
+
+  private validateTextInput(value) {
+    if (!value) {
+      return (this.inputFieldValue = this.value);
+    }
+    if (value < this.min) {
+      return this.updateValue(this.min);
+    }
+    if (value > this.max) {
+      return this.updateValue(this.max);
+    }
+    if (this.allowedInputs.includes(value)) {
+      return this.updateValue(value);
+    }
+    this.updateValue(this.getClosestValidValue(value));
   }
 
   private resizeHandler() {
@@ -222,12 +228,20 @@ export class Slider {
       event.key === 'ArrowUp' ||
       event.key === 'ArrowDown'
     ) {
-      return this.validateInputField(event);
+      return this.handleTextInput(event);
     }
   }
 
   connectedCallback() {
-    this.setValues();
+    this.internalRangeValues = this.stringToNumberArray(this.rangeValues);
+    this.min = this.internalRangeValues[0];
+    this.max = this.internalRangeValues[this.internalRangeValues.length - 1];
+    this.stepValue = this.step ? this.step : (this.max - this.min) / 100;
+    this.allowedInputs = this.setAllowedInputs();
+    this.value = this.allowedInputs.includes(this.defaultValue)
+      ? this.defaultValue
+      : this.min;
+    this.inputFieldValue = this.value;
   }
 
   // This usage creates the warning 'The state/prop "trackWidth" changed during "componentDidLoad()", this triggers extra re-renders, try to setup on "componentWillLoad()'
@@ -326,7 +340,7 @@ export class Slider {
                 max={this.max}
                 value={this.inputFieldValue}
                 onInput={(event) => this.handleInputFieldChange(event)}
-                onBlur={(event) => this.validateInputField(event)}
+                onBlur={(event) => this.handleTextInput(event)}
                 onKeyUp={(event) => this.handleKeyUp(event)}
               />
             </label>
