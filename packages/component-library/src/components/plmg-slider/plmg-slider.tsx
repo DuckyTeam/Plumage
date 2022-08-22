@@ -160,6 +160,11 @@ export class Slider {
    * The event "valueUpdated" is triggered when the slider value changes either by moving the thumb or entering in the text field.
    */
   @Event() valueUpdated: EventEmitter;
+  // /**
+  //  * The event "valueControlFailure" is emitted by when value passed
+  //  */
+  // @Event({ eventName: 'valueControlReject' })
+  // valueControlReject: EventEmitter;
 
   private stringToNumberArray(newValue: string) {
     return newValue.split(',').map(Number);
