@@ -123,8 +123,8 @@ describe('plmg-slider re-renders when props change', () => {
   });
 });
 
-describe('number input field conditionally sets plmg-slider value', () => {
-  it('to the input field value when the user enters a valid value', async () => {
+describe('number field inputs', () => {
+  it('set the slider value when input is value', async () => {
     const page = await newE2EPage();
     await page.setContent(
       '<plmg-slider name="Range Slider" range-values="0, 10"></plmg-slider>'
@@ -139,7 +139,7 @@ describe('number input field conditionally sets plmg-slider value', () => {
     expect(inputRange).toEqualAttribute('value', '10');
   });
 
-  it('unchanged when the value is invald', async () => {
+  it('does not change the slider value if invald', async () => {
     const page = await newE2EPage();
     await page.setContent(
       '<plmg-slider name="Range Slider" range-values="0, 10"></plmg-slider>'
@@ -154,7 +154,7 @@ describe('number input field conditionally sets plmg-slider value', () => {
     expect(inputRange).toEqualAttribute('value', '0');
   });
 
-  it('set to the closest valid value', async () => {
+  it('set slider value to the closest valid value', async () => {
     const page = await newE2EPage();
     await page.setContent(
       '<plmg-slider name="Range Slider" range-values="0, 10" step="1"></plmg-slider>'
@@ -169,7 +169,7 @@ describe('number input field conditionally sets plmg-slider value', () => {
     expect(inputRange).toEqualAttribute('value', '1');
   });
 
-  it('incremented with the up arrow', async () => {
+  it('increments the slider value when up arrow is pressed', async () => {
     const page = await newE2EPage();
     await page.setContent(
       '<plmg-slider name="Range Slider" range-values="0, 10" step="1"></plmg-slider>'
@@ -183,7 +183,7 @@ describe('number input field conditionally sets plmg-slider value', () => {
     expect(inputRange).toEqualAttribute('value', '1');
   });
 
-  it('decremented with the down arrow ', async () => {
+  it('decremented with the slider when down arrow is pressed', async () => {
     const page = await newE2EPage();
     await page.setContent(
       '<plmg-slider name="Range Slider" default-value="5" range-values="0, 10" step="1"></plmg-slider>'
