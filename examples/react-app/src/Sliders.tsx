@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import { PlmgSlider } from '@ducky/plumage-react';
 
 export default function Sliders() {
   const [sliders, setSlider] = useState({
-    stepped: 0,
+    stepped: 20,
     decimal: 0.1,
     large: 100000,
     marked: 0,
@@ -12,7 +12,6 @@ export default function Sliders() {
   const handleSlider = (event: any) => {
     const { name } = event.target;
     const { value } = event.detail;
-
     if (sliders[name] !== value) {
       setSlider((prevState) => ({
         ...prevState,
@@ -23,6 +22,19 @@ export default function Sliders() {
     event.stopPropagation();
   };
 
+  const incrementSlider = () => {
+    setSlider((prevState) => ({
+      ...prevState,
+      marked: prevState.marked + 1,
+    }));
+  };
+
+  const decrementSlider = () => {
+    setSlider((prevState) => ({
+      ...prevState,
+      marked: prevState.marked - 1,
+    }));
+  };
   const handleSubmit = () => {
     alert(`Submitted Slider Values
       Stepped Slider: ${sliders.stepped}
@@ -41,7 +53,7 @@ export default function Sliders() {
           <PlmgSlider
             name={'stepped'}
             marks={true}
-            defaultValue={20}
+            valueControl={sliders.stepped}
             thumbLabel={false}
             step={5}
             rangeValues={'0, 20, 50, 70, 100'}
@@ -52,6 +64,7 @@ export default function Sliders() {
           <PlmgSlider
             name={'decimal'}
             thumbLabel
+            value={sliders.decimal}
             rangeValues={'0.1, 0.2, 0.3, 0.4, 0.5'}
             onValueUpdated={(e) => handleSlider(e)}
           />
@@ -60,6 +73,7 @@ export default function Sliders() {
           <PlmgSlider
             name={'large'}
             step={10000}
+            value={sliders.large}
             rangeValues={'100000, 200000, 300000, 400000, 500000'}
             onValueUpdated={(e) => handleSlider(e)}
           />
@@ -77,11 +91,16 @@ export default function Sliders() {
       <PlmgSlider
         name={'marked'}
         marks={true}
-        thumbLabel={false}
+        thumbLabel={true}
         rangeValues={'0, 10, 20, 30'}
+        valueControl={sliders.marked}
+        valueDidNotUpdate={(e) => console.log(e)}
+        step={1}
         onValueUpdated={(e) => handleSlider(e)}
       />
-      <span>{`Current Marked Slider Value: ${sliders.marked}`}</span>
+      <button onClick={decrementSlider}>-</button>
+      <span>{`${sliders.marked}`}</span>
+      <button onClick={incrementSlider}>+</button>
     </div>
   );
 }
