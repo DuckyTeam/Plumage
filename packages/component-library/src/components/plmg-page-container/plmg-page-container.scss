@@ -9,7 +9,7 @@
   .plmg-content {
     display: block;
     position: absolute;
-    height: 100%;
+    height: calc(100% - 99px); //Height of the header
     top: 99px; // Height of the header
     left: 0;
     right: 0;
