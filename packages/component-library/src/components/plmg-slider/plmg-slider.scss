@@ -150,10 +150,9 @@ $thumb-diameter: 1.5em;
 }
 
 .plmg-thumb-label-container {
-  height: 2.5rem;
+  height: 2.75rem;
 
   output {
-    margin-top: -0.25rem;
     text-align: center;
     background-color: tokens.$plmg-color-background-primary-strong;
     color: tokens.$plmg-color-text-neutral-inverted;
