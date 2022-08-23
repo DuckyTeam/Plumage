@@ -141,6 +141,28 @@ export namespace Components {
          */
         "sidebarExpanded": boolean;
     }
+    interface PlmgProgressStepper {
+        /**
+          * Define active state  Default: false
+         */
+        "active": boolean;
+        /**
+          * Define completed state  Default: false
+         */
+        "completed": boolean;
+        /**
+          * Define a description text for the stepper
+         */
+        "description": string;
+        /**
+          * Define disabled state  Default: true
+         */
+        "disabled": boolean;
+        /**
+          * Define completed state  Default: false
+         */
+        "stepNumber": number;
+    }
     interface PlmgRadioButton {
         /**
           * Define radio button's highlighted status (in case of error)  Allowed values:   - true   - false  Default: false
@@ -431,6 +453,12 @@ declare global {
         prototype: HTMLPlmgPageContainerElement;
         new (): HTMLPlmgPageContainerElement;
     };
+    interface HTMLPlmgProgressStepperElement extends Components.PlmgProgressStepper, HTMLStencilElement {
+    }
+    var HTMLPlmgProgressStepperElement: {
+        prototype: HTMLPlmgProgressStepperElement;
+        new (): HTMLPlmgProgressStepperElement;
+    };
     interface HTMLPlmgRadioButtonElement extends Components.PlmgRadioButton, HTMLStencilElement {
     }
     var HTMLPlmgRadioButtonElement: {
@@ -498,6 +526,7 @@ declare global {
         "plmg-error-message": HTMLPlmgErrorMessageElement;
         "plmg-header": HTMLPlmgHeaderElement;
         "plmg-page-container": HTMLPlmgPageContainerElement;
+        "plmg-progress-stepper": HTMLPlmgProgressStepperElement;
         "plmg-radio-button": HTMLPlmgRadioButtonElement;
         "plmg-radio-button-group": HTMLPlmgRadioButtonGroupElement;
         "plmg-separator": HTMLPlmgSeparatorElement;
@@ -650,6 +679,28 @@ declare namespace LocalJSX {
           * Define if the sidebar is expanded on startup.
          */
         "sidebarExpanded"?: boolean;
+    }
+    interface PlmgProgressStepper {
+        /**
+          * Define active state  Default: false
+         */
+        "active"?: boolean;
+        /**
+          * Define completed state  Default: false
+         */
+        "completed"?: boolean;
+        /**
+          * Define a description text for the stepper
+         */
+        "description"?: string;
+        /**
+          * Define disabled state  Default: true
+         */
+        "disabled"?: boolean;
+        /**
+          * Define completed state  Default: false
+         */
+        "stepNumber"?: number;
     }
     interface PlmgRadioButton {
         /**
@@ -890,6 +941,7 @@ declare namespace LocalJSX {
         "plmg-error-message": PlmgErrorMessage;
         "plmg-header": PlmgHeader;
         "plmg-page-container": PlmgPageContainer;
+        "plmg-progress-stepper": PlmgProgressStepper;
         "plmg-radio-button": PlmgRadioButton;
         "plmg-radio-button-group": PlmgRadioButtonGroup;
         "plmg-separator": PlmgSeparator;
@@ -912,6 +964,7 @@ declare module "@stencil/core" {
             "plmg-error-message": LocalJSX.PlmgErrorMessage & JSXBase.HTMLAttributes<HTMLPlmgErrorMessageElement>;
             "plmg-header": LocalJSX.PlmgHeader & JSXBase.HTMLAttributes<HTMLPlmgHeaderElement>;
             "plmg-page-container": LocalJSX.PlmgPageContainer & JSXBase.HTMLAttributes<HTMLPlmgPageContainerElement>;
+            "plmg-progress-stepper": LocalJSX.PlmgProgressStepper & JSXBase.HTMLAttributes<HTMLPlmgProgressStepperElement>;
             "plmg-radio-button": LocalJSX.PlmgRadioButton & JSXBase.HTMLAttributes<HTMLPlmgRadioButtonElement>;
             "plmg-radio-button-group": LocalJSX.PlmgRadioButtonGroup & JSXBase.HTMLAttributes<HTMLPlmgRadioButtonGroupElement>;
             "plmg-separator": LocalJSX.PlmgSeparator & JSXBase.HTMLAttributes<HTMLPlmgSeparatorElement>;

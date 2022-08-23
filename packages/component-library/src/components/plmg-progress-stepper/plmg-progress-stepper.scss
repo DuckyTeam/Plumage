@@ -1,0 +1,214 @@
+@use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
+
+// Component style
+// -------------------------------------------------
+
+.plmg-progress-stepper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-right: tokens.$plmg-spacing-x1-5;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  overflow: hidden;
+  outline: none;
+}
+
+.plmg-progress-stepper-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: tokens.$plmg-border-radius-circle;
+  height: 24px;
+  width: 24px;
+  background: tokens.$plmg-color-background-neutral;
+  border: tokens.$plmg-border-width-m solid tokens.$plmg-color-border-neutral;
+  color: tokens.$plmg-color-text-neutral-weak;
+  font-weight: tokens.$plmg-font-weight-regular;
+  box-sizing: border-box;
+
+  &:hover {
+    border: tokens.$plmg-border-width-m solid tokens.$plmg-color-border-standout;
+  }
+
+  &.active {
+    background: tokens.$plmg-color-decoration-standout;
+    border: tokens.$plmg-border-width-m solid
+      tokens.$plmg-color-decoration-standout;
+    color: #fff;
+    font-weight: tokens.$plmg-font-weight-semibold;
+  }
+
+  @media only screen and (min-width: tokens.$plmg-breakpoint-xl) {
+    height: 32px;
+    width: 32px;
+    font-size: tokens.$plmg-font-size-x1-125;
+  }
+}
+
+.plmg-progress-stepper-circle-content {
+  font-size: tokens.$plmg-font-size-x0_875;
+  font-weight: inherit;
+  line-height: tokens.$plmg-font-lineheight-loose;
+  margin: 0;
+  text-transform: uppercase;
+  color: inherit;
+}
+
+.plmg-progress-stepper-separator {
+  width: 40px;
+  padding-top: tokens.$plmg-spacing-x0_75;
+}
+
+.stepper-circle-not-clickable {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.stepper-circle-clickable {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  cursor: pointer;
+}
+
+.plmg-progress-stepper-text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-size: tokens.$plmg-font-size-x0_875;
+  font-weight: tokens.$plmg-font-weight-regular;
+  line-height: tokens.$plmg-font-lineheight-loose;
+  margin: 0;
+  color: tokens.$plmg-color-text-neutral;
+
+  padding: 0 tokens.$plmg-spacing-x0_5;
+  white-space: nowrap;
+
+  .plmg-progress-stepper-description {
+    font-weight: tokens.$plmg-font-weight-regular;
+    font-size: tokens.$plmg-font-size-x0_75;
+  }
+
+  &.active {
+    font-weight: tokens.$plmg-font-weight-semibold;
+  }
+
+  &.disabled {
+    color: tokens.$plmg-color-text-neutral-disabled;
+  }
+
+  &.completed {
+    color: tokens.$plmg-color-text-neutral;
+  }
+
+  @media only screen and (min-width: tokens.$plmg-breakpoint-xl) {
+    font-size: tokens.$plmg-font-size-x1-125;
+
+    .plmg-progress-stepper-description {
+      font-size: tokens.$plmg-font-size-x1;
+    }
+  }
+}
+
+.current-text {
+  font-weight: tokens.$plmg-font-weight-semibold;
+}
+
+.completed-text {
+  color: tokens.$plmg-color-text-neutral;
+}
+// .completed-wrapper {
+//   background: ${tokens.plmgColorBorderInfo};
+//   border: ${tokens.plmgBorderWidthM} solid ${tokens.plmgColorBorderInfo};
+//   color: #fff;
+// }
+// ------------- END Component style ---------------
+// .stepper-circle-wrapper {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   border-radius: ${tokens.plmgBorderRadiusCircle};
+//   height: 24px;
+//   width: 24px;
+//   background: #fff;
+//   border: ${tokens.plmgBorderWidthM} solid ${tokens.plmgColorBorderNeutral};
+//   color: ${tokens.plmgColorTextNeutralWeak};
+//   font-weight: ${tokens.plmgFontWeightRegular};
+//   box-sizing: border-box;
+// }
+
+// .completed-wrapper {
+//   background: ${tokens.plmgColorBorderInfo};
+//   border: ${tokens.plmgBorderWidthM} solid ${tokens.plmgColorBorderInfo};
+//   color: #fff;
+// }
+
+// .current-wrapper {
+//   background: ${tokens.plmgColorDecorationStandout};
+//   border: ${tokens.plmgBorderWidthM} solid
+//     ${tokens.plmgColorDecorationStandout};
+//   color: #fff;
+//   font-weight: ${tokens.plmgFontWeightSemibold};
+// }
+
+// .inactive-wrapper {
+//   background: #fff;
+//   border: ${tokens.plmgBorderWidthM} solid
+//     ${tokens.plmgColorBorderNeutralWeak};
+//   color: ${tokens.plmgColorTextNeutralDisabled};
+// }
+
+// .stepper-circle-content {
+//   font-size: ${tokens.plmgFontSizeX0875};
+//   font-weight: inherit;
+//   line-height: ${tokens.plmgFontLineheightLoose};
+//   margin: 0;
+//   text-transform: uppercase;
+//   color: inherit;
+// }
+// .stepper-circle-wrapper {
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: flex-start;
+//   align-items: flex-start;
+//   height: 41px;
+//   margin-right: ${tokens.plmgSpacingX1};
+// }
+// .stepper-circle-not-clickable {
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: flex-start;
+//   align-items: flex-start;
+// }
+
+// .stepper-circle-clickable {
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: flex-start;
+//   align-items: flex-start;
+//   cursor: pointer;
+// }
+
+// .stepper-text {
+//   font-size: ${tokens.plmgFontSizeX0875};
+//   font-weight: ${tokens.plmgFontWeightRegular};
+//   line-height: ${tokens.plmgFontLineheightLoose};
+//   margin: 0;
+//   color: ${tokens.plmgColorTextNeutralDisabled};
+//   padding: 0 ${tokens.plmgSpacingX05};
+//   white-space: nowrap;
+// }
+
+// .current-text {
+//   font-weight: ${tokens.plmgFontWeightSemibold};
+// }
+
+// .completed-text {
+//   color: ${tokens.plmgColorTextNeutral};
+// }
