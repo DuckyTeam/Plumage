@@ -112,6 +112,7 @@ $thumb-diameter: 1.5em;
     background: transparent;
     font: inherit;
     @include state-reset;
+    z-index: 1;
 
     &,
     &::-webkit-slider-thumb {
@@ -189,7 +190,6 @@ $thumb-diameter: 1.5em;
     position: absolute;
     bottom: 0;
     left: 0.5 * $thumb-diameter;
-    z-index: -1;
 
     .plmg-mark-tick {
       background-color: tokens.$plmg-color-background-neutral-strong;
