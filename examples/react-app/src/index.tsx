@@ -14,9 +14,10 @@ import {
   PlmgAvatar,
   PlmgStatus,
 } from '@ducky/plumage-react';
-import Sliders from './Sliders';
-import TextForm from './TextForm';
+import SlidersForm from './Forms/SlidersForm';
+
 import Avatars from './Avatars';
+import TextInputsForm from './Forms/TextInputForm';
 
 const TooltipRefExample = () => {
   const [button, setButton] = useState(undefined);
@@ -144,9 +145,9 @@ ReactDOM.render(
           <h1>PlmgCard slot-2</h1>
         </div>
       </PlmgCard>
+      <SlidersForm />
+      <TextInputsForm />
       <Avatars />
-      <Sliders />
-      <TextForm />
       <p
         tabIndex={0}
         id={'targetelement'}

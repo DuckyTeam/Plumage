@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { PlmgTextInput } from '@ducky/plumage-react';
 
-export default function TextForm() {
+export default function TextInputsForm() {
   const [isValid, setIsValid] = useState(false);
   const [inputFields, setInputFields] = useState([
     {
