@@ -238,15 +238,17 @@ export class Slider {
   }
 
   connectedCallback() {
-    this.internalRangeValues = this.stringToNumberArray(this.rangeValues);
-    this.min = this.internalRangeValues[0];
-    this.max = this.internalRangeValues[this.internalRangeValues.length - 1];
-    this.stepValue = this.step ? this.step : (this.max - this.min) / 100;
-    this.allowedInputs = this.setAllowedInputs();
-    this.value = this.allowedInputs.includes(this.defaultValue)
-      ? this.defaultValue
-      : this.min;
-    this.inputFieldValue = this.value;
+    if (this.rangeValues) {
+      this.internalRangeValues = this.stringToNumberArray(this.rangeValues);
+      this.min = this.internalRangeValues[0];
+      this.max = this.internalRangeValues[this.internalRangeValues.length - 1];
+      this.stepValue = this.step ? this.step : (this.max - this.min) / 100;
+      this.allowedInputs = this.setAllowedInputs();
+      this.value = this.allowedInputs.includes(this.defaultValue)
+        ? this.defaultValue
+        : this.min;
+      this.inputFieldValue = this.value;
+    }
   }
 
   // This usage creates the warning 'The state/prop "trackWidth" changed during "componentDidLoad()", this triggers extra re-renders, try to setup on "componentWillLoad()'
