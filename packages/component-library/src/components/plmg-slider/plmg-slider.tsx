@@ -237,6 +237,11 @@ export class Slider {
     }
   }
 
+  private setInitialValue(value) {
+    if (this.allowedInputs.includes(value)) return (this.value = value);
+    return (this.value = this.min);
+  }
+
   connectedCallback() {
     if (this.rangeValues) {
       this.internalRangeValues = this.stringToNumberArray(this.rangeValues);
@@ -244,9 +249,9 @@ export class Slider {
       this.max = this.internalRangeValues[this.internalRangeValues.length - 1];
       this.stepValue = this.step ? this.step : (this.max - this.min) / 100;
       this.allowedInputs = this.setAllowedInputs();
-      this.value = this.allowedInputs.includes(this.defaultValue)
-        ? this.defaultValue
-        : this.min;
+      this.valueControl
+        ? this.setInitialValue(this.valueControl)
+        : this.setInitialValue(this.defaultValue);
       this.inputFieldValue = this.value;
     }
   }
