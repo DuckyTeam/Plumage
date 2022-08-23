@@ -284,6 +284,10 @@ export namespace Components {
           * Define thumb label visibility  Allowed values:  - true  - false  Default: true
          */
         "thumbLabel": boolean;
+        /**
+          * Control the value of the slider  Allowed values: - Any number  Sets the value of the slider
+         */
+        "valueControl": number;
     }
     interface PlmgStatus {
         /**
@@ -798,6 +802,10 @@ declare namespace LocalJSX {
           * Define thumb label visibility  Allowed values:  - true  - false  Default: true
          */
         "thumbLabel"?: boolean;
+        /**
+          * Control the value of the slider  Allowed values: - Any number  Sets the value of the slider
+         */
+        "valueControl"?: number;
     }
     interface PlmgStatus {
         /**
