@@ -9,6 +9,7 @@ import { PlmgAvatarSize } from "./components/plmg-avatar/plmg-avatar.types";
 import { PlmgButtonColor, PlmgButtonDesign, PlmgButtonSize, PlmgButtonType } from "./components/plmg-button/plmg-button.types";
 import { PlmgErrorMessageSize } from "./components/plmg-error-message/plmg-error-message.types";
 import { PlmgRadioButtonSize } from "./components/plmg-radio-button/plmg-radio-button.types";
+import { PlmgStatusVariant } from "./components/plmg-status/plmg-status.types";
 import { PlmgTextInputSize } from "./components/plmg-text-input/plmg-text-input.types";
 import { PlmgTooltipArrowPosition, PlmgTooltipColor, PlmgTooltipPosition } from "./components/plmg-tooltip/plmg-tooltip.types";
 export namespace Components {
@@ -284,6 +285,20 @@ export namespace Components {
          */
         "thumbLabel": boolean;
     }
+    interface PlmgStatus {
+        /**
+          * Define status's left icon.  When providing an icon name to this prop, the corresponding icon will be displayed. it will be placed to the left of the text slot.
+         */
+        "iconLeft": string;
+        /**
+          * Define status's right icon.  When providing an icon name to this prop, the corresponding icon will be displayed. it will be placed to the right of the text slot.
+         */
+        "iconRight": string;
+        /**
+          * Define status variant  Allowed values:   - neutral   - danger   - info   - warning   - success  Sets background and text colors  required
+         */
+        "variant": PlmgStatusVariant;
+    }
     interface PlmgSvgIcon {
         /**
           * Define icon's color.  Can be any valid CSS color value.  By default, the icon will have the same color as the parent's element.
@@ -480,6 +495,12 @@ declare global {
         prototype: HTMLPlmgSliderElement;
         new (): HTMLPlmgSliderElement;
     };
+    interface HTMLPlmgStatusElement extends Components.PlmgStatus, HTMLStencilElement {
+    }
+    var HTMLPlmgStatusElement: {
+        prototype: HTMLPlmgStatusElement;
+        new (): HTMLPlmgStatusElement;
+    };
     interface HTMLPlmgSvgIconElement extends Components.PlmgSvgIcon, HTMLStencilElement {
     }
     var HTMLPlmgSvgIconElement: {
@@ -523,6 +544,7 @@ declare global {
         "plmg-sidebar": HTMLPlmgSidebarElement;
         "plmg-sidebar-item": HTMLPlmgSidebarItemElement;
         "plmg-slider": HTMLPlmgSliderElement;
+        "plmg-status": HTMLPlmgStatusElement;
         "plmg-svg-icon": HTMLPlmgSvgIconElement;
         "plmg-tab": HTMLPlmgTabElement;
         "plmg-tabs": HTMLPlmgTabsElement;
@@ -819,6 +841,20 @@ declare namespace LocalJSX {
          */
         "thumbLabel"?: boolean;
     }
+    interface PlmgStatus {
+        /**
+          * Define status's left icon.  When providing an icon name to this prop, the corresponding icon will be displayed. it will be placed to the left of the text slot.
+         */
+        "iconLeft"?: string;
+        /**
+          * Define status's right icon.  When providing an icon name to this prop, the corresponding icon will be displayed. it will be placed to the right of the text slot.
+         */
+        "iconRight"?: string;
+        /**
+          * Define status variant  Allowed values:   - neutral   - danger   - info   - warning   - success  Sets background and text colors  required
+         */
+        "variant": PlmgStatusVariant;
+    }
     interface PlmgSvgIcon {
         /**
           * Define icon's color.  Can be any valid CSS color value.  By default, the icon will have the same color as the parent's element.
@@ -926,6 +962,7 @@ declare namespace LocalJSX {
         "plmg-sidebar": PlmgSidebar;
         "plmg-sidebar-item": PlmgSidebarItem;
         "plmg-slider": PlmgSlider;
+        "plmg-status": PlmgStatus;
         "plmg-svg-icon": PlmgSvgIcon;
         "plmg-tab": PlmgTab;
         "plmg-tabs": PlmgTabs;
@@ -949,6 +986,7 @@ declare module "@stencil/core" {
             "plmg-sidebar": LocalJSX.PlmgSidebar & JSXBase.HTMLAttributes<HTMLPlmgSidebarElement>;
             "plmg-sidebar-item": LocalJSX.PlmgSidebarItem & JSXBase.HTMLAttributes<HTMLPlmgSidebarItemElement>;
             "plmg-slider": LocalJSX.PlmgSlider & JSXBase.HTMLAttributes<HTMLPlmgSliderElement>;
+            "plmg-status": LocalJSX.PlmgStatus & JSXBase.HTMLAttributes<HTMLPlmgStatusElement>;
             "plmg-svg-icon": LocalJSX.PlmgSvgIcon & JSXBase.HTMLAttributes<HTMLPlmgSvgIconElement>;
             "plmg-tab": LocalJSX.PlmgTab & JSXBase.HTMLAttributes<HTMLPlmgTabElement>;
             "plmg-tabs": LocalJSX.PlmgTabs & JSXBase.HTMLAttributes<HTMLPlmgTabsElement>;

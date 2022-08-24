@@ -22,6 +22,7 @@
  - [plmg-button](../plmg-button)
  - [plmg-error-message](../plmg-error-message)
  - [plmg-sidebar-item](../plmg-sidebar-item)
+ - [plmg-status](../plmg-status)
  - [plmg-tabs](../plmg-tabs)
 
 ### Graph
@@ -31,6 +32,7 @@ graph TD;
   plmg-button --> plmg-svg-icon
   plmg-error-message --> plmg-svg-icon
   plmg-sidebar-item --> plmg-svg-icon
+  plmg-status --> plmg-svg-icon
   plmg-tabs --> plmg-svg-icon
   style plmg-svg-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```

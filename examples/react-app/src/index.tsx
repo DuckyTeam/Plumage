@@ -11,6 +11,7 @@ import {
   PlmgSeparator,
   PlmgTooltip,
   PlmgAvatar,
+  PlmgStatus,
 } from '@ducky/plumage-react';
 import Avatars from './Avatars';
 import FormElements from './FormElements';
@@ -80,7 +81,6 @@ ReactDOM.render(
         }}
       >
         <span>Menu Item</span>
-
         <PlmgSeparator
           thickness="thick"
           style={{ alignSelf: 'stretch' }}

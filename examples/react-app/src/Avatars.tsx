@@ -1,4 +1,4 @@
-import { PlmgAvatar } from '@ducky/plumage-react';
+import { PlmgAvatar, PlmgStatus } from '@ducky/plumage-react';
 
 const users = [
   {
@@ -46,7 +46,12 @@ const avatarsComponents = users.map(({ name, picture, user_id }) => (
 export default function Avatars() {
   return (
     <>
-      <h3>Avatars</h3>
+      <h3>
+        Avatars
+        <PlmgStatus variant={'info'} iconLeft={'sentimentSatisfied'}>
+          New!
+        </PlmgStatus>
+      </h3>
       <div style={{ display: 'flex', marginLeft: '15px' }}>
         {avatarsComponents}
       </div>
