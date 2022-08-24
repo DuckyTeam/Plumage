@@ -85,7 +85,7 @@ export class Tabs {
               role={'tab'}
               tabindex={tab.active ? 0 : -1}
               aria-label={tab.label ? tab.label : tab.icon}
-              aria-disabled={tab.disabled}
+              aria-disabled={tab.disabled ? 'true' : null}
               class={tabClasses}
               onClick={() => this.openTab(index)}
               onKeyDown={(event) => this.handleKeyDown(event, index)}
