@@ -19,6 +19,7 @@ export class Tab {
 
   /**
    * Define tabs active state
+   * Only need to define inital active tab. Once rendered the component handles switching of active tab.
    *
    * Allowed values:
    *   - true
