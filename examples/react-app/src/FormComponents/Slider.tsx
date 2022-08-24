@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { PlmgButton, PlmgSlider } from '@ducky/plumage-react';
+import { PlmgSlider } from '@ducky/plumage-react';
 
 type Props = {
   name: string;
