@@ -41,10 +41,10 @@ export class Tabs {
       this.openTab(tabIndex);
     }
     if (event.key === 'ArrowLeft') {
-      if (tabIndex > 0) this.activateTab(tabIndex - 1);
+      if (tabIndex > 0) this.openTab(tabIndex - 1);
     }
     if (event.key === 'ArrowRight') {
-      if (tabIndex < this.tabs.length - 1) this.activateTab(tabIndex + 1);
+      if (tabIndex < this.tabs.length - 1) this.openTab(tabIndex + 1);
     }
   }
 
@@ -68,9 +68,7 @@ export class Tabs {
         `<plmg-tabs> Index ${index} is out of bounds of tabs length`
       );
     }
-    if (!this.tabs[index].disabled) {
-      this.activateTab(index);
-    }
+    this.activateTab(index);
   }
 
   render() {
@@ -108,8 +106,10 @@ export class Tabs {
   }
 
   private activateTab(tabIndex) {
+    const disabledTab = this.tabs[tabIndex].disabled;
+
     this.tabs = this.tabs.map((tab, i) => {
-      tab.active = i === tabIndex;
+      if (!disabledTab) tab.active = i === tabIndex;
       if (i === tabIndex) {
         const buttons = document.getElementsByClassName(
           'plmg-tab-button'
@@ -118,6 +118,8 @@ export class Tabs {
       }
       return tab;
     });
-    this.onChange.emit({ tabId: tabIndex });
+    if (!disabledTab) {
+      this.onChange.emit({ tabId: tabIndex });
+    }
   }
 }
