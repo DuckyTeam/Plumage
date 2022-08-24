@@ -17,9 +17,10 @@ describe('plmg-tabs', () => {
 
       const htmlContent = `
         <plmg-tabs>
-          <plmg-tab label="Tab 1"></plmg-tab>
+          <plmg-tab active label="Tab 1"></plmg-tab>
           <plmg-tab icon="home" label="Tab 2"></plmg-tab>
           <plmg-tab icon="home"></plmg-tab>
+          <plmg-tab disabled label="Disabled"></plmg-tab>
         </plmg-tabs>
         `;
       await page.setContent('<main>' + htmlContent + '</main>');
