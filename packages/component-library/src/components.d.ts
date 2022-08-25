@@ -141,7 +141,7 @@ export namespace Components {
          */
         "sidebarExpanded": boolean;
     }
-    interface PlmgProgressStepper {
+    interface PlmgProgressStep {
         /**
           * Define active state  Default: false
          */
@@ -162,6 +162,8 @@ export namespace Components {
           * Define completed state  Default: false
          */
         "stepNumber": number;
+    }
+    interface PlmgProgressStepper {
     }
     interface PlmgRadioButton {
         /**
@@ -453,6 +455,12 @@ declare global {
         prototype: HTMLPlmgPageContainerElement;
         new (): HTMLPlmgPageContainerElement;
     };
+    interface HTMLPlmgProgressStepElement extends Components.PlmgProgressStep, HTMLStencilElement {
+    }
+    var HTMLPlmgProgressStepElement: {
+        prototype: HTMLPlmgProgressStepElement;
+        new (): HTMLPlmgProgressStepElement;
+    };
     interface HTMLPlmgProgressStepperElement extends Components.PlmgProgressStepper, HTMLStencilElement {
     }
     var HTMLPlmgProgressStepperElement: {
@@ -526,6 +534,7 @@ declare global {
         "plmg-error-message": HTMLPlmgErrorMessageElement;
         "plmg-header": HTMLPlmgHeaderElement;
         "plmg-page-container": HTMLPlmgPageContainerElement;
+        "plmg-progress-step": HTMLPlmgProgressStepElement;
         "plmg-progress-stepper": HTMLPlmgProgressStepperElement;
         "plmg-radio-button": HTMLPlmgRadioButtonElement;
         "plmg-radio-button-group": HTMLPlmgRadioButtonGroupElement;
@@ -680,7 +689,7 @@ declare namespace LocalJSX {
          */
         "sidebarExpanded"?: boolean;
     }
-    interface PlmgProgressStepper {
+    interface PlmgProgressStep {
         /**
           * Define active state  Default: false
          */
@@ -701,6 +710,8 @@ declare namespace LocalJSX {
           * Define completed state  Default: false
          */
         "stepNumber"?: number;
+    }
+    interface PlmgProgressStepper {
     }
     interface PlmgRadioButton {
         /**
@@ -941,6 +952,7 @@ declare namespace LocalJSX {
         "plmg-error-message": PlmgErrorMessage;
         "plmg-header": PlmgHeader;
         "plmg-page-container": PlmgPageContainer;
+        "plmg-progress-step": PlmgProgressStep;
         "plmg-progress-stepper": PlmgProgressStepper;
         "plmg-radio-button": PlmgRadioButton;
         "plmg-radio-button-group": PlmgRadioButtonGroup;
@@ -964,6 +976,7 @@ declare module "@stencil/core" {
             "plmg-error-message": LocalJSX.PlmgErrorMessage & JSXBase.HTMLAttributes<HTMLPlmgErrorMessageElement>;
             "plmg-header": LocalJSX.PlmgHeader & JSXBase.HTMLAttributes<HTMLPlmgHeaderElement>;
             "plmg-page-container": LocalJSX.PlmgPageContainer & JSXBase.HTMLAttributes<HTMLPlmgPageContainerElement>;
+            "plmg-progress-step": LocalJSX.PlmgProgressStep & JSXBase.HTMLAttributes<HTMLPlmgProgressStepElement>;
             "plmg-progress-stepper": LocalJSX.PlmgProgressStepper & JSXBase.HTMLAttributes<HTMLPlmgProgressStepperElement>;
             "plmg-radio-button": LocalJSX.PlmgRadioButton & JSXBase.HTMLAttributes<HTMLPlmgRadioButtonElement>;
             "plmg-radio-button-group": LocalJSX.PlmgRadioButtonGroup & JSXBase.HTMLAttributes<HTMLPlmgRadioButtonGroupElement>;
