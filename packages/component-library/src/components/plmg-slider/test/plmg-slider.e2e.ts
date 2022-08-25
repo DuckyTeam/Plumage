@@ -1,10 +1,9 @@
 import { newE2EPage } from '@stencil/core/testing';
-
 describe('plmg-slider', () => {
   it('renders the component', async () => {
     const page = await newE2EPage();
     await page.setContent(
-      '<plmg-slider name="Range Slider" range-values="0, 10"></plmg-slider>'
+      '<plmg-slider name="Range Slider" range="0, 10"></plmg-slider>'
     );
     const element = await page.find('plmg-slider');
     expect(element).toHaveClass('hydrated');
@@ -13,7 +12,27 @@ describe('plmg-slider', () => {
   it('renders the input range', async () => {
     const page = await newE2EPage();
     await page.setContent(
-      '<plmg-slider name="Range Slider" range-values="0, 10"></plmg-slider>'
+      '<plmg-slider name="Range Slider" range="0, 10"></plmg-slider>'
+    );
+    const element = await page.find('plmg-slider >>> input[type="range"]');
+    expect(element).not.toBe(null);
+  });
+});
+
+describe('plmg-slider', () => {
+  it('renders the component', async () => {
+    const page = await newE2EPage();
+    await page.setContent(
+      '<plmg-slider name="Range Slider" range="0, 10"></plmg-slider>'
+    );
+    const element = await page.find('plmg-slider');
+    expect(element).toHaveClass('hydrated');
+  });
+
+  it('renders the input range', async () => {
+    const page = await newE2EPage();
+    await page.setContent(
+      '<plmg-slider name="Range Slider" range="0, 10"></plmg-slider>'
     );
     const element = await page.find('plmg-slider >>> input[type="range"]');
     expect(element).not.toBe(null);
@@ -24,7 +43,7 @@ describe('plmg-slider range values are', () => {
   it('set to min and max values', async () => {
     const page = await newE2EPage();
     await page.setContent(
-      '<plmg-slider name="Range Slider" range-values="0.1, 100.31"></plmg-slider>'
+      '<plmg-slider name="Range Slider" range="0.1, 100.31"></plmg-slider>'
     );
     const element = await page.find('plmg-slider >>> input[type="range"]');
     expect(element).toEqualAttribute('min', '0.1');
@@ -33,28 +52,28 @@ describe('plmg-slider range values are', () => {
 });
 
 describe('plmg-slider initial value is set to', () => {
-  it('the value passed to the default-value prop if it is within range', async () => {
+  it('the value passed to the default prop if it is within range', async () => {
     const page = await newE2EPage();
     await page.setContent(
-      '<plmg-slider name="Range Slider" range-values="0, 10" default-value="5"></plmg-slider>'
+      '<plmg-slider name="Range Slider" range="0, 10" default="5"></plmg-slider>'
     );
     const element = await page.find('plmg-slider');
     expect(element).toEqualAttribute('value', '5');
   });
 
-  it('to the min value if default value prop is above the allowed range', async () => {
+  it('to the min value if default prop is above the allowed range', async () => {
     const page = await newE2EPage();
     await page.setContent(
-      '<plmg-slider name="Range Slider" range-values="0, 10" default-value="10.001"></plmg-slider>'
+      '<plmg-slider name="Range Slider" range="0, 10" default="10.001"></plmg-slider>'
     );
     const element = await page.find('plmg-slider');
     expect(element).toEqualAttribute('value', '0');
   });
 
-  it('to to the min value if the default value prop is below the allowed range', async () => {
+  it('to to the min value if the default prop is below the allowed range', async () => {
     const page = await newE2EPage();
     await page.setContent(
-      '<plmg-slider name="Range Slider" range-values="0.1, 9.99" default-value="-0.1"></plmg-slider>'
+      '<plmg-slider name="Range Slider" range="0.1, 9.99" default="-0.1"></plmg-slider>'
     );
     const element = await page.find('plmg-slider');
     expect(element).toEqualAttribute('value', '0.1');
@@ -65,7 +84,7 @@ describe('plmg-slider conditionally displays marks', () => {
   it('displays marks by default', async () => {
     const page = await newE2EPage();
     await page.setContent(
-      '<plmg-slider name="Range Slider" range-values="0, 10"></plmg-slider>'
+      '<plmg-slider name="Range Slider" range="0, 10"></plmg-slider>'
     );
     const element = await page.find('plmg-slider >>>  .marks');
     expect(element).not.toBe(null);
@@ -74,7 +93,7 @@ describe('plmg-slider conditionally displays marks', () => {
   it('does not display marks when marks props value is false', async () => {
     const page = await newE2EPage();
     await page.setContent(
-      '<plmg-slider name="Range Slider" marks="false" range-values="0, 10"></plmg-slider>'
+      '<plmg-slider name="Range Slider" marks="false" range="0, 10"></plmg-slider>'
     );
     const element = await page.find('plmg-slider >>>  .marks');
     expect(element).toBe(null);
@@ -85,7 +104,7 @@ describe('plmg-slider re-renders when props change', () => {
   it('adds the thumb label', async () => {
     const page = await newE2EPage();
     await page.setContent(
-      '<plmg-slider name="Range Slider" range-values="0, 10"></plmg-slider>'
+      '<plmg-slider name="Range Slider" range="0, 10"></plmg-slider>'
     );
     const props = {
       thumbLabel: true,
@@ -106,7 +125,7 @@ describe('plmg-slider re-renders when props change', () => {
   it('removes marks', async () => {
     const page = await newE2EPage();
     await page.setContent(
-      '<plmg-slider name="Range Slider" range-values="0, 10"></plmg-slider>'
+      '<plmg-slider name="Range Slider" range="0, 10"></plmg-slider>'
     );
     const props = {
       marks: false,
@@ -127,7 +146,7 @@ describe('number field inputs', () => {
   it('set the slider value when input is value', async () => {
     const page = await newE2EPage();
     await page.setContent(
-      '<plmg-slider name="Range Slider" range-values="0, 10"></plmg-slider>'
+      '<plmg-slider name="Range Slider" range="0, 10"></plmg-slider>'
     );
     const inputRange = await page.find('plmg-slider');
     const inputFieldElement = await page.find(
@@ -142,7 +161,7 @@ describe('number field inputs', () => {
   it('does not change the slider value if invald', async () => {
     const page = await newE2EPage();
     await page.setContent(
-      '<plmg-slider name="Range Slider" range-values="0, 10"></plmg-slider>'
+      '<plmg-slider name="Range Slider" range="0, 10"></plmg-slider>'
     );
     const inputRange = await page.find('plmg-slider');
     const inputFieldElement = await page.find(
@@ -157,7 +176,7 @@ describe('number field inputs', () => {
   it('set slider value to the closest valid value', async () => {
     const page = await newE2EPage();
     await page.setContent(
-      '<plmg-slider name="Range Slider" range-values="0, 10" step="1"></plmg-slider>'
+      '<plmg-slider name="Range Slider" range="0, 10" step="1"></plmg-slider>'
     );
     const inputRange = await page.find('plmg-slider');
     const inputFieldElement = await page.find(
@@ -172,7 +191,7 @@ describe('number field inputs', () => {
   it('increments the slider value when up arrow is pressed', async () => {
     const page = await newE2EPage();
     await page.setContent(
-      '<plmg-slider name="Range Slider" range-values="0, 10" step="1"></plmg-slider>'
+      '<plmg-slider name="Range Slider" range="0, 10" step="1"></plmg-slider>'
     );
     const inputRange = await page.find('plmg-slider');
     const inputFieldElement = await page.find(
@@ -186,7 +205,7 @@ describe('number field inputs', () => {
   it('decremented with the slider when down arrow is pressed', async () => {
     const page = await newE2EPage();
     await page.setContent(
-      '<plmg-slider name="Range Slider" default-value="5" range-values="0, 10" step="1"></plmg-slider>'
+      '<plmg-slider name="Range Slider" default="5" range="0, 10" step="1"></plmg-slider>'
     );
     const inputRange = await page.find('plmg-slider');
     const inputFieldElement = await page.find(
