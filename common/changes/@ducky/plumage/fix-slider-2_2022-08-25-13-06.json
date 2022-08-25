@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "fix(slider):improves UX experience for text input. adds value control prop.",
+      "type": "major"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
