@@ -132,13 +132,12 @@ export class Slider {
    *
    * Sets the value of the slider
    */
-  @Prop() valueControl: number;
-  @Watch('valueControl')
-  validateValueControl(newValue: number) {
-    if (typeof newValue !== 'number')
-      throw new Error('valueControl must be a number');
+  @Prop() value: number;
+  @Watch('value')
+  validateValue(newValue: number) {
+    if (typeof newValue !== 'number') throw new Error('value must be a number');
   }
-  @Watch('valueControl')
+  @Watch('value')
   setValue(newValue: number) {
     this.validateTextInput(newValue);
   }
@@ -152,7 +151,7 @@ export class Slider {
   @State() trackWidth: number;
   @State() stepValue: number;
   @State() inputFieldValue: number;
-  @State() value: number;
+  @State() internalValue: number;
   @State() internalRangeValues: number[];
   @State() allowedInputs: number[];
 
@@ -160,11 +159,6 @@ export class Slider {
    * The event "valueUpdated" is triggered when the slider value changes either by moving the thumb or entering in the text field.
    */
   @Event() valueUpdated: EventEmitter;
-  // /**
-  //  * The event "valueControlFailure" is emitted by when value passed
-  //  */
-  // @Event({ eventName: 'valueControlReject' })
-  // valueControlReject: EventEmitter;
 
   private stringToNumberArray(newValue: string) {
     return newValue.split(',').map(Number);
@@ -181,9 +175,9 @@ export class Slider {
   }
 
   private updateValue(newValue) {
-    this.value = newValue;
+    this.internalValue = newValue;
     this.inputFieldValue = newValue;
-    this.valueUpdated.emit({ value: this.value });
+    this.valueUpdated.emit({ value: this.internalValue });
   }
 
   private handleInputFieldChange(event) {
@@ -209,7 +203,7 @@ export class Slider {
 
   private validateTextInput(value) {
     if (!value) {
-      return (this.inputFieldValue = this.value);
+      return (this.inputFieldValue = this.internalValue);
     }
     if (value < this.min) {
       return this.updateValue(this.min);
@@ -238,8 +232,8 @@ export class Slider {
   }
 
   private setInitialValue(value) {
-    if (this.allowedInputs.includes(value)) return (this.value = value);
-    return (this.value = this.min);
+    if (this.allowedInputs.includes(value)) return (this.internalValue = value);
+    return (this.internalValue = this.min);
   }
 
   connectedCallback() {
@@ -252,7 +246,7 @@ export class Slider {
       this.valueControl
         ? this.setInitialValue(this.valueControl)
         : this.setInitialValue(this.defaultValue);
-      this.inputFieldValue = this.value;
+      this.inputFieldValue = this.internalValue;
     }
   }
 
@@ -277,7 +271,7 @@ export class Slider {
     };
 
     return (
-      <Host value={this.value}>
+      <Host value={this.internalValue}>
         <div class={'plmg-component-container'}>
           <div
             class={containerClasses}
@@ -293,7 +287,7 @@ export class Slider {
                       htmlFor={this.nameToId('-range-input')}
                       aria-label={this.name}
                     >
-                      {this.value}
+                      {this.internalValue}
                       <span class={'plmg-thumb-triangle'} />
                     </output>
                   </div>
@@ -312,10 +306,10 @@ export class Slider {
                   style={{ background: this.setBackgroundProgressFill() }}
                   id={this.nameToId('-range-input')}
                   type={'range'}
-                  value={this.value}
+                  value={this.internalValue}
                   aria-valuemin={this.min}
                   aria-valuemax={this.max}
-                  aria-valuenow={this.value}
+                  aria-valuenow={this.internalValue}
                 />
 
                 {this.marks ? (
@@ -347,7 +341,7 @@ export class Slider {
                 step={this.stepValue}
                 aria-valuemin={this.min}
                 aria-valuemax={this.max}
-                aria-valuenow={this.value}
+                aria-valuenow={this.internalValue}
                 min={this.min}
                 max={this.max}
                 value={this.inputFieldValue}
@@ -378,12 +372,14 @@ export class Slider {
 
   private calculateValueAsDecimalFraction(labelValue?, multipler?) {
     if (multipler) {
-      return ((this.value - this.min) / (this.max - this.min)) * multipler;
+      return (
+        ((this.internalValue - this.min) / (this.max - this.min)) * multipler
+      );
     }
     if (labelValue || labelValue === 0) {
       return (labelValue - this.min) / (this.max - this.min);
     }
-    return (this.value - this.min) / (this.max - this.min);
+    return (this.internalValue - this.min) / (this.max - this.min);
   }
 
   private setThumbPosition() {
@@ -391,7 +387,7 @@ export class Slider {
     const thumbDiameter = 1.5;
 
     return {
-      minWidth: `calc(.6em * ${this.value.toString().length})`,
+      minWidth: `calc(.6em * ${this.internalValue.toString().length})`,
       transform: `translate(calc(${this.calculateValueAsDecimalFraction()}em * (${
         this.trackWidth
       } / ${trackBasis} - ${thumbDiameter}) - 50%)`,
