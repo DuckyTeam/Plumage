@@ -14,6 +14,19 @@
 | `thickness` | `thickness` | Define separator's thickness.  Allowed values:   - thin   - thick  Default: thin                | `string` | `'thin'`                 |
 
 
+## Dependencies
+
+### Used by
+
+ - [plmg-progress-stepper](../plmg-progress-stepper)
+
+### Graph
+```mermaid
+graph TD;
+  plmg-progress-stepper --> plmg-separator
+  style plmg-separator fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

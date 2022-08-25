@@ -14,6 +14,7 @@ export const PlmgCard = /*@__PURE__*/createReactComponent<JSX.PlmgCard, HTMLPlmg
 export const PlmgErrorMessage = /*@__PURE__*/createReactComponent<JSX.PlmgErrorMessage, HTMLPlmgErrorMessageElement>('plmg-error-message');
 export const PlmgHeader = /*@__PURE__*/createReactComponent<JSX.PlmgHeader, HTMLPlmgHeaderElement>('plmg-header');
 export const PlmgPageContainer = /*@__PURE__*/createReactComponent<JSX.PlmgPageContainer, HTMLPlmgPageContainerElement>('plmg-page-container');
+export const PlmgProgressStepper = /*@__PURE__*/createReactComponent<JSX.PlmgProgressStepper, HTMLPlmgProgressStepperElement>('plmg-progress-stepper');
 export const PlmgRadioButton = /*@__PURE__*/createReactComponent<JSX.PlmgRadioButton, HTMLPlmgRadioButtonElement>('plmg-radio-button');
 export const PlmgRadioButtonGroup = /*@__PURE__*/createReactComponent<JSX.PlmgRadioButtonGroup, HTMLPlmgRadioButtonGroupElement>('plmg-radio-button-group');
 export const PlmgSeparator = /*@__PURE__*/createReactComponent<JSX.PlmgSeparator, HTMLPlmgSeparatorElement>('plmg-separator');
