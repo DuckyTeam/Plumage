@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@ducky/plumage",
-      "comment": "fix(slider):improves UX experience for text input. adds value control prop.",
+      "comment": "fix(slider): Adds value attribute for controlled forms. Fixes UX experience for text input.",
       "type": "major"
     }
   ],
