@@ -31,14 +31,14 @@ export class Slider {
    * Allowed values:
    * - any number
    *
-   * If defaultValue is outside of min and max range or undefined
-   * defaultValue is set to the min value
+   * If default is outside of min and max range or undefined
+   * default is set to the min value
    */
-  @Prop() defaultValue: number;
-  @Watch('defaultValue')
+  @Prop() default: number;
+  @Watch('default')
   validateDefault(newValue: number) {
     if (typeof newValue !== 'number')
-      throw new Error('defaultValue must be a number');
+      throw new Error('default must be a number');
   }
   /**
    *
@@ -245,7 +245,7 @@ export class Slider {
       this.allowedInputs = this.setAllowedInputs();
       this.value
         ? this.setInitialValue(this.value)
-        : this.setInitialValue(this.defaultValue);
+        : this.setInitialValue(this.default);
       this.inputFieldValue = this.internalValue;
     }
   }
