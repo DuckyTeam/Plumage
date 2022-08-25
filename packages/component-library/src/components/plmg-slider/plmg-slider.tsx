@@ -79,16 +79,21 @@ export class Slider {
    * The first and last items set min and max values
    * Additional values set additional marks and labels
    * Pass values in the ascending order, the component does not sort the list
+   *
+   * Required
    */
-  @Prop() rangeValues: string;
-  @Watch('rangeValues')
-  validateRangeValues(newValue: string) {
-    if (newValue)
+  @Prop() range!: string;
+  @Watch('range')
+  validateRange(newValue: string) {
+    if (
+      typeof newValue !== 'string' ||
+      newValue === '' ||
       !Array.isArray(this.stringToNumberArray(newValue)) ||
-        this.stringToNumberArray(newValue).length < 2;
-    throw new Error(
-      'rangeValues must be a comma separated list with at least two items'
-    );
+      this.stringToNumberArray(newValue).length < 2
+    )
+      throw new Error(
+        'range-values is required. Must be a comma separated list of numbers with at least two items'
+      );
   }
 
   /**
@@ -152,7 +157,7 @@ export class Slider {
   @State() stepValue: number;
   @State() inputFieldValue: number;
   @State() internalValue: number;
-  @State() internalRangeValues: number[];
+  @State() internalRange: number[];
   @State() allowedInputs: number[];
 
   /**
@@ -237,17 +242,15 @@ export class Slider {
   }
 
   connectedCallback() {
-    if (this.rangeValues) {
-      this.internalRangeValues = this.stringToNumberArray(this.rangeValues);
-      this.min = this.internalRangeValues[0];
-      this.max = this.internalRangeValues[this.internalRangeValues.length - 1];
-      this.stepValue = this.step ? this.step : (this.max - this.min) / 100;
-      this.allowedInputs = this.setAllowedInputs();
-      this.value
-        ? this.setInitialValue(this.value)
-        : this.setInitialValue(this.default);
-      this.inputFieldValue = this.internalValue;
-    }
+    this.internalRange = this.stringToNumberArray(this.range);
+    this.min = this.internalRange[0];
+    this.max = this.internalRange[this.internalRange.length - 1];
+    this.stepValue = this.step ? this.step : (this.max - this.min) / 100;
+    this.allowedInputs = this.setAllowedInputs();
+    this.value
+      ? this.setInitialValue(this.value)
+      : this.setInitialValue(this.default);
+    this.inputFieldValue = this.internalValue;
   }
 
   // This usage creates the warning 'The state/prop "trackWidth" changed during "componentDidLoad()", this triggers extra re-renders, try to setup on "componentWillLoad()'
@@ -314,7 +317,7 @@ export class Slider {
 
                 {this.marks ? (
                   <div class={'plmg-marks'}>
-                    {this.internalRangeValues.map((labelValue, index) => (
+                    {this.internalRange.map((labelValue, index) => (
                       <div
                         class={'plmg-mark-label'}
                         key={index}
