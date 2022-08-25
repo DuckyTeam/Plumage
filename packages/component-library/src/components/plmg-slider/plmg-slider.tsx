@@ -88,11 +88,11 @@ export class Slider {
     if (
       typeof newValue !== 'string' ||
       newValue === '' ||
-      !Array.isArray(this.stringToNumberArray(newValue)) ||
-      this.stringToNumberArray(newValue).length < 2
+      newValue.split(',').length < 2 ||
+      newValue.split(',').some((value) => isNaN(Number(value)))
     )
       throw new Error(
-        'range-values is required. Must be a comma separated list of numbers with at least two items'
+        'range is required. range must be a comma separated list of numbers with at least two items'
       );
   }
 
