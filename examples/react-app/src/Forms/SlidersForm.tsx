@@ -1,19 +1,44 @@
 import { useState } from 'react';
-import CustomSlider from '../FormComponents/Slider';
-import { PlmgButton } from '@ducky/plumage-react';
+import { PlmgButton, PlmgSlider } from '@ducky/plumage-react';
 
 export default function SlidersForm() {
-  const DEFAULTS = {
-    stepped: 25,
-    decimal: 0.5,
-    large: 50,
+  const SLIDERS = {
+    stepped: {
+      label: 'stepped',
+      default: 25,
+    },
+    decimal: {
+      label: 'decimal',
+      default: 0.5,
+    },
+    large: {
+      label: 'large',
+      default: 50,
+    },
   };
 
-  const [sliders, setSliderValues] = useState({
-    stepped: DEFAULTS.stepped,
-    decimal: DEFAULTS.decimal,
-    large: DEFAULTS.large,
+  const [sliders, setSliders] = useState({
+    stepped: SLIDERS.stepped.default,
+    decimal: SLIDERS.decimal.default,
+    large: SLIDERS.large.default,
   });
+
+  const handleChange = (value: number, target: HTMLElement) => {
+    const elementName = String(target.getAttribute('name'));
+    if (elementName) {
+      setSliders({ ...sliders, [elementName]: value });
+    }
+  };
+
+  const handleReset = (target: HTMLElement) => {
+    const elementLabel = target.getAttribute('aria-label');
+    if (elementLabel) {
+      setSliders({
+        ...sliders,
+        [elementLabel]: SLIDERS[elementLabel].default,
+      });
+    }
+  };
 
   const handleSubmit = (event: any) => {
     alert(
@@ -26,89 +51,87 @@ export default function SlidersForm() {
   return (
     <div
       style={{
-        display: 'grid',
-        gridTemplateColumns: '4fr 1fr',
-        width: '600px',
-        gap: '32px',
-        padding: '32px',
-        border: '2px solid #ccc',
-        boxShadow: '0px 0px 10px #ccc',
-        margin: '32px',
+        display: 'flex',
+        flexDirection: 'column',
+        border: '2px dashed blue',
+        width: '100%',
+        height: '100%',
       }}
     >
       <form onSubmit={handleSubmit}>
-        <CustomSlider
-          name={'Stepped'}
+        <h2>Sliders</h2>
+        <PlmgSlider
+          name={SLIDERS.stepped.label}
+          default={SLIDERS.stepped.default}
           marks={true}
           step={5}
           range={'0, 500'}
-          defaultValue={DEFAULTS.stepped}
           value={sliders.stepped}
-          onValueChanged={(newValue) => {
-            setSliderValues({ ...sliders, stepped: newValue });
-          }}
-          thumbLabel={true}
+          onValueUpdated={(event) =>
+            handleChange(event.detail.value, event.target)
+          }
         />
         <PlmgButton
           style={{ paddingTop: '32px' }}
+          label={SLIDERS.stepped.label}
           design={'outline'}
           size={'small'}
           iconLeft={'restartAlt'}
           color={'neutral'}
           shadow={false}
-          onClick={() => {
-            setSliderValues({ ...sliders, stepped: DEFAULTS.stepped });
-          }}
+          type={'reset'}
+          onClick={(event) => handleReset(event.target)}
         >
           Reset
         </PlmgButton>
-        <CustomSlider
-          name={'Decimal'}
+
+        <PlmgSlider
+          name={SLIDERS.decimal.label}
+          default={SLIDERS.decimal.default}
           marks={true}
           step={0.1}
           range={'0, 1'}
-          defaultValue={DEFAULTS.decimal}
           value={sliders.decimal}
-          onValueChanged={(newValue) => {
-            setSliderValues({ ...sliders, decimal: newValue });
-          }}
+          onValueUpdated={(event) =>
+            handleChange(event.detail.value, event.target)
+          }
           thumbLabel={true}
         />
         <PlmgButton
           style={{ paddingTop: '32px' }}
           design={'outline'}
+          label={SLIDERS.decimal.label}
           size={'small'}
           iconLeft={'restartAlt'}
           color={'neutral'}
           shadow={false}
-          onClick={() => {
-            setSliderValues({ ...sliders, decimal: DEFAULTS.decimal });
-          }}
+          onClick={(event) => handleReset(event.target)}
+          type={'reset'}
         >
           Reset
         </PlmgButton>
-        <CustomSlider
-          name={'Large'}
+        <PlmgSlider
+          name={'large'}
           marks={true}
           step={5}
           range={'0, 500'}
-          defaultValue={DEFAULTS.large}
+          default={SLIDERS.large.default}
           value={sliders.large}
-          onValueChanged={(newValue) => {
-            setSliderValues({ ...sliders, large: newValue });
-          }}
           thumbLabel={true}
+          onValueUpdated={(event) =>
+            handleChange(event.detail.value, event.target)
+          }
         />
         <PlmgButton
           style={{ paddingTop: '32px' }}
+          label={SLIDERS.large.label}
           design={'outline'}
           size={'small'}
           iconLeft={'restartAlt'}
           color={'neutral'}
           shadow={false}
-          onClick={() => {
-            setSliderValues({ ...sliders, large: DEFAULTS.large });
-          }}
+          onClick={(event) => handleReset(event.target)}
+          type={'reset'}
         >
           Reset
         </PlmgButton>
