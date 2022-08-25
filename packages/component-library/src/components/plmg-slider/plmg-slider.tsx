@@ -165,10 +165,6 @@ export class Slider {
    */
   @Event() valueUpdated: EventEmitter;
 
-  private stringToNumberArray(newValue: string) {
-    return newValue.split(',').map(Number);
-  }
-
   private setAllowedInputs() {
     const range = Array.from(
       { length: (this.max - this.min) / this.stepValue + 1 },
@@ -242,7 +238,8 @@ export class Slider {
   }
 
   connectedCallback() {
-    this.internalRange = this.stringToNumberArray(this.range);
+    this.validateRange(this.range);
+    this.internalRange = this.range.split(',').map((value) => Number(value));
     this.min = this.internalRange[0];
     this.max = this.internalRange[this.internalRange.length - 1];
     this.stepValue = this.step ? this.step : (this.max - this.min) / 100;
