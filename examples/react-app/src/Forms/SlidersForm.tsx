@@ -23,23 +23,6 @@ export default function SlidersForm() {
     large: SLIDERS.large.default,
   });
 
-  const handleChange = (value: number, target: HTMLElement) => {
-    const elementName = String(target.getAttribute('name'));
-    if (elementName) {
-      setSliders({ ...sliders, [elementName]: value });
-    }
-  };
-
-  const handleReset = (target: HTMLElement) => {
-    const elementLabel = target.getAttribute('aria-label');
-    if (elementLabel) {
-      setSliders({
-        ...sliders,
-        [elementLabel]: SLIDERS[elementLabel].default,
-      });
-    }
-  };
-
   const handleSubmit = (event: any) => {
     alert(
       `You have submitted the form with the following values: ${JSON.stringify(
@@ -60,6 +43,7 @@ export default function SlidersForm() {
     >
       <form onSubmit={handleSubmit}>
         <h2>Sliders</h2>
+        <label htmlFor={SLIDERS.stepped.label}>{SLIDERS.stepped.label}</label>
         <PlmgSlider
           name={SLIDERS.stepped.label}
           default={SLIDERS.stepped.default}
@@ -67,9 +51,12 @@ export default function SlidersForm() {
           step={5}
           range={'0, 500'}
           value={sliders.stepped}
-          onValueUpdated={(event) =>
-            handleChange(event.detail.value, event.target)
-          }
+          onValueUpdated={(event) => {
+            setSliders({
+              ...sliders,
+              [SLIDERS.stepped.label]: event.detail.value,
+            });
+          }}
         />
         <PlmgButton
           style={{ paddingTop: '32px' }}
@@ -80,11 +67,17 @@ export default function SlidersForm() {
           color={'neutral'}
           shadow={false}
           type={'reset'}
-          onClick={(event) => handleReset(event.target)}
+          onClick={() => {
+            setSliders({
+              ...sliders,
+              [SLIDERS.stepped.label]: SLIDERS.stepped.default,
+            });
+          }}
         >
           Reset
         </PlmgButton>
 
+        <label htmlFor={SLIDERS.decimal.label}>{SLIDERS.decimal.label}</label>
         <PlmgSlider
           name={SLIDERS.decimal.label}
           default={SLIDERS.decimal.default}
@@ -92,9 +85,12 @@ export default function SlidersForm() {
           step={0.1}
           range={'0, 1'}
           value={sliders.decimal}
-          onValueUpdated={(event) =>
-            handleChange(event.detail.value, event.target)
-          }
+          onValueUpdated={(event) => {
+            setSliders({
+              ...sliders,
+              [SLIDERS.decimal.label]: event.detail.value,
+            });
+          }}
           thumbLabel={true}
         />
         <PlmgButton
@@ -105,11 +101,18 @@ export default function SlidersForm() {
           iconLeft={'restartAlt'}
           color={'neutral'}
           shadow={false}
-          onClick={(event) => handleReset(event.target)}
+          onClick={() => {
+            setSliders({
+              ...sliders,
+              [SLIDERS.decimal.label]: SLIDERS.decimal.default,
+            });
+          }}
           type={'reset'}
         >
           Reset
         </PlmgButton>
+
+        <label htmlFor={SLIDERS.large.label}>{SLIDERS.large.label}</label>
         <PlmgSlider
           name={'large'}
           marks={true}
@@ -118,9 +121,12 @@ export default function SlidersForm() {
           default={SLIDERS.large.default}
           value={sliders.large}
           thumbLabel={true}
-          onValueUpdated={(event) =>
-            handleChange(event.detail.value, event.target)
-          }
+          onValueUpdated={(event) => {
+            setSliders({
+              ...sliders,
+              [SLIDERS.large.label]: event.detail.value,
+            });
+          }}
         />
         <PlmgButton
           style={{ paddingTop: '32px' }}
@@ -130,7 +136,12 @@ export default function SlidersForm() {
           iconLeft={'restartAlt'}
           color={'neutral'}
           shadow={false}
-          onClick={(event) => handleReset(event.target)}
+          onClick={() => {
+            setSliders({
+              ...sliders,
+              [SLIDERS.large.label]: SLIDERS.large.default,
+            });
+          }}
           type={'reset'}
         >
           Reset
