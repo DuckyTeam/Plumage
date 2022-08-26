@@ -36,9 +36,11 @@ export default function SlidersForm() {
       style={{
         display: 'flex',
         flexDirection: 'column',
-        border: '2px dashed blue',
-        width: '100%',
-        height: '100%',
+        padding: '32px',
+        border: '2px solid #ccc',
+        boxShadow: '0px 0px 10px #ccc',
+        marginTop: '32px',
+        marginBottom: '32px',
       }}
     >
       <form onSubmit={handleSubmit}>
