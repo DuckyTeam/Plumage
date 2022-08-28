@@ -170,14 +170,12 @@ export class Slider {
       { length: (this.max - this.min) / this.stepValue + 1 },
       (_, i) => this.min + i * this.stepValue
     );
-    const values = range.map((value) => {
-      // if step is less than 1 round to 6 decimal places
-      if (this.stepValue < 1) {
-        return Math.round((value + Number.EPSILON) * 1000000) / 1000000;
-      }
-      return value;
-    });
-    return values;
+    if (this.stepValue < 1) {
+      return range.map(
+        (value) => Math.round((value + Number.EPSILON) * 1000000) / 1000000
+      );
+    }
+    return range;
   }
 
   private updateValue(newValue) {
