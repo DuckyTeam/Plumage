@@ -34,6 +34,9 @@ const PROPS = [
   'disabled',
   'separator',
   'step',
+  'href',
+  'rel',
+  'target',
 ];
 const EVENTS = [];
 const CSS_VARS = [];
@@ -64,7 +67,7 @@ export const Disabled = Template.bind({});
 Disabled.storyName = 'Disabled';
 Disabled.args = {
   active: false,
-  disable: true,
+  disabled: true,
   ['text-content']: 'Disabled',
   step: 4,
 };
@@ -95,6 +98,16 @@ Completed.args = {
   completed: true,
   ['text-content']: 'Completed',
   step: 4,
+};
+
+export const Link = Template.bind({});
+Link.storyName = 'Link';
+Link.args = {
+  ['text-content']: 'Link',
+  step: 1,
+  href: 'https://ducky.eco',
+  rel: 'noopener noreferrer',
+  target: '_blank',
 };
 
 // export const All = (args) => {
