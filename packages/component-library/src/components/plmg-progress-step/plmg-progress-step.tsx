@@ -57,6 +57,39 @@ export class ProgressStep {
   }
 
   /**
+   * Define step as a link
+   */
+  @Prop() href: string;
+  @Watch('href')
+  validateHref(newValue: string) {
+    if (newValue && typeof newValue !== 'string')
+      throw new Error('href must be a string');
+  }
+
+  /**
+   * Define links rel
+   */
+  @Prop() rel: string;
+  @Watch('rel')
+  validateRel(newValue: string) {
+    if (newValue && !this.href)
+      throw new Error('step must have a href to have a rel');
+    if (newValue && typeof newValue !== 'string')
+      throw new Error('rel must be a string');
+  }
+
+  /**
+   * Define links target
+   */
+  @Prop() target: string;
+  @Watch('target')
+  validateTarget(newValue: string) {
+    if (newValue && !this.href)
+      throw new Error('step must have a href to have a target');
+    if (newValue && typeof newValue !== 'string')
+      throw new Error('target must be a string');
+  }
+  /**
    * Define if separator should be rendered
    *
    * Default: true
@@ -85,6 +118,12 @@ export class ProgressStep {
       completed: this.completed,
       disabled: this.disabled,
     };
+
+    const linkClasses = {
+      'plmg-progress-stepper': true,
+      ...stepStateClasses,
+    };
+
     const circleClasses = {
       'plmg-progress-stepper-circle': true,
       ...stepStateClasses,
@@ -95,9 +134,14 @@ export class ProgressStep {
       ...stepStateClasses,
     };
 
-    return (
-      <button class="plmg-progress-stepper">
-        <div>
+    if (this.href) {
+      return (
+        <a
+          class={linkClasses}
+          href={this.href}
+          rel={this.rel}
+          target={this.target}
+        >
           <div class={circleClasses}>
             {this.completed ? (
               <plmg-svg-icon icon="check" />
@@ -107,7 +151,38 @@ export class ProgressStep {
               </span>
             )}
           </div>
+
+          <div class={textClasses}>
+            <slot></slot>
+            <span class="plmg-progress-stepper-description">
+              {this.description}
+            </span>
+          </div>
+          {this.separator ? (
+            <plmg-separator
+              class="plmg-progress-stepper-separator"
+              color={
+                this.completed ? plmgColorBorderInfo : plmgColorBorderNeutral
+              }
+              thickness="thick"
+            ></plmg-separator>
+          ) : null}
+        </a>
+      );
+    }
+
+    return (
+      <button class="plmg-progress-stepper">
+        <div class={circleClasses}>
+          {this.completed ? (
+            <plmg-svg-icon icon="check" />
+          ) : (
+            <span class="plmg-progress-stepper-circle-content">
+              {this.step}
+            </span>
+          )}
         </div>
+
         <div class={textClasses}>
           <slot></slot>
           <span class="plmg-progress-stepper-description">
