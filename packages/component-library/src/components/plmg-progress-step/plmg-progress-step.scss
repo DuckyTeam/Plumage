@@ -15,6 +15,35 @@
   border: none;
   overflow: hidden;
   outline: none;
+  // remove button styling
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  overflow: hidden;
+  outline: none;
+  // Remove link styling
+  text-decoration: none;
+  width: fit-content;
+  // Common typography
+  font-family: tokens.$plmg-font-family-sans;
+  font-style: normal;
+  line-height: tokens.$plmg-font-lineheight-loose;
+
+  &.disabled {
+    pointer-events: none;
+  }
+  &.active {
+    pointer-events: none;
+  }
+}
+
+.plmg-progress-stepper:hover > .plmg-progress-stepper-circle {
+  &:not(.disabled):not(.completed):not(.active) {
+    border: tokens.$plmg-border-width-m solid tokens.$plmg-color-border-standout;
+  }
+  &.completed {
+    background-color: tokens.$plmg-color-border-info-strong;
+  }
 }
 
 .plmg-progress-stepper-circle {
@@ -30,8 +59,12 @@
   font-weight: tokens.$plmg-font-weight-regular;
   box-sizing: border-box;
 
-  &:hover:not(.disabled):not(.completed) {
-    border: tokens.$plmg-border-width-m solid tokens.$plmg-color-border-standout;
+  &.active {
+    background: tokens.$plmg-color-decoration-standout;
+    border: tokens.$plmg-border-width-m solid
+      tokens.$plmg-color-decoration-standout;
+    color: tokens.$plmg-color-icon-neutral-inverted;
+    font-weight: tokens.$plmg-font-weight-semibold;
   }
 
   &.disabled {
@@ -42,18 +75,6 @@
     background-color: tokens.$plmg-color-border-info;
     border: none;
     color: tokens.$plmg-color-icon-neutral-inverted;
-
-    &:hover {
-      background-color: tokens.$plmg-color-border-info-strong;
-    }
-  }
-
-  &.active {
-    background: tokens.$plmg-color-decoration-standout;
-    border: tokens.$plmg-border-width-m solid
-      tokens.$plmg-color-decoration-standout;
-    color: tokens.$plmg-color-icon-neutral-inverted;
-    font-weight: tokens.$plmg-font-weight-semibold;
   }
 
   @media only screen and (min-width: tokens.$plmg-breakpoint-xl) {
