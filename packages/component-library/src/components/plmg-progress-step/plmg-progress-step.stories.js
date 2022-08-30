@@ -5,16 +5,19 @@ export default {
   parameters: {},
   decorators: [],
   argTypes: {
+    active: {
+      options: [true, false],
+    },
+    completed: {
+      options: [true, false],
+    },
     description: {
       control: { type: 'text' },
     },
     disabled: {
       options: [true, false],
     },
-    completed: {
-      options: [true, false],
-    },
-    active: {
+    separator: {
       options: [true, false],
     },
     ['step-number']: {
@@ -24,7 +27,14 @@ export default {
   },
 };
 
-const PROPS = ['description', 'disabled', 'completed', 'active', 'step-number'];
+const PROPS = [
+  'active',
+  'completed',
+  'description',
+  'disabled',
+  'separator',
+  'step-number',
+];
 const EVENTS = [];
 const CSS_VARS = [];
 const SLOTS = ['text-content'];
@@ -41,12 +51,13 @@ const Template = (args) => {
 export const Primary = Template.bind({});
 Primary.storyName = 'ProgressStep';
 Primary.args = {
-  ['text-content']: 'Text Here',
-  ['step-number']: 1,
+  active: false,
   completed: false,
   disabled: false,
-  active: false,
   description: 'Extra Info',
+  separator: true,
+  ['text-content']: 'Text Here',
+  ['step-number']: 1,
 };
 
 // export const All = (args) => {
