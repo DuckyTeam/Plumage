@@ -20,7 +20,7 @@ export default {
     separator: {
       options: [true, false],
     },
-    ['step-number']: {
+    step: {
       options: [1, 2, 3, 4, 5, 6, 7, 8, 9],
       control: { type: 'select' },
     },
@@ -33,7 +33,7 @@ const PROPS = [
   'description',
   'disabled',
   'separator',
-  'step-number',
+  'step',
 ];
 const EVENTS = [];
 const CSS_VARS = [];
@@ -57,7 +57,7 @@ Primary.args = {
   description: 'Extra Info',
   separator: true,
   ['text-content']: 'Text Here',
-  ['step-number']: 1,
+  step: 1,
 };
 
 // export const All = (args) => {
