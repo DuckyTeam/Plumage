@@ -4,6 +4,7 @@
 // -------------------------------------------------
 
 .plmg-progress-stepper {
+  // reset default button styles
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -29,7 +30,7 @@
   font-weight: tokens.$plmg-font-weight-regular;
   box-sizing: border-box;
 
-  &:hover {
+  &:hover:not(.disabled):not(.completed) {
     border: tokens.$plmg-border-width-m solid tokens.$plmg-color-border-standout;
   }
 
@@ -37,11 +38,21 @@
     color: tokens.$plmg-color-text-neutral-disabled;
   }
 
+  &.completed {
+    background-color: tokens.$plmg-color-border-info;
+    border: none;
+    color: tokens.$plmg-color-icon-neutral-inverted;
+
+    &:hover {
+      background-color: tokens.$plmg-color-border-info-strong;
+    }
+  }
+
   &.active {
     background: tokens.$plmg-color-decoration-standout;
     border: tokens.$plmg-border-width-m solid
       tokens.$plmg-color-decoration-standout;
-    color: #fff;
+    color: tokens.$plmg-color-icon-neutral-inverted;
     font-weight: tokens.$plmg-font-weight-semibold;
   }
 
