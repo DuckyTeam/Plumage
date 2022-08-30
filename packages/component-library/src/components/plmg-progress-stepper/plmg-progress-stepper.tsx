@@ -1,12 +1,4 @@
-import {
-  Component,
-  Element,
-  h,
-  State,
-  Event,
-  EventEmitter,
-  Fragment,
-} from '@stencil/core';
+import { Component, Element, h, State } from '@stencil/core';
 
 @Component({
   tag: 'plmg-progress-stepper',
@@ -39,11 +31,7 @@ export class ProgressStepper {
   render() {
     return (
       <div class={'plmg-stepper-container'} role={'tablist'}>
-        <slot>
-          {this.steps.map(
-            (step: HTMLPlmgProgressStepElement, index: number) => step
-          )}
-        </slot>
+        <slot></slot>
       </div>
     );
   }
