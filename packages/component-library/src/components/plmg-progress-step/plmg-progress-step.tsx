@@ -11,13 +11,13 @@ import {
 })
 export class ProgressStep {
   /**
-   * Define disabled state
+   * Define active state
    *
-   * Default: true
+   * Default: false
    */
-  @Prop() disabled: boolean = false;
-  @Watch('disabled')
-  validateDisabled(newValue: boolean) {
+  @Prop() active: boolean = false;
+  @Watch('active')
+  validateActive(newValue: boolean) {
     if (newValue && typeof newValue !== 'boolean')
       throw new Error('completed must be boolean');
   }
@@ -35,18 +35,6 @@ export class ProgressStep {
   }
 
   /**
-   * Define active state
-   *
-   * Default: false
-   */
-  @Prop() active: boolean = false;
-  @Watch('active')
-  validateActive(newValue: boolean) {
-    if (newValue && typeof newValue !== 'boolean')
-      throw new Error('completed must be boolean');
-  }
-
-  /**
    * Define a description text for the stepper
    */
   @Prop() description: string;
@@ -57,12 +45,35 @@ export class ProgressStep {
   }
 
   /**
-   * Define completed state
+   * Define disabled state
    *
-   * Default: false
+   * Default: true
    */
-  @Prop() stepNumber: number;
-  @Watch('stepNumber')
+  @Prop() disabled: boolean = false;
+  @Watch('disabled')
+  validateDisabled(newValue: boolean) {
+    if (newValue && typeof newValue !== 'boolean')
+      throw new Error('completed must be boolean');
+  }
+
+  /**
+   * Define if separator should be rendered
+   *
+   * Default: true
+   */
+  @Prop() separator: boolean = true;
+  @Watch('separator')
+  validateSeparator(newValue: boolean) {
+    if (newValue && typeof newValue !== 'boolean')
+      throw new Error('separator must be boolean');
+  }
+  /**
+   * Define step number
+   *
+   * Required
+   */
+  @Prop() step!: number;
+  @Watch('step')
   validateStepNumber(newValue: number) {
     if (newValue && typeof newValue !== 'number')
       throw new Error('completed must be number');
@@ -92,7 +103,7 @@ export class ProgressStep {
               <plmg-svg-icon icon="check" />
             ) : (
               <span class="plmg-progress-stepper-circle-content">
-                {this.stepNumber}
+                {this.step}
               </span>
             )}
           </div>
@@ -103,11 +114,15 @@ export class ProgressStep {
             {this.description}
           </span>
         </div>
-        <plmg-separator
-          class="plmg-progress-stepper-separator"
-          color={this.completed ? plmgColorBorderInfo : plmgColorBorderNeutral}
-          thickness="thick"
-        ></plmg-separator>
+        {this.separator ? (
+          <plmg-separator
+            class="plmg-progress-stepper-separator"
+            color={
+              this.completed ? plmgColorBorderInfo : plmgColorBorderNeutral
+            }
+            thickness="thick"
+          ></plmg-separator>
+        ) : null}
       </button>
     );
   }
