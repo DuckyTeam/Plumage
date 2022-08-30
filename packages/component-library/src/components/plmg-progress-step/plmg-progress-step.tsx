@@ -113,7 +113,7 @@ export class ProgressStep {
   }
 
   render() {
-    const stepStateClasses = {
+    const stepClasses = {
       active: this.active,
       completed: this.completed,
       disabled: this.disabled,
@@ -121,17 +121,17 @@ export class ProgressStep {
 
     const linkClasses = {
       'plmg-progress-stepper': true,
-      ...stepStateClasses,
+      ...stepClasses,
     };
 
     const circleClasses = {
       'plmg-progress-stepper-circle': true,
-      ...stepStateClasses,
+      ...stepClasses,
     };
 
     const textClasses = {
       'plmg-progress-stepper-text': true,
-      ...stepStateClasses,
+      ...stepClasses,
     };
 
     if (this.href) {
