@@ -39,10 +39,11 @@ export class ProgressStepper {
   render() {
     return (
       <div class={'plmg-stepper-container'} role={'tablist'}>
-        {this.steps.map((step: HTMLPlmgProgressStepElement, index: number) => {
-          console.log(step);
-          return <Fragment>${step}</Fragment>;
-        })}
+        <slot>
+          {this.steps.map(
+            (step: HTMLPlmgProgressStepElement, index: number) => step
+          )}
+        </slot>
       </div>
     );
   }
