@@ -45,7 +45,7 @@
     background: tokens.$plmg-color-decoration-standout;
     border: tokens.$plmg-border-width-m solid
       tokens.$plmg-color-decoration-standout;
-    color: #fff;
+    color: tokens.$plmg-color-icon-neutral-inverted;
     font-weight: tokens.$plmg-font-weight-semibold;
   }
 
