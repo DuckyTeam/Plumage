@@ -19,7 +19,7 @@ export class ProgressStep {
   @Watch('active')
   validateActive(newValue: boolean) {
     if (newValue && typeof newValue !== 'boolean')
-      throw new Error('completed must be boolean');
+      throw new Error('active must be boolean');
   }
 
   /**
@@ -53,7 +53,7 @@ export class ProgressStep {
   @Watch('disabled')
   validateDisabled(newValue: boolean) {
     if (newValue && typeof newValue !== 'boolean')
-      throw new Error('completed must be boolean');
+      throw new Error('disabled must be boolean');
   }
 
   /**
