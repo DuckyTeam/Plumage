@@ -60,6 +60,43 @@ Primary.args = {
   step: 1,
 };
 
+export const Disabled = Template.bind({});
+Disabled.storyName = 'Disabled';
+Disabled.args = {
+  active: false,
+  disable: true,
+  ['text-content']: 'Disabled',
+  step: 4,
+};
+
+export const NotCompleted = Template.bind({});
+NotCompleted.storyName = 'Not Completed';
+NotCompleted.args = {
+  active: false,
+  completed: false,
+  separator: true,
+  ['text-content']: 'Not completed',
+  step: 2,
+};
+
+export const Active = Template.bind({});
+Active.storyName = 'Active';
+Active.args = {
+  active: true,
+  separator: true,
+  ['text-content']: 'Active',
+  step: 3,
+};
+
+export const Completed = Template.bind({});
+Completed.storyName = 'Completed';
+Completed.args = {
+  active: false,
+  completed: true,
+  ['text-content']: 'Completed',
+  step: 4,
+};
+
 // export const All = (args) => {
 //   let htmlContent = '';
 //   someControls.forEach((control) => {
