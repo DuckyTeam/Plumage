@@ -33,8 +33,7 @@ export default function Sliders() {
 
   return (
     <div>
-      <h1>Sliders</h1>
-      <div style={{ border: '4px dotted blue', padding: '0px 5px 5px 5px' }}>
+      <div style={{ padding: '0px 5px 5px 5px' }}>
         <h2>Slider Form</h2>
         <form name={'sliders'} onSubmit={handleSubmit}>
           <span>Stepped Slider (5)</span>
