@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Sat, 20 Aug 2022 09:59:00 GMT and should not be manually modified.
+This log was last generated on Wed, 31 Aug 2022 04:09:05 GMT and should not be manually modified.
+
+## 1.8.0
+Wed, 31 Aug 2022 04:09:05 GMT
+
+### Minor changes
+
+- Create tabs component
 
 ## 1.7.1
 Sat, 20 Aug 2022 09:59:00 GMT

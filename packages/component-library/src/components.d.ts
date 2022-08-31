@@ -315,7 +315,7 @@ export namespace Components {
     }
     interface PlmgTab {
         /**
-          * Define tabs active state  Allowed values:   - true   - false  Default: false
+          * Define tabs active state Only need to define inital active tab. Once rendered the component handles switching of active tab.  Allowed values:   - true   - false  Default: false
          */
         "active": boolean;
         /**
@@ -871,7 +871,7 @@ declare namespace LocalJSX {
     }
     interface PlmgTab {
         /**
-          * Define tabs active state  Allowed values:   - true   - false  Default: false
+          * Define tabs active state Only need to define inital active tab. Once rendered the component handles switching of active tab.  Allowed values:   - true   - false  Default: false
          */
         "active"?: boolean;
         /**
