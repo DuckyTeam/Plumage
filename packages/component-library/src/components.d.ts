@@ -317,6 +317,30 @@ export namespace Components {
          */
         "size": string;
     }
+    interface PlmgTab {
+        /**
+          * Define tabs active state Only need to define inital active tab. Once rendered the component handles switching of active tab.  Allowed values:   - true   - false  Default: false
+         */
+        "active": boolean;
+        /**
+          * Define tabs disabled state  Allowed values:   - true   - false  Default: false
+         */
+        "disabled": boolean;
+        /**
+          * Define tabs icon content.  When providing an icon name to this prop, the corresponding icon will be displayed.
+         */
+        "icon": string;
+        /**
+          * Define tabs text content.
+         */
+        "label": string;
+    }
+    interface PlmgTabs {
+        /**
+          * Invoke this method on tab change to update active state and emit onChange handler.
+         */
+        "openTab": (index: number) => Promise<void>;
+    }
     interface PlmgTextInput {
         /**
           * Define error message  Allowed value: any string  Sets error style and error message
@@ -393,6 +417,10 @@ export interface PlmgSidebarCustomEvent<T> extends CustomEvent<T> {
 export interface PlmgSliderCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPlmgSliderElement;
+}
+export interface PlmgTabsCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPlmgTabsElement;
 }
 export interface PlmgTextInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -483,6 +511,18 @@ declare global {
         prototype: HTMLPlmgSvgIconElement;
         new (): HTMLPlmgSvgIconElement;
     };
+    interface HTMLPlmgTabElement extends Components.PlmgTab, HTMLStencilElement {
+    }
+    var HTMLPlmgTabElement: {
+        prototype: HTMLPlmgTabElement;
+        new (): HTMLPlmgTabElement;
+    };
+    interface HTMLPlmgTabsElement extends Components.PlmgTabs, HTMLStencilElement {
+    }
+    var HTMLPlmgTabsElement: {
+        prototype: HTMLPlmgTabsElement;
+        new (): HTMLPlmgTabsElement;
+    };
     interface HTMLPlmgTextInputElement extends Components.PlmgTextInput, HTMLStencilElement {
     }
     var HTMLPlmgTextInputElement: {
@@ -510,6 +550,8 @@ declare global {
         "plmg-slider": HTMLPlmgSliderElement;
         "plmg-status": HTMLPlmgStatusElement;
         "plmg-svg-icon": HTMLPlmgSvgIconElement;
+        "plmg-tab": HTMLPlmgTabElement;
+        "plmg-tabs": HTMLPlmgTabsElement;
         "plmg-text-input": HTMLPlmgTextInputElement;
         "plmg-tooltip": HTMLPlmgTooltipElement;
     }
@@ -835,6 +877,30 @@ declare namespace LocalJSX {
          */
         "size"?: string;
     }
+    interface PlmgTab {
+        /**
+          * Define tabs active state Only need to define inital active tab. Once rendered the component handles switching of active tab.  Allowed values:   - true   - false  Default: false
+         */
+        "active"?: boolean;
+        /**
+          * Define tabs disabled state  Allowed values:   - true   - false  Default: false
+         */
+        "disabled"?: boolean;
+        /**
+          * Define tabs icon content.  When providing an icon name to this prop, the corresponding icon will be displayed.
+         */
+        "icon"?: string;
+        /**
+          * Define tabs text content.
+         */
+        "label"?: string;
+    }
+    interface PlmgTabs {
+        /**
+          * Event tabChange is emitted for onChange events when switching tabs.
+         */
+        "onTabChange"?: (event: PlmgTabsCustomEvent<any>) => void;
+    }
     interface PlmgTextInput {
         /**
           * Define error message  Allowed value: any string  Sets error style and error message
@@ -906,6 +972,8 @@ declare namespace LocalJSX {
         "plmg-slider": PlmgSlider;
         "plmg-status": PlmgStatus;
         "plmg-svg-icon": PlmgSvgIcon;
+        "plmg-tab": PlmgTab;
+        "plmg-tabs": PlmgTabs;
         "plmg-text-input": PlmgTextInput;
         "plmg-tooltip": PlmgTooltip;
     }
@@ -928,6 +996,8 @@ declare module "@stencil/core" {
             "plmg-slider": LocalJSX.PlmgSlider & JSXBase.HTMLAttributes<HTMLPlmgSliderElement>;
             "plmg-status": LocalJSX.PlmgStatus & JSXBase.HTMLAttributes<HTMLPlmgStatusElement>;
             "plmg-svg-icon": LocalJSX.PlmgSvgIcon & JSXBase.HTMLAttributes<HTMLPlmgSvgIconElement>;
+            "plmg-tab": LocalJSX.PlmgTab & JSXBase.HTMLAttributes<HTMLPlmgTabElement>;
+            "plmg-tabs": LocalJSX.PlmgTabs & JSXBase.HTMLAttributes<HTMLPlmgTabsElement>;
             "plmg-text-input": LocalJSX.PlmgTextInput & JSXBase.HTMLAttributes<HTMLPlmgTextInputElement>;
             "plmg-tooltip": LocalJSX.PlmgTooltip & JSXBase.HTMLAttributes<HTMLPlmgTooltipElement>;
         }

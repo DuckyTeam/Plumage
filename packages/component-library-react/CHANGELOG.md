@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage-react
 
-This log was last generated on Fri, 19 Aug 2022 13:02:34 GMT and should not be manually modified.
+This log was last generated on Wed, 31 Aug 2022 04:09:04 GMT and should not be manually modified.
+
+## 0.8.0
+Wed, 31 Aug 2022 04:09:04 GMT
+
+### Minor changes
+
+- Expose tabs component for React
 
 ## 0.7.0
 Fri, 19 Aug 2022 13:02:34 GMT

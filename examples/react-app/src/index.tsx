@@ -8,16 +8,13 @@ import {
   PlmgSidebar,
   PlmgSidebarItem,
   PlmgSvgIcon,
-  PlmgRadioButtonGroup,
   PlmgSeparator,
   PlmgTooltip,
   PlmgAvatar,
   PlmgStatus,
 } from '@ducky/plumage-react';
-import SlidersForm from './Forms/SlidersForm';
-
 import Avatars from './Avatars';
-import TextInputsForm from './Forms/TextInputForm';
+import FormElements from './FormElements';
 
 const TooltipRefExample = () => {
   const [button, setButton] = useState(undefined);
@@ -102,7 +99,6 @@ ReactDOM.render(
         ></PlmgAvatar>
       </div>
     </PlmgHeader>
-    <Avatars />
     <div slot={'content'} style={{ padding: '24px' }}>
       <PlmgButton
         onClick={(e: any) => {
@@ -145,9 +141,6 @@ ReactDOM.render(
           <h1>PlmgCard slot-2</h1>
         </div>
       </PlmgCard>
-      <SlidersForm />
-      <TextInputsForm />
-      <Avatars />
       <p
         tabIndex={0}
         id={'targetelement'}
@@ -166,43 +159,9 @@ ReactDOM.render(
       ></PlmgTooltip>
       <TooltipRefExample />
       <br />
-      <form>
-        <PlmgRadioButtonGroup
-          name="colours"
-          label="What's your favourite colour"
-          size="medium"
-          required
-          values='[
-          "red",
-          "blue",
-          "yellow",
-          "green",
-          "purple (the obvious choice)"
-        ]'
-          errorMessage={'Please select a colour'}
-          onValueChanged={(e: CustomEvent<{ selectedValue: string }>) => {
-            console.log('Radio Button colours:', e.detail.selectedValue);
-          }}
-        />
-        <PlmgRadioButtonGroup
-          name="other colours"
-          label="What's your favourite fruit"
-          size="medium"
-          required
-          values='[
-          "apples",
-          "blueberries",
-          "bananas",
-          "kiwis",
-          "grapes"
-        ]'
-          errorMessage={'Please select a fruit'}
-          onValueChanged={(e: CustomEvent<{ selectedValue: string }>) => {
-            console.log('Radio Button other colours:', e.detail.selectedValue);
-          }}
-        />
-        <input type="submit"></input>
-      </form>
+      <Avatars />
+      <br />
+      <FormElements />
     </div>
   </PlmgPageContainer>,
   document.getElementById('root')
