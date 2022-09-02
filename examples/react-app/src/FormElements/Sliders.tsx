@@ -9,24 +9,9 @@ export type Props = {
   };
 };
 
-export type sliderTypes = {
-  [key: string]: number;
-};
-
 export default function SlidersForm(props: Props) {
-  console.log(props);
   const { sliders } = props;
   const { onUpdate } = props;
-
-  const handleSubmit = (event: any) => {
-    event.preventDefault();
-    alert(
-      `You have submitted the form with the following values: ${JSON.stringify(
-        sliders
-      )}`
-    );
-  };
-
   return (
     <div
       style={{
@@ -39,7 +24,16 @@ export default function SlidersForm(props: Props) {
         marginBottom: '32px',
       }}
     >
-      <form>
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          alert(
+            `You have submitted the form with the following values: ${JSON.stringify(
+              sliders
+            )}`
+          );
+        }}
+      >
         <h2>Sliders</h2>
         <label>{SLIDERS.decimal.label}</label>
         <PlmgSlider
