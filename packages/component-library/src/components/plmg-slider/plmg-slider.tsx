@@ -205,8 +205,8 @@ export class Slider {
     this.validateTextInput(value);
   }
 
-  private validateTextInput(value) {
-    if (!value) {
+  private validateTextInput(value: number) {
+    if (!value && value !== 0) {
       return (this.inputFieldValue = this.internalValue);
     }
     if (value < this.min) {
