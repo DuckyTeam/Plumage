@@ -11,7 +11,7 @@ export default {
     name: {
       control: { type: 'text' },
     },
-    ['default-value']: {
+    default: {
       control: { type: 'number' },
     },
     marks: {
@@ -26,14 +26,7 @@ export default {
   },
 };
 
-const PROPS = [
-  'step',
-  'range',
-  'default-value',
-  'marks',
-  'name',
-  'thumb-label',
-];
+const PROPS = ['step', 'range', 'default', 'marks', 'name', 'thumb-label'];
 const EVENTS = [];
 const CSS_VARS = [];
 const SLOTS = [];
@@ -61,14 +54,14 @@ export const Marks = Template.bind({});
 Marks.args = {
   marks: true,
   name: 'range-slider',
-  ['default-value']: 5,
+  ['default']: 5,
   ['thumb-label']: false,
   range: '0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10',
 };
 
 export const ThumbLabel = Template.bind({});
 ThumbLabel.args = {
-  ['default-value']: 25,
+  ['default']: 25,
   step: 1,
   name: 'range-slider',
   marks: false,
@@ -86,7 +79,7 @@ Steps.args = {
 
 export const AllOptions = Template.bind({});
 AllOptions.args = {
-  ['default-value']: 0,
+  ['default']: 0,
   step: 100,
   name: 'range-slider',
   marks: true,
