@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { PlmgButton, PlmgSlider } from '@ducky/plumage-react';
 import { SLIDERS } from './Constants/Sliders';
 
