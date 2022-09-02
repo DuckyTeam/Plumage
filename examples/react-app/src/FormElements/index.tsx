@@ -44,7 +44,7 @@ export default function FormElements() {
   return (
     <div>
       <h1>Form Elements:</h1>
-      <PlmgTabs onTabChange={(tab: number) => tabClicked(tab)}>
+      <PlmgTabs onTabChange={(tab) => tabClicked(tab)}>
         <PlmgTab active={currentTab === 0} label="Sliders" />
         <PlmgTab label="Text Input" />
         <PlmgTab label="Radios" />
