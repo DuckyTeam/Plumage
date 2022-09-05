@@ -1,4 +1,4 @@
-export const SLIDERS = {
+export const RANGE_INPUT_PARAMETERS = {
   decimal: {
     label: 'decimal',
     default: 0.5,

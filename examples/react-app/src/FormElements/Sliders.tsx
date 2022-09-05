@@ -1,16 +1,15 @@
 import { PlmgButton, PlmgSlider } from '@ducky/plumage-react';
-import { SLIDERS } from './Constants/Sliders';
+import { RANGE_INPUT_PARAMETERS } from './Constants/SliderInputs';
 
 export type Props = {
   onUpdate: (newValue: number, label: string) => void;
-  sliders: {
+  sliderValues: {
     [key: string]: number;
   };
 };
 
 export default function SlidersForm(props: Props) {
-  const { sliders } = props;
-  const { onUpdate } = props;
+  const { sliderValues, onUpdate } = props;
   return (
     <div
       style={{
@@ -28,27 +27,27 @@ export default function SlidersForm(props: Props) {
           event.preventDefault();
           alert(
             `You have submitted the form with the following values: ${JSON.stringify(
-              sliders
+              sliderValues
             )}`
           );
         }}
       >
         <h2>Sliders</h2>
-        <label>{SLIDERS.decimal.label}</label>
+        <label>{RANGE_INPUT_PARAMETERS.decimal.label}</label>
         <PlmgSlider
-          name={SLIDERS.decimal.label}
-          default={SLIDERS.decimal.default}
-          marks={SLIDERS.decimal.marks}
-          step={SLIDERS.decimal.step}
-          range={SLIDERS.decimal.range}
-          value={sliders.decimal}
+          name={RANGE_INPUT_PARAMETERS.decimal.label}
+          default={RANGE_INPUT_PARAMETERS.decimal.default}
+          marks={RANGE_INPUT_PARAMETERS.decimal.marks}
+          step={RANGE_INPUT_PARAMETERS.decimal.step}
+          range={RANGE_INPUT_PARAMETERS.decimal.range}
+          value={sliderValues.decimal}
           onValueUpdated={(event) =>
             onUpdate(parseFloat(event.detail.value), 'decimal')
           }
         />
         <PlmgButton
           style={{ paddingTop: '32px' }}
-          label={SLIDERS.decimal.label}
+          label={RANGE_INPUT_PARAMETERS.decimal.label}
           design={'outline'}
           size={'small'}
           iconLeft={'restartAlt'}
@@ -56,26 +55,26 @@ export default function SlidersForm(props: Props) {
           shadow={false}
           type={'reset'}
           onClick={() => {
-            onUpdate(SLIDERS.decimal.default, 'decimal');
+            onUpdate(RANGE_INPUT_PARAMETERS.decimal.default, 'decimal');
           }}
         >
           Reset
         </PlmgButton>
-        <label>{SLIDERS.stepped.label}</label>
+        <label>{RANGE_INPUT_PARAMETERS.stepped.label}</label>
         <PlmgSlider
-          name={SLIDERS.stepped.label}
-          default={SLIDERS.stepped.default}
-          marks={SLIDERS.stepped.marks}
-          step={SLIDERS.stepped.step}
-          range={SLIDERS.stepped.range}
-          value={sliders.stepped}
+          name={RANGE_INPUT_PARAMETERS.stepped.label}
+          default={RANGE_INPUT_PARAMETERS.stepped.default}
+          marks={RANGE_INPUT_PARAMETERS.stepped.marks}
+          step={RANGE_INPUT_PARAMETERS.stepped.step}
+          range={RANGE_INPUT_PARAMETERS.stepped.range}
+          value={sliderValues.stepped}
           onValueUpdated={(event) =>
             onUpdate(parseFloat(event.detail.value), 'stepped')
           }
         />
         <PlmgButton
           style={{ paddingTop: '32px' }}
-          label={SLIDERS.stepped.label}
+          label={RANGE_INPUT_PARAMETERS.stepped.label}
           design={'outline'}
           size={'small'}
           iconLeft={'restartAlt'}
@@ -83,26 +82,26 @@ export default function SlidersForm(props: Props) {
           shadow={false}
           type={'reset'}
           onClick={() => {
-            onUpdate(SLIDERS.stepped.default, 'stepped');
+            onUpdate(RANGE_INPUT_PARAMETERS.stepped.default, 'stepped');
           }}
         >
           Reset
         </PlmgButton>
-        <label>{SLIDERS.large.label}</label>
+        <label>{RANGE_INPUT_PARAMETERS.large.label}</label>
         <PlmgSlider
-          name={SLIDERS.large.label}
-          default={SLIDERS.large.default}
-          marks={SLIDERS.large.marks}
-          step={SLIDERS.large.step}
-          range={SLIDERS.large.range}
-          value={sliders.large}
+          name={RANGE_INPUT_PARAMETERS.large.label}
+          default={RANGE_INPUT_PARAMETERS.large.default}
+          marks={RANGE_INPUT_PARAMETERS.large.marks}
+          step={RANGE_INPUT_PARAMETERS.large.step}
+          range={RANGE_INPUT_PARAMETERS.large.range}
+          value={sliderValues.large}
           onValueUpdated={(event) =>
             onUpdate(parseFloat(event.detail.value), 'large')
           }
         />
         <PlmgButton
           style={{ paddingTop: '32px' }}
-          label={SLIDERS.large.label}
+          label={RANGE_INPUT_PARAMETERS.large.label}
           design={'outline'}
           size={'small'}
           iconLeft={'restartAlt'}
@@ -110,13 +109,13 @@ export default function SlidersForm(props: Props) {
           shadow={false}
           type={'reset'}
           onClick={() => {
-            onUpdate(SLIDERS.large.default, 'large');
+            onUpdate(RANGE_INPUT_PARAMETERS.large.default, 'large');
           }}
         >
           Reset
         </PlmgButton>
 
-        <p>Controlled Values: {JSON.stringify(sliders)}</p>
+        <p>Controlled Values: {JSON.stringify(sliderValues)}</p>
         <button type="submit">Submit</button>
       </form>
     </div>

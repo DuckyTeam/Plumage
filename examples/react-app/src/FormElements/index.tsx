@@ -3,13 +3,13 @@ import { PlmgTab, PlmgTabs } from '@ducky/plumage-react';
 import Sliders from './Sliders';
 import TextForm from './TextForm';
 import Radios from './Radios';
-import { SLIDERS } from './Constants/Sliders';
+import { RANGE_INPUT_PARAMETERS } from './Constants/SliderInputs';
 
 export default function FormElements() {
-  const [sliders, setSliders] = useState({
-    decimal: SLIDERS.decimal.default,
-    stepped: SLIDERS.stepped.default,
-    large: SLIDERS.large.default,
+  const [sliderValues, setSliderValues] = useState({
+    decimal: RANGE_INPUT_PARAMETERS.decimal.default,
+    stepped: RANGE_INPUT_PARAMETERS.stepped.default,
+    large: RANGE_INPUT_PARAMETERS.large.default,
   });
 
   const [currentTab, setTab] = useState(0);
@@ -22,9 +22,9 @@ export default function FormElements() {
     if (currentTab === 0) {
       return (
         <Sliders
-          sliders={sliders}
+          sliderValues={sliderValues}
           onUpdate={(value: number, label: string) => {
-            setSliders({ ...sliders, [label]: value });
+            setSliderValues({ ...sliderValues, [label]: value });
           }}
         />
       );
