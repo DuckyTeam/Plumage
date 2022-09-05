@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "fixes component style: state change ",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
