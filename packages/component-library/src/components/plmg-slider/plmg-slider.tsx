@@ -288,8 +288,6 @@ export class Slider {
       marks: this.marks,
     };
 
-    console.log(this.textInputWidth);
-
     return (
       <Host value={this.internalValue}>
         <div class={'plmg-component-container'}>
@@ -408,7 +406,6 @@ export class Slider {
   private setThumbPosition() {
     const trackBasis = 12;
     const thumbDiameter = 1.5;
-    console.log(this.trackWidth, 'trackWidth');
 
     return {
       minWidth: `calc(.6em * ${this.internalValue.toString().length})`,
