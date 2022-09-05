@@ -111,7 +111,6 @@ export class Slider {
     if (typeof newValue !== 'boolean')
       throw new Error('thumbLabel must be boolean');
   }
-
   /**
    * Define step
    *
@@ -145,6 +144,22 @@ export class Slider {
   @Watch('value')
   setValue(newValue: number) {
     this.validateTextInput(newValue);
+  }
+  /**
+   * Define text input width
+   *
+   * Allowed values:
+   * - Any pixel value
+   *
+   * Override the default width of the text input with a fixed value in pixels
+   *
+   * By default the text input width is controlled by the max value of the range
+   */
+  @Prop() textInputWidth: number;
+  @Watch('textInputWidth')
+  validatetextInputWidth(newValue: number) {
+    if (typeof newValue !== 'number' || newValue <= 0)
+      throw new Error('text input width must be a positive number');
   }
   /**
    * Store value, min, max, trackWidth, inputFieldValue and stepValue states
@@ -273,6 +288,8 @@ export class Slider {
       marks: this.marks,
     };
 
+    console.log(this.textInputWidth);
+
     return (
       <Host value={this.internalValue}>
         <div class={'plmg-component-container'}>
@@ -351,6 +368,9 @@ export class Slider {
                 onInput={(event) => this.handleInputFieldChange(event)}
                 onBlur={(event) => this.handleTextInput(event)}
                 onKeyUp={(event) => this.handleKeyUp(event)}
+                style={{
+                  width: this.textInputWidth && this.textInputWidth + 'px',
+                }}
               />
             </label>
           </div>
@@ -388,6 +408,7 @@ export class Slider {
   private setThumbPosition() {
     const trackBasis = 12;
     const thumbDiameter = 1.5;
+    console.log(this.trackWidth, 'trackWidth');
 
     return {
       minWidth: `calc(.6em * ${this.internalValue.toString().length})`,

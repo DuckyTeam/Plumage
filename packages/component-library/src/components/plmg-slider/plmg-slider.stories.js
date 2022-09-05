@@ -20,13 +20,24 @@ export default {
     ['thumb-label']: {
       control: { type: 'boolean' },
     },
+    ['text-input-width']: {
+      control: { type: 'number' },
+    },
     step: {
       control: { type: 'number' },
     },
   },
 };
 
-const PROPS = ['step', 'range', 'default', 'marks', 'name', 'thumb-label'];
+const PROPS = [
+  'step',
+  'range',
+  'default',
+  'marks',
+  'name',
+  'thumb-label',
+  'text-input-width',
+];
 const EVENTS = [];
 const CSS_VARS = [];
 const SLOTS = [];
@@ -48,6 +59,7 @@ Primary.args = {
   ['thumb-label']: false,
   marks: false,
   range: '0, 100',
+  ['text-input-width']: '',
 };
 
 export const Marks = Template.bind({});
