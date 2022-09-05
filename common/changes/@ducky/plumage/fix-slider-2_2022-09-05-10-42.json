@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "fix(slider): Adds value attribute for form control. Add text input field width attribute. Fixes UX experience for text input.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
