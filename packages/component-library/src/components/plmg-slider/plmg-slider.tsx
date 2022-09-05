@@ -149,7 +149,7 @@ export class Slider {
    * Define text input field width
    *
    * Allowed values:
-   * - A number between 12 and 156
+   * - Any number
    *
    * Override the default width of the text input field with a pixel value
    *
@@ -158,7 +158,7 @@ export class Slider {
   @Prop() textInputWidth: number;
   @Watch('textInputWidth')
   validatetextInputWidth(newValue: number) {
-    if (typeof newValue !== 'number' || newValue <= 12 || newValue > 156)
+    if (typeof newValue !== 'number' || newValue <= 0)
       throw new Error('text input width must be a positive number');
   }
   /**

@@ -281,7 +281,7 @@ export namespace Components {
          */
         "step": number;
         /**
-          * Define text input field width  Allowed values: - A number between 12 and 156  Override the default width of the text input field with a pixel value  By default the text input field width is set by the max value of the range
+          * Define text input field width  Allowed values: - Any number  Override the default width of the text input field with a pixel value  By default the text input field width is set by the max value of the range
          */
         "textInputWidth": number;
         /**
@@ -845,7 +845,7 @@ declare namespace LocalJSX {
          */
         "step"?: number;
         /**
-          * Define text input field width  Allowed values: - A number between 12 and 156  Override the default width of the text input field with a pixel value  By default the text input field width is set by the max value of the range
+          * Define text input field width  Allowed values: - Any number  Override the default width of the text input field with a pixel value  By default the text input field width is set by the max value of the range
          */
         "textInputWidth"?: number;
         /**
