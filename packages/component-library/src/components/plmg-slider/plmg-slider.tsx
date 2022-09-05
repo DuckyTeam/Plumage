@@ -149,7 +149,7 @@ export class Slider {
    * Define text input field width
    *
    * Allowed values:
-   * - Any number
+   * - Any positive number
    *
    * Override the default width of the text input field with a pixel value
    *
