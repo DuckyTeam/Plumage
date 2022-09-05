@@ -54,14 +54,14 @@ export const Marks = Template.bind({});
 Marks.args = {
   marks: true,
   name: 'range-slider',
-  ['default']: 5,
+  default: 5,
   ['thumb-label']: false,
   range: '0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10',
 };
 
 export const ThumbLabel = Template.bind({});
 ThumbLabel.args = {
-  ['default']: 25,
+  default: 25,
   step: 1,
   name: 'range-slider',
   marks: false,
@@ -79,7 +79,7 @@ Steps.args = {
 
 export const AllOptions = Template.bind({});
 AllOptions.args = {
-  ['default']: 0,
+  default: 0,
   step: 100,
   name: 'range-slider',
   marks: true,
