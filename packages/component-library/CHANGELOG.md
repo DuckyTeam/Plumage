@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Wed, 31 Aug 2022 04:09:05 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Sep 2022 22:24:36 GMT and should not be manually modified.
+
+## 1.8.1
+Mon, 05 Sep 2022 22:24:36 GMT
+
+### Patches
+
+- fixes component style: state change 
 
 ## 1.8.0
 Wed, 31 Aug 2022 04:09:05 GMT
