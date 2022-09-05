@@ -146,19 +146,19 @@ export class Slider {
     this.validateTextInput(newValue);
   }
   /**
-   * Define text input width
+   * Define text input field width
    *
    * Allowed values:
-   * - Any pixel value
+   * - A number between 12 and 156
    *
-   * Override the default width of the text input with a fixed value in pixels
+   * Override the default width of the text input field with a pixel value
    *
-   * By default the text input width is controlled by the max value of the range
+   * By default the text input field width is set by the max value of the range
    */
   @Prop() textInputWidth: number;
   @Watch('textInputWidth')
   validatetextInputWidth(newValue: number) {
-    if (typeof newValue !== 'number' || newValue <= 0)
+    if (typeof newValue !== 'number' || newValue <= 12 || newValue > 156)
       throw new Error('text input width must be a positive number');
   }
   /**
@@ -406,7 +406,6 @@ export class Slider {
   private setThumbPosition() {
     const trackBasis = 12;
     const thumbDiameter = 1.5;
-
     return {
       minWidth: `calc(.6em * ${this.internalValue.toString().length})`,
       transform: `translate(calc(${this.calculateValueAsDecimalFraction()}em * (${
