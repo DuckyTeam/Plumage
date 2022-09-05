@@ -281,6 +281,10 @@ export namespace Components {
          */
         "step": number;
         /**
+          * Define text input field width  Allowed values: - A number between 12 and 156  Override the default width of the text input field with a pixel value  By default the text input field width is set by the max value of the range
+         */
+        "textInputWidth": number;
+        /**
           * Define thumb label visibility  Allowed values:  - true  - false  Default: true
          */
         "thumbLabel": boolean;
@@ -840,6 +844,10 @@ declare namespace LocalJSX {
           * Define step  Allowed values: - Any number  Slider's value will increase or decrease by the step value  When step is not provided the step value is set to 1% of the range
          */
         "step"?: number;
+        /**
+          * Define text input field width  Allowed values: - A number between 12 and 156  Override the default width of the text input field with a pixel value  By default the text input field width is set by the max value of the range
+         */
+        "textInputWidth"?: number;
         /**
           * Define thumb label visibility  Allowed values:  - true  - false  Default: true
          */
