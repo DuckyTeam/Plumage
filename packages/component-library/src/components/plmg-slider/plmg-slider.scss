@@ -88,7 +88,6 @@ $thumb-diameter: 1.5em;
 
 .plmg-component-container {
   display: flex;
-  gap: 2rem;
   flex: 1;
   align-items: center;
 }
@@ -200,7 +199,7 @@ $thumb-diameter: 1.5em;
 }
 
 .plmg-slider-input-field-container {
-  width: fit-content;
+  margin-left: 24px;
 
   &:focus-visible {
     outline: tokens.$plmg-border-width-l solid
