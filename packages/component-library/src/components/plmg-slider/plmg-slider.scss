@@ -205,6 +205,7 @@ $thumb-diameter: 1.5em;
   &:focus-visible {
     outline: tokens.$plmg-border-width-l solid
       tokens.$plmg-color-border-standout;
+    outline-offset: -2px;
     border-radius: tokens.$plmg-border-radius-s;
   }
 
@@ -213,10 +214,9 @@ $thumb-diameter: 1.5em;
     border: none;
     box-sizing: border-box;
     font-size: tokens.$plmg-font-size-x1-125;
-    min-width: 5.2rem;
-    width: fit-content;
     outline: tokens.$plmg-border-width-m solid
       tokens.$plmg-color-border-neutral-weak;
+    outline-offset: -2px;
     padding: tokens.$plmg-spacing-x0-75 tokens.$plmg-spacing-x1;
     background-color: tokens.$plmg-color-background-neutral;
     box-shadow: tokens.$plmg-shadow-inner-s;
