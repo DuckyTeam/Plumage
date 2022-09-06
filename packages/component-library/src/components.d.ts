@@ -430,6 +430,10 @@ export interface PlmgHeaderCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPlmgHeaderElement;
 }
+export interface PlmgProgressStepCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPlmgProgressStepElement;
+}
 export interface PlmgRadioButtonGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPlmgRadioButtonGroupElement;
@@ -752,6 +756,10 @@ declare namespace LocalJSX {
           * Define disabled state  Default: true
          */
         "disabled"?: boolean;
+        /**
+          * Exposes click handler event. Only exposed when interactive is true.
+         */
+        "onStepClick"?: (event: PlmgProgressStepCustomEvent<MouseEvent>) => void;
         /**
           * Define if separator should be rendered  Default: true
          */
