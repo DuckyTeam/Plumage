@@ -1,4 +1,4 @@
-import { Prop, Component, Watch, h } from '@stencil/core';
+import { Prop, Component, Watch, h, Event, EventEmitter } from '@stencil/core';
 import {
   plmgColorBorderInfo,
   plmgColorBorderNeutral,
@@ -78,12 +78,17 @@ export class ProgressStep {
     if (newValue && typeof newValue !== 'number')
       throw new Error('completed must be number');
   }
+  /**
+   * Exposes click handler event. Only exposed when interactive is true.
+   **/
+  @Event() stepClick: EventEmitter<MouseEvent>;
 
   render() {
     const stepClasses = {
       active: this.active,
       completed: this.completed,
       disabled: this.disabled,
+      'plmg-progress-step': true,
     };
 
     const circleClasses = {
@@ -97,7 +102,7 @@ export class ProgressStep {
     };
 
     return (
-      <button class="plmg-progress-stepper">
+      <button class={stepClasses} disabled={this.disabled}>
         <div class={circleClasses}>
           {this.completed ? (
             <plmg-svg-icon icon="check" />
