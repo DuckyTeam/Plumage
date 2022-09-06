@@ -159,9 +159,13 @@ export namespace Components {
          */
         "disabled": boolean;
         /**
-          * Define completed state  Default: false
+          * Define if separator should be rendered  Default: true
          */
-        "stepNumber": number;
+        "separator": boolean;
+        /**
+          * Define step number  Required
+         */
+        "step": number;
     }
     interface PlmgProgressStepper {
     }
@@ -707,9 +711,13 @@ declare namespace LocalJSX {
          */
         "disabled"?: boolean;
         /**
-          * Define completed state  Default: false
+          * Define if separator should be rendered  Default: true
          */
-        "stepNumber"?: number;
+        "separator"?: boolean;
+        /**
+          * Define step number  Required
+         */
+        "step": number;
     }
     interface PlmgProgressStepper {
     }
