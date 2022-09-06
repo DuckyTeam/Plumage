@@ -2,6 +2,30 @@
   "name": "@ducky/plumage",
   "entries": [
     {
+      "version": "1.8.1",
+      "tag": "@ducky/plumage_v1.8.1",
+      "date": "Mon, 05 Sep 2022 22:24:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixes component style: state change "
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.8.0",
+      "tag": "@ducky/plumage_v1.8.0",
+      "date": "Wed, 31 Aug 2022 04:09:05 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Create tabs component"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.7.1",
       "tag": "@ducky/plumage_v1.7.1",
       "date": "Sat, 20 Aug 2022 09:59:00 GMT",
