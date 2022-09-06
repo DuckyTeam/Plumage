@@ -31,14 +31,14 @@ export class Slider {
    * Allowed values:
    * - any number
    *
-   * If defaultValue is outside of min and max range or undefined
-   * defaultValue is set to the min value
+   * If default is outside of min and max range or undefined
+   * default is set to the min value
    */
-  @Prop() defaultValue: number;
-  @Watch('defaultValue')
-  validateDefaultValue(newValue: number) {
+  @Prop() default: number;
+  @Watch('default')
+  validateDefault(newValue: number) {
     if (typeof newValue !== 'number')
-      throw new Error('defaultValue must be a number');
+      throw new Error('default must be a number');
   }
   /**
    *
@@ -79,16 +79,20 @@ export class Slider {
    * The first and last items set min and max values
    * Additional values set additional marks and labels
    * Pass values in the ascending order, the component does not sort the list
+   *
+   * Required
    */
-  @Prop() rangeValues: string;
-  @Watch('rangeValues')
-  validateRangeValues(newValue: string) {
+  @Prop() range!: string;
+  @Watch('range')
+  validateRange(newValue: string) {
     if (
-      !Array.isArray(this.stringToNumberArray(newValue)) ||
-      this.stringToNumberArray(newValue).length < 2
+      typeof newValue !== 'string' ||
+      newValue === '' ||
+      newValue.split(',').length < 2 ||
+      newValue.split(',').some((value) => isNaN(Number(value)))
     )
       throw new Error(
-        'rangeValues must be a comma separated list with at least two items'
+        'range is required. range must be a comma separated list of numbers with at least two items'
       );
   }
 
@@ -107,7 +111,6 @@ export class Slider {
     if (typeof newValue !== 'boolean')
       throw new Error('thumbLabel must be boolean');
   }
-
   /**
    * Define step
    *
@@ -126,6 +129,39 @@ export class Slider {
   }
 
   /**
+   * Control the value of the slider
+   *
+   * Allowed values:
+   * - Any number
+   *
+   * Sets the value of the slider
+   */
+  @Prop() value: number;
+  @Watch('value')
+  validateValue(newValue: number) {
+    if (typeof newValue !== 'number') throw new Error('value must be a number');
+  }
+  @Watch('value')
+  setValue(newValue: number) {
+    this.validateTextInput(newValue);
+  }
+  /**
+   * Define text input field width
+   *
+   * Allowed values:
+   * - Any positive number
+   *
+   * Override the default width of the text input field with a pixel value
+   *
+   * By default the text input field width is set by the max value of the range
+   */
+  @Prop() textInputWidth: number;
+  @Watch('textInputWidth')
+  validatetextInputWidth(newValue: number) {
+    if (typeof newValue !== 'number' || newValue <= 0)
+      throw new Error('text input width must be a positive number');
+  }
+  /**
    * Store value, min, max, trackWidth, inputFieldValue and stepValue states
    *
    * trackWidth stores the width of container after the component loads to calculate relative positions.
@@ -135,86 +171,101 @@ export class Slider {
   @State() trackWidth: number;
   @State() stepValue: number;
   @State() inputFieldValue: number;
-  @State() value: number;
-  @State() internalRangeValues: number[];
+  @State() internalValue: number;
+  @State() internalRange: number[];
+  @State() allowedInputs: number[];
 
   /**
    * The event "valueUpdated" is triggered when the slider value changes either by moving the thumb or entering in the text field.
    */
   @Event() valueUpdated: EventEmitter;
 
-  private stringToNumberArray(newValue: string) {
-    return newValue.split(',').map(Number);
-  }
-
-  private handleSliderChange(ev) {
-    this.updateValue(ev.target.value);
+  private setAllowedInputs() {
+    const range = Array.from(
+      { length: (this.max - this.min) / this.stepValue + 1 },
+      (_, i) => this.min + i * this.stepValue
+    );
+    if (this.stepValue < 1) {
+      return range.map(
+        (value) => Math.round((value + Number.EPSILON) * 1000000) / 1000000
+      );
+    }
+    return range;
   }
 
   private updateValue(newValue) {
-    this.value = newValue;
-    if (this.inputFieldValue !== this.value) {
-      this.inputFieldValue = this.value;
-    }
-    this.valueUpdated.emit({ value: this.value });
+    this.internalValue = newValue;
+    this.inputFieldValue = newValue;
+    this.valueUpdated.emit({ value: this.internalValue });
   }
 
-  private getAllowedInputs() {
-    let inputs = [];
-    inputs.push(this.min);
-    while (inputs[inputs.length - 1] <= this.max) {
-      const PREV = inputs[inputs.length - 1];
-      // Correct for floating point errors by rounding when necessary
-      const NEXT =
-        Math.round((PREV + this.stepValue + Number.EPSILON) * 1000000) /
-        1000000;
-      // Escape valve in case of over rounding
-      if (!(NEXT > PREV)) return;
-      inputs.push(NEXT);
-    }
-    return inputs;
+  private handleInputFieldChange(event) {
+    this.inputFieldValue = event.target.value;
   }
 
-  private handleInputFieldChange(ev) {
-    // Ignore Empty Strings
-    if (ev.target.value == '') return;
-    // Get an array of allowed inputs
-    const SET_ALLOWED_INPUTS = this.getAllowedInputs();
-    // Check if input is allowed value, within range and one of the allowed inputs
-    const newValue = parseFloat(ev.target.value);
-    if (
-      isNaN(newValue) ||
-      newValue > this.max ||
-      newValue < this.min ||
-      !SET_ALLOWED_INPUTS.includes(newValue)
-    )
-      return;
-    this.updateValue(newValue);
+  private handleSliderChange(event) {
+    this.updateValue(event.target.value);
   }
 
-  private setValues() {
-    if (!this.rangeValues) return;
-    this.internalRangeValues = this.stringToNumberArray(this.rangeValues);
-    this.min = this.internalRangeValues[0];
-    this.max = this.internalRangeValues[this.internalRangeValues.length - 1];
-    if (this.defaultValue >= this.min && this.defaultValue <= this.max) {
-      this.updateValue(this.defaultValue);
-    } else {
-      this.updateValue(this.min);
+  private getClosestValidValue(value) {
+    return this.allowedInputs.reduce((previous, current) =>
+      Math.abs(current - value) < Math.abs(previous - value)
+        ? current
+        : previous
+    );
+  }
+
+  private handleTextInput(event) {
+    const { value } = event.target;
+    this.validateTextInput(value);
+  }
+
+  private validateTextInput(value: number) {
+    if (!value && value !== 0) {
+      return (this.inputFieldValue = this.internalValue);
     }
-    if (!this.step) {
-      this.stepValue = (this.max - this.min) / 100;
-    } else {
-      this.stepValue = this.step;
+    if (value < this.min) {
+      return this.updateValue(this.min);
     }
+    if (value > this.max) {
+      return this.updateValue(this.max);
+    }
+    if (this.allowedInputs.includes(value)) {
+      return this.updateValue(value);
+    }
+    this.updateValue(this.getClosestValidValue(value));
   }
 
   private resizeHandler() {
     this.trackWidth = this.ref.getBoundingClientRect().width;
   }
 
+  private handleKeyUp(event) {
+    if (
+      event.key === 'Enter' ||
+      event.key === 'ArrowUp' ||
+      event.key === 'ArrowDown'
+    ) {
+      return this.handleTextInput(event);
+    }
+  }
+
+  private setInitialValue(value) {
+    if (this.allowedInputs.includes(value)) return (this.internalValue = value);
+    return (this.internalValue = this.min);
+  }
+
   connectedCallback() {
-    this.setValues();
+    this.validateRange(this.range);
+    this.internalRange = this.range.split(',').map((value) => Number(value));
+    this.min = this.internalRange[0];
+    this.max = this.internalRange[this.internalRange.length - 1];
+    this.stepValue = this.step ? this.step : (this.max - this.min) / 100;
+    this.allowedInputs = this.setAllowedInputs();
+    this.value
+      ? this.setInitialValue(this.value)
+      : this.setInitialValue(this.default);
+    this.inputFieldValue = this.internalValue;
   }
 
   // This usage creates the warning 'The state/prop "trackWidth" changed during "componentDidLoad()", this triggers extra re-renders, try to setup on "componentWillLoad()'
@@ -238,7 +289,7 @@ export class Slider {
     };
 
     return (
-      <Host value={this.value}>
+      <Host value={this.internalValue}>
         <div class={'plmg-component-container'}>
           <div
             class={containerClasses}
@@ -254,7 +305,7 @@ export class Slider {
                       htmlFor={this.nameToId('-range-input')}
                       aria-label={this.name}
                     >
-                      {this.value}
+                      {this.internalValue}
                       <span class={'plmg-thumb-triangle'} />
                     </output>
                   </div>
@@ -269,19 +320,19 @@ export class Slider {
                   max={this.max}
                   name={this.name}
                   step={this.stepValue}
-                  onInput={(ev) => this.handleSliderChange(ev)}
+                  onInput={(event) => this.handleSliderChange(event)}
                   style={{ background: this.setBackgroundProgressFill() }}
                   id={this.nameToId('-range-input')}
                   type={'range'}
-                  value={this.value}
+                  value={this.internalValue}
                   aria-valuemin={this.min}
                   aria-valuemax={this.max}
-                  aria-valuenow={this.value}
+                  aria-valuenow={this.internalValue}
                 />
 
                 {this.marks ? (
                   <div class={'plmg-marks'}>
-                    {this.internalRangeValues.map((labelValue, index) => (
+                    {this.internalRange.map((labelValue, index) => (
                       <div
                         class={'plmg-mark-label'}
                         key={index}
@@ -308,11 +359,16 @@ export class Slider {
                 step={this.stepValue}
                 aria-valuemin={this.min}
                 aria-valuemax={this.max}
-                aria-valuenow={this.value}
+                aria-valuenow={this.internalValue}
                 min={this.min}
                 max={this.max}
                 value={this.inputFieldValue}
-                onInput={(Event) => this.handleInputFieldChange(Event)}
+                onInput={(event) => this.handleInputFieldChange(event)}
+                onBlur={(event) => this.handleTextInput(event)}
+                onKeyUp={(event) => this.handleKeyUp(event)}
+                style={{
+                  width: this.textInputWidth && this.textInputWidth + 'px',
+                }}
               />
             </label>
           </div>
@@ -337,20 +393,21 @@ export class Slider {
 
   private calculateValueAsDecimalFraction(labelValue?, multipler?) {
     if (multipler) {
-      return ((this.value - this.min) / (this.max - this.min)) * multipler;
+      return (
+        ((this.internalValue - this.min) / (this.max - this.min)) * multipler
+      );
     }
     if (labelValue || labelValue === 0) {
       return (labelValue - this.min) / (this.max - this.min);
     }
-    return (this.value - this.min) / (this.max - this.min);
+    return (this.internalValue - this.min) / (this.max - this.min);
   }
 
   private setThumbPosition() {
     const trackBasis = 12;
     const thumbDiameter = 1.5;
-
     return {
-      minWidth: `calc(.6em * ${this.value.toString().length})`,
+      minWidth: `calc(.6em * ${this.internalValue.toString().length})`,
       transform: `translate(calc(${this.calculateValueAsDecimalFraction()}em * (${
         this.trackWidth
       } / ${trackBasis} - ${thumbDiameter}) - 50%)`,

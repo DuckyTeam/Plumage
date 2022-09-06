@@ -1,10 +1,17 @@
 import { useState } from 'react';
-import { PlmgTab, PlmgTabs, PlmgRadioButtonGroup } from '@ducky/plumage-react';
+import { PlmgTab, PlmgTabs } from '@ducky/plumage-react';
 import Sliders from './Sliders';
 import TextForm from './TextForm';
 import Radios from './Radios';
+import { RANGE_INPUT_PARAMETERS } from './Constants/SliderInputs';
 
 export default function FormElements() {
+  const [sliderValues, setSliderValues] = useState({
+    decimal: RANGE_INPUT_PARAMETERS.decimal.default,
+    stepped: RANGE_INPUT_PARAMETERS.stepped.default,
+    large: RANGE_INPUT_PARAMETERS.large.default,
+  });
+
   const [currentTab, setTab] = useState(0);
 
   const tabClicked = (event: any) => {
@@ -13,7 +20,14 @@ export default function FormElements() {
 
   const renderTab = () => {
     if (currentTab === 0) {
-      return <Sliders />;
+      return (
+        <Sliders
+          sliderValues={sliderValues}
+          onUpdate={(value: number, label: string) => {
+            setSliderValues({ ...sliderValues, [label]: value });
+          }}
+        />
+      );
     }
 
     if (currentTab === 1) {

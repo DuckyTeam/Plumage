@@ -88,7 +88,6 @@ $thumb-diameter: 1.5em;
 
 .plmg-component-container {
   display: flex;
-  gap: 2rem;
   flex: 1;
   align-items: center;
 }
@@ -112,6 +111,7 @@ $thumb-diameter: 1.5em;
     background: transparent;
     font: inherit;
     @include state-reset;
+    z-index: 1;
 
     &,
     &::-webkit-slider-thumb {
@@ -149,10 +149,9 @@ $thumb-diameter: 1.5em;
 }
 
 .plmg-thumb-label-container {
-  height: 2.5rem;
+  height: 2.75rem;
 
   output {
-    margin-top: -0.25rem;
     text-align: center;
     background-color: tokens.$plmg-color-background-primary-strong;
     color: tokens.$plmg-color-text-neutral-inverted;
@@ -189,7 +188,6 @@ $thumb-diameter: 1.5em;
     position: absolute;
     bottom: 0;
     left: 0.5 * $thumb-diameter;
-    z-index: -1;
 
     .plmg-mark-tick {
       background-color: tokens.$plmg-color-background-neutral-strong;
@@ -201,11 +199,12 @@ $thumb-diameter: 1.5em;
 }
 
 .plmg-slider-input-field-container {
-  width: fit-content;
+  margin-left: 24px;
 
   &:focus-visible {
     outline: tokens.$plmg-border-width-l solid
       tokens.$plmg-color-border-standout;
+    outline-offset: -2px;
     border-radius: tokens.$plmg-border-radius-s;
   }
 
@@ -214,10 +213,9 @@ $thumb-diameter: 1.5em;
     border: none;
     box-sizing: border-box;
     font-size: tokens.$plmg-font-size-x1-125;
-    min-width: 5.2rem;
-    width: fit-content;
     outline: tokens.$plmg-border-width-m solid
       tokens.$plmg-color-border-neutral-weak;
+    outline-offset: -2px;
     padding: tokens.$plmg-spacing-x0-75 tokens.$plmg-spacing-x1;
     background-color: tokens.$plmg-color-background-neutral;
     box-shadow: tokens.$plmg-shadow-inner-s;

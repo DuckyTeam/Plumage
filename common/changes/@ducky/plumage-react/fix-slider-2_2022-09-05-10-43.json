@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage-react",
+      "comment": "fix(slider): Adds value attribute for controlled forms. Fixes UX experience for text input.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage-react"
+}
