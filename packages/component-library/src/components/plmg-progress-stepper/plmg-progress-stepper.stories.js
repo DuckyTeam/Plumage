@@ -10,10 +10,10 @@ export default {
 export const Stepper = () => {
   const htmlContent = `
   <plmg-progress-stepper>
-    <plmg-progress-step step="1" href="#" completed description="done">completed</plmg-progress-step>
-    <plmg-progress-step step="2" href="#" description="active" active>active</plmg-progress-step>
-    <plmg-progress-step step="3" href="#" description="default">not completed</plmg-progress-step>
-    <plmg-progress-step step="4" href="#" disabled separator="false" description="unclickable">disabled</plmg-progress-step>
+    <plmg-progress-step step="1" completed description="done">completed</plmg-progress-step>
+    <plmg-progress-step step="2" description="active" active>active</plmg-progress-step>
+    <plmg-progress-step step="3" description="default">not completed</plmg-progress-step>
+    <plmg-progress-step step="4" disabled separator="false" description="unclickable">disabled</plmg-progress-step>
   </plmg-progress-stepper>
   <br/>
   `;
