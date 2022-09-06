@@ -24,6 +24,9 @@ export default {
       options: [1, 2, 3, 4, 5, 6, 7, 8, 9],
       control: { type: 'select' },
     },
+    stepClick: {
+      action: 'clicked',
+    },
   },
 };
 
@@ -35,7 +38,7 @@ const PROPS = [
   'separator',
   'step',
 ];
-const EVENTS = [];
+const EVENTS = ['stepClick'];
 const CSS_VARS = [];
 const SLOTS = ['text-content'];
 

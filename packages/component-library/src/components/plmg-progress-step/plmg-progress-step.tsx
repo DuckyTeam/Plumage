@@ -81,7 +81,10 @@ export class ProgressStep {
   /**
    * Exposes click handler event. Only exposed when interactive is true.
    **/
-  @Event() stepClick: EventEmitter<MouseEvent>;
+  @Event({
+    eventName: 'stepClick',
+  })
+  stepClick: EventEmitter<MouseEvent>;
 
   render() {
     const stepClasses = {
@@ -103,9 +106,12 @@ export class ProgressStep {
 
     return (
       <button
+        id={`plmg_step_${this.step}`}
         class={stepClasses}
         onClick={
-          !this.disabled || !this.active ? (e) => this.stepClick.emit(e) : null
+          !this.disabled || !this.active
+            ? (event) => this.stepClick.emit({ detail: this.step, ...event })
+            : null
         }
         disabled={this.disabled}
       >
