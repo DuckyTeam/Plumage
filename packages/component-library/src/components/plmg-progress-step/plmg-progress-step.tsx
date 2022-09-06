@@ -126,18 +126,4 @@ export class ProgressStep {
       </button>
     );
   }
-
-  //   completed ? ' completed-wrapper' : ''
-  // }${current ? ' current-wrapper' : ''}${
-  //   inactive ? ' inactive-wrapper' : ''
-  // }`
-
-  /* <div
-          class={'stepper-class-not-class-clickable'}
-
-          // class={`${
-          //   inactive ? 'stepper-circle-not-clickable' : 'stepper-circle-clickable'
-          // }`}
-          // onClick={inactive ? () => {} : onClick}
-        > */
 }
