@@ -1,4 +1,4 @@
-import { Component, Element, h, State } from '@stencil/core';
+import { Component, Element, h } from '@stencil/core';
 
 @Component({
   tag: 'plmg-progress-stepper',
@@ -11,22 +11,6 @@ export class ProgressStepper {
    */
   @Element()
   el: HTMLElement;
-
-  /**
-   * Store the steps to be rendered in an array.
-   */
-  @State()
-  steps: HTMLPlmgProgressStepElement[] = [];
-
-  /**
-   * On componentWillLoad dynamically grab steps from the component to query and render.
-   */
-  componentWillLoad() {
-    this.steps = Array.from(this.el.querySelectorAll('plmg-progress-step'));
-    if (this.steps.length === 0) {
-      throw new Error('<plmg-stepper> Must have at least one step');
-    }
-  }
 
   render() {
     return (
