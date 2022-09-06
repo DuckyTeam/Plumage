@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage-react
 
-This log was last generated on Wed, 31 Aug 2022 04:09:04 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Sep 2022 10:51:00 GMT and should not be manually modified.
+
+## 0.8.1
+Tue, 06 Sep 2022 10:51:00 GMT
+
+### Patches
+
+- fix(slider): Adds value attribute for controlled forms. Fixes UX experience for text input.
 
 ## 0.8.0
 Wed, 31 Aug 2022 04:09:04 GMT

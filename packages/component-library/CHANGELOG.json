@@ -2,6 +2,18 @@
   "name": "@ducky/plumage",
   "entries": [
     {
+      "version": "1.9.0",
+      "tag": "@ducky/plumage_v1.9.0",
+      "date": "Tue, 06 Sep 2022 10:51:00 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "fix(slider): Adds value attribute for form control. Add text input field width attribute. Fixes UX experience for text input."
+          }
+        ]
+      }
+    },
+    {
       "version": "1.8.1",
       "tag": "@ducky/plumage_v1.8.1",
       "date": "Mon, 05 Sep 2022 22:24:36 GMT",

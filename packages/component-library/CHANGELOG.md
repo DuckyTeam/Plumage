@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Mon, 05 Sep 2022 22:24:36 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Sep 2022 10:51:00 GMT and should not be manually modified.
+
+## 1.9.0
+Tue, 06 Sep 2022 10:51:00 GMT
+
+### Minor changes
+
+- fix(slider): Adds value attribute for form control. Add text input field width attribute. Fixes UX experience for text input.
 
 ## 1.8.1
 Mon, 05 Sep 2022 22:24:36 GMT
