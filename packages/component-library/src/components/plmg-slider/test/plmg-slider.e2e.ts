@@ -19,23 +19,39 @@ describe('plmg-slider', () => {
   });
 });
 
-describe('plmg-slider', () => {
-  it('renders the component', async () => {
+describe('text input width prop', () => {
+  it('accepts a positive number to set the text input container width', async () => {
     const page = await newE2EPage();
     await page.setContent(
-      '<plmg-slider name="Range Slider" range="0, 10"></plmg-slider>'
+      '<plmg-slider name="Range Slider" text-input-width="100" range="0, 10"></plmg-slider>'
     );
-    const element = await page.find('plmg-slider');
-    expect(element).toHaveClass('hydrated');
+    const element = await page.find(
+      'plmg-slider >>> .plmg-slider-input-field-container'
+    );
+    const style = await element.getComputedStyle();
+    expect(style.width).toBe('100px');
   });
-
-  it('renders the input range', async () => {
+  it('accepts a fractional value to set the text input container width', async () => {
     const page = await newE2EPage();
     await page.setContent(
-      '<plmg-slider name="Range Slider" range="0, 10"></plmg-slider>'
+      '<plmg-slider name="Range Slider" text-input-width="100.5" range="0, 10"></plmg-slider>'
     );
-    const element = await page.find('plmg-slider >>> input[type="range"]');
-    expect(element).not.toBe(null);
+    const element = await page.find(
+      'plmg-slider >>> .plmg-slider-input-field-container'
+    );
+    const style = await element.getComputedStyle();
+    expect(style.width).toBe('100.5px');
+  });
+  it('does not accept a negative value', async () => {
+    const page = await newE2EPage();
+    await page.setContent(
+      '<plmg-slider name="Range Slider" text-input-width="-1" range="0, 10"></plmg-slider>'
+    );
+    const element = await page.find(
+      'plmg-slider >>> .plmg-slider-input-field-container'
+    );
+    const style = await element.getComputedStyle();
+    expect(style.width).not.toBe('-1px');
   });
 });
 
