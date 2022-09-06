@@ -102,7 +102,13 @@ export class ProgressStep {
     };
 
     return (
-      <button class={stepClasses} disabled={this.disabled}>
+      <button
+        class={stepClasses}
+        onClick={
+          !this.disabled || !this.active ? (e) => this.stepClick.emit(e) : null
+        }
+        disabled={this.disabled}
+      >
         <div class={circleClasses}>
           {this.completed ? (
             <plmg-svg-icon icon="check" />
