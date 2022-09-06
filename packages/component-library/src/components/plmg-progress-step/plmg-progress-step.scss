@@ -3,29 +3,27 @@
 // Component style
 // -------------------------------------------------
 
-.plmg-progress-stepper {
+.plmg-progress-step {
   // reset default button styles
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
-  margin-right: tokens.$plmg-spacing-x1-5;
   // remove button styling
   background-color: transparent;
   background-repeat: no-repeat;
   border: none;
   overflow: hidden;
   outline: none;
+  cursor: pointer;
   // Common typography
   font-family: tokens.$plmg-font-family-sans;
   font-style: normal;
   line-height: tokens.$plmg-font-lineheight-loose;
 
-  &.disabled {
-    pointer-events: none;
-  }
+  &.disabled,
   &.active {
-    pointer-events: none;
+    cursor: default;
   }
 
   &:hover > .plmg-progress-stepper-circle {
@@ -79,7 +77,6 @@
 
 .plmg-progress-stepper-circle-content {
   font-size: tokens.$plmg-font-size-x0_875;
-  margin: 0;
 }
 
 .plmg-progress-stepper-separator {
@@ -93,16 +90,10 @@
   text-align: left;
   font-size: tokens.$plmg-font-size-x0_875;
   font-weight: tokens.$plmg-font-weight-regular;
-  margin: 0;
   color: tokens.$plmg-color-text-neutral;
 
   padding: 0 tokens.$plmg-spacing-x0_5;
   white-space: nowrap;
-
-  .plmg-progress-stepper-description {
-    font-weight: tokens.$plmg-font-weight-regular;
-    font-size: tokens.$plmg-font-size-x0_75;
-  }
 
   &.active {
     font-weight: tokens.$plmg-font-weight-semibold;
@@ -118,9 +109,14 @@
 
   @media only screen and (min-width: tokens.$plmg-breakpoint-xl) {
     font-size: tokens.$plmg-font-size-x1-125;
+  }
+}
 
-    .plmg-progress-stepper-description {
-      font-size: tokens.$plmg-font-size-x1;
-    }
+.plmg-progress-stepper-description {
+  font-weight: tokens.$plmg-font-weight-regular;
+  font-size: tokens.$plmg-font-size-x0_75;
+
+  @media only screen and (min-width: tokens.$plmg-breakpoint-xl) {
+    font-size: tokens.$plmg-font-size-x1;
   }
 }
