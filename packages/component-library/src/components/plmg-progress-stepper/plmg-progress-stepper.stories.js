@@ -4,22 +4,28 @@ export default {
   title: 'Component/ProgressStepper',
   parameters: {},
   decorators: [],
-  argTypes: {},
+  argTypes: {
+    ['active-step']: {
+      options: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+      control: { type: 'select' },
+    },
+  },
 };
 
-export const Stepper = () => {
-  const htmlContent = `
-  <plmg-progress-stepper>
-    <plmg-progress-step step="1" completed description="done">completed</plmg-progress-step>
-    <plmg-progress-step step="2" description="active" active>active</plmg-progress-step>
-    <plmg-progress-step step="3" description="default">not completed</plmg-progress-step>
-    <plmg-progress-step step="4" disabled separator="false" description="unclickable">disabled</plmg-progress-step>
-  </plmg-progress-stepper>
-  <br/>
-  `;
+const PROPS = ['active-step'];
+const SLOTS = ['children'];
 
-  const el = document.createElement('div');
-  el.innerHTML = htmlContent.trim();
+const Template = (args) => {
+  const el = document.createElement('plmg-progress-stepper');
+  Utils.bindProps(el, PROPS, args);
+  Utils.bindSlots(el, SLOTS, args);
   return el;
 };
-Stepper.storyName = 'Stepper';
+
+export const Primary = Template.bind({});
+Primary.storyName = 'Stepper';
+Primary.args = {
+  ['active-step']: 0,
+  children: `<plmg-progress-step step="1">one</plmg-progress-step><plmg-progress-step step="2">two</plmg-progress-step><plmg-progress-step step="3">three</plmg-progress-step><plmg-progress-step step="4">four</plmg-progress-step>
+  `,
+};
