@@ -36,7 +36,7 @@ export class ProgressStepper {
       throw new Error('<plmg-stepper> Must have at least one step');
     }
     this.steps.forEach((step, index) => {
-      if (index === this.activeStep) {
+      if (index + 1 === this.activeStep) {
         step.active = true;
       }
     });
