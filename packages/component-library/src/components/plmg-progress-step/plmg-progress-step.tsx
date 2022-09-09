@@ -106,11 +106,10 @@ export class ProgressStep {
 
     return (
       <button
-        id={`plmg_step_${this.step}`}
         class={stepClasses}
         onClick={
           !this.disabled || !this.active
-            ? (event) => this.stepClick.emit({ detail: this.step, ...event })
+            ? (event) => this.stepClick.emit(event)
             : null
         }
         disabled={this.disabled}
