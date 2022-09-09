@@ -168,6 +168,10 @@ export namespace Components {
         "step": number;
     }
     interface PlmgProgressStepper {
+        /**
+          * On componentWillLoad dynamically grab tabs from the component to query and render.
+         */
+        "activeStep": number;
     }
     interface PlmgRadioButton {
         /**
@@ -770,6 +774,10 @@ declare namespace LocalJSX {
         "step": number;
     }
     interface PlmgProgressStepper {
+        /**
+          * On componentWillLoad dynamically grab tabs from the component to query and render.
+         */
+        "activeStep"?: number;
     }
     interface PlmgRadioButton {
         /**
