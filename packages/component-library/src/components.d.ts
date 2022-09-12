@@ -371,7 +371,7 @@ export namespace Components {
          */
         "tip": string;
         /**
-          * Control the form's value  Allowed values: - Any string  Sets the value of the text input
+          * Control text input's value  Allowed values: - Any string  Set the value of the text input
          */
         "value": string;
     }
@@ -943,7 +943,7 @@ declare namespace LocalJSX {
          */
         "tip"?: string;
         /**
-          * Control the form's value  Allowed values: - Any string  Sets the value of the text input
+          * Control text input's value  Allowed values: - Any string  Set the value of the text input
          */
         "value"?: string;
     }
