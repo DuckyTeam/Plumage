@@ -120,8 +120,6 @@ export class TextInput {
   @Prop() value: string;
   @Watch('value')
   validateValue(newValue: string) {
-    console.log('validate value', newValue);
-
     if (typeof newValue !== 'string') throw new Error('value must be a string');
   }
   @Watch('value')
