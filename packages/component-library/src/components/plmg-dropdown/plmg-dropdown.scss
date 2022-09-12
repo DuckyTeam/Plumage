@@ -1,0 +1,20 @@
+@use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
+
+// Component style
+// -------------------------------------------------
+.plmg-dropdown {
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: tokens.$plmg-shadow-m;
+  // padding-bottom: tokens.$plmg-spacing-x1-5;
+  background: tokens.$plmg-color-background-neutral;
+  border-radius: tokens.$plmg-border-radius-s;
+  position: absolute;
+  display: none;
+
+  &.plmg-dropdown-visible {
+    display: block;
+  }
+}
+// ------------- END Component style ---------------
