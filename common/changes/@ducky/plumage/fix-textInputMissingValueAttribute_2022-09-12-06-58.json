@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "adds value attribute",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
