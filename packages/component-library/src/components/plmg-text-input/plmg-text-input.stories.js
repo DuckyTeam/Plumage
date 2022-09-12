@@ -25,6 +25,9 @@ export default {
     tip: {
       control: { type: 'text' },
     },
+    value: {
+      control: { type: 'text' },
+    },
   },
 };
 
@@ -35,6 +38,7 @@ const PROPS = [
   'required',
   'size',
   'tip',
+  'value',
 ];
 
 const EVENTS = [];
@@ -54,6 +58,7 @@ Primary.args = {
   ['error-message']: '',
   ['show-label']: false,
   required: false,
+  value: '',
 };
 
 export const AllSizes = (args) => {
