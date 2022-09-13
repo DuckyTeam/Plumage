@@ -15,6 +15,7 @@
 | `showLabel`          | `show-label`    | Define if the label is shown  Allowed values: - true - false  Default: true                                                                          | `boolean`             | `true`      |
 | `size`               | `size`          |  Define text input's size  Allowed values:   - medium   - large  Default: medium                                                                     | `"large" \| "medium"` | `'medium'`  |
 | `tip`                | `tip`           | Define tip  Allowed value: any string  Displays a tip message                                                                                        | `string`              | `undefined` |
+| `value`              | `value`         | Control text input's value  Allowed values: - Any string  Set the value of the text input                                                            | `string`              | `undefined` |
 
 
 ## Events
