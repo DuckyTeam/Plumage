@@ -18,7 +18,6 @@ import {
   shadow: false,
 })
 export class TextInput {
-  @State() value: string;
   /**
    * Define error message
    *
@@ -110,15 +109,37 @@ export class TextInput {
     if (newValue && typeof newValue !== 'string')
       throw new Error('tip text must be a string');
   }
+  /**
+   * Control text input's value
+   *
+   * Allowed values:
+   * - Any string
+   *
+   * Set the value of the text input
+   */
+  @Prop() value: string;
+  @Watch('value')
+  validateValue(newValue: string) {
+    if (typeof newValue !== 'string') throw new Error('value must be a string');
+  }
+  @Watch('value')
+  setValue(newValue: string) {
+    this.internalValue = newValue;
+  }
 
+  @State() internalValue: string;
   private handleInputChange(ev) {
-    this.value = ev.target.value;
-    this.valueUpdated.emit({ value: this.value });
+    this.internalValue = ev.target.value;
+    this.valueUpdated.emit({ value: this.internalValue });
   }
   /**
    * Event emitted when value changed
    */
   @Event() valueUpdated: EventEmitter;
+
+  connectedCallback() {
+    this.internalValue = this.value;
+  }
 
   componentWillLoad() {
     this.validateSize(this.size);
@@ -154,7 +175,7 @@ export class TextInput {
             name={this.label}
             required={this.required}
             type={'text'}
-            value={this.value}
+            value={this.internalValue}
             onInput={(ev) => this.handleInputChange(ev)}
           />
         </div>

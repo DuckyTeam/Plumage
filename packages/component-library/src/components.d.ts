@@ -370,6 +370,10 @@ export namespace Components {
           * Define tip  Allowed value: any string  Displays a tip message
          */
         "tip": string;
+        /**
+          * Control text input's value  Allowed values: - Any string  Set the value of the text input
+         */
+        "value": string;
     }
     interface PlmgTooltip {
         /**
@@ -938,6 +942,10 @@ declare namespace LocalJSX {
           * Define tip  Allowed value: any string  Displays a tip message
          */
         "tip"?: string;
+        /**
+          * Control text input's value  Allowed values: - Any string  Set the value of the text input
+         */
+        "value"?: string;
     }
     interface PlmgTooltip {
         /**

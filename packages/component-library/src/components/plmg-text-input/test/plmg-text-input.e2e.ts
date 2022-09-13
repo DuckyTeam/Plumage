@@ -133,3 +133,34 @@ describe('plmg-text-input', () => {
     expect(results.violations).toHaveLength(0);
   });
 });
+
+describe('value attribute', () => {
+  it('sets the text input value', async () => {
+    const page = await newE2EPage();
+    await page.setContent(
+      '<plmg-text-input label="text-input" value="your value"></plmg-text-input>'
+    );
+    const component = await page.find('plmg-text-input');
+    const inputFieldElement = await page.find('input[type="text"]');
+    expect(await component.getProperty('value')).toEqual('your value');
+    expect(await inputFieldElement.getProperty('value')).toEqual('your value');
+  });
+  it('is updated after user input', async () => {
+    const page = await newE2EPage();
+    await page.setContent(
+      '<plmg-text-input label="text-input" value="initial text"></plmg-text-input>'
+    );
+    const component = await page.find('plmg-text-input');
+    const inputFieldElement = await page.find('input[type="text"]');
+    expect(await component.getProperty('value')).toEqual('initial text');
+    expect(await inputFieldElement.getProperty('value')).toEqual(
+      'initial text'
+    );
+    await inputFieldElement.type(` additional text`);
+    await inputFieldElement.press('Enter');
+    await page.waitForChanges();
+    expect(await inputFieldElement.getProperty('value')).toEqual(
+      'initial text additional text'
+    );
+  });
+});
