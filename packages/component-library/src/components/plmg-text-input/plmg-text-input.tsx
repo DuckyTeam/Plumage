@@ -19,6 +19,19 @@ import {
 })
 export class TextInput {
   /**
+   * Define disabled
+   *
+   * Allowed value: boolean
+   *
+   * Disables text input
+   */
+  @Prop() disabled: boolean = false;
+  @Watch('disabled')
+  validateDisabled(newValue: boolean) {
+    if (newValue && typeof newValue !== 'boolean')
+      throw new Error('disabled must be boolean');
+  }
+  /**
    * Define error message
    *
    * Allowed value: any string
@@ -59,6 +72,19 @@ export class TextInput {
   validateShowLabel(newValue: boolean) {
     if (newValue && typeof newValue !== 'boolean')
       throw new Error('show label must be boolean');
+  }
+  /**
+   * Define readonly
+   *
+   * Allowed value: boolean
+   *
+   * Makes text input read only
+   */
+  @Prop() readOnly: boolean = false;
+  @Watch('readOnly')
+  validateReadOnly(newValue: boolean) {
+    if (newValue && typeof newValue !== 'boolean')
+      throw new Error('readOnly must be boolean');
   }
   /**
    * Define if an input is required.
@@ -110,16 +136,18 @@ export class TextInput {
       throw new Error('tip text must be a string');
   }
   /**
-   * Control text input's value
+   * Control the text input's value
    *
    * Allowed values:
    * - Any string
    *
-   * Set the value of the text input
+   * Sets the value of the text input
    */
   @Prop() value: string;
   @Watch('value')
   validateValue(newValue: string) {
+    console.log('validate value', newValue);
+
     if (typeof newValue !== 'string') throw new Error('value must be a string');
   }
   @Watch('value')
@@ -170,11 +198,13 @@ export class TextInput {
         </label>
         <div class={'plmg-text-input-field-wrapper'} tabIndex={0}>
           <input
+            disabled={this.disabled}
             class={inputClasses}
             id={this.labelToId()}
             name={this.label}
             required={this.required}
             type={'text'}
+            readonly={this.readOnly}
             value={this.internalValue}
             onInput={(ev) => this.handleInputChange(ev)}
           />
