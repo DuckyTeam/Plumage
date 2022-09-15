@@ -347,6 +347,10 @@ export namespace Components {
     }
     interface PlmgTextInput {
         /**
+          * Define disabled  Allowed value: boolean  Disables text input
+         */
+        "disabled": boolean;
+        /**
           * Define error message  Allowed value: any string  Sets error style and error message
          */
         "errorMessage": string;
@@ -354,6 +358,10 @@ export namespace Components {
           * Define a label name for the input field.  Allowed values: - Any string  A unique label name for each element in a form is required for accessibility
          */
         "label": string;
+        /**
+          * Define readonly  Allowed value: boolean  Makes text input read only
+         */
+        "readOnly": boolean;
         /**
           * Define if an input is required.  Allowed values: - true - false  Default: false
          */
@@ -371,7 +379,7 @@ export namespace Components {
          */
         "tip": string;
         /**
-          * Control text input's value  Allowed values: - Any string  Set the value of the text input
+          * Control the text input's value  Allowed values: - Any string  Sets the value of the text input
          */
         "value": string;
     }
@@ -915,6 +923,10 @@ declare namespace LocalJSX {
     }
     interface PlmgTextInput {
         /**
+          * Define disabled  Allowed value: boolean  Disables text input
+         */
+        "disabled"?: boolean;
+        /**
           * Define error message  Allowed value: any string  Sets error style and error message
          */
         "errorMessage"?: string;
@@ -926,6 +938,10 @@ declare namespace LocalJSX {
           * Event emitted when value changed
          */
         "onValueUpdated"?: (event: PlmgTextInputCustomEvent<any>) => void;
+        /**
+          * Define readonly  Allowed value: boolean  Makes text input read only
+         */
+        "readOnly"?: boolean;
         /**
           * Define if an input is required.  Allowed values: - true - false  Default: false
          */
@@ -943,7 +959,7 @@ declare namespace LocalJSX {
          */
         "tip"?: string;
         /**
-          * Control text input's value  Allowed values: - Any string  Set the value of the text input
+          * Control the text input's value  Allowed values: - Any string  Sets the value of the text input
          */
         "value"?: string;
     }
