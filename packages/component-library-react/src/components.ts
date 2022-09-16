@@ -11,6 +11,8 @@ defineCustomElements();
 export const PlmgAvatar = /*@__PURE__*/createReactComponent<JSX.PlmgAvatar, HTMLPlmgAvatarElement>('plmg-avatar');
 export const PlmgButton = /*@__PURE__*/createReactComponent<JSX.PlmgButton, HTMLPlmgButtonElement>('plmg-button');
 export const PlmgCard = /*@__PURE__*/createReactComponent<JSX.PlmgCard, HTMLPlmgCardElement>('plmg-card');
+export const PlmgDropdown = /*@__PURE__*/createReactComponent<JSX.PlmgDropdown, HTMLPlmgDropdownElement>('plmg-dropdown');
+export const PlmgDropdownItem = /*@__PURE__*/createReactComponent<JSX.PlmgDropdownItem, HTMLPlmgDropdownItemElement>('plmg-dropdown-item');
 export const PlmgErrorMessage = /*@__PURE__*/createReactComponent<JSX.PlmgErrorMessage, HTMLPlmgErrorMessageElement>('plmg-error-message');
 export const PlmgHeader = /*@__PURE__*/createReactComponent<JSX.PlmgHeader, HTMLPlmgHeaderElement>('plmg-header');
 export const PlmgPageContainer = /*@__PURE__*/createReactComponent<JSX.PlmgPageContainer, HTMLPlmgPageContainerElement>('plmg-page-container');
