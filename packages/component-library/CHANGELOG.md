@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Tue, 13 Sep 2022 00:30:33 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Sep 2022 09:48:12 GMT and should not be manually modified.
+
+## 1.11.0
+Fri, 16 Sep 2022 09:48:12 GMT
+
+### Minor changes
+
+- TextInput: add disabled and readonly attributes
 
 ## 1.10.0
 Tue, 13 Sep 2022 00:30:33 GMT
