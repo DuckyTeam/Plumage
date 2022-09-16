@@ -132,6 +132,56 @@ describe('plmg-text-input', () => {
 
     expect(results.violations).toHaveLength(0);
   });
+  it('disabled is accessible', async () => {
+    const page = await newE2EPage();
+
+    const isDisabled = [true, false];
+    let htmlContent = '';
+    isDisabled.forEach((disabled) => {
+      htmlContent += `
+    <plmg-text-input label='disabled ${disabled}' disabled={${disabled}}>
+    </plmg-text-input>
+    `;
+    });
+
+    await page.setContent('<main>' + htmlContent + '</main>');
+
+    const results = await new AxePuppeteer(page as unknown as Page)
+      .disableRules([
+        'document-title',
+        'html-has-lang',
+        'landmark-one-main',
+        'page-has-heading-one',
+      ])
+      .analyze();
+
+    expect(results.violations).toHaveLength(0);
+  });
+  it('readonly is accessible', async () => {
+    const page = await newE2EPage();
+
+    const isReadonly = [true, false];
+    let htmlContent = '';
+    isReadonly.forEach((readonly) => {
+      htmlContent += `
+    <plmg-text-input label='readonly ${readonly}' readonly={${readonly}}>
+    </plmg-text-input>
+    `;
+    });
+
+    await page.setContent('<main>' + htmlContent + '</main>');
+
+    const results = await new AxePuppeteer(page as unknown as Page)
+      .disableRules([
+        'document-title',
+        'html-has-lang',
+        'landmark-one-main',
+        'page-has-heading-one',
+      ])
+      .analyze();
+
+    expect(results.violations).toHaveLength(0);
+  });
 });
 
 describe('value attribute', () => {

@@ -6,6 +6,11 @@ export default {
   parameters: {},
   decorators: [],
   argTypes: {
+    disabled: {
+      control: {
+        type: 'boolean',
+      },
+    },
     ['error-message']: {
       control: { type: 'text' },
     },
@@ -14,6 +19,11 @@ export default {
     },
     ['show-label']: {
       control: { type: 'boolean' },
+    },
+    ['read-only']: {
+      control: {
+        type: 'boolean',
+      },
     },
     required: {
       control: { type: 'boolean' },
@@ -32,9 +42,11 @@ export default {
 };
 
 const PROPS = [
+  'disabled',
   'error-message',
   'show-label',
   'label',
+  'read-only',
   'required',
   'size',
   'tip',
@@ -78,6 +90,21 @@ export const AllSizes = (args) => {
   return el;
 };
 AllSizes.storyName = 'All Sizes';
+
+export const disabled = Template.bind({});
+disabled.storyName = 'Disabled';
+disabled.args = {
+  label: 'Disabled',
+  disabled: true,
+};
+
+export const readOnly = Template.bind({});
+readOnly.storyName = 'Read Only';
+readOnly.args = {
+  label: 'Read Only',
+  ['read-only']: true,
+  value: 'Cannot be edited, but can be copied',
+};
 
 export const showLabel = Template.bind({});
 showLabel.storyName = 'Label';
