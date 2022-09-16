@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import {
   PlmgButton,
   PlmgCard,
+  PlmgDropdown,
+  PlmgDropdownItem,
   PlmgHeader,
   PlmgPageContainer,
   PlmgSidebar,
@@ -14,6 +16,7 @@ import {
   PlmgStatus,
 } from '@ducky/plumage-react';
 import Avatars from './Avatars';
+import Dropdown from './Dropdown';
 import FormElements from './FormElements';
 
 const TooltipRefExample = () => {
@@ -88,15 +91,24 @@ ReactDOM.render(
           color="#78909C"
         ></PlmgSeparator>
         <span>Menu Item 2</span>
-        <PlmgAvatar
-          size={'small'}
-          iconColor={'#E81F64'}
-          backgroundColor={'#FAD2E0'}
-          interactive
-          onAvatarClick={() =>
-            alert(`I'm a clickable avatar, but the others aren't`)
-          }
-        ></PlmgAvatar>
+        <PlmgDropdown align={'right'}>
+          <PlmgAvatar slot={'slot-trigger'} size={'medium'} interactive />
+          <div slot={'slot-menu'}>
+            <PlmgDropdownItem
+              icon={'duck'}
+              text={'Dropdown Item 1'}
+              href={'https://ducky.eco'}
+              target={'_blank'}
+            />
+            <PlmgSeparator style={{ padding: '8px 8px', color: '#BFCBD1' }} />
+            <PlmgDropdownItem
+              icon={'duck'}
+              text={'Dropdown Item 1'}
+              href={'https://ducky.eco'}
+              target={'_blank'}
+            />
+          </div>
+        </PlmgDropdown>
       </div>
     </PlmgHeader>
     <div slot={'content'} style={{ padding: '24px' }}>

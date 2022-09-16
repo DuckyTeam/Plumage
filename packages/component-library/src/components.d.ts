@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { PlmgAvatarSize } from "./components/plmg-avatar/plmg-avatar.types";
 import { PlmgButtonColor, PlmgButtonDesign, PlmgButtonSize, PlmgButtonType } from "./components/plmg-button/plmg-button.types";
+import { PlmgDropdownAlignments } from "./components/plmg-dropdown/plmg-dropdown.types";
 import { PlmgErrorMessageSize } from "./components/plmg-error-message/plmg-error-message.types";
 import { PlmgRadioButtonSize } from "./components/plmg-radio-button/plmg-radio-button.types";
 import { PlmgStatusVariant } from "./components/plmg-status/plmg-status.types";
@@ -114,6 +115,42 @@ export namespace Components {
           * Define top action's label, used to enable assistive technology for the top action button.  You must provide a topActionLabel when providing a topActionIcon.
          */
         "topActionLabel": string | undefined;
+    }
+    interface PlmgDropdown {
+        /**
+          * Define the alignment of the dropdown menu.  Allowed values:   - left   - right  Default: left
+         */
+        "align": PlmgDropdownAlignments;
+        /**
+          * Disable click events on the dropdown.  Allowed values:   - true   - false  Default: false
+         */
+        "disableListeners": boolean;
+        /**
+          * Invoke this method to manually toggle the dropdown's visibility.  Use this method when the event listeners are disabled.
+         */
+        "toggleVisible": () => Promise<void>;
+    }
+    interface PlmgDropdownItem {
+        /**
+          * Define button as a link
+         */
+        "href": string;
+        /**
+          * Provide an optional icon to display to the left of the text
+         */
+        "icon": string;
+        /**
+          * Define links rel
+         */
+        "rel": string;
+        /**
+          * Define links target
+         */
+        "target": string;
+        /**
+          * The text to show on the item. it is mandatory to provide a text.  If the text is too long for the item, it will be truncated and will end with "...". Example: "A very long text that will be trunc..."
+         */
+        "text": string;
     }
     interface PlmgErrorMessage {
         /**
@@ -406,6 +443,10 @@ export interface PlmgCardCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPlmgCardElement;
 }
+export interface PlmgDropdownItemCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPlmgDropdownItemElement;
+}
 export interface PlmgHeaderCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPlmgHeaderElement;
@@ -448,6 +489,18 @@ declare global {
     var HTMLPlmgCardElement: {
         prototype: HTMLPlmgCardElement;
         new (): HTMLPlmgCardElement;
+    };
+    interface HTMLPlmgDropdownElement extends Components.PlmgDropdown, HTMLStencilElement {
+    }
+    var HTMLPlmgDropdownElement: {
+        prototype: HTMLPlmgDropdownElement;
+        new (): HTMLPlmgDropdownElement;
+    };
+    interface HTMLPlmgDropdownItemElement extends Components.PlmgDropdownItem, HTMLStencilElement {
+    }
+    var HTMLPlmgDropdownItemElement: {
+        prototype: HTMLPlmgDropdownItemElement;
+        new (): HTMLPlmgDropdownItemElement;
     };
     interface HTMLPlmgErrorMessageElement extends Components.PlmgErrorMessage, HTMLStencilElement {
     }
@@ -543,6 +596,8 @@ declare global {
         "plmg-avatar": HTMLPlmgAvatarElement;
         "plmg-button": HTMLPlmgButtonElement;
         "plmg-card": HTMLPlmgCardElement;
+        "plmg-dropdown": HTMLPlmgDropdownElement;
+        "plmg-dropdown-item": HTMLPlmgDropdownItemElement;
         "plmg-error-message": HTMLPlmgErrorMessageElement;
         "plmg-header": HTMLPlmgHeaderElement;
         "plmg-page-container": HTMLPlmgPageContainerElement;
@@ -674,6 +729,42 @@ declare namespace LocalJSX {
           * Define top action's label, used to enable assistive technology for the top action button.  You must provide a topActionLabel when providing a topActionIcon.
          */
         "topActionLabel"?: string | undefined;
+    }
+    interface PlmgDropdown {
+        /**
+          * Define the alignment of the dropdown menu.  Allowed values:   - left   - right  Default: left
+         */
+        "align"?: PlmgDropdownAlignments;
+        /**
+          * Disable click events on the dropdown.  Allowed values:   - true   - false  Default: false
+         */
+        "disableListeners"?: boolean;
+    }
+    interface PlmgDropdownItem {
+        /**
+          * Define button as a link
+         */
+        "href"?: string;
+        /**
+          * Provide an optional icon to display to the left of the text
+         */
+        "icon"?: string;
+        /**
+          * Click event dispatched when icon is a button and not a link
+         */
+        "onDropdownItemClick"?: (event: PlmgDropdownItemCustomEvent<MouseEvent>) => void;
+        /**
+          * Define links rel
+         */
+        "rel"?: string;
+        /**
+          * Define links target
+         */
+        "target"?: string;
+        /**
+          * The text to show on the item. it is mandatory to provide a text.  If the text is too long for the item, it will be truncated and will end with "...". Example: "A very long text that will be trunc..."
+         */
+        "text"?: string;
     }
     interface PlmgErrorMessage {
         /**
@@ -969,6 +1060,8 @@ declare namespace LocalJSX {
         "plmg-avatar": PlmgAvatar;
         "plmg-button": PlmgButton;
         "plmg-card": PlmgCard;
+        "plmg-dropdown": PlmgDropdown;
+        "plmg-dropdown-item": PlmgDropdownItem;
         "plmg-error-message": PlmgErrorMessage;
         "plmg-header": PlmgHeader;
         "plmg-page-container": PlmgPageContainer;
@@ -993,6 +1086,8 @@ declare module "@stencil/core" {
             "plmg-avatar": LocalJSX.PlmgAvatar & JSXBase.HTMLAttributes<HTMLPlmgAvatarElement>;
             "plmg-button": LocalJSX.PlmgButton & JSXBase.HTMLAttributes<HTMLPlmgButtonElement>;
             "plmg-card": LocalJSX.PlmgCard & JSXBase.HTMLAttributes<HTMLPlmgCardElement>;
+            "plmg-dropdown": LocalJSX.PlmgDropdown & JSXBase.HTMLAttributes<HTMLPlmgDropdownElement>;
+            "plmg-dropdown-item": LocalJSX.PlmgDropdownItem & JSXBase.HTMLAttributes<HTMLPlmgDropdownItemElement>;
             "plmg-error-message": LocalJSX.PlmgErrorMessage & JSXBase.HTMLAttributes<HTMLPlmgErrorMessageElement>;
             "plmg-header": LocalJSX.PlmgHeader & JSXBase.HTMLAttributes<HTMLPlmgHeaderElement>;
             "plmg-page-container": LocalJSX.PlmgPageContainer & JSXBase.HTMLAttributes<HTMLPlmgPageContainerElement>;
