@@ -178,6 +178,38 @@ export namespace Components {
          */
         "sidebarExpanded": boolean;
     }
+    interface PlmgProgressStep {
+        /**
+          * Define active state  Default: false
+         */
+        "active": boolean;
+        /**
+          * Define completed state  Default: false
+         */
+        "completed": boolean;
+        /**
+          * Define a description text for the stepper
+         */
+        "description": string;
+        /**
+          * Define disabled state  Default: true
+         */
+        "disabled": boolean;
+        /**
+          * Define if separator should be rendered  Default: true
+         */
+        "separator": boolean;
+        /**
+          * Define step number  Required
+         */
+        "step": number;
+    }
+    interface PlmgProgressStepper {
+        /**
+          * On componentWillLoad dynamically grab tabs from the component to query and render.
+         */
+        "activeStep": number;
+    }
     interface PlmgRadioButton {
         /**
           * Define radio button's highlighted status (in case of error)  Allowed values:   - true   - false  Default: false
@@ -451,6 +483,10 @@ export interface PlmgHeaderCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPlmgHeaderElement;
 }
+export interface PlmgProgressStepCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPlmgProgressStepElement;
+}
 export interface PlmgRadioButtonGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPlmgRadioButtonGroupElement;
@@ -519,6 +555,18 @@ declare global {
     var HTMLPlmgPageContainerElement: {
         prototype: HTMLPlmgPageContainerElement;
         new (): HTMLPlmgPageContainerElement;
+    };
+    interface HTMLPlmgProgressStepElement extends Components.PlmgProgressStep, HTMLStencilElement {
+    }
+    var HTMLPlmgProgressStepElement: {
+        prototype: HTMLPlmgProgressStepElement;
+        new (): HTMLPlmgProgressStepElement;
+    };
+    interface HTMLPlmgProgressStepperElement extends Components.PlmgProgressStepper, HTMLStencilElement {
+    }
+    var HTMLPlmgProgressStepperElement: {
+        prototype: HTMLPlmgProgressStepperElement;
+        new (): HTMLPlmgProgressStepperElement;
     };
     interface HTMLPlmgRadioButtonElement extends Components.PlmgRadioButton, HTMLStencilElement {
     }
@@ -601,6 +649,8 @@ declare global {
         "plmg-error-message": HTMLPlmgErrorMessageElement;
         "plmg-header": HTMLPlmgHeaderElement;
         "plmg-page-container": HTMLPlmgPageContainerElement;
+        "plmg-progress-step": HTMLPlmgProgressStepElement;
+        "plmg-progress-stepper": HTMLPlmgProgressStepperElement;
         "plmg-radio-button": HTMLPlmgRadioButtonElement;
         "plmg-radio-button-group": HTMLPlmgRadioButtonGroupElement;
         "plmg-separator": HTMLPlmgSeparatorElement;
@@ -791,6 +841,42 @@ declare namespace LocalJSX {
           * Define if the sidebar is expanded on startup.
          */
         "sidebarExpanded"?: boolean;
+    }
+    interface PlmgProgressStep {
+        /**
+          * Define active state  Default: false
+         */
+        "active"?: boolean;
+        /**
+          * Define completed state  Default: false
+         */
+        "completed"?: boolean;
+        /**
+          * Define a description text for the stepper
+         */
+        "description"?: string;
+        /**
+          * Define disabled state  Default: true
+         */
+        "disabled"?: boolean;
+        /**
+          * Exposes click handler event. Only exposed when interactive is true.
+         */
+        "onStepClick"?: (event: PlmgProgressStepCustomEvent<MouseEvent>) => void;
+        /**
+          * Define if separator should be rendered  Default: true
+         */
+        "separator"?: boolean;
+        /**
+          * Define step number  Required
+         */
+        "step": number;
+    }
+    interface PlmgProgressStepper {
+        /**
+          * On componentWillLoad dynamically grab tabs from the component to query and render.
+         */
+        "activeStep"?: number;
     }
     interface PlmgRadioButton {
         /**
@@ -1065,6 +1151,8 @@ declare namespace LocalJSX {
         "plmg-error-message": PlmgErrorMessage;
         "plmg-header": PlmgHeader;
         "plmg-page-container": PlmgPageContainer;
+        "plmg-progress-step": PlmgProgressStep;
+        "plmg-progress-stepper": PlmgProgressStepper;
         "plmg-radio-button": PlmgRadioButton;
         "plmg-radio-button-group": PlmgRadioButtonGroup;
         "plmg-separator": PlmgSeparator;
@@ -1091,6 +1179,8 @@ declare module "@stencil/core" {
             "plmg-error-message": LocalJSX.PlmgErrorMessage & JSXBase.HTMLAttributes<HTMLPlmgErrorMessageElement>;
             "plmg-header": LocalJSX.PlmgHeader & JSXBase.HTMLAttributes<HTMLPlmgHeaderElement>;
             "plmg-page-container": LocalJSX.PlmgPageContainer & JSXBase.HTMLAttributes<HTMLPlmgPageContainerElement>;
+            "plmg-progress-step": LocalJSX.PlmgProgressStep & JSXBase.HTMLAttributes<HTMLPlmgProgressStepElement>;
+            "plmg-progress-stepper": LocalJSX.PlmgProgressStepper & JSXBase.HTMLAttributes<HTMLPlmgProgressStepperElement>;
             "plmg-radio-button": LocalJSX.PlmgRadioButton & JSXBase.HTMLAttributes<HTMLPlmgRadioButtonElement>;
             "plmg-radio-button-group": LocalJSX.PlmgRadioButtonGroup & JSXBase.HTMLAttributes<HTMLPlmgRadioButtonGroupElement>;
             "plmg-separator": LocalJSX.PlmgSeparator & JSXBase.HTMLAttributes<HTMLPlmgSeparatorElement>;
