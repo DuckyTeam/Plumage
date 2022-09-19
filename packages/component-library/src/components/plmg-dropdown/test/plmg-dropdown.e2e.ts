@@ -15,17 +15,12 @@ describe('plmg-dropdown', () => {
     it('are accessible', async () => {
       const page = await newE2EPage();
 
-      let htmlContent = '';
-      someControl.forEach((control) => {
-        htmlContent += `
-    <plmg-dropdown control="${control}">
-  control="${control}"
-    </plmg-dropdown>
-<br/>
-    `;
-      });
+      let htmlContent = `
+        <plmg-dropdown align="left"/>
+        <plmg-dropdown align="right"/>
+      `;
       await page.setContent('<main>' + htmlContent + '</main>');
-
+      debugger;
       const results = await new AxePuppeteer(page as unknown as Page)
         .disableRules([
           'document-title',

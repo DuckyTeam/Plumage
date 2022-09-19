@@ -10,7 +10,9 @@ describe('plmg-dropdown', () => {
     expect(page.root).toEqualHtml(`
       <plmg-dropdown>
         <mock:shadow-root>
-          <slot></slot>
+        <nav class="plmg-dropdown" tabindex="0">
+        <slot name="trigger"></slot>
+        </nav>
         </mock:shadow-root>
       </plmg-dropdown>
     `);

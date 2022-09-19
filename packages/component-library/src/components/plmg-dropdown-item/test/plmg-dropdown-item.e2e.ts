@@ -15,17 +15,14 @@ describe('plmg-dropdown-item', () => {
     it('are accessible', async () => {
       const page = await newE2EPage();
 
-      let htmlContent = '';
-      someControl.forEach((control) => {
-        htmlContent += `
-    <plmg-dropdown-item control="${control}">
-  control="${control}"
-    </plmg-dropdown-item>
-<br/>
-    `;
-      });
-      await page.setContent('<main>' + htmlContent + '</main>');
+      let htmlContent = `
+        <plmg-dropdown-item text="dropdown item"/>
+        <plmg-dropdown-item icon="home" text="icon"/>
+        <plmg-dropdown-item href='https://ducky.eco' rel='noopener noreferrer' target="'_blank'" text="dropdown item"/>
+        `;
 
+      await page.setContent('<main>' + htmlContent + '</main>');
+      debugger;
       const results = await new AxePuppeteer(page as unknown as Page)
         .disableRules([
           'document-title',
