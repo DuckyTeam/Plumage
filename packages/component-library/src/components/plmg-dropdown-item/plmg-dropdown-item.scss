@@ -16,9 +16,10 @@
   color: tokens.$plmg-color-text-neutral-weak;
   max-width: 312px;
 
-  // remove default link and button styles
+  // remove default link styles
   text-decoration: none;
   border: none;
+  list-style: none;
 
   // common typography
   font-family: tokens.$plmg-font-family-sans;
