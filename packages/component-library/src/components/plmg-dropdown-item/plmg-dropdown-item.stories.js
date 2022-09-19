@@ -42,7 +42,18 @@ const Template = (args) => {
 export const Primary = Template.bind({});
 Primary.storyName = 'DropdownItem';
 Primary.args = {
-  text: 'A very long text that will be truncated',
+  text: 'Dropdown Item',
+  href: 'https://www.ducky.eco/',
+  icon: '',
+  href: 'https://ducky.eco',
+  rel: 'noopener noreferrer',
+  target: '_blank',
+};
+
+export const Icon = Template.bind({});
+Icon.storyName = 'Icon';
+Icon.args = {
+  text: 'Icon',
   href: 'https://www.ducky.eco/',
   icon: 'duck',
   href: 'https://ducky.eco',
@@ -50,17 +61,13 @@ Primary.args = {
   target: '_blank',
 };
 
-export const Link = Template.bind({});
-Link.storyName = 'Link';
-Link.args = {
-  text: 'Visit Ducky',
-  icon: 'duck',
+export const MaxLength = Template.bind({});
+MaxLength.storyName = 'Max Length';
+MaxLength.args = {
+  text: 'A very long text that will be truncated',
   href: 'https://www.ducky.eco/',
   icon: 'duck',
   href: 'https://ducky.eco',
-};
-export const Button = Template.bind({});
-Button.storyName = 'Button';
-Button.args = {
-  text: 'Button',
+  rel: 'noopener noreferrer',
+  target: '_blank',
 };
