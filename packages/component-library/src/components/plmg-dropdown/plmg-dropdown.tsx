@@ -20,14 +20,20 @@ import {
   shadow: true,
 })
 export class Dropdown {
-  // private ref: HTMLSlotElement;
-  @State() isVisible: boolean = false;
-  private abortDropdownListener: AbortController;
-  private targetElement: HTMLSlotElement;
   /**
    * Reference to host HTML element.
    */
   @Element() host: HTMLElement;
+  /**
+   * Store the expanded status of the dropdown
+   */
+  @State() isVisible: boolean = false;
+
+  /**
+   * Store an array of all the links in the dropdown
+   */
+  @State() links: HTMLPlmgDropdownItemElement[] = [];
+  private targetElement: HTMLSlotElement;
 
   /**
    * Define the alignment of the dropdown menu.
@@ -46,7 +52,9 @@ export class Dropdown {
   }
 
   /**
-   * Disable click events on the dropdown.
+   * Disable document scoped event listeners.
+   *
+   * Does not disable the click event on the trigger element or keyboard events.
    *
    * Allowed values:
    *   - true
@@ -63,7 +71,7 @@ export class Dropdown {
   /**
    * Invoke this method to manually toggle the dropdown's visibility.
    *
-   * Use this method when the event listeners are disabled.
+   * Use this method when the document scoped event listeners are disabled.
    */
   @Method()
   async toggleVisible(): Promise<void> {
@@ -71,7 +79,7 @@ export class Dropdown {
   }
 
   /**
-   * Close the dropdown when a click event or escape key is pressed anywhere in the document.
+   * Document scoped events to close the dropdown when the user clicks outside of the dropdown.
    */
   @Listen('click', { target: 'document' })
   closeDropdown(event) {
@@ -81,11 +89,11 @@ export class Dropdown {
   @Listen('keydown', { target: 'document' })
   handleEscape(event: KeyboardEvent) {
     if (this.disableListeners) return;
-    if (event.key === 'Escape') this.isVisible = false;
+    if (event.key === 'Escape') this.isVisible = !this.isVisible;
   }
 
   /**
-   * Open the the dropdown when a click event or escape key is pressed anywhere in the document.
+   * Toggle the dropdown visibility when the trigger element is clicked.
    */
   @Listen('click')
   handleClick() {
@@ -95,22 +103,49 @@ export class Dropdown {
 
   @Listen('keydown')
   handleKeyDown(event: KeyboardEvent) {
-    if (this.disableListeners) return;
-    if (event.key === 'Enter') {
+    //  Toggle the dropdown visibility when the user presses enter on the trigger element. * If enter is pressed on a link, the link's href will be followed.
+    if (event.key === 'Enter' && event.target === this.host) {
       this.isVisible = !this.isVisible;
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    if (this.isVisible && event.key === 'Escape') {
+      this.isVisible = false;
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    //  Close the dropdown when the user tabs out of the dropdown.
+    if (this.isVisible && event.key === 'Tab' && !event.shiftKey) {
+      const lastLink = this.links[this.links.length - 1];
+      if (document.activeElement === lastLink) {
+        this.isVisible = false;
+        event.preventDefault();
+        event.stopPropagation();
+      }
+    }
+    //  Close the dropdown when the user shift tabs up out of the dropdown or away the component.
+    if (this.isVisible && event.key === 'Tab' && event.shiftKey) {
+      if (
+        document.activeElement === this.links[0] ||
+        event.target === this.host
+      ) {
+        this.isVisible = false;
+      }
     }
   }
 
-  // grab the first element in the trigger slot and add a cursor pointer
-  componentDidLoad() {
+  // get all the links in the dropdown and add them to the links array
+  connectedCallback() {
+    this.links = Array.from(this.host.querySelectorAll('plmg-dropdown-item'));
+  }
+
+  // grab the first element in the trigger slot
+  componentWillRender() {
     this.targetElement = this.host.querySelector('[slot="trigger"]');
     if (this.targetElement instanceof HTMLElement) {
       this.targetElement.style.cursor = 'pointer';
+      this.targetElement.tabIndex = -1;
     }
-  }
-
-  disconnectedCallback() {
-    if (this.abortDropdownListener) this.abortDropdownListener.abort();
   }
 
   render() {
@@ -120,16 +155,14 @@ export class Dropdown {
     };
 
     return (
-      <div class={'plmg-dropdown'}>
-        <div tabIndex={0}>
-          <slot name={'trigger'} />
-        </div>
+      <nav class={'plmg-dropdown'} tabIndex={0}>
+        <slot name={'trigger'} />
         {this.isVisible && (
           <div class={classes}>
             <slot name={'menu'} />
           </div>
         )}
-      </div>
+      </nav>
     );
   }
 }
