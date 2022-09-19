@@ -40,28 +40,28 @@ Primary.args = {
   <plmg-dropdown-item icon="duck" text="Dropdown Item 1" href="https://ducky.eco" target="_blank"></plmg-dropdown-item>
   <plmg-dropdown-item text="Dropdown Item 2" href="https://plumage.ducky.eco/" target="_blank"></plmg-dropdown-item>
   <plmg-separator style="padding: 8px 8px; color: #BFCBD1;"></plmg-separator>
-  <plmg-dropdown-item text="Dropdown Item 3">Item</plmg-dropdown-item>
+  <plmg-dropdown-item text="Dropdown Item 3" href="https://plumage.ducky.eco/" target="_blank"></plmg-dropdown-item>
   </div>`,
 };
 
 export const AllAlignments = (args) => {
   let htmlContent = ``;
   htmlContent += `
-  <div style="display: flex; justify-content: space-between; padding: 16px;">
-  <plmg-dropdown align="left">
+  <div style="display: flex; justify-content: space-between; padding: 32px;">
+  <plmg-dropdown align="left" type="nav">
   <plmg-status slot="trigger" variant="info">Left</plmg-status>
   <div slot="menu">
   <plmg-dropdown-item text="Link" href="https://ducky.eco" target="_blank"></plmg-dropdown-item>
   <plmg-separator style="padding: 8px 8px; color: #BFCBD1;"></plmg-separator>
-  <plmg-dropdown-item text="Button">Item</plmg-dropdown-item>
+  <plmg-dropdown-item text="Link" href="https://plumage.ducky.eco/" target="_blank"></plmg-dropdown-item>
   </div>
   </plmg-dropdown>
-    <plmg-dropdown align="right">
+    <plmg-dropdown align="right" type="nav">
     <plmg-status slot="trigger" variant="info">Right</plmg-status>
     <div slot="menu">
     <plmg-dropdown-item text="Link" href="https://ducky.eco" target="_blank"></plmg-dropdown-item>
     <plmg-separator style="padding: 8px 8px; color: #BFCBD1;"></plmg-separator>
-    <plmg-dropdown-item text="Button">Item</plmg-dropdown-item>
+    <plmg-dropdown-item text="Link" href="https://plumage.ducky.eco/" target="_blank"></plmg-dropdown-item>
     </div>
     </plmg-dropdown>
   </div>`;
