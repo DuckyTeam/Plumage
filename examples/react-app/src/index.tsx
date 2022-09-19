@@ -13,10 +13,8 @@ import {
   PlmgSeparator,
   PlmgTooltip,
   PlmgAvatar,
-  PlmgStatus,
 } from '@ducky/plumage-react';
 import Avatars from './Avatars';
-import Dropdown from './Dropdown';
 import FormElements from './FormElements';
 
 const TooltipRefExample = () => {
@@ -92,8 +90,8 @@ ReactDOM.render(
         ></PlmgSeparator>
         <span>Menu Item 2</span>
         <PlmgDropdown align={'right'}>
-          <PlmgAvatar slot={'slot-trigger'} size={'medium'} interactive />
-          <div slot={'slot-menu'}>
+          <PlmgAvatar slot={'trigger'} size={'medium'} interactive />
+          <div slot={'menu'}>
             <PlmgDropdownItem
               icon={'duck'}
               text={'Dropdown Item 1'}
@@ -133,6 +131,7 @@ ReactDOM.render(
       <PlmgSvgIcon icon={'home'} size={'6em'} />
       PlmgSvgIcon home
       <br />
+      <Dropdown />
       <PlmgCard
         headerText="Header Text"
         topActionIcon={'home'}
