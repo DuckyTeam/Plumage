@@ -18,7 +18,19 @@ import {
   shadow: false,
 })
 export class TextInput {
-  @State() value: string;
+  /**
+   * Define disabled
+   *
+   * Allowed value: boolean
+   *
+   * Disables text input
+   */
+  @Prop() disabled: boolean = false;
+  @Watch('disabled')
+  validateDisabled(newValue: boolean) {
+    if (newValue && typeof newValue !== 'boolean')
+      throw new Error('disabled must be boolean');
+  }
   /**
    * Define error message
    *
@@ -60,6 +72,19 @@ export class TextInput {
   validateShowLabel(newValue: boolean) {
     if (newValue && typeof newValue !== 'boolean')
       throw new Error('show label must be boolean');
+  }
+  /**
+   * Define readonly
+   *
+   * Allowed value: boolean
+   *
+   * Makes text input read only
+   */
+  @Prop() readOnly: boolean = false;
+  @Watch('readOnly')
+  validateReadOnly(newValue: boolean) {
+    if (newValue && typeof newValue !== 'boolean')
+      throw new Error('readOnly must be boolean');
   }
   /**
    * Define if an input is required.
@@ -110,15 +135,37 @@ export class TextInput {
     if (newValue && typeof newValue !== 'string')
       throw new Error('tip text must be a string');
   }
+  /**
+   * Control the text input's value
+   *
+   * Allowed values:
+   * - Any string
+   *
+   * Sets the value of the text input
+   */
+  @Prop() value: string;
+  @Watch('value')
+  validateValue(newValue: string) {
+    if (typeof newValue !== 'string') throw new Error('value must be a string');
+  }
+  @Watch('value')
+  setValue(newValue: string) {
+    this.internalValue = newValue;
+  }
 
+  @State() internalValue: string;
   private handleInputChange(ev) {
-    this.value = ev.target.value;
-    this.valueUpdated.emit({ value: this.value });
+    this.internalValue = ev.target.value;
+    this.valueUpdated.emit({ value: this.internalValue });
   }
   /**
    * Event emitted when value changed
    */
   @Event() valueUpdated: EventEmitter;
+
+  connectedCallback() {
+    this.internalValue = this.value;
+  }
 
   componentWillLoad() {
     this.validateSize(this.size);
@@ -149,12 +196,14 @@ export class TextInput {
         </label>
         <div class={'plmg-text-input-field-wrapper'} tabIndex={0}>
           <input
+            disabled={this.disabled}
             class={inputClasses}
             id={this.labelToId()}
             name={this.label}
             required={this.required}
             type={'text'}
-            value={this.value}
+            readonly={this.readOnly}
+            value={this.internalValue}
             onInput={(ev) => this.handleInputChange(ev)}
           />
         </div>
