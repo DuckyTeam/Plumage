@@ -63,6 +63,7 @@ export class Dropdown {
    * Default: false
    */
   @Prop() disableListeners: boolean = false;
+  @Watch('disableListeners')
   validateDisableListeners(newValue: boolean) {
     if (typeof newValue !== 'boolean')
       throw new Error('disableListeners: must be a boolean');
