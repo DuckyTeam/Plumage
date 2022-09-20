@@ -105,22 +105,22 @@ export class Dropdown {
   handleKeyDown(event: KeyboardEvent) {
     //  Toggle the dropdown visibility when the user presses enter on the trigger element. * If enter is pressed on a link, the link's href will be followed.
     if (event.key === 'Enter' && event.target === this.host) {
-      this.isVisible = !this.isVisible;
       event.preventDefault();
       event.stopPropagation();
+      return (this.isVisible = !this.isVisible);
     }
     if (this.isVisible && event.key === 'Escape') {
-      this.isVisible = false;
       event.preventDefault();
       event.stopPropagation();
+      return (this.isVisible = false);
     }
     //  Close the dropdown when the user tabs out of the dropdown.
     if (this.isVisible && event.key === 'Tab' && !event.shiftKey) {
       const lastLink = this.links[this.links.length - 1];
       if (document.activeElement === lastLink) {
-        this.isVisible = false;
         event.preventDefault();
         event.stopPropagation();
+        return (this.isVisible = false);
       }
     }
     //  Close the dropdown when the user shift tabs up out of the dropdown or away the component.
