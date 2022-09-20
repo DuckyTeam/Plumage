@@ -118,6 +118,10 @@
     color: tokens.$plmg-color-text-neutral;
     border-radius: tokens.$plmg-border-radius-s;
     background-color: tokens.$plmg-color-background-neutral;
+    &:disabled,
+    &:read-only {
+      background-color: tokens.$plmg-color-background-neutral-medium;
+    }
     &.error {
       border: tokens.$plmg-border-width-m solid
         tokens.$plmg-color-border-danger-strong;
@@ -133,7 +137,7 @@
       padding: tokens.$plmg-spacing-x1 tokens.$plmg-spacing-x1-5;
     }
     @include reset-states;
-    &:hover:not(:focus) {
+    &:hover:not(:focus):not(:disabled):not(:read-only) {
       background-color: tokens.$plmg-color-background-neutral-hover;
     }
     &:focus-visible {
