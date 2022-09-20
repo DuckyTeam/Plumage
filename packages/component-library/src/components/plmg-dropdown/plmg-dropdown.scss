@@ -1,0 +1,26 @@
+@use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
+
+// Component style
+// -------------------------------------------------
+
+.plmg-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.plmg-dropdown-menu {
+  box-shadow: tokens.$plmg-shadow-m;
+  border: 1px solid tokens.$plmg-color-border-neutral-weak;
+  background: tokens.$plmg-color-background-neutral;
+  border-radius: tokens.$plmg-border-radius-s;
+  position: absolute;
+  width: fit-content;
+  margin-top: 20px;
+
+  &.right {
+    right: 0;
+    transform: translateX(25%, -25%);
+  }
+}
+
+// ------------- END Component style ---------------

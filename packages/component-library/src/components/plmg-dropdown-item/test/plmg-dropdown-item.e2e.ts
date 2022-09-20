@@ -2,12 +2,12 @@ import { newE2EPage } from '@stencil/core/testing';
 import { AxePuppeteer } from '@axe-core/puppeteer';
 import { Page } from 'puppeteer';
 
-describe('plmg-error-message', () => {
+describe('plmg-dropdown-item', () => {
   it('renders', async () => {
     const page = await newE2EPage();
-    await page.setContent('<plmg-error-message></plmg-error-message>');
+    await page.setContent('<plmg-dropdown-item></plmg-dropdown-item>');
 
-    const element = await page.find('plmg-error-message');
+    const element = await page.find('plmg-dropdown-item');
     expect(element).toHaveClass('hydrated');
   });
 
@@ -16,9 +16,11 @@ describe('plmg-error-message', () => {
       const page = await newE2EPage();
 
       let htmlContent = `
-        <plmg-error-message size="medium" message="Error!"/>
-        <plmg-error-message size="large" message="Error!"/>
-      `;
+        <plmg-dropdown-item text="dropdown item"/>
+        <plmg-dropdown-item icon="home" text="icon"/>
+        <plmg-dropdown-item href='https://ducky.eco' rel='noopener noreferrer' target="'_blank'" text="dropdown item"/>
+        `;
+
       await page.setContent('<main>' + htmlContent + '</main>');
       const results = await new AxePuppeteer(page as unknown as Page)
         .disableRules([

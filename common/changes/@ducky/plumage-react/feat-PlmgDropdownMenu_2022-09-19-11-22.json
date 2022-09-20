@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage-react",
+      "comment": "create plmg-dropdown and plmg-dropdown components",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ducky/plumage-react"
+}

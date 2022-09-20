@@ -1,0 +1,84 @@
+@use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
+
+// Component style
+// -------------------------------------------------
+.plmg-dropdown-item {
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: tokens.$plmg-spacing-x0-75 tokens.$plmg-spacing-x1;
+  cursor: pointer;
+  border-radius: tokens.$plmg-border-radius-s;
+  background: tokens.$plmg-color-background-neutral;
+  color: tokens.$plmg-color-text-neutral-weak;
+  max-width: 312px;
+
+  // remove default link styles
+  text-decoration: none;
+  border: none;
+  list-style: none;
+
+  // common typography
+  font-family: tokens.$plmg-font-family-sans;
+  font-style: normal;
+  font-weight: tokens.$plmg-font-weight-regular;
+  line-height: tokens.$plmg-font-lineheight-loose;
+  font-size: tokens.$plmg-font-size-x0-875;
+
+  .plmg-dropdown-item-content {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  // States
+  &:focus-visible {
+    background: tokens.$plmg-color-background-neutral-medium;
+    outline: tokens.$plmg-border-width-l solid
+      tokens.$plmg-color-border-standout;
+    outline-offset: -4px;
+    z-index: 999;
+  }
+  &:hover {
+    background: tokens.$plmg-color-background-neutral-medium;
+  }
+  &:active {
+    background: tokens.$plmg-color-background-primary;
+    color: tokens.$plmg-color-text-primary-strong;
+    .plmg-dropdown-item-active-icon {
+      visibility: visible;
+    }
+  }
+  &.plmg-dropdown-item-selected {
+    background: tokens.$plmg-color-background-primary;
+    color: tokens.$plmg-color-text-primary-strong;
+
+    &:hover {
+      background: tokens.$plmg-color-background-primary-hover;
+    }
+    &:focus-visible {
+      background-color: tokens.$plmg-color-background-primary-hover;
+      outline: tokens.$plmg-border-width-l solid
+        tokens.$plmg-color-border-standout;
+      outline-offset: -4px;
+      z-index: 999;
+    }
+  }
+
+  .plmg-dropdown-item-icon {
+    padding-right: tokens.$plmg-spacing-x1;
+    font-size: 20px;
+  }
+
+  .plmg-dropdown-item-active-icon {
+    padding-left: tokens.$plmg-spacing-x1;
+    margin-left: auto;
+    color: tokens.$plmg-color-icon-primary-hover;
+    visibility: hidden;
+  }
+}
+// ------------- END Component style ---------------
