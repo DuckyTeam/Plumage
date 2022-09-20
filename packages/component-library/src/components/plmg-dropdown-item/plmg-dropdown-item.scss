@@ -61,7 +61,7 @@
       background: tokens.$plmg-color-background-primary-hover;
     }
     &:focus-visible {
-      background-color: tokens.$plmg-color-background-hover;
+      background-color: tokens.$plmg-color-background-primary-hover;
       outline: tokens.$plmg-border-width-l solid
         tokens.$plmg-color-border-standout;
       outline-offset: -4px;
