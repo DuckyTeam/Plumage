@@ -14,6 +14,10 @@ import {
   isPlmgDropdownAligment,
 } from './plmg-dropdown.types';
 
+/**
+ * @slot trigger - Slot for the triggering element.
+ * @slot menu - Slot for <plmg-dropdown-item> elements. Requires at least one <plmg-dropdown-item> element.
+ */
 @Component({
   tag: 'plmg-dropdown',
   styleUrl: 'plmg-dropdown.scss',
