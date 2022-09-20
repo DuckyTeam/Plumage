@@ -31,7 +31,7 @@ export class Tabs {
    * Event tabChange is emitted for onChange events when switching tabs.
    */
   @Event({ eventName: 'tabChange' })
-  onChange: EventEmitter;
+  onChange: EventEmitter<{ tabId: number }>;
 
   @Listen('keydown')
   handleKeyDown(event: KeyboardEvent, tabIndex: number) {

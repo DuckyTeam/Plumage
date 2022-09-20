@@ -14,9 +14,9 @@
 
 ## Events
 
-| Event           | Description                                                        | Type               |
-| --------------- | ------------------------------------------------------------------ | ------------------ |
-| `expandSidebar` | Event dispatched when the button to expand the sidebar is clicked. | `CustomEvent<any>` |
+| Event           | Description                                                        | Type                |
+| --------------- | ------------------------------------------------------------------ | ------------------- |
+| `expandSidebar` | Event dispatched when the button to expand the sidebar is clicked. | `CustomEvent<void>` |
 
 
 ## Methods

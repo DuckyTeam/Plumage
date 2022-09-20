@@ -19,9 +19,9 @@
 
 ## Events
 
-| Event          | Description                                                                                                                   | Type               |
-| -------------- | ----------------------------------------------------------------------------------------------------------------------------- | ------------------ |
-| `valueUpdated` | The event "valueUpdated" is triggered when the slider value changes either by moving the thumb or entering in the text field. | `CustomEvent<any>` |
+| Event          | Description                                                                                                                   | Type                              |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------------- | --------------------------------- |
+| `valueUpdated` | The event "valueUpdated" is triggered when the slider value changes either by moving the thumb or entering in the text field. | `CustomEvent<{ value: number; }>` |
 
 
 ----------------------------------------------

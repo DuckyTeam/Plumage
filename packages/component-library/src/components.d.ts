@@ -701,7 +701,7 @@ declare namespace LocalJSX {
         /**
           * Event dispatched when the button to expand the sidebar is clicked.
          */
-        "onExpandSidebar"?: (event: PlmgHeaderCustomEvent<any>) => void;
+        "onExpandSidebar"?: (event: PlmgHeaderCustomEvent<void>) => void;
         /**
           * Define if the sidebar is expanded on startup.
          */
@@ -799,7 +799,7 @@ declare namespace LocalJSX {
         /**
           * Event dispatched when the button to collapse the sidebar is clicked.
          */
-        "onCollapseSidebar"?: (event: PlmgSidebarCustomEvent<any>) => void;
+        "onCollapseSidebar"?: (event: PlmgSidebarCustomEvent<void>) => void;
     }
     interface PlmgSidebarItem {
         /**
@@ -847,7 +847,7 @@ declare namespace LocalJSX {
         /**
           * The event "valueUpdated" is triggered when the slider value changes either by moving the thumb or entering in the text field.
          */
-        "onValueUpdated"?: (event: PlmgSliderCustomEvent<any>) => void;
+        "onValueUpdated"?: (event: PlmgSliderCustomEvent<{ value: number }>) => void;
         /**
           * Define a range of values  Allowed values: - A comma separated list of numbers  Must be a comma separated list of numbers with at least two items The first and last items set min and max values Additional values set additional marks and labels Pass values in the ascending order, the component does not sort the list  Required
          */
@@ -919,7 +919,7 @@ declare namespace LocalJSX {
         /**
           * Event tabChange is emitted for onChange events when switching tabs.
          */
-        "onTabChange"?: (event: PlmgTabsCustomEvent<any>) => void;
+        "onTabChange"?: (event: PlmgTabsCustomEvent<{ tabId: number }>) => void;
     }
     interface PlmgTextInput {
         /**
@@ -937,7 +937,7 @@ declare namespace LocalJSX {
         /**
           * Event emitted when value changed
          */
-        "onValueUpdated"?: (event: PlmgTextInputCustomEvent<any>) => void;
+        "onValueUpdated"?: (event: PlmgTextInputCustomEvent<{ value: string }>) => void;
         /**
           * Define readonly  Allowed value: boolean  Makes text input read only
          */
