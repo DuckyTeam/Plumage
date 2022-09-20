@@ -2,6 +2,21 @@
   "name": "@ducky/plumage",
   "entries": [
     {
+      "version": "1.11.1",
+      "tag": "@ducky/plumage_v1.11.1",
+      "date": "Tue, 20 Sep 2022 12:01:26 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add explicit type to PlmgTabs Event onChange"
+          },
+          {
+            "comment": "Add explicit typing to all EventEmitters"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.11.0",
       "tag": "@ducky/plumage_v1.11.0",
       "date": "Fri, 16 Sep 2022 09:48:12 GMT",

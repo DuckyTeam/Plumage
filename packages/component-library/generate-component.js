@@ -212,7 +212,7 @@ export class ${toComponentName(tagName)} {
    *
    * import { Event, EventEmitter } from '@stencil/core';
    */
-  // @Event() click: EventEmitter;
+  // @Event() click: EventEmitter<EnterExplicitEventTypeHere>;
 
   /**
    * 6. Component lifecycle events

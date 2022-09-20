@@ -178,7 +178,7 @@ export class Slider {
   /**
    * The event "valueUpdated" is triggered when the slider value changes either by moving the thumb or entering in the text field.
    */
-  @Event() valueUpdated: EventEmitter;
+  @Event() valueUpdated: EventEmitter<{ value: number }>;
 
   private setAllowedInputs() {
     const range = Array.from(

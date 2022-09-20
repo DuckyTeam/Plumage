@@ -161,7 +161,7 @@ export class TextInput {
   /**
    * Event emitted when value changed
    */
-  @Event() valueUpdated: EventEmitter;
+  @Event() valueUpdated: EventEmitter<{ value: string }>;
 
   connectedCallback() {
     this.internalValue = this.value;
