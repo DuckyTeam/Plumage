@@ -7,9 +7,9 @@
 
 ## Events
 
-| Event       | Description                                                         | Type               |
-| ----------- | ------------------------------------------------------------------- | ------------------ |
-| `tabChange` | Event tabChange is emitted for onChange events when switching tabs. | `CustomEvent<any>` |
+| Event       | Description                                                         | Type                              |
+| ----------- | ------------------------------------------------------------------- | --------------------------------- |
+| `tabChange` | Event tabChange is emitted for onChange events when switching tabs. | `CustomEvent<{ tabId: number; }>` |
 
 
 ## Methods

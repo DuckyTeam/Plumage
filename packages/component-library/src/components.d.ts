@@ -919,7 +919,7 @@ declare namespace LocalJSX {
         /**
           * Event tabChange is emitted for onChange events when switching tabs.
          */
-        "onTabChange"?: (event: PlmgTabsCustomEvent<any>) => void;
+        "onTabChange"?: (event: PlmgTabsCustomEvent<{ tabId: number }>) => void;
     }
     interface PlmgTextInput {
         /**
