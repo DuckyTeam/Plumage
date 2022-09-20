@@ -6,6 +6,11 @@ export default {
   parameters: {},
   decorators: [],
   argTypes: {
+    selected: {
+      control: {
+        type: 'boolean',
+      },
+    },
     href: {
       control: { type: 'text' },
     },
@@ -25,7 +30,7 @@ export default {
   },
 };
 
-const PROPS = ['href', 'icon', 'rel', 'target', 'text'];
+const PROPS = ['selected', 'href', 'icon', 'rel', 'target', 'text'];
 const EVENTS = [];
 const CSS_VARS = [];
 const SLOTS = [''];
@@ -42,6 +47,7 @@ const Template = (args) => {
 export const Primary = Template.bind({});
 Primary.storyName = 'DropdownItem';
 Primary.args = {
+  selected: false,
   text: 'Dropdown Item',
   icon: '',
   href: 'https://ducky.eco',
@@ -67,4 +73,15 @@ MaxLength.args = {
   href: 'https://ducky.eco',
   rel: 'noopener noreferrer',
   target: '_blank',
+};
+
+export const Selected = Template.bind({});
+Selected.storyName = 'Selected';
+Selected.args = {
+  text: 'Selected',
+  href: 'https://ducky.eco',
+  rel: 'noopener noreferrer',
+  target: '_blank',
+  icon: 'duck',
+  selected: true,
 };
