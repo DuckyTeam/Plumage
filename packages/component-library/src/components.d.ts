@@ -144,6 +144,10 @@ export namespace Components {
          */
         "rel": string;
         /**
+          * Set the active state
+         */
+        "selected": boolean;
+        /**
           * Define links target
          */
         "target": string;
@@ -761,6 +765,10 @@ declare namespace LocalJSX {
           * Define links rel
          */
         "rel"?: string;
+        /**
+          * Set the active state
+         */
+        "selected"?: boolean;
         /**
           * Define links target
          */
