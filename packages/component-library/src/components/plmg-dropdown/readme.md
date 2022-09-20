@@ -28,6 +28,14 @@ Type: `Promise<void>`
 
 
 
+## Slots
+
+| Slot        | Description                                                                                 |
+| ----------- | ------------------------------------------------------------------------------------------- |
+| `"menu"`    | Slot for <plmg-dropdown-item> elements. Requires at least one <plmg-dropdown-item> element. |
+| `"trigger"` | Slot for the triggering element.                                                            |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
