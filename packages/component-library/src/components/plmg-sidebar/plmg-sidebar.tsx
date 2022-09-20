@@ -69,7 +69,7 @@ export class Sidebar {
   /**
    * Event dispatched when the button to collapse the sidebar is clicked.
    */
-  @Event() collapseSidebar: EventEmitter;
+  @Event() collapseSidebar: EventEmitter<void>;
 
   /**
    * Lifecycle method, called once just after the component is first connected to the DOM.

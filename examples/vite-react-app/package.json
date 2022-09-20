@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@ducky/plumage-react": "^0.8.1",
+    "@ducky/plumage-react": "^1.0.0",
     "react": "~17.0.2",
     "react-dom": "~17.0.2"
   },

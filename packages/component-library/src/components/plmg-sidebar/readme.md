@@ -16,9 +16,9 @@
 
 ## Events
 
-| Event             | Description                                                          | Type               |
-| ----------------- | -------------------------------------------------------------------- | ------------------ |
-| `collapseSidebar` | Event dispatched when the button to collapse the sidebar is clicked. | `CustomEvent<any>` |
+| Event             | Description                                                          | Type                |
+| ----------------- | -------------------------------------------------------------------- | ------------------- |
+| `collapseSidebar` | Event dispatched when the button to collapse the sidebar is clicked. | `CustomEvent<void>` |
 
 
 ## Methods

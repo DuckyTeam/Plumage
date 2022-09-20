@@ -45,7 +45,7 @@ export class Header {
   /**
    * Event dispatched when the button to expand the sidebar is clicked.
    */
-  @Event() expandSidebar: EventEmitter;
+  @Event() expandSidebar: EventEmitter<void>;
 
   /**
    * Lifecycle method, called once just after the component is first connected to the DOM.

@@ -1,4 +1,4 @@
-# Plumage + React
+# Plumage ♥ React
 This is our React library for Plumage.
 
 This package exposes Ducky's design system as React components.

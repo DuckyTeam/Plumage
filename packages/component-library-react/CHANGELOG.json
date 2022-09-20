@@ -2,6 +2,18 @@
   "name": "@ducky/plumage-react",
   "entries": [
     {
+      "version": "1.0.0",
+      "tag": "@ducky/plumage-react_v1.0.0",
+      "date": "Tue, 20 Sep 2022 12:18:34 GMT",
+      "comments": {
+        "major": [
+          {
+            "comment": "Bump to version 1.0.0"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.8.1",
       "tag": "@ducky/plumage-react_v0.8.1",
       "date": "Tue, 06 Sep 2022 10:51:00 GMT",

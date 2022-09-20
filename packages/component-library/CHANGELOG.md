@@ -1,6 +1,14 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Fri, 16 Sep 2022 09:48:12 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Sep 2022 12:01:26 GMT and should not be manually modified.
+
+## 1.11.1
+Tue, 20 Sep 2022 12:01:26 GMT
+
+### Patches
+
+- Add explicit type to PlmgTabs Event onChange
+- Add explicit typing to all EventEmitters
 
 ## 1.11.0
 Fri, 16 Sep 2022 09:48:12 GMT
