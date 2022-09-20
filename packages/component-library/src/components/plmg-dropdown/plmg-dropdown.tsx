@@ -94,7 +94,7 @@ export class Dropdown {
   @Listen('keydown', { target: 'document' })
   handleEscape(event: KeyboardEvent) {
     if (this.disableListeners) return;
-    if (event.key === 'Escape') this.isVisible = !this.isVisible;
+    if (event.key === 'Escape') this.isVisible = false;
   }
 
   /**
