@@ -35,9 +35,37 @@
     text-overflow: ellipsis;
   }
 
-  &.plmg-dropdown-item-active {
-    background: tokens.$plmg-color-background-neutral-active;
+  // States
+  &:focus-visible {
+    background: tokens.$plmg-color-background-neutral-medium;
+    outline: tokens.$plmg-border-width-l solid
+      tokens.$plmg-color-border-standout;
+    outline-offset: -4px;
+    z-index: 999;
+  }
+  &:hover {
+    background: tokens.$plmg-color-background-neutral-medium;
+  }
+  &:active {
+    background: tokens.$plmg-color-background-primary;
     color: tokens.$plmg-color-text-primary-strong;
+    .plmg-dropdown-item-active-icon {
+      visibility: visible;
+    }
+  }
+  &.plmg-dropdown-item-selected {
+    background: tokens.$plmg-color-background-primary;
+    color: tokens.$plmg-color-text-primary-strong;
+
+    &:hover {
+      background: tokens.$plmg-color-background-primary-hover;
+    }
+    &:focus-visible {
+      outline: tokens.$plmg-border-width-l solid
+        tokens.$plmg-color-border-standout;
+      outline-offset: -4px;
+      z-index: 999;
+    }
   }
 
   .plmg-dropdown-item-icon {
@@ -50,23 +78,6 @@
     margin-left: auto;
     color: tokens.$plmg-color-icon-primary-hover;
     visibility: hidden;
-  }
-  // States
-  &:focus-visible {
-    background: tokens.$plmg-color-background-neutral-medium;
-    outline: tokens.$plmg-border-width-l solid
-      tokens.$plmg-color-border-standout;
-    z-index: 999;
-  }
-  &:hover {
-    background: tokens.$plmg-color-background-neutral-medium;
-  }
-  &:active {
-    background: tokens.$plmg-color-background-primary;
-    color: tokens.$plmg-color-text-primary-strong;
-    .plmg-dropdown-item-active-icon {
-      visibility: visible;
-    }
   }
 }
 // ------------- END Component style ---------------

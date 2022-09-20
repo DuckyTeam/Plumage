@@ -7,6 +7,15 @@ import { Component, Prop, Watch, h } from '@stencil/core';
 })
 export class PlmgDropdownItem {
   /**
+   * Set the dropdown item as selected.
+   */
+  @Prop() selected: boolean;
+  @Watch('selected')
+  validaeSelected(newValue: boolean) {
+    if (newValue && typeof newValue !== 'boolean')
+      throw new Error('selected must be a boolean');
+  }
+  /**
    * Define href attribute of the anchor element.
    */
   @Prop() href: string;
@@ -62,13 +71,12 @@ export class PlmgDropdownItem {
   }
 
   render() {
+    const classes = {
+      'plmg-dropdown-item': true,
+      'plmg-dropdown-item-selected': this.selected,
+    };
     return (
-      <a
-        class={'plmg-dropdown-item'}
-        title={this.text}
-        href={this.href}
-        rel={this.rel}
-      >
+      <a class={classes} title={this.text} href={this.href} rel={this.rel}>
         {this.icon && (
           <plmg-svg-icon class={'plmg-dropdown-item-icon'} icon={this.icon} />
         )}
