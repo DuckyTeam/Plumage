@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Tue, 20 Sep 2022 12:01:26 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Sep 2022 13:43:56 GMT and should not be manually modified.
+
+## 1.12.0
+Tue, 20 Sep 2022 13:43:56 GMT
+
+### Minor changes
+
+- creates plmg-dropdown and plmg-dropdown-item components
 
 ## 1.11.1
 Tue, 20 Sep 2022 12:01:26 GMT

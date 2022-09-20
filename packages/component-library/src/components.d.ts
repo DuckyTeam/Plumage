@@ -144,7 +144,7 @@ export namespace Components {
          */
         "rel": string;
         /**
-          * Set the active state
+          * Set the dropdown item as selected.
          */
         "selected": boolean;
         /**
@@ -766,7 +766,7 @@ declare namespace LocalJSX {
          */
         "rel"?: string;
         /**
-          * Set the active state
+          * Set the dropdown item as selected.
          */
         "selected"?: boolean;
         /**

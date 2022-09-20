@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage-react
 
-This log was last generated on Tue, 20 Sep 2022 12:18:34 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Sep 2022 13:43:56 GMT and should not be manually modified.
+
+## 1.1.0
+Tue, 20 Sep 2022 13:43:56 GMT
+
+### Minor changes
+
+- create plmg-dropdown and plmg-dropdown components
 
 ## 1.0.0
 Tue, 20 Sep 2022 12:18:34 GMT
