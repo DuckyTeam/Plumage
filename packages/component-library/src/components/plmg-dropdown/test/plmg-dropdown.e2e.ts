@@ -20,7 +20,6 @@ describe('plmg-dropdown', () => {
         <plmg-dropdown align="right"/>
       `;
       await page.setContent('<main>' + htmlContent + '</main>');
-      debugger;
       const results = await new AxePuppeteer(page as unknown as Page)
         .disableRules([
           'document-title',
