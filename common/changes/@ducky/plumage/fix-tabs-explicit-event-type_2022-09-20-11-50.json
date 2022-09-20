@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "Add explicit typing to all EventEmitters",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
