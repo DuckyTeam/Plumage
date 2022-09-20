@@ -43,7 +43,6 @@ export const Primary = Template.bind({});
 Primary.storyName = 'DropdownItem';
 Primary.args = {
   text: 'Dropdown Item',
-  href: 'https://www.ducky.eco/',
   icon: '',
   href: 'https://ducky.eco',
   rel: 'noopener noreferrer',
@@ -54,7 +53,6 @@ export const Icon = Template.bind({});
 Icon.storyName = 'Icon';
 Icon.args = {
   text: 'Icon',
-  href: 'https://www.ducky.eco/',
   icon: 'duck',
   href: 'https://ducky.eco',
   rel: 'noopener noreferrer',
@@ -65,7 +63,6 @@ export const MaxLength = Template.bind({});
 MaxLength.storyName = 'Max Length';
 MaxLength.args = {
   text: 'A very long text that will be truncated',
-  href: 'https://www.ducky.eco/',
   icon: 'duck',
   href: 'https://ducky.eco',
   rel: 'noopener noreferrer',
