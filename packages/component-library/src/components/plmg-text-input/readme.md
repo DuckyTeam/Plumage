@@ -22,9 +22,9 @@
 
 ## Events
 
-| Event          | Description                      | Type               |
-| -------------- | -------------------------------- | ------------------ |
-| `valueUpdated` | Event emitted when value changed | `CustomEvent<any>` |
+| Event          | Description                      | Type                              |
+| -------------- | -------------------------------- | --------------------------------- |
+| `valueUpdated` | Event emitted when value changed | `CustomEvent<{ value: string; }>` |
 
 
 ## Dependencies
