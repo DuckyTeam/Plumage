@@ -105,8 +105,8 @@ export class Tabs {
     );
   }
 
-  private hasIcon(icon: string) {
-    return icon && (icon as string) !== '';
+  private hasIcon(icon?: string) {
+    return Boolean(icon);
   }
 
   private activateTab(tabIndex: number) {
