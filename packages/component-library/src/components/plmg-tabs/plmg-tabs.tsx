@@ -131,10 +131,8 @@ export class Tabs {
     const buttons = this.el.getElementsByClassName(
       'plmg-tab-button'
     ) as HTMLCollectionOf<HTMLButtonElement>;
-
-    const buttons = Array.from(getButtons);
-    if (buttons && buttons[tabIndex].hasAttribute('tabindex')) {
-      buttons[tabIndex].blur();
+    if (document.activeElement === buttons.item(tabIndex)) {
+      buttons.item(tabIndex).blur();
     }
   }
 }
