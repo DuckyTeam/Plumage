@@ -115,7 +115,7 @@ export class Tabs {
     this.tabs = this.tabs.map((tab, i) => {
       if (!disabledTab) tab.active = i === tabIndex;
       if (i === tabIndex) {
-        const buttons = document.getElementsByClassName(
+        const buttons = this.el.getElementsByClassName(
           'plmg-tab-button'
         ) as HTMLCollectionOf<HTMLButtonElement>;
         buttons.item(i).focus();
@@ -128,13 +128,11 @@ export class Tabs {
   }
 
   private blurTabButton(tabIndex: number) {
-    const getButtons = document.getElementsByClassName(
+    const buttons = this.el.getElementsByClassName(
       'plmg-tab-button'
     ) as HTMLCollectionOf<HTMLButtonElement>;
-
-    const buttons = Array.from(getButtons);
-    if (buttons && buttons[tabIndex].hasAttribute('tabindex')) {
-      buttons[tabIndex].blur();
+    if (document.activeElement === buttons.item(tabIndex)) {
+      buttons.item(tabIndex).blur();
     }
   }
 }
