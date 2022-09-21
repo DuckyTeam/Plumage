@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "Tab component: removes focus trap",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
