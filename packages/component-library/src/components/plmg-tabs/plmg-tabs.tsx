@@ -128,11 +128,13 @@ export class Tabs {
   }
 
   private blurTabButton(tabIndex: number) {
-    const buttons = document.getElementsByClassName(
+    const getButtons = document.getElementsByClassName(
       'plmg-tab-button'
     ) as HTMLCollectionOf<HTMLButtonElement>;
-    if (document.activeElement === buttons.item(tabIndex)) {
-      buttons.item(tabIndex).blur();
+
+    const buttons = Array.from(getButtons);
+    if (buttons && buttons[tabIndex].hasAttribute('tabindex')) {
+      buttons[tabIndex].blur();
     }
   }
 }
