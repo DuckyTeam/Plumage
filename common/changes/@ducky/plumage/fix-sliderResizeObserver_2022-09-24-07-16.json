@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "Fixes slider component resize handler",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
