@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "Fixes bug -0 as invalid value.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
