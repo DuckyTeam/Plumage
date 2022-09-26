@@ -262,7 +262,7 @@ export class Slider {
     this.max = this.internalRange[this.internalRange.length - 1];
     this.stepValue = this.step ? this.step : (this.max - this.min) / 100;
     this.allowedInputs = this.setAllowedInputs();
-    this.value
+    this.value || this.value === 0
       ? this.setInitialValue(this.value)
       : this.setInitialValue(this.default);
     this.inputFieldValue = this.internalValue;
