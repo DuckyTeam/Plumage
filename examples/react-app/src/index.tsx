@@ -131,7 +131,6 @@ ReactDOM.render(
       <PlmgSvgIcon icon={'home'} size={'6em'} />
       PlmgSvgIcon home
       <br />
-      <Dropdown />
       <PlmgCard
         headerText="Header Text"
         topActionIcon={'home'}
