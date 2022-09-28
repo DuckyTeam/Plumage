@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Tue, 20 Sep 2022 13:43:56 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Sep 2022 10:20:24 GMT and should not be manually modified.
+
+## 1.12.1
+Wed, 28 Sep 2022 10:20:24 GMT
+
+### Patches
+
+- Tab component: removes focus trap
 
 ## 1.12.0
 Tue, 20 Sep 2022 13:43:56 GMT
