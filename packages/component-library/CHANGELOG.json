@@ -2,6 +2,18 @@
   "name": "@ducky/plumage",
   "entries": [
     {
+      "version": "1.12.3",
+      "tag": "@ducky/plumage_v1.12.3",
+      "date": "Wed, 28 Sep 2022 10:34:19 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixes bug -0 as invalid value."
+          }
+        ]
+      }
+    },
+    {
       "version": "1.12.2",
       "tag": "@ducky/plumage_v1.12.2",
       "date": "Wed, 28 Sep 2022 10:28:03 GMT",
