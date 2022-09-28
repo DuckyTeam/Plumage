@@ -8,6 +8,7 @@ import {
   Event,
   EventEmitter,
   Fragment,
+  Build,
 } from '@stencil/core';
 import {
   plmgColorBorderNeutralWeak,
@@ -21,8 +22,7 @@ import {
 })
 export class Slider {
   private ref: HTMLDivElement;
-  private abortResizeListener: AbortController;
-
+  private resizeObserver: ResizeObserver;
   /**
    * Define the default value
    *
@@ -271,15 +271,16 @@ export class Slider {
   // This usage creates the warning 'The state/prop "trackWidth" changed during "componentDidLoad()", this triggers extra re-renders, try to setup on "componentWillLoad()'
   // The component has to appear in the DOM before we can get the ref to calculate relative positons based on the track width.
   componentDidLoad() {
-    this.trackWidth = this.ref.getBoundingClientRect().width;
-    this.abortResizeListener = new AbortController();
-    window.addEventListener('resize', () => this.resizeHandler(), {
-      signal: this.abortResizeListener.signal,
-    });
+    // Prevent the resize handler from firing before running in the browser
+    if (Build.isBrowser && this.ref) {
+      this.resizeObserver = new ResizeObserver(() => this.resizeHandler());
+      this.resizeObserver.observe(this.ref);
+      this.trackWidth = this.ref.getBoundingClientRect().width;
+    }
   }
 
   disconnectedCallback() {
-    if (this.abortResizeListener) this.abortResizeListener.abort();
+    this.resizeObserver.disconnect();
   }
 
   render() {
