@@ -39,12 +39,16 @@ export class Tabs {
     event.stopPropagation();
     if (event.key === 'Enter') {
       this.openTab(tabIndex);
+      return this.blurTabButton(tabIndex);
+    }
+    if (event.key === 'Tab') {
+      return this.blurTabButton(tabIndex);
     }
     if (event.key === 'ArrowLeft') {
-      if (tabIndex > 0) this.openTab(tabIndex - 1);
+      if (tabIndex > 0) return this.openTab(tabIndex - 1);
     }
     if (event.key === 'ArrowRight') {
-      if (tabIndex < this.tabs.length - 1) this.openTab(tabIndex + 1);
+      if (tabIndex < this.tabs.length - 1) return this.openTab(tabIndex + 1);
     }
   }
 
@@ -101,17 +105,17 @@ export class Tabs {
     );
   }
 
-  private hasIcon(icon) {
-    return icon && (icon as string) !== '';
+  private hasIcon(icon?: string) {
+    return Boolean(icon);
   }
 
-  private activateTab(tabIndex) {
+  private activateTab(tabIndex: number) {
     const disabledTab = this.tabs[tabIndex].disabled;
 
     this.tabs = this.tabs.map((tab, i) => {
       if (!disabledTab) tab.active = i === tabIndex;
       if (i === tabIndex) {
-        const buttons = document.getElementsByClassName(
+        const buttons = this.el.getElementsByClassName(
           'plmg-tab-button'
         ) as HTMLCollectionOf<HTMLButtonElement>;
         buttons.item(i).focus();
@@ -120,6 +124,15 @@ export class Tabs {
     });
     if (!disabledTab) {
       this.onChange.emit({ tabId: tabIndex });
+    }
+  }
+
+  private blurTabButton(tabIndex: number) {
+    const buttons = this.el.getElementsByClassName(
+      'plmg-tab-button'
+    ) as HTMLCollectionOf<HTMLButtonElement>;
+    if (document.activeElement === buttons.item(tabIndex)) {
+      buttons.item(tabIndex).blur();
     }
   }
 }
