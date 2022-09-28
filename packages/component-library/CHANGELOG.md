@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Wed, 28 Sep 2022 10:20:18 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Sep 2022 10:28:03 GMT and should not be manually modified.
+
+## 1.12.2
+Wed, 28 Sep 2022 10:28:03 GMT
+
+### Patches
+
+- Fixes slider component resize handler
 
 ## 1.12.1
 Wed, 28 Sep 2022 10:20:18 GMT
