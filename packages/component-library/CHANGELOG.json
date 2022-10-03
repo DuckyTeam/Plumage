@@ -2,6 +2,18 @@
   "name": "@ducky/plumage",
   "entries": [
     {
+      "version": "1.13.0",
+      "tag": "@ducky/plumage_v1.13.0",
+      "date": "Mon, 03 Oct 2022 12:35:09 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updates TextInput component attributes and constraint validation"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.12.3",
       "tag": "@ducky/plumage_v1.12.3",
       "date": "Wed, 28 Sep 2022 10:34:19 GMT",

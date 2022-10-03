@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Wed, 28 Sep 2022 10:34:19 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Oct 2022 12:35:09 GMT and should not be manually modified.
+
+## 1.13.0
+Mon, 03 Oct 2022 12:35:09 GMT
+
+### Minor changes
+
+- Updates TextInput component attributes and constraint validation
 
 ## 1.12.3
 Wed, 28 Sep 2022 10:34:19 GMT
