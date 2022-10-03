@@ -107,8 +107,24 @@
     border-radius: tokens.$plmg-border-radius-s;
     background-color: tokens.$plmg-color-background-neutral-hover;
   }
+
+  // remove arrows from number input
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    -moz-appearance: textfield;
+  }
+
+  // remove clear cross from search input
+  input[type='search']::-webkit-search-decoration,
+  input[type='search']::-webkit-search-cancel-button,
+  input[type='search']::-webkit-search-results-button,
+  input[type='search']::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+  }
+
   input {
-    width: 100%;
     min-width: fit-content;
     box-shadow: tokens.$plmg-shadow-inner-s;
     border: none;
@@ -118,6 +134,9 @@
     color: tokens.$plmg-color-text-neutral;
     border-radius: tokens.$plmg-border-radius-s;
     background-color: tokens.$plmg-color-background-neutral;
+    &.full-width {
+      width: 100%;
+    }
     &:disabled,
     &:read-only {
       background-color: tokens.$plmg-color-background-neutral-medium;
