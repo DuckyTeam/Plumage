@@ -420,7 +420,7 @@ export namespace Components {
          */
         "minLength": number;
         /**
-          * Define a name for the input field.  Allowed values: - Any string  If no name is provided, the name will be set to the label text
+          * Define a name for the input field.  Allowed values: - Any string  Provide each input element with a unique name
          */
         "name": string;
         /**
@@ -1090,16 +1090,15 @@ declare namespace LocalJSX {
          */
         "minLength"?: number;
         /**
-          * Define a name for the input field.  Allowed values: - Any string  If no name is provided, the name will be set to the label text
+          * Define a name for the input field.  Allowed values: - Any string  Provide each input element with a unique name
          */
         "name"?: string;
         /**
-          * Event emitted when value changed. Event emitted is an object with the following properties: - name: name of the input - value: value of the input - validityState object containing constraint validity states
+          * Event emitted when value changed. Event emitted is an object with the following properties: - value: value of the input - validityState: object containing constraint validityState properties
          */
         "onValueUpdated"?: (event: PlmgTextInputCustomEvent<{
-    name: string;
     value: string;
-    validity: ValidityState;
+    validityState: ValidityState;
   }>) => void;
         /**
           * Define a regular expression pattern for constraint validation  Allowed value: any string  Only valid for types: text, search, url, tel, email, and password  Default: none
