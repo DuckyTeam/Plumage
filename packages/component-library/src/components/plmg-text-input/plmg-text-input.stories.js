@@ -52,7 +52,7 @@ export default {
       control: { type: 'text' },
     },
     type: {
-      options: ['text', 'password', 'email', 'number', 'tel', 'url'],
+      options: ['text', 'password', 'email', 'number', 'tel', 'search', 'url'],
       control: { type: 'select' },
     },
     value: {
