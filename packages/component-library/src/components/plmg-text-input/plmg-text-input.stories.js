@@ -37,15 +37,15 @@ export default {
     placeholder: {
       control: { type: 'text' },
     },
+    ['read-only']: { control: { type: 'boolean' } },
+    required: {
+      control: { type: 'boolean' },
+    },
     size: {
       options: ['medium', 'large'],
       control: { type: 'select' },
     },
     ['show-label']: {
-      control: { type: 'boolean' },
-    },
-    ['read-only']: { control: { type: 'boolean' } },
-    required: {
       control: { type: 'boolean' },
     },
     tip: {
@@ -102,22 +102,19 @@ Primary.args = {
   disabled: false,
   ['error-message']: '',
   label: 'Text Input',
+  min: '',
+  max: '',
   ['min-length']: '',
   ['max-length']: '',
-  name: '',
   placeholder: '',
   ['read-only']: false,
   required: false,
   size: 'medium',
+  step: '',
   ['show-label']: true,
   tip: '',
   value: '',
   width: '',
-};
-Primary.argTypes = {
-  ['min']: { control: { disable: true } },
-  ['max']: { control: { disable: true } },
-  ['step']: { control: { disable: true } },
 };
 
 export const disabled = Template.bind({});
@@ -139,22 +136,6 @@ Label.storyName = 'Label';
 Label.args = {
   label: 'Show Label',
   ['show-label']: true,
-};
-
-export const number = Template.bind({});
-number.storyName = 'Number';
-number.args = {
-  label: 'Number',
-  size: 'large',
-  min: 0,
-  max: 100,
-  step: 1,
-  type: 'number',
-};
-number.argTypes = {
-  type: { control: { disable: true } },
-  ['max-length']: { control: { disable: true } },
-  ['min-length']: { control: { disable: true } },
 };
 
 export const readOnly = Template.bind({});
