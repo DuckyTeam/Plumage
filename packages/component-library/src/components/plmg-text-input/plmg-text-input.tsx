@@ -94,7 +94,7 @@ export class TextInput {
    * Default: none
    */
   @Prop() max: number;
-  @Watch('maxLength')
+  @Watch('max')
   validateMax(newValue: number) {
     if (typeof newValue !== 'number') throw new Error('max must be a number');
   }
@@ -125,7 +125,7 @@ export class TextInput {
    * Only vaiid for type: number
    */
   @Prop() min: number;
-  @Watch('minLength')
+  @Watch('min')
   validateMin(newValue: number) {
     if (typeof newValue !== 'number') throw new Error('min must be a number');
   }
@@ -343,11 +343,7 @@ export class TextInput {
    * Allowed values:
    * - Any positive number greater than 0
    *
-   * Define the width of the text input
-   *
-   * When type is number, width sets the pixel width of the input field.
-   *
-   * By default width is set to 100% of the parent container
+   * Sets the width of the text input, by default width is set to 100% of the parent container
    */
   @Prop() width: number;
   @Watch('width')
@@ -408,50 +404,30 @@ export class TextInput {
           {this.showLabel && this.required && <span class={'required'}>*</span>}
         </label>
         <div class={'plmg-text-input-field-wrapper'} tabIndex={0}>
-          {this.type === 'number' ? (
-            <input
-              autoComplete={this.autoComplete}
-              class={inputClasses}
-              disabled={this.disabled}
-              id={this.labelToId()}
-              max={this.max}
-              min={this.min}
-              name={this.name}
-              onInput={(event) => this.handleInputChange(event.target)}
-              placeholder={this.placeholder}
-              readonly={this.readOnly}
-              required={this.required}
-              size={this.width}
-              step={this.step}
-              style={{
-                width: this.width && this.width + 'px',
-              }}
-              // supresss the default browser validation popup
-              title={''}
-              type={this.type}
-              value={this.internalValue}
-            />
-          ) : (
-            <input
-              autocomplete={this.autoComplete}
-              class={inputClasses}
-              disabled={this.disabled}
-              id={this.labelToId()}
-              maxlength={this.maxLength}
-              minlength={this.minLength}
-              name={this.name}
-              onInput={(event) => this.handleInputChange(event.target)}
-              pattern={this.pattern}
-              placeholder={this.placeholder}
-              readonly={this.readOnly}
-              required={this.required}
-              size={this.width}
-              // supresss the default browser validation popup
-              title={''}
-              type={this.type}
-              value={this.internalValue}
-            />
-          )}
+          <input
+            autoComplete={this.autoComplete}
+            class={inputClasses}
+            disabled={this.disabled}
+            id={this.labelToId()}
+            max={this.max}
+            maxlength={this.maxLength}
+            min={this.min}
+            minlength={this.minLength}
+            name={this.name}
+            onInput={(event) => this.handleInputChange(event.target)}
+            pattern={this.pattern}
+            placeholder={this.placeholder}
+            readonly={this.readOnly}
+            required={this.required}
+            step={this.step}
+            style={{
+              width: this.width && this.width + 'px',
+            }}
+            // supresss the default browser validation popup
+            title={''}
+            type={this.type}
+            value={this.internalValue}
+          />
         </div>
         {this.tip && <span class={tipClasses}>{this.tip}</span>}
         {this.errorMessage && (
