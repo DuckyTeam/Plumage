@@ -52,7 +52,7 @@ describe('plmg-text-input', () => {
           Large
         </label>
         <div class="plmg-text-input-field-wrapper" tabindex="0">
-          <input autocomplete="off" class="large" size="20" id="large" type="text" />
+          <input autocomplete="off" class="large" style="width: 20px;" id="large" type="text" />
         </div>
       </div>
     </plmg-text-input>
