@@ -1,119 +1,198 @@
 import { useState, useEffect } from 'react';
-import { PlmgTextInput } from '@ducky/plumage-react';
+import { PlmgTextInput, PlmgButton } from '@ducky/plumage-react';
 
 export default function TextForm() {
-  const [isValid, setIsValid] = useState(false);
-  const [inputFields, setInputFields] = useState([
-    {
-      id: 'first-name',
-      inputLabel: 'First Name',
-      value: '',
-      pattern: '[a-zA-Z]{2,}',
-      tip: 'Your real name',
-      required: true,
-      error: false,
-      errorMessage: 'Name must be at least 2 characters',
-    },
-    {
-      id: 'phone-number',
-      inputLabel: 'Phone Number',
-      value: '',
-      tip: '',
-      required: true,
-      error: false,
-      pattern: '[0-9]{8,8}',
-      errorMessage: 'Phone number must be 8 digits long',
-    },
-    {
-      id: 'your-e-mail',
-      inputLabel: 'your e-mail',
-      pattern: '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}',
-      value: '',
-      tip: '',
-      required: true,
-      error: false,
-      errorMessage: 'A valid email is required',
-    },
-    {
-      id: 'favourite song',
-      inputLabel: 'your favourite song',
-      pattern: '[a-zA-Z]{0}',
-      value: '',
-      tip: '',
-      required: false,
-      error: false,
-      errorMessage: 'Please enter your favourite song',
-    },
-  ]);
-
-  const handleChange = (event: any) => {
-    const targetId = event.target.id;
-    const value = event.detail.value;
-    const newInputFields = inputFields.map((inputField: any) => {
-      if (inputField.id === targetId) {
-        inputField.value = value;
-      }
-      return inputField;
-    });
-    setInputFields(newInputFields);
-
-    event.preventDefault();
-    event.stopPropagation();
+  type FormState = {
+    [key: string]: {
+      value: string;
+      valid: boolean;
+    };
   };
 
-  const handleValidate = (event: any) => {
-    const targetId = event.target.id;
-    const newInputFields = inputFields.map((inputField: any) => {
-      if (inputField.id === targetId) {
-        inputField.error = !inputField.value.match(inputField.pattern);
-      }
-      return inputField;
-    });
-    setInputFields(newInputFields);
-  };
+  const [userDidSubmit, setUserDidSubmit] = useState(false);
+
+  const [formValues, setFormValues] = useState<FormState>({
+    name: { value: '', valid: false },
+    password: { value: '', valid: false },
+    passwordConfirm: { value: '', valid: false },
+    email: { value: '', valid: false },
+    favouriteNumber: { value: '42', valid: true },
+  });
+
+  function validateForm() {
+    const formValid = Object.keys(formValues).every(
+      (key) => formValues[key].valid
+    );
+    const passwordValid =
+      formValues.password.value === formValues.passwordConfirm.value;
+    if (formValid && passwordValid) {
+      return true;
+    }
+  }
 
   useEffect(() => {
-    const isValid = inputFields.every((inputField: any) => {
-      if (inputField.required) {
-        return inputField.value.length > 0 && !inputField.error;
-      } else {
-        return true;
-      }
-    });
-    setIsValid(isValid);
-  }, [inputFields]);
-
-  const handleSubmit = (event: any) => {
-    alert(
-      `Submitted: ${JSON.stringify(
-        inputFields.map(
-          (inputField: any) => inputField.inputLabel + ': ' + inputField.value
-        )
-      )})`
-    );
-  };
+    if (userDidSubmit) {
+      validateForm();
+    }
+  }, [formValues]);
 
   return (
     <div>
       <h2>Text Input Form</h2>
-      <form name={'text-inputFields'} onSubmit={handleSubmit}>
+      <form
+        name={'text-inputFields'}
+        noValidate={true}
+        onSubmit={(event) => {
+          event.preventDefault();
+          setUserDidSubmit(true);
+          if (validateForm()) {
+            alert(JSON.stringify(formValues));
+          }
+        }}
+      >
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          {inputFields.map((input, index) => (
-            <PlmgTextInput
-              key={`${input.id}_${index}`}
-              id={input.id}
-              errorMessage={input.error ? input.errorMessage : ''}
-              label={input.inputLabel}
-              required={input.required}
-              tip={input.tip}
-              onValueUpdated={(e) => handleChange(e)}
-              onBlur={(e) => handleValidate(e)}
-            ></PlmgTextInput>
-          ))}
+          <PlmgTextInput
+            label={'Your Name'}
+            name={'user-name'}
+            placeholder={'Your Name'}
+            errorMessage={
+              userDidSubmit && !formValues.name.valid
+                ? 'Please enter your real name'
+                : undefined
+            }
+            tip={'Your real name'}
+            required={true}
+            minLength={2}
+            maxLength={20}
+            onValueUpdated={(event: CustomEvent) => {
+              setFormValues({
+                ...formValues,
+                name: {
+                  value: event.detail.value,
+                  valid: event.detail.validityState.valid,
+                },
+              });
+            }}
+            value={formValues.name.value}
+          />
+          <PlmgTextInput
+            label={'Email'}
+            name={'email'}
+            placeholder={'Email'}
+            errorMessage={
+              userDidSubmit && !formValues.email.valid
+                ? 'Please enter a valid email address'
+                : undefined
+            }
+            tip={'Your real email'}
+            type={'email'}
+            required={true}
+            onValueUpdated={(event: CustomEvent) => {
+              setFormValues({
+                ...formValues,
+                email: {
+                  value: event.detail.value,
+                  valid: event.detail.validityState.valid,
+                },
+              });
+            }}
+            value={formValues.email.value}
+          />
+          <PlmgTextInput
+            label={'Password'}
+            name={'password'}
+            placeholder={'Password'}
+            errorMessage={
+              userDidSubmit && !formValues.password.valid
+                ? 'Please provide a password'
+                : undefined
+            }
+            type={'password'}
+            tip={'password'}
+            required={true}
+            onValueUpdated={(event: CustomEvent) => {
+              setFormValues({
+                ...formValues,
+                password: {
+                  value: event.detail.value,
+                  valid: event.detail.validityState.valid,
+                },
+              });
+            }}
+            value={formValues.password.value}
+          />
+          <PlmgTextInput
+            label={'Confirm Password'}
+            name={'confirm-password'}
+            placeholder={'Confirm Password'}
+            onBlur={() => {
+              if (
+                formValues.password.value !== formValues.passwordConfirm.value
+              ) {
+                setFormValues({
+                  ...formValues,
+                  passwordConfirm: {
+                    value: formValues.passwordConfirm.value,
+                    valid: false,
+                  },
+                });
+              }
+            }}
+            errorMessage={
+              userDidSubmit &&
+              formValues.password.value !== formValues.passwordConfirm.value
+                ? 'Passwords do not match'
+                : undefined
+            }
+            tip={'Confirm your password'}
+            type={'password'}
+            required={true}
+            onValueUpdated={(event: CustomEvent) => {
+              setFormValues({
+                ...formValues,
+                passwordConfirm: {
+                  value: event.detail.value,
+                  valid: event.detail.validityState.valid,
+                },
+              });
+            }}
+            value={formValues.passwordConfirm.value}
+          />
+          <PlmgTextInput
+            errorMessage={
+              userDidSubmit && !formValues.favouriteNumber.valid
+                ? 'Please enter a valid number'
+                : undefined
+            }
+            label={'Favourite Number'}
+            name={'your-favourite-number'}
+            tip={'Pick a number between 1 and 100'}
+            type={'number'}
+            min={0}
+            max={100}
+            required={true}
+            onValueUpdated={(event: CustomEvent) => {
+              setFormValues({
+                ...formValues,
+                favouriteNumber: {
+                  value: event.detail.value,
+                  valid: event.detail.validityState.valid,
+                },
+              });
+            }}
+            value={formValues.favouriteNumber.value}
+            width={25}
+          />
         </div>
-        <input type={'submit'} value={'Submit Form'} disabled={!isValid} />
+        <PlmgButton
+          size={'small'}
+          design={'outline'}
+          label={'submit'}
+          type={'submit'}
+        >
+          Submit
+        </PlmgButton>
       </form>
-      <br />
     </div>
   );
 }
