@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "Updates TextInput component attributes and constraint validation",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}

@@ -1,30 +1,43 @@
 import * as Utils from '../../stories/StencilStorybookUtils';
-import { sizes } from './plmg-text-input.types';
+import { sizes, types } from './plmg-text-input.types';
 
 export default {
   title: 'Component/TextInput',
   parameters: {},
   decorators: [],
   argTypes: {
-    disabled: {
-      control: {
-        type: 'boolean',
-      },
+    ['auto-complete']: {
+      control: { type: 'text' },
     },
+    disabled: { control: { type: 'boolean' } },
     ['error-message']: {
       control: { type: 'text' },
     },
     label: {
       control: { type: 'text' },
     },
-    ['show-label']: {
-      control: { type: 'boolean' },
+    max: {
+      control: { type: 'number' },
     },
-    ['read-only']: {
-      control: {
-        type: 'boolean',
-      },
+    ['max-length']: {
+      control: { type: 'number' },
     },
+    min: {
+      control: { type: 'number' },
+    },
+    ['min-length']: {
+      control: { type: 'number' },
+    },
+    name: {
+      control: { type: 'text' },
+    },
+    pattern: {
+      control: { type: 'text' },
+    },
+    placeholder: {
+      control: { type: 'text' },
+    },
+    ['read-only']: { control: { type: 'boolean' } },
     required: {
       control: { type: 'boolean' },
     },
@@ -32,11 +45,21 @@ export default {
       options: ['medium', 'large'],
       control: { type: 'select' },
     },
+    ['show-label']: {
+      control: { type: 'boolean' },
+    },
     tip: {
       control: { type: 'text' },
     },
+    type: {
+      options: ['text', 'password', 'email', 'number', 'tel', 'search', 'url'],
+      control: { type: 'select' },
+    },
     value: {
       control: { type: 'text' },
+    },
+    width: {
+      control: { type: 'number' },
     },
   },
 };
@@ -44,13 +67,23 @@ export default {
 const PROPS = [
   'disabled',
   'error-message',
-  'show-label',
   'label',
+  'max-length',
+  'max',
+  'min-length',
+  'min',
+  'name',
+  'pattern',
+  'placeholder',
   'read-only',
   'required',
+  'show-label',
   'size',
+  'step',
   'tip',
+  'type',
   'value',
+  'width',
 ];
 
 const EVENTS = [];
@@ -66,18 +99,64 @@ const Template = (args) => {
 export const Primary = Template.bind({});
 Primary.storyName = 'Text Input';
 Primary.args = {
-  label: 'Text Input',
+  disabled: false,
   ['error-message']: '',
-  ['show-label']: false,
+  label: 'Text Input',
+  min: '',
+  max: '',
+  ['min-length']: '',
+  ['max-length']: '',
+  placeholder: '',
+  ['read-only']: false,
   required: false,
+  size: 'medium',
+  step: '',
+  ['show-label']: true,
+  tip: '',
   value: '',
+  width: '',
 };
 
-export const AllSizes = (args) => {
+export const disabled = Template.bind({});
+disabled.storyName = 'Disabled';
+disabled.args = {
+  label: 'Disabled',
+  disabled: true,
+};
+
+export const errorMessage = Template.bind({});
+errorMessage.storyName = 'Error';
+errorMessage.args = {
+  label: 'Error Message',
+  ['error-message']: 'This is an error message',
+};
+
+export const Label = Template.bind({});
+Label.storyName = 'Label';
+Label.args = {
+  label: 'Show Label',
+  ['show-label']: true,
+};
+
+export const readOnly = Template.bind({});
+readOnly.storyName = 'Read Only';
+readOnly.args = {
+  label: 'Read Only',
+  ['read-only']: true,
+  value: 'Cannot be edited, but can be copied',
+};
+
+export const placeholder = Template.bind({});
+placeholder.storyName = 'Placeholder';
+placeholder.args = {
+  label: 'With Placeholder',
+  placeholder: 'Placeholder',
+};
+
+export const Sizes = (args) => {
   const htmlContent = sizes
     .map(
-      (size) =>
-        `<plmg-text-input size=${size} size=${size} label=${size}></plmg-text-input>`
+      (size) => `<plmg-text-input size=${size} label=${size}></plmg-text-input>`
     )
     .join('')
     .trim();
@@ -89,36 +168,7 @@ export const AllSizes = (args) => {
 
   return el;
 };
-AllSizes.storyName = 'All Sizes';
-
-export const disabled = Template.bind({});
-disabled.storyName = 'Disabled';
-disabled.args = {
-  label: 'Disabled',
-  disabled: true,
-};
-
-export const readOnly = Template.bind({});
-readOnly.storyName = 'Read Only';
-readOnly.args = {
-  label: 'Read Only',
-  ['read-only']: true,
-  value: 'Cannot be edited, but can be copied',
-};
-
-export const showLabel = Template.bind({});
-showLabel.storyName = 'Label';
-showLabel.args = {
-  label: 'Show Label',
-  ['show-label']: true,
-};
-
-export const errorMessage = Template.bind({});
-errorMessage.storyName = 'Error';
-errorMessage.args = {
-  label: 'Error Message',
-  ['error-message']: 'This is an error message',
-};
+Sizes.storyName = 'Sizes';
 
 export const Tip = Template.bind({});
 Tip.storyName = 'Tip Text';
@@ -127,6 +177,37 @@ Tip.args = {
   ['show-label']: false,
   tip: 'Tip Text',
 };
+
+export const Types = (args) => {
+  const values = {
+    text: 'Ducky',
+    password: '2^pre9G9#ssV',
+    email: 'info@ducky.eco',
+    number: 42,
+    search: 'ducky',
+    tel: '12345678',
+    url: 'https://ducky.eco',
+  };
+
+  const htmlContent = types
+    .map(
+      (type) =>
+        `<plmg-text-input type=${type} value=${values[type]} label=${type}></plmg-text-input>`
+    )
+    .join('')
+    .trim();
+
+  const el = document.createElement('div');
+  el.innerHTML = htmlContent;
+  el.style.display = 'grid';
+  el.style.gridTemplateColumns = 'repeat(3, 1fr)';
+  el.style.gap = '1rem';
+  el.style.justifyContent = 'space-between';
+
+  return el;
+};
+
+Types.storyName = 'Types';
 
 export const Required = Template.bind({});
 Required.storyName = 'Required';

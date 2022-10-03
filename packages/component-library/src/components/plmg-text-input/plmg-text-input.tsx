@@ -4,11 +4,14 @@ import {
   Prop,
   Watch,
   State,
+  Element,
   Event,
   EventEmitter,
 } from '@stencil/core';
 import {
   isPlmgTextInputSize,
+  PlmgTextInputType,
+  isPlmgTextInputType,
   PlmgTextInputSize,
 } from './plmg-text-input.types';
 
@@ -18,6 +21,25 @@ import {
   shadow: false,
 })
 export class TextInput {
+  /**
+   * Reference to host HTML element.
+   */
+  @Element()
+  el: HTMLElement;
+  /**
+   * Define autocomplete
+   *
+   * Allowed value: any string
+   *
+   * Default: off
+   */
+  @Prop() autoComplete: string = 'off';
+  @Watch('autoComplete')
+  validateAutocomplete(newValue: string) {
+    if (newValue && typeof newValue !== 'string')
+      throw new Error('autoComplete must be string');
+  }
+
   /**
    * Define disabled
    *
@@ -31,6 +53,7 @@ export class TextInput {
     if (newValue && typeof newValue !== 'boolean')
       throw new Error('disabled must be boolean');
   }
+
   /**
    * Define error message
    *
@@ -44,19 +67,163 @@ export class TextInput {
     if (newValue && typeof newValue !== 'string')
       throw new Error('error message must be a string');
   }
+
   /**
-   * Define a label name for the input field.
+   * Define a label for the input field.
    *
    * Allowed values:
    * - Any string
    *
-   * A unique label name for each element in a form is required for accessibility
+   * A unique label for each element in a form is required for accessibility
    */
   @Prop() label!: string;
   @Watch('label')
   validateLabel(newValue: string) {
     if (typeof newValue !== 'string' || !this.label)
       throw new Error('label text is required and must be string');
+  }
+
+  /**
+   * Define the maximum value when type is number
+   *
+   * Allowed values:
+   * - Any number
+   *
+   * Only vaiid for type: number
+   *
+   * Default: none
+   */
+  @Prop() max: number;
+  @Watch('max')
+  validateMax(newValue: number) {
+    if (typeof newValue !== 'number') throw new Error('max must be a number');
+  }
+
+  /**
+   * Define the maximum character length
+   *
+   * Allowed values:
+   * - Any number
+   *
+   * Only valid for types: text, search, url, tel, email, and password
+   *
+   * Default: none
+   */
+  @Prop() maxLength: number;
+  @Watch('maxLength')
+  validateMaxLength(newValue: number) {
+    if (typeof newValue !== 'number')
+      throw new Error('max length must be a number');
+  }
+
+  /**
+   * Define the min value when type is number
+   *
+   * Allowed values:
+   * - Any number
+   *
+   * Only vaiid for type: number
+   */
+  @Prop() min: number;
+  @Watch('min')
+  validateMin(newValue: number) {
+    if (typeof newValue !== 'number') throw new Error('min must be a number');
+  }
+
+  /**
+   * Define the mininum character length
+   *
+   * Allowed values:
+   * - Any number
+   *
+   * Only valid for types: text, search, url, tel, email, and password
+   *
+   * Default: none
+   */
+  @Prop() minLength: number;
+  @Watch('minLength')
+  validateMxinLength(newValue: number) {
+    if (typeof newValue !== 'number')
+      throw new Error('min length must be a number');
+  }
+
+  /**
+   * Define a name for the input field.
+   *
+   * Allowed values:
+   * - Any string
+   *
+   * Provide each input element with a unique name
+   */
+  @Prop() name: string;
+  @Watch('name')
+  validateName(newValue: string) {
+    if (typeof newValue !== 'string' || !this.name)
+      throw new Error('name must be string');
+  }
+
+  /**
+   * Define a regular expression pattern for constraint validation
+   *
+   * Allowed value: any string
+   *
+   * Only valid for types: text, search, url, tel, email, and password
+   *
+   * Default: none
+   */
+  @Prop() pattern: string;
+  @Watch('pattern')
+  validatePattern(newValue: string) {
+    if (typeof newValue !== 'string')
+      throw new Error('pattern must be a string');
+  }
+
+  /**
+   * Define a placeholder text
+   *
+   * Allowed value: any string
+   *
+   * Placeholder does not set a value.
+   *
+   * Default: none
+   */
+  @Prop() placeholder: string;
+  @Watch('placeholder')
+  validatePlaceholder(newValue: string) {
+    if (typeof newValue !== 'string')
+      throw new Error('placeholder must be a string');
+  }
+
+  /**
+   * Define readonly
+   *
+   * Allowed value: boolean
+   *
+   * Makes text input read only
+   *
+   * Default: false
+   */
+  @Prop() readOnly: boolean = false;
+  @Watch('readOnly')
+  validateReadOnly(newValue: boolean) {
+    if (newValue && typeof newValue !== 'boolean')
+      throw new Error('readOnly must be boolean');
+  }
+
+  /**
+   * Define if an input is required.
+   *
+   * Allowed values:
+   * - true
+   * - false
+   *
+   * Default: false
+   */
+  @Prop() required: boolean = false;
+  @Watch('required')
+  validateRequired(newValue: boolean) {
+    if (typeof newValue !== 'boolean')
+      throw new Error('required must be a boolean');
   }
   /**
    * Define if the label is shown
@@ -73,34 +240,23 @@ export class TextInput {
     if (newValue && typeof newValue !== 'boolean')
       throw new Error('show label must be boolean');
   }
+
   /**
-   * Define readonly
-   *
-   * Allowed value: boolean
-   *
-   * Makes text input read only
-   */
-  @Prop() readOnly: boolean = false;
-  @Watch('readOnly')
-  validateReadOnly(newValue: boolean) {
-    if (newValue && typeof newValue !== 'boolean')
-      throw new Error('readOnly must be boolean');
-  }
-  /**
-   * Define if an input is required.
+   * Define the step value when type is number.
    *
    * Allowed values:
-   * - true
-   * - false
+   * - Any number
    *
-   * Default: false
+   * Only vaiid for type: number
+   *
+   * Default: 1
    */
-  @Prop() required: boolean = false;
-  @Watch('required')
-  validateRequired(newValue: boolean) {
-    if (typeof newValue !== 'boolean')
-      throw new Error('required must be a boolean');
+  @Prop() step: number;
+  @Watch('step')
+  validateStep(newValue: number) {
+    if (typeof newValue !== 'number') throw new Error('step must be a number');
   }
+
   /**
    *
    * Define text input's size
@@ -135,6 +291,34 @@ export class TextInput {
     if (newValue && typeof newValue !== 'string')
       throw new Error('tip text must be a string');
   }
+
+  /**
+   * Define type
+   *
+   * Allowed values:
+   * -text
+   * -email
+   * -password
+   * -tel
+   * -url
+   * -search
+   * -number
+   *
+   * Set the type of the input field
+   *
+   * Default: text
+   */
+  @Prop() type: PlmgTextInputType = 'text';
+  @Watch('type')
+  validateTypes(newValue: string) {
+    if (
+      typeof newValue !== 'string' ||
+      newValue === '' ||
+      !isPlmgTextInputType(newValue)
+    )
+      throw new Error('type must be a valid value');
+  }
+
   /**
    * Control the text input's value
    *
@@ -153,15 +337,39 @@ export class TextInput {
     this.internalValue = newValue;
   }
 
-  @State() internalValue: string;
-  private handleInputChange(ev) {
-    this.internalValue = ev.target.value;
-    this.valueUpdated.emit({ value: this.internalValue });
-  }
   /**
-   * Event emitted when value changed
+   * Define width
+   *
+   * Allowed values:
+   * - Any positive number greater than 0
+   *
+   * Sets the width of the text input, by default width is set to 100% of the parent container
    */
-  @Event() valueUpdated: EventEmitter<{ value: string }>;
+  @Prop() width: number;
+  @Watch('width')
+  validateWidth(newValue: number) {
+    if (typeof newValue !== 'number' || newValue < 1)
+      throw new Error('width must be a positive number');
+  }
+
+  @State() internalValue: string;
+  private handleInputChange = (target: EventTarget) => {
+    this.internalValue = (target as HTMLInputElement).value;
+    const validityState = this.el.querySelector('input').validity;
+    this.valueUpdated.emit({
+      value: this.internalValue,
+      validityState: validityState,
+    });
+  };
+  /**
+   * Event emitted when value changed. Event emitted is an object with the following properties:
+   * - value: value of the input
+   * - validityState: object containing constraint validityState properties
+   */
+  @Event() valueUpdated: EventEmitter<{
+    value: string;
+    validityState: ValidityState;
+  }>;
 
   connectedCallback() {
     this.internalValue = this.value;
@@ -174,6 +382,7 @@ export class TextInput {
   render() {
     const inputClasses = {
       [this.size]: true,
+      ['full-width']: !this.width,
       ['error']: !!this.errorMessage,
     };
 
@@ -196,15 +405,28 @@ export class TextInput {
         </label>
         <div class={'plmg-text-input-field-wrapper'} tabIndex={0}>
           <input
-            disabled={this.disabled}
+            autoComplete={this.autoComplete}
             class={inputClasses}
+            disabled={this.disabled}
             id={this.labelToId()}
-            name={this.label}
-            required={this.required}
-            type={'text'}
+            max={this.max}
+            maxlength={this.maxLength}
+            min={this.min}
+            minlength={this.minLength}
+            name={this.name}
+            onInput={(event) => this.handleInputChange(event.target)}
+            pattern={this.pattern}
+            placeholder={this.placeholder}
             readonly={this.readOnly}
+            required={this.required}
+            step={this.step}
+            style={{
+              width: this.width && this.width + 'px',
+            }}
+            // supresss the default browser validation popup
+            title={''}
+            type={this.type}
             value={this.internalValue}
-            onInput={(ev) => this.handleInputChange(ev)}
           />
         </div>
         {this.tip && <span class={tipClasses}>{this.tip}</span>}
