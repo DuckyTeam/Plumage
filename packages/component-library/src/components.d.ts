@@ -11,7 +11,7 @@ import { PlmgDropdownAlignments } from "./components/plmg-dropdown/plmg-dropdown
 import { PlmgErrorMessageSize } from "./components/plmg-error-message/plmg-error-message.types";
 import { PlmgRadioButtonSize } from "./components/plmg-radio-button/plmg-radio-button.types";
 import { PlmgStatusVariant } from "./components/plmg-status/plmg-status.types";
-import { PlmgTextInputSize } from "./components/plmg-text-input/plmg-text-input.types";
+import { PlmgTextInputSize, PlmgTextInputType } from "./components/plmg-text-input/plmg-text-input.types";
 import { PlmgTooltipArrowPosition, PlmgTooltipColor, PlmgTooltipPosition } from "./components/plmg-tooltip/plmg-tooltip.types";
 export namespace Components {
     interface PlmgAvatar {
@@ -388,6 +388,10 @@ export namespace Components {
     }
     interface PlmgTextInput {
         /**
+          * Define autocomplete  Allowed value: any string  Default: off
+         */
+        "autoComplete": string;
+        /**
           * Define disabled  Allowed value: boolean  Disables text input
          */
         "disabled": boolean;
@@ -396,11 +400,39 @@ export namespace Components {
          */
         "errorMessage": string;
         /**
-          * Define a label name for the input field.  Allowed values: - Any string  A unique label name for each element in a form is required for accessibility
+          * Define a label for the input field.  Allowed values: - Any string  A unique label for each element in a form is required for accessibility
          */
         "label": string;
         /**
-          * Define readonly  Allowed value: boolean  Makes text input read only
+          * Define the maximum value when type is number  Allowed values: - Any number  Only vaiid for type: number  Default: none
+         */
+        "max": number;
+        /**
+          * Define the maximum character length  Allowed values: - Any number  Only valid for types: text, search, url, tel, email, and password  Default: none
+         */
+        "maxLength": number;
+        /**
+          * Define the min value when type is number  Allowed values: - Any number  Only vaiid for type: number
+         */
+        "min": number;
+        /**
+          * Define the mininum character length  Allowed values: - Any number  Only valid for types: text, search, url, tel, email, and password  Default: none
+         */
+        "minLength": number;
+        /**
+          * Define a name for the input field.  Allowed values: - Any string  If no name is provided, the name will be set to the label text
+         */
+        "name": string;
+        /**
+          * Define a regular expression pattern for constraint validation  Allowed value: any string  Only valid for types: text, search, url, tel, email, and password  Default: none
+         */
+        "pattern": string;
+        /**
+          * Define a placeholder text  Allowed value: any string  Placeholder does not set a value.  Default: none
+         */
+        "placeholder": string;
+        /**
+          * Define readonly  Allowed value: boolean  Makes text input read only  Default: false
          */
         "readOnly": boolean;
         /**
@@ -416,13 +448,25 @@ export namespace Components {
          */
         "size": PlmgTextInputSize;
         /**
+          * Define the step value when type is number.  Allowed values: - Any number  Only vaiid for type: number  Default: 1
+         */
+        "step": number;
+        /**
           * Define tip  Allowed value: any string  Displays a tip message
          */
         "tip": string;
         /**
+          * Define type  Allowed values: -text -email -password -tel -url -search -number  Set the type of the input field  Default: text
+         */
+        "type": PlmgTextInputType;
+        /**
           * Control the text input's value  Allowed values: - Any string  Sets the value of the text input
          */
         "value": string;
+        /**
+          * Define width  Allowed values: - Any positive number greater than 0  Define the width of the text input  When type is number, width sets the pixel width of the input field.  By default width is set to 100% of the parent container
+         */
+        "width": number;
     }
     interface PlmgTooltip {
         /**
@@ -1014,6 +1058,10 @@ declare namespace LocalJSX {
     }
     interface PlmgTextInput {
         /**
+          * Define autocomplete  Allowed value: any string  Default: off
+         */
+        "autoComplete"?: string;
+        /**
           * Define disabled  Allowed value: boolean  Disables text input
          */
         "disabled"?: boolean;
@@ -1022,15 +1070,47 @@ declare namespace LocalJSX {
          */
         "errorMessage"?: string;
         /**
-          * Define a label name for the input field.  Allowed values: - Any string  A unique label name for each element in a form is required for accessibility
+          * Define a label for the input field.  Allowed values: - Any string  A unique label for each element in a form is required for accessibility
          */
         "label": string;
         /**
-          * Event emitted when value changed
+          * Define the maximum value when type is number  Allowed values: - Any number  Only vaiid for type: number  Default: none
          */
-        "onValueUpdated"?: (event: PlmgTextInputCustomEvent<{ value: string }>) => void;
+        "max"?: number;
         /**
-          * Define readonly  Allowed value: boolean  Makes text input read only
+          * Define the maximum character length  Allowed values: - Any number  Only valid for types: text, search, url, tel, email, and password  Default: none
+         */
+        "maxLength"?: number;
+        /**
+          * Define the min value when type is number  Allowed values: - Any number  Only vaiid for type: number
+         */
+        "min"?: number;
+        /**
+          * Define the mininum character length  Allowed values: - Any number  Only valid for types: text, search, url, tel, email, and password  Default: none
+         */
+        "minLength"?: number;
+        /**
+          * Define a name for the input field.  Allowed values: - Any string  If no name is provided, the name will be set to the label text
+         */
+        "name"?: string;
+        /**
+          * Event emitted when value changed. Event emitted is an object with the following properties: - name: name of the input - value: value of the input - validityState object containing constraint validity states
+         */
+        "onValueUpdated"?: (event: PlmgTextInputCustomEvent<{
+    name: string;
+    value: string;
+    validity: ValidityState;
+  }>) => void;
+        /**
+          * Define a regular expression pattern for constraint validation  Allowed value: any string  Only valid for types: text, search, url, tel, email, and password  Default: none
+         */
+        "pattern"?: string;
+        /**
+          * Define a placeholder text  Allowed value: any string  Placeholder does not set a value.  Default: none
+         */
+        "placeholder"?: string;
+        /**
+          * Define readonly  Allowed value: boolean  Makes text input read only  Default: false
          */
         "readOnly"?: boolean;
         /**
@@ -1046,13 +1126,25 @@ declare namespace LocalJSX {
          */
         "size"?: PlmgTextInputSize;
         /**
+          * Define the step value when type is number.  Allowed values: - Any number  Only vaiid for type: number  Default: 1
+         */
+        "step"?: number;
+        /**
           * Define tip  Allowed value: any string  Displays a tip message
          */
         "tip"?: string;
         /**
+          * Define type  Allowed values: -text -email -password -tel -url -search -number  Set the type of the input field  Default: text
+         */
+        "type"?: PlmgTextInputType;
+        /**
           * Control the text input's value  Allowed values: - Any string  Sets the value of the text input
          */
         "value"?: string;
+        /**
+          * Define width  Allowed values: - Any positive number greater than 0  Define the width of the text input  When type is number, width sets the pixel width of the input field.  By default width is set to 100% of the parent container
+         */
+        "width"?: number;
     }
     interface PlmgTooltip {
         /**
