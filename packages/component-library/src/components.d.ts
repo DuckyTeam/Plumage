@@ -464,7 +464,7 @@ export namespace Components {
          */
         "value": string;
         /**
-          * Define width  Allowed values: - Any positive number greater than 0  Define the width of the text input  When type is number, width sets the pixel width of the input field.  By default width is set to 100% of the parent container
+          * Define width  Allowed values: - Any positive number greater than 0  Sets the width of the text input, by default width is set to 100% of the parent container
          */
         "width": number;
     }
@@ -1141,7 +1141,7 @@ declare namespace LocalJSX {
          */
         "value"?: string;
         /**
-          * Define width  Allowed values: - Any positive number greater than 0  Define the width of the text input  When type is number, width sets the pixel width of the input field.  By default width is set to 100% of the parent container
+          * Define width  Allowed values: - Any positive number greater than 0  Sets the width of the text input, by default width is set to 100% of the parent container
          */
         "width"?: number;
     }
