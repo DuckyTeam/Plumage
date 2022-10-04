@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "Adds focus visible ring & border radius prop",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
