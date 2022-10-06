@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "Fixes button click bug",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
