@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "Fixes low z-index bug on header",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
