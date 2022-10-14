@@ -122,6 +122,10 @@ export namespace Components {
          */
         "align": PlmgDropdownAlignments;
         /**
+          * Set the border radius of trigger element.  Allow values:  - any valid css border radius value  Default: none
+         */
+        "borderRadius": string;
+        /**
           * Disable document scoped event listeners.  Does not disable the click event on the trigger element or keyboard events.  Allowed values:   - true   - false  Default: false
          */
         "disableListeners": boolean;
@@ -791,6 +795,10 @@ declare namespace LocalJSX {
           * Define the alignment of the dropdown menu.  Allowed values:   - left   - right  Default: left
          */
         "align"?: PlmgDropdownAlignments;
+        /**
+          * Set the border radius of trigger element.  Allow values:  - any valid css border radius value  Default: none
+         */
+        "borderRadius"?: string;
         /**
           * Disable document scoped event listeners.  Does not disable the click event on the trigger element or keyboard events.  Allowed values:   - true   - false  Default: false
          */

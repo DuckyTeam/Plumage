@@ -5,6 +5,9 @@ export default {
   parameters: {},
   decorators: [],
   argTypes: {
+    ['border-radius']: {
+      control: { type: 'text' },
+    },
     ['trigger']: { control: { type: 'text' } },
     ['menu']: { control: { type: 'text' } },
     ['disable-listeners']: {
@@ -18,7 +21,7 @@ export default {
   },
 };
 
-const PROPS = ['align', 'disable-listeners'];
+const PROPS = ['align', 'border-radius', 'disable-listeners'];
 const EVENTS = [];
 const SLOTS = ['trigger', 'menu'];
 
@@ -34,6 +37,7 @@ export const Primary = Template.bind({});
 Primary.storyName = 'Dropdown';
 Primary.args = {
   align: 'left',
+  ['border-radius']: '50%',
   ['disable-listeners']: false,
   ['trigger']: `<plmg-avatar style="width: 48px" slot="trigger" size="medium"></plmg-avatar>`,
   ['menu']: `<div slot="menu">
@@ -48,7 +52,7 @@ export const AllAlignments = (args) => {
   let htmlContent = ``;
   htmlContent += `
   <div style="display: flex; justify-content: space-between; padding: 32px;">
-  <plmg-dropdown align="left" type="nav">
+  <plmg-dropdown align="left" border-radius="var(--plmg-border-radius-pill)">
   <plmg-status slot="trigger" variant="info">Left</plmg-status>
   <div slot="menu">
   <plmg-dropdown-item text="Link" href="https://ducky.eco" target="_blank"></plmg-dropdown-item>
@@ -56,7 +60,7 @@ export const AllAlignments = (args) => {
   <plmg-dropdown-item text="Link" href="https://plumage.ducky.eco/" target="_blank"></plmg-dropdown-item>
   </div>
   </plmg-dropdown>
-    <plmg-dropdown align="right" type="nav">
+    <plmg-dropdown align="right" border-radius="var(--plmg-border-radius-pill)">
     <plmg-status slot="trigger" variant="info">Right</plmg-status>
     <div slot="menu">
     <plmg-dropdown-item text="Link" href="https://ducky.eco" target="_blank"></plmg-dropdown-item>
