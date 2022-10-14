@@ -1,6 +1,6 @@
 {
   "name": "@ducky/plumage",
-  "version": "1.13.1",
+  "version": "1.14.0",
   "description": "Plumage is Ducky's design system",
   "main": "dist/cjs/plmg.cjs.js",
   "module": "dist/esm/plmg.js",

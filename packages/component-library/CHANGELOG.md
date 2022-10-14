@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Fri, 14 Oct 2022 12:37:13 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Oct 2022 13:36:51 GMT and should not be manually modified.
+
+## 1.14.0
+Fri, 14 Oct 2022 13:36:51 GMT
+
+### Minor changes
+
+- Adds focus visible ring & border radius prop
 
 ## 1.13.1
 Fri, 14 Oct 2022 12:37:13 GMT

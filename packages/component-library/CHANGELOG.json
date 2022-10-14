@@ -2,6 +2,18 @@
   "name": "@ducky/plumage",
   "entries": [
     {
+      "version": "1.14.0",
+      "tag": "@ducky/plumage_v1.14.0",
+      "date": "Fri, 14 Oct 2022 13:36:51 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adds focus visible ring & border radius prop"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.13.1",
       "tag": "@ducky/plumage_v1.13.1",
       "date": "Fri, 14 Oct 2022 12:37:13 GMT",
