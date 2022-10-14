@@ -2,6 +2,18 @@
   "name": "@ducky/plumage",
   "entries": [
     {
+      "version": "1.13.1",
+      "tag": "@ducky/plumage_v1.13.1",
+      "date": "Fri, 14 Oct 2022 12:37:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixes low z-index bug on header"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.13.0",
       "tag": "@ducky/plumage_v1.13.0",
       "date": "Mon, 03 Oct 2022 12:35:09 GMT",

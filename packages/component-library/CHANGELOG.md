@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Mon, 03 Oct 2022 12:35:09 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Oct 2022 12:37:13 GMT and should not be manually modified.
+
+## 1.13.1
+Fri, 14 Oct 2022 12:37:13 GMT
+
+### Patches
+
+- Fixes low z-index bug on header
 
 ## 1.13.0
 Mon, 03 Oct 2022 12:35:09 GMT
