@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property           | Attribute           | Description                                                                                                                                                               | Type                | Default  |
-| ------------------ | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- | -------- |
-| `align`            | `align`             | Define the alignment of the dropdown menu.  Allowed values:   - left   - right  Default: left                                                                             | `"left" \| "right"` | `'left'` |
-| `disableListeners` | `disable-listeners` | Disable document scoped event listeners.  Does not disable the click event on the trigger element or keyboard events.  Allowed values:   - true   - false  Default: false | `boolean`           | `false`  |
+| Property           | Attribute           | Description                                                                                                                                                               | Type                | Default     |
+| ------------------ | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- | ----------- |
+| `align`            | `align`             | Define the alignment of the dropdown menu.  Allowed values:   - left   - right  Default: left                                                                             | `"left" \| "right"` | `'left'`    |
+| `borderRadius`     | `border-radius`     | Set the border radius of trigger element.  Allow values:  - any valid css border radius value  Default: none                                                              | `string`            | `undefined` |
+| `disableListeners` | `disable-listeners` | Disable document scoped event listeners.  Does not disable the click event on the trigger element or keyboard events.  Allowed values:   - true   - false  Default: false | `boolean`           | `false`     |
 
 
 ## Methods

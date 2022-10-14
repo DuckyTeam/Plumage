@@ -6,6 +6,13 @@
 .plmg-dropdown {
   position: relative;
   display: inline-block;
+
+  &:focus-visible {
+    background: tokens.$plmg-color-background-neutral-medium;
+    outline: tokens.$plmg-border-width-l solid
+      tokens.$plmg-color-border-standout;
+    z-index: 999;
+  }
 }
 
 .plmg-dropdown-menu {

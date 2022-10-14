@@ -74,6 +74,21 @@ export class Dropdown {
   }
 
   /**
+   * Set the border radius of trigger element.
+   *
+   * Allow values:
+   *  - any valid css border radius value
+   *
+   * Default: none
+   */
+  @Prop() borderRadius: string;
+  @Watch('borderRadius')
+  validateBorderRadius(newValue: string) {
+    if (typeof newValue !== 'string')
+      throw new Error('borderRadius: must be a string');
+  }
+
+  /**
    * Invoke this method to manually toggle the dropdown's visibility.
    *
    * Use this method when the document scoped event listeners are disabled.
@@ -160,7 +175,11 @@ export class Dropdown {
     };
 
     return (
-      <nav class={'plmg-dropdown'} tabIndex={0}>
+      <nav
+        class={'plmg-dropdown'}
+        style={this.borderRadius && { borderRadius: this.borderRadius }}
+        tabIndex={0}
+      >
         <slot name={'trigger'} />
         {this.isVisible && (
           <div class={classes}>
