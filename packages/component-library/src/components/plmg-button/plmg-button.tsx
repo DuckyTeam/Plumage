@@ -231,7 +231,6 @@ export class Button {
   @Listen('click')
   handleClick() {
     const clicked = event.target as HTMLElement;
-    console.log('the element clicked is', clicked.tagName);
     if (clicked.tagName === 'PLMG-BUTTON') {
       event.preventDefault();
       event.stopPropagation();
