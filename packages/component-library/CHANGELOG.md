@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Fri, 14 Oct 2022 13:36:51 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Oct 2022 11:24:05 GMT and should not be manually modified.
+
+## 1.14.1
+Tue, 18 Oct 2022 11:24:05 GMT
+
+### Patches
+
+- Fixes button click bug
 
 ## 1.14.0
 Fri, 14 Oct 2022 13:36:51 GMT
