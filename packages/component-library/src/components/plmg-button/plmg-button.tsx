@@ -1,4 +1,4 @@
-import { Component, h, Prop, Watch } from '@stencil/core';
+import { Component, h, Listen, Prop, Watch } from '@stencil/core';
 import {
   isPlmgButtonColor,
   isPlmgButtonSize,
@@ -224,6 +224,17 @@ export class Button {
   validateLabel(newValue: string) {
     if (newValue && typeof newValue !== 'string')
       throw new Error('label must be a string');
+  }
+
+  // get the actual width of the button
+
+  @Listen('click')
+  handleClick() {
+    const clicked = event.target as HTMLElement;
+    if (clicked.tagName === 'PLMG-BUTTON') {
+      event.preventDefault();
+      event.stopPropagation();
+    }
   }
 
   render() {
