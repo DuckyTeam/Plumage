@@ -46,13 +46,7 @@
   &:hover {
     background: tokens.$plmg-color-background-neutral-medium;
   }
-  &:active {
-    background: tokens.$plmg-color-background-primary;
-    color: tokens.$plmg-color-text-primary-strong;
-    .plmg-dropdown-item-active-icon {
-      visibility: visible;
-    }
-  }
+
   &.plmg-dropdown-item-selected {
     background: tokens.$plmg-color-background-primary;
     color: tokens.$plmg-color-text-primary-strong;
@@ -74,11 +68,15 @@
     font-size: 20px;
   }
 
-  .plmg-dropdown-item-active-icon {
+  .plmg-dropdown-item-selected-icon {
     padding-left: tokens.$plmg-spacing-x1;
     margin-left: auto;
     color: tokens.$plmg-color-icon-primary-hover;
     visibility: hidden;
+  }
+
+  .plmg-dropdown-item-selected-icon-visible {
+    visibility: visible;
   }
 }
 // ------------- END Component style ---------------

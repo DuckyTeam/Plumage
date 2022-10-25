@@ -75,16 +75,19 @@ export class PlmgDropdownItem {
       'plmg-dropdown-item': true,
       'plmg-dropdown-item-selected': this.selected,
     };
+
+    const iconClasses = {
+      'plmg-dropdown-item-selected-icon': true,
+      'plmg-dropdown-item-selected-icon-visible': this.selected,
+    };
+
     return (
       <a class={classes} title={this.text} href={this.href} rel={this.rel}>
         {this.icon && (
           <plmg-svg-icon class={'plmg-dropdown-item-icon'} icon={this.icon} />
         )}
         <span class={'plmg-dropdown-item-content'}>{this.text}</span>
-        <plmg-svg-icon
-          class={'plmg-dropdown-item-active-icon'}
-          icon={'check'}
-        />
+        <plmg-svg-icon class={iconClasses} icon={'check'} />
       </a>
     );
   }
