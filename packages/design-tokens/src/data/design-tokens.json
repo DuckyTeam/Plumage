@@ -1021,19 +1021,19 @@
   "plumage-playful": {
     "color-text": {
       "neutral": {
-        "value": "#263238",
+        "value": "#2c2e36",
         "type": "color",
         "description": "Grey900"
       },
       "neutral-weak": {
-        "value": "#35454c",
+        "value": "#3d404a",
         "type": "color",
         "description": "Grey800"
       },
       "neutral-disabled": {
-        "value": "#526a76",
+        "value": "#5e6372",
         "type": "color",
-        "description": "Grey600 \nNot accessible on background strong"
+        "description": "Grey600"
       },
       "neutral-inverted": {
         "value": "#ffffff",
@@ -1157,29 +1157,29 @@
         "description": "White"
       },
       "neutral-hover": {
-        "value": "#f7f9f9",
+        "value": "#f8f8f9",
         "type": "color",
         "description": "Grey25"
       },
       "neutral-active": {
-        "value": "#eff2f3",
+        "value": "#f1f1f3",
         "type": "color",
         "description": "Grey50"
       },
       "neutral-weak": {
-        "value": "#f7f9f9",
+        "value": "#f8f8f9",
         "type": "color",
         "description": "Grey25"
       },
       "neutral-medium": {
-        "value": "#eff2f3",
+        "value": "#f1f1f3",
         "type": "color",
         "description": "Grey50"
       },
       "neutral-strong": {
-        "value": "#dfe5e8",
+        "value": "#e2e3e7",
         "type": "color",
-        "description": "Grey100 \nUse with care as not all colors are accessible on this background"
+        "description": "Grey100\nUse with care as not all colors are accessible on this background"
       },
       "primary": {
         "value": "#f9dae5",
@@ -1364,19 +1364,19 @@
     },
     "color-border": {
       "neutral": {
-        "value": "#78909c",
+        "value": "#8b909e",
         "type": "color",
         "description": "Grey400"
       },
       "neutral-weak": {
-        "value": "#bfcbd1",
+        "value": "#c5c7cf",
         "type": "color",
         "description": "Grey200"
       },
       "neutral-strong": {
-        "value": "#526a76",
+        "value": "#6e7486",
         "type": "color",
-        "description": "Grey700\nUse if the border needs to be accessible"
+        "description": "Grey500\nUse if the border needs to be accessible"
       },
       "primary": {
         "value": "#e0487b",
@@ -1486,17 +1486,17 @@
     },
     "color-icon": {
       "neutral": {
-        "value": "#526a76",
+        "value": "#5e6372",
         "type": "color",
-        "description": "Grey600\nNot accessible on background strong"
+        "description": "Grey600"
       },
       "neutral-hover": {
-        "value": "#435861",
+        "value": "#4d515e",
         "type": "color",
         "description": "Grey700"
       },
       "neutral-active": {
-        "value": "#35454c",
+        "value": "#3d404a",
         "type": "color",
         "description": "Grey800"
       },
@@ -1596,12 +1596,12 @@
     },
     "color-decoration": {
       "neutral": {
-        "value": "#607d8b",
+        "value": "#6e7486",
         "type": "color",
         "description": "Grey500"
       },
       "neutral-weak": {
-        "value": "#bfcbd1",
+        "value": "#c5c7cf",
         "type": "color",
         "description": "Grey200"
       },
@@ -2042,19 +2042,19 @@
   "plumage-focused": {
     "color-text": {
       "neutral": {
-        "value": "#263238",
+        "value": "#2c2e36",
         "type": "color",
         "description": "Grey900"
       },
       "neutral-weak": {
-        "value": "#35454c",
+        "value": "#3d404a",
         "type": "color",
         "description": "Grey800"
       },
       "neutral-disabled": {
-        "value": "#526a76",
+        "value": "#5e6372",
         "type": "color",
-        "description": "Grey600\nNot accessible on background strong"
+        "description": "Grey600"
       },
       "neutral-inverted": {
         "value": "#ffffff",
@@ -2178,29 +2178,29 @@
         "description": "White"
       },
       "neutral-hover": {
-        "value": "#f7f9f9",
+        "value": "#f8f8f9",
         "type": "color",
         "description": "Grey25"
       },
       "neutral-active": {
-        "value": "#eff2f3",
+        "value": "#f1f1f3",
         "type": "color",
         "description": "Grey50"
       },
       "neutral-weak": {
-        "value": "#f7f9f9",
+        "value": "#f8f8f9",
         "type": "color",
         "description": "Grey25"
       },
       "neutral-medium": {
-        "value": "#eff2f3",
+        "value": "#f1f1f3",
         "type": "color",
         "description": "Grey50"
       },
       "neutral-strong": {
-        "value": "#dfe5e8",
+        "value": "#e2e3e7",
         "type": "color",
-        "description": "Grey50\nUse with care. as not all colors are accessible on this background"
+        "description": "Grey100\nUse with care as not all colors are accessible on this background"
       },
       "primary": {
         "value": "#dadded",
@@ -2385,17 +2385,17 @@
     },
     "color-border": {
       "neutral": {
-        "value": "#78909c",
+        "value": "#8b909e",
         "type": "color",
         "description": "Grey400"
       },
       "neutral-weak": {
-        "value": "#bfcbd1",
+        "value": "#c5c7cf",
         "type": "color",
         "description": "Grey200"
       },
       "neutral-strong": {
-        "value": "#526a76",
+        "value": "#6e7486",
         "type": "color",
         "description": "Grey500\nUse if the border needs to be accessible"
       },
@@ -2507,17 +2507,17 @@
     },
     "color-icon": {
       "neutral": {
-        "value": "#526a76",
+        "value": "#5e6372",
         "type": "color",
-        "description": "Grey600\nNot accessible on background strong"
+        "description": "Grey600"
       },
       "neutral-hover": {
-        "value": "#435861",
+        "value": "#4d515e",
         "type": "color",
         "description": "Grey700"
       },
       "neutral-active": {
-        "value": "#35454c",
+        "value": "#3d404a",
         "type": "color",
         "description": "Grey800"
       },
@@ -2616,12 +2616,12 @@
     },
     "color-decoration": {
       "neutral": {
-        "value": "#607d8b",
+        "value": "#6e7486",
         "type": "color",
         "description": "Grey500"
       },
       "neutral-weak": {
-        "value": "#bfcbd1",
+        "value": "#c5c7cf",
         "type": "color",
         "description": "Grey200"
       },
