@@ -3061,10 +3061,6 @@
   },
   "$themes": [],
   "$metadata": {
-    "tokenSetOrder": [
-      "plumage",
-      "plumage-playful",
-      "plumage-focused"
-    ]
+    "tokenSetOrder": ["plumage", "plumage-playful", "plumage-focused"]
   }
 }
