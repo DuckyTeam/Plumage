@@ -4,7 +4,7 @@
       "neutral": {
         "value": "#2c2e36",
         "type": "color",
-        "description": "Grey900; forcing changes"
+        "description": "Grey900"
       },
       "neutral-weak": {
         "value": "#3d404a",
