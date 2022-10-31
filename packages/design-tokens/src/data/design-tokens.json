@@ -2,19 +2,19 @@
   "plumage": {
     "color-text": {
       "neutral": {
-        "value": "#263238",
+        "value": "#2c2e36",
         "type": "color",
         "description": "Grey900"
       },
       "neutral-weak": {
-        "value": "#35454c",
+        "value": "#3d404a",
         "type": "color",
         "description": "Grey800"
       },
       "neutral-disabled": {
-        "value": "#526a76",
+        "value": "#5e6372",
         "type": "color",
-        "description": "Grey600\nNot accessible on background strong"
+        "description": "Grey600"
       },
       "neutral-inverted": {
         "value": "#ffffff",
@@ -42,24 +42,24 @@
         "description": "Azur900"
       },
       "danger": {
-        "value": "#5d0c28",
+        "value": "#571c1f",
         "type": "color",
-        "description": "Pink900"
+        "description": "Wine900"
       },
       "danger-strong": {
-        "value": "#a21646",
+        "value": "#983136",
         "type": "color",
-        "description": "Pink700"
+        "description": "Wine700"
       },
       "danger-strong-hover": {
-        "value": "#801137",
+        "value": "#77272a",
         "type": "color",
-        "description": "Pink800"
+        "description": "Wine800"
       },
       "danger-strong-active": {
-        "value": "#5d0c28",
+        "value": "#571c1f",
         "type": "color",
-        "description": "Pink900"
+        "description": "Wine900"
       },
       "success": {
         "value": "#1e4620",
@@ -117,17 +117,17 @@
         "description": "White"
       },
       "neutral-weak-dark": {
-        "value": "#dfe5e8",
+        "value": "#e2e3e7",
         "type": "color",
         "description": "Gray100"
       },
       "neutral-disabled-dark": {
-        "value": "#bfcbd1",
+        "value": "#c5c7cf",
         "type": "color",
         "description": "Gray200\nNot accessible on background strong"
       },
       "neutral-inverted-dark": {
-        "value": "#263238",
+        "value": "#2c2e36",
         "type": "color"
       }
     },
@@ -138,27 +138,27 @@
         "description": "White"
       },
       "neutral-hover": {
-        "value": "#f7f9f9",
+        "value": "#f8f8f9",
         "type": "color",
         "description": "Grey25"
       },
       "neutral-active": {
-        "value": "#eff2f3",
+        "value": "#f1f1f3",
         "type": "color",
         "description": "Grey50"
       },
       "neutral-weak": {
-        "value": "#f7f9f9",
+        "value": "#f8f8f9",
         "type": "color",
         "description": "Grey25"
       },
       "neutral-medium": {
-        "value": "#eff2f3",
+        "value": "#f1f1f3",
         "type": "color",
         "description": "Grey50"
       },
       "neutral-strong": {
-        "value": "#dfe5e8",
+        "value": "#e2e3e7",
         "type": "color",
         "description": "Grey100\nUse with care as not all colors are accessible on this background"
       },
@@ -193,34 +193,34 @@
         "description": "Azur800"
       },
       "danger": {
-        "value": "#fad2e0",
+        "value": "#fcdad7",
         "type": "color",
-        "description": "Pink100"
+        "description": "Wine100"
       },
       "danger-hover": {
-        "value": "#f6a5c1",
+        "value": "#f0b5b8",
         "type": "color",
-        "description": "Pink200"
+        "description": "Wine200"
       },
       "danger-active": {
-        "value": "#f179a2",
+        "value": "#e89094",
         "type": "color",
-        "description": "Pink300"
+        "description": "Wine300"
       },
       "danger-strong": {
-        "value": "#c51a55",
+        "value": "#b83c41",
         "type": "color",
-        "description": "Pink600"
+        "description": "Wine600"
       },
       "danger-strong-hover": {
-        "value": "#a21646",
+        "value": "#983136",
         "type": "color",
-        "description": "Pink700"
+        "description": "Wine700"
       },
       "danger-strong-active": {
-        "value": "#801137",
+        "value": "#77272a",
         "type": "color",
-        "description": "Pink800"
+        "description": "Wine800"
       },
       "success": {
         "value": "#dbefdc",
@@ -313,49 +313,49 @@
         "description": "Amber500"
       },
       "neutral-dark": {
-        "value": "#263238",
+        "value": "#2c2e36",
         "type": "color",
         "description": "Gray900"
       },
       "neutral-hover-dark": {
-        "value": "#35454c",
+        "value": "#3d404a",
         "type": "color",
         "description": "Gray800"
       },
       "neutral-active-dark": {
-        "value": "#435861",
+        "value": "#4d515e",
         "type": "color",
         "description": "Gray700"
       },
       "neutral-weak-dark": {
-        "value": "#35454c",
+        "value": "#3d404a",
         "type": "color",
         "description": "Gray800"
       },
       "neutral-medium-dark": {
-        "value": "#435861",
+        "value": "#4d515e",
         "type": "color",
         "description": "Gray700"
       },
       "neutral-strong-dark": {
-        "value": "#526a76",
+        "value": "#5e6372",
         "type": "color",
         "description": "Gray600\nUse with care as not all colors are  accessible on this background"
       }
     },
     "color-border": {
       "neutral": {
-        "value": "#78909c",
+        "value": "#8b909e",
         "type": "color",
         "description": "Grey400"
       },
       "neutral-weak": {
-        "value": "#bfcbd1",
+        "value": "#c5c7cf",
         "type": "color",
         "description": "Grey200"
       },
       "neutral-strong": {
-        "value": "#526a76",
+        "value": "#6e7486",
         "type": "color",
         "description": "Grey500\nUse if the border needs to be accessible"
       },
@@ -375,19 +375,19 @@
         "description": "Azur600\nUse if the border needs to be accessible"
       },
       "danger": {
-        "value": "#e81f64",
+        "value": "#d9464d",
         "type": "color",
-        "description": "Pink500"
+        "description": "Wine500"
       },
       "danger-weak": {
-        "value": "#f6a5c1",
+        "value": "#f0b5b8",
         "type": "color",
-        "description": "Pink200"
+        "description": "Wine200"
       },
       "danger-strong": {
-        "value": "#c51a55",
+        "value": "#b83c41",
         "type": "color",
-        "description": "Pink600\nUse if the border needs to be accessible"
+        "description": "Wine600 Use if the border needs to be accessible"
       },
       "success": {
         "value": "#419544",
@@ -450,34 +450,34 @@
         "description": "Amber700\nUse if the border needs to be accessible"
       },
       "neutral-dark": {
-        "value": "#a0b1b9",
+        "value": "#a8acb6",
         "type": "color",
         "description": "Gray300"
       },
       "neutral-weak-dark": {
-        "value": "#607d8b",
+        "value": "#6e7486",
         "type": "color",
         "description": "Gray500"
       },
       "neutral-strong-dark": {
-        "value": "#bfcbd1",
+        "value": "#c5c7cf",
         "type": "color",
         "description": "Gray200\nUse if the border needs to be accessible"
       }
     },
     "color-icon": {
       "neutral": {
-        "value": "#526a76",
+        "value": "#5e6372",
         "type": "color",
         "description": "Grey600"
       },
       "neutral-hover": {
-        "value": "#435861",
+        "value": "#4d515e",
         "type": "color",
         "description": "Grey700"
       },
       "neutral-active": {
-        "value": "#35454c",
+        "value": "#3d404a",
         "type": "color",
         "description": "Grey800"
       },
@@ -501,19 +501,19 @@
         "description": "Azur900"
       },
       "danger": {
-        "value": "#a21646",
+        "value": "#983136",
         "type": "color",
-        "description": "Pink700"
+        "description": "Wine700"
       },
       "danger-hover": {
-        "value": "#801137",
+        "value": "#77272a",
         "type": "color",
-        "description": "Pink800"
+        "description": "Wine800"
       },
       "danger-active": {
-        "value": "#5d0c28",
+        "value": "#571c1f",
         "type": "color",
-        "description": "Pink900"
+        "description": "Wine900"
       },
       "success": {
         "value": "#357a38",
@@ -556,12 +556,12 @@
         "description": "Amber800"
       },
       "neutral-dark": {
-        "value": "#dfe5e8",
+        "value": "#e2e3e7",
         "type": "color",
         "description": "Gray100\nNot accessible on background strong"
       },
       "neutral-hover-dark": {
-        "value": "#eff2f3",
+        "value": "#f1f1f3",
         "type": "color",
         "description": "Gray50"
       },
@@ -571,18 +571,18 @@
         "description": "White"
       },
       "neutral-inverted-dark": {
-        "value": "#263238",
+        "value": "#2c2e36",
         "type": "color"
       }
     },
     "color-decoration": {
       "neutral": {
-        "value": "#607d8b",
+        "value": "#6e7486",
         "type": "color",
         "description": "Grey500"
       },
       "neutral-weak": {
-        "value": "#bfcbd1",
+        "value": "#c5c7cf",
         "type": "color",
         "description": "Grey200"
       },
@@ -597,14 +597,14 @@
         "description": "Azur200"
       },
       "danger": {
-        "value": "#e81f64",
+        "value": "#d9464d",
         "type": "color",
-        "description": "Pink500"
+        "description": "Wine500"
       },
       "danger-weak": {
-        "value": "#f6a5c1",
+        "value": "#f0b5b8",
         "type": "color",
-        "description": "Pink200"
+        "description": "Wine200"
       },
       "success": {
         "value": "#419544",
@@ -645,12 +645,12 @@
         "type": "color"
       },
       "neutral-dark": {
-        "value": "#bfcbd1",
+        "value": "#c5c7cf",
         "type": "color",
         "description": "Gray200"
       },
       "neutral-weak-dark": {
-        "value": "#607d8b",
+        "value": "#6e7486",
         "type": "color",
         "description": "Gray500"
       }
@@ -1021,19 +1021,19 @@
   "plumage-playful": {
     "color-text": {
       "neutral": {
-        "value": "#263238",
+        "value": "#2c2e36",
         "type": "color",
         "description": "Grey900"
       },
       "neutral-weak": {
-        "value": "#35454c",
+        "value": "#3d404a",
         "type": "color",
         "description": "Grey800"
       },
       "neutral-disabled": {
-        "value": "#526a76",
+        "value": "#5e6372",
         "type": "color",
-        "description": "Grey600 \nNot accessible on background strong"
+        "description": "Grey600"
       },
       "neutral-inverted": {
         "value": "#ffffff",
@@ -1061,24 +1061,24 @@
         "description": "Rouge900"
       },
       "danger": {
-        "value": "#5d0c28",
+        "value": "#571c1f",
         "type": "color",
-        "description": "Pink900"
+        "description": "Wine900"
       },
       "danger-strong": {
-        "value": "#a21646",
+        "value": "#983136",
         "type": "color",
-        "description": "Pink700"
+        "description": "Wine700"
       },
       "danger-strong-hover": {
-        "value": "#801137",
+        "value": "#77272a",
         "type": "color",
-        "description": "Pink800"
+        "description": "Wine800"
       },
       "danger-strong-active": {
-        "value": "#5d0c28",
+        "value": "#571c1f",
         "type": "color",
-        "description": "Pink900"
+        "description": "Wine900"
       },
       "success": {
         "value": "#1e4620",
@@ -1129,6 +1129,25 @@
         "value": "#663d00",
         "type": "color",
         "description": "Amber900"
+      },
+      "neutral-dark": {
+        "value": "#ffffff",
+        "type": "color",
+        "description": "White"
+      },
+      "neutral-weak-dark": {
+        "value": "#e2e3e7",
+        "type": "color",
+        "description": "Gray100"
+      },
+      "neutral-disabled-dark": {
+        "value": "#c5c7cf",
+        "type": "color",
+        "description": "Gray200\nNot accessible on background strong"
+      },
+      "neutral-inverted-dark": {
+        "value": "#2c2e36",
+        "type": "color"
       }
     },
     "color-background": {
@@ -1138,29 +1157,29 @@
         "description": "White"
       },
       "neutral-hover": {
-        "value": "#f7f9f9",
+        "value": "#f8f8f9",
         "type": "color",
         "description": "Grey25"
       },
       "neutral-active": {
-        "value": "#eff2f3",
+        "value": "#f1f1f3",
         "type": "color",
         "description": "Grey50"
       },
       "neutral-weak": {
-        "value": "#f7f9f9",
+        "value": "#f8f8f9",
         "type": "color",
         "description": "Grey25"
       },
       "neutral-medium": {
-        "value": "#eff2f3",
+        "value": "#f1f1f3",
         "type": "color",
         "description": "Grey50"
       },
       "neutral-strong": {
-        "value": "#dfe5e8",
+        "value": "#e2e3e7",
         "type": "color",
-        "description": "Grey100 \nUse with care as not all colors are ÃÂ¢ÃÂÃÂ¨accessible on this background"
+        "description": "Grey100\nUse with care as not all colors are accessible on this background"
       },
       "primary": {
         "value": "#f9dae5",
@@ -1193,34 +1212,34 @@
         "description": "Rouge800"
       },
       "danger": {
-        "value": "#fad2e0",
+        "value": "#fcdad7",
         "type": "color",
-        "description": "Pink100"
+        "description": "Wine100"
       },
       "danger-hover": {
-        "value": "#f6a5c1",
+        "value": "#f0b5b8",
         "type": "color",
-        "description": "Pink200"
+        "description": "Wine200"
       },
       "danger-active": {
-        "value": "#f179a2",
+        "value": "#e89094",
         "type": "color",
-        "description": "Pink300"
+        "description": "Wine300"
       },
       "danger-strong": {
-        "value": "#c51a55",
+        "value": "#b83c41",
         "type": "color",
-        "description": "Pink600"
+        "description": "Wine600"
       },
       "danger-strong-hover": {
-        "value": "#a21646",
+        "value": "#983136",
         "type": "color",
-        "description": "Pink700"
+        "description": "Wine700"
       },
       "danger-strong-active": {
-        "value": "#801137",
+        "value": "#77272a",
         "type": "color",
-        "description": "Pink800"
+        "description": "Wine800"
       },
       "success": {
         "value": "#dbefdc",
@@ -1311,23 +1330,53 @@
         "value": "#ff9800",
         "type": "color",
         "description": "Amber500"
+      },
+      "neutral-dark": {
+        "value": "#2c2e36",
+        "type": "color",
+        "description": "Gray900"
+      },
+      "neutral-hover-dark": {
+        "value": "#3d404a",
+        "type": "color",
+        "description": "Gray800"
+      },
+      "neutral-active-dark": {
+        "value": "#4d515e",
+        "type": "color",
+        "description": "Gray700"
+      },
+      "neutral-weak-dark": {
+        "value": "#3d404a",
+        "type": "color",
+        "description": "Gray800"
+      },
+      "neutral-medium-dark": {
+        "value": "#4d515e",
+        "type": "color",
+        "description": "Gray700"
+      },
+      "neutral-strong-dark": {
+        "value": "#5e6372",
+        "type": "color",
+        "description": "Gray600\nUse with care as not all colors are  accessible on this background"
       }
     },
     "color-border": {
       "neutral": {
-        "value": "#78909c",
+        "value": "#8b909e",
         "type": "color",
         "description": "Grey400"
       },
       "neutral-weak": {
-        "value": "#bfcbd1",
+        "value": "#c5c7cf",
         "type": "color",
         "description": "Grey200"
       },
       "neutral-strong": {
-        "value": "#526a76",
+        "value": "#6e7486",
         "type": "color",
-        "description": "Grey700\nUse if the border needs to be accessible"
+        "description": "Grey500\nUse if the border needs to be accessible"
       },
       "primary": {
         "value": "#e0487b",
@@ -1345,19 +1394,19 @@
         "description": "Rogue600\nUse if the border needs to be accessible"
       },
       "danger": {
-        "value": "#e81f64",
+        "value": "#d9464d",
         "type": "color",
-        "description": "Pink500"
+        "description": "Wine500"
       },
       "danger-weak": {
-        "value": "#f6a5c1",
+        "value": "#f0b5b8",
         "type": "color",
-        "description": "Pink200"
+        "description": "Wine200"
       },
       "danger-strong": {
-        "value": "#c51a55",
+        "value": "#b83c41",
         "type": "color",
-        "description": "Pink600"
+        "description": "Wine600 Use if the border needs to be accessible"
       },
       "success": {
         "value": "#419544",
@@ -1418,21 +1467,36 @@
         "value": "#b36a00",
         "type": "color",
         "description": "Amber700\nUse if the border needs to be accessible"
+      },
+      "neutral-dark": {
+        "value": "#a8acb6",
+        "type": "color",
+        "description": "Gray300"
+      },
+      "neutral-weak-dark": {
+        "value": "#6e7486",
+        "type": "color",
+        "description": "Gray500"
+      },
+      "neutral-strong-dark": {
+        "value": "#c5c7cf",
+        "type": "color",
+        "description": "Gray200\nUse if the border needs to be accessible"
       }
     },
     "color-icon": {
       "neutral": {
-        "value": "#526a76",
+        "value": "#5e6372",
         "type": "color",
-        "description": "Grey600\nNot accessible on background strong"
+        "description": "Grey600"
       },
       "neutral-hover": {
-        "value": "#435861",
+        "value": "#4d515e",
         "type": "color",
         "description": "Grey700"
       },
       "neutral-active": {
-        "value": "#35454c",
+        "value": "#3d404a",
         "type": "color",
         "description": "Grey800"
       },
@@ -1456,19 +1520,19 @@
         "description": "Rogue900"
       },
       "danger": {
-        "value": "#a21646",
+        "value": "#983136",
         "type": "color",
-        "description": "Pink700"
+        "description": "Wine700"
       },
       "danger-hover": {
-        "value": "#801137",
+        "value": "#77272a",
         "type": "color",
-        "description": "Pink800"
+        "description": "Wine800"
       },
       "danger-active": {
-        "value": "#5d0c28",
+        "value": "#571c1f",
         "type": "color",
-        "description": "Pink900"
+        "description": "Wine900"
       },
       "success": {
         "value": "#357a38",
@@ -1509,16 +1573,35 @@
         "value": "#8c5400",
         "type": "color",
         "description": "Amber800"
+      },
+      "neutral-dark": {
+        "value": "#e2e3e7",
+        "type": "color",
+        "description": "Gray100\nNot accessible on background strong"
+      },
+      "neutral-hover-dark": {
+        "value": "#f1f1f3",
+        "type": "color",
+        "description": "Gray50"
+      },
+      "neutral-active-dark": {
+        "value": "#ffffff",
+        "type": "color",
+        "description": "White"
+      },
+      "neutral-inverted-dark": {
+        "value": "#2c2e36",
+        "type": "color"
       }
     },
     "color-decoration": {
       "neutral": {
-        "value": "#607d8b",
+        "value": "#6e7486",
         "type": "color",
         "description": "Grey500"
       },
       "neutral-weak": {
-        "value": "#bfcbd1",
+        "value": "#c5c7cf",
         "type": "color",
         "description": "Grey200"
       },
@@ -1533,14 +1616,14 @@
         "description": "Rogue200"
       },
       "danger": {
-        "value": "#e81f64",
+        "value": "#d9464d",
         "type": "color",
-        "description": "Pink500"
+        "description": "Wine500"
       },
       "danger-weak": {
-        "value": "#f6a5c1",
+        "value": "#f0b5b8",
         "type": "color",
-        "description": "Pink200"
+        "description": "Wine200"
       },
       "success": {
         "value": "#419544",
@@ -1574,11 +1657,23 @@
       },
       "standout": {
         "value": "#ffad33",
-        "type": "color"
+        "type": "color",
+        "description": "Amber500"
       },
       "standout-weak": {
         "value": "#ffd699",
-        "type": "color"
+        "type": "color",
+        "description": "Amber200"
+      },
+      "neutral-dark": {
+        "value": "#c5c7cf",
+        "type": "color",
+        "description": "Gray200"
+      },
+      "neutral-weak-dark": {
+        "value": "#6e7486",
+        "type": "color",
+        "description": "Gray500"
       }
     },
     "border-radius": {
@@ -1947,19 +2042,19 @@
   "plumage-focused": {
     "color-text": {
       "neutral": {
-        "value": "#263238",
+        "value": "#2c2e36",
         "type": "color",
         "description": "Grey900"
       },
       "neutral-weak": {
-        "value": "#35454c",
+        "value": "#3d404a",
         "type": "color",
         "description": "Grey800"
       },
       "neutral-disabled": {
-        "value": "#526a76",
+        "value": "#5e6372",
         "type": "color",
-        "description": "Grey600\nNot accessible on background strong"
+        "description": "Grey600"
       },
       "neutral-inverted": {
         "value": "#ffffff",
@@ -1967,24 +2062,24 @@
         "description": "White"
       },
       "primary": {
-        "value": "#003d44",
+        "value": "#1c2242",
         "type": "color",
-        "description": "Azur900"
+        "description": "Indigo900"
       },
       "primary-strong": {
-        "value": "#006b76",
+        "value": "#3b488c",
         "type": "color",
-        "description": "Azur700"
+        "description": "Indigo600"
       },
       "primary-strong-hover": {
-        "value": "#00545d",
+        "value": "#303b73",
         "type": "color",
-        "description": "Azur800"
+        "description": "Indigo700"
       },
       "primary-strong-active": {
-        "value": "#003d44",
+        "value": "#262f5b",
         "type": "color",
-        "description": "Azur900"
+        "description": "Indigo800"
       },
       "danger": {
         "value": "#571c1f",
@@ -1997,9 +2092,9 @@
         "description": "Wine700"
       },
       "danger-strong-hover": {
-        "value": "#801137",
+        "value": "#77272a",
         "type": "color",
-        "description": "Pink800"
+        "description": "Wine800"
       },
       "danger-strong-active": {
         "value": "#571c1f",
@@ -2017,9 +2112,9 @@
         "description": "Green700"
       },
       "success-strong-hover": {
-        "value": "#1e4620",
+        "value": "#2a602c",
         "type": "color",
-        "description": "Green900"
+        "description": "Green800"
       },
       "success-strong-active": {
         "value": "#1e4620",
@@ -2032,29 +2127,48 @@
         "description": "Yellow900"
       },
       "info": {
-        "value": "#0e3454",
+        "value": "#004050",
         "type": "color",
-        "description": "Blue900"
+        "description": "Denim900"
       },
       "info-strong": {
-        "value": "#1f6eb3",
+        "value": "#00718d",
         "type": "color",
-        "description": "Blue600"
+        "description": "Denim700"
       },
       "info-strong-hover": {
-        "value": "#195a94",
+        "value": "#00596f",
         "type": "color",
-        "description": "Blue700"
+        "description": "Denim800"
       },
       "info-strong-active": {
-        "value": "#144774",
+        "value": "#004050",
         "type": "color",
-        "description": "Blue800"
+        "description": "Denim900"
       },
       "standout": {
-        "value": "#1e4620",
+        "value": "#663d00",
         "type": "color",
-        "description": "Green900"
+        "description": "Amber900"
+      },
+      "neutral-dark": {
+        "value": "#ffffff",
+        "type": "color",
+        "description": "White"
+      },
+      "neutral-weak-dark": {
+        "value": "#e2e3e7",
+        "type": "color",
+        "description": "Gray100"
+      },
+      "neutral-disabled-dark": {
+        "value": "#c5c7cf",
+        "type": "color",
+        "description": "Gray200\nNot accessible on background strong"
+      },
+      "neutral-inverted-dark": {
+        "value": "#2c2e36",
+        "type": "color"
       }
     },
     "color-background": {
@@ -2064,59 +2178,59 @@
         "description": "White"
       },
       "neutral-hover": {
-        "value": "#f7f9f9",
+        "value": "#f8f8f9",
         "type": "color",
         "description": "Grey25"
       },
       "neutral-active": {
-        "value": "#eff2f3",
+        "value": "#f1f1f3",
         "type": "color",
         "description": "Grey50"
       },
       "neutral-weak": {
-        "value": "#f7f9f9",
+        "value": "#f8f8f9",
         "type": "color",
         "description": "Grey25"
       },
       "neutral-medium": {
-        "value": "#eff2f3",
+        "value": "#f1f1f3",
         "type": "color",
         "description": "Grey50"
       },
       "neutral-strong": {
-        "value": "#dfe5e8",
+        "value": "#e2e3e7",
         "type": "color",
-        "description": "Grey50\nUse with care. as not all colors are ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ¨accessible on this background"
+        "description": "Grey100\nUse with care as not all colors are accessible on this background"
       },
       "primary": {
-        "value": "#ccebee",
+        "value": "#dadded",
         "type": "color",
-        "description": "Azur100"
+        "description": "Indigo100"
       },
       "primary-hover": {
-        "value": "#99d6dd",
+        "value": "#b5bbdb",
         "type": "color",
-        "description": "Azur200"
+        "description": "Indigo200"
       },
       "primary-active": {
-        "value": "#66c2cb",
+        "value": "#8f99c9",
         "type": "color",
-        "description": "Azur300"
+        "description": "Indigo300"
       },
       "primary-strong": {
-        "value": "#008290",
+        "value": "#4555a5",
         "type": "color",
-        "description": "Azur600"
+        "description": "Indigo500"
       },
       "primary-strong-hover": {
-        "value": "#006b76",
+        "value": "#3b488c",
         "type": "color",
-        "description": "Azur700"
+        "description": "Indigo600"
       },
       "primary-strong-active": {
-        "value": "#00545d",
+        "value": "#303b73",
         "type": "color",
-        "description": "Azur800"
+        "description": "Indigo700"
       },
       "danger": {
         "value": "#fcdad7",
@@ -2194,81 +2308,111 @@
         "description": "Yellow300"
       },
       "info": {
-        "value": "#d3e6f6",
+        "value": "#ccecf4",
         "type": "color",
-        "description": "Blue100"
+        "description": "Denim100"
       },
       "info-hover": {
-        "value": "#a7cded",
+        "value": "#99d9e9",
         "type": "color",
-        "description": "Blue200"
+        "description": "Denim200"
       },
       "info-active": {
-        "value": "#7cb3e5",
+        "value": "#66c7df",
         "type": "color",
-        "description": "Blue300"
+        "description": "Denim300"
       },
       "info-strong": {
-        "value": "#1f6eb3",
+        "value": "#00718d",
         "type": "color",
-        "description": "Blue600"
+        "description": "Denim700"
       },
       "info-strong-hover": {
-        "value": "#195a94",
+        "value": "#00596f",
         "type": "color",
-        "description": "Blue700"
+        "description": "Denim800"
       },
       "info-strong-active": {
-        "value": "#144774",
+        "value": "#004050",
         "type": "color",
-        "description": "Blue800"
+        "description": "Denim900"
       },
       "standout": {
-        "value": "#b7dfb9",
+        "value": "#ffc166",
         "type": "color",
-        "description": "Green200"
+        "description": "Amber300"
       },
       "standout-hover": {
-        "value": "#94cf96",
+        "value": "#ffad33",
         "type": "color",
-        "description": "Green300"
+        "description": "Amber400"
       },
       "standout-active": {
-        "value": "#70bf73",
+        "value": "#ff9800",
         "type": "color",
-        "description": "Green400"
+        "description": "Amber500"
+      },
+      "neutral-dark": {
+        "value": "#2c2e36",
+        "type": "color",
+        "description": "Gray900"
+      },
+      "neutral-hover-dark": {
+        "value": "#3d404a",
+        "type": "color",
+        "description": "Gray800"
+      },
+      "neutral-active-dark": {
+        "value": "#4d515e",
+        "type": "color",
+        "description": "Gray700"
+      },
+      "neutral-weak-dark": {
+        "value": "#3d404a",
+        "type": "color",
+        "description": "Gray800"
+      },
+      "neutral-medium-dark": {
+        "value": "#4d515e",
+        "type": "color",
+        "description": "Gray700"
+      },
+      "neutral-strong-dark": {
+        "value": "#5e6372",
+        "type": "color",
+        "description": "Gray600\nUse with care as not all colors are  accessible on this background"
       }
     },
     "color-border": {
       "neutral": {
-        "value": "#78909c",
+        "value": "#8b909e",
         "type": "color",
         "description": "Grey400"
       },
       "neutral-weak": {
-        "value": "#bfcbd1",
+        "value": "#c5c7cf",
         "type": "color",
         "description": "Grey200"
       },
       "neutral-strong": {
-        "value": "#526a76",
+        "value": "#6e7486",
         "type": "color",
         "description": "Grey500\nUse if the border needs to be accessible"
       },
       "primary": {
-        "value": "#0099a9",
+        "value": "#6a77b7",
         "type": "color",
-        "description": "Azur500"
+        "description": "Indigo400"
       },
       "primary-weak": {
-        "value": "#99d6dd",
+        "value": "#b5bbdb",
         "type": "color",
-        "description": "Azur200"
+        "description": "Indigo200"
       },
       "primary-strong": {
-        "value": "#008290",
+        "value": "#4555a5",
         "type": "color",
-        "description": "Azur600\nUse if the border needs to be accessible"
+        "description": "Indigo500 Use if the border needs to be accessible"
       },
       "danger": {
         "value": "#d9464d",
@@ -2283,7 +2427,7 @@
       "danger-strong": {
         "value": "#b83c41",
         "type": "color",
-        "description": "Wine600\nUse if the border needs to be accessible"
+        "description": "Wine600 Use if the border needs to be accessible"
       },
       "success": {
         "value": "#419544",
@@ -2316,49 +2460,64 @@
         "description": "Yellow800\nUse if the border needs to be accessible"
       },
       "info": {
-        "value": "#2481d3",
+        "value": "#00a1c9",
         "type": "color",
-        "description": "Blue500"
+        "description": "Denim500"
       },
       "info-weak": {
-        "value": "#a7cded",
+        "value": "#99d9e9",
         "type": "color",
-        "description": "Blue200"
+        "description": "Denim200"
       },
       "info-strong": {
-        "value": "#1f6eb3",
+        "value": "#00718d",
         "type": "color",
-        "description": "Blue600\nUse if the border needs to be accessible"
+        "description": "Denim700\nUse if the border needs to be accessible"
       },
       "standout": {
-        "value": "#419544",
+        "value": "#ffad33",
         "type": "color",
-        "description": "Green600"
+        "description": "Amber500"
       },
       "standout-weak": {
-        "value": "#b7dfb9",
+        "value": "#ffd699",
         "type": "color",
-        "description": "Green200"
+        "description": "Amber200"
       },
       "standout-strong": {
-        "value": "#357a38",
+        "value": "#b36a00",
         "type": "color",
-        "description": "Use if the border needs to be accessible"
+        "description": "Amber700\nUse if the border needs to be accessible"
+      },
+      "neutral-dark": {
+        "value": "#a8acb6",
+        "type": "color",
+        "description": "Gray300"
+      },
+      "neutral-weak-dark": {
+        "value": "#6e7486",
+        "type": "color",
+        "description": "Gray500"
+      },
+      "neutral-strong-dark": {
+        "value": "#c5c7cf",
+        "type": "color",
+        "description": "Gray200\nUse if the border needs to be accessible"
       }
     },
     "color-icon": {
       "neutral": {
-        "value": "#526a76",
+        "value": "#5e6372",
         "type": "color",
-        "description": "Grey600\nNot accessible on background strong"
+        "description": "Grey600"
       },
       "neutral-hover": {
-        "value": "#435861",
+        "value": "#4d515e",
         "type": "color",
         "description": "Grey700"
       },
       "neutral-active": {
-        "value": "#35454c",
+        "value": "#3d404a",
         "type": "color",
         "description": "Grey800"
       },
@@ -2367,19 +2526,19 @@
         "type": "color"
       },
       "primary": {
-        "value": "#006b76",
+        "value": "#3b488c",
         "type": "color",
-        "description": "Azur700"
+        "description": "Indigo600"
       },
       "primary-hover": {
-        "value": "#00545d",
+        "value": "#303b73",
         "type": "color",
-        "description": "Azur800"
+        "description": "Indigo700"
       },
       "primary-active": {
-        "value": "#003d44",
+        "value": "#262f5b",
         "type": "color",
-        "description": "Azur900"
+        "description": "Indigo800"
       },
       "danger": {
         "value": "#983136",
@@ -2416,46 +2575,65 @@
         "description": "Yellow800"
       },
       "info": {
-        "value": "#195a94",
+        "value": "#00718d",
         "type": "color",
-        "description": "Blue700"
+        "description": "Denim700"
       },
       "info-hover": {
-        "value": "#144774",
+        "value": "#00596f",
         "type": "color",
-        "description": "Blue800"
+        "description": "Denim800"
       },
       "info-active": {
-        "value": "#0e3454",
+        "value": "#004050",
         "type": "color",
-        "description": "Blue900"
+        "description": "Denim900"
       },
       "standout": {
-        "value": "#2a602c",
+        "value": "#8c5400",
         "type": "color",
         "description": "Amber800"
+      },
+      "neutral-dark": {
+        "value": "#e2e3e7",
+        "type": "color",
+        "description": "Gray100\nNot accessible on background strong"
+      },
+      "neutral-hover-dark": {
+        "value": "#f1f1f3",
+        "type": "color",
+        "description": "Gray50"
+      },
+      "neutral-active-dark": {
+        "value": "#ffffff",
+        "type": "color",
+        "description": "White"
+      },
+      "neutral-inverted-dark": {
+        "value": "#2c2e36",
+        "type": "color"
       }
     },
     "color-decoration": {
       "neutral": {
-        "value": "#607d8b",
+        "value": "#6e7486",
         "type": "color",
         "description": "Grey500"
       },
       "neutral-weak": {
-        "value": "#bfcbd1",
+        "value": "#c5c7cf",
         "type": "color",
         "description": "Grey200"
       },
       "primary": {
-        "value": "#0099a9",
+        "value": "#6a77b7",
         "type": "color",
-        "description": "Azur500"
+        "description": "Indigo400"
       },
       "primary-weak": {
-        "value": "#99d6dd",
+        "value": "#b5bbdb",
         "type": "color",
-        "description": "Azur200"
+        "description": "Indigo200"
       },
       "danger": {
         "value": "#d9464d",
@@ -2488,22 +2666,34 @@
         "description": "Yellow200"
       },
       "info": {
-        "value": "#2481d3",
+        "value": "#00a1c9",
         "type": "color",
-        "description": "Blue500"
+        "description": "Denim500"
       },
       "info-weak": {
-        "value": "#a7cded",
+        "value": "#99d9e9",
         "type": "color",
-        "description": "Blue200"
+        "description": "Denim200"
       },
       "standout": {
-        "value": "#419544",
-        "type": "color"
+        "value": "#ffad33",
+        "type": "color",
+        "description": "Amber500"
       },
       "standout-weak": {
-        "value": "#b7dfb9",
-        "type": "color"
+        "value": "#ffd699",
+        "type": "color",
+        "description": "Amber200"
+      },
+      "neutral-dark": {
+        "value": "#c5c7cf",
+        "type": "color",
+        "description": "Gray200"
+      },
+      "neutral-weak-dark": {
+        "value": "#6e7486",
+        "type": "color",
+        "description": "Gray500"
       }
     },
     "border-radius": {
@@ -2869,5 +3059,12 @@
       }
     }
   },
-  "$themes": []
+  "$themes": [],
+  "$metadata": {
+    "tokenSetOrder": [
+      "plumage",
+      "plumage-playful",
+      "plumage-focused"
+    ]
+  }
 }
