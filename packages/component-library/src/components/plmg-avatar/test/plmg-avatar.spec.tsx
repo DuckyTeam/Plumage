@@ -10,8 +10,8 @@ describe('plmg-avatar', () => {
     expect(page.root).toEqualHtml(`
       <plmg-avatar size="medium">
         <mock:shadow-root>
-        <div tabindex="-1" role="img" class="plmg-avatar medium" style="background-color: #eff2f3;">
-          <plmg-svg-icon icon="personOutline" color="#526a76">
+        <div tabindex="-1" role="img" class="plmg-avatar medium" style="background-color: #f1f1f3;">
+          <plmg-svg-icon icon="personOutline" color="#5e6372">
           </plmg-svg-icon>
         </div> 
         </mock:shadow-root>
@@ -26,8 +26,8 @@ describe('plmg-avatar', () => {
     expect(page.root).toEqualHtml(`
       <plmg-avatar user-deleted size="medium">
         <mock:shadow-root>
-        <div tabindex="-1" role="img" class="plmg-avatar medium" style="background-color: #eff2f3;">
-          <plmg-svg-icon icon="personOff" color="#526a76">
+        <div tabindex="-1" role="img" class="plmg-avatar medium" style="background-color: #f1f1f3;">
+          <plmg-svg-icon icon="personOff" color="#5e6372">
           </plmg-svg-icon>
         </div> 
         </mock:shadow-root>
@@ -89,7 +89,7 @@ describe('plmg-avatar', () => {
     <plmg-avatar size="medium" image-url="https://static.ducky.eco/icons/maskable_icon_192.png" user-deleted="true" background-color="#ffd9d9">
       <mock:shadow-root>
       <div style="background-color: #ffd9d9" tabindex="-1" role="img" class="plmg-avatar medium">
-        <plmg-svg-icon color="#526a76" icon="personOff">
+        <plmg-svg-icon color="#5e6372" icon="personOff">
         </plmg-svg-icon>
       </div> 
       </mock:shadow-root>
@@ -119,8 +119,8 @@ describe('plmg-avatar', () => {
     expect(page.root).toEqualHtml(`
       <plmg-avatar user-deleted image-url="https://static.ducky.eco/icons/maskable_icon_192.png" size="medium" >
         <mock:shadow-root>
-        <div class="medium plmg-avatar" role="img" tabindex="-1" style="background-color: #eff2f3;">
-          <plmg-svg-icon  color="#526a76" icon="personOff">
+        <div class="medium plmg-avatar" role="img" tabindex="-1" style="background-color: #f1f1f3;">
+          <plmg-svg-icon  color="#5e6372" icon="personOff">
           </plmg-svg-icon>
         </div> 
         </mock:shadow-root>
