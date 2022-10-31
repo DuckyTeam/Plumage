@@ -2,6 +2,18 @@
   "name": "@ducky/plumage",
   "entries": [
     {
+      "version": "1.14.2",
+      "tag": "@ducky/plumage_v1.14.2",
+      "date": "Mon, 31 Oct 2022 08:51:52 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixes dropdown-item selected icon bug"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.14.1",
       "tag": "@ducky/plumage_v1.14.1",
       "date": "Tue, 18 Oct 2022 11:24:05 GMT",
