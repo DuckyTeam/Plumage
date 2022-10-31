@@ -2,6 +2,18 @@
   "name": "@ducky/plumage-tokens",
   "entries": [
     {
+      "version": "3.2.0",
+      "tag": "@ducky/plumage-tokens_v3.2.0",
+      "date": "Mon, 31 Oct 2022 08:07:38 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add dark colors and update existing grey and status colors"
+          }
+        ]
+      }
+    },
+    {
       "version": "3.1.0",
       "tag": "@ducky/plumage-tokens_v3.1.0",
       "date": "Mon, 16 May 2022 08:39:23 GMT",

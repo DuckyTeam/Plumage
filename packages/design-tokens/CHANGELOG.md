@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage-tokens
 
-This log was last generated on Mon, 16 May 2022 08:39:23 GMT and should not be manually modified.
+This log was last generated on Mon, 31 Oct 2022 08:07:38 GMT and should not be manually modified.
+
+## 3.2.0
+Mon, 31 Oct 2022 08:07:38 GMT
+
+### Minor changes
+
+- Add dark colors and update existing grey and status colors
 
 ## 3.1.0
 Mon, 16 May 2022 08:39:23 GMT
