@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Mon, 31 Oct 2022 08:51:52 GMT and should not be manually modified.
+This log was last generated on Mon, 31 Oct 2022 09:01:09 GMT and should not be manually modified.
+
+## 1.14.3
+Mon, 31 Oct 2022 09:01:09 GMT
+
+### Patches
+
+- Make plmg-siderbar-item active when child is active
 
 ## 1.14.2
 Mon, 31 Oct 2022 08:51:52 GMT
