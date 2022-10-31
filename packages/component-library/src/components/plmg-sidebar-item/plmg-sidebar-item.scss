@@ -92,6 +92,10 @@
     color: tokens.$plmg-color-text-primary-strong;
   }
 
+  &.plmg-sidebar-parent-active {
+    color: tokens.$plmg-color-text-primary-strong;
+  }
+
   // States
   &:focus-visible {
     background: tokens.$plmg-color-background-neutral-hover;

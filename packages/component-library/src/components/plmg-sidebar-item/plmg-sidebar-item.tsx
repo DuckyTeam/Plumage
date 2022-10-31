@@ -116,6 +116,7 @@ export class SidebarItem {
       'plmg-sidebar-item-level-2': this.level() === 2,
       'plmg-sidebar-item-level-2-icon-shift': this.parentHasIcon(),
       'plmg-sidebar-item-active': this.active,
+      'plmg-sidebar-parent-active': this.hasChildren() && this.hasActiveChild(),
     };
 
     if (this.hasChildren()) {
@@ -173,6 +174,16 @@ export class SidebarItem {
    */
   private hasChildren(): boolean {
     return this.level() === 1 && this.el.children.length > 0;
+  }
+
+  /**
+   * @returns true if element has an active child
+   */
+  private hasActiveChild(): boolean {
+    return Array.from(this.el.children).some(
+      (child: HTMLElement) =>
+        child.tagName === 'PLMG-SIDEBAR-ITEM' && child.getAttribute('active')
+    );
   }
 
   private hasIcon(): boolean {
