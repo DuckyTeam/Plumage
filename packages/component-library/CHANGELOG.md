@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Tue, 18 Oct 2022 11:24:05 GMT and should not be manually modified.
+This log was last generated on Mon, 31 Oct 2022 08:51:52 GMT and should not be manually modified.
+
+## 1.14.2
+Mon, 31 Oct 2022 08:51:52 GMT
+
+### Patches
+
+- Fixes dropdown-item selected icon bug
 
 ## 1.14.1
 Tue, 18 Oct 2022 11:24:05 GMT
