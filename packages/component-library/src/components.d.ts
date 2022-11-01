@@ -338,6 +338,8 @@ export namespace Components {
          */
         "value": number;
     }
+    interface PlmgSpinner {
+    }
     interface PlmgStatus {
         /**
           * Define status's left icon.  When providing an icon name to this prop, the corresponding icon will be displayed. it will be placed to the left of the text slot.
@@ -616,6 +618,12 @@ declare global {
         prototype: HTMLPlmgSliderElement;
         new (): HTMLPlmgSliderElement;
     };
+    interface HTMLPlmgSpinnerElement extends Components.PlmgSpinner, HTMLStencilElement {
+    }
+    var HTMLPlmgSpinnerElement: {
+        prototype: HTMLPlmgSpinnerElement;
+        new (): HTMLPlmgSpinnerElement;
+    };
     interface HTMLPlmgStatusElement extends Components.PlmgStatus, HTMLStencilElement {
     }
     var HTMLPlmgStatusElement: {
@@ -667,6 +675,7 @@ declare global {
         "plmg-sidebar": HTMLPlmgSidebarElement;
         "plmg-sidebar-item": HTMLPlmgSidebarItemElement;
         "plmg-slider": HTMLPlmgSliderElement;
+        "plmg-spinner": HTMLPlmgSpinnerElement;
         "plmg-status": HTMLPlmgStatusElement;
         "plmg-svg-icon": HTMLPlmgSvgIconElement;
         "plmg-tab": HTMLPlmgTabElement;
@@ -1012,6 +1021,8 @@ declare namespace LocalJSX {
          */
         "value"?: number;
     }
+    interface PlmgSpinner {
+    }
     interface PlmgStatus {
         /**
           * Define status's left icon.  When providing an icon name to this prop, the corresponding icon will be displayed. it will be placed to the left of the text slot.
@@ -1194,6 +1205,7 @@ declare namespace LocalJSX {
         "plmg-sidebar": PlmgSidebar;
         "plmg-sidebar-item": PlmgSidebarItem;
         "plmg-slider": PlmgSlider;
+        "plmg-spinner": PlmgSpinner;
         "plmg-status": PlmgStatus;
         "plmg-svg-icon": PlmgSvgIcon;
         "plmg-tab": PlmgTab;
@@ -1220,6 +1232,7 @@ declare module "@stencil/core" {
             "plmg-sidebar": LocalJSX.PlmgSidebar & JSXBase.HTMLAttributes<HTMLPlmgSidebarElement>;
             "plmg-sidebar-item": LocalJSX.PlmgSidebarItem & JSXBase.HTMLAttributes<HTMLPlmgSidebarItemElement>;
             "plmg-slider": LocalJSX.PlmgSlider & JSXBase.HTMLAttributes<HTMLPlmgSliderElement>;
+            "plmg-spinner": LocalJSX.PlmgSpinner & JSXBase.HTMLAttributes<HTMLPlmgSpinnerElement>;
             "plmg-status": LocalJSX.PlmgStatus & JSXBase.HTMLAttributes<HTMLPlmgStatusElement>;
             "plmg-svg-icon": LocalJSX.PlmgSvgIcon & JSXBase.HTMLAttributes<HTMLPlmgSvgIconElement>;
             "plmg-tab": LocalJSX.PlmgTab & JSXBase.HTMLAttributes<HTMLPlmgTabElement>;

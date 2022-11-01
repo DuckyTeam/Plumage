@@ -1,0 +1,40 @@
+@use '~@ducky/plumage-tokens/dist/scss/default' as tokens;
+
+// Common styles to all shadow-DOM components
+// Remove this section if your component does not use shadow DOM
+// -------------------------------------------------
+:host {
+  display: block;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+// Component style
+// -------------------------------------------------
+.plmg-spinner-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 100vh;
+}
+.plmg-spinner-rotate {
+  transform-origin: center;
+  animation: plmgSpinnerAnimate 1s infinite linear;
+}
+@keyframes plmgSpinnerAnimate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// ------------- END Component style ---------------
