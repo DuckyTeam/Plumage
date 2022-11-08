@@ -182,7 +182,8 @@ export class SidebarItem {
   private hasActiveChild(): boolean {
     return Array.from(this.el.children).some(
       (child: HTMLElement) =>
-        child.tagName === 'PLMG-SIDEBAR-ITEM' && child.getAttribute('active')
+        child.tagName === 'PLMG-SIDEBAR-ITEM' &&
+        child.getAttribute('active') === 'true'
     );
   }
 
