@@ -88,12 +88,11 @@
   }
 
   &.plmg-sidebar-item-active {
-    background: tokens.$plmg-color-background-neutral-active;
     color: tokens.$plmg-color-text-primary-strong;
   }
 
-  &.plmg-sidebar-parent-active {
-    color: tokens.$plmg-color-text-primary-strong;
+  &.plmg-sidebar-item-level-2-active {
+    background: tokens.$plmg-color-background-neutral-active;
   }
 
   // States
