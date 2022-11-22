@@ -1,4 +1,4 @@
-// Tests disabled as unable to mock the mutuation observer in Jest with Pupeeteer. Waiting for Stencil update //
+// Tests disabled as unable to mock the mutation observer in Jest with Puppeteer. Waiting for Stencil update
 // To manually test the mutation observer add this code to connectedCallback() in plmg-sidebar-item.tsx:
 // if (this.level() === 2) {
 //   setTimeout(() => {
