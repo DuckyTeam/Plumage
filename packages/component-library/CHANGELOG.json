@@ -2,6 +2,18 @@
   "name": "@ducky/plumage",
   "entries": [
     {
+      "version": "1.14.4",
+      "tag": "@ducky/plumage_v1.14.4",
+      "date": "Tue, 08 Nov 2022 13:47:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixes sidebar item bug (setting active child to false triggers parent style)"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.14.3",
       "tag": "@ducky/plumage_v1.14.3",
       "date": "Mon, 31 Oct 2022 09:01:09 GMT",
