@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Tue, 08 Nov 2022 13:47:08 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Nov 2022 12:49:16 GMT and should not be manually modified.
+
+## 1.14.5
+Fri, 25 Nov 2022 12:49:16 GMT
+
+### Patches
+
+- Fixes sidebar item bug (setting active child to false triggers parent style)
 
 ## 1.14.4
 Tue, 08 Nov 2022 13:47:08 GMT
