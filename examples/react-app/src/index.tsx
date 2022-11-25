@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import ReactDOM from 'react-dom';
+import { Buttons } from './Buttons';
 import {
   PlmgButton,
   PlmgCard,
@@ -44,135 +45,136 @@ const TooltipRefExample = () => {
 };
 
 ReactDOM.render(
-  <PlmgPageContainer>
-    <PlmgSidebar
-      slot={'sidebar'}
-      logoSrc={
-        'https://storage.googleapis.com/ducky_static_assets/ducky_logo_horisontal_azur.png'
-      }
-      logoHref={'https://ducky.eco'}
-    >
-      <PlmgSidebarItem active={true} href={'/'} icon={'home'} text={'Home'} />
-      <PlmgSidebarItem
-        href={'https://ducky.eco'}
-        icon={'duck'}
-        text={'Ducky website'}
-      />
-      <PlmgSidebarItem icon={'link'} text={'More links'}>
-        <PlmgSidebarItem
-          href={'https://plumage.ducky.eco'}
-          icon={'brush'}
-          text={'Plumage design system'}
-        />
-        <PlmgSidebarItem
-          href={'https://components.ducky.eco'}
-          icon={'gridView'}
-          text={'Components library'}
-        />
-      </PlmgSidebarItem>
-    </PlmgSidebar>
-    <PlmgHeader slot={'header'}>
-      <div
-        slot={'right'}
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}
-      >
-        <span>Menu Item</span>
-        <PlmgSeparator
-          thickness="thick"
-          style={{ alignSelf: 'stretch' }}
-          direction="vertical"
-          color="#78909C"
-        ></PlmgSeparator>
-        <span>Menu Item 2</span>
-        <PlmgDropdown align={'right'}>
-          <PlmgAvatar slot={'trigger'} size={'medium'} interactive />
-          <div slot={'menu'}>
-            <PlmgDropdownItem
-              icon={'duck'}
-              text={'Dropdown Item 1'}
-              href={'https://ducky.eco'}
-              target={'_blank'}
-            />
-            <PlmgSeparator style={{ padding: '8px 8px', color: '#BFCBD1' }} />
-            <PlmgDropdownItem
-              icon={'duck'}
-              text={'Dropdown Item 1'}
-              href={'https://ducky.eco'}
-              target={'_blank'}
-            />
-          </div>
-        </PlmgDropdown>
-      </div>
-    </PlmgHeader>
-    <div slot={'content'} style={{ padding: '24px' }}>
-      <PlmgButton
-        onClick={(e: any) => {
-          console.log('clicked', e);
-        }}
-        type={'button'}
-      >
-        PlmgButton
-      </PlmgButton>
-      <br />
-      <PlmgButton
-        onClick={(e: any) => {
-          console.log('clicked', e);
-        }}
-        type={'button'}
-        icon-center={'home'}
-      />
-      PlmgButton with icon-center
-      <br />
-      <PlmgSvgIcon icon={'home'} size={'6em'} />
-      PlmgSvgIcon home
-      <br />
-      <PlmgCard
-        headerText="Header Text"
-        topActionIcon={'home'}
-        topActionLabel={'Top Action'}
-        bottomActionText="Click here"
-        onBottomActionClicked={() =>
-          console.log('bottomButtonClicked event received')
-        }
-        onTopActionClicked={() =>
-          console.log('topActionClicked event received')
-        }
-      >
-        <div slot="slot-1">
-          <h1>PlmgCard slot-1</h1>
-          <PlmgSeparator thickness="thick"></PlmgSeparator>
-        </div>
-        <div slot="slot-2">
-          <h1>PlmgCard slot-2</h1>
-        </div>
-      </PlmgCard>
-      <p
-        tabIndex={0}
-        id={'targetelement'}
-        aria-describeby={'tooltip-demonstration'}
-        style={{ width: 'fit-content' }}
-      >
-        Tooltip Target
-      </p>
-      <PlmgTooltip
-        role={'tooltip'}
-        id={'tooltip-demonstration'}
-        targetElement={'targetelement'}
-        position={'right'}
-        arrowPosition={'middle'}
-        content={'Right with arrow middle'}
-      ></PlmgTooltip>
-      <TooltipRefExample />
-      <br />
-      <Avatars />
-      <br />
-      <FormElements />
-    </div>
-  </PlmgPageContainer>,
+  <Buttons />,
+  // <PlmgPageContainer>
+  //   <PlmgSidebar
+  //     slot={'sidebar'}
+  //     logoSrc={
+  //       'https://storage.googleapis.com/ducky_static_assets/ducky_logo_horisontal_azur.png'
+  //     }
+  //     logoHref={'https://ducky.eco'}
+  //   >
+  //     <PlmgSidebarItem active={true} href={'/'} icon={'home'} text={'Home'} />
+  //     <PlmgSidebarItem
+  //       href={'https://ducky.eco'}
+  //       icon={'duck'}
+  //       text={'Ducky website'}
+  //     />
+  //     <PlmgSidebarItem icon={'link'} text={'More links'}>
+  //       <PlmgSidebarItem
+  //         href={'https://plumage.ducky.eco'}
+  //         icon={'brush'}
+  //         text={'Plumage design system'}
+  //       />
+  //       <PlmgSidebarItem
+  //         href={'https://components.ducky.eco'}
+  //         icon={'gridView'}
+  //         text={'Components library'}
+  //       />
+  //     </PlmgSidebarItem>
+  //   </PlmgSidebar>
+  //   <PlmgHeader slot={'header'}>
+  //     <div
+  //       slot={'right'}
+  //       style={{
+  //         display: 'flex',
+  //         flexDirection: 'row',
+  //         justifyContent: 'space-between',
+  //         alignItems: 'center',
+  //       }}
+  //     >
+  //       <span>Menu Item</span>
+  //       <PlmgSeparator
+  //         thickness="thick"
+  //         style={{ alignSelf: 'stretch' }}
+  //         direction="vertical"
+  //         color="#78909C"
+  //       ></PlmgSeparator>
+  //       <span>Menu Item 2</span>
+  //       <PlmgDropdown align={'right'}>
+  //         <PlmgAvatar slot={'trigger'} size={'medium'} interactive />
+  //         <div slot={'menu'}>
+  //           <PlmgDropdownItem
+  //             icon={'duck'}
+  //             text={'Dropdown Item 1'}
+  //             href={'https://ducky.eco'}
+  //             target={'_blank'}
+  //           />
+  //           <PlmgSeparator style={{ padding: '8px 8px', color: '#BFCBD1' }} />
+  //           <PlmgDropdownItem
+  //             icon={'duck'}
+  //             text={'Dropdown Item 1'}
+  //             href={'https://ducky.eco'}
+  //             target={'_blank'}
+  //           />
+  //         </div>
+  //       </PlmgDropdown>
+  //     </div>
+  //   </PlmgHeader>
+  //   <div slot={'content'} style={{ padding: '24px' }}>
+  //     <PlmgButton
+  //       onClick={(e: any) => {
+  //         console.log('clicked', e);
+  //       }}
+  //       type={'button'}
+  //     >
+  //       PlmgButton
+  //     </PlmgButton>
+  //     <br />
+  //     <PlmgButton
+  //       onClick={(e: any) => {
+  //         console.log('clicked', e);
+  //       }}
+  //       type={'button'}
+  //       icon-center={'home'}
+  //     />
+  //     PlmgButton with icon-center
+  //     <br />
+  //     <PlmgSvgIcon icon={'home'} size={'6em'} />
+  //     PlmgSvgIcon home
+  //     <br />
+  //     <PlmgCard
+  //       headerText="Header Text"
+  //       topActionIcon={'home'}
+  //       topActionLabel={'Top Action'}
+  //       bottomActionText="Click here"
+  //       onBottomActionClicked={() =>
+  //         console.log('bottomButtonClicked event received')
+  //       }
+  //       onTopActionClicked={() =>
+  //         console.log('topActionClicked event received')
+  //       }
+  //     >
+  //       <div slot="slot-1">
+  //         <h1>PlmgCard slot-1</h1>
+  //         <PlmgSeparator thickness="thick"></PlmgSeparator>
+  //       </div>
+  //       <div slot="slot-2">
+  //         <h1>PlmgCard slot-2</h1>
+  //       </div>
+  //     </PlmgCard>
+  //     <p
+  //       tabIndex={0}
+  //       id={'targetelement'}
+  //       aria-describeby={'tooltip-demonstration'}
+  //       style={{ width: 'fit-content' }}
+  //     >
+  //       Tooltip Target
+  //     </p>
+  //     <PlmgTooltip
+  //       role={'tooltip'}
+  //       id={'tooltip-demonstration'}
+  //       targetElement={'targetelement'}
+  //       position={'right'}
+  //       arrowPosition={'middle'}
+  //       content={'Right with arrow middle'}
+  //     ></PlmgTooltip>
+  //     <TooltipRefExample />
+  //     <br />
+  //     <Avatars />
+  //     <br />
+  //     <FormElements />
+  //   </div>
+  // </PlmgPageContainer>,
   document.getElementById('root')
 );
