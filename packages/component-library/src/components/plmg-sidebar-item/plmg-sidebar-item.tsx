@@ -16,6 +16,7 @@ export class SidebarItem {
    * Store the expanded status of the item.
    */
   @State() isExpanded: boolean;
+  @State() sideBarItemChildren: HTMLPlmgSidebarItemElement[];
 
   /**
    * Set this prop to True when this item is active.
@@ -110,13 +111,36 @@ export class SidebarItem {
     this.isExpanded = this.expanded;
   }
 
+  connectedCallback() {
+    this.sideBarItemChildren = Array.from(
+      this.el.querySelectorAll('plmg-sidebar-item')
+    );
+
+    if (this.hasActiveChild()) {
+      this.active = true;
+    }
+
+    if (this.sideBarItemChildren.length > 0) {
+      this.sideBarItemChildren.forEach((child) => {
+        this.observer.observe(child, {
+          attributes: true,
+          attributeFilter: ['active'],
+        });
+      });
+    }
+  }
+
+  disconnectedCallback() {
+    this.observer.disconnect();
+  }
+
   render() {
     const containerClasses = {
       'plmg-sidebar-item-container': true,
       'plmg-sidebar-item-level-2': this.level() === 2,
       'plmg-sidebar-item-level-2-icon-shift': this.parentHasIcon(),
       'plmg-sidebar-item-active': this.active,
-      'plmg-sidebar-parent-active': this.hasChildren() && this.hasActiveChild(),
+      'plmg-sidebar-item-level-1-active': this.active && !this.hasActiveChild(),
     };
 
     if (this.hasChildren()) {
@@ -175,17 +199,35 @@ export class SidebarItem {
   private hasChildren(): boolean {
     return this.level() === 1 && this.el.children.length > 0;
   }
-
   /**
    * @returns true if element has an active child
    */
   private hasActiveChild(): boolean {
-    return Array.from(this.el.children).some(
-      (child: HTMLElement) =>
-        child.tagName === 'PLMG-SIDEBAR-ITEM' &&
-        child.getAttribute('active') === 'true'
-    );
+    if (this.sideBarItemChildren.length > 0) {
+      return this.sideBarItemChildren.some((child) => {
+        return child.active;
+      });
+    }
   }
+  /**
+   * Observe the children of this item.
+   * If one of the children is active, this item will be active too.
+   * @param mutationsList
+   * @param observer
+   */
+
+  private observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (
+        mutation.type === 'attributes' &&
+        mutation.attributeName === 'active'
+      ) {
+        mutation.target['active'] === true
+          ? (this.active = true)
+          : (this.active = false);
+      }
+    });
+  });
 
   private hasIcon(): boolean {
     return this.level() === 1 && this.icon && this.icon !== '';

@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "Fixes sidebar item bug (setting active child to false triggers parent style)",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
