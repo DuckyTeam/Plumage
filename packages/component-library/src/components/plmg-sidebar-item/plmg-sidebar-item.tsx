@@ -116,6 +116,10 @@ export class SidebarItem {
       this.el.querySelectorAll('plmg-sidebar-item')
     );
 
+    if (this.hasActiveChild()) {
+      return this.el.setAttribute('active', 'true');
+    }
+
     if (this.sideBarItemChildren.length > 0) {
       this.sideBarItemChildren.forEach((child) => {
         this.observer.observe(child, {
@@ -195,7 +199,16 @@ export class SidebarItem {
   private hasChildren(): boolean {
     return this.level() === 1 && this.el.children.length > 0;
   }
-
+  /**
+   * @returns true if element has an active child
+   */
+  private hasActiveChild(): boolean {
+    if (this.sideBarItemChildren.length > 0) {
+      return this.sideBarItemChildren.some((child) => {
+        return child.active;
+      });
+    }
+  }
   /**
    * Observe the children of this item.
    * If one of the children is active, this item will be active too.
