@@ -117,7 +117,7 @@ export class SidebarItem {
     );
 
     if (this.hasActiveChild()) {
-      return this.el.setAttribute('active', 'true');
+      this.active = true;
     }
 
     if (this.sideBarItemChildren.length > 0) {
@@ -140,7 +140,7 @@ export class SidebarItem {
       'plmg-sidebar-item-level-2': this.level() === 2,
       'plmg-sidebar-item-level-2-icon-shift': this.parentHasIcon(),
       'plmg-sidebar-item-active': this.active,
-      'plmg-sidebar-item-level-2-active': this.level() === 2 && this.active,
+      'plmg-sidebar-item-level-1-active': this.active && !this.hasActiveChild(),
     };
 
     if (this.hasChildren()) {
@@ -223,8 +223,8 @@ export class SidebarItem {
         mutation.attributeName === 'active'
       ) {
         mutation.target['active'] === true
-          ? this.el.setAttribute('active', 'true')
-          : this.el.removeAttribute('active');
+          ? (this.active = true)
+          : (this.active = false);
       }
     });
   });
