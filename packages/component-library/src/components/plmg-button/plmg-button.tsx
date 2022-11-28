@@ -1,4 +1,12 @@
-import { Component, h, Prop, Watch, Host } from '@stencil/core';
+import {
+  Component,
+  h,
+  Prop,
+  Watch,
+  Host,
+  Listen,
+  Element,
+} from '@stencil/core';
 import {
   isPlmgButtonColor,
   isPlmgButtonSize,
@@ -19,6 +27,7 @@ import {
   shadow: true,
 })
 export class Button {
+  @Element() el: HTMLElement;
   /**
    * Define button's design.
    *
@@ -226,6 +235,36 @@ export class Button {
       throw new Error('label must be a string');
   }
 
+  @Listen('click')
+  onClick(event: Event) {
+    if (this.type === 'submit') {
+      event.stopPropagation();
+      const form = this.el.closest('form');
+      if (form) {
+        event.preventDefault();
+        const fakeSubmit = document.createElement('button');
+        fakeSubmit.type = 'submit';
+        fakeSubmit.style.display = 'none';
+        form.appendChild(fakeSubmit);
+        fakeSubmit.click();
+        fakeSubmit.remove();
+      }
+    }
+    if (this.type === 'reset') {
+      event.stopPropagation();
+      const form = this.el.closest('form');
+      if (form) {
+        event.preventDefault();
+        const fakeReset = document.createElement('button');
+        fakeReset.type = 'reset';
+        fakeReset.style.display = 'none';
+        form.appendChild(fakeReset);
+        fakeReset.click();
+        fakeReset.remove();
+      }
+    }
+  }
+
   render() {
     const classes = {
       'plmg-button': true,
@@ -253,7 +292,7 @@ export class Button {
             {this.hasIconCenter() && (
               <plmg-svg-icon class={'icon-center'} icon={this.iconCenter} />
             )}
-            <slot name={'slot-1'} />
+            <slot />
             {this.hasIconRight() && (
               <plmg-svg-icon class={'icon-right'} icon={this.iconRight} />
             )}
