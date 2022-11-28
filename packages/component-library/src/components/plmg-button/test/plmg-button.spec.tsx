@@ -12,7 +12,7 @@ describe('plmg-button', () => {
     <plmg-button style="width: fit-content;">
        <mock:shadow-root>
          <button class="filled medium plmg-button primary" type="button">
-           <slot></slot>
+           <slot/>
          </button>
        </mock:shadow-root>
        Content
@@ -29,7 +29,7 @@ describe('plmg-button', () => {
     <plmg-button style="width: fit-content;">
        <mock:shadow-root>
          <button class="filled medium plmg-button primary" type="button">
-           <slot></slot>
+           <slot/>
          </button>
        </mock:shadow-root>
        Content
@@ -46,7 +46,7 @@ describe('plmg-button', () => {
     <plmg-button href="https://www.ducky.eco" style="width: fit-content;">
       <mock:shadow-root>
         <a class="filled medium plmg-button primary" href="https://www.ducky.eco">
-          <slot></slot>
+          <slot/>
         </a>
       </mock:shadow-root>
       Content
@@ -65,7 +65,7 @@ describe('plmg-button', () => {
          <button class="filled icon-button medium plmg-button primary" type="button">
            <plmg-svg-icon class="icon-left" icon="home"></plmg-svg-icon>
            <plmg-svg-icon class="icon-center" icon="home"></plmg-svg-icon>
-           <slot></slot>
+           <slot/>
            <plmg-svg-icon class="icon-right" icon="home"></plmg-svg-icon>
          </button>
        </mock:shadow-root>
@@ -84,7 +84,7 @@ describe('plmg-button', () => {
        <mock:shadow-root>
          <button aria-label="test" class="filled icon-button medium plmg-button primary" type="button">
            <plmg-svg-icon class="icon-center" icon="home"></plmg-svg-icon>
-           <slot></slot>
+           <slot/>
          </button>
        </mock:shadow-root>
       </plmg-button>
@@ -102,7 +102,7 @@ describe('plmg-button', () => {
          <mock:shadow-root>
            <button aria-label="test" class="filled full-width icon-button medium plmg-button primary" type="button">
              <plmg-svg-icon class="icon-center" icon="home"></plmg-svg-icon>
-             <slot></slot>
+             <slot/>
            </button>
          </mock:shadow-root>
         </plmg-button>
