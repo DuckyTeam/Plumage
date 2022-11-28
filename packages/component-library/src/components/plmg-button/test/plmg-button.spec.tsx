@@ -65,7 +65,7 @@ describe('plmg-button', () => {
          <button class="filled icon-button medium plmg-button primary" type="button">
            <plmg-svg-icon class="icon-left" icon="home"></plmg-svg-icon>
            <plmg-svg-icon class="icon-center" icon="home"></plmg-svg-icon>
-           <slot/>
+           <slot></slot>
            <plmg-svg-icon class="icon-right" icon="home"></plmg-svg-icon>
          </button>
        </mock:shadow-root>
