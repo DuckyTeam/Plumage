@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "Fixes conditional slot rendering bug.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}

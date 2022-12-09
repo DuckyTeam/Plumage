@@ -116,7 +116,7 @@ export default function SlidersForm(props: Props) {
         </PlmgButton>
 
         <p>Controlled Values: {JSON.stringify(sliderValues)}</p>
-        <button type="submit">Submit</button>
+        <PlmgButton type="submit">Submit</PlmgButton>
       </form>
     </div>
   );

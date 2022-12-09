@@ -1,4 +1,12 @@
-import { Component, h, Listen, Prop, Watch } from '@stencil/core';
+import {
+  Component,
+  h,
+  Prop,
+  Watch,
+  Host,
+  Listen,
+  Element,
+} from '@stencil/core';
 import {
   isPlmgButtonColor,
   isPlmgButtonSize,
@@ -16,9 +24,10 @@ import {
 @Component({
   tag: 'plmg-button',
   styleUrl: 'plmg-button.scss',
-  shadow: false,
+  shadow: true,
 })
 export class Button {
+  @Element() el: HTMLElement;
   /**
    * Define button's design.
    *
@@ -226,14 +235,33 @@ export class Button {
       throw new Error('label must be a string');
   }
 
-  // get the actual width of the button
-
   @Listen('click')
-  handleClick() {
-    const clicked = event.target as HTMLElement;
-    if (clicked.tagName === 'PLMG-BUTTON') {
-      event.preventDefault();
+  onClick(event: Event) {
+    if (this.type === 'submit') {
       event.stopPropagation();
+      const form = this.el.closest('form');
+      if (form) {
+        event.preventDefault();
+        const fakeSubmit = document.createElement('button');
+        fakeSubmit.type = 'submit';
+        fakeSubmit.style.display = 'none';
+        form.appendChild(fakeSubmit);
+        fakeSubmit.click();
+        fakeSubmit.remove();
+      }
+    }
+    if (this.type === 'reset') {
+      event.stopPropagation();
+      const form = this.el.closest('form');
+      if (form) {
+        event.preventDefault();
+        const fakeReset = document.createElement('button');
+        fakeReset.type = 'reset';
+        fakeReset.style.display = 'none';
+        form.appendChild(fakeReset);
+        fakeReset.click();
+        fakeReset.remove();
+      }
     }
   }
 
@@ -250,40 +278,44 @@ export class Button {
 
     if (this.href) {
       return (
-        <a
-          class={classes}
-          href={this.href}
-          rel={this.rel}
-          target={this.target}
-          aria-label={this.label}
-        >
+        <Host style={{ width: this.fullWidth ? 'full-width' : 'fit-content' }}>
+          <a
+            class={classes}
+            href={this.href}
+            rel={this.rel}
+            target={this.target}
+            aria-label={this.label}
+          >
+            {this.hasIconLeft() && (
+              <plmg-svg-icon class={'icon-left'} icon={this.iconLeft} />
+            )}
+            {this.hasIconCenter() && (
+              <plmg-svg-icon class={'icon-center'} icon={this.iconCenter} />
+            )}
+            <slot />
+            {this.hasIconRight() && (
+              <plmg-svg-icon class={'icon-right'} icon={this.iconRight} />
+            )}
+          </a>
+        </Host>
+      );
+    }
+
+    return (
+      <Host style={{ width: this.fullWidth ? 'full-width' : 'fit-content' }}>
+        <button class={classes} type={this.type} aria-label={this.label}>
           {this.hasIconLeft() && (
             <plmg-svg-icon class={'icon-left'} icon={this.iconLeft} />
           )}
           {this.hasIconCenter() && (
             <plmg-svg-icon class={'icon-center'} icon={this.iconCenter} />
           )}
-          <slot></slot>
+          <slot />
           {this.hasIconRight() && (
             <plmg-svg-icon class={'icon-right'} icon={this.iconRight} />
           )}
-        </a>
-      );
-    }
-
-    return (
-      <button class={classes} type={this.type} aria-label={this.label}>
-        {this.hasIconLeft() && (
-          <plmg-svg-icon class={'icon-left'} icon={this.iconLeft} />
-        )}
-        {this.hasIconCenter() && (
-          <plmg-svg-icon class={'icon-center'} icon={this.iconCenter} />
-        )}
-        <slot></slot>
-        {this.hasIconRight() && (
-          <plmg-svg-icon class={'icon-right'} icon={this.iconRight} />
-        )}
-      </button>
+        </button>
+      </Host>
     );
   }
 

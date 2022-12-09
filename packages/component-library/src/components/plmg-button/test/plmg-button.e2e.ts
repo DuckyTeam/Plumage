@@ -87,4 +87,94 @@ describe('plmg-button', () => {
       expect(results.violations).toHaveLength(0);
     });
   });
+  describe('button type triggers expected event', () => {
+    it('as a button', async () => {
+      const page = await newE2EPage();
+      const htmlContent = `<plmg-button label="example" />`;
+
+      await page.setContent('<main>' + htmlContent + '</main>');
+
+      const element = await page.find('plmg-button');
+
+      const buttonClickedSpy = await page.spyOnEvent('click');
+
+      await element.click();
+
+      await page.waitForChanges();
+
+      expect(buttonClickedSpy).toHaveReceivedEvent();
+    });
+    it('as submit', async () => {
+      const page = await newE2EPage();
+      const htmlContent = `
+      <form>
+        <plmg-button label="example" type="submit"/>
+      </form>`;
+
+      await page.setContent('<main>' + htmlContent + '</main>');
+
+      const element = await page.find('plmg-button');
+
+      const buttonClickedSpy = await page.spyOnEvent('submit');
+
+      await element.click();
+
+      await page.waitForChanges();
+
+      expect(buttonClickedSpy).toHaveReceivedEvent();
+    });
+    it('as reset', async () => {
+      const page = await newE2EPage();
+      const htmlContent = `
+      <form>
+        <plmg-button label="example" type="reset"/>
+      </form>`;
+
+      await page.setContent('<main>' + htmlContent + '</main>');
+
+      const element = await page.find('plmg-button');
+
+      const buttonClickedSpy = await page.spyOnEvent('reset');
+
+      await element.click();
+
+      await page.waitForChanges();
+
+      expect(buttonClickedSpy).toHaveReceivedEvent();
+    });
+  });
+  describe('click event is supressed when button', () => {
+    it('is type submit', async () => {
+      const page = await newE2EPage();
+      const htmlContent = `<plmg-button type="submit" label="example" />`;
+
+      await page.setContent('<main>' + htmlContent + '</main>');
+
+      const element = await page.find('plmg-button');
+
+      const buttonClickedSpy = await page.spyOnEvent('click');
+
+      await element.click();
+
+      await page.waitForChanges();
+
+      expect(buttonClickedSpy).not.toHaveReceivedEvent();
+    });
+    it('is type reset', async () => {
+      const page = await newE2EPage();
+      const htmlContent = `<plmg-button type="submit" label="example" />`;
+
+      await page.setContent('<main>' + htmlContent + '</main>');
+
+      const element = await page.find('plmg-button');
+
+      const buttonClickedSpy = await page.spyOnEvent('click');
+
+      await element.click();
+
+      await page.waitForChanges();
+
+      expect(buttonClickedSpy).not.toHaveReceivedEvent();
+    });
+  });
 });
