@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Fri, 25 Nov 2022 12:49:16 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Dec 2022 08:57:01 GMT and should not be manually modified.
+
+## 1.14.6
+Fri, 09 Dec 2022 08:57:01 GMT
+
+### Patches
+
+- Fixes conditional slot rendering bug.
 
 ## 1.14.5
 Fri, 25 Nov 2022 12:49:16 GMT
