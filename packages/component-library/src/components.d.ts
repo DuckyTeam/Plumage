@@ -204,6 +204,10 @@ export namespace Components {
          */
         "required": boolean;
         /**
+          * Define radio button's checked status  Allowed values:   - true   - false  Default: false
+         */
+        "selected": boolean;
+        /**
           * Define radio button's size.  Allowed values:   - medium   - large  Default: medium
          */
         "size": PlmgRadioButtonSize;
@@ -233,6 +237,10 @@ export namespace Components {
           * Define size of all radio button's in radio button group.  Allowed values:   - medium   - large  Default: medium
          */
         "size": PlmgRadioButtonSize;
+        /**
+          * Define the currently selected radio button
+         */
+        "value": string;
         /**
           * Define each radio button's value  Accepts an array or JSON string
          */
@@ -874,6 +882,10 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
         /**
+          * Define radio button's checked status  Allowed values:   - true   - false  Default: false
+         */
+        "selected"?: boolean;
+        /**
           * Define radio button's size.  Allowed values:   - medium   - large  Default: medium
          */
         "size"?: PlmgRadioButtonSize;
@@ -907,6 +919,10 @@ declare namespace LocalJSX {
           * Define size of all radio button's in radio button group.  Allowed values:   - medium   - large  Default: medium
          */
         "size"?: PlmgRadioButtonSize;
+        /**
+          * Define the currently selected radio button
+         */
+        "value"?: string;
         /**
           * Define each radio button's value  Accepts an array or JSON string
          */
