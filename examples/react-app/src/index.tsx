@@ -16,6 +16,8 @@ import {
 } from '@ducky/plumage-react';
 import Avatars from './Avatars';
 import FormElements from './FormElements';
+import { PlmgRadioButtonGroup } from '@ducky/plumage-react';
+import { PlmgRadioButton } from '@ducky/plumage-react';
 
 const TooltipRefExample = () => {
   const [button, setButton] = useState(undefined);
@@ -130,6 +132,19 @@ ReactDOM.render(
       <br />
       <PlmgSvgIcon icon={'home'} size={'6em'} />
       PlmgSvgIcon home
+      <PlmgSeparator />
+      <PlmgRadioButtonGroup
+        name="fruits"
+        values={['apples', 'oranges', 'pears']}
+        value="oranges"
+        label="Radio button group with selected value"
+      />
+      <br />
+      Single Radio Button with selected=true
+      <PlmgRadioButton name="dairy" value={'cheese'} selected={true} />
+      Single Radio Button without selected set
+      <PlmgRadioButton name="dairy" value={'cheese'} />
+      <PlmgSeparator />
       <br />
       <PlmgCard
         headerText="Header Text"

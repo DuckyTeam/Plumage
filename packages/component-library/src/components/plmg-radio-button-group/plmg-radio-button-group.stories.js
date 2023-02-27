@@ -25,10 +25,13 @@ export default {
     ['values']: {
       control: { type: 'array' },
     },
+    ['value']: {
+      control: { type: 'text' },
+    },
   },
 };
 
-const PROPS = ['name', 'size', 'label', 'required', 'error-message'];
+const PROPS = ['name', 'size', 'label', 'required', 'error-message', 'value'];
 const JS_PROPS = ['values'];
 
 const Template = (args) => {
@@ -68,7 +71,7 @@ export const AllSizes = (args) => {
         "${size}",
         "radio",
         "buttons"
-      ]'></plmg-radio-button-group>`;
+      ]' value="${args.value}"></plmg-radio-button-group>`;
     })
     .join('')
     .trim();
@@ -92,7 +95,7 @@ export const AllRequired = (args) => {
         "${required ? 'required' : 'not required'}",
         "radio",
         "buttons"
-      ]'></plmg-radio-button-group>`
+      ]' value="${args.value}"></plmg-radio-button-group>`
     )
     .join('')
     .trim();
@@ -113,7 +116,7 @@ export const AllErrors = (args) => {
     "error-riddled",
     "radio",
     "buttons"
-  ]'></plmg-radio-button-group>`,
+  ]' value="${args.value}"></plmg-radio-button-group>`,
     `<plmg-radio-button-group  label="Without Error" name="no error" values='[
     "some",
     "error-free",
@@ -140,12 +143,12 @@ export const AllLabels = (args) => {
     "No",
     "label",
     "here"
-  ]'></plmg-radio-button-group>`,
+  ]' value="${args.value}"></plmg-radio-button-group>`,
     `<plmg-radio-button-group size="medium" label="With label" name="label" values='[
     "Look",
     "at this",
     "label"
-  ]'></plmg-radio-button-group>`,
+  ]' value="${args.value}"></plmg-radio-button-group>`,
   ]
     .join('')
     .trim();

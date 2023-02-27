@@ -90,6 +90,22 @@ export class RadioButton {
       throw new Error('required: must be boolean');
   }
 
+  /**
+   * Define radio button's checked status
+   *
+   * Allowed values:
+   *   - true
+   *   - false
+   *
+   * Default: false
+   */
+  @Prop() selected: boolean = false;
+  @Watch('selected')
+  validatesSelected(newValue: boolean) {
+    if (typeof newValue !== 'boolean')
+      throw new Error('selected: must be boolean');
+  }
+
   render() {
     const inputClasses = {
       'plmg-radio-button': true,
@@ -114,6 +130,7 @@ export class RadioButton {
             e.preventDefault();
             this.isValid(false);
           }}
+          checked={this.selected}
           onInput={() => this.isValid(true)}
           required={this.required}
           ref={(el) => (this.inputElement = el as HTMLInputElement)}
