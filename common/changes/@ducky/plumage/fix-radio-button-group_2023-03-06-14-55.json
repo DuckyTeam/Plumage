@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "Change selectedValue event emitter target to checkedValue in radio-button-group, add checked prop to radio-button, add value prop to radio-button-group to set the currently selected radio-button",
+      "type": "major"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
