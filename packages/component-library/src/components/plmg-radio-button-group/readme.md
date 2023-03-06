@@ -20,9 +20,9 @@
 
 ## Events
 
-| Event          | Description                                          | Type                                      |
-| -------------- | ---------------------------------------------------- | ----------------------------------------- |
-| `valueChanged` | Event emitted when the selected radio button changed | `CustomEvent<{ selectedValue: string; }>` |
+| Event          | Description                                          | Type                                     |
+| -------------- | ---------------------------------------------------- | ---------------------------------------- |
+| `valueChanged` | Event emitted when the selected radio button changed | `CustomEvent<{ checkedValue: string; }>` |
 
 
 ## Dependencies

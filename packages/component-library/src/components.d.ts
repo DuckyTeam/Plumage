@@ -188,6 +188,10 @@ export namespace Components {
     }
     interface PlmgRadioButton {
         /**
+          * Define radio button's checked status  Allowed values:   - true   - false  Default: false
+         */
+        "checked": boolean;
+        /**
           * Define radio button's highlighted status (in case of error)  Allowed values:   - true   - false  Default: false
          */
         "highlighted": boolean;
@@ -203,10 +207,6 @@ export namespace Components {
           * Define radio button's required status  Allowed values:   - true   - false  Default: false
          */
         "required": boolean;
-        /**
-          * Define radio button's checked status  Allowed values:   - true   - false  Default: false
-         */
-        "selected": boolean;
         /**
           * Define radio button's size.  Allowed values:   - medium   - large  Default: medium
          */
@@ -866,6 +866,10 @@ declare namespace LocalJSX {
     }
     interface PlmgRadioButton {
         /**
+          * Define radio button's checked status  Allowed values:   - true   - false  Default: false
+         */
+        "checked"?: boolean;
+        /**
           * Define radio button's highlighted status (in case of error)  Allowed values:   - true   - false  Default: false
          */
         "highlighted"?: boolean;
@@ -881,10 +885,6 @@ declare namespace LocalJSX {
           * Define radio button's required status  Allowed values:   - true   - false  Default: false
          */
         "required"?: boolean;
-        /**
-          * Define radio button's checked status  Allowed values:   - true   - false  Default: false
-         */
-        "selected"?: boolean;
         /**
           * Define radio button's size.  Allowed values:   - medium   - large  Default: medium
          */
@@ -910,7 +910,7 @@ declare namespace LocalJSX {
         /**
           * Event emitted when the selected radio button changed
          */
-        "onValueChanged"?: (event: PlmgRadioButtonGroupCustomEvent<{ selectedValue: string }>) => void;
+        "onValueChanged"?: (event: PlmgRadioButtonGroupCustomEvent<{ checkedValue: string }>) => void;
         /**
           * Define radio group's required status  Allowed values:   - true   - false  Default: false
          */
