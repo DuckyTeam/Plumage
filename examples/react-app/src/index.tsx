@@ -138,6 +138,9 @@ ReactDOM.render(
         values={['apples', 'oranges', 'pears']}
         value="oranges"
         label="Radio button group with selected value"
+        onValueChanged={(e: any) => {
+          console.log('checked ', e.detail.selectedValue);
+        }}
       />
       <br />
       Single Radio Button with selected=true
