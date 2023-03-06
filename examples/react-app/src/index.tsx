@@ -137,15 +137,15 @@ ReactDOM.render(
         name="fruits"
         values={['apples', 'oranges', 'pears']}
         value="oranges"
-        label="Radio button group with selected value"
+        label="Radio button group with checked value"
         onValueChanged={(e: any) => {
-          console.log('checked ', e.detail.selectedValue);
+          console.log('checked ', e.detail.checkedValue);
         }}
       />
       <br />
-      Single Radio Button with selected=true
-      <PlmgRadioButton name="dairy" value={'cheese'} selected={true} />
-      Single Radio Button without selected set
+      Single Radio Button with checked=true
+      <PlmgRadioButton name="dairy" value={'cheese'} checked={true} />
+      Single Radio Button without checked set
       <PlmgRadioButton name="dairy" value={'cheese'} />
       <PlmgSeparator />
       <br />

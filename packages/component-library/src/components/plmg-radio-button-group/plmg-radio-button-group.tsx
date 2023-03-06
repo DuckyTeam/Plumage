@@ -139,7 +139,7 @@ export class RadioButtonGroup {
   /**
    * Event emitted when the selected radio button changed
    */
-  @Event() valueChanged: EventEmitter<{ selectedValue: string }>;
+  @Event() valueChanged: EventEmitter<{ checkedValue: string }>;
 
   componentWillLoad() {
     this.parseValuesProp(this.values);
@@ -170,9 +170,9 @@ export class RadioButtonGroup {
             }}
             required={this.required}
             onChange={(e: any) => {
-              this.valueChanged.emit({ selectedValue: e.target.value });
+              this.valueChanged.emit({ checkedValue: e.target.value });
             }}
-            selected={this.value === radio}
+            checked={this.value === radio}
           />
         ))}
         {!this.isValid && (

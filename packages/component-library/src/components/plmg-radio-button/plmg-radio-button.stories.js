@@ -19,13 +19,13 @@ export default {
     ['highlighted']: {
       options: [true, false],
     },
-    selected: {
+    checked: {
       control: { type: 'boolean' },
     },
   },
 };
 
-const PROPS = ['size', 'value', 'name', 'highlighted', 'selected'];
+const PROPS = ['size', 'value', 'name', 'highlighted', 'checked'];
 
 const Template = (args) => {
   const el = document.createElement('plmg-radio-button');
@@ -40,14 +40,14 @@ Primary.args = {
   value: 'Test',
   name: 'formName',
   ['highlighted']: false,
-  selected: false,
+  checked: false,
 };
 
 export const AllSizes = (args) => {
   const htmlContent = sizes
     .map(
       (size) =>
-        `<plmg-radio-button size="${size}" name="${size}" value="${size}" selected="${args.selected}"></plmg-radio-button>`
+        `<plmg-radio-button size="${size}" name="${size}" value="${size}" checked="${args.checked}"></plmg-radio-button>`
     )
     .join('')
     .trim();
@@ -69,7 +69,7 @@ export const AllHighlighted = (args) => {
           highlighted ? 'Highlighted' : 'Not Highlighted'
         }" value="${
           highlighted ? 'Highlighted' : 'Not Highlighted'
-        }" selected="${args.selected}"></plmg-radio-button>`
+        }" checked="${args.checked}"></plmg-radio-button>`
     )
     .join('')
     .trim();

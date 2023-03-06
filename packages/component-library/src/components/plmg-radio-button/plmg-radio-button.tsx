@@ -99,11 +99,11 @@ export class RadioButton {
    *
    * Default: false
    */
-  @Prop() selected: boolean = false;
-  @Watch('selected')
-  validatesSelected(newValue: boolean) {
+  @Prop() checked: boolean = false;
+  @Watch('checked')
+  validatesChecked(newValue: boolean) {
     if (typeof newValue !== 'boolean')
-      throw new Error('selected: must be boolean');
+      throw new Error('checked: must be boolean');
   }
 
   render() {
@@ -130,7 +130,7 @@ export class RadioButton {
             e.preventDefault();
             this.isValid(false);
           }}
-          checked={this.selected}
+          checked={this.checked}
           onInput={() => this.isValid(true)}
           required={this.required}
           ref={(el) => (this.inputElement = el as HTMLInputElement)}
