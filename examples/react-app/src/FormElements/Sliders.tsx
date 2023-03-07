@@ -57,9 +57,8 @@ export default function SlidersForm(props: Props) {
           onClick={() => {
             onUpdate(RANGE_INPUT_PARAMETERS.decimal.default, 'decimal');
           }}
-        >
-          Reset
-        </PlmgButton>
+          text="Reset"
+        />
         <label>{RANGE_INPUT_PARAMETERS.stepped.label}</label>
         <PlmgSlider
           name={RANGE_INPUT_PARAMETERS.stepped.label}
@@ -84,9 +83,8 @@ export default function SlidersForm(props: Props) {
           onClick={() => {
             onUpdate(RANGE_INPUT_PARAMETERS.stepped.default, 'stepped');
           }}
-        >
-          Reset
-        </PlmgButton>
+          text="Reset"
+        />
         <label>{RANGE_INPUT_PARAMETERS.large.label}</label>
         <PlmgSlider
           name={RANGE_INPUT_PARAMETERS.large.label}
@@ -111,12 +109,10 @@ export default function SlidersForm(props: Props) {
           onClick={() => {
             onUpdate(RANGE_INPUT_PARAMETERS.large.default, 'large');
           }}
-        >
-          Reset
-        </PlmgButton>
-
+          text="Reset"
+        />
         <p>Controlled Values: {JSON.stringify(sliderValues)}</p>
-        <PlmgButton type="submit">Submit</PlmgButton>
+        <PlmgButton type="submit" text="Submit" />
       </form>
     </div>
   );

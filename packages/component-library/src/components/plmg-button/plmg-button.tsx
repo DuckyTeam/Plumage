@@ -24,7 +24,7 @@ import {
 @Component({
   tag: 'plmg-button',
   styleUrl: 'plmg-button.scss',
-  shadow: true,
+  shadow: false,
 })
 export class Button {
   @Element() el: HTMLElement;
@@ -235,6 +235,17 @@ export class Button {
       throw new Error('label must be a string');
   }
 
+  /**
+   * The text to display in the button
+   *
+   */
+  @Prop() text: string = undefined;
+  @Watch('text')
+  validateText(newValue: string) {
+    if (newValue && typeof newValue !== 'string')
+      throw new Error('text must be a string');
+  }
+
   @Listen('click')
   onClick(event: Event) {
     if (this.type === 'submit') {
@@ -292,7 +303,7 @@ export class Button {
             {this.hasIconCenter() && (
               <plmg-svg-icon class={'icon-center'} icon={this.iconCenter} />
             )}
-            <slot />
+            {this.text}
             {this.hasIconRight() && (
               <plmg-svg-icon class={'icon-right'} icon={this.iconRight} />
             )}
@@ -310,7 +321,7 @@ export class Button {
           {this.hasIconCenter() && (
             <plmg-svg-icon class={'icon-center'} icon={this.iconCenter} />
           )}
-          <slot />
+          {this.text}
           {this.hasIconRight() && (
             <plmg-svg-icon class={'icon-right'} icon={this.iconRight} />
           )}

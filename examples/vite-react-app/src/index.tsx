@@ -59,7 +59,7 @@ ReactDOM.render(
     </PlmgHeader>
 
     <div slot={'content'} style={{ padding: '24px' }}>
-      <PlmgButton type={'button'}>PlmgButton</PlmgButton>
+      <PlmgButton type={'button'} text="PlmgButton" />
     </div>
   </PlmgPageContainer>,
   document.getElementById('root')
