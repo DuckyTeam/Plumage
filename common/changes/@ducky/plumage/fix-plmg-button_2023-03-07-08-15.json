@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "Remove plmg-button <slot />, button text must now be passed in via the new text prop",
+      "type": "major"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
