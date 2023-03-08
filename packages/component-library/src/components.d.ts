@@ -188,6 +188,10 @@ export namespace Components {
     }
     interface PlmgRadioButton {
         /**
+          * Define radio button's checked status  Allowed values:   - true   - false  Default: false
+         */
+        "checked": boolean;
+        /**
           * Define radio button's highlighted status (in case of error)  Allowed values:   - true   - false  Default: false
          */
         "highlighted": boolean;
@@ -233,6 +237,10 @@ export namespace Components {
           * Define size of all radio button's in radio button group.  Allowed values:   - medium   - large  Default: medium
          */
         "size": PlmgRadioButtonSize;
+        /**
+          * Define the currently selected radio button
+         */
+        "value": string;
         /**
           * Define each radio button's value  Accepts an array or JSON string
          */
@@ -858,6 +866,10 @@ declare namespace LocalJSX {
     }
     interface PlmgRadioButton {
         /**
+          * Define radio button's checked status  Allowed values:   - true   - false  Default: false
+         */
+        "checked"?: boolean;
+        /**
           * Define radio button's highlighted status (in case of error)  Allowed values:   - true   - false  Default: false
          */
         "highlighted"?: boolean;
@@ -898,7 +910,7 @@ declare namespace LocalJSX {
         /**
           * Event emitted when the selected radio button changed
          */
-        "onValueChanged"?: (event: PlmgRadioButtonGroupCustomEvent<{ selectedValue: string }>) => void;
+        "onValueChanged"?: (event: PlmgRadioButtonGroupCustomEvent<{ checkedValue: string }>) => void;
         /**
           * Define radio group's required status  Allowed values:   - true   - false  Default: false
          */
@@ -907,6 +919,10 @@ declare namespace LocalJSX {
           * Define size of all radio button's in radio button group.  Allowed values:   - medium   - large  Default: medium
          */
         "size"?: PlmgRadioButtonSize;
+        /**
+          * Define the currently selected radio button
+         */
+        "value"?: string;
         /**
           * Define each radio button's value  Accepts an array or JSON string
          */

@@ -17,8 +17,9 @@ describe('plmg-radio-button', () => {
 
       const htmlContent = `
         <plmg-radio-button value="option" name="Form name"/>
-        <plmg-radio-button value="option 2" name="Form name" size="large"/>
-        <plmg-radio-button value="option 3" name="Form name" size="large" highlighted=${true}/>
+        <plmg-radio-button value="option 1" name="Form name" size="large"/>
+        <plmg-radio-button value="option 2" name="Form name" size="large" highlighted=${true}/>
+        <plmg-radio-button value="option 3" name="Form name" size="large" highlighted=${true} checked=${true}/>
       `;
       await page.setContent('<main>' + htmlContent + '</main>');
 

@@ -17,8 +17,8 @@ export default function Radios() {
               "purple (the obvious choice)"
             ]'
           errorMessage={'Please select a colour'}
-          onValueChanged={(e: CustomEvent<{ selectedValue: string }>) => {
-            console.log('Radio Button colours:', e.detail.selectedValue);
+          onValueChanged={(e: CustomEvent<{ checkedValue: string }>) => {
+            console.log('Radio Button colours:', e.detail.checkedValue);
           }}
         />
         <PlmgRadioButtonGroup
@@ -34,8 +34,8 @@ export default function Radios() {
               "grapes"
             ]'
           errorMessage={'Please select a fruit'}
-          onValueChanged={(e: CustomEvent<{ selectedValue: string }>) => {
-            console.log('Radio Button other colours:', e.detail.selectedValue);
+          onValueChanged={(e: CustomEvent<{ checkedValue: string }>) => {
+            console.log('Radio Button other colours:', e.detail.checkedValue);
           }}
         />
         <input type="submit"></input>
