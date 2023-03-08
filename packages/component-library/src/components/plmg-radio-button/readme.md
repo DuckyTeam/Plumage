@@ -9,6 +9,7 @@
 
 | Property      | Attribute     | Description                                                                                                     | Type                       | Default     |
 | ------------- | ------------- | --------------------------------------------------------------------------------------------------------------- | -------------------------- | ----------- |
+| `checked`     | `checked`     | Define radio button's checked status  Allowed values:   - true   - false  Default: false                        | `boolean`                  | `false`     |
 | `highlighted` | `highlighted` | Define radio button's highlighted status (in case of error)  Allowed values:   - true   - false  Default: false | `boolean`                  | `false`     |
 | `isValid`     | --            | Callback to provide validity of radio input to radio button group                                               | `(valid: boolean) => void` | `undefined` |
 | `name`        | `name`        | Define form's name'                                                                                             | `string`                   | `undefined` |

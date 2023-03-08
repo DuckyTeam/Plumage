@@ -109,6 +109,18 @@ export class RadioButtonGroup {
   }
 
   /**
+   * Define the currently selected radio button
+   */
+  @Prop() value: string;
+  @Watch('value')
+  validateValue(newValue: string) {
+    if (typeof newValue !== 'string' || newValue === '')
+      throw new Error('value: required');
+    if (newValue && typeof newValue !== 'string')
+      throw new Error('value must be a string');
+  }
+
+  /**
    * Define error message for radio group
    * to be displayed if form validation
    * fails
@@ -127,7 +139,7 @@ export class RadioButtonGroup {
   /**
    * Event emitted when the selected radio button changed
    */
-  @Event() valueChanged: EventEmitter<{ selectedValue: string }>;
+  @Event() valueChanged: EventEmitter<{ checkedValue: string }>;
 
   componentWillLoad() {
     this.parseValuesProp(this.values);
@@ -158,11 +170,11 @@ export class RadioButtonGroup {
             }}
             required={this.required}
             onChange={(e: any) => {
-              this.valueChanged.emit({ selectedValue: e.target.value });
+              this.valueChanged.emit({ checkedValue: e.target.value });
             }}
+            checked={this.value === radio}
           />
         ))}
-
         {!this.isValid && (
           <plmg-error-message size={this.size} message={this.errorMessage} />
         )}
