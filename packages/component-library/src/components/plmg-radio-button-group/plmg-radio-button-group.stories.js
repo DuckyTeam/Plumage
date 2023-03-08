@@ -129,6 +129,7 @@ export const AllErrors = (args) => {
     .trim();
 
   const el = document.createElement('form');
+  el.setAttribute('action', "javascript:alert('Form submitted');");
   el.innerHTML = htmlContent;
   el.style.display = 'flex';
   el.style.justifyContent = 'space-between';
