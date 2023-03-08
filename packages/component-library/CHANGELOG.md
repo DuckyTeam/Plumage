@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Wed, 08 Mar 2023 14:06:22 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Mar 2023 14:09:24 GMT and should not be manually modified.
+
+## 3.0.0
+Wed, 08 Mar 2023 14:09:24 GMT
+
+### Breaking changes
+
+- Remove plmg-button <slot />, button text must now be passed in via the new text prop
 
 ## 2.0.0
 Wed, 08 Mar 2023 14:06:22 GMT
