@@ -94,6 +94,10 @@ export namespace Components {
          */
         "target": string;
         /**
+          * The text to display in the button
+         */
+        "text": string;
+        /**
           * Define button's type  Allowed values:   - button   - submit   - reset  Default: button
          */
         "type": PlmgButtonType;
@@ -767,6 +771,10 @@ declare namespace LocalJSX {
           * Define links target
          */
         "target"?: string;
+        /**
+          * The text to display in the button
+         */
+        "text"?: string;
         /**
           * Define button's type  Allowed values:   - button   - submit   - reset  Default: button
          */

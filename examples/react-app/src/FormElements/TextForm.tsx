@@ -189,9 +189,8 @@ export default function TextForm() {
           design={'outline'}
           label={'submit'}
           type={'submit'}
-        >
-          Submit
-        </PlmgButton>
+          text="Submit"
+        />
       </form>
     </div>
   );

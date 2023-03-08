@@ -109,9 +109,8 @@ export class Card {
               design={'borderless'}
               size={'small'}
               color={'primary'}
-            >
-              {this.bottomActionText}
-            </plmg-button>
+              text={this.bottomActionText}
+            />
           </div>
         )}
       </div>

@@ -21,6 +21,7 @@ import { PlmgRadioButton } from '@ducky/plumage-react';
 
 const TooltipRefExample = () => {
   const [button, setButton] = useState(undefined);
+
   const buttonRef = useCallback((node) => {
     if (node !== null) {
       setButton(node);
@@ -29,9 +30,7 @@ const TooltipRefExample = () => {
 
   return (
     <>
-      <PlmgButton label={'hover-me-button'} ref={buttonRef}>
-        HoverMe
-      </PlmgButton>
+      <PlmgButton label={'hover-me-button'} ref={buttonRef} text="Hover Me" />
       <PlmgTooltip
         role={'tooltip'}
         id={'hover-me-button'}
@@ -42,6 +41,21 @@ const TooltipRefExample = () => {
         content={'Top with arrow start'}
       ></PlmgTooltip>
     </>
+  );
+};
+
+const ButtonExample = () => {
+  const [buttonText, setButtonText] = useState('My text changes on click!');
+
+  return (
+    <PlmgButton
+      onClick={() => {
+        setButtonText((prevText) =>
+          prevText === 'Wow!' ? 'My text changes' : 'Wow!'
+        );
+      }}
+      text={buttonText}
+    />
   );
 };
 
@@ -112,14 +126,7 @@ ReactDOM.render(
       </div>
     </PlmgHeader>
     <div slot={'content'} style={{ padding: '24px' }}>
-      <PlmgButton
-        onClick={(e: any) => {
-          console.log('clicked', e);
-        }}
-        type={'button'}
-      >
-        PlmgButton
-      </PlmgButton>
+      <ButtonExample />
       <br />
       <PlmgButton
         onClick={(e: any) => {

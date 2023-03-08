@@ -18,9 +18,9 @@ describe('plmg-button', () => {
 
       let htmlContent = `
 <main>
-    <plmg-button>Label</plmg-button>
-    <plmg-button icon-left="home">Label</plmg-button>
-    <plmg-button icon-right="home">Label</plmg-button>
+    <plmg-button text="Label"></plmg-button>
+    <plmg-button icon-left="home" text="Label"></plmg-button>
+    <plmg-button icon-right="home" text="Label"></plmg-button>
 </main>>
               `;
       await page.setContent(htmlContent);
@@ -44,9 +44,9 @@ describe('plmg-button', () => {
 
       let htmlContent = `
 <main>
-    <plmg-button href="https://ducky.eco">Label</plmg-button>
-    <plmg-button href="https://ducky.eco" icon-left="home">Label</plmg-button>
-    <plmg-button href="https://ducky.eco" icon-right="home">Label</plmg-button>
+    <plmg-button href="https://ducky.eco" text="Label"></plmg-button>
+    <plmg-button href="https://ducky.eco" icon-left="home" text="Label"></plmg-button>
+    <plmg-button href="https://ducky.eco" icon-right="home" text="Label"></plmg-button>
 </main>
               `;
       await page.setContent(htmlContent);
@@ -141,40 +141,6 @@ describe('plmg-button', () => {
       await page.waitForChanges();
 
       expect(buttonClickedSpy).toHaveReceivedEvent();
-    });
-  });
-  describe('click event is supressed when button', () => {
-    it('is type submit', async () => {
-      const page = await newE2EPage();
-      const htmlContent = `<plmg-button type="submit" label="example" />`;
-
-      await page.setContent('<main>' + htmlContent + '</main>');
-
-      const element = await page.find('plmg-button');
-
-      const buttonClickedSpy = await page.spyOnEvent('click');
-
-      await element.click();
-
-      await page.waitForChanges();
-
-      expect(buttonClickedSpy).not.toHaveReceivedEvent();
-    });
-    it('is type reset', async () => {
-      const page = await newE2EPage();
-      const htmlContent = `<plmg-button type="submit" label="example" />`;
-
-      await page.setContent('<main>' + htmlContent + '</main>');
-
-      const element = await page.find('plmg-button');
-
-      const buttonClickedSpy = await page.spyOnEvent('click');
-
-      await element.click();
-
-      await page.waitForChanges();
-
-      expect(buttonClickedSpy).not.toHaveReceivedEvent();
     });
   });
 });

@@ -4,8 +4,8 @@ import {
   Prop,
   Watch,
   Host,
-  Listen,
   Element,
+  Listen,
 } from '@stencil/core';
 import {
   isPlmgButtonColor,
@@ -24,7 +24,7 @@ import {
 @Component({
   tag: 'plmg-button',
   styleUrl: 'plmg-button.scss',
-  shadow: true,
+  shadow: false,
 })
 export class Button {
   @Element() el: HTMLElement;
@@ -236,33 +236,23 @@ export class Button {
   }
 
   @Listen('click')
-  onClick(event: Event) {
-    if (this.type === 'submit') {
+  handleClick(event: Event) {
+    const clicked = event.target as HTMLElement;
+    if (clicked.tagName === 'PLMG-BUTTON') {
+      event.preventDefault();
       event.stopPropagation();
-      const form = this.el.closest('form');
-      if (form) {
-        event.preventDefault();
-        const fakeSubmit = document.createElement('button');
-        fakeSubmit.type = 'submit';
-        fakeSubmit.style.display = 'none';
-        form.appendChild(fakeSubmit);
-        fakeSubmit.click();
-        fakeSubmit.remove();
-      }
     }
-    if (this.type === 'reset') {
-      event.stopPropagation();
-      const form = this.el.closest('form');
-      if (form) {
-        event.preventDefault();
-        const fakeReset = document.createElement('button');
-        fakeReset.type = 'reset';
-        fakeReset.style.display = 'none';
-        form.appendChild(fakeReset);
-        fakeReset.click();
-        fakeReset.remove();
-      }
-    }
+  }
+
+  /**
+   * The text to display in the button
+   *
+   */
+  @Prop() text: string = undefined;
+  @Watch('text')
+  validateText(newValue: string) {
+    if (newValue && typeof newValue !== 'string')
+      throw new Error('text must be a string');
   }
 
   render() {
@@ -292,7 +282,7 @@ export class Button {
             {this.hasIconCenter() && (
               <plmg-svg-icon class={'icon-center'} icon={this.iconCenter} />
             )}
-            <slot />
+            {this.text}
             {this.hasIconRight() && (
               <plmg-svg-icon class={'icon-right'} icon={this.iconRight} />
             )}
@@ -310,7 +300,7 @@ export class Button {
           {this.hasIconCenter() && (
             <plmg-svg-icon class={'icon-center'} icon={this.iconCenter} />
           )}
-          <slot />
+          {this.text}
           {this.hasIconRight() && (
             <plmg-svg-icon class={'icon-right'} icon={this.iconRight} />
           )}

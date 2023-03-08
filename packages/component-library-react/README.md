@@ -21,7 +21,7 @@ import {PlmgButton} from '@ducky/plumage-react';
 
 function App() {
     return (
-        <PlmgButton>Hello world</PlmgButton>
+        <PlmgButton text="Hello world">
     );
 }
 export default App;
