@@ -49,6 +49,9 @@ export default {
     label: {
       control: { type: 'text' },
     },
+    text: {
+      control: { type: 'text' },
+    },
   },
 };
 
@@ -65,24 +68,24 @@ const PROPS = [
   'icon-center',
   'icon-right',
   'label',
+  'text',
 ];
 const EVENTS = [];
 const CSS_VARS = [];
-const SLOTS = ['text'];
 
 const Template = (args) => {
   const el = document.createElement('plmg-button');
   Utils.bindProps(el, PROPS, args);
   Utils.bindEvents(el, EVENTS, args);
   Utils.bindStyles(el, CSS_VARS, args);
-  Utils.bindSlots(el, SLOTS, args);
   return el;
 };
 
 export const Primary = Template.bind({});
 Primary.storyName = 'Button';
 Primary.args = {
-  text: 'Label',
+  ['text']: 'Button text',
+  ['label']: 'Label text',
   design: 'filled',
   size: 'medium',
   color: 'primary',
@@ -117,14 +120,17 @@ Icon.args = {
   ['full-width']: false,
   ['shadow']: false,
   ['icon-center']: 'image',
-  label: 'example button',
+  label: 'example button label',
+  text: 'example button text',
 };
 
 export const AllDesigns = (args) => {
   const htmlContent = designs
     .map(
       (design) =>
-        `<plmg-button design="${design}">${propToEnglish(design)}</plmg-button>`
+        `<plmg-button design="${design}" text="${propToEnglish(
+          design
+        )}"></plmg-button>`
     )
     .join('')
     .trim();
@@ -142,7 +148,9 @@ export const AllSizes = (args) => {
   const htmlContent = sizes
     .map(
       (size) =>
-        `<plmg-button size="${size}">${propToEnglish(size)}</plmg-button>`
+        `<plmg-button size="${size}" text="${propToEnglish(
+          size
+        )}"></plmg-button>`
     )
     .join('')
     .trim();
@@ -160,7 +168,9 @@ export const AllColors = (args) => {
   const htmlContent = colors
     .map(
       (color) =>
-        `<plmg-button color="${color}">${propToEnglish(color)}</plmg-button>`
+        `<plmg-button color="${color}" text="${propToEnglish(
+          color
+        )}"></plmg-button>`
     )
     .join('')
     .trim();
@@ -175,8 +185,8 @@ export const AllColors = (args) => {
 AllColors.storyName = 'All colors';
 
 export const AllShadows = (args) => {
-  const htmlContent = `<plmg-button shadow="${false}">No shadow</plmg-button>
-<plmg-button shadow="${true}">With shadow</plmg-button>`;
+  const htmlContent = `<plmg-button shadow="${false}" text="No shadow"></plmg-button>
+<plmg-button shadow="${true}" text="With shadow"></plmg-button>`;
 
   const el = document.createElement('div');
   el.innerHTML = htmlContent;
@@ -188,9 +198,9 @@ export const AllShadows = (args) => {
 AllShadows.storyName = 'All shadows';
 
 export const AllFullWidth = (args) => {
-  const htmlContent = `<plmg-button full-width="${false}">Fit content</plmg-button>
+  const htmlContent = `<plmg-button full-width="${false}" text="Fit content"></plmg-button>
 <br/>
-<plmg-button full-width="${true}">Full width</plmg-button>`;
+<plmg-button full-width="${true}" text="Full width"></plmg-button>`;
 
   const el = document.createElement('div');
   el.innerHTML = htmlContent;
@@ -204,8 +214,8 @@ AllFullWidth.storyName = 'All fullWidth';
 
 export const AllIcons = (args) => {
   const htmlContent = `
-<plmg-button icon-left="arrowBack">Icon left</plmg-button>
-<plmg-button icon-right="arrowForward">Icon right</plmg-button>
+<plmg-button icon-left="arrowBack" text="Icon left"></plmg-button>
+<plmg-button icon-right="arrowForward" text="Icon right"></plmg-button>
 <plmg-button icon-center="image" label="example button"></plmg-button>
 `;
 
@@ -238,13 +248,13 @@ export const All = (args) => {
                   if (centerIcon) {
                     htmlContent += `
 <p>design="${design}" size="${size}" color="${color}" full-width="${fullWidth}" shadow="${shadow}" icon-left="${leftIcon}" icon-right="${rightIcon}" icon-center="${centerIcon} label=${centerIcon}"</p>
-<plmg-button design="${design}" size="${size}" color="${color}" full-width="${fullWidth}" shadow="${shadow}" icon-left="${leftIcon}" icon-right="${rightIcon}" icon-center="${centerIcon}" label=${centerIcon}" >
+<plmg-button design="${design}" size="${size}" color="${color}" full-width="${fullWidth}" shadow="${shadow}" icon-left="${leftIcon}" icon-right="${rightIcon}" icon-center="${centerIcon}" label=${centerIcon}">
 </plmg-button>
 <br/>
               `;
                   } else {
                     htmlContent += `
-<plmg-button design="${design}" size="${size}" color="${color}" full-width="${fullWidth}" shadow="${shadow}" icon-left="${leftIcon}" icon-right="${rightIcon}" >
+<plmg-button design="${design}" size="${size}" color="${color}" full-width="${fullWidth}" shadow="${shadow}" icon-left="${leftIcon}" icon-right="${rightIcon}">
     design="${design}" size="${size}" color="${color}" full-width="${fullWidth}" shadow="${shadow}" icon-left="${leftIcon}" icon-right="${rightIcon}"
 </plmg-button>
 <br/>

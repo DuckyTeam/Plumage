@@ -4,8 +4,8 @@ import {
   Prop,
   Watch,
   Host,
-  Listen,
   Element,
+  Listen,
 } from '@stencil/core';
 import {
   isPlmgButtonColor,
@@ -235,6 +235,15 @@ export class Button {
       throw new Error('label must be a string');
   }
 
+  @Listen('click')
+  handleClick(event: Event) {
+    const clicked = event.target as HTMLElement;
+    if (clicked.tagName === 'PLMG-BUTTON') {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+  }
+
   /**
    * The text to display in the button
    *
@@ -244,36 +253,6 @@ export class Button {
   validateText(newValue: string) {
     if (newValue && typeof newValue !== 'string')
       throw new Error('text must be a string');
-  }
-
-  @Listen('click')
-  onClick(event: Event) {
-    if (this.type === 'submit') {
-      event.stopPropagation();
-      const form = this.el.closest('form');
-      if (form) {
-        event.preventDefault();
-        const fakeSubmit = document.createElement('button');
-        fakeSubmit.type = 'submit';
-        fakeSubmit.style.display = 'none';
-        form.appendChild(fakeSubmit);
-        fakeSubmit.click();
-        fakeSubmit.remove();
-      }
-    }
-    if (this.type === 'reset') {
-      event.stopPropagation();
-      const form = this.el.closest('form');
-      if (form) {
-        event.preventDefault();
-        const fakeReset = document.createElement('button');
-        fakeReset.type = 'reset';
-        fakeReset.style.display = 'none';
-        form.appendChild(fakeReset);
-        fakeReset.click();
-        fakeReset.remove();
-      }
-    }
   }
 
   render() {

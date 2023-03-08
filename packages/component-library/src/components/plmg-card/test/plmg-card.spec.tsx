@@ -58,8 +58,8 @@ describe('plmg-card', () => {
               design="borderless"
               size="small"
               color="primary"
+              text="Action"
             >
-              Action
             </plmg-button>
            </div>
          </div>
@@ -139,8 +139,7 @@ describe('plmg-card', () => {
       components: [Card],
       html: `
 <plmg-card 
-    bottom-action-text="Action" 
-    >
+    bottom-action-text="Action">
 </plmg-card>
 `,
     });
@@ -157,8 +156,8 @@ describe('plmg-card', () => {
               design="borderless"
               size="small"
               color="primary"
+              text="Action"
             >
-              Action
             </plmg-button>
            </div>
          </div>
