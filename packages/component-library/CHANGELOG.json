@@ -2,6 +2,18 @@
   "name": "@ducky/plumage",
   "entries": [
     {
+      "version": "2.0.0",
+      "tag": "@ducky/plumage_v2.0.0",
+      "date": "Wed, 08 Mar 2023 14:06:22 GMT",
+      "comments": {
+        "major": [
+          {
+            "comment": "Change selectedValue event emitter target to checkedValue in radio-button-group, add checked prop to radio-button, add value prop to radio-button-group to set the currently selected radio-button"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.14.6",
       "tag": "@ducky/plumage_v1.14.6",
       "date": "Fri, 09 Dec 2022 08:57:01 GMT",

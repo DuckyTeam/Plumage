@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Fri, 09 Dec 2022 08:57:01 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Mar 2023 14:06:22 GMT and should not be manually modified.
+
+## 2.0.0
+Wed, 08 Mar 2023 14:06:22 GMT
+
+### Breaking changes
+
+- Change selectedValue event emitter target to checkedValue in radio-button-group, add checked prop to radio-button, add value prop to radio-button-group to set the currently selected radio-button
 
 ## 1.14.6
 Fri, 09 Dec 2022 08:57:01 GMT
