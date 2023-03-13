@@ -142,5 +142,24 @@ describe('plmg-button', () => {
 
       expect(buttonClickedSpy).toHaveReceivedEvent();
     });
+    it('is disabled', async () => {
+      const page = await newE2EPage();
+      const htmlContent = `
+      <form>
+        <plmg-button label="example" type="submit" disabled/>
+      </form>`;
+
+      await page.setContent('<main>' + htmlContent + '</main>');
+
+      const element = await page.find('plmg-button');
+
+      const buttonClickedSpy = await page.spyOnEvent('submit');
+
+      await element.click();
+
+      await page.waitForChanges();
+
+      expect(buttonClickedSpy).toHaveReceivedEventTimes(0);
+    });
   });
 });
