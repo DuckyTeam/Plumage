@@ -468,6 +468,11 @@
     width: 100%;
   }
 
+  // Control: disabled
+  &.disabled {
+    opacity: 0.5;
+  }
+
   // Control: Shadow
   &.shadow {
     box-shadow: tokens.$plmg-shadow-s;

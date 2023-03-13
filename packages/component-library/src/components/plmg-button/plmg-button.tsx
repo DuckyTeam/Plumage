@@ -50,6 +50,22 @@ export class Button {
   }
 
   /**
+   * Define button's disabled state
+   * Default: false
+   * Allowed values:
+   * - true
+   * - false
+   *
+   */
+
+  @Prop() disabled: boolean = false;
+  @Watch('disabled')
+  validateDisabled(newValue: boolean) {
+    if (typeof newValue !== 'boolean')
+      throw new Error('disabled: must be boolean');
+  }
+
+  /**
    * Define button's size
    *
    * Allowed values:
@@ -258,6 +274,7 @@ export class Button {
   render() {
     const classes = {
       'plmg-button': true,
+      disabled: this.disabled,
       [this.design]: true,
       [this.size]: true,
       [this.color]: true,
@@ -275,6 +292,8 @@ export class Button {
             rel={this.rel}
             target={this.target}
             aria-label={this.label}
+            style={{ pointerEvents: this.disabled ? 'none' : 'auto' }}
+            aria-disabled={this.disabled}
           >
             {this.hasIconLeft() && (
               <plmg-svg-icon class={'icon-left'} icon={this.iconLeft} />
@@ -293,7 +312,14 @@ export class Button {
 
     return (
       <Host style={{ width: this.fullWidth ? 'full-width' : 'fit-content' }}>
-        <button class={classes} type={this.type} aria-label={this.label}>
+        <button
+          class={classes}
+          type={this.type}
+          aria-label={this.label}
+          disabled={this.disabled}
+          aria-disabled={this.disabled}
+          style={{ pointerEvents: this.disabled ? 'none' : 'auto' }}
+        >
           {this.hasIconLeft() && (
             <plmg-svg-icon class={'icon-left'} icon={this.iconLeft} />
           )}
@@ -308,7 +334,6 @@ export class Button {
       </Host>
     );
   }
-
   private hasIconLeft() {
     return this.iconLeft && (this.iconLeft as string) !== '';
   }
