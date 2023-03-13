@@ -54,6 +54,10 @@ export namespace Components {
          */
         "design": PlmgButtonDesign;
         /**
+          * Define button's disabled state Default: false Allowed values: - true - false
+         */
+        "disabled": boolean;
+        /**
           * Define button's width  Allowed values:   - true   - false  Default: false
          */
         "fullWidth": boolean;
@@ -731,6 +735,10 @@ declare namespace LocalJSX {
           * Define button's design.  Allowed values:   - filled   - filled-round   - outline   - outline-round   - borderless  Default: filled
          */
         "design"?: PlmgButtonDesign;
+        /**
+          * Define button's disabled state Default: false Allowed values: - true - false
+         */
+        "disabled"?: boolean;
         /**
           * Define button's width  Allowed values:   - true   - false  Default: false
          */
