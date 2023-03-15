@@ -2,6 +2,18 @@
   "name": "@ducky/plumage",
   "entries": [
     {
+      "version": "3.0.1",
+      "tag": "@ducky/plumage_v3.0.1",
+      "date": "Wed, 15 Mar 2023 12:04:45 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ducky/plumage-tokens\" from `^3.2.0` to `^4.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "3.0.0",
       "tag": "@ducky/plumage_v3.0.0",
       "date": "Wed, 08 Mar 2023 14:09:24 GMT",
