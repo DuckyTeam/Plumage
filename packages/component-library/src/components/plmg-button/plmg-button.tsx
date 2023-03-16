@@ -274,7 +274,6 @@ export class Button {
   render() {
     const classes = {
       'plmg-button': true,
-      disabled: this.disabled,
       [this.design]: true,
       [this.size]: true,
       [this.color]: true,
