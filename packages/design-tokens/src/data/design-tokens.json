@@ -612,7 +612,12 @@
         "type": "color",
         "description": "Deep Orange 300"
       },
-      "standout-strong-active": {
+      "standout-strong-hover-dark": {
+        "value": "#ffbca7",
+        "type": "color",
+        "description": "Deep Orange 200"
+      },
+      "standout-strong-active-dark": {
         "value": "#ffddd3",
         "type": "color",
         "description": "Deep Orange 100"
@@ -1122,9 +1127,9 @@
         "description": "Green600"
       },
       "success-weak": {
-        "value": "#b7dfb9",
+        "value": "#2a602c",
         "type": "color",
-        "description": "Green200"
+        "description": "Green800"
       },
       "success-strong": {
         "value": "#357a38",
