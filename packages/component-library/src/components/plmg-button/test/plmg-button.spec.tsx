@@ -43,7 +43,7 @@ describe('plmg-button', () => {
     </plmg-button>
     `);
   });
-  it('renders a disabled anchor element when href is provided and disabled is true', async () => {
+  it('renders a anchor element wihout a href when disabled is true', async () => {
     const page = await newSpecPage({
       components: [Button],
       html: `<plmg-button href="https://www.ducky.eco" text="Content" disabled></plmg-button>`,
@@ -51,7 +51,7 @@ describe('plmg-button', () => {
 
     expect(page.root).toEqualHtml(`
     <plmg-button href="https://www.ducky.eco" text="Content" style="width: fit-content;" disabled>
-        <a class="filled medium plmg-button primary" aria-disabled href="https://www.ducky.eco" style="pointer-events: none;">
+        <a class="filled medium plmg-button primary" aria-disabled style="pointer-events: none;">
         Content
         </a>
     </plmg-button>
@@ -110,7 +110,7 @@ describe('plmg-button', () => {
 
     expect(page.root).toEqualHtml(`
       <plmg-button disabled="true" full-width="true" style="width: full-width;" text="disabled">
-           <button aria-disabled disabled class="filled full-width medium plmg-button primary" type="button" style="pointer-events: none;" >
+           <button disabled class="filled full-width medium plmg-button primary" type="button" style="pointer-events: none;" >
              disabled
            </button>
         </plmg-button>
