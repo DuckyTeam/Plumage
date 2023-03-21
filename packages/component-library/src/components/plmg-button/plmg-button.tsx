@@ -254,6 +254,9 @@ export class Button {
   @Listen('click')
   handleClick(event: Event) {
     const clicked = event.target as HTMLElement;
+    if (this.disabled) {
+      this.el.setAttribute('aria-disabled', 'true');
+    }
     if (clicked.tagName === 'PLMG-BUTTON') {
       event.preventDefault();
       event.stopPropagation();
@@ -287,7 +290,7 @@ export class Button {
         <Host style={{ width: this.fullWidth ? 'full-width' : 'fit-content' }}>
           <a
             class={classes}
-            href={this.href}
+            href={this.disabled ? undefined : this.href}
             rel={this.rel}
             target={this.target}
             aria-label={this.label}
@@ -316,7 +319,6 @@ export class Button {
           type={this.type}
           aria-label={this.label}
           disabled={this.disabled}
-          aria-disabled={this.disabled}
           style={{ pointerEvents: this.disabled ? 'none' : 'auto' }}
         >
           {this.hasIconLeft() && (
