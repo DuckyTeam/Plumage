@@ -50,6 +50,22 @@ export class Button {
   }
 
   /**
+   * Define button's disabled state
+   * Default: false
+   * Allowed values:
+   * - true
+   * - false
+   *
+   */
+
+  @Prop() disabled: boolean = false;
+  @Watch('disabled')
+  validateDisabled(newValue: boolean) {
+    if (typeof newValue !== 'boolean')
+      throw new Error('disabled: must be boolean');
+  }
+
+  /**
    * Define button's size
    *
    * Allowed values:
@@ -238,6 +254,9 @@ export class Button {
   @Listen('click')
   handleClick(event: Event) {
     const clicked = event.target as HTMLElement;
+    if (this.disabled) {
+      this.el.setAttribute('aria-disabled', 'true');
+    }
     if (clicked.tagName === 'PLMG-BUTTON') {
       event.preventDefault();
       event.stopPropagation();
@@ -271,10 +290,12 @@ export class Button {
         <Host style={{ width: this.fullWidth ? 'full-width' : 'fit-content' }}>
           <a
             class={classes}
-            href={this.href}
+            href={this.disabled ? undefined : this.href}
             rel={this.rel}
             target={this.target}
             aria-label={this.label}
+            style={{ pointerEvents: this.disabled ? 'none' : 'auto' }}
+            aria-disabled={this.disabled}
           >
             {this.hasIconLeft() && (
               <plmg-svg-icon class={'icon-left'} icon={this.iconLeft} />
@@ -293,7 +314,13 @@ export class Button {
 
     return (
       <Host style={{ width: this.fullWidth ? 'full-width' : 'fit-content' }}>
-        <button class={classes} type={this.type} aria-label={this.label}>
+        <button
+          class={classes}
+          type={this.type}
+          aria-label={this.label}
+          disabled={this.disabled}
+          style={{ pointerEvents: this.disabled ? 'none' : 'auto' }}
+        >
           {this.hasIconLeft() && (
             <plmg-svg-icon class={'icon-left'} icon={this.iconLeft} />
           )}
@@ -308,7 +335,6 @@ export class Button {
       </Host>
     );
   }
-
   private hasIconLeft() {
     return this.iconLeft && (this.iconLeft as string) !== '';
   }

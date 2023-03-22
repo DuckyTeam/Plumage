@@ -52,11 +52,15 @@ export default {
     text: {
       control: { type: 'text' },
     },
+    disabled: {
+      options: [true, false],
+    },
   },
 };
 
 const PROPS = [
   'design',
+  'disabled',
   'size',
   'color',
   'full-width',
@@ -87,6 +91,7 @@ Primary.args = {
   ['text']: 'Button text',
   ['label']: 'Label text',
   design: 'filled',
+  disabled: false,
   size: 'medium',
   color: 'primary',
   ['full-width']: false,
@@ -100,6 +105,7 @@ Link.storyName = 'Link';
 Link.args = {
   text: 'Button as a link',
   design: 'filled',
+  disabled: false,
   size: 'medium',
   color: 'primary',
   ['full-width']: false,

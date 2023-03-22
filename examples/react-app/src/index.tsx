@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import {
   PlmgButton,
@@ -55,6 +55,27 @@ const ButtonExample = () => {
         );
       }}
       text={buttonText}
+    />
+  );
+};
+
+const ButtonDisabledExample = () => {
+  const [buttonDisabled, setButtonDisabled] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setButtonDisabled(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, [buttonDisabled]);
+
+  return (
+    <PlmgButton
+      onClick={() => {
+        setButtonDisabled(true);
+      }}
+      disabled={buttonDisabled}
+      text={buttonDisabled ? 'I am disabled...' : 'I am enabled!'}
     />
   );
 };
@@ -127,6 +148,7 @@ ReactDOM.render(
     </PlmgHeader>
     <div slot={'content'} style={{ padding: '24px' }}>
       <ButtonExample />
+      <ButtonDisabledExample />
       <br />
       <PlmgButton
         onClick={(e: any) => {

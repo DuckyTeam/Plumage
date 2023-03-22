@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "adds disabled attribute to button",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
