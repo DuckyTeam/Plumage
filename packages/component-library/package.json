@@ -1,6 +1,6 @@
 {
   "name": "@ducky/plumage",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Plumage is Ducky's design system",
   "main": "dist/cjs/plmg.cjs.js",
   "module": "dist/esm/plmg.js",
@@ -35,7 +35,7 @@
     "postgenerate-icons": "npm run generate-icon-enum"
   },
   "dependencies": {
-    "@ducky/plumage-tokens": "^4.0.0"
+    "@ducky/plumage-tokens": "^5.0.0"
   },
   "devDependencies": {
     "@axe-core/puppeteer": "~4.4.0",

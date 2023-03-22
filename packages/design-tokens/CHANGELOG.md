@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage-tokens
 
-This log was last generated on Wed, 15 Mar 2023 12:04:45 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Mar 2023 13:29:28 GMT and should not be manually modified.
+
+## 5.0.0
+Wed, 22 Mar 2023 13:29:28 GMT
+
+### Breaking changes
+
+- Replace "$plmg-color-text-neutral-inverted" with "$plmg-color-text-neutral-dark"; Update some color tokens
 
 ## 4.0.0
 Wed, 15 Mar 2023 12:04:45 GMT

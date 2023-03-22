@@ -2,6 +2,18 @@
   "name": "@ducky/plumage-tokens",
   "entries": [
     {
+      "version": "5.0.0",
+      "tag": "@ducky/plumage-tokens_v5.0.0",
+      "date": "Wed, 22 Mar 2023 13:29:28 GMT",
+      "comments": {
+        "major": [
+          {
+            "comment": "Replace \"$plmg-color-text-neutral-inverted\" with \"$plmg-color-text-neutral-dark\"; Update some color tokens"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.0.0",
       "tag": "@ducky/plumage-tokens_v4.0.0",
       "date": "Wed, 15 Mar 2023 12:04:45 GMT",
