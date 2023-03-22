@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage-tokens",
+      "comment": "Replace \"$plmg-color-text-neutral-inverted\" with \"$plmg-color-text-neutral-dark\"; Update some color tokens",
+      "type": "major"
+    }
+  ],
+  "packageName": "@ducky/plumage-tokens"
+}

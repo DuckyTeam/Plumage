@@ -63,28 +63,28 @@
     @include background-border-text(
       tokens.$plmg-color-background-primary-strong,
       tokens.$plmg-color-background-primary-strong,
-      tokens.$plmg-color-text-neutral-inverted
+      tokens.$plmg-color-text-neutral-dark
     );
 
     &:hover {
       @include background-border-text(
         tokens.$plmg-color-background-primary-strong-hover,
         tokens.$plmg-color-background-primary-strong-hover,
-        tokens.$plmg-color-text-neutral-inverted
+        tokens.$plmg-color-text-neutral-dark
       );
     }
     &:active {
       @include background-border-text(
         tokens.$plmg-color-background-primary-strong-active,
         tokens.$plmg-color-background-primary-strong-active,
-        tokens.$plmg-color-text-neutral-inverted
+        tokens.$plmg-color-text-neutral-dark
       );
     }
     &:focus-visible {
       @include background-outline-text(
         tokens.$plmg-color-background-primary-strong-hover,
         tokens.$plmg-color-border-standout,
-        tokens.$plmg-color-text-neutral-inverted,
+        tokens.$plmg-color-text-neutral-dark,
         tokens.$plmg-border-width-l
       );
     }
@@ -153,27 +153,27 @@
     @include background-border-text(
       tokens.$plmg-color-background-danger-strong,
       tokens.$plmg-color-background-danger-strong,
-      tokens.$plmg-color-text-neutral-inverted
+      tokens.$plmg-color-text-neutral-dark
     );
     &:hover {
       @include background-border-text(
         tokens.$plmg-color-background-danger-strong-hover,
         tokens.$plmg-color-background-danger-strong-hover,
-        tokens.$plmg-color-text-neutral-inverted
+        tokens.$plmg-color-text-neutral-dark
       );
     }
     &:active {
       @include background-border-text(
         tokens.$plmg-color-background-danger-strong-active,
         tokens.$plmg-color-background-danger-strong-active,
-        tokens.$plmg-color-text-neutral-inverted
+        tokens.$plmg-color-text-neutral-dark
       );
     }
     &:focus-visible {
       @include background-outline-text(
         tokens.$plmg-color-background-danger-strong-hover,
         tokens.$plmg-color-border-standout,
-        tokens.$plmg-color-text-neutral-inverted,
+        tokens.$plmg-color-text-neutral-dark,
         tokens.$plmg-border-width-l
       );
     }
