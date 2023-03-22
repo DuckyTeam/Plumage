@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Wed, 22 Mar 2023 13:29:28 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Mar 2023 14:07:29 GMT and should not be manually modified.
+
+## 3.1.0
+Wed, 22 Mar 2023 14:07:29 GMT
+
+### Minor changes
+
+- adds disabled attribute to button
 
 ## 3.0.2
 Wed, 22 Mar 2023 13:29:28 GMT

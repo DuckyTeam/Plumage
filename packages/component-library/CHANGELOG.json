@@ -2,6 +2,18 @@
   "name": "@ducky/plumage",
   "entries": [
     {
+      "version": "3.1.0",
+      "tag": "@ducky/plumage_v3.1.0",
+      "date": "Wed, 22 Mar 2023 14:07:29 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "adds disabled attribute to button"
+          }
+        ]
+      }
+    },
+    {
       "version": "3.0.2",
       "tag": "@ducky/plumage_v3.0.2",
       "date": "Wed, 22 Mar 2023 13:29:28 GMT",
