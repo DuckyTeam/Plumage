@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "Fixes plmg-text-input id uniqueness, and keyboard navigation (single tab will make text input editable)",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}

@@ -96,17 +96,15 @@
   }
 }
 
-.plmg-text-input-field-wrapper {
-  &:focus-visible {
-    outline: none;
-  }
-  &:focus-visible > input {
-    outline: tokens.$plmg-border-width-l solid
-      tokens.$plmg-color-border-standout;
-    outline-offset: -2px;
-    border-radius: tokens.$plmg-border-radius-s;
-    background-color: tokens.$plmg-color-background-neutral-hover;
-  }
+input {
+  min-width: fit-content;
+  box-shadow: tokens.$plmg-shadow-inner-s;
+  box-sizing: border-box;
+  border: tokens.$plmg-border-width-m solid
+    tokens.$plmg-color-border-neutral-weak;
+  color: tokens.$plmg-color-text-neutral;
+  border-radius: tokens.$plmg-border-radius-s;
+  background-color: tokens.$plmg-color-background-neutral;
 
   // remove arrows from number input
   input[type='number']::-webkit-outer-spin-button,
@@ -124,46 +122,40 @@
     -webkit-appearance: none;
   }
 
-  input {
-    min-width: fit-content;
-    box-shadow: tokens.$plmg-shadow-inner-s;
-    border: none;
-    box-sizing: border-box;
+  &.full-width {
+    width: 100%;
+  }
+  &:disabled,
+  &:read-only {
+    background-color: tokens.$plmg-color-background-neutral-medium;
+  }
+  &.error {
     border: tokens.$plmg-border-width-m solid
-      tokens.$plmg-color-border-neutral-weak;
-    color: tokens.$plmg-color-text-neutral;
-    border-radius: tokens.$plmg-border-radius-s;
-    background-color: tokens.$plmg-color-background-neutral;
-    &.full-width {
-      width: 100%;
-    }
-    &:disabled,
-    &:read-only {
-      background-color: tokens.$plmg-color-background-neutral-medium;
-    }
-    &.error {
-      border: tokens.$plmg-border-width-m solid
-        tokens.$plmg-color-border-danger-strong;
-    }
-    &.medium {
-      @include plmg-font-form-text-m;
-      height: 51px;
-      padding: tokens.$plmg-spacing-x0-75 tokens.$plmg-spacing-x1;
-    }
-    &.large {
-      @include plmg-font-form-text-l;
-      height: 62px;
-      padding: tokens.$plmg-spacing-x1 tokens.$plmg-spacing-x1-5;
-    }
-    @include reset-states;
-    &:hover:not(:focus):not(:disabled):not(:read-only) {
-      background-color: tokens.$plmg-color-background-neutral-hover;
-    }
+      tokens.$plmg-color-border-danger-strong;
+  }
+  &.medium {
+    @include plmg-font-form-text-m;
+    height: 51px;
+    padding: tokens.$plmg-spacing-x0-75 tokens.$plmg-spacing-x1;
     &:focus-visible {
-      outline: none;
-      border: tokens.$plmg-border-width-m solid
-        tokens.$plmg-color-border-primary;
+      margin: 0 1px; //to account for border width change when focused
     }
+  }
+  &.large {
+    @include plmg-font-form-text-l;
+    height: 62px;
+    padding: tokens.$plmg-spacing-x1 tokens.$plmg-spacing-x1-5;
+    &:focus-visible {
+      margin: 0 1px; //to account for border width change when focused
+    }
+  }
+  &:focus-visible {
+    outline: none;
+    border: tokens.$plmg-border-width-s solid tokens.$plmg-color-border-primary;
+  }
+  @include reset-states;
+  &:hover:not(:focus):not(:disabled):not(:read-only) {
+    background-color: tokens.$plmg-color-background-neutral-hover;
   }
 }
 
