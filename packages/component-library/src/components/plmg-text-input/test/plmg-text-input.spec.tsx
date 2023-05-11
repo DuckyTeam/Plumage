@@ -10,12 +10,10 @@ describe('plmg-text-input', () => {
     expect(page.root).toEqualHtml(`
     <plmg-text-input label="Default">
       <div class="plmg-text-input-wrapper">
-        <label class="medium plmg-text-input-label" htmlfor="default">
+        <label class="medium plmg-text-input-label">
           Default
+          <input autocomplete="off" class="medium full-width" type="text"/>
         </label>
-        <div class="plmg-text-input-field-wrapper" tabindex="0">
-          <input autocomplete="off" class="medium full-width" id="default" type="text"/>
-        </div>
       </div>
     </plmg-text-input>
     `);
@@ -29,12 +27,10 @@ describe('plmg-text-input', () => {
     expect(page.root).toEqualHtml(`
     <plmg-text-input label="Default" name="my-name">
       <div class="plmg-text-input-wrapper">
-        <label class="medium plmg-text-input-label" htmlfor="default">
+        <label class="medium plmg-text-input-label">
           Default
+          <input autocomplete="off" class="medium full-width" name="my-name" type="text"/>
         </label>
-        <div class="plmg-text-input-field-wrapper" tabindex="0">
-          <input autocomplete="off" class="medium full-width" id="default" name="my-name" type="text"/>
-        </div>
       </div>
     </plmg-text-input>
     `);
@@ -48,12 +44,10 @@ describe('plmg-text-input', () => {
     expect(page.root).toEqualHtml(`
     <plmg-text-input label="Large" size="large" width="20">
       <div class="plmg-text-input-wrapper">
-        <label class="large plmg-text-input-label" htmlfor="large">
+        <label class="large plmg-text-input-label">
           Large
+          <input autocomplete="off" class="large" style="width: 20px;" type="text" />
         </label>
-        <div class="plmg-text-input-field-wrapper" tabindex="0">
-          <input autocomplete="off" class="large" style="width: 20px;" id="large" type="text" />
-        </div>
       </div>
     </plmg-text-input>
     `);
@@ -67,12 +61,10 @@ describe('plmg-text-input', () => {
     expect(page.root).toEqualHtml(`
     <plmg-text-input min-length="5" label="Min Length">
       <div class="plmg-text-input-wrapper">
-        <label class="medium plmg-text-input-label" htmlfor="min-length">
+        <label class="medium plmg-text-input-label">
           Min Length
+          <input autocomplete="off" class="medium full-width" type="text" minlength="5"/>
         </label>
-        <div class="plmg-text-input-field-wrapper" tabindex="0">
-          <input autocomplete="off" class="medium full-width" id="min-length" type="text" minlength="5"/>
-        </div>
       </div>
     </plmg-text-input>
     `);
@@ -86,12 +78,10 @@ describe('plmg-text-input', () => {
     expect(page.root).toEqualHtml(`
     <plmg-text-input max-length="10" label="Max Length">
       <div class="plmg-text-input-wrapper">
-        <label class="medium plmg-text-input-label" htmlfor="max-length">
+        <label class="medium plmg-text-input-label">
           Max Length
+          <input autocomplete="off" class="medium full-width" type="text" maxlength="10"/>
         </label>
-        <div class="plmg-text-input-field-wrapper" tabindex="0">
-          <input autocomplete="off" class="medium full-width" id="max-length" type="text" maxlength="10"/>
-        </div>
       </div>
     </plmg-text-input>
     `);
@@ -105,12 +95,10 @@ describe('plmg-text-input', () => {
     expect(page.root).toEqualHtml(`
     <plmg-text-input label="Large" size="large">
       <div class="plmg-text-input-wrapper">
-        <label class="large plmg-text-input-label" htmlfor="large">
+        <label class="large plmg-text-input-label">
           Large
+          <input autocomplete="off" class="full-width large" type="text"/>
         </label>
-        <div class="plmg-text-input-field-wrapper" tabindex="0">
-          <input autocomplete="off" class="full-width large" id="large" type="text"/>
-        </div>
       </div>
     </plmg-text-input>
     `);
@@ -126,13 +114,11 @@ describe('plmg-text-input', () => {
       <div class="plmg-text-input-wrapper">
         <label
           class="medium plmg-text-input-label visually-hidden"
-          htmlfor="hidden"
+         
         >
           Hidden
+          <input autocomplete="off" class="medium full-width" type="text"/>
         </label>
-        <div class="plmg-text-input-field-wrapper" tabindex="0">
-          <input autocomplete="off" class="medium full-width" id="hidden" type="text"/>
-        </div>
       </div>
     </plmg-text-input>
     `);
@@ -146,12 +132,10 @@ describe('plmg-text-input', () => {
     expect(page.root).toEqualHtml(`
     <plmg-text-input label="Tip" tip="Tip Text">
       <div class="plmg-text-input-wrapper">
-        <label class="medium plmg-text-input-label" htmlfor="tip">
+        <label class="medium plmg-text-input-label">
           Tip
+          <input autocomplete="off" class="medium full-width" type="text"/>
         </label>
-        <div class="plmg-text-input-field-wrapper" tabindex="0">
-          <input autocomplete="off" class="medium full-width" id="tip" type="text"/>
-        </div>
         <span class="medium plmg-text-input-tip">Tip Text</span>
       </div>
     </plmg-text-input>
@@ -166,16 +150,14 @@ describe('plmg-text-input', () => {
     expect(page.root).toEqualHtml(`
     <plmg-text-input label="Error" error-message="error">
       <div class="plmg-text-input-wrapper">
-        <label class="medium plmg-text-input-label" htmlfor="error">
+        <label class="medium plmg-text-input-label">
           Error
+        <input autocomplete="off" class="error medium full-width" type="text"/>
         </label>
-        <div class="plmg-text-input-field-wrapper" tabindex="0">
-          <input autocomplete="off" class="error medium full-width" id="error" type="text"/>
-        </div>
         <plmg-error-message
-        message="error"
-        size="medium"
-        class="plmg-text-input-error-message"
+          message="error"
+          size="medium"
+          class="plmg-text-input-error-message"
         ></plmg-error-message>
       </div>
     </plmg-text-input>
@@ -190,12 +172,10 @@ describe('plmg-text-input', () => {
     expect(page.root).toEqualHtml(`
     <plmg-text-input disabled="true" label="disabled">
       <div class="plmg-text-input-wrapper">
-        <label class="medium plmg-text-input-label" htmlfor="disabled">
+        <label class="medium plmg-text-input-label">
           disabled
+          <input autocomplete="off" class="medium full-width" disabled type="text">
         </label>
-        <div class="plmg-text-input-field-wrapper" tabindex="0">
-          <input autocomplete="off" class="medium full-width" disabled id="disabled" type="text">
-        </div>
       </div>
     </plmg-text-input>
     `);
@@ -209,12 +189,10 @@ describe('plmg-text-input', () => {
     expect(page.root).toEqualHtml(`
     <plmg-text-input read-only="true" label="read-only">
       <div class="plmg-text-input-wrapper">
-        <label class="medium plmg-text-input-label" htmlfor="read-only">
+        <label class="medium plmg-text-input-label">
           read-only
+        <input autocomplete="off" class="medium full-width" readonly type="text"/>
         </label>
-        <div class="plmg-text-input-field-wrapper" tabindex="0">
-          <input autocomplete="off" class="medium full-width" readonly id="read-only" type="text"/>
-        </div>
       </div>
     </plmg-text-input>
     `);
@@ -228,12 +206,10 @@ describe('plmg-text-input', () => {
     expect(page.root).toEqualHtml(`
     <plmg-text-input auto-complete="on" label="autocomplete">
       <div class="plmg-text-input-wrapper">
-        <label class="medium plmg-text-input-label" htmlfor="autocomplete">
+        <label class="medium plmg-text-input-label">
           autocomplete
+          <input autocomplete="on" class="medium full-width" type="text"/>
         </label>
-        <div class="plmg-text-input-field-wrapper" tabindex="0">
-          <input autocomplete="on" class="medium full-width" id="autocomplete" type="text"/>
-        </div>
       </div>
     </plmg-text-input>
     `);
@@ -247,12 +223,10 @@ describe('plmg-text-input', () => {
     expect(page.root).toEqualHtml(`
     <plmg-text-input placeholder="placeholder" label="placeholder">
       <div class="plmg-text-input-wrapper">
-        <label class="medium plmg-text-input-label" htmlfor="placeholder">
+        <label class="medium plmg-text-input-label">
           placeholder
+          <input autocomplete="off" placeholder="placeholder" class="medium full-width" type="text"/>
         </label>
-        <div class="plmg-text-input-field-wrapper" tabindex="0">
-          <input autocomplete="off" placeholder="placeholder" class="medium full-width" id="placeholder" type="text"/>
-        </div>
       </div>
     </plmg-text-input>
     `);
@@ -279,12 +253,10 @@ describe('plmg-text-input types', () => {
     expect(page.root).toEqualHtml(`
     <plmg-text-input label="Default">
       <div class="plmg-text-input-wrapper">
-        <label class="medium plmg-text-input-label" htmlfor="default">
+        <label class="medium plmg-text-input-label">
           Default
+        <input autocomplete="off" class="medium full-width" type="text"/>
         </label>
-        <div class="plmg-text-input-field-wrapper" tabindex="0">
-          <input autocomplete="off" class="medium full-width" id="default" type="text"/>
-        </div>
       </div>
     </plmg-text-input>
     `);
@@ -298,12 +270,10 @@ describe('plmg-text-input types', () => {
     expect(page.root).toEqualHtml(`
     <plmg-text-input label="password" type="password">
       <div class="plmg-text-input-wrapper">
-        <label class="medium plmg-text-input-label" htmlfor="password">
+        <label class="medium plmg-text-input-label">
           password
+          <input autocomplete="off" type="password" class="medium full-width"/>
         </label>
-        <div class="plmg-text-input-field-wrapper" tabindex="0">
-          <input autocomplete="off" type="password" class="medium full-width" id="password"/>
-        </div>
       </div>
     </plmg-text-input>
     `);
@@ -317,12 +287,10 @@ describe('plmg-text-input types', () => {
     expect(page.root).toEqualHtml(`
       <plmg-text-input label="email" type="email">
         <div class="plmg-text-input-wrapper">
-          <label class="medium plmg-text-input-label" htmlfor="email">
+          <label class="medium plmg-text-input-label">
             email
+            <input autocomplete="off" type="email" class="medium full-width"/>
           </label>
-          <div class="plmg-text-input-field-wrapper" tabindex="0">
-            <input autocomplete="off" type="email" class="medium full-width" id="email"/>
-          </div>
         </div>
       </plmg-text-input>
     `);
@@ -336,12 +304,10 @@ describe('plmg-text-input types', () => {
     expect(page.root).toEqualHtml(`
       <plmg-text-input label="email" type="email">
         <div class="plmg-text-input-wrapper">
-          <label class="medium plmg-text-input-label" htmlfor="email">
+          <label class="medium plmg-text-input-label">
             email
+          <input autocomplete="off" type="email" class="medium full-width" type="text"/>
           </label>
-          <div class="plmg-text-input-field-wrapper" tabindex="0">
-            <input autocomplete="off" type="email" class="medium full-width" id="email" type="text"/>
-          </div>
         </div>
       </plmg-text-input>
     `);
@@ -355,12 +321,10 @@ describe('plmg-text-input types', () => {
     expect(page.root).toEqualHtml(`
       <plmg-text-input label="email" type="email">
         <div class="plmg-text-input-wrapper">
-          <label class="medium plmg-text-input-label" htmlfor="email">
+          <label class="medium plmg-text-input-label">
             email
+            <input autocomplete="off" type="email" class="medium full-width" type="text"/>
           </label>
-          <div class="plmg-text-input-field-wrapper" tabindex="0">
-            <input autocomplete="off" type="email" class="medium full-width" id="email" type="text"/>
-          </div>
         </div>
       </plmg-text-input>
     `);
@@ -374,12 +338,10 @@ describe('plmg-text-input types', () => {
     expect(page.root).toEqualHtml(`
       <plmg-text-input label="tel" type="tel">
         <div class="plmg-text-input-wrapper">
-          <label class="medium plmg-text-input-label" htmlfor="tel">
+          <label class="medium plmg-text-input-label">
             tel
+            <input autocomplete="off" type="tel" class="medium full-width"/>
           </label>
-          <div class="plmg-text-input-field-wrapper" tabindex="0">
-            <input autocomplete="off" type="tel" class="medium full-width" id="tel"/>
-          </div>
         </div>
       </plmg-text-input>
     `);
@@ -393,12 +355,10 @@ describe('plmg-text-input types', () => {
     expect(page.root).toEqualHtml(`
       <plmg-text-input label="url" type="url">
         <div class="plmg-text-input-wrapper">
-          <label class="medium plmg-text-input-label" htmlfor="url">
+          <label class="medium plmg-text-input-label">
             url
+            <input autocomplete="off" type="url" class="medium full-width">
           </label>
-          <div class="plmg-text-input-field-wrapper" tabindex="0">
-            <input autocomplete="off" type="url" class="medium full-width" id="url">
-          </div>
         </div>
       </plmg-text-input>
     `);
@@ -412,12 +372,10 @@ describe('plmg-text-input types', () => {
     expect(page.root).toEqualHtml(`
       <plmg-text-input label="search" type="search">
         <div class="plmg-text-input-wrapper">
-          <label class="medium plmg-text-input-label" htmlfor="search">
+          <label class="medium plmg-text-input-label">
             search
+            <input autocomplete="off" type="search" class="medium full-width"/>
           </label>
-          <div class="plmg-text-input-field-wrapper" tabindex="0">
-            <input autocomplete="off" type="search" class="medium full-width" id="search"/>
-          </div>
         </div>
       </plmg-text-input>
     `);
@@ -433,12 +391,10 @@ describe('plmg-text-input type: number', () => {
     expect(page.root).toEqualHtml(`
     <plmg-text-input type="number" label="number">
       <div class="plmg-text-input-wrapper">
-        <label class="medium plmg-text-input-label" htmlfor="number">
+        <label class="medium plmg-text-input-label">
           number
+          <input autocomplete="off" class="medium full-width" type="number"/>
         </label>
-        <div class="plmg-text-input-field-wrapper" tabindex="0">
-          <input autocomplete="off" class="medium full-width" id="number" type="number"/>
-        </div>
       </div>
     </plmg-text-input>
     `);
@@ -452,12 +408,10 @@ describe('plmg-text-input type: number', () => {
     expect(page.root).toEqualHtml(`
     <plmg-text-input type="number" min="0" label="number">
       <div class="plmg-text-input-wrapper">
-        <label class="medium plmg-text-input-label" htmlfor="number">
+        <label class="medium plmg-text-input-label">
           number
+          <input autocomplete="off" class="medium full-width" type="number" min="0"/>
         </label>
-        <div class="plmg-text-input-field-wrapper" tabindex="0">
-          <input autocomplete="off" class="medium full-width" id="number" type="number" min="0"/>
-        </div>
       </div>
     </plmg-text-input>
     `);
@@ -470,12 +424,10 @@ describe('plmg-text-input type: number', () => {
     expect(page.root).toEqualHtml(`
     <plmg-text-input type="number" max="10"label="number">
       <div class="plmg-text-input-wrapper">
-        <label class="medium plmg-text-input-label" htmlfor="number">
+        <label class="medium plmg-text-input-label">
           number
+          <input autocomplete="off" class="medium full-width" type="number" max="10"/>
         </label>
-        <div class="plmg-text-input-field-wrapper" tabindex="0">
-          <input autocomplete="off" class="medium full-width" id="number" type="number" max="10"/>
-        </div>
       </div>
     </plmg-text-input>
     `);
@@ -488,12 +440,10 @@ describe('plmg-text-input type: number', () => {
     expect(page.root).toEqualHtml(`
     <plmg-text-input type="number" step="10" label="number">
       <div class="plmg-text-input-wrapper">
-        <label class="medium plmg-text-input-label" htmlfor="number">
+        <label class="medium plmg-text-input-label">
           number
+          <input autocomplete="off" class="medium full-width" type="number" step="10"/>
         </label>
-        <div class="plmg-text-input-field-wrapper" tabindex="0">
-          <input autocomplete="off" class="medium full-width" id="number" type="number" step="10"/>
-        </div>
       </div>
     </plmg-text-input>
     `);
