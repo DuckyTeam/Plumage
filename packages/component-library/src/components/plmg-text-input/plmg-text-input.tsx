@@ -399,16 +399,13 @@ export class TextInput {
 
     return (
       <div class={'plmg-text-input-wrapper'}>
-        <label class={labelClasses} htmlFor={this.labelToId()}>
+        <label class={labelClasses}>
           {this.label}
           {this.showLabel && this.required && <span class={'required'}>*</span>}
-        </label>
-        <div class={'plmg-text-input-field-wrapper'} tabIndex={0}>
           <input
             autoComplete={this.autoComplete}
             class={inputClasses}
             disabled={this.disabled}
-            id={this.labelToId()}
             max={this.max}
             maxlength={this.maxLength}
             min={this.min}
@@ -428,7 +425,8 @@ export class TextInput {
             type={this.type}
             value={this.internalValue}
           />
-        </div>
+        </label>
+
         {this.tip && <span class={tipClasses}>{this.tip}</span>}
         {this.errorMessage && (
           <plmg-error-message
@@ -439,9 +437,5 @@ export class TextInput {
         )}
       </div>
     );
-  }
-
-  private labelToId() {
-    return this.label.toLowerCase().replace(/\s+/g, '-');
   }
 }
