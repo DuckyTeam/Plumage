@@ -1,6 +1,14 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Thu, 11 May 2023 13:04:56 GMT and should not be manually modified.
+This log was last generated on Mon, 15 May 2023 08:10:26 GMT and should not be manually modified.
+
+## 3.1.2
+Mon, 15 May 2023 08:10:26 GMT
+
+### Patches
+
+- Fixes plmg-text-input id uniqueness, and keyboard navigation (single tab will make text input editable)
+- Fix style changes for number/search inputs, and prevent scrolling numbers on number input
 
 ## 3.1.1
 Thu, 11 May 2023 13:04:56 GMT
