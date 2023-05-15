@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "Fix style changes for number/search inputs, and prevent scrolling numbers on number input",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}

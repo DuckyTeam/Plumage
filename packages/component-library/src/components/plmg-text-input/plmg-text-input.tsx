@@ -424,6 +424,11 @@ export class TextInput {
             title={''}
             type={this.type}
             value={this.internalValue}
+            onWheel={(e) => {
+              if (e.target instanceof HTMLElement) {
+                e.target.blur();
+              }
+            }}
           />
         </label>
 
