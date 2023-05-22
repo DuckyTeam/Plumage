@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Mon, 15 May 2023 08:10:26 GMT and should not be manually modified.
+This log was last generated on Mon, 22 May 2023 13:08:00 GMT and should not be manually modified.
+
+## 3.1.3
+Mon, 22 May 2023 13:08:00 GMT
+
+### Patches
+
+- plmg-text-input elements use randommized id values, and fixes styling
 
 ## 3.1.2
 Mon, 15 May 2023 08:10:26 GMT
