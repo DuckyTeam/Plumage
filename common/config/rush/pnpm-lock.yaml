@@ -17341,6 +17341,11 @@ packages:
     hasBin: true
     dev: false
 
+  /uuid/9.0.0:
+    resolution: {integrity: sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==}
+    hasBin: true
+    dev: false
+
   /v8-compile-cache/2.3.0:
     resolution: {integrity: sha512-l8lCEmLcLYZh4nbunNZvQCJc5pv7+RCwa8q/LdUx8u7lsWvPDKmpodJAJNwkAhJC//dFY48KuIEmjtd4RViDrA==}
     dev: false
@@ -18113,7 +18118,7 @@ packages:
     dev: false
 
   file:projects/example-react-app.tgz:
-    resolution: {integrity: sha512-LQeeJ000bsM9mWX9mH04AgSzrFpcYUUDH+6hyk7P2inFvbILfgeQNkfi+w0bdvreEwVwmsUGMAMWBg39I8U1+g==, tarball: file:projects/example-react-app.tgz}
+    resolution: {integrity: sha512-WH2u9sb+rIlLmsNV9CB/nq4vyTkuPgZuWG9jwwm/jBpNduH9rLuAUZgo3vRZ/zqYZZK2ThImekBDEtUWQVAgkg==, tarball: file:projects/example-react-app.tgz}
     name: '@rush-temp/example-react-app'
     version: 0.0.0
     dependencies:
@@ -18151,7 +18156,7 @@ packages:
     dev: false
 
   file:projects/plumage-react.tgz:
-    resolution: {integrity: sha512-FfcKCJC/3ko0WAYgz9mrLuZSwgeWnDn8vehaNqC2Vl+J4v7BoyjIyhCk3+rUMCaMMzK+cU0q3mi+7lN6eBcAbw==, tarball: file:projects/plumage-react.tgz}
+    resolution: {integrity: sha512-MIJXp5RkaL671jQcdRSf6hJGgES2onasSFnvRdKRcwc9MaeOX/OD/Lc0VRuC7TXeWb6zKKlpVR/bsEWQbuFs/A==, tarball: file:projects/plumage-react.tgz}
     name: '@rush-temp/plumage-react'
     version: 0.0.0
     dependencies:
@@ -18175,7 +18180,7 @@ packages:
     dev: false
 
   file:projects/plumage.tgz_2743be61cb4a6f37f54c738ff73146e0:
-    resolution: {integrity: sha512-7AP14zjvKnJdrdgpEBrySnFGDTxMz+8nSnYokRHioIyJPOLKo8bB+jGuPtJfr1YGKNMy5ZKGQsJH0cQ9w2FmLQ==, tarball: file:projects/plumage.tgz}
+    resolution: {integrity: sha512-zdIYuOXopyz4D5N7F5uGWPgjJTPniK+t5vyRfePOBpFzSfE8Uv7v1q2PeWfBN/OitgrIq0SO9uVvHfXlph96rg==, tarball: file:projects/plumage.tgz}
     id: file:projects/plumage.tgz
     name: '@rush-temp/plumage'
     version: 0.0.0
@@ -18219,6 +18224,7 @@ packages:
       storybook-addon-designs: 6.3.1
       svgo: 2.8.0
       typescript: 4.7.4
+      uuid: 9.0.0
     transitivePeerDependencies:
       - '@babel/core'
       - '@storybook/angular'
@@ -18260,7 +18266,7 @@ packages:
     dev: false
 
   file:projects/vite-react-app.tgz_sass@1.54.4:
-    resolution: {integrity: sha512-v2FWVJGVSrrHg0eKIsDIxhdW4xAgc1sivjud5ZXaleIGPrXQwPpkLy55bZnBifLXvyUOoTjWUVY6GLxEOWCdAg==, tarball: file:projects/vite-react-app.tgz}
+    resolution: {integrity: sha512-X3YS0iRSQlDudjaNihTVn6MJ4Vm63JqzM/sQZdt/P0V1GDUngpFpPOpPN1/c+EI9kt2+i6n3fcHkY4DY3Y48hQ==, tarball: file:projects/vite-react-app.tgz}
     id: file:projects/vite-react-app.tgz
     name: '@rush-temp/vite-react-app'
     version: 0.0.0

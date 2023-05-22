@@ -8,6 +8,7 @@ import {
   Event,
   EventEmitter,
 } from '@stencil/core';
+import { v4 as uuidv4 } from 'uuid';
 import {
   isPlmgTextInputSize,
   PlmgTextInputType,
@@ -21,6 +22,7 @@ import {
   shadow: false,
 })
 export class TextInput {
+  private inputId: string;
   /**
    * Reference to host HTML element.
    */
@@ -377,6 +379,7 @@ export class TextInput {
 
   componentWillLoad() {
     this.validateSize(this.size);
+    this.inputId = this.generateId();
   }
 
   render() {
@@ -399,39 +402,39 @@ export class TextInput {
 
     return (
       <div class={'plmg-text-input-wrapper'}>
-        <label class={labelClasses}>
+        <label class={labelClasses} htmlFor={this.inputId}>
           {this.label}
           {this.showLabel && this.required && <span class={'required'}>*</span>}
-          <input
-            autoComplete={this.autoComplete}
-            class={inputClasses}
-            disabled={this.disabled}
-            max={this.max}
-            maxlength={this.maxLength}
-            min={this.min}
-            minlength={this.minLength}
-            name={this.name}
-            onInput={(event) => this.handleInputChange(event.target)}
-            pattern={this.pattern}
-            placeholder={this.placeholder}
-            readonly={this.readOnly}
-            required={this.required}
-            step={this.step}
-            style={{
-              width: this.width && this.width + 'px',
-            }}
-            // supresss the default browser validation popup
-            title={''}
-            type={this.type}
-            value={this.internalValue}
-            onWheel={(e) => {
-              if (e.target instanceof HTMLElement) {
-                e.target.blur();
-              }
-            }}
-          />
         </label>
-
+        <input
+          id={this.inputId}
+          autoComplete={this.autoComplete}
+          class={inputClasses}
+          disabled={this.disabled}
+          max={this.max}
+          maxlength={this.maxLength}
+          min={this.min}
+          minlength={this.minLength}
+          name={this.name}
+          onInput={(event) => this.handleInputChange(event.target)}
+          pattern={this.pattern}
+          placeholder={this.placeholder}
+          readonly={this.readOnly}
+          required={this.required}
+          step={this.step}
+          style={{
+            width: this.width && this.width + 'px',
+          }}
+          // supress the default browser validation popup
+          title={''}
+          type={this.type}
+          value={this.internalValue}
+          onWheel={(e) => {
+            if (e.target instanceof HTMLElement) {
+              e.target.blur();
+            }
+          }}
+        />
         {this.tip && <span class={tipClasses}>{this.tip}</span>}
         {this.errorMessage && (
           <plmg-error-message
@@ -442,5 +445,9 @@ export class TextInput {
         )}
       </div>
     );
+  }
+
+  private generateId() {
+    return `plmg-${uuidv4()}`;
   }
 }

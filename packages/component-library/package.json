@@ -35,7 +35,8 @@
     "postgenerate-icons": "npm run generate-icon-enum"
   },
   "dependencies": {
-    "@ducky/plumage-tokens": "^5.0.0"
+    "@ducky/plumage-tokens": "^5.0.0",
+    "uuid": "~9.0.0"
   },
   "devDependencies": {
     "@axe-core/puppeteer": "~4.4.0",
