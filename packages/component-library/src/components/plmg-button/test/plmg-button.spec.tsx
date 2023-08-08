@@ -66,10 +66,10 @@ describe('plmg-button', () => {
     expect(page.root).toEqualHtml(`
     <plmg-button icon-center="home" icon-left="home" icon-right="home" text="Content" style="width: fit-content;">
          <button class="filled icon-button medium plmg-button primary" type="button" style="pointer-events: auto;">
-           <plmg-svg-icon class="icon-left" icon="home"></plmg-svg-icon>
-           <plmg-svg-icon class="icon-center" icon="home"></plmg-svg-icon>
+           <plmg-svg-icon class="icon-left" icon="home" trigger-button-on-click></plmg-svg-icon>
+           <plmg-svg-icon class="icon-center" icon="home" trigger-button-on-click></plmg-svg-icon>
            Content
-           <plmg-svg-icon class="icon-right" icon="home"></plmg-svg-icon>
+           <plmg-svg-icon class="icon-right" icon="home" trigger-button-on-click></plmg-svg-icon>
          </button>
 
     `);
@@ -83,7 +83,7 @@ describe('plmg-button', () => {
     expect(page.root).toEqualHtml(`
     <plmg-button icon-center="home" label="test" style="width: fit-content;">
          <button aria-label="test" class="filled icon-button medium plmg-button primary" type="button" style="pointer-events: auto;">
-           <plmg-svg-icon class="icon-center" icon="home"></plmg-svg-icon>
+           <plmg-svg-icon class="icon-center" icon="home" trigger-button-on-click></plmg-svg-icon>
          </button>
       </plmg-button>
     `);
@@ -97,7 +97,7 @@ describe('plmg-button', () => {
     expect(page.root).toEqualHtml(`
       <plmg-button full-width="true" icon-center="home" label="test" style="width: full-width;">
            <button aria-label="test" class="filled full-width icon-button medium plmg-button primary" type="button" style="pointer-events: auto;">
-             <plmg-svg-icon class="icon-center" icon="home"></plmg-svg-icon>
+             <plmg-svg-icon class="icon-center" icon="home" trigger-button-on-click></plmg-svg-icon>
            </button>
         </plmg-button>
       `);

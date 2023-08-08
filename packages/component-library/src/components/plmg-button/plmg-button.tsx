@@ -301,14 +301,14 @@ export class Button {
               <plmg-svg-icon
                 class={'icon-left'}
                 icon={this.iconLeft}
-                triggerButtonOnClick
+                trigger-button-on-click
               />
             )}
             {this.hasIconCenter() && (
               <plmg-svg-icon
                 class={'icon-center'}
                 icon={this.iconCenter}
-                triggerButtonOnClick
+                trigger-button-on-click
               />
             )}
             {this.text}
@@ -316,7 +316,7 @@ export class Button {
               <plmg-svg-icon
                 class={'icon-right'}
                 icon={this.iconRight}
-                triggerButtonOnClick
+                trigger-button-on-click
               />
             )}
           </a>
@@ -337,14 +337,14 @@ export class Button {
             <plmg-svg-icon
               class={'icon-left'}
               icon={this.iconLeft}
-              triggerButtonOnClick
+              trigger-button-on-click
             />
           )}
           {this.hasIconCenter() && (
             <plmg-svg-icon
               class={'icon-center'}
               icon={this.iconCenter}
-              triggerButtonOnClick
+              trigger-button-on-click
             />
           )}
           {this.text}
@@ -352,7 +352,7 @@ export class Button {
             <plmg-svg-icon
               class={'icon-right'}
               icon={this.iconRight}
-              triggerButtonOnClick
+              trigger-button-on-click
             />
           )}
         </button>
