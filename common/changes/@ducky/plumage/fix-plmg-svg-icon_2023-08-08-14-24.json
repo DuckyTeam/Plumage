@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "Fixes `plmg-button` icon click behavior with new `triggerButtonOnClick` prop, allowing icon clicks to trigger parent button actions.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
