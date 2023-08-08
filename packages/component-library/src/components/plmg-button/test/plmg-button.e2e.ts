@@ -175,9 +175,6 @@ describe('plmg-button', () => {
         const svgElement = await page.find('plmg-button plmg-svg-icon');
         const button = await page.find('plmg-button button');
 
-        console.log(svgElement);
-
-        // Spies for both button and SVG element.
         const buttonClickedSpy = await button.spyOnEvent('click');
 
         await svgElement.click();
