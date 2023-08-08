@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useState, useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import {
   PlmgButton,
@@ -77,6 +77,49 @@ const ButtonDisabledExample = () => {
       disabled={buttonDisabled}
       text={buttonDisabled ? 'I am disabled...' : 'I am enabled!'}
     />
+  );
+};
+
+const Modal = ({ isOpen, onClose }) => {
+  const dialogRef = useRef(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      dialogRef.current.showModal();
+    } else {
+      dialogRef.current.close();
+    }
+  }, [isOpen]);
+
+  return (
+    <dialog ref={dialogRef}>
+      <PlmgButton
+        iconCenter="close"
+        label="close"
+        design="borderless"
+        onClick={onClose}
+      />
+      I am modal
+    </dialog>
+  );
+};
+
+const ModalWrapper = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  return (
+    <div>
+      <PlmgButton onClick={openModal} text="Open Modal" />
+      <Modal isOpen={isModalOpen} onClose={closeModal} />
+    </div>
   );
 };
 
@@ -176,6 +219,7 @@ ReactDOM.render(
       <PlmgRadioButton name="dairy" value={'cheese'} checked={true} />
       Single Radio Button without checked set
       <PlmgRadioButton name="dairy" value={'cheese'} />
+      <ModalWrapper />
       <PlmgSeparator />
       <br />
       <PlmgCard

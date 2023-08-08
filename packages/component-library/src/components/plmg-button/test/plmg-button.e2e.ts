@@ -162,4 +162,28 @@ describe('plmg-button', () => {
       expect(buttonClickedSpy).toHaveReceivedEventTimes(0);
     });
   });
+  describe('plmg-button SVG click delegation', () => {
+    describe('with triggerButtonOnClick set to true', () => {
+      it('should trigger button click when SVG is clicked', async () => {
+        const page = await newE2EPage();
+        const htmlContent = `
+          <plmg-button triggerButtonOnClick="true" icon-left="home"></plmg-button>
+        `;
+
+        await page.setContent(htmlContent);
+
+        const svgElement = await page.find('plmg-button plmg-svg-icon');
+        const button = await page.find('plmg-button button');
+
+        console.log(svgElement);
+
+        // Spies for both button and SVG element.
+        const buttonClickedSpy = await button.spyOnEvent('click');
+
+        await svgElement.click();
+
+        expect(buttonClickedSpy).toHaveReceivedEvent();
+      });
+    });
+  });
 });

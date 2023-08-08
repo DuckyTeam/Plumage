@@ -381,6 +381,10 @@ export namespace Components {
           * Define the icon's size.  Allowed values: <value><unit>  Examples: - 1em - 42px  Default: 1em
          */
         "size": string;
+        /**
+          * Allow the icon to trigger click on the closest parent button. Default: false
+         */
+        "triggerButtonOnClick": boolean;
     }
     interface PlmgTab {
         /**
@@ -1071,6 +1075,10 @@ declare namespace LocalJSX {
           * Define the icon's size.  Allowed values: <value><unit>  Examples: - 1em - 42px  Default: 1em
          */
         "size"?: string;
+        /**
+          * Allow the icon to trigger click on the closest parent button. Default: false
+         */
+        "triggerButtonOnClick"?: boolean;
     }
     interface PlmgTab {
         /**

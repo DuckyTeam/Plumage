@@ -298,14 +298,26 @@ export class Button {
             aria-disabled={this.disabled}
           >
             {this.hasIconLeft() && (
-              <plmg-svg-icon class={'icon-left'} icon={this.iconLeft} />
+              <plmg-svg-icon
+                class={'icon-left'}
+                icon={this.iconLeft}
+                triggerButtonOnClick
+              />
             )}
             {this.hasIconCenter() && (
-              <plmg-svg-icon class={'icon-center'} icon={this.iconCenter} />
+              <plmg-svg-icon
+                class={'icon-center'}
+                icon={this.iconCenter}
+                triggerButtonOnClick
+              />
             )}
             {this.text}
             {this.hasIconRight() && (
-              <plmg-svg-icon class={'icon-right'} icon={this.iconRight} />
+              <plmg-svg-icon
+                class={'icon-right'}
+                icon={this.iconRight}
+                triggerButtonOnClick
+              />
             )}
           </a>
         </Host>
@@ -322,14 +334,26 @@ export class Button {
           style={{ pointerEvents: this.disabled ? 'none' : 'auto' }}
         >
           {this.hasIconLeft() && (
-            <plmg-svg-icon class={'icon-left'} icon={this.iconLeft} />
+            <plmg-svg-icon
+              class={'icon-left'}
+              icon={this.iconLeft}
+              triggerButtonOnClick
+            />
           )}
           {this.hasIconCenter() && (
-            <plmg-svg-icon class={'icon-center'} icon={this.iconCenter} />
+            <plmg-svg-icon
+              class={'icon-center'}
+              icon={this.iconCenter}
+              triggerButtonOnClick
+            />
           )}
           {this.text}
           {this.hasIconRight() && (
-            <plmg-svg-icon class={'icon-right'} icon={this.iconRight} />
+            <plmg-svg-icon
+              class={'icon-right'}
+              icon={this.iconRight}
+              triggerButtonOnClick
+            />
           )}
         </button>
       </Host>

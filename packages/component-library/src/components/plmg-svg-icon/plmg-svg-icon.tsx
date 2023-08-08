@@ -5,6 +5,7 @@ import {
   Prop,
   h,
   Watch,
+  Listen,
   Build,
 } from '@stencil/core';
 import { fetchIcon, supportsIntersectionObserver } from './utils';
@@ -59,6 +60,29 @@ export class SvgIcon {
   @State() private pathData: string;
   @State() private visible = false;
   private intersectionObserver: IntersectionObserver;
+
+  /**
+   * Allow the icon to trigger click on the closest parent button.
+   * Default: false
+   */
+  @Prop() triggerButtonOnClick: boolean = false;
+  @Watch('triggerButtonOnClick')
+  validateDisabled(newValue: boolean) {
+    if (typeof newValue !== 'boolean')
+      throw new Error('disabled: must be boolean');
+  }
+  @Listen('click')
+  handleClick(event: Event) {
+    if (!this.triggerButtonOnClick) return;
+
+    event.stopPropagation();
+    const targetElem = event.target as HTMLElement;
+    const button = targetElem.closest('button');
+
+    if (button) {
+      button.click();
+    }
+  }
 
   // When connected to the DOM
   connectedCallback(): void {
