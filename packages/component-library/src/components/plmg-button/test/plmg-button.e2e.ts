@@ -167,7 +167,7 @@ describe('plmg-button', () => {
       it('should trigger button click when SVG is clicked', async () => {
         const page = await newE2EPage();
         const htmlContent = `
-          <plmg-button triggerButtonOnClick="true" icon-left="home"></plmg-button>
+          <plmg-button icon-left="home"></plmg-button>
         `;
 
         await page.setContent(htmlContent);
