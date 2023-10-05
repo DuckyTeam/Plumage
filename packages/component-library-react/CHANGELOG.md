@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage-react
 
-This log was last generated on Wed, 08 Mar 2023 14:09:24 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Oct 2023 12:05:47 GMT and should not be manually modified.
+
+## 1.1.3
+Thu, 05 Oct 2023 12:05:47 GMT
+
+### Patches
+
+- fix sizing of buttons
 
 ## 1.1.2
 Wed, 08 Mar 2023 14:09:24 GMT
