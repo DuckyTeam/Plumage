@@ -1,6 +1,14 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Mon, 22 May 2023 13:08:00 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Oct 2023 12:05:47 GMT and should not be manually modified.
+
+## 3.1.4
+Thu, 05 Oct 2023 12:05:47 GMT
+
+### Patches
+
+- fix the sizing of sidebar item
+- fix the sizing of buttons
 
 ## 3.1.3
 Mon, 22 May 2023 13:08:00 GMT
