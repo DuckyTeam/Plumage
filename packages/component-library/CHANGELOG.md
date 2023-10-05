@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Thu, 05 Oct 2023 12:05:47 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Oct 2023 13:31:41 GMT and should not be manually modified.
+
+## 3.1.5
+Thu, 05 Oct 2023 13:31:41 GMT
+
+### Patches
+
+- sidebaritem width now 100% of parent
 
 ## 3.1.4
 Thu, 05 Oct 2023 12:05:47 GMT

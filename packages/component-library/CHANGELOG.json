@@ -2,6 +2,18 @@
   "name": "@ducky/plumage",
   "entries": [
     {
+      "version": "3.1.5",
+      "tag": "@ducky/plumage_v3.1.5",
+      "date": "Thu, 05 Oct 2023 13:31:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "sidebaritem width now 100% of parent"
+          }
+        ]
+      }
+    },
+    {
       "version": "3.1.4",
       "tag": "@ducky/plumage_v3.1.4",
       "date": "Thu, 05 Oct 2023 12:05:47 GMT",
