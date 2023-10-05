@@ -19,7 +19,7 @@
   background: tokens.$plmg-color-background-neutral;
   color: tokens.$plmg-color-text-neutral-weak;
   position: relative;
-
+  box-sizing: border-box;
   font-family: tokens.$plmg-font-family-sans;
   font-style: normal;
   font-weight: tokens.$plmg-font-weight-semibold;

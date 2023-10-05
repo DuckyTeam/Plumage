@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "fix the sizing of sidebar item",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
