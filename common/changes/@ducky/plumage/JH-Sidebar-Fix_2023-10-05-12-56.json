@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "sidebaritem width now 100% of parent",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
