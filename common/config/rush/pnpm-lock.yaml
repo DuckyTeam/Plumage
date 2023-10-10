@@ -18,7 +18,7 @@ specifiers:
   '@stencil/core': ^2.16.1
   '@stencil/eslint-plugin': ~0.4.0
   '@stencil/react-output-target': ^0.3.1
-  '@stencil/sass': ^1.5.2
+  '@stencil/sass': ^3.0.6
   '@storybook/addon-actions': ^6.3.8
   '@storybook/addon-essentials': ^6.3.8
   '@storybook/addon-knobs': ^6.3.1
@@ -87,7 +87,7 @@ dependencies:
   '@stencil/core': 2.22.3
   '@stencil/eslint-plugin': 0.4.0_5fd7e122b70c5ad9218b0a1d47967152
   '@stencil/react-output-target': 0.3.1_@stencil+core@2.22.3
-  '@stencil/sass': 1.5.2_@stencil+core@2.22.3
+  '@stencil/sass': 3.0.6_@stencil+core@2.22.3
   '@storybook/addon-actions': 6.5.16
   '@storybook/addon-essentials': 6.5.16_f3df4481d7f478ea2875f68b22e7de2f
   '@storybook/addon-knobs': 6.4.0_@storybook+addons@6.3.7
@@ -3100,10 +3100,11 @@ packages:
       '@stencil/core': 2.22.3
     dev: false
 
-  /@stencil/sass/1.5.2_@stencil+core@2.22.3:
-    resolution: {integrity: sha512-nJ93pUSylsGsMX0eLmhxh1oEljcUjj5mYjhB9ziCdoaydAdjukrUoqDCC7tdVbOcBo2hKptQyWqCtETnBGYsXQ==}
+  /@stencil/sass/3.0.6_@stencil+core@2.22.3:
+    resolution: {integrity: sha512-d+k8qCvDgzI/vIV7M5QavIS6b75X4yn+YQH80KA/L0oL/hKD8KeF3wMOd7P1nDhGLIGRNw5tBDbe0GeIsGVU7A==}
+    engines: {node: '>=12.0.0', npm: '>=6.0.0'}
     peerDependencies:
-      '@stencil/core': '>=1.0.2'
+      '@stencil/core': '>=2.0.0 || >=3.0.0-beta.0 || >= 4.0.0-beta.0 || >= 4.0.0'
     dependencies:
       '@stencil/core': 2.22.3
     dev: false
@@ -19167,7 +19168,7 @@ packages:
     dev: false
 
   file:projects/plumage.tgz_27446abb01f02a5fe05d700a6d6afaab:
-    resolution: {integrity: sha512-zdIYuOXopyz4D5N7F5uGWPgjJTPniK+t5vyRfePOBpFzSfE8Uv7v1q2PeWfBN/OitgrIq0SO9uVvHfXlph96rg==, tarball: file:projects/plumage.tgz}
+    resolution: {integrity: sha512-7WFBR43JTR4Sgci7ur+q474p08CG60eI0SeFTzno7BePwp36XBQpJ6iLsDj9Frjc5wBBWgndCvuoHo6q5E51ag==, tarball: file:projects/plumage.tgz}
     id: file:projects/plumage.tgz
     name: '@rush-temp/plumage'
     version: 0.0.0
@@ -19177,7 +19178,7 @@ packages:
       '@stencil/core': 2.22.3
       '@stencil/eslint-plugin': 0.4.0_5fd7e122b70c5ad9218b0a1d47967152
       '@stencil/react-output-target': 0.3.1_@stencil+core@2.22.3
-      '@stencil/sass': 1.5.2_@stencil+core@2.22.3
+      '@stencil/sass': 3.0.6_@stencil+core@2.22.3
       '@storybook/addon-actions': 6.5.16
       '@storybook/addon-essentials': 6.5.16_f3df4481d7f478ea2875f68b22e7de2f
       '@storybook/addon-knobs': 6.4.0_@storybook+addons@6.3.7

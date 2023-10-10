@@ -44,7 +44,7 @@
     "@stencil/core": "^2.16.1",
     "@stencil/eslint-plugin": "~0.4.0",
     "@stencil/react-output-target": "^0.3.1",
-    "@stencil/sass": "^1.5.2",
+    "@stencil/sass": "^3.0.6",
     "@storybook/addon-actions": "^6.3.8",
     "@storybook/addon-essentials": "^6.3.8",
     "@storybook/addon-knobs": "^6.3.1",
