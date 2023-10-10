@@ -28,7 +28,7 @@ specifiers:
   '@storybook/html': ^6.3.8
   '@storybook/manager-webpack5': 6.3.7
   '@storybook/web-components': ^6.3.8
-  '@types/jest': ^27.4.1
+  '@types/jest': ^27.0.3
   '@types/node': ^16.11.19
   '@types/react': ^17.0.38
   '@types/react-dom': ^17.0.11
@@ -19168,7 +19168,7 @@ packages:
     dev: false
 
   file:projects/plumage.tgz_27446abb01f02a5fe05d700a6d6afaab:
-    resolution: {integrity: sha512-7WFBR43JTR4Sgci7ur+q474p08CG60eI0SeFTzno7BePwp36XBQpJ6iLsDj9Frjc5wBBWgndCvuoHo6q5E51ag==, tarball: file:projects/plumage.tgz}
+    resolution: {integrity: sha512-VpKbnmE3GJT/U9GcncqEvZQtB57EH5ksRr+XXcOBiJhrLrwyltP+N6nf0h1lmzl6PgKg4khmmchnV4+VeVY/DA==, tarball: file:projects/plumage.tgz}
     id: file:projects/plumage.tgz
     name: '@rush-temp/plumage'
     version: 0.0.0
