@@ -5,6 +5,15 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+A collapsable Sidebar, rendered to the left of the screen.
+Hidden by default on extra-small and small devices, this sidebar is revealed when clicking the expand button
+on the PlmgHeader (therefore, you must add PlmgHeader as well).
+This sidebar must be wrapped inside a PlmgPageContainer, on the "sidebar" slot.
+
+Note: only a single instance of PlmgSidebar is allowed on a web page.
+
 ## Properties
 
 | Property   | Attribute   | Description                                 | Type      | Default     |

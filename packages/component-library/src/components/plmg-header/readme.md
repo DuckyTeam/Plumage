@@ -5,6 +5,14 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Header sitting on top of the page.
+Reveals the Sidebar when clicking the expand button (therefore, you must add PlmgSidebar as well).
+This header must be wrapped inside a PlmgPageContainer, on the "header" slot.
+
+Note: only a single instance of PlmgHeader is allowed on a web page.
+
 ## Properties
 
 | Property          | Attribute          | Description                                   | Type      | Default |

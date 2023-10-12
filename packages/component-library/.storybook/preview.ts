@@ -1,4 +1,4 @@
-export const parameters = {
+const preview = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
     matchers: {
@@ -7,3 +7,5 @@ export const parameters = {
     },
   },
 };
+
+export default preview;

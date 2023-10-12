@@ -24,6 +24,7 @@ module.exports = {
     'plugin:prettier/recommended',
     'plugin:import/typescript',
     'plugin:@stencil/recommended',
+    'plugin:storybook/recommended',
   ],
   globals: {},
   overrides: [

@@ -178,6 +178,12 @@ export namespace Components {
          */
         "size": PlmgErrorMessageSize;
     }
+    /**
+     * Header sitting on top of the page.
+     * Reveals the Sidebar when clicking the expand button (therefore, you must add PlmgSidebar as well).
+     * This header must be wrapped inside a PlmgPageContainer, on the "header" slot.
+     * Note: only a single instance of PlmgHeader is allowed on a web page.
+     */
     interface PlmgHeader {
         /**
           * Invoke this method to reveals the "expand" icon and update the margin left
@@ -188,6 +194,12 @@ export namespace Components {
          */
         "sidebarExpanded": boolean;
     }
+    /**
+     * Container for the entire web page. Wraps everything.
+     * If you use PlmgSidebar and/or PlmgHeader, you must use this wrapper.
+     * Place a PlmgSidebar component on the "sidebar" slot.
+     * Place a PlmgHeader component on the "header" slot.
+     */
     interface PlmgPageContainer {
         /**
           * Define if the sidebar is expanded on startup.
@@ -268,6 +280,13 @@ export namespace Components {
          */
         "thickness": string;
     }
+    /**
+     * A collapsable Sidebar, rendered to the left of the screen.
+     * Hidden by default on extra-small and small devices, this sidebar is revealed when clicking the expand button
+     * on the PlmgHeader (therefore, you must add PlmgHeader as well).
+     * This sidebar must be wrapped inside a PlmgPageContainer, on the "sidebar" slot.
+     * Note: only a single instance of PlmgSidebar is allowed on a web page.
+     */
     interface PlmgSidebar {
         /**
           * Invoke this method to collapse the sidebar.
@@ -584,12 +603,24 @@ declare global {
         prototype: HTMLPlmgErrorMessageElement;
         new (): HTMLPlmgErrorMessageElement;
     };
+    /**
+     * Header sitting on top of the page.
+     * Reveals the Sidebar when clicking the expand button (therefore, you must add PlmgSidebar as well).
+     * This header must be wrapped inside a PlmgPageContainer, on the "header" slot.
+     * Note: only a single instance of PlmgHeader is allowed on a web page.
+     */
     interface HTMLPlmgHeaderElement extends Components.PlmgHeader, HTMLStencilElement {
     }
     var HTMLPlmgHeaderElement: {
         prototype: HTMLPlmgHeaderElement;
         new (): HTMLPlmgHeaderElement;
     };
+    /**
+     * Container for the entire web page. Wraps everything.
+     * If you use PlmgSidebar and/or PlmgHeader, you must use this wrapper.
+     * Place a PlmgSidebar component on the "sidebar" slot.
+     * Place a PlmgHeader component on the "header" slot.
+     */
     interface HTMLPlmgPageContainerElement extends Components.PlmgPageContainer, HTMLStencilElement {
     }
     var HTMLPlmgPageContainerElement: {
@@ -614,6 +645,13 @@ declare global {
         prototype: HTMLPlmgSeparatorElement;
         new (): HTMLPlmgSeparatorElement;
     };
+    /**
+     * A collapsable Sidebar, rendered to the left of the screen.
+     * Hidden by default on extra-small and small devices, this sidebar is revealed when clicking the expand button
+     * on the PlmgHeader (therefore, you must add PlmgHeader as well).
+     * This sidebar must be wrapped inside a PlmgPageContainer, on the "sidebar" slot.
+     * Note: only a single instance of PlmgSidebar is allowed on a web page.
+     */
     interface HTMLPlmgSidebarElement extends Components.PlmgSidebar, HTMLStencilElement {
     }
     var HTMLPlmgSidebarElement: {
@@ -864,6 +902,12 @@ declare namespace LocalJSX {
          */
         "size"?: PlmgErrorMessageSize;
     }
+    /**
+     * Header sitting on top of the page.
+     * Reveals the Sidebar when clicking the expand button (therefore, you must add PlmgSidebar as well).
+     * This header must be wrapped inside a PlmgPageContainer, on the "header" slot.
+     * Note: only a single instance of PlmgHeader is allowed on a web page.
+     */
     interface PlmgHeader {
         /**
           * Event dispatched when the button to expand the sidebar is clicked.
@@ -874,6 +918,12 @@ declare namespace LocalJSX {
          */
         "sidebarExpanded"?: boolean;
     }
+    /**
+     * Container for the entire web page. Wraps everything.
+     * If you use PlmgSidebar and/or PlmgHeader, you must use this wrapper.
+     * Place a PlmgSidebar component on the "sidebar" slot.
+     * Place a PlmgHeader component on the "header" slot.
+     */
     interface PlmgPageContainer {
         /**
           * Define if the sidebar is expanded on startup.
@@ -958,6 +1008,13 @@ declare namespace LocalJSX {
          */
         "thickness"?: string;
     }
+    /**
+     * A collapsable Sidebar, rendered to the left of the screen.
+     * Hidden by default on extra-small and small devices, this sidebar is revealed when clicking the expand button
+     * on the PlmgHeader (therefore, you must add PlmgHeader as well).
+     * This sidebar must be wrapped inside a PlmgPageContainer, on the "sidebar" slot.
+     * Note: only a single instance of PlmgSidebar is allowed on a web page.
+     */
     interface PlmgSidebar {
         /**
           * Define if the item is expanded on startup.
@@ -1244,11 +1301,30 @@ declare module "@stencil/core" {
             "plmg-dropdown": LocalJSX.PlmgDropdown & JSXBase.HTMLAttributes<HTMLPlmgDropdownElement>;
             "plmg-dropdown-item": LocalJSX.PlmgDropdownItem & JSXBase.HTMLAttributes<HTMLPlmgDropdownItemElement>;
             "plmg-error-message": LocalJSX.PlmgErrorMessage & JSXBase.HTMLAttributes<HTMLPlmgErrorMessageElement>;
+            /**
+             * Header sitting on top of the page.
+             * Reveals the Sidebar when clicking the expand button (therefore, you must add PlmgSidebar as well).
+             * This header must be wrapped inside a PlmgPageContainer, on the "header" slot.
+             * Note: only a single instance of PlmgHeader is allowed on a web page.
+             */
             "plmg-header": LocalJSX.PlmgHeader & JSXBase.HTMLAttributes<HTMLPlmgHeaderElement>;
+            /**
+             * Container for the entire web page. Wraps everything.
+             * If you use PlmgSidebar and/or PlmgHeader, you must use this wrapper.
+             * Place a PlmgSidebar component on the "sidebar" slot.
+             * Place a PlmgHeader component on the "header" slot.
+             */
             "plmg-page-container": LocalJSX.PlmgPageContainer & JSXBase.HTMLAttributes<HTMLPlmgPageContainerElement>;
             "plmg-radio-button": LocalJSX.PlmgRadioButton & JSXBase.HTMLAttributes<HTMLPlmgRadioButtonElement>;
             "plmg-radio-button-group": LocalJSX.PlmgRadioButtonGroup & JSXBase.HTMLAttributes<HTMLPlmgRadioButtonGroupElement>;
             "plmg-separator": LocalJSX.PlmgSeparator & JSXBase.HTMLAttributes<HTMLPlmgSeparatorElement>;
+            /**
+             * A collapsable Sidebar, rendered to the left of the screen.
+             * Hidden by default on extra-small and small devices, this sidebar is revealed when clicking the expand button
+             * on the PlmgHeader (therefore, you must add PlmgHeader as well).
+             * This sidebar must be wrapped inside a PlmgPageContainer, on the "sidebar" slot.
+             * Note: only a single instance of PlmgSidebar is allowed on a web page.
+             */
             "plmg-sidebar": LocalJSX.PlmgSidebar & JSXBase.HTMLAttributes<HTMLPlmgSidebarElement>;
             "plmg-sidebar-item": LocalJSX.PlmgSidebarItem & JSXBase.HTMLAttributes<HTMLPlmgSidebarItemElement>;
             "plmg-slider": LocalJSX.PlmgSlider & JSXBase.HTMLAttributes<HTMLPlmgSliderElement>;
