@@ -2,6 +2,18 @@
   "name": "@ducky/plumage",
   "entries": [
     {
+      "version": "3.2.0",
+      "tag": "@ducky/plumage_v3.2.0",
+      "date": "Thu, 12 Oct 2023 13:57:14 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "bumps packages to secure versions"
+          }
+        ]
+      }
+    },
+    {
       "version": "3.1.5",
       "tag": "@ducky/plumage_v3.1.5",
       "date": "Thu, 05 Oct 2023 13:31:41 GMT",

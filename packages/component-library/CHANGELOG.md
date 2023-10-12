@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Thu, 05 Oct 2023 13:31:41 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Oct 2023 13:57:14 GMT and should not be manually modified.
+
+## 3.2.0
+Thu, 12 Oct 2023 13:57:14 GMT
+
+### Minor changes
+
+- bumps packages to secure versions
 
 ## 3.1.5
 Thu, 05 Oct 2023 13:31:41 GMT
