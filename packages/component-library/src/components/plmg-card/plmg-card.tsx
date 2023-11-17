@@ -101,7 +101,7 @@ export class Card {
     return (
       <div
         class={'plmg-card'}
-        style={{ width: !this.fullWidth && 'fit-content' }}
+        style={{ width: this.fullWidth ? '100%' : 'fit-content' }}
       >
         {/* Header */}
         {this.hasHeader() && (

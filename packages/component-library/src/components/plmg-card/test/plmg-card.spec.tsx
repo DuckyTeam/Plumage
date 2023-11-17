@@ -39,7 +39,7 @@ describe('plmg-card', () => {
     expect(page.root).toEqualHtml(`
       <plmg-card header-text="Hello world" bottom-action-text="Action" full-width="true" top-action-icon="home" top-action-label="card top action">
         <mock:shadow-root>
-        <div class="plmg-card" style="width: full-width;">
+        <div class="plmg-card" style="width: 100%;">
             <div class="plmg-card-header">
                 <span>Hello world</span>
                 <plmg-button
