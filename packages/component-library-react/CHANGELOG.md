@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage-react
 
-This log was last generated on Thu, 12 Oct 2023 13:57:14 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Nov 2023 11:04:42 GMT and should not be manually modified.
+
+## 1.3.0
+Fri, 17 Nov 2023 11:04:42 GMT
+
+### Minor changes
+
+- full width prop added to card component
 
 ## 1.2.0
 Thu, 12 Oct 2023 13:57:14 GMT
