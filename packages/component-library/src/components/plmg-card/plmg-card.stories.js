@@ -15,6 +15,9 @@ export default {
       options: [undefined, ...Object.values(ICON)],
       control: { type: 'select' },
     },
+    ['full-width']: {
+      options: [true, false],
+    },
     ['top-action-label']: { control: { type: 'text' } },
     ['bottom-action-text']: { control: { type: 'text' } },
     ['slot-1']: { control: { type: 'text' } },
@@ -25,6 +28,7 @@ export default {
 const PROPS = [
   'header-text',
   'top-action-icon',
+  'full-width',
   'top-action-label',
   'bottom-action-text',
 ];
@@ -53,6 +57,7 @@ Primary.args = {
   ['bottom-action-text']: 'Action',
   ['top-action-icon']: ICON.Home,
   ['top-action-label']: 'card top action',
+  ['full-width']: false,
   ['slot-1']: slot1(),
   ['slot-2']: slot2,
 };
@@ -107,6 +112,22 @@ export const ActionBottom = (args) => {
   return el;
 };
 ActionBottom.storyName = 'All action bottom';
+
+export const AllFullWidth = (args) => {
+  const htmlContent = `
+<plmg-card>${slot1('No full width')}</plmg-card>
+<plmg-card full-width="${true}">${slot1('Full Width')}</plmg-card>
+`;
+
+  const el = document.createElement('div');
+  el.innerHTML = htmlContent;
+  el.style.display = 'flex';
+  el.style.flexDirection = 'column';
+  el.style.justifyContent = 'space-between';
+  el.style['flex-wrap'] = 'wrap';
+  return el;
+};
+AllFullWidth.storyName = 'All fullWidth';
 
 export const ContentBlocks = (args) => {
   const htmlContent = `
