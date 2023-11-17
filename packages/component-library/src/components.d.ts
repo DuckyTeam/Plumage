@@ -112,6 +112,10 @@ export namespace Components {
          */
         "bottomActionText": string | undefined;
         /**
+          * Define card's sizing behaviour.  To stretch to its content, or fill the available space its in. If `fullWidth` is provided, the card will take the full width of it's container. If `fullWidth` is not specified, the card will automatically size itself according to its content, plus any padding.  Allowed values:   - true   - false  Default: false
+         */
+        "fullWidth": boolean;
+        /**
           * Define card's header text.  If a headerText or an topActionIcon is provided, the heading will be displayed. By default, when no headerText nor topActionIcon is provided, the heading is hidden.
          */
         "headerText": string | undefined;
@@ -831,6 +835,10 @@ declare namespace LocalJSX {
           * Define card's bottom button text.  If a text is provided, the button will be displayed. By default, when no text is provided, the button is hidden.
          */
         "bottomActionText"?: string | undefined;
+        /**
+          * Define card's sizing behaviour.  To stretch to its content, or fill the available space its in. If `fullWidth` is provided, the card will take the full width of it's container. If `fullWidth` is not specified, the card will automatically size itself according to its content, plus any padding.  Allowed values:   - true   - false  Default: false
+         */
+        "fullWidth"?: boolean;
         /**
           * Define card's header text.  If a headerText or an topActionIcon is provided, the heading will be displayed. By default, when no headerText nor topActionIcon is provided, the heading is hidden.
          */

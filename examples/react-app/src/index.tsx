@@ -181,6 +181,7 @@ ReactDOM.render(
       <PlmgCard
         headerText="Header Text"
         topActionIcon={'home'}
+        fullWidth={true}
         topActionLabel={'Top Action'}
         bottomActionText="Click here"
         onBottomActionClicked={() =>

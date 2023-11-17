@@ -287,7 +287,7 @@ export class Button {
 
     if (this.href) {
       return (
-        <Host style={{ width: this.fullWidth ? 'full-width' : 'fit-content' }}>
+        <Host style={{ width: this.fullWidth ? '100%' : 'fit-content' }}>
           <a
             class={classes}
             href={this.disabled ? undefined : this.href}
