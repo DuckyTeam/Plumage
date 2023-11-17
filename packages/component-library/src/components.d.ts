@@ -112,7 +112,7 @@ export namespace Components {
          */
         "bottomActionText": string | undefined;
         /**
-          * Define card's sizing behaviour. To stretch to it's content, or fill the available space it's in.  If fullWidth is provided, the card will take the full width of it's container. By default, when no fullWidth is provided, it will be the size of it's contents (plus it's padding).   Allowed values:   - true   - false  Default: false
+          * Define card's sizing behaviour. To stretch to its content, or fill the available space its in.  If `fullWidth` is provided, the card will take the full width of it's container.  If `fullWidth` is not specified, the card will automatically size itself according to its content, plus any padding.   Allowed values:   - true   - false  Default: false
          */
         "fullWidth": boolean;
         /**
