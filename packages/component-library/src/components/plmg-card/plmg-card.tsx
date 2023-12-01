@@ -67,6 +67,26 @@ export class Card {
   }
 
   /**
+   * Define card's sizing behaviour.
+   *
+   * To stretch to its content, or fill the available space its in.
+   * If `fullWidth` is provided, the card will take the full width of it's container.
+   * If `fullWidth` is not specified, the card will automatically size itself according to its content, plus any padding.
+   *
+   * Allowed values:
+   *   - true
+   *   - false
+   *
+   * Default: false
+   */
+  @Prop() fullWidth: boolean = false;
+  @Watch('fullWidth')
+  validateFullWidth(newValue: boolean) {
+    if (typeof newValue !== 'boolean')
+      throw new Error('fullWidth: must be boolean');
+  }
+
+  /**
    * The event "bottomActionClicked" is triggered when the bottom action button is clicked.
    */
   @Event() bottomActionClicked: EventEmitter<MouseEvent>;
@@ -79,7 +99,10 @@ export class Card {
     };
 
     return (
-      <div class={'plmg-card'}>
+      <div
+        class={'plmg-card'}
+        style={{ width: this.fullWidth ? '100%' : 'fit-content' }}
+      >
         {/* Header */}
         {this.hasHeader() && (
           <div class={'plmg-card-header'}>

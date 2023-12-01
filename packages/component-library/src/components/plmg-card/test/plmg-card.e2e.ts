@@ -19,15 +19,18 @@ describe('plmg-card', () => {
       const headerTexts = ['Something', undefined];
       const topActionIcons = ['home', ''];
       const bottomActionTexts = ['Action bottom', ''];
+      const fullWidths = [true, false, undefined];
 
       let htmlContent = '';
       headerTexts.forEach((headerText) => {
         topActionIcons.forEach((topActionIcon) => {
           bottomActionTexts.forEach((bottomActionText) => {
-            htmlContent += `
-          <plmg-card header-text="${headerText}" bottom-action-text="${bottomActionText}" top-action-icon="${topActionIcon}" top-action-label="${topActionIcon}"></plmg-card>
+            fullWidths.forEach((fullWidth) => {
+              htmlContent += `
+          <plmg-card header-text="${headerText}" full-width="${fullWidth}" bottom-action-text="${bottomActionText}" top-action-icon="${topActionIcon}" top-action-label="${topActionIcon}"></plmg-card>
           <br/>
                         `;
+            });
           });
         });
       });

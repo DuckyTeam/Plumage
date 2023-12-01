@@ -10,7 +10,7 @@ describe('plmg-card', () => {
     expect(page.root).toEqualHtml(`
       <plmg-card>
         <mock:shadow-root>
-        <div class="plmg-card">
+        <div class="plmg-card" style="width: fit-content;">
            <div class="plmg-card-content-area">
              <slot name="slot-1"></slot>
              <slot name="slot-2"></slot>
@@ -21,14 +21,15 @@ describe('plmg-card', () => {
     `);
   });
 
-  it('renders a card with header text & icon, footer with button and slots 1 & 2', async () => {
+  it('renders a card at full width with header text & icon, footer with button and slots 1 & 2', async () => {
     const page = await newSpecPage({
       components: [Card],
       html: `
 <plmg-card 
     header-text="Hello world" 
     bottom-action-text="Action" 
-    top-action-icon="home" 
+    top-action-icon="home"
+    full-width="true"
     top-action-label="card top action">
         <div slot="slot-1">Slot 1</div>
         <div slot="slot-2">Slot 2</div>
@@ -36,9 +37,9 @@ describe('plmg-card', () => {
 `,
     });
     expect(page.root).toEqualHtml(`
-      <plmg-card header-text="Hello world" bottom-action-text="Action" top-action-icon="home" top-action-label="card top action">
+      <plmg-card header-text="Hello world" bottom-action-text="Action" full-width="true" top-action-icon="home" top-action-label="card top action">
         <mock:shadow-root>
-        <div class="plmg-card">
+        <div class="plmg-card" style="width: 100%;">
             <div class="plmg-card-header">
                 <span>Hello world</span>
                 <plmg-button
@@ -86,7 +87,7 @@ describe('plmg-card', () => {
     expect(page.root).toEqualHtml(`
       <plmg-card header-text="Hello world">
         <mock:shadow-root>
-        <div class="plmg-card">
+        <div class="plmg-card" style="width: fit-content;">
             <div class="plmg-card-header">
                 <span>Hello world</span>
             </div>
@@ -113,7 +114,7 @@ describe('plmg-card', () => {
     expect(page.root).toEqualHtml(`
       <plmg-card top-action-icon="home" top-action-label="card top action">
         <mock:shadow-root>
-        <div class="plmg-card">
+        <div class="plmg-card" style="width: fit-content;">
             <div class="plmg-card-header">
                 <span></span>
                 <plmg-button
@@ -146,7 +147,7 @@ describe('plmg-card', () => {
     expect(page.root).toEqualHtml(`
       <plmg-card bottom-action-text="Action">
         <mock:shadow-root>
-        <div class="plmg-card">
+        <div class="plmg-card" style="width: fit-content;">
            <div class="plmg-card-content-area with-footer">
              <slot name="slot-1"></slot>
              <slot name="slot-2"></slot>
@@ -178,7 +179,7 @@ describe('plmg-card', () => {
     expect(page.root).toEqualHtml(`
       <plmg-card>
         <mock:shadow-root>
-        <div class="plmg-card">
+        <div class="plmg-card" style="width: fit-content;">
            <div class="plmg-card-content-area">
              <slot name="slot-1"></slot>
              <slot name="slot-2"></slot>
@@ -204,7 +205,7 @@ describe('plmg-card', () => {
     expect(page.root).toEqualHtml(`
       <plmg-card>
         <mock:shadow-root>
-        <div class="plmg-card">
+        <div class="plmg-card" style="width: fit-content;">
            <div class="plmg-card-content-area">
              <slot name="slot-1"></slot>
              <slot name="slot-2"></slot>
