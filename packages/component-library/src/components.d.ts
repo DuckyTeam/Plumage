@@ -13,14 +13,6 @@ import { PlmgRadioButtonSize } from "./components/plmg-radio-button/plmg-radio-b
 import { PlmgStatusVariant } from "./components/plmg-status/plmg-status.types";
 import { PlmgTextInputSize, PlmgTextInputType } from "./components/plmg-text-input/plmg-text-input.types";
 import { PlmgTooltipArrowPosition, PlmgTooltipColor, PlmgTooltipPosition } from "./components/plmg-tooltip/plmg-tooltip.types";
-export { PlmgAvatarSize } from "./components/plmg-avatar/plmg-avatar.types";
-export { PlmgButtonColor, PlmgButtonDesign, PlmgButtonSize, PlmgButtonType } from "./components/plmg-button/plmg-button.types";
-export { PlmgDropdownAlignments } from "./components/plmg-dropdown/plmg-dropdown.types";
-export { PlmgErrorMessageSize } from "./components/plmg-error-message/plmg-error-message.types";
-export { PlmgRadioButtonSize } from "./components/plmg-radio-button/plmg-radio-button.types";
-export { PlmgStatusVariant } from "./components/plmg-status/plmg-status.types";
-export { PlmgTextInputSize, PlmgTextInputType } from "./components/plmg-text-input/plmg-text-input.types";
-export { PlmgTooltipArrowPosition, PlmgTooltipColor, PlmgTooltipPosition } from "./components/plmg-tooltip/plmg-tooltip.types";
 export namespace Components {
     interface PlmgAvatar {
         /**
@@ -579,18 +571,7 @@ export interface PlmgTextInputCustomEvent<T> extends CustomEvent<T> {
     target: HTMLPlmgTextInputElement;
 }
 declare global {
-    interface HTMLPlmgAvatarElementEventMap {
-        "avatarClick": MouseEvent;
-    }
     interface HTMLPlmgAvatarElement extends Components.PlmgAvatar, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLPlmgAvatarElementEventMap>(type: K, listener: (this: HTMLPlmgAvatarElement, ev: PlmgAvatarCustomEvent<HTMLPlmgAvatarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLPlmgAvatarElementEventMap>(type: K, listener: (this: HTMLPlmgAvatarElement, ev: PlmgAvatarCustomEvent<HTMLPlmgAvatarElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLPlmgAvatarElement: {
         prototype: HTMLPlmgAvatarElement;
@@ -602,19 +583,7 @@ declare global {
         prototype: HTMLPlmgButtonElement;
         new (): HTMLPlmgButtonElement;
     };
-    interface HTMLPlmgCardElementEventMap {
-        "topActionClicked": MouseEvent;
-        "bottomActionClicked": MouseEvent;
-    }
     interface HTMLPlmgCardElement extends Components.PlmgCard, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLPlmgCardElementEventMap>(type: K, listener: (this: HTMLPlmgCardElement, ev: PlmgCardCustomEvent<HTMLPlmgCardElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLPlmgCardElementEventMap>(type: K, listener: (this: HTMLPlmgCardElement, ev: PlmgCardCustomEvent<HTMLPlmgCardElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLPlmgCardElement: {
         prototype: HTMLPlmgCardElement;
@@ -638,9 +607,6 @@ declare global {
         prototype: HTMLPlmgErrorMessageElement;
         new (): HTMLPlmgErrorMessageElement;
     };
-    interface HTMLPlmgHeaderElementEventMap {
-        "expandSidebar": void;
-    }
     /**
      * Header sitting on top of the page.
      * Reveals the Sidebar when clicking the expand button (therefore, you must add PlmgSidebar as well).
@@ -648,14 +614,6 @@ declare global {
      * Note: only a single instance of PlmgHeader is allowed on a web page.
      */
     interface HTMLPlmgHeaderElement extends Components.PlmgHeader, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLPlmgHeaderElementEventMap>(type: K, listener: (this: HTMLPlmgHeaderElement, ev: PlmgHeaderCustomEvent<HTMLPlmgHeaderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLPlmgHeaderElementEventMap>(type: K, listener: (this: HTMLPlmgHeaderElement, ev: PlmgHeaderCustomEvent<HTMLPlmgHeaderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLPlmgHeaderElement: {
         prototype: HTMLPlmgHeaderElement;
@@ -679,18 +637,7 @@ declare global {
         prototype: HTMLPlmgRadioButtonElement;
         new (): HTMLPlmgRadioButtonElement;
     };
-    interface HTMLPlmgRadioButtonGroupElementEventMap {
-        "valueChanged": { checkedValue: string };
-    }
     interface HTMLPlmgRadioButtonGroupElement extends Components.PlmgRadioButtonGroup, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLPlmgRadioButtonGroupElementEventMap>(type: K, listener: (this: HTMLPlmgRadioButtonGroupElement, ev: PlmgRadioButtonGroupCustomEvent<HTMLPlmgRadioButtonGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLPlmgRadioButtonGroupElementEventMap>(type: K, listener: (this: HTMLPlmgRadioButtonGroupElement, ev: PlmgRadioButtonGroupCustomEvent<HTMLPlmgRadioButtonGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLPlmgRadioButtonGroupElement: {
         prototype: HTMLPlmgRadioButtonGroupElement;
@@ -702,9 +649,6 @@ declare global {
         prototype: HTMLPlmgSeparatorElement;
         new (): HTMLPlmgSeparatorElement;
     };
-    interface HTMLPlmgSidebarElementEventMap {
-        "collapseSidebar": void;
-    }
     /**
      * A collapsable Sidebar, rendered to the left of the screen.
      * Hidden by default on extra-small and small devices, this sidebar is revealed when clicking the expand button
@@ -713,14 +657,6 @@ declare global {
      * Note: only a single instance of PlmgSidebar is allowed on a web page.
      */
     interface HTMLPlmgSidebarElement extends Components.PlmgSidebar, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLPlmgSidebarElementEventMap>(type: K, listener: (this: HTMLPlmgSidebarElement, ev: PlmgSidebarCustomEvent<HTMLPlmgSidebarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLPlmgSidebarElementEventMap>(type: K, listener: (this: HTMLPlmgSidebarElement, ev: PlmgSidebarCustomEvent<HTMLPlmgSidebarElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLPlmgSidebarElement: {
         prototype: HTMLPlmgSidebarElement;
@@ -732,18 +668,7 @@ declare global {
         prototype: HTMLPlmgSidebarItemElement;
         new (): HTMLPlmgSidebarItemElement;
     };
-    interface HTMLPlmgSliderElementEventMap {
-        "valueUpdated": { value: number };
-    }
     interface HTMLPlmgSliderElement extends Components.PlmgSlider, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLPlmgSliderElementEventMap>(type: K, listener: (this: HTMLPlmgSliderElement, ev: PlmgSliderCustomEvent<HTMLPlmgSliderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLPlmgSliderElementEventMap>(type: K, listener: (this: HTMLPlmgSliderElement, ev: PlmgSliderCustomEvent<HTMLPlmgSliderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLPlmgSliderElement: {
         prototype: HTMLPlmgSliderElement;
@@ -767,38 +692,13 @@ declare global {
         prototype: HTMLPlmgTabElement;
         new (): HTMLPlmgTabElement;
     };
-    interface HTMLPlmgTabsElementEventMap {
-        "tabChange": { tabId: number };
-    }
     interface HTMLPlmgTabsElement extends Components.PlmgTabs, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLPlmgTabsElementEventMap>(type: K, listener: (this: HTMLPlmgTabsElement, ev: PlmgTabsCustomEvent<HTMLPlmgTabsElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLPlmgTabsElementEventMap>(type: K, listener: (this: HTMLPlmgTabsElement, ev: PlmgTabsCustomEvent<HTMLPlmgTabsElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLPlmgTabsElement: {
         prototype: HTMLPlmgTabsElement;
         new (): HTMLPlmgTabsElement;
     };
-    interface HTMLPlmgTextInputElementEventMap {
-        "valueUpdated": {
-    value: string;
-    validityState: ValidityState;
-  };
-    }
     interface HTMLPlmgTextInputElement extends Components.PlmgTextInput, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLPlmgTextInputElementEventMap>(type: K, listener: (this: HTMLPlmgTextInputElement, ev: PlmgTextInputCustomEvent<HTMLPlmgTextInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLPlmgTextInputElementEventMap>(type: K, listener: (this: HTMLPlmgTextInputElement, ev: PlmgTextInputCustomEvent<HTMLPlmgTextInputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLPlmgTextInputElement: {
         prototype: HTMLPlmgTextInputElement;
