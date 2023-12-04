@@ -13,13 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Fetch repo with entire git history
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           token: ${{ secrets.BOT_DUCKY_ACCESS_TOKEN_ADMIN_REPO }}
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v4
         with:
-          node-version: '16.13.1'
+          node-version: 18
       # Set up GitHub user to https://github.com/BotDucky
       - name: git config email
         run: git config --local user.email "97040625+BotDucky@users.noreply.github.com"

@@ -15,7 +15,7 @@ specifiers:
   '@rush-temp/plumage-react': file:./projects/plumage-react.tgz
   '@rush-temp/plumage-tokens': file:./projects/plumage-tokens.tgz
   '@rush-temp/vite-react-app': file:./projects/vite-react-app.tgz
-  '@stencil/core': ^4.7.1
+  '@stencil/core': ^2.19.0
   '@stencil/eslint-plugin': ~0.4.0
   '@stencil/react-output-target': ^0.5.3
   '@stencil/sass': ^3.0.7
@@ -84,10 +84,10 @@ dependencies:
   '@rush-temp/plumage-react': file:projects/plumage-react.tgz
   '@rush-temp/plumage-tokens': file:projects/plumage-tokens.tgz
   '@rush-temp/vite-react-app': file:projects/vite-react-app.tgz_@types+node@20.9.0+sass@1.69.5
-  '@stencil/core': 4.7.1
+  '@stencil/core': 2.22.3
   '@stencil/eslint-plugin': 0.4.0_91df9cc95d12ac7139c88443643e0078
-  '@stencil/react-output-target': 0.5.3_@stencil+core@4.7.1
-  '@stencil/sass': 3.0.7_@stencil+core@4.7.1
+  '@stencil/react-output-target': 0.5.3_@stencil+core@2.22.3
+  '@stencil/sass': 3.0.7_@stencil+core@2.22.3
   '@storybook/addon-actions': 7.5.3_ccaff1c24ad9660e53d907bd1fd5948d
   '@storybook/addon-essentials': 7.5.3_ccaff1c24ad9660e53d907bd1fd5948d
   '@storybook/addon-knobs': 7.0.2_da65dfd12b398896f913a1767a592b1b
@@ -4184,9 +4184,9 @@ packages:
       '@sinonjs/commons': 3.0.0
     dev: false
 
-  /@stencil/core/4.7.1:
-    resolution: {integrity: sha512-KDWA/3qDiABA5LqtHCmTVwORuzgu/YdC0FpSBwVmwlw6K8jUjbTA5JB6Q03da2F+EQlDHOVgbW0TNtHCm54uXQ==}
-    engines: {node: '>=16.0.0', npm: '>=7.10.0'}
+  /@stencil/core/2.22.3:
+    resolution: {integrity: sha512-kmVA0M/HojwsfkeHsifvHVIYe4l5tin7J5+DLgtl8h6WWfiMClND5K3ifCXXI2ETDNKiEk21p6jql3Fx9o2rng==}
+    engines: {node: '>=12.10.0', npm: '>=6.0.0'}
     hasBin: true
     dev: false
 
@@ -4209,21 +4209,21 @@ packages:
       typescript: 5.2.2
     dev: false
 
-  /@stencil/react-output-target/0.5.3_@stencil+core@4.7.1:
+  /@stencil/react-output-target/0.5.3_@stencil+core@2.22.3:
     resolution: {integrity: sha512-68jwRp35CjAcwhTJ9yFD/3n+jrHOqvEH2jreVuPVvZK+4tkhPlYlwz0d1E1RlF3jyifUSfdkWUGgXIEy8Fo3yw==}
     peerDependencies:
       '@stencil/core': '>=2.0.0 || >=3 || >= 4.0.0-beta.0 || >= 4.0.0'
     dependencies:
-      '@stencil/core': 4.7.1
+      '@stencil/core': 2.22.3
     dev: false
 
-  /@stencil/sass/3.0.7_@stencil+core@4.7.1:
+  /@stencil/sass/3.0.7_@stencil+core@2.22.3:
     resolution: {integrity: sha512-HcBjrh2CJ6aJnkOrBNSVyf1+x3FnUneYFk44rcx/jDK6Lx7R4w0dXMEsIR5MXqtROYWonZt7WtR8wsM1vcD+6w==}
     engines: {node: '>=12.0.0', npm: '>=6.0.0'}
     peerDependencies:
       '@stencil/core': '>=2.0.0 || >=3.0.0-beta.0 || >= 4.0.0-beta.0 || >= 4.0.0'
     dependencies:
-      '@stencil/core': 4.7.1
+      '@stencil/core': 2.22.3
     dev: false
 
   /@storybook/addon-actions/7.5.3_70f0f385f0e51fbeec3bba9446b31db6:
@@ -17145,7 +17145,7 @@ packages:
     dev: false
 
   file:projects/example-react-app.tgz:
-    resolution: {integrity: sha512-5Z86hMd/3GxltIsb9iYayBXrWbHMGoKbxfCO/nKv7115RUK9ePMNE+VkspYOeXqv6SaIAhphQmiYTO9pb8hycA==, tarball: file:projects/example-react-app.tgz}
+    resolution: {integrity: sha512-KGfYl0tI23gPlDwgZFt4ZVJLSHMnBturVIBtX+kka7ctDAeCw77pFlRy0Z7wifWVf//dZpdx+dmRdRv/yLyOMw==, tarball: file:projects/example-react-app.tgz}
     name: '@rush-temp/example-react-app'
     version: 0.0.0
     dependencies:
@@ -17183,7 +17183,7 @@ packages:
     dev: false
 
   file:projects/plumage-react.tgz:
-    resolution: {integrity: sha512-Yz2I7ywQUmUPZKfh7zdyfeQXIotIAdq2GFekKm9LcUAcHP00XlYjtOoJAs1hiH9oPdJ2RkFofN5gADkFwlcPFA==, tarball: file:projects/plumage-react.tgz}
+    resolution: {integrity: sha512-k9ANyn5hpEAwHFnfzuOY770HhDdsTxyj3qu22b82XQ8Ml8Pke3Aqpi20Tp6z1VxjArV3+8cPH1kQBoXfE2/0+Q==, tarball: file:projects/plumage-react.tgz}
     name: '@rush-temp/plumage-react'
     version: 0.0.0
     dependencies:
@@ -17207,7 +17207,7 @@ packages:
     dev: false
 
   file:projects/plumage.tgz_dbc661bced914c5b1a6eee0973dbb9b8:
-    resolution: {integrity: sha512-Pf8aVufO8sE3dPXsjJK2diiIiXiww+wbOiEeESAKdpdME0mzlyW+DtsSbD3e0QAc1ehE4KwhuhWIsSJOHOazqA==, tarball: file:projects/plumage.tgz}
+    resolution: {integrity: sha512-eSPpW+4IHJJJytAT+2Cv1rXE4nyQ3ZFHvBUrBd10lL/6tkWDv+Czr+poeHuE1ALrYoeD5fm4PuNZiqnd7IjPBw==, tarball: file:projects/plumage.tgz}
     id: file:projects/plumage.tgz
     name: '@rush-temp/plumage'
     version: 0.0.0
@@ -17217,10 +17217,10 @@ packages:
       '@babel/preset-react': 7.23.3_@babel+core@7.23.3
       '@babel/preset-typescript': 7.23.3_@babel+core@7.23.3
       '@ducky/eslint-config-base': 4.1.0_faa3acf3f31cc63d12db4538925241ce
-      '@stencil/core': 4.7.1
+      '@stencil/core': 2.22.3
       '@stencil/eslint-plugin': 0.4.0_91df9cc95d12ac7139c88443643e0078
-      '@stencil/react-output-target': 0.5.3_@stencil+core@4.7.1
-      '@stencil/sass': 3.0.7_@stencil+core@4.7.1
+      '@stencil/react-output-target': 0.5.3_@stencil+core@2.22.3
+      '@stencil/sass': 3.0.7_@stencil+core@2.22.3
       '@storybook/addon-actions': 7.5.3_70f0f385f0e51fbeec3bba9446b31db6
       '@storybook/addon-essentials': 7.5.3_70f0f385f0e51fbeec3bba9446b31db6
       '@storybook/addon-knobs': 7.0.2_d4e5cc5c36fb211e1658ca2dc41b93e6
@@ -17287,7 +17287,7 @@ packages:
     dev: false
 
   file:projects/vite-react-app.tgz_@types+node@20.9.0+sass@1.69.5:
-    resolution: {integrity: sha512-mAjoPsSaif6FZrVpUCeqBIbT2ZUUiioa3PUenoeael77AGbT5uM9aupzzj+IOeB7k/Ov8Hm9hJPS1YaIbAkBrw==, tarball: file:projects/vite-react-app.tgz}
+    resolution: {integrity: sha512-Uk2hS7S0ldd75joK/dAzC4VKfIfbKq2CKnco/Aqc3PXGEnVtmzvE08ig4au1SyCpnCrxJ5YobTUy0shcFK6tuw==, tarball: file:projects/vite-react-app.tgz}
     id: file:projects/vite-react-app.tgz
     name: '@rush-temp/vite-react-app'
     version: 0.0.0
