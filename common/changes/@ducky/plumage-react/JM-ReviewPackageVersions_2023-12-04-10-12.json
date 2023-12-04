@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage-react",
+      "comment": "use node@18",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@ducky/plumage-react"
+}
