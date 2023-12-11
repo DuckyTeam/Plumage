@@ -1,10 +1,10 @@
 {
   "changes": [
     {
-      "packageName": "@ducky/plumage",
-      "comment": "use node@18",
-      "type": "minor"
+      "packageName": "@ducky/plumage-react",
+      "comment": "Now requires node version 18",
+      "type": "major"
     }
   ],
-  "packageName": "@ducky/plumage"
+  "packageName": "@ducky/plumage-react"
 }
