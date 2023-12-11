@@ -27,7 +27,7 @@ specifiers:
   '@storybook/html': ^7.5.3
   '@storybook/html-webpack5': ^7.5.3
   '@storybook/web-components-webpack5': ^7.5.3
-  '@types/jest': 27.0.3
+  '@types/jest': ^27.0.3
   '@types/node': ^20.9.0
   '@types/react': ^18.2.37
   '@types/react-dom': ^18.2.15
@@ -49,7 +49,7 @@ specifiers:
   firebase: ~10.6.0
   fs-extra: ~11.1.1
   html-webpack-plugin: ^5.5.3
-  jest: 27.0.3
+  jest: ^27.0.3
   jest-cli: 27.4.5
   np: ^8.0.4
   prettier: ^3.1.0
@@ -63,7 +63,7 @@ specifiers:
   svgo: ~3.0.3
   typescript: ^5.2.2
   uuid: ~9.0.1
-  vite: ~4.5.0
+  vite: ^4.5.1
   vite-plugin-html: ^3.2.0
   webpack: ^5.65.0
   webpack-cli: ^4.9.1
@@ -102,7 +102,7 @@ dependencies:
   '@types/react-dom': 18.2.15
   '@typescript-eslint/eslint-plugin': 6.10.0_a737c061eea4f62de7580d9ebe98cc43
   '@typescript-eslint/parser': 6.10.0_eslint@8.53.0+typescript@5.2.2
-  '@vitejs/plugin-react': 4.1.1_vite@4.5.0
+  '@vitejs/plugin-react': 4.1.1_vite@4.5.1
   babel-loader: 8.3.0_8d9fd6ebbdf323464e360929a56a208f
   clean-webpack-plugin: 4.0.0_webpack@5.89.0
   concurrently: 8.2.2
@@ -132,8 +132,8 @@ dependencies:
   svgo: 3.0.3
   typescript: 5.2.2
   uuid: 9.0.1
-  vite: 4.5.0_@types+node@20.9.0+sass@1.69.5
-  vite-plugin-html: 3.2.0_vite@4.5.0
+  vite: 4.5.1_@types+node@20.9.0+sass@1.69.5
+  vite-plugin-html: 3.2.0_vite@4.5.1
   webpack: 5.89.0_webpack-cli@4.10.0
   webpack-cli: 4.10.0_c82b1245f7cbfc96d08b1570310d48f4
   webpack-dev-server: 4.15.1_bd0b6fd64ce1cd6d10b911e1d9e60f31
@@ -6765,7 +6765,7 @@ packages:
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
     dev: false
 
-  /@vitejs/plugin-react/4.1.1_vite@4.5.0:
+  /@vitejs/plugin-react/4.1.1_vite@4.5.1:
     resolution: {integrity: sha512-Jie2HERK+uh27e+ORXXwEP5h0Y2lS9T2PRGbfebiHGlwzDO0dEnd2aNtOR/qjBlPb1YgxwAONeblL1xqLikLag==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
@@ -6776,7 +6776,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.22.5_@babel+core@7.23.3
       '@types/babel__core': 7.20.4
       react-refresh: 0.14.0
-      vite: 4.5.0_@types+node@20.9.0+sass@1.69.5
+      vite: 4.5.1_@types+node@20.9.0+sass@1.69.5
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -16554,7 +16554,7 @@ packages:
     engines: {node: '>= 0.8'}
     dev: false
 
-  /vite-plugin-html/3.2.0_vite@4.5.0:
+  /vite-plugin-html/3.2.0_vite@4.5.1:
     resolution: {integrity: sha512-2VLCeDiHmV/BqqNn5h2V+4280KRgQzCFN47cst3WiNK848klESPQnzuC3okH5XHtgwHH/6s1Ho/YV6yIO0pgoQ==}
     peerDependencies:
       vite: '>=2.0.0'
@@ -16571,11 +16571,11 @@ packages:
       html-minifier-terser: 6.1.0
       node-html-parser: 5.4.2
       pathe: 0.2.0
-      vite: 4.5.0_@types+node@20.9.0+sass@1.69.5
+      vite: 4.5.1_@types+node@20.9.0+sass@1.69.5
     dev: false
 
-  /vite/4.5.0_@types+node@20.9.0+sass@1.69.5:
-    resolution: {integrity: sha512-ulr8rNLA6rkyFAlVWw2q5YJ91v098AFQ2R0PRFwPzREXOUJQPtFUG0t+/ZikhaOCDqFoDhN6/v8Sq0o4araFAw==}
+  /vite/4.5.1_@types+node@20.9.0+sass@1.69.5:
+    resolution: {integrity: sha512-AXXFaAJ8yebyqzoNB9fu2pHoo/nWX+xZlaRwoeYUxEqBO+Zj4msE5G+BhGBll9lYEKv9Hfks52PAF2X7qDYXQA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
@@ -17326,7 +17326,7 @@ packages:
     dev: false
 
   file:projects/plumage.tgz_dbc661bced914c5b1a6eee0973dbb9b8:
-    resolution: {integrity: sha512-B1FgLz9yG7TZUwC394JUFPnuAQHHj61eLzLCXs7h8ZJchCjH/s2bkVOxCwnICpEWy3ix5hyOTOLo31wbszc0nw==, tarball: file:projects/plumage.tgz}
+    resolution: {integrity: sha512-ksk7hVc6NUza6kT9mFn8dgZBLXF2JYNH0DljT4MS87JZggB8SKTTz5aVW98PIprX7DrWcsLvgDjzYR6h0tOusw==, tarball: file:projects/plumage.tgz}
     id: file:projects/plumage.tgz
     name: '@rush-temp/plumage'
     version: 0.0.0
@@ -17405,18 +17405,18 @@ packages:
     dev: false
 
   file:projects/vite-react-app.tgz_@types+node@20.9.0+sass@1.69.5:
-    resolution: {integrity: sha512-/Tt6umB4ubf5iZo0bUkRA0AQiMvU1O8alqF99eRd/kITv40gDKYqlI0A03h9yuf3ZvIhcY7ym/YGbxmdPbmzZw==, tarball: file:projects/vite-react-app.tgz}
+    resolution: {integrity: sha512-Ex+cKLtX50M/MkmdSworIFupHXMSKrICjzJ5gXAsQBNe+xm99Jnv2QEKcwuJ7PZFY0tFai+XIwb3g1OGnFzYlg==, tarball: file:projects/vite-react-app.tgz}
     id: file:projects/vite-react-app.tgz
     name: '@rush-temp/vite-react-app'
     version: 0.0.0
     dependencies:
       '@types/react': 18.2.37
       '@types/react-dom': 18.2.15
-      '@vitejs/plugin-react': 4.1.1_vite@4.5.0
+      '@vitejs/plugin-react': 4.1.1_vite@4.5.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-      vite: 4.5.0_@types+node@20.9.0+sass@1.69.5
-      vite-plugin-html: 3.2.0_vite@4.5.0
+      vite: 4.5.1_@types+node@20.9.0+sass@1.69.5
+      vite-plugin-html: 3.2.0_vite@4.5.1
     transitivePeerDependencies:
       - '@types/node'
       - less
