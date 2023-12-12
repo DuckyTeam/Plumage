@@ -12,12 +12,12 @@ jobs:
     runs-on: ubuntu-latest
     name: Check presence of changelog documentation
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v4
         with:
-          node-version: '16.13.1'
+          node-version: 18
       - name: Verify Change Logs
         run: node common/scripts/install-run-rush.js change --verify
 
@@ -25,10 +25,10 @@ jobs:
     runs-on: ubuntu-latest
     name: Check build
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: '16.13.1'
+          node-version: 18
       - name: Rush Install
         run: node common/scripts/install-run-rush.js install
       - name: Rush Rebuild
@@ -39,10 +39,10 @@ jobs:
     runs-on: ubuntu-latest
     name: Tests
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: '16.13.1'
+          node-version: 18
       - name: Rush Install
         run: node common/scripts/install-run-rush.js install
       - name: Rush Rebuild

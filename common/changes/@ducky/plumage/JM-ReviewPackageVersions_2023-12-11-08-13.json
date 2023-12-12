@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "Now requires node version 18",
+      "type": "major"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
