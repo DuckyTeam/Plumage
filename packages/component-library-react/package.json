@@ -20,7 +20,7 @@
     "dist/"
   ],
   "devDependencies": {
-    "@types/node": "^20.9.0",
+    "@types/node": "^18.19.0",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
     "np": "^8.0.4",
