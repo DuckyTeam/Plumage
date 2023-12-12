@@ -2,6 +2,23 @@
   "name": "@ducky/plumage",
   "entries": [
     {
+      "version": "5.0.0",
+      "tag": "@ducky/plumage_v5.0.0",
+      "date": "Tue, 12 Dec 2023 14:44:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Tab name change bug fixed"
+          }
+        ],
+        "major": [
+          {
+            "comment": "Now requires node version 18"
+          }
+        ]
+      }
+    },
+    {
       "version": "4.0.0",
       "tag": "@ducky/plumage_v4.0.0",
       "date": "Tue, 12 Dec 2023 14:12:06 GMT",

@@ -1,7 +1,7 @@
 {
   "name": "@ducky/plumage-react",
   "sideEffects": false,
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Plumage is Ducky's design system; this is React wrapper",
   "repository": {
     "type": "git",
@@ -29,7 +29,7 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "@ducky/plumage": "^4.0.0"
+    "@ducky/plumage": "^5.0.0"
   },
   "peerDependencies": {
     "react": ">=18.2.0",

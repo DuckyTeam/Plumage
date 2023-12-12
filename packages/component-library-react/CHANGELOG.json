@@ -2,6 +2,28 @@
   "name": "@ducky/plumage-react",
   "entries": [
     {
+      "version": "3.0.0",
+      "tag": "@ducky/plumage-react_v3.0.0",
+      "date": "Tue, 12 Dec 2023 14:44:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Tab name change bug fixed"
+          }
+        ],
+        "major": [
+          {
+            "comment": "Now requires node version 18"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@ducky/plumage\" from `^4.0.0` to `^5.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "2.0.0",
       "tag": "@ducky/plumage-react_v2.0.0",
       "date": "Tue, 12 Dec 2023 14:12:06 GMT",

@@ -1,6 +1,17 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Tue, 12 Dec 2023 14:12:06 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Dec 2023 14:44:02 GMT and should not be manually modified.
+
+## 5.0.0
+Tue, 12 Dec 2023 14:44:02 GMT
+
+### Breaking changes
+
+- Now requires node version 18
+
+### Patches
+
+- Tab name change bug fixed
 
 ## 4.0.0
 Tue, 12 Dec 2023 14:12:06 GMT
