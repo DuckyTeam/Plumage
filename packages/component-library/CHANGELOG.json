@@ -2,6 +2,18 @@
   "name": "@ducky/plumage",
   "entries": [
     {
+      "version": "4.0.0",
+      "tag": "@ducky/plumage_v4.0.0",
+      "date": "Tue, 12 Dec 2023 14:12:06 GMT",
+      "comments": {
+        "major": [
+          {
+            "comment": "Now requires node version 18"
+          }
+        ]
+      }
+    },
+    {
       "version": "3.3.0",
       "tag": "@ducky/plumage_v3.3.0",
       "date": "Fri, 17 Nov 2023 11:04:42 GMT",
