@@ -1,4 +1,4 @@
-import { Component, Prop } from '@stencil/core';
+import { Component, Prop, Event, EventEmitter, Watch } from '@stencil/core';
 
 @Component({
   tag: 'plmg-tab',
@@ -9,6 +9,12 @@ export class Tab {
    * Define tabs text content.
    */
   @Prop() label: string;
+  @Event() labelChange: EventEmitter;
+
+  @Watch('label')
+  labelChanged() {
+    this.labelChange.emit();
+  }
 
   /**
    * Define tabs icon content.

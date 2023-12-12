@@ -27,6 +27,11 @@ export class Tabs {
   @State()
   tabs: HTMLPlmgTabElement[] = [];
 
+  @Listen('labelChange')
+  handleLabelChange() {
+    this.tabs = Array.from(this.el.querySelectorAll('plmg-tab'));
+  }
+
   /**
    * Event tabChange is emitted for onChange events when switching tabs.
    */
@@ -60,6 +65,9 @@ export class Tabs {
     if (this.tabs.length === 0) {
       throw new Error('<plmg-tabs> Must have at least one tab');
     }
+    this.tabs.forEach((tab) => {
+      tab.addEventListener('labelChange', () => this.handleLabelChange());
+    });
   }
 
   /**

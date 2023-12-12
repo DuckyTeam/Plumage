@@ -17297,7 +17297,7 @@ packages:
     dev: false
 
   file:projects/example-react-app.tgz:
-    resolution: {integrity: sha512-v0tvujR0EHHdQkTW32FQGs7F0hbYQQed8141tc38d10ani4+0pMO/5H7LL9ZeJs7Wy7+FvOEXdY2B9IdJqelkg==, tarball: file:projects/example-react-app.tgz}
+    resolution: {integrity: sha512-zJ1Cd7NXhhHvojYoymQTktXjrx+G4/I+y8aG7INCMKXxsQQ0uldDE1hI6ngk7RmfZnCMxD+aKE+BZqAklGxk/Q==, tarball: file:projects/example-react-app.tgz}
     name: '@rush-temp/example-react-app'
     version: 0.0.0
     dependencies:
@@ -17335,7 +17335,7 @@ packages:
     dev: false
 
   file:projects/plumage-react.tgz:
-    resolution: {integrity: sha512-pH30FQwtOdfQfsGh/CXh/x2joYpVyxsRDdkThLmP/cG3JpynYN3WD3RZBrDFyv0sC5ch9J+qMpAgMNReFxTuig==, tarball: file:projects/plumage-react.tgz}
+    resolution: {integrity: sha512-IcjLZ2Y0/9JDkBvl3IiwvMSPH1vErRrQ9MqrsI3EoqiqqdsxC0YLc5ZlQfoqu13tQG+/5N6LIzUsYsteYut1gA==, tarball: file:projects/plumage-react.tgz}
     name: '@rush-temp/plumage-react'
     version: 0.0.0
     dependencies:
@@ -17351,7 +17351,7 @@ packages:
     dev: false
 
   file:projects/plumage-tokens.tgz:
-    resolution: {integrity: sha512-LBLJHxWuyGIFDah804qxJwsZ0daP8ow8n0JRY6+6Jk56lT/S7nbHx2x5iOZJVdM+7k0V9wEE6HfngLXdJNH25A==, tarball: file:projects/plumage-tokens.tgz}
+    resolution: {integrity: sha512-TLJKbEgDkAfKTJ9GvwOJEtxiIR/WzXe6pvxLuID17WVYfrhg7soMUU4pyGgMsWioPGxZ1sElYtjLeLwiENW52w==, tarball: file:projects/plumage-tokens.tgz}
     name: '@rush-temp/plumage-tokens'
     version: 0.0.0
     dependencies:
@@ -17359,7 +17359,7 @@ packages:
     dev: false
 
   file:projects/plumage.tgz_dbc661bced914c5b1a6eee0973dbb9b8:
-    resolution: {integrity: sha512-kaDhlpNwAoiR4JoBzHkicK6iehKfV9Agf0dUjouuSWefK9xAm196MzDUCkgyZqLidvjj+wtvzEKUquc9TO5ZTw==, tarball: file:projects/plumage.tgz}
+    resolution: {integrity: sha512-8w1B0aGrEavQFnpt1XvOhcOihxGbRDVeVFeYpKEy5HCeWLgVXnwgcvfhQuCVZodcQoRXhuqCQNcC5XcFbuTgZg==, tarball: file:projects/plumage.tgz}
     id: file:projects/plumage.tgz
     name: '@rush-temp/plumage'
     version: 0.0.0
@@ -17438,7 +17438,7 @@ packages:
     dev: false
 
   file:projects/vite-react-app.tgz_@types+node@18.19.3+sass@1.69.5:
-    resolution: {integrity: sha512-Ex+cKLtX50M/MkmdSworIFupHXMSKrICjzJ5gXAsQBNe+xm99Jnv2QEKcwuJ7PZFY0tFai+XIwb3g1OGnFzYlg==, tarball: file:projects/vite-react-app.tgz}
+    resolution: {integrity: sha512-9AQwcvnrCHftqyA9PLy3WIFYyTWaG57pJqfEwEYrlJlDf+MfNW1tThcPxO6ymC3ORjLfRBWCLGcLB7pPcXbiZA==, tarball: file:projects/vite-react-app.tgz}
     id: file:projects/vite-react-app.tgz
     name: '@rush-temp/vite-react-app'
     version: 0.0.0

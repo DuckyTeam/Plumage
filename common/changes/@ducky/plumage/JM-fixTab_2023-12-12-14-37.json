@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage",
+      "comment": "Tab name change bug fixed",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage"
+}
