@@ -562,6 +562,10 @@ export interface PlmgSliderCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPlmgSliderElement;
 }
+export interface PlmgTabCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPlmgTabElement;
+}
 export interface PlmgTabsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLPlmgTabsElement;
@@ -1154,6 +1158,7 @@ declare namespace LocalJSX {
           * Define tabs text content.
          */
         "label"?: string;
+        "onLabelChange"?: (event: PlmgTabCustomEvent<any>) => void;
     }
     interface PlmgTabs {
         /**

@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage-react
 
-This log was last generated on Fri, 17 Nov 2023 11:04:42 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Dec 2023 14:12:06 GMT and should not be manually modified.
+
+## 2.0.0
+Tue, 12 Dec 2023 14:12:06 GMT
+
+### Breaking changes
+
+- Now requires node version 18
 
 ## 1.3.0
 Fri, 17 Nov 2023 11:04:42 GMT
