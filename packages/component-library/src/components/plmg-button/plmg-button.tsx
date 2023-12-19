@@ -191,6 +191,20 @@ export class Button {
   }
 
   /**
+   * Define icon's color.
+   *
+   * Can be any valid CSS color value.
+   *
+   * By default, the icon will have the same color as the parent's element.
+   */
+  @Prop() iconColor: string | undefined;
+  @Watch('iconColor')
+  validateIconColor(newValue: string) {
+    if (newValue && typeof newValue !== 'string')
+      throw new Error('iconColor must be a string');
+  }
+
+  /**
    * Define button's left icon.
    *
    * When providing an icon name to this prop, the corresponding icon will be displayed.
@@ -298,14 +312,26 @@ export class Button {
             aria-disabled={this.disabled}
           >
             {this.hasIconLeft() && (
-              <plmg-svg-icon class={'icon-left'} icon={this.iconLeft} />
+              <plmg-svg-icon
+                class={'icon-left'}
+                icon={this.iconLeft}
+                color={this.iconColor}
+              />
             )}
             {this.hasIconCenter() && (
-              <plmg-svg-icon class={'icon-center'} icon={this.iconCenter} />
+              <plmg-svg-icon
+                class={'icon-center'}
+                icon={this.iconCenter}
+                color={this.iconColor}
+              />
             )}
             {this.text}
             {this.hasIconRight() && (
-              <plmg-svg-icon class={'icon-right'} icon={this.iconRight} />
+              <plmg-svg-icon
+                class={'icon-right'}
+                icon={this.iconRight}
+                color={this.iconColor}
+              />
             )}
           </a>
         </Host>
@@ -322,14 +348,26 @@ export class Button {
           style={{ pointerEvents: this.disabled ? 'none' : 'auto' }}
         >
           {this.hasIconLeft() && (
-            <plmg-svg-icon class={'icon-left'} icon={this.iconLeft} />
+            <plmg-svg-icon
+              class={'icon-left'}
+              icon={this.iconLeft}
+              color={this.iconColor}
+            />
           )}
           {this.hasIconCenter() && (
-            <plmg-svg-icon class={'icon-center'} icon={this.iconCenter} />
+            <plmg-svg-icon
+              class={'icon-center'}
+              icon={this.iconCenter}
+              color={this.iconColor}
+            />
           )}
           {this.text}
           {this.hasIconRight() && (
-            <plmg-svg-icon class={'icon-right'} icon={this.iconRight} />
+            <plmg-svg-icon
+              class={'icon-right'}
+              icon={this.iconRight}
+              color={this.iconColor}
+            />
           )}
         </button>
       </Host>

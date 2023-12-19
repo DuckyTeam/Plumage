@@ -34,6 +34,9 @@ export default {
     ['shadow']: {
       options: [true, false],
     },
+    ['icon-color']: {
+      control: { type: 'color' },
+    },
     ['icon-left']: {
       options: [undefined, ...Object.values(ICON)],
       control: { type: 'select' },
@@ -68,6 +71,7 @@ const PROPS = [
   'href',
   'rel',
   'target',
+  'icon-color',
   'icon-left',
   'icon-center',
   'icon-right',

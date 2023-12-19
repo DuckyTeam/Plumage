@@ -70,6 +70,10 @@ export namespace Components {
          */
         "iconCenter": string;
         /**
+          * Define icon's color.  Can be any valid CSS color value.  By default, the icon will have the same color as the parent's element.
+         */
+        "iconColor": string | undefined;
+        /**
           * Define button's left icon.  When providing an icon name to this prop, the corresponding icon will be displayed. it will be placed to the left of the text slot.
          */
         "iconLeft": string;
@@ -797,6 +801,10 @@ declare namespace LocalJSX {
           * Define button's centered icon.  When providing an icon name to this prop, the corresponding icon will be displayed. it will be placed to the center.  You must provide a label.  When providing a center icon, you should not provide a text slot. That is because the center icon will be bigger than the text, to render with the same height as other buttons. If you do provide both the center icon and the text slot, the icon will appear just before the text slot.
          */
         "iconCenter"?: string;
+        /**
+          * Define icon's color.  Can be any valid CSS color value.  By default, the icon will have the same color as the parent's element.
+         */
+        "iconColor"?: string | undefined;
         /**
           * Define button's left icon.  When providing an icon name to this prop, the corresponding icon will be displayed. it will be placed to the left of the text slot.
          */
