@@ -29,7 +29,7 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "@ducky/plumage": "^5.0.0"
+    "@ducky/plumage": "^5.1.0"
   },
   "peerDependencies": {
     "react": ">=18.2.0",

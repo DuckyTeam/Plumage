@@ -2,6 +2,18 @@
   "name": "@ducky/plumage",
   "entries": [
     {
+      "version": "5.1.0",
+      "tag": "@ducky/plumage_v5.1.0",
+      "date": "Tue, 19 Dec 2023 15:32:52 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "adds a iconColor prop to plmg-button"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.0.0",
       "tag": "@ducky/plumage_v5.0.0",
       "date": "Tue, 12 Dec 2023 14:44:02 GMT",

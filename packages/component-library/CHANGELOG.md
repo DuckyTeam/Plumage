@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage
 
-This log was last generated on Tue, 12 Dec 2023 14:44:02 GMT and should not be manually modified.
+This log was last generated on Tue, 19 Dec 2023 15:32:52 GMT and should not be manually modified.
+
+## 5.1.0
+Tue, 19 Dec 2023 15:32:52 GMT
+
+### Minor changes
+
+- adds a iconColor prop to plmg-button
 
 ## 5.0.0
 Tue, 12 Dec 2023 14:44:02 GMT
