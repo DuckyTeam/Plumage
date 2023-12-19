@@ -121,6 +121,15 @@ export class Button {
       throw new Error('fullWidth: must be boolean');
   }
 
+  /**
+   * Define button's shadow
+   *
+   * Allowed values:
+   *   - true
+   *   - false
+   *
+   * Default: false
+   */
   @Prop() shadow: boolean = false;
   @Watch('shadow')
   validateShadow(newValue: boolean) {
