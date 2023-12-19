@@ -89,6 +89,9 @@ export namespace Components {
           * Define links rel
          */
         "rel": string;
+        /**
+          * Define button's shadow  Allowed values:   - true   - false  Default: false
+         */
         "shadow": boolean;
         /**
           * Define button's size  Allowed values:   - small   - medium   - large   - extra-large  Default: medium
@@ -818,6 +821,9 @@ declare namespace LocalJSX {
           * Define links rel
          */
         "rel"?: string;
+        /**
+          * Define button's shadow  Allowed values:   - true   - false  Default: false
+         */
         "shadow"?: boolean;
         /**
           * Define button's size  Allowed values:   - small   - medium   - large   - extra-large  Default: medium
