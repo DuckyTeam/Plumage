@@ -70,6 +70,10 @@ export namespace Components {
          */
         "iconCenter": string;
         /**
+          * Define icon's color.  Can be any valid CSS color value.  By default, the icon will have the same color as the parent's element.
+         */
+        "iconColor": string | undefined;
+        /**
           * Define button's left icon.  When providing an icon name to this prop, the corresponding icon will be displayed. it will be placed to the left of the text slot.
          */
         "iconLeft": string;
@@ -85,9 +89,6 @@ export namespace Components {
           * Define links rel
          */
         "rel": string;
-        /**
-          * Define button's shadow  Allowed values:   - true   - false  Default: false
-         */
         "shadow": boolean;
         /**
           * Define button's size  Allowed values:   - small   - medium   - large   - extra-large  Default: medium
@@ -798,6 +799,10 @@ declare namespace LocalJSX {
          */
         "iconCenter"?: string;
         /**
+          * Define icon's color.  Can be any valid CSS color value.  By default, the icon will have the same color as the parent's element.
+         */
+        "iconColor"?: string | undefined;
+        /**
           * Define button's left icon.  When providing an icon name to this prop, the corresponding icon will be displayed. it will be placed to the left of the text slot.
          */
         "iconLeft"?: string;
@@ -813,9 +818,6 @@ declare namespace LocalJSX {
           * Define links rel
          */
         "rel"?: string;
-        /**
-          * Define button's shadow  Allowed values:   - true   - false  Default: false
-         */
         "shadow"?: boolean;
         /**
           * Define button's size  Allowed values:   - small   - medium   - large   - extra-large  Default: medium

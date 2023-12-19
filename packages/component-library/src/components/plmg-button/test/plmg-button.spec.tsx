@@ -74,6 +74,23 @@ describe('plmg-button', () => {
 
     `);
   });
+  it('overrides the icon color', async () => {
+    const page = await newSpecPage({
+      components: [Button],
+      html: `<plmg-button color="primary" icon-left="home" icon-right="home" icon-center="home" text="Content" icon-color="blue"></plmg-button>`,
+    });
+
+    expect(page.root).toEqualHtml(`
+    <plmg-button icon-center="home" color="primary" icon-color="blue" icon-left="home" icon-right="home" text="Content" style="width: fit-content;">
+         <button class="filled icon-button medium plmg-button primary" type="button" style="pointer-events: auto;">
+           <plmg-svg-icon class="icon-left" icon="home" color="blue"></plmg-svg-icon>
+           <plmg-svg-icon class="icon-center" icon="home" color="blue"></plmg-svg-icon>
+           Content
+           <plmg-svg-icon class="icon-right" icon="home" color="blue"></plmg-svg-icon>
+         </button>
+    `);
+  });
+
   it('renders an Icon Button with aria-label', async () => {
     const page = await newSpecPage({
       components: [Button],
