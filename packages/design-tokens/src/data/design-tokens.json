@@ -107,6 +107,11 @@
         "value": "160px",
         "description": "10rem",
         "type": "spacing"
+      },
+      "x12": {
+        "value": "176px",
+        "type": "spacing",
+        "description": "12rem"
       }
     },
     "font-family": {
