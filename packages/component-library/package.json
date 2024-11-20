@@ -34,7 +34,7 @@
     "postgenerate-icons": "npm run generate-icon-enum"
   },
   "dependencies": {
-    "@ducky/plumage-tokens": "^5.0.0",
+    "@ducky/plumage-tokens": "^5.0.1",
     "uuid": "~9.0.1"
   },
   "devDependencies": {

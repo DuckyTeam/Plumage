@@ -1,6 +1,13 @@
 # Change Log - @ducky/plumage-tokens
 
-This log was last generated on Wed, 22 Mar 2023 13:29:28 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Nov 2024 12:37:10 GMT and should not be manually modified.
+
+## 5.0.1
+Wed, 20 Nov 2024 12:37:10 GMT
+
+### Patches
+
+- reverts an accidental commit to main from figma
 
 ## 5.0.0
 Wed, 22 Mar 2023 13:29:28 GMT
