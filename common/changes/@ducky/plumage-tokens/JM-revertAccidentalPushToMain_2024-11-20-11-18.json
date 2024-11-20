@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@ducky/plumage-tokens",
+      "comment": "reverts an accidental commit to main from figma",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@ducky/plumage-tokens"
+}
